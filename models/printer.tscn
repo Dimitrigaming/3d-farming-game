@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://er1i3yp4jq5p"]
+
+[ext_resource type="Script" uid="uid://jss42loi775m" path="res://models/printer.gd" id="Script_printer"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3xd07"]
+
+[node name="Printer" type="Node3D" unique_id=1494709232]
+script = ExtResource("Script_printer")
+
+[node name="Tooltip" type="Label3D" parent="." unique_id=803871231]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+visible = false
+billboard = 2
+text = "3D Printer
+Click to interact"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=36377808]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2042809192]
+shape = SubResource("BoxShape3D_3xd07")
+
+[node name="PrintStart" type="Marker3D" parent="." unique_id=1223792110]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.32227272, 0)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=2069425822]
+
+[node name="Cube" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1917033009]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/Cube" unique_id=956923396]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0014648438, 0.053855896, -0.017913818)
+operation = 2
+size = Vector3(0.8095703, 0.7572479, 1.230896)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/Cube" unique_id=199095163]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0024108887, 0.053855896, 0.004096985)
+operation = 2
+size = Vector3(1.1754761, 0.7572479, 0.8683319)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D/Cube" unique_id=1681831553]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0017929077, 0.1619072, 0.004096985)
+operation = 2
+size = Vector3(0.7919769, 0.9733505, 0.8683319)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D/Cube" unique_id=674957676]
+transform = Transform3D(0.7423514, -0.086890414, 0, 0.67001075, 0.09627192, 0, 0, 0, 1, 0.5683304, -0.38852042, -0.3491211)
+size = Vector3(0.044677734, 1, 0.3017578)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D/Cube" unique_id=1720025110]
+transform = Transform3D(0.999973, 0.000955875, 0, -0.0073706876, 0.12968157, 0, 0, 0, 1, 0.52353024, -0.40772778, -0.34878027)
+size = Vector3(0.095581055, 0.20123291, 0.091308594)

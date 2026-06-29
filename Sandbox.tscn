@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bdt8j46wcmrwi"]
 
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_y8ncq"]
+[ext_resource type="PackedScene" uid="uid://er1i3yp4jq5p" path="res://models/printer.tscn" id="2_gaqdb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uu6xs"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -112,7 +113,7 @@ transform = Transform3D(0.64278764, 0.76604444, 0, -0.76604444, 0.64278764, 0, 0
 size = Vector3(1, 1, 3)
 
 [node name="ProtoController" parent="." unique_id=89300952 instance=ExtResource("1_y8ncq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 0.7, 18.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.750381, 0.7000002, 18.343494)
 can_sprint = true
 can_freefly = true
 input_left = "move_left"
@@ -121,3 +122,6 @@ input_forward = "move_forward"
 input_back = "move_backward"
 input_jump = "jump"
 input_freefly = "noclip"
+
+[node name="Printer" parent="." unique_id=1494709232 instance=ExtResource("2_gaqdb")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12.562923, 0.99999905, 14.442801)

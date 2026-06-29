@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://ebss2yhfqwxw"]
+
+[ext_resource type="Material" uid="uid://dvcdv2s40e7d0" path="res://materials/mat_default.tres" id="1_xonwm"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1"]
+size = Vector3(0.2, 0.4, 0.2)
+
+[node name="PrintModel" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_1")
+material_override = ExtResource("1_xonwm")
