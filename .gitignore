@@ -7,3 +7,4 @@ demo/
 
 # Claude Code session files
 .claude/
+addons/terrain_3d/bin/~*
