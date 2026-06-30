@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_y8ncq"]
 [ext_resource type="PackedScene" uid="uid://er1i3yp4jq5p" path="res://models/printer.tscn" id="2_gaqdb"]
+[ext_resource type="PackedScene" uid="uid://dnldinl4pqluh" path="res://models/box.tscn" id="3_jgjqi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uu6xs"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -145,3 +146,6 @@ input_freefly = "noclip"
 
 [node name="Printer" parent="." unique_id=1494709232 instance=ExtResource("2_gaqdb")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12.562923, 0.99999905, 14.442801)
+
+[node name="Box" parent="." unique_id=641621362 instance=ExtResource("3_jgjqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1, 0.7, 14.7)

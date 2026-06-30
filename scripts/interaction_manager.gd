@@ -6,9 +6,9 @@ var current_target = null
 
 func _process(_delta: float) -> void:
 	var hit = get_collider()
+	var interactable = _find_interactable(hit)
 
-	if hit and hit.get_parent().is_in_group("interactable"):
-		var interactable = hit.get_parent()
+	if interactable:
 		if interactable != current_target:
 			if current_target:
 				current_target.hide_tooltip()
@@ -19,11 +19,20 @@ func _process(_delta: float) -> void:
 			current_target.hide_tooltip()
 			current_target = null
 
+func _find_interactable(hit) -> Node:
+	if hit == null:
+		return null
+	if hit.is_in_group("interactable"):
+		return hit
+	if hit.get_parent() and hit.get_parent().is_in_group("interactable"):
+		return hit.get_parent()
+	return null
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") and current_target:
 		current_target.interact()
 
-	if event.is_action_pressed("place_box"):
+	if event.is_action_pressed("drop"):
 		player_inventory.place_box()
 
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:

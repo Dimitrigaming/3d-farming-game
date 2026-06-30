@@ -26,10 +26,13 @@ func pick_up_box(box: Node3D) -> void:
 func place_box() -> void:
 	if held_box == null:
 		return
-	var drop_xform: Transform3D = held_box.global_transform
+	var player = get_parent()
+	var forward = -player.global_transform.basis.z
+	var drop_pos = player.global_position + forward * 0.8 + Vector3(0, 1.0, 0)
 	held_box.get_parent().remove_child(held_box)
 	get_tree().current_scene.add_child(held_box)
-	held_box.global_transform = drop_xform
+	held_box.global_position = drop_pos
+	held_box.rotation = Vector3(0, player.rotation.y, 0)
 	held_box.set_held(false)
 	held_box = null
 

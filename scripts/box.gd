@@ -1,10 +1,9 @@
-extends Node3D
+extends RigidBody3D
 
 const SPRITE_MAX_SIZE := 0.28
 
-@onready var static_body: StaticBody3D = $StaticBody3D
-@onready var sprites: Array[Sprite3D] = [$SpriteFront, $SpriteBack, $SpriteLeft, $SpriteRight]
-@onready var labels: Array[Label3D] = [$LabelFront, $LabelBack, $LabelLeft, $LabelRight]
+@onready var sprites: Array[Sprite3D] = [$SpriteFront, $SpriteBack]
+@onready var labels: Array[Label3D] = [$LabelFront, $LabelBack]
 
 var item_type: String = ""
 var count: int = 0
@@ -43,11 +42,17 @@ func hide_tooltip() -> void:
 	pass
 
 func set_held(held: bool) -> void:
-	static_body.set_collision_layer_value(1, not held)
-	static_body.set_collision_mask_value(1, not held)
 	if held:
+		process_mode = Node.PROCESS_MODE_DISABLED
+		collision_layer = 0
+		collision_mask = 0
 		remove_from_group("interactable")
 	else:
+		linear_velocity = Vector3.ZERO
+		angular_velocity = Vector3.ZERO
+		collision_layer = 1
+		collision_mask = 1
+		process_mode = Node.PROCESS_MODE_INHERIT
 		add_to_group("interactable")
 
 func _update_display() -> void:
