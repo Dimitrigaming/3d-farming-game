@@ -147,5 +147,11 @@ input_freefly = "noclip"
 [node name="Printer" parent="." unique_id=1494709232 instance=ExtResource("2_gaqdb")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12.562923, 0.99999905, 14.442801)
 
+[node name="Printer2" parent="." unique_id=1922462127 instance=ExtResource("2_gaqdb")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 14.062923, 0.99999905, 14.442801)
+
+[node name="Printer3" parent="." unique_id=865785301 instance=ExtResource("2_gaqdb")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 15.462923, 0.99999905, 14.442801)
+
 [node name="Box" parent="." unique_id=641621362 instance=ExtResource("3_jgjqi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1, 0.7, 14.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1, 0.9, 14.7)
