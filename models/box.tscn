@@ -1,40 +1,30 @@
 [gd_scene format=3 uid="uid://dnldinl4pqluh"]
 
-[ext_resource type="Script" uid="uid://cha404ahqjy0v" path="res://scripts/box.gd" id="1_box"]
 [ext_resource type="Material" path="res://materials/mat_crate.tres" id="2_mat"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_crate"]
-size = Vector3(0.7, 0.5, 0.7)
+[node name="Box" type="Node3D" unique_id=1294173051]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_crate"]
-size = Vector3(0.7, 0.5, 0.7)
-
-[node name="Box" type="RigidBody3D" unique_id=641621362]
-script = ExtResource("1_box")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=494323279]
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1788434340]
 material_override = ExtResource("2_mat")
-mesh = SubResource("BoxMesh_crate")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=874839877]
-shape = SubResource("BoxShape3D_crate")
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D" unique_id=537863635]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.024999991, 0)
+material_override = ExtResource("2_mat")
+operation = 2
+size = Vector3(0.95, 1, 0.95)
 
-[node name="SpriteFront" type="Sprite3D" parent="." unique_id=1785394476]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, -0.352)
-visible = false
+[node name="BoxLidLeft" type="Node3D" parent="." unique_id=576600860]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.5)
 
-[node name="SpriteBack" type="Sprite3D" parent="." unique_id=710516618]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.352)
-visible = false
+[node name="CSGBox3D2" type="CSGBox3D" parent="BoxLidLeft" unique_id=1257463203]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
+material_override = ExtResource("2_mat")
+size = Vector3(1, 0.02, 0.5)
 
+[node name="BoxLidRight" type="Node3D" parent="." unique_id=1760379039]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5)
 
-[node name="LabelFront" type="Label3D" parent="." unique_id=1207381171]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0.24, 0.19, -0.352)
-pixel_size = 0.0005
-font_size = 64
-
-[node name="LabelBack" type="Label3D" parent="." unique_id=1857825088]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.24, 0.19, 0.352)
-pixel_size = 0.0005
-font_size = 64
-
+[node name="CSGBox3D3" type="CSGBox3D" parent="BoxLidRight" unique_id=128588864]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
+material_override = ExtResource("2_mat")
+size = Vector3(1, 0.02, 0.5)
