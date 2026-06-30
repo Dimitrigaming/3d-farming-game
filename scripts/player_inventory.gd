@@ -9,13 +9,13 @@ var held_box: Node3D = null
 func _ready() -> void:
 	add_to_group("player")
 
-func collect_item(item_type: String) -> bool:
+func collect_item(item_type: String, from_global_pos: Vector3 = Vector3.ZERO) -> bool:
 	if held_box == null:
 		held_box = BOX_SCENE.instantiate()
 		get_tree().current_scene.add_child(held_box)
 		_attach_to_hold_point()
-		return held_box.add_item(item_type)
-	return held_box.add_item(item_type)
+		return held_box.add_item(item_type, from_global_pos)
+	return held_box.add_item(item_type, from_global_pos)
 
 func pick_up_box(box: Node3D) -> void:
 	if held_box != null:

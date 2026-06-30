@@ -44,5 +44,5 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		if current_target and current_target.has_method("get_collectable_item_type"):
 			var item_type: String = current_target.get_collectable_item_type()
-			if item_type != "" and player_inventory.collect_item(item_type):
+			if item_type != "" and player_inventory.collect_item(item_type, current_target.global_position):
 				current_target.clear_print()

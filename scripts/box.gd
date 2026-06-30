@@ -26,15 +26,20 @@ func _ready() -> void:
 	_update_display()
 
 
-func add_item(type: String) -> bool:
+func add_item(type: String, from_global_pos: Vector3 = Vector3.ZERO) -> bool:
 	if is_full():
 		return false
 	if item_type == "":
 		item_type = type
 	elif item_type != type:
 		return false
+	if not is_open:
+		_toggle_lid()
 	count += 1
-	_spawn_item(count - 1)
+	if from_global_pos != Vector3.ZERO:
+		_spawn_item_animated(count - 1, from_global_pos)
+	else:
+		_spawn_item(count - 1)
 	_update_display()
 	return true
 
@@ -78,6 +83,18 @@ func _toggle_lid() -> void:
 	else:
 		tween.tween_property(lid_left, "rotation_degrees:z", 0.0, 0.4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 		tween.tween_property(lid_right, "rotation_degrees:z", 0.0, 0.4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+
+func _spawn_item_animated(index: int, from_global_pos: Vector3) -> void:
+	var flying = ITEM_SCENE.instantiate()
+	get_tree().current_scene.add_child(flying)
+	flying.global_position = from_global_pos
+	var target_pos = global_position + Vector3(0, 0.4, 0)
+	var tween = get_tree().create_tween()
+	tween.tween_property(flying, "global_position", target_pos, 0.35).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_callback(func():
+		flying.queue_free()
+		_spawn_item(index)
+	)
 
 func _spawn_item(index: int) -> void:
 	var item = ITEM_SCENE.instantiate()
