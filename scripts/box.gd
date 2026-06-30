@@ -1,14 +1,22 @@
 extends RigidBody3D
 
 const SPRITE_MAX_SIZE = 0.28
+const ITEM_SCENE = preload("res://models/print_model.tscn")
+const ITEM_SIZE = Vector3(0.2, 0.4, 0.2)
+const ITEM_GAP = 0.03
+const ITEMS_PER_ROW = 3
+const ITEMS_PER_LAYER = 9
+# Bottom of interior: box half-height minus bottom wall thickness
+const INTERIOR_BOTTOM = -0.35 + 0.025
 
 @onready var sprites: Array[Sprite3D] = [$SpriteFront, $SpriteBack]
 @onready var labels: Array[Label3D] = [$LabelFront, $LabelBack]
 
 var item_type: String = ""
 var count: int = 0
-var max_count: int = 10
+var max_count: int = 9
 var is_open: bool = false
+var item_nodes: Array[Node3D] = []
 
 @onready var lid_left: Node3D = $BoxLidLeft
 @onready var lid_right: Node3D = $BoxLidRight
@@ -26,6 +34,7 @@ func add_item(type: String) -> bool:
 	elif item_type != type:
 		return false
 	count += 1
+	_spawn_item(count - 1)
 	_update_display()
 	return true
 
@@ -69,6 +78,27 @@ func _toggle_lid() -> void:
 	else:
 		tween.tween_property(lid_left, "rotation_degrees:z", 0.0, 0.4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 		tween.tween_property(lid_right, "rotation_degrees:z", 0.0, 0.4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+
+func _spawn_item(index: int) -> void:
+	var item = ITEM_SCENE.instantiate()
+	add_child(item)
+	item.position = _grid_position(index)
+	var mesh = item.get_child(0) as MeshInstance3D
+	if mesh and mesh.material_override is ShaderMaterial:
+		var mat = mesh.material_override.duplicate() as ShaderMaterial
+		mat.set_shader_parameter("clip_height", 999.0)
+		mesh.material_override = mat
+	item_nodes.append(item)
+
+func _grid_position(index: int) -> Vector3:
+	var layer = index / ITEMS_PER_LAYER
+	var pos_in_layer = index % ITEMS_PER_LAYER
+	var row = pos_in_layer / ITEMS_PER_ROW
+	var col = pos_in_layer % ITEMS_PER_ROW
+	var x = float(col - 1) * (ITEM_SIZE.x + ITEM_GAP)
+	var y = INTERIOR_BOTTOM + ITEM_SIZE.y * 0.5 + float(layer) * (ITEM_SIZE.y + ITEM_GAP)
+	var z = float(row - 1) * (ITEM_SIZE.z + ITEM_GAP)
+	return Vector3(x, y, z)
 
 func _update_display() -> void:
 	if item_type == "":
