@@ -12,11 +12,17 @@ func _process(_delta: float) -> void:
 		if interactable != current_target:
 			if current_target:
 				current_target.hide_tooltip()
+				if current_target.has_method("on_look_away"):
+					current_target.on_look_away()
 			current_target = interactable
 			current_target.show_tooltip()
+		if current_target.has_method("on_aimed_at"):
+			current_target.on_aimed_at(player_inventory)
 	else:
 		if current_target:
 			current_target.hide_tooltip()
+			if current_target.has_method("on_look_away"):
+				current_target.on_look_away()
 			current_target = null
 
 func _find_interactable(hit) -> Node:
@@ -42,7 +48,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			current_target._toggle_lid()
 
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		if current_target and current_target.has_method("get_collectable_item_type"):
+		if current_target and current_target.has_method("try_trash"):
+			current_target.try_trash(player_inventory)
+		elif current_target and current_target.has_method("get_collectable_item_type"):
 			var item_type: String = current_target.get_collectable_item_type()
 			if item_type != "" and player_inventory.collect_item(item_type, current_target.global_position):
 				current_target.clear_print()

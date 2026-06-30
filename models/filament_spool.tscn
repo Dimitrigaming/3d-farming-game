@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://ctqnndnd1tyfo"]
+
+[ext_resource type="Script" uid="uid://c866t5gtpcgt8" path="res://scripts/filament_spool.gd" id="1_74dws"]
+[ext_resource type="Resource" path="res://resources/filaments/pla.tres" id="2_vnqwl"]
+
+[node name="FilamentSpool" type="Node3D" unique_id=1635647822]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0)
+script = ExtResource("1_74dws")
+filament = ExtResource("2_vnqwl")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=1584556900]
+radius = 0.1
+height = 0.05
+sides = 64
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCylinder3D" unique_id=147490054]
+transform = Transform3D(1.05, 0, 0, 0, 0.9, 0, 0, 0, 1.05, 0, 0, 0)
+operation = 2
+radius = 0.1
+height = 0.05
+sides = 64
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." unique_id=2139112971]
+transform = Transform3D(0.3, 0, 0, 0, 1, 0, 0, 0, 0.3, 0, -0.0003906265, 0)
+radius = 0.1
+height = 0.045703124
+sides = 64
