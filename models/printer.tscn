@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://er1i3yp4jq5p"]
 
-[ext_resource type="Script" uid="uid://jss42loi775m" path="res://models/printer.gd" id="Script_printer"]
+[ext_resource type="Script" uid="uid://jss42loi775m" path="res://scripts/printer.gd" id="Script_printer"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3xd07"]
 
