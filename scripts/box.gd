@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-const SPRITE_MAX_SIZE := 0.28
+const SPRITE_MAX_SIZE = 0.28
 
 @onready var sprites: Array[Sprite3D] = [$SpriteFront, $SpriteBack]
 @onready var labels: Array[Label3D] = [$LabelFront, $LabelBack]
