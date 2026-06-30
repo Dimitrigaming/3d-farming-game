@@ -8,6 +8,8 @@ const PRINT_SHADER = preload("res://shaders/print_reveal.gdshader")
 
 var print_duration: float = 5.0
 var is_printing: bool = false
+var print_finished: bool = false
+var current_model: Node3D = null
 
 func _ready() -> void:
 	tooltip.visible = false
@@ -15,6 +17,7 @@ func _ready() -> void:
 
 func show_tooltip() -> void:
 	tooltip.visible = true
+	_update_tooltip()
 
 func hide_tooltip() -> void:
 	tooltip.visible = false
@@ -22,13 +25,28 @@ func hide_tooltip() -> void:
 func interact() -> void:
 	start_print()
 
+func get_collectable_item_type() -> String:
+	if print_finished:
+		return "Print Model"
+	return ""
+
+func clear_print() -> void:
+	if not print_finished:
+		return
+	if current_model:
+		current_model.queue_free()
+		current_model = null
+	print_finished = false
+	_update_tooltip()
+
 func start_print() -> void:
-	if is_printing:
+	if is_printing or print_finished:
 		return
 	is_printing = true
 
 	var model: Node3D = PRINT_MODEL.instantiate()
 	add_child(model)
+	current_model = model
 
 	# Find the mesh node and get its height so we can align base to PrintStart
 	var mesh_node: MeshInstance3D = model.get_child(0)
@@ -60,4 +78,15 @@ func start_print() -> void:
 		top_y,
 		print_duration
 	)
-	tween.tween_callback(func(): is_printing = false)
+	tween.tween_callback(_on_print_complete)
+
+func _on_print_complete() -> void:
+	is_printing = false
+	print_finished = true
+	_update_tooltip()
+
+func _update_tooltip() -> void:
+	if print_finished:
+		tooltip.text = "3D Printer\nLeft click to collect"
+	else:
+		tooltip.text = "3D Printer\nPress E to print"

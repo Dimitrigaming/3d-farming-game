@@ -1,0 +1,37 @@
+extends Node
+
+signal money_changed(new_amount: float)
+signal license_unlocked(license_id: String)
+signal print_job_added(job: Dictionary)
+signal print_job_completed(job: Dictionary)
+
+var money: float = 500.0
+var licenses: Array[String] = []
+var print_queue: Array[Dictionary] = []
+
+func add_money(amount: float) -> void:
+	money += amount
+	money_changed.emit(money)
+
+func spend_money(amount: float) -> bool:
+	if money < amount:
+		return false
+	money -= amount
+	money_changed.emit(money)
+	return true
+
+func unlock_license(license_id: String) -> void:
+	if license_id not in licenses:
+		licenses.append(license_id)
+		license_unlocked.emit(license_id)
+
+func has_license(license_id: String) -> bool:
+	return license_id in licenses
+
+func add_print_job(job: Dictionary) -> void:
+	print_queue.append(job)
+	print_job_added.emit(job)
+
+func complete_print_job(job: Dictionary) -> void:
+	print_queue.erase(job)
+	print_job_completed.emit(job)

@@ -5,8 +5,8 @@
 [sub_resource type="BoxMesh" id="BoxMesh_1"]
 size = Vector3(0.2, 0.4, 0.2)
 
-[node name="PrintModel" type="Node3D"]
+[node name="PrintModel" type="Node3D" unique_id=853760763]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_1")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=591093308]
 material_override = ExtResource("1_xonwm")
+mesh = SubResource("BoxMesh_1")

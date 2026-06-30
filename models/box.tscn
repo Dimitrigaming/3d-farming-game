@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dnldinl4pqluh"]
+
+[ext_resource type="Script" uid="uid://cha404ahqjy0v" path="res://scripts/box.gd" id="1_box"]
+[ext_resource type="Material" path="res://materials/mat_crate.tres" id="2_mat"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_crate"]
+size = Vector3(0.7, 0.5, 0.7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_crate"]
+size = Vector3(0.7, 0.5, 0.7)
+
+[node name="Box" type="Node3D" unique_id=641621362]
+script = ExtResource("1_box")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=494323279]
+material_override = ExtResource("2_mat")
+mesh = SubResource("BoxMesh_crate")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1406644133]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=874839877]
+shape = SubResource("BoxShape3D_crate")
+
+[node name="SpriteFront" type="Sprite3D" parent="." unique_id=1785394476]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, -0.352)
+visible = false
+
+[node name="SpriteBack" type="Sprite3D" parent="." unique_id=710516618]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.352)
+visible = false
+
+[node name="SpriteLeft" type="Sprite3D" parent="." unique_id=1015224451]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -0.352, 0, 0)
+visible = false
+
+[node name="SpriteRight" type="Sprite3D" parent="." unique_id=1991298263]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0.352, 0, 0)
+visible = false
+
+[node name="LabelFront" type="Label3D" parent="." unique_id=1207381171]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0.24, 0.19, -0.352)
+pixel_size = 0.0005
+font_size = 64
+
+[node name="LabelBack" type="Label3D" parent="." unique_id=1857825088]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.24, 0.19, 0.352)
+pixel_size = 0.0005
+font_size = 64
+
+[node name="LabelLeft" type="Label3D" parent="." unique_id=48046384]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -0.352, 0.19, -0.24)
+pixel_size = 0.0005
+font_size = 64
+
+[node name="LabelRight" type="Label3D" parent="." unique_id=1044220645]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0.352, 0.19, 0.24)
+pixel_size = 0.0005
+font_size = 64
