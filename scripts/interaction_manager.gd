@@ -35,6 +35,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("drop"):
 		player_inventory.place_box()
 
+	if event.is_action_pressed("open_close_box"):
+		if player_inventory.held_box != null:
+			player_inventory.held_box._toggle_lid()
+		elif current_target and current_target.has_method("_toggle_lid"):
+			current_target._toggle_lid()
+
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		if current_target and current_target.has_method("get_collectable_item_type"):
 			var item_type: String = current_target.get_collectable_item_type()

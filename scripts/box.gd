@@ -8,10 +8,15 @@ const SPRITE_MAX_SIZE = 0.28
 var item_type: String = ""
 var count: int = 0
 var max_count: int = 10
+var is_open: bool = false
+
+@onready var lid_left: Node3D = $BoxLidLeft
+@onready var lid_right: Node3D = $BoxLidRight
 
 func _ready() -> void:
 	add_to_group("interactable")
 	_update_display()
+
 
 func add_item(type: String) -> bool:
 	if is_full():
@@ -55,6 +60,16 @@ func set_held(held: bool) -> void:
 		process_mode = Node.PROCESS_MODE_INHERIT
 		add_to_group("interactable")
 
+func _toggle_lid() -> void:
+	is_open = !is_open
+	var tween = get_tree().create_tween().set_parallel(true)
+	if is_open:
+		tween.tween_property(lid_left, "rotation_degrees:z", -230.0, 0.4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+		tween.tween_property(lid_right, "rotation_degrees:z", 230.0, 0.4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	else:
+		tween.tween_property(lid_left, "rotation_degrees:z", 0.0, 0.4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+		tween.tween_property(lid_right, "rotation_degrees:z", 0.0, 0.4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+
 func _update_display() -> void:
 	if item_type == "":
 		for l in labels:
@@ -66,7 +81,7 @@ func _update_display() -> void:
 	for l in labels:
 		l.text = "%d/%d" % [count, max_count]
 
-	var icon_path := "res://icons/%s.png" % item_type.to_lower().replace(" ", "_")
+	var icon_path = "res://icons/%s.png" % item_type.to_lower().replace(" ", "_")
 	var tex: Texture2D
 	if ResourceLoader.exists(icon_path):
 		tex = load(icon_path)

@@ -32,7 +32,7 @@ func place_box() -> void:
 	held_box.get_parent().remove_child(held_box)
 	get_tree().current_scene.add_child(held_box)
 	held_box.global_position = drop_pos
-	held_box.rotation = Vector3(0, player.rotation.y, 0)
+	held_box.rotation = Vector3(0, player.rotation.y + PI, 0)
 	held_box.set_held(false)
 	held_box = null
 

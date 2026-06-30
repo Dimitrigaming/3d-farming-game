@@ -38,7 +38,7 @@ target_position = Vector3(0, 0, -3)
 script = ExtResource("2_interact")
 
 [node name="HoldPoint" type="Marker3D" parent="Head/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.3, -0.8)
+transform = Transform3D(1, 0, 0, 0, 0.9397, -0.342, 0, 0.342, 0.9397, 0, -0.65, -1.1)
 
 [node name="PlayerInventory" type="Node3D" parent="."]
 script = ExtResource("3_inventory")
