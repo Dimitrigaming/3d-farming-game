@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bnc614ppwsudh"]
+
+[ext_resource type="PackedScene" uid="uid://dxnm3qj6f2dnw" path="res://models/placement_zone.tscn" id="1_bup00"]
+[ext_resource type="Script" path="res://scripts/small_stock_shelf.gd" id="2_shelf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_shelf"]
+size = Vector3(1, 1.8388672, 1)
+
+[node name="SmallStockShelf" type="Node3D" unique_id=728511898]
+script = ExtResource("2_shelf")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=2051256854]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17626953, 0)
+size = Vector3(1, 1.8388672, 1)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D" unique_id=1805438251]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0057373047, -0.46313822, 0.007965088)
+operation = 2
+size = Vector3(0.9, 0.7947235, 1.0560913)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D/CSGBox3D" unique_id=876134070]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+size = Vector3(0.9, 0.88461304, 1.0560913)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D" unique_id=1513580757]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0057373047, 0.42652917, 0.007965088)
+operation = 2
+size = Vector3(0.9, 0.8367157, 1.0560913)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGBox3D/CSGBox3D3" unique_id=2135629329]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+size = Vector3(0.9, 0.8367157, 1.0560913)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=728511899]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17626953, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=728511900]
+shape = SubResource("BoxShape3D_shelf")
+
+[node name="PlacementZone" parent="." unique_id=1408349285 instance=ExtResource("1_bup00")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010375977, 0.5949672, 0.010888673)
+size = Vector3(0.861084, 0.8054199, 0.8754883)
+
+[node name="PlacementZone3" parent="." unique_id=1199211187 instance=ExtResource("1_bup00")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010375977, 1.5156258, 0.010888673)
+size = Vector3(0.861084, 0.8054199, 0.8754883)
+
+[node name="PlacementZone2" parent="." unique_id=40163527 instance=ExtResource("1_bup00")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010375977, -0.29169154, 0.010888673)
+size = Vector3(0.861084, 0.758667, 0.8754883)
