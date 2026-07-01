@@ -71,7 +71,7 @@ func _update_hud() -> void:
 		var drop_text = "Drop"
 		if held.has_method("get_drop_hint"):
 			drop_text = held.get_drop_hint()
-		hints.append("[G] %s" % drop_text)
+		hints.append("[RMB] %s" % drop_text)
 
 	if current_target:
 		if current_target.has_method("get_click_hint"):
