@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bs72ogkvdd7d6"]
+[gd_scene load_steps=7 format=3 uid="uid://bs72ogkvdd7d6"]
 
 [ext_resource type="Script" path="res://addons/proto_controller/proto_controller.gd" id="1_ucva2"]
 [ext_resource type="Script" path="res://scripts/interaction_manager.gd" id="2_interact"]
 [ext_resource type="Script" path="res://scripts/player_inventory.gd" id="3_inventory"]
 [ext_resource type="Script" path="res://scripts/interaction_hud.gd" id="4_hud"]
+[ext_resource type="Script" path="res://scripts/build_mode.gd" id="5_buildmode"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iof21"]
 albedo_color = Color(0.91806, 0.575202, 0.222449, 1)
@@ -43,6 +44,9 @@ transform = Transform3D(1, 0, 0, 0, 0.9397, -0.342, 0, 0.342, 0.9397, 0, -0.65, 
 
 [node name="PlayerInventory" type="Node3D" parent="."]
 script = ExtResource("3_inventory")
+
+[node name="BuildMode" type="Node3D" parent="."]
+script = ExtResource("5_buildmode")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("4_hud")

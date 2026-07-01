@@ -45,7 +45,7 @@ func unpack_held_item() -> void:
 	var forward = -player.global_transform.basis.z
 	var drop_pos = player.global_position + forward * 1.0
 	drop_pos.y = _find_floor_y(drop_pos)
-	held_item.unpack_at(drop_pos, player.rotation.y + PI)
+	held_item.unpack_at(drop_pos, player.rotation.y)
 	held_item.queue_free()
 	held_item = null
 

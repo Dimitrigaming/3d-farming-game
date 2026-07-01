@@ -24,6 +24,9 @@ func get_click_hint(player_inventory) -> String:
 		return "Trash Item"
 	return ""
 
+func get_move_hint() -> String:
+	return "Move"
+
 func get_pack_hint(player_inventory) -> String:
 	if player_inventory.held_item == null:
 		return "Pack Away"
