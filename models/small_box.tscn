@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://ryd44lwuxn3v"]
+
+[ext_resource type="Script" uid="uid://cha404ahqjy0v" path="res://scripts/box.gd" id="1_kkrg8"]
+[ext_resource type="Material" path="res://materials/mat_crate.tres" id="2_uqs6b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_crate"]
+size = Vector3(0.35, 0.35, 0.35)
+
+[node name="SmallBox" type="RigidBody3D" unique_id=1294173051]
+script = ExtResource("1_kkrg8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=874839877]
+shape = SubResource("BoxShape3D_crate")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1788434340]
+material_override = ExtResource("2_uqs6b")
+size = Vector3(0.35, 0.35, 0.35)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D" unique_id=537863635]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0125, 0)
+material_override = ExtResource("2_uqs6b")
+operation = 2
+size = Vector3(0.3325, 0.35, 0.3325)
+
+[node name="BoxLidLeft" type="Node3D" parent="." unique_id=576600860]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.175, 0.175, 0)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="BoxLidLeft" unique_id=1257463203]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0875, 0, 0)
+material_override = ExtResource("2_uqs6b")
+size = Vector3(0.175, 0.01, 0.35)
+
+[node name="BoxLidRight" type="Node3D" parent="." unique_id=1760379039]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.175, 0.175, 0)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="BoxLidRight" unique_id=128588864]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0875, 0, 0)
+material_override = ExtResource("2_uqs6b")
+size = Vector3(0.175, 0.01, 0.35)
+
+[node name="SpriteFront" type="Sprite3D" parent="." unique_id=1785394476]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, -0.1775)
+visible = false
+
+[node name="SpriteBack" type="Sprite3D" parent="." unique_id=710516618]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1775)
+visible = false
+
+[node name="LabelFront" type="Label3D" parent="." unique_id=1207381171]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0.13, 0.135, -0.1775)
+pixel_size = 0.0005
+font_size = 32
+
+[node name="LabelBack" type="Label3D" parent="." unique_id=1857825088]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13, 0.135, 0.1775)
+pixel_size = 0.0005
+font_size = 32
+
+[node name="ArrowLeft" type="Label3D" parent="." unique_id=2001000001]
+transform = Transform3D(-2.1855695e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -2.1855695e-07, -0.178, 0, 0)
+pixel_size = 0.0005
+modulate = Color(0, 0, 0, 1)
+text = "◀"
+font_size = 96
+
+[node name="ArrowRight" type="Label3D" parent="." unique_id=2001000002]
+transform = Transform3D(-2.1855695e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -2.1855695e-07, 0.178, 0, 0)
+pixel_size = 0.0005
+modulate = Color(0, 0, 0, 1)
+text = "▶"
+font_size = 96
