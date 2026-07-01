@@ -38,16 +38,17 @@ func place_box() -> void:
 	held_item.set_held(false)
 	held_item = null
 
-func unpack_held_item() -> void:
+func unpack_held_item() -> Node3D:
 	if held_item == null or not held_item.has_method("unpack_at"):
-		return
+		return null
 	var player = get_parent()
 	var forward = -player.global_transform.basis.z
 	var drop_pos = player.global_position + forward * 1.0
 	drop_pos.y = _find_floor_y(drop_pos)
-	held_item.unpack_at(drop_pos, player.rotation.y)
+	var item = held_item.unpack_at(drop_pos, player.rotation.y)
 	held_item.queue_free()
 	held_item = null
+	return item
 
 func _find_floor_y(pos: Vector3) -> float:
 	var space_state = get_world_3d().direct_space_state

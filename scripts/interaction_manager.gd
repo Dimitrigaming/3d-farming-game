@@ -101,7 +101,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		elif current_target:
 			current_target.interact()
 		elif player_inventory.held_item and player_inventory.held_item.has_method("unpack_at"):
-			player_inventory.unpack_held_item()
+			var unpacked = player_inventory.unpack_held_item()
+			if unpacked:
+				build_mode.enter(unpacked)
 
 	if event.is_action_pressed("pack_item") and not build_mode.active and current_target and current_target.has_method("pack_away"):
 		current_target.pack_away(player_inventory)

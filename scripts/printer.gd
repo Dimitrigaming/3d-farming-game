@@ -41,12 +41,12 @@ func get_move_hint() -> String:
 	return "Move"
 
 func get_pack_hint(player_inventory) -> String:
-	if player_inventory.held_item == null and not is_printing:
+	if player_inventory.held_item == null and not is_printing and not print_finished:
 		return "Pack Away"
 	return ""
 
 func pack_away(player_inventory) -> void:
-	if player_inventory.held_item != null or is_printing:
+	if player_inventory.held_item != null or is_printing or print_finished:
 		return
 	var crate = PACKING_CRATE_SCENE.instantiate()
 	get_tree().current_scene.add_child(crate)
