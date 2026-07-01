@@ -26,6 +26,7 @@ func enter(furniture: Node3D) -> void:
 
 	_ghost = furniture.duplicate()
 	_ghost.set_script(null)
+	_ghost.visible = true
 	_clean_ghost(_ghost)
 	_apply_ghost_material(_ghost)
 	_add_forward_arrow(_ghost)
