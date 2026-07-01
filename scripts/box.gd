@@ -60,7 +60,7 @@ func show_tooltip() -> void:
 func hide_tooltip() -> void:
 	pass
 
-func get_interact_hint() -> String:
+func get_click_hint(_player_inventory) -> String:
 	return "Pick Up"
 
 func get_lid_hint() -> String:

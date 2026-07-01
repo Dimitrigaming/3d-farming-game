@@ -132,6 +132,8 @@ func _unhandled_input(event: InputEvent) -> void:
 						var item_type: String = current_target.get_collectable_item_type()
 						if item_type != "" and player_inventory.collect_item(item_type, current_target.global_position):
 							current_target.clear_print()
+					elif current_target and current_target.has_method("interact"):
+						current_target.interact()
 				_lmb_held = false
 				_lmb_hold_time = 0.0
 
