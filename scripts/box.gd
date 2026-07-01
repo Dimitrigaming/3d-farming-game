@@ -1,7 +1,7 @@
 extends RigidBody3D
 
 const SPRITE_MAX_SIZE = 0.28
-const ITEM_SCENE = preload("res://models/print_model.tscn")
+const ITEM_SCENE = preload("res://models/default_model.tscn")
 const ITEM_SIZE = Vector3(0.2, 0.4, 0.2)
 const ITEM_GAP = 0.03
 const ITEMS_PER_ROW = 3

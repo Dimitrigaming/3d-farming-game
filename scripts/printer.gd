@@ -1,6 +1,6 @@
 extends Node3D
 
-const PRINT_MODEL = preload("res://models/print_model.tscn")
+const PRINT_MODEL = preload("res://models/default_model.tscn")
 const PRINT_SHADER = preload("res://shaders/print_reveal.gdshader")
 const PACKING_CRATE_SCENE = preload("res://models/packing_crate.tscn")
 const OWN_SCENE = preload("res://models/printer.tscn")
@@ -56,7 +56,7 @@ func pack_away(player_inventory) -> void:
 
 func get_collectable_item_type() -> String:
 	if print_finished:
-		return "Print Model"
+		return "Default Model"
 	return ""
 
 func clear_print() -> void:

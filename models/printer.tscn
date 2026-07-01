@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://er1i3yp4jq5p"]
 
-[ext_resource type="Script" uid="uid://jss42loi775m" path="res://scripts/printer.gd" id="Script_printer"]
+[ext_resource type="Script" uid="uid://cb81kjpefpjjk" path="res://scripts/printer.gd" id="Script_printer"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3xd07"]
 
@@ -22,6 +22,13 @@ shape = SubResource("BoxShape3D_3xd07")
 [node name="PrintStart" type="Marker3D" parent="." unique_id=1223792110]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.32227272, 0)
 
+[node name="FrontArrow" type="Label3D" parent="PrintStart" unique_id=-1293967295]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0.01, 0)
+pixel_size = 0.001
+modulate = Color(0, 0, 0, 1)
+text = "▼"
+font_size = 128
+
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=2069425822]
 
 [node name="Cube" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1917033009]
@@ -42,9 +49,9 @@ operation = 2
 size = Vector3(0.7919769, 0.9733505, 0.8683319)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D/Cube" unique_id=674957676]
-transform = Transform3D(0.7423514, -0.086890414, 0, 0.67001075, 0.09627192, 0, 0, 0, 1, 0.5683304, -0.38852042, -0.3491211)
+transform = Transform3D(-7.2384964e-08, -1.940153e-09, -1, 0.67001075, 0.09627192, 0, 0.7423514, -0.086890414, -4.371139e-08, 0.32637817, -0.38852042, 0.57466716)
 size = Vector3(0.044677734, 1, 0.3017578)
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D/Cube" unique_id=1720025110]
-transform = Transform3D(0.999973, 0.000955875, 0, -0.0073706876, 0.12968157, 0, 0, 0, 1, 0.52353024, -0.40772778, -0.34878027)
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D/Cube/CSGBox3D4" unique_id=1720025110]
+transform = Transform3D(0.7373929, 0.08759764, 0, -5.208495, 0.7373927, 0, 0, 0, 1, -0.046126604, 0.12150955, 0.00034081936)
 size = Vector3(0.095581055, 0.20123291, 0.091308594)
