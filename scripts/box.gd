@@ -52,13 +52,22 @@ func is_empty() -> bool:
 func interact() -> void:
 	var player_inventory = get_tree().get_first_node_in_group("player")
 	if player_inventory:
-		player_inventory.pick_up_box(self)
+		player_inventory.pick_up_item(self)
 
 func show_tooltip() -> void:
 	pass
 
 func hide_tooltip() -> void:
 	pass
+
+func get_interact_hint() -> String:
+	return "Pick Up"
+
+func get_lid_hint() -> String:
+	return "Open/Close"
+
+func get_drop_hint() -> String:
+	return "Drop"
 
 func set_held(held: bool) -> void:
 	if held:

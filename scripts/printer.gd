@@ -2,6 +2,8 @@ extends Node3D
 
 const PRINT_MODEL = preload("res://models/print_model.tscn")
 const PRINT_SHADER = preload("res://shaders/print_reveal.gdshader")
+const PACKING_CRATE_SCENE = preload("res://models/packing_crate.tscn")
+const OWN_SCENE = preload("res://models/printer.tscn")
 
 @onready var tooltip: Label3D = $Tooltip
 @onready var print_start: Marker3D = $PrintStart
@@ -24,6 +26,30 @@ func hide_tooltip() -> void:
 
 func interact() -> void:
 	start_print()
+
+func get_interact_hint() -> String:
+	if is_printing or print_finished:
+		return ""
+	return "Print"
+
+func get_click_hint(player_inventory) -> String:
+	if print_finished:
+		return "Collect"
+	return ""
+
+func get_pack_hint(player_inventory) -> String:
+	if player_inventory.held_item == null and not is_printing:
+		return "Pack Away"
+	return ""
+
+func pack_away(player_inventory) -> void:
+	if player_inventory.held_item != null or is_printing:
+		return
+	var crate = PACKING_CRATE_SCENE.instantiate()
+	get_tree().current_scene.add_child(crate)
+	crate.pack("3D Printer", OWN_SCENE)
+	player_inventory.pick_up_item(crate)
+	queue_free()
 
 func get_collectable_item_type() -> String:
 	if print_finished:
