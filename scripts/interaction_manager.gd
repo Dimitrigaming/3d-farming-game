@@ -7,8 +7,13 @@ extends RayCast3D
 var current_target = null
 
 const LMB_HOLD_THRESHOLD: float = 0.6
+const MMB_MAX_CHARGE: float = 1.5
+const MMB_MIN_SPEED: float = 3.0
+
 var _lmb_held: bool = false
 var _lmb_hold_time: float = 0.0
+var _mmb_held: bool = false
+var _mmb_hold_time: float = 0.0
 
 func _process(delta: float) -> void:
 	var hit = get_collider()
@@ -30,6 +35,9 @@ func _process(delta: float) -> void:
 			if current_target.has_method("on_look_away"):
 				current_target.on_look_away()
 			current_target = null
+
+	if _mmb_held and player_inventory.held_item != null and player_inventory.held_item is RigidBody3D:
+		_mmb_hold_time += delta
 
 	if _lmb_held and not build_mode.active and current_target != null and current_target.has_method("get_move_hint") and player_inventory.held_item == null:
 		_lmb_hold_time += delta
@@ -62,6 +70,13 @@ func _update_hud() -> void:
 		return
 
 	var held = player_inventory.held_item
+
+	if held and held is RigidBody3D:
+		if _mmb_held:
+			var pct = int(clamp(_mmb_hold_time / MMB_MAX_CHARGE, 0.0, 1.0) * 100)
+			hints.append("[MMB] Throw — %d%%" % pct)
+		else:
+			hints.append("[MMB] Throw")
 
 	if held:
 		if held.has_method("get_unpack_hint"):
@@ -108,9 +123,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pack_item") and not build_mode.active and current_target and current_target.has_method("pack_away"):
 		current_target.pack_away(player_inventory)
 
-	if event.is_action_pressed("throw") and not build_mode.active:
-		player_inventory.throw_item()
-
 	if event.is_action_pressed("drop") and not build_mode.active:
 		player_inventory.place_box()
 
@@ -145,6 +157,18 @@ func _unhandled_input(event: InputEvent) -> void:
 		elif event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			if build_mode.active:
 				build_mode.exit(false)
+
+		elif event.button_index == MOUSE_BUTTON_MIDDLE:
+			if event.pressed:
+				_mmb_held = true
+				_mmb_hold_time = 0.0
+			else:
+				if player_inventory.held_item != null and player_inventory.held_item is RigidBody3D:
+					var charge = clamp(_mmb_hold_time / MMB_MAX_CHARGE, 0.0, 1.0)
+					var speed = lerpf(MMB_MIN_SPEED, player_inventory.THROW_SPEED_MAX, charge)
+					player_inventory.throw_item(speed)
+				_mmb_held = false
+				_mmb_hold_time = 0.0
 
 		elif build_mode.active and event.pressed:
 			if event.button_index == MOUSE_BUTTON_WHEEL_UP:

@@ -25,9 +25,9 @@ func pick_up_item(item: Node3D) -> void:
 	held_item = item
 	_attach_to_hold_point()
 
-const THROW_SPEED: float = 12.0
+const THROW_SPEED_MAX: float = 12.0
 
-func throw_item() -> void:
+func throw_item(speed: float = THROW_SPEED_MAX) -> void:
 	if held_item == null or not held_item is RigidBody3D:
 		return
 	var camera = hold_point.get_parent()
@@ -36,7 +36,7 @@ func throw_item() -> void:
 	get_tree().current_scene.add_child(held_item)
 	held_item.global_position = hold_point.global_position
 	held_item.set_held(false)
-	held_item.linear_velocity = throw_dir.normalized() * THROW_SPEED
+	held_item.linear_velocity = throw_dir.normalized() * speed
 	held_item = null
 
 func place_box() -> void:
