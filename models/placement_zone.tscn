@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dxnm3qj6f2dnw"]
+
+[ext_resource type="Material" path="res://materials/mat_placement_ghost.tres" id="1_57g1v"]
+[ext_resource type="Script" path="res://scripts/placement_zone.gd" id="2_zone"]
+
+[node name="PlacementZone" type="CSGBox3D" unique_id=1199211187]
+material_override = ExtResource("1_57g1v")
+script = ExtResource("2_zone")
