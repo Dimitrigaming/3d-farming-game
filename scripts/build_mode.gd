@@ -11,6 +11,7 @@ var _camera: Camera3D = null
 var _ground_clearance: float = 0.0
 
 const GRID_SIZE: float = 0.5
+const ROTATE_STEP: float = PI / 12.0
 
 func enter(furniture: Node3D) -> void:
 	active = true
@@ -22,10 +23,13 @@ func enter(furniture: Node3D) -> void:
 	if _furniture_body:
 		_furniture_body.process_mode = Node.PROCESS_MODE_DISABLED
 	furniture.visible = false
-	_ghost = Node3D.new()
-	get_tree().current_scene.add_child(_ghost)
-	_copy_meshes(furniture, _ghost)
+
+	_ghost = furniture.duplicate()
+	_ghost.set_script(null)
+	_clean_ghost(_ghost)
+	_apply_ghost_material(_ghost)
 	_add_forward_arrow(_ghost)
+	get_tree().current_scene.add_child(_ghost)
 	_ghost.global_position = furniture.global_position
 	_ghost.rotation = Vector3(0, _ghost_y_rotation, 0)
 
@@ -80,26 +84,30 @@ func _get_ground_clearance(item: Node3D) -> float:
 		local_bottom -= shape.height * 0.5
 	return -local_bottom
 
+func _clean_ghost(ghost: Node3D) -> void:
+	var to_remove: Array[Node] = []
+	for child in ghost.get_children():
+		if child is StaticBody3D or child is Label3D or child is Marker3D:
+			to_remove.append(child)
+	for node in to_remove:
+		ghost.remove_child(node)
+		node.free()
+
+func _apply_ghost_material(node: Node) -> void:
+	var mat = _ghost_material()
+	if node is CSGShape3D:
+		(node as CSGShape3D).material = mat
+	elif node is MeshInstance3D:
+		(node as MeshInstance3D).material_override = mat
+	for child in node.get_children():
+		_apply_ghost_material(child)
+
 func _ghost_material() -> StandardMaterial3D:
 	var mat = StandardMaterial3D.new()
 	mat.albedo_color = Color(0.0, 1.0, 0.2, 0.4)
 	mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	mat.cull_mode = BaseMaterial3D.CULL_DISABLED
 	return mat
-
-func _copy_meshes(source: Node3D, target: Node3D) -> void:
-	for child in source.get_children():
-		if child is MeshInstance3D:
-			var copy = MeshInstance3D.new()
-			copy.mesh = child.mesh
-			copy.transform = child.transform
-			copy.material_override = _ghost_material()
-			target.add_child(copy)
-		elif child is Node3D and not (child is CollisionObject3D) and not (child is Label3D) and not (child is Marker3D) and not (child is Sprite3D):
-			var sub = Node3D.new()
-			sub.transform = child.transform
-			target.add_child(sub)
-			_copy_meshes(child, sub)
 
 func _add_forward_arrow(ghost: Node3D) -> void:
 	var mat = StandardMaterial3D.new()
@@ -112,8 +120,8 @@ func _add_forward_arrow(ghost: Node3D) -> void:
 	shaft_mesh.height = 0.4
 	shaft.mesh = shaft_mesh
 	shaft.material_override = mat
-	shaft.rotation_degrees = Vector3(-90, 0, 0)
-	shaft.position = Vector3(0, 0.15, -0.2)
+	shaft.rotation_degrees = Vector3(90, 0, 0)
+	shaft.position = Vector3(0, 0.15, 0.2)
 	ghost.add_child(shaft)
 
 	var head = MeshInstance3D.new()
@@ -123,6 +131,6 @@ func _add_forward_arrow(ghost: Node3D) -> void:
 	head_mesh.height = 0.2
 	head.mesh = head_mesh
 	head.material_override = mat
-	head.rotation_degrees = Vector3(-90, 0, 0)
-	head.position = Vector3(0, 0.15, -0.5)
+	head.rotation_degrees = Vector3(90, 0, 0)
+	head.position = Vector3(0, 0.15, 0.5)
 	ghost.add_child(head)
