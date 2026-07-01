@@ -108,6 +108,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pack_item") and not build_mode.active and current_target and current_target.has_method("pack_away"):
 		current_target.pack_away(player_inventory)
 
+	if event.is_action_pressed("throw") and not build_mode.active:
+		player_inventory.throw_item()
+
 	if event.is_action_pressed("drop") and not build_mode.active:
 		player_inventory.place_box()
 
