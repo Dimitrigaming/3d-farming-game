@@ -95,7 +95,7 @@ func _clean_ghost(ghost: Node3D) -> void:
 
 func _apply_ghost_material(node: Node) -> void:
 	var mat = _ghost_material()
-	if node is CSGShape3D:
+	if node is CSGShape3D and not node is CSGCombiner3D:
 		(node as CSGShape3D).material = mat
 	elif node is MeshInstance3D:
 		(node as MeshInstance3D).material_override = mat
