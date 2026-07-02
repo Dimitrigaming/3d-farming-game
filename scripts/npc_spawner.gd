@@ -1,0 +1,20 @@
+extends Marker3D
+
+const NPC_SCENE = preload("res://models/npc.tscn")
+const RESPAWN_DELAY: float = 3.0
+
+var _timer: float = 0.0
+
+func _process(delta: float) -> void:
+	if get_tree().get_nodes_in_group("npc").size() == 0:
+		_timer += delta
+		if _timer >= RESPAWN_DELAY:
+			_timer = 0.0
+			_spawn()
+	else:
+		_timer = 0.0
+
+func _spawn() -> void:
+	var npc = NPC_SCENE.instantiate()
+	get_tree().current_scene.add_child(npc)
+	npc.global_position = global_position

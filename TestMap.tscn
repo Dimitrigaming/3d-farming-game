@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://dtestmap0001"]
+
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_ctrl"]
+[ext_resource type="PackedScene" uid="uid://er1i3yp4jq5p" path="res://models/printer.tscn" id="2_prnt"]
+[ext_resource type="PackedScene" uid="uid://dnldinl4pqluh" path="res://models/box.tscn" id="3_box"]
+[ext_resource type="PackedScene" uid="uid://bot8ywuxfnkyh" path="res://models/trash_can.tscn" id="4_trash"]
+[ext_resource type="PackedScene" uid="uid://bnc614ppwsudh" path="res://models/small_stock_shelf.tscn" id="5_sss"]
+[ext_resource type="PackedScene" uid="uid://dm3llu07dng5r" path="res://models/small_product_shelf.tscn" id="6_sps"]
+[ext_resource type="PackedScene" uid="uid://bukjvfe20rjq1" path="res://models/register.tscn" id="7_hvnfr"]
+[ext_resource type="PackedScene" uid="uid://cheatshelf001" path="res://models/admin_small_product_shelf.tscn" id="9_4ykif"]
+[ext_resource type="Script" uid="uid://b5vq70s5ijf5b" path="res://scripts/npc_spawner.gd" id="9_spawner"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_1"]
+sky_material = SubResource("ProceduralSkyMaterial_1")
+
+[sub_resource type="Environment" id="Environment_1"]
+background_mode = 2
+sky = SubResource("Sky_1")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="Mat_floor"]
+albedo_color = Color(0.35, 0.35, 0.35, 1)
+
+[sub_resource type="StandardMaterial3D" id="Mat_border"]
+albedo_color = Color(0.1, 0.25, 0.88, 1)
+
+[sub_resource type="StandardMaterial3D" id="Mat_building"]
+albedo_color = Color(0.92, 0.78, 0.08, 1)
+
+[sub_resource type="StandardMaterial3D" id="Mat_shop"]
+albedo_color = Color(0.78, 0.1, 0.1, 1)
+
+[node name="TestMap" type="Node3D" unique_id=1829966226]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=831960997]
+environment = SubResource("Environment_1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=49351450]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 20.2, 0)
+shadow_enabled = true
+
+[node name="World" type="CSGCombiner3D" parent="." unique_id=269431215]
+use_collision = true
+
+[node name="Floor" type="CSGBox3D" parent="World" unique_id=643031351]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3999958, 0, 0.7499981)
+size = Vector3(182.2, 1, 128.3)
+material = SubResource("Mat_floor")
+
+[node name="BorderN" type="CSGBox3D" parent="World" unique_id=1527498869]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10000229, 3.5, -40.5)
+size = Vector3(106.6, 6, 1)
+material = SubResource("Mat_border")
+
+[node name="BorderS" type="CSGBox3D" parent="World" unique_id=1007413621]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.099998474, 3.5, 40.5)
+size = Vector3(106.8, 6, 1)
+material = SubResource("Mat_border")
+
+[node name="BorderW" type="CSGBox3D" parent="World" unique_id=1753898955]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.000004, 3.5, 0)
+size = Vector3(1, 6, 80)
+material = SubResource("Mat_border")
+
+[node name="BorderE" type="CSGBox3D" parent="World" unique_id=798981099]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.9, 3.5, 0)
+size = Vector3(1, 6, 80)
+material = SubResource("Mat_border")
+
+[node name="BuildingTopLeft" type="CSGBox3D" parent="World" unique_id=102586900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 3.5, -21.5)
+size = Vector3(28, 6, 37)
+material = SubResource("Mat_building")
+
+[node name="BuildingBottom" type="CSGBox3D" parent="World" unique_id=771409837]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20000076, 3.5, 32.5)
+size = Vector3(80.4, 6, 14.8)
+material = SubResource("Mat_building")
+
+[node name="BuildingTopRight" type="CSGBox3D" parent="World" unique_id=1253420690]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 3.5, -21.5)
+size = Vector3(28, 6, 37)
+material = SubResource("Mat_building")
+
+[node name="ShopWallLeft" type="CSGBox3D" parent="World" unique_id=381852095]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.700001, 3.5, -21.5)
+size = Vector3(1, 6, 37)
+material = SubResource("Mat_shop")
+
+[node name="ShopWallRight" type="CSGBox3D" parent="World" unique_id=495845194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.700001, 3.5, -21.5)
+size = Vector3(1, 6, 37)
+material = SubResource("Mat_shop")
+
+[node name="ShopCeiling" type="CSGBox3D" parent="World" unique_id=1451329680]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.049999237, 6.75, -21.5)
+size = Vector3(23.5, 0.5, 37)
+material = SubResource("Mat_shop")
+
+[node name="ProtoController" parent="." unique_id=1120133813 instance=ExtResource("1_ctrl")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.5, 0.6, -14.1)
+can_sprint = true
+can_freefly = true
+input_left = "move_left"
+input_right = "move_right"
+input_forward = "move_forward"
+input_back = "move_backward"
+input_jump = "jump"
+input_freefly = "noclip"
+
+[node name="Printer" parent="." unique_id=1211729831 instance=ExtResource("2_prnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9, 1, -14.9)
+
+[node name="Printer2" parent="." unique_id=104119484 instance=ExtResource("2_prnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9, 1, -14.9)
+
+[node name="Printer3" parent="." unique_id=371073257 instance=ExtResource("2_prnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9, 1, -14.9)
+
+[node name="Box" parent="." unique_id=36003740 instance=ExtResource("3_box")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2, 0.9, -15)
+
+[node name="Box2" parent="." unique_id=1309709479 instance=ExtResource("3_box")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9000001, 0.9, -15)
+
+[node name="TrashCan" parent="." unique_id=419533466 instance=ExtResource("4_trash")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4000006, 1.1, -6.499999)
+
+[node name="SmallStockShelf" parent="." unique_id=2009398103 instance=ExtResource("5_sss")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5000005, 1.25, -13.2)
+
+[node name="SmallProductShelf" parent="." unique_id=757719832 instance=ExtResource("6_sps")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.7999997, 1, -10)
+
+[node name="Register" parent="." unique_id=1511608637 instance=ExtResource("7_hvnfr")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.1000004, 1, -8.6)
+
+[node name="NPCSpawner" type="Marker3D" parent="." unique_id=1871457612]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+script = ExtResource("9_spawner")
+
+[node name="NPCDespawner" type="Marker3D" parent="." unique_id=1378708692]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 4.2000003)
+
+[node name="AdminSmallProductShelf" parent="." unique_id=2133425448 instance=ExtResource("9_4ykif")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.7, 1, -8.1)

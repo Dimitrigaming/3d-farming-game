@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://adminshelf001"]
+
+[ext_resource type="Script" path="res://scripts/admin_small_product_shelf.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://dxnm3qj6f2dnw" path="res://models/placement_zone.tscn" id="2_kfn13"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_shelf"]
+size = Vector3(0.8, 2.0733314, 0.6)
+
+[node name="AdminSmallProductShelf" type="Node3D"]
+script = ExtResource("1_script")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007122487, 0.2607422, -0.4596467)
+size = Vector3(0.7895508, 1.5214844, 0.07366276)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.701416, 0.29535532)
+size = Vector3(0.7895508, 0.118652344, 0.5472717)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05569029, 0.29535532)
+size = Vector3(0.7895508, 0.040283203, 0.5472717)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.69728124, 0.29535532)
+size = Vector3(0.7895508, 0.040283203, 0.5472717)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5366657, -0.2)
+shape = SubResource("BoxShape3D_shelf")
+
+[node name="PlacementZone" parent="." instance=ExtResource("2_kfn13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00048828125, -0.052093506, -0.15985107)
+size = Vector3(0.74316406, 0.64105225, 0.50354004)
+
+[node name="PlacementZone2" parent="." instance=ExtResource("2_kfn13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00048828125, 0.6382868, -0.15985107)
+size = Vector3(0.74316406, 0.5837097, 0.50354004)
+
+[node name="PlacementZone3" parent="." instance=ExtResource("2_kfn13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00048828125, 1.276598, -0.15985107)
+size = Vector3(0.74316406, 0.5837097, 0.50354004)

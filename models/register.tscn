@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://bukjvfe20rjq1"]
+
+[ext_resource type="Script" uid="uid://dii3qmq3pk1xv" path="res://scripts/register.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://dxnm3qj6f2dnw" path="res://models/placement_zone.tscn" id="2_zone"]
+[ext_resource type="Material" path="res://materials/mat_green_trans.tres" id="3_ciq5d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_body"]
+size = Vector3(2.6000001, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lipF"]
+size = Vector3(1.9421631, 0.5564453, 0.08)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lipB"]
+size = Vector3(1.9160888, 0.56279296, 0.08)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lipL"]
+size = Vector3(0.085139155, 0.6272461, 0.95883787)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lipR"]
+size = Vector3(0.063466795, 0.5544922, 0.85)
+
+[node name="Register" type="Node3D" unique_id=72264982]
+script = ExtResource("1_script")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=320833606]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1999999, 0, 0)
+size = Vector3(2.6000001, 1, 1)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=997510732]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=193414934]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1999999, 0, 0)
+shape = SubResource("BoxShape3D_body")
+
+[node name="CounterLip" type="StaticBody3D" parent="." unique_id=781036221]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.4, 0)
+
+[node name="LipFront" type="CollisionShape3D" parent="CounterLip" unique_id=1606515384]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3597338, 0.3717774, 0.465)
+shape = SubResource("BoxShape3D_lipF")
+
+[node name="LipBack" type="CollisionShape3D" parent="CounterLip" unique_id=1002963497]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.362556, 0.36860356, -0.465)
+shape = SubResource("BoxShape3D_lipB")
+
+[node name="LipLeft" type="CollisionShape3D" parent="CounterLip" unique_id=1895846323]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41333133, 0.336377, -0.00056152046)
+shape = SubResource("BoxShape3D_lipL")
+
+[node name="LipRight" type="CollisionShape3D" parent="CounterLip" unique_id=1089521759]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3237844, 0.37275395, 0)
+shape = SubResource("BoxShape3D_lipR")
+
+[node name="CounterZone" parent="." unique_id=1426352484 instance=ExtResource("2_zone")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8499999, 0.8000001, 0.0033324808)
+size = Vector3(1.9, 0.6, 0.9869385)
+
+[node name="RegisterSpot" type="Marker3D" parent="." unique_id=1754508356]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1.3, 0, -1)
+
+[node name="CustomerSpot" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0, 1.8)
+
+[node name="RegisterZone" type="CSGBox3D" parent="." unique_id=1448512503]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2016449, -0.17523193, -1.0335693)
+material_override = ExtResource("3_ciq5d")
+size = Vector3(2.5871887, 0.64953613, 1.0959473)

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dnpcscene001"]
+
+[ext_resource type="Script" path="res://scripts/npc.gd" id="1_script"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1"]
+radius = 0.3
+height = 1.8
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1"]
+radius = 0.3
+height = 1.8
+
+[sub_resource type="StandardMaterial3D" id="Mat_grey"]
+albedo_color = Color(0.55, 0.55, 0.55, 1)
+
+[node name="NPC" type="CharacterBody3D"]
+script = ExtResource("1_script")
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_1")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+mesh = SubResource("CapsuleMesh_1")
+surface_material_override/0 = SubResource("Mat_grey")

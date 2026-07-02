@@ -152,6 +152,33 @@ func _first_available_zone(item_type: String = "") -> Node:
 		return child
 	return null
 
+func has_any_prints() -> bool:
+	for child in get_children():
+		if child.has_method("has_prints") and child.has_prints():
+			return true
+	return false
+
+func npc_take_prints(count: int) -> Array[String]:
+	var taken: Array[String] = []
+	for i in range(count):
+		var zone = _any_occupied_zone()
+		if zone == null:
+			break
+		var item_type = zone.stored_print_type
+		var node: Node3D = zone.stored_print_nodes.pop_back()
+		if zone.stored_print_nodes.is_empty():
+			zone.stored_print_type = ""
+		if node:
+			node.queue_free()
+		taken.append(item_type)
+	return taken
+
+func _any_occupied_zone() -> Node:
+	for child in get_children():
+		if child.has_method("has_prints") and child.has_prints():
+			return child
+	return null
+
 func _nearest_occupied_zone() -> Node:
 	var best = null
 	var best_y = INF
