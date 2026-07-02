@@ -25,16 +25,12 @@ func get_move_hint() -> String:
 	return "Move"
 
 func get_click_hint(_player_inventory) -> String:
-	if _is_player_in_zone():
-		if _pending_items.size() > 0:
-			return "Scan Item (%d left)" % _pending_items.size()
-		return ""
-	return "Go to Register"
+	if not _is_player_in_zone():
+		return "Go to Register"
+	return ""
 
 func interact() -> void:
 	if _is_player_in_zone():
-		if _pending_items.size() > 0:
-			_scan_next_item()
 		return
 	var body = _get_player_body()
 	if body == null:
@@ -46,6 +42,16 @@ func interact() -> void:
 	body.look_rotation.y = spot.global_rotation.y
 	body.rotate_look(Vector2.ZERO)
 
+func scan_item(item: Node3D) -> void:
+	var idx = _counter_models.find(item)
+	if idx == -1:
+		return
+	_counter_models.remove_at(idx)
+	_pending_items.pop_back()
+	item.queue_free()
+	if _pending_items.is_empty():
+		_checkout_complete()
+
 func is_staffed() -> bool:
 	return _is_player_in_zone()
 
@@ -56,38 +62,41 @@ func receive_npc_items(items: Array[String], npc: Node3D) -> void:
 	_npc = npc
 	_counter_models.clear()
 	for i in range(_pending_items.size()):
-		var model = _spawn_counter_model(_counter_slot_pos(i))
+		var model = _spawn_counter_model(i)
 		_counter_models.append(model)
-
-func _scan_next_item() -> void:
-	_pending_items.pop_back()
-	if _counter_models.size() > 0:
-		_counter_models.pop_back().queue_free()
-	if _pending_items.is_empty():
-		_checkout_complete()
 
 func _checkout_complete() -> void:
 	if _npc and is_instance_valid(_npc):
 		_npc.checkout_complete()
 	_npc = null
 
-func _counter_slot_pos(index: int) -> Vector3:
+func _spawn_counter_model(index: int) -> Node3D:
 	var zone = get_node_or_null("CounterZone")
-	var total = _pending_items.size()
-	var offset_x = (index - (total - 1) / 2.0) * 0.35
 	var zone_x = zone.position.x if zone else 0.75
 	var zone_z = zone.position.z if zone else 0.0
-	# Place on counter top surface (local y=0.5) + small model half-height
-	return to_global(Vector3(zone_x + offset_x, 0.56, zone_z))
+	var spread_x = randf_range(-0.3, 0.3)
+	var spread_z = randf_range(-0.15, 0.15)
+	var drop_height = randf_range(0.3, 0.5) + index * 0.1
+	var spawn_pos = to_global(Vector3(zone_x + spread_x, 0.5 + drop_height, zone_z + spread_z))
 
-func _spawn_counter_model(pos: Vector3) -> Node3D:
+	var body = RigidBody3D.new()
+	body.set_script(preload("res://scripts/counter_item.gd"))
+	body.collision_layer = 2  # detected by layer-2 ray, invisible to layer-1 ray
+	body.collision_mask = 1   # still rests physically on the counter
+	var col = CollisionShape3D.new()
+	var shape = BoxShape3D.new()
+	shape.size = Vector3(0.2, 0.4, 0.2)
+	col.shape = shape
+	body.add_child(col)
+
 	var model = PRINT_MODEL.instantiate()
-	get_tree().current_scene.add_child(model)
-	model.global_position = pos
-	if model is RigidBody3D:
-		model.freeze = true
-	model.remove_from_group("interactable")
-	return model
+	body.add_child(model)
+
+	get_tree().current_scene.add_child(body)
+	body.setup(self)
+	body.global_position = spawn_pos
+	body.linear_velocity = Vector3(randf_range(-0.4, 0.4), 0.0, randf_range(-0.2, 0.2))
+	return body
 
 func get_pack_hint(player_inventory) -> String:
 	if player_inventory.held_item == null:

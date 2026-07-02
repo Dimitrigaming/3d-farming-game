@@ -23,6 +23,10 @@ var _shelf_rmb_timer: float = 0.0
 
 func _process(delta: float) -> void:
 	var hit = get_collider()
+	# Layer-2 ray passes through normal geometry to detect counter items
+	var hit2 = _cast_layer2_ray()
+	if hit2 != null:
+		hit = hit2
 	var interactable = _find_interactable(hit)
 
 	if interactable:
@@ -74,6 +78,16 @@ func _process(delta: float) -> void:
 
 func _is_product_shelf(target) -> bool:
 	return target != null and target.has_method("get_retrieve_hint")
+
+func _cast_layer2_ray():
+	var space = get_world_3d().direct_space_state
+	var ray = PhysicsRayQueryParameters3D.create(
+		global_position,
+		global_position + (-global_transform.basis.z * 4.0),
+		2  # layer 2 only — passes through layer-1 geometry
+	)
+	var result = space.intersect_ray(ray)
+	return result.get("collider") if result else null
 
 func _find_interactable(hit) -> Node:
 	if hit == null:

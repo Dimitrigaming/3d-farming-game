@@ -172,4 +172,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3, 1.1, 15)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.244224, 1.2431636, 18.113667)
 
 [node name="SmallProductShelf" parent="." unique_id=1543028504 instance=ExtResource("6_u6t3p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.847311, 0.9999994, 12.502067)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.4405246, 0.9999994, 20.008791)

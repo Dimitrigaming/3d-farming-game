@@ -4,24 +4,39 @@
 [ext_resource type="Resource" path="res://resources/filaments/pla.tres" id="2_vnqwl"]
 
 [node name="FilamentSpool" type="Node3D" unique_id=1635647822]
-transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0)
+transform = Transform3D(-8.742278e-08, -2, 0, 2, -8.742278e-08, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_74dws")
 filament = ExtResource("2_vnqwl")
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=1584556900]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=48136443]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=1584556900]
 radius = 0.1
 height = 0.05
 sides = 64
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCylinder3D" unique_id=147490054]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D/CSGCylinder3D" unique_id=147490054]
 transform = Transform3D(1.05, 0, 0, 0, 0.9, 0, 0, 0, 1.05, 0, 0, 0)
 operation = 2
 radius = 0.1
 height = 0.05
 sides = 64
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." unique_id=2139112971]
-transform = Transform3D(0.3, 0, 0, 0, 1, 0, 0, 0, 0.3, 0, -0.0003906265, 0)
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=2139112971]
+transform = Transform3D(0.3, 0, 0, 0, 1, 0, 0, 0, 0.3, 0, -0.00039062652, 0)
 radius = 0.1
 height = 0.045703124
 sides = 64
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D/CSGCylinder3D2" unique_id=1786624951]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, 0, -0.00020751893, 0)
+operation = 2
+radius = 0.09
+height = 0.05710449
+sides = 64
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=1475193004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00036616944, 0)
+operation = 2
+radius = 0.02
+height = 0.072509766

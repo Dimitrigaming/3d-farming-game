@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bnc614ppwsudh" path="res://models/small_stock_shelf.tscn" id="5_sss"]
 [ext_resource type="PackedScene" uid="uid://dm3llu07dng5r" path="res://models/small_product_shelf.tscn" id="6_sps"]
 [ext_resource type="PackedScene" uid="uid://bukjvfe20rjq1" path="res://models/register.tscn" id="7_hvnfr"]
-[ext_resource type="PackedScene" uid="uid://cheatshelf001" path="res://models/admin_small_product_shelf.tscn" id="9_4ykif"]
+[ext_resource type="PackedScene" uid="uid://dminshelf001" path="res://models/admin_small_product_shelf.tscn" id="9_4ykif"]
 [ext_resource type="Script" uid="uid://b5vq70s5ijf5b" path="res://scripts/npc_spawner.gd" id="9_spawner"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1"]

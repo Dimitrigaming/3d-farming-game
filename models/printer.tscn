@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://er1i3yp4jq5p"]
 
+[ext_resource type="PackedScene" uid="uid://ctqnndnd1tyfo" path="res://models/filament_spool.tscn" id="2_2nn6k"]
 [ext_resource type="Script" uid="uid://cb81kjpefpjjk" path="res://scripts/printer.gd" id="Script_printer"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3xd07"]
@@ -55,3 +56,11 @@ size = Vector3(0.044677734, 1, 0.3017578)
 [node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D/Cube/CSGBox3D4" unique_id=1720025110]
 transform = Transform3D(0.7373929, 0.08759764, 0, -5.208495, 0.7373927, 0, 0, 0, 1, -0.046126604, 0.12150955, 0.00034081936)
 size = Vector3(0.095581055, 0.20123291, 0.091308594)
+
+[node name="SpoolHolder" type="CSGCylinder3D" parent="CSGCombiner3D/Cube" unique_id=854153113]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.55360043, 0.46612966, 0.007322943)
+radius = 0.025
+height = 0.13217774
+
+[node name="FilamentSpool" parent="CSGCombiner3D/Cube" unique_id=1635647822 instance=ExtResource("2_2nn6k")]
+transform = Transform3D(-8.742278e-08, -2, 0, 2, -8.742278e-08, 0, 0, 0, 2, -0.56591785, 0.4694812, 0.006274089)

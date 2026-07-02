@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dfx2kqowlw0lv"]
+
+[ext_resource type="PackedScene" uid="uid://er1i3yp4jq5p" path="res://models/printer.tscn" id="1_o6bfp"]
+
+[node name="SmallStation" type="Node3D" unique_id=656105001]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=636255322]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.9604645e-08)
+size = Vector3(1, 1, 1.4)
+
+[node name="Printer" parent="." unique_id=1494709232 instance=ExtResource("1_o6bfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0, 0)
