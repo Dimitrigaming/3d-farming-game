@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://nk4swr2ydjp5"]
+
+[node name="SmallStockShelf" type="Node3D" unique_id=728511898]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=2051256854]

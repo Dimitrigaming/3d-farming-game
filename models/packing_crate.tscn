@@ -25,18 +25,22 @@ size = Vector3(0.5, 0.015625, 1)
 [node name="SpriteFront" type="Sprite3D" parent="." unique_id=1785394500]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, -0.05, -0.505)
 visible = false
+flip_h = true
 
 [node name="SpriteBack" type="Sprite3D" parent="." unique_id=1785394501]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0.505)
 visible = false
+flip_h = true
 
 [node name="SpriteLeft" type="Sprite3D" parent="." unique_id=1785394502]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -0.505, -0.05, 0)
 visible = false
+flip_h = true
 
 [node name="SpriteRight" type="Sprite3D" parent="." unique_id=1785394503]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0.505, -0.05, 0)
 visible = false
+flip_h = true
 
 [node name="LabelFront" type="Label3D" parent="." unique_id=1207381200]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0.35, -0.505)
@@ -49,11 +53,11 @@ pixel_size = 0.0005
 font_size = 64
 
 [node name="LabelLeft" type="Label3D" parent="." unique_id=1207381202]
-transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -0.505, 0.35, 0)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.505, 0.35, 0)
 pixel_size = 0.0005
 font_size = 64
 
 [node name="LabelRight" type="Label3D" parent="." unique_id=1207381203]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0.505, 0.35, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.505, 0.35, 0)
 pixel_size = 0.0005
 font_size = 64

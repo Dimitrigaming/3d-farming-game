@@ -9,11 +9,17 @@ var current_target = null
 const LMB_HOLD_THRESHOLD: float = 0.6
 const MMB_MAX_CHARGE: float = 1.5
 const MMB_MIN_SPEED: float = 3.0
+const SHELF_HOLD_INTERVAL: float = 0.18
 
 var _lmb_held: bool = false
 var _lmb_hold_time: float = 0.0
 var _mmb_held: bool = false
 var _mmb_hold_time: float = 0.0
+var _shelf_lmb_active: bool = false
+var _shelf_lmb_was_active: bool = false
+var _shelf_lmb_timer: float = 0.0
+var _shelf_rmb_active: bool = false
+var _shelf_rmb_timer: float = 0.0
 
 func _process(delta: float) -> void:
 	var hit = get_collider()
@@ -27,8 +33,12 @@ func _process(delta: float) -> void:
 					current_target.on_look_away()
 			current_target = interactable
 			current_target.show_tooltip()
+			_shelf_lmb_timer = 0.0
+			_shelf_rmb_timer = 0.0
 		if current_target.has_method("on_aimed_at"):
 			current_target.on_aimed_at(player_inventory)
+		if current_target.has_method("set_aim_point"):
+			current_target.set_aim_point(get_collision_point())
 	else:
 		if current_target:
 			current_target.hide_tooltip()
@@ -46,7 +56,24 @@ func _process(delta: float) -> void:
 			build_mode.enter(current_target)
 			current_target = null
 
+	if _shelf_lmb_active:
+		_shelf_lmb_timer += delta
+		if _shelf_lmb_timer >= SHELF_HOLD_INTERVAL:
+			_shelf_lmb_timer = 0.0
+			if current_target and _is_product_shelf(current_target):
+				current_target.interact()
+
+	if _shelf_rmb_active:
+		_shelf_rmb_timer += delta
+		if _shelf_rmb_timer >= SHELF_HOLD_INTERVAL:
+			_shelf_rmb_timer = 0.0
+			if current_target and _is_product_shelf(current_target):
+				current_target.retrieve_print(player_inventory)
+
 	_update_hud()
+
+func _is_product_shelf(target) -> bool:
+	return target != null and target.has_method("get_retrieve_hint")
 
 func _find_interactable(hit) -> Node:
 	if hit == null:
@@ -83,16 +110,23 @@ func _update_hud() -> void:
 			hints.append("[E] %s" % held.get_unpack_hint())
 		if held.has_method("_toggle_lid"):
 			hints.append("[F] Open/Close")
-		var drop_text = "Drop"
-		if held.has_method("get_drop_hint"):
-			drop_text = held.get_drop_hint()
-		hints.append("[RMB] %s" % drop_text)
+		var retrieve_hint = ""
+		if current_target and current_target.has_method("get_retrieve_hint"):
+			retrieve_hint = current_target.get_retrieve_hint()
+		if retrieve_hint != "":
+			hints.append("[RMB/Hold] %s" % retrieve_hint)
+		else:
+			var drop_text = "Drop"
+			if held.has_method("get_drop_hint"):
+				drop_text = held.get_drop_hint()
+			hints.append("[RMB] %s" % drop_text)
 
 	if current_target:
 		if current_target.has_method("get_click_hint"):
 			var click_text: String = current_target.get_click_hint(player_inventory)
 			if click_text != "":
-				hints.append("[Click] %s" % click_text)
+				var prefix = "[LMB/Hold]" if _is_product_shelf(current_target) else "[Click]"
+				hints.append("%s %s" % [prefix, click_text])
 		if current_target.has_method("get_pack_hint"):
 			var pack_text: String = current_target.get_pack_hint(player_inventory)
 			if pack_text != "":
@@ -124,7 +158,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		current_target.pack_away(player_inventory)
 
 	if event.is_action_pressed("drop") and not build_mode.active:
-		player_inventory.place_box()
+		if not (_is_product_shelf(current_target) and player_inventory.held_item != null):
+			player_inventory.place_box()
 
 	if event.is_action_pressed("open_close_box") and not build_mode.active:
 		if player_inventory.held_item != null and player_inventory.held_item.has_method("_toggle_lid"):
@@ -141,8 +176,14 @@ func _unhandled_input(event: InputEvent) -> void:
 				_lmb_held = true
 				if build_mode.active:
 					build_mode.exit(true)
+				elif not build_mode.active and _is_product_shelf(current_target):
+					current_target.interact()
+					_shelf_lmb_active = true
+					_shelf_lmb_was_active = true
+					_shelf_lmb_timer = 0.0
 			else:
-				if not build_mode.active and _lmb_hold_time < LMB_HOLD_THRESHOLD:
+				_shelf_lmb_active = false
+				if not build_mode.active and _lmb_hold_time < LMB_HOLD_THRESHOLD and not _shelf_lmb_was_active:
 					if current_target and current_target.has_method("try_trash"):
 						current_target.try_trash(player_inventory)
 					elif current_target and current_target.has_method("get_collectable_item_type"):
@@ -151,12 +192,20 @@ func _unhandled_input(event: InputEvent) -> void:
 							current_target.clear_print()
 					elif current_target and current_target.has_method("interact"):
 						current_target.interact()
+				_shelf_lmb_was_active = false
 				_lmb_held = false
 				_lmb_hold_time = 0.0
 
-		elif event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
-			if build_mode.active:
-				build_mode.exit(false)
+		elif event.button_index == MOUSE_BUTTON_RIGHT:
+			if event.pressed:
+				if build_mode.active:
+					build_mode.exit(false)
+				elif _is_product_shelf(current_target) and player_inventory.held_item != null:
+					current_target.retrieve_print(player_inventory)
+					_shelf_rmb_active = true
+					_shelf_rmb_timer = 0.0
+			else:
+				_shelf_rmb_active = false
 
 		elif event.button_index == MOUSE_BUTTON_MIDDLE:
 			if event.pressed:

@@ -41,18 +41,44 @@ func get_move_hint() -> String:
 	return "Move"
 
 func get_pack_hint(player_inventory) -> String:
-	if player_inventory.held_item == null and not is_printing and not print_finished:
+	if print_finished:
+		return "Shelve Print"
+	if player_inventory.held_item == null and not is_printing:
 		return "Pack Away"
 	return ""
 
 func pack_away(player_inventory) -> void:
-	if player_inventory.held_item != null or is_printing or print_finished:
+	if print_finished:
+		_shelve_print()
+		return
+	if player_inventory.held_item != null or is_printing:
 		return
 	var crate = PACKING_CRATE_SCENE.instantiate()
 	get_tree().current_scene.add_child(crate)
 	crate.pack("3D Printer", OWN_SCENE)
 	player_inventory.pick_up_item(crate)
 	queue_free()
+
+func _shelve_print() -> void:
+	if not print_finished or current_model == null:
+		return
+	var item_type = get_collectable_item_type()
+	var model = current_model
+	remove_child(model)
+	get_tree().current_scene.add_child(model)
+	model.global_position = global_position + Vector3(0, 0.3, 0)
+	current_model = null
+	print_finished = false
+	_update_tooltip()
+	for shelf in get_tree().get_nodes_in_group("product_shelf"):
+		if shelf.has_method("add_print") and shelf.add_print(item_type, model):
+			return
+	# No shelf available — restore state
+	get_tree().current_scene.remove_child(model)
+	add_child(model)
+	current_model = model
+	print_finished = true
+	_update_tooltip()
 
 func get_collectable_item_type() -> String:
 	if print_finished:

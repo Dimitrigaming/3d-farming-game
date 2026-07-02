@@ -1,0 +1,164 @@
+extends Node3D
+
+const PACKING_CRATE_SCENE = preload("res://models/packing_crate.tscn")
+const OWN_SCENE = preload("res://models/small_product_shelf.tscn")
+const PRINT_MODEL = preload("res://models/default_model.tscn")
+const PRINT_HALF_HEIGHT = 0.2
+
+var _aim_point: Vector3 = Vector3.ZERO
+
+func _ready() -> void:
+	add_to_group("interactable")
+	add_to_group("product_shelf")
+
+func set_aim_point(pos: Vector3) -> void:
+	_aim_point = pos
+
+func show_tooltip() -> void:
+	pass
+
+func hide_tooltip() -> void:
+	pass
+
+func get_move_hint() -> String:
+	return "Move"
+
+func get_pack_hint(player_inventory) -> String:
+	if player_inventory.held_item == null:
+		return "Pack Away"
+	return ""
+
+func pack_away(player_inventory) -> void:
+	if player_inventory.held_item != null:
+		return
+	for child in get_children():
+		if child.has_method("has_prints"):
+			for node in child.stored_print_nodes:
+				if node:
+					node.queue_free()
+			child.stored_print_nodes.clear()
+			child.stored_print_type = ""
+	var crate = PACKING_CRATE_SCENE.instantiate()
+	get_tree().current_scene.add_child(crate)
+	crate.pack("Small Product Shelf", OWN_SCENE)
+	player_inventory.pick_up_item(crate)
+	queue_free()
+
+func get_click_hint(player_inventory) -> String:
+	var held = player_inventory.held_item
+	if held != null and held.has_method("remove_item") and not held.is_empty():
+		if _first_available_zone(held.item_type) != null:
+			return "Stock Shelf"
+	return ""
+
+func get_retrieve_hint() -> String:
+	if _nearest_occupied_zone() != null:
+		return "Retrieve Print"
+	return ""
+
+# LMB: send one print from held box to shelf
+func interact() -> void:
+	var player_inv = get_tree().get_first_node_in_group("player")
+	if player_inv == null:
+		return
+	var held = player_inv.held_item
+	if held != null and held.has_method("remove_item") and not held.is_empty():
+		_send_box_item_to_shelf(held)
+
+# RMB: pull one print from shelf into box (spawns box if none held)
+func retrieve_print(player_inv) -> void:
+	var zone = _nearest_occupied_zone()
+	if zone == null:
+		return
+	var item_type = zone.stored_print_type
+	var print_node: Node3D = zone.stored_print_nodes.pop_back()
+	if zone.stored_print_nodes.is_empty():
+		zone.stored_print_type = ""
+
+	var held = player_inv.held_item
+	if held == null or not held.has_method("add_item"):
+		# Spawn a box via collect_item; animate from shelf position
+		var from_pos = print_node.global_position if print_node else global_position
+		if print_node:
+			print_node.queue_free()
+		player_inv.collect_item(item_type, from_pos)
+		return
+
+	if held.is_full():
+		# Put the print back
+		zone.stored_print_nodes.append(print_node)
+		if zone.stored_print_type == "":
+			zone.stored_print_type = item_type
+		return
+
+	if print_node:
+		var target = held.global_position
+		var tween = get_tree().create_tween()
+		tween.tween_property(print_node, "global_position", target, 0.3).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+		tween.tween_callback(func():
+			print_node.queue_free()
+			held.add_item(item_type)
+		)
+	else:
+		held.add_item(item_type)
+
+# Called by printer shelve action
+func add_print(item_type: String, existing_model: Node3D = null) -> bool:
+	var zone = _first_available_zone(item_type)
+	if zone == null:
+		return false
+	var index = zone.stored_print_nodes.size()
+	var model: Node3D
+	if existing_model != null:
+		model = existing_model
+	else:
+		model = PRINT_MODEL.instantiate()
+		get_tree().current_scene.add_child(model)
+	zone.stored_print_type = item_type
+	zone.stored_print_nodes.append(model)
+	var target_pos = _slot_world_pos(zone, index)
+	get_tree().create_tween().tween_property(model, "global_position", target_pos, 0.35).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	return true
+
+func _send_box_item_to_shelf(box: Node3D) -> void:
+	var zone = _first_available_zone(box.item_type)
+	if zone == null:
+		return
+	var item_type = box.remove_item()
+	if item_type == "":
+		return
+	var index = zone.stored_print_nodes.size()
+	var model = PRINT_MODEL.instantiate()
+	get_tree().current_scene.add_child(model)
+	model.global_position = box.global_position
+	zone.stored_print_type = item_type
+	zone.stored_print_nodes.append(model)
+	get_tree().create_tween().tween_property(model, "global_position", _slot_world_pos(zone, index), 0.35).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+
+func _slot_world_pos(zone, index: int) -> Vector3:
+	var col = index % 3
+	var row = index / 3
+	var lx = (col - 1) * (zone.size.x / 3.0)
+	var lz = (row - 0.5) * (zone.size.z / 2.0)
+	var ly = -zone.size.y / 2.0 + PRINT_HALF_HEIGHT
+	return zone.to_global(Vector3(lx, ly, lz))
+
+func _first_available_zone(item_type: String = "") -> Node:
+	for child in get_children():
+		if not child.has_method("is_occupied") or child.is_occupied():
+			continue
+		if child.stored_print_type != "" and child.stored_print_type != item_type:
+			continue
+		return child
+	return null
+
+func _nearest_occupied_zone() -> Node:
+	var best = null
+	var best_y = INF
+	for child in get_children():
+		if child.has_method("has_prints") and child.has_prints():
+			var y_dist = abs(child.global_position.y - _aim_point.y)
+			if y_dist < best_y:
+				best_y = y_dist
+				best = child
+	return best

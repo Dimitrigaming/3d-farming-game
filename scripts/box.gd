@@ -17,6 +17,8 @@ var count: int = 0
 var max_count: int = 9
 var is_open: bool = false
 var item_nodes: Array[Node3D] = []
+var stored_zone: Node3D = null
+var _store_tween: Tween = null
 
 @onready var lid_left: Node3D = $BoxLidLeft
 @onready var lid_right: Node3D = $BoxLidRight
@@ -25,6 +27,18 @@ func _ready() -> void:
 	add_to_group("interactable")
 	_update_display()
 
+
+func remove_item() -> String:
+	if count <= 0:
+		return ""
+	count -= 1
+	if item_nodes.size() > 0:
+		item_nodes.pop_back().queue_free()
+	var type = item_type
+	if count == 0:
+		item_type = ""
+	_update_display()
+	return type
 
 func add_item(type: String, from_global_pos: Vector3 = Vector3.ZERO) -> bool:
 	if is_full():
@@ -49,10 +63,33 @@ func is_full() -> bool:
 func is_empty() -> bool:
 	return count <= 0
 
+func store(zone: Node3D) -> void:
+	stored_zone = zone
+	freeze = true
+	process_mode = Node.PROCESS_MODE_INHERIT
+	collision_layer = 1
+	collision_mask = 1
+	add_to_group("interactable")
+
+func tween_to(target_pos: Vector3, target_rot: Vector3) -> void:
+	if _store_tween:
+		_store_tween.kill()
+	_store_tween = get_tree().create_tween().set_parallel(true)
+	_store_tween.tween_property(self, "global_position", target_pos, 0.3).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	_store_tween.tween_property(self, "rotation", target_rot, 0.3).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+
 func interact() -> void:
 	var player_inventory = get_tree().get_first_node_in_group("player")
-	if player_inventory:
-		player_inventory.pick_up_item(self)
+	if player_inventory == null:
+		return
+	if _store_tween:
+		_store_tween.kill()
+		_store_tween = null
+	if stored_zone != null:
+		stored_zone.stored_box = null
+		stored_zone = null
+		freeze = false
+	player_inventory.pick_up_item(self)
 
 func show_tooltip() -> void:
 	pass
@@ -76,6 +113,7 @@ func set_held(held: bool) -> void:
 		collision_mask = 0
 		remove_from_group("interactable")
 	else:
+		freeze = false
 		linear_velocity = Vector3.ZERO
 		angular_velocity = Vector3.ZERO
 		collision_layer = 1

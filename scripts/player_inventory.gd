@@ -22,8 +22,12 @@ func collect_item(item_type: String, from_global_pos: Vector3 = Vector3.ZERO) ->
 func pick_up_item(item: Node3D) -> void:
 	if held_item != null:
 		return
+	var start_global_pos = item.global_position
 	held_item = item
 	_attach_to_hold_point()
+	var local_start = held_item.get_parent().to_local(start_global_pos)
+	held_item.position = local_start
+	get_tree().create_tween().tween_property(held_item, "position", Vector3.ZERO, 0.25).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 
 const THROW_SPEED_MAX: float = 12.0
 

@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://er1i3yp4jq5p" path="res://models/printer.tscn" id="2_gaqdb"]
 [ext_resource type="PackedScene" uid="uid://dnldinl4pqluh" path="res://models/box.tscn" id="3_jgjqi"]
 [ext_resource type="PackedScene" uid="uid://bot8ywuxfnkyh" path="res://models/trash_can.tscn" id="4_vrv26"]
+[ext_resource type="PackedScene" uid="uid://bnc614ppwsudh" path="res://models/small_stock_shelf.tscn" id="5_ti018"]
+[ext_resource type="PackedScene" uid="uid://dm3llu07dng5r" path="res://models/small_product_shelf.tscn" id="6_u6t3p"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uu6xs"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -165,3 +167,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.9, 14.7)
 
 [node name="TrashCan" parent="." unique_id=150205036 instance=ExtResource("4_vrv26")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3, 1.1, 15)
+
+[node name="SmallStockShelf" parent="." unique_id=728511898 instance=ExtResource("5_ti018")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.244224, 1.2431636, 18.113667)
+
+[node name="SmallProductShelf" parent="." unique_id=1543028504 instance=ExtResource("6_u6t3p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.847311, 0.9999994, 12.502067)

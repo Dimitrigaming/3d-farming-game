@@ -65,11 +65,13 @@ func unpack_at(floor_pos: Vector3, y_rotation: float) -> Node3D:
 	return item
 
 func _ground_offset(item: Node3D) -> float:
+	var static_body: Node3D = item.get_node_or_null("StaticBody3D")
 	var collision_shape: CollisionShape3D = item.get_node_or_null("StaticBody3D/CollisionShape3D")
 	if collision_shape == null or collision_shape.shape == null:
 		return 0.0
 	var shape = collision_shape.shape
-	var local_bottom = collision_shape.transform.origin.y
+	var body_y = static_body.transform.origin.y if static_body != null else 0.0
+	var local_bottom = body_y + collision_shape.transform.origin.y
 	if shape is BoxShape3D:
 		local_bottom -= shape.size.y * 0.5
 	elif shape is CylinderShape3D:
