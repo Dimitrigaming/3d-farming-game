@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cb81kjpefpjjk" path="res://scripts/printer.gd" id="Script_printer"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3xd07"]
+size = Vector3(1.1, 1.0, 1.1)
 
 [node name="Printer" type="Node3D" unique_id=1494709232]
 script = ExtResource("Script_printer")

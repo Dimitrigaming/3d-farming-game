@@ -1,12 +1,49 @@
 [gd_scene format=3 uid="uid://dfx2kqowlw0lv"]
 
-[ext_resource type="PackedScene" uid="uid://er1i3yp4jq5p" path="res://models/printer.tscn" id="1_o6bfp"]
+[ext_resource type="PackedScene" uid="uid://dxnm3qj6f2dnw" path="res://models/placement_zone.tscn" id="1_o6bfp"]
+[ext_resource type="Script" uid="uid://bxdrvghsnpvjk" path="res://scripts/small_station.gd" id="2_station"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_station"]
+size = Vector3(2.9, 1.0288086, 1.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_detect"]
+size = Vector3(2.7, 1.2, 1.2)
 
 [node name="SmallStation" type="Node3D" unique_id=656105001]
+script = ExtResource("2_station")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=700000001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 0.95, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=700000002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9513793, 0)
+shape = SubResource("BoxShape3D_station")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=636255322]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.9604645e-08)
-size = Vector3(1, 1, 1.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95000005, 0, 5.9604645e-08)
+size = Vector3(2.9, 1, 1.4)
 
-[node name="Printer" parent="." unique_id=1494709232 instance=ExtResource("1_o6bfp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0, 0)
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D" unique_id=1766353338]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01649177, -0.040283203, 0.0013427734)
+operation = 2
+size = Vector3(3.070874, 0.9194336, 1.1271973)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D" unique_id=1852067924]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0023308992, -0.040283203, -0.010345459)
+operation = 2
+size = Vector3(2.690251, 0.9194336, 1.4765015)
+
+[node name="DetectionZone" type="Area3D" parent="." unique_id=700000003]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 1.0, 0)
+collision_layer = 0
+collision_mask = 1
+monitoring = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionZone" unique_id=700000004]
+shape = SubResource("BoxShape3D_detect")
+
+[node name="PlacementZone" parent="." unique_id=1199211187 instance=ExtResource("1_o6bfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 1, 0)
+
+[node name="PlacementZone2" parent="." unique_id=530545428 instance=ExtResource("1_o6bfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6000001, 1, 0)

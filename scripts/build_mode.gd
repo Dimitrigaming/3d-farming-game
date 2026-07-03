@@ -11,6 +11,7 @@ var _camera: Camera3D = null
 var _ground_clearance: float = 0.0
 var _blocked: bool = false
 var _ghost_arrow_nodes: Array[Node] = []
+var _passengers: Array[Node3D] = []
 
 const GRID_SIZE: float = 0.5
 const ROTATE_STEP: float = PI / 12.0
@@ -38,14 +39,46 @@ func enter(furniture: Node3D) -> void:
 	_ghost.global_position = furniture.global_position
 	_ghost.rotation = Vector3(0, _ghost_y_rotation, 0)
 
+	# Add ghost copies of any passengers (e.g. printers on a station)
+	_passengers.clear()
+	if furniture.has_method("get_move_passengers"):
+		var inv = furniture.global_transform.affine_inverse()
+		for passenger in furniture.get_move_passengers():
+			if not is_instance_valid(passenger):
+				continue
+			# Duplicate while still visible so the ghost inherits visible = true
+			var p_ghost = passenger.duplicate()
+			p_ghost.set_script(null)
+			_clean_ghost(p_ghost)
+			_clear_scripts(p_ghost)
+			_apply_ghost_material(p_ghost, false)
+			_ghost.add_child(p_ghost)
+			p_ghost.position = inv * passenger.global_position
+			p_ghost.rotation.y = passenger.rotation.y - furniture.rotation.y
+			# Hide original after ghost is created
+			_passengers.append(passenger)
+			passenger.visible = false
+			var pb = passenger.get_node_or_null("StaticBody3D")
+			if pb:
+				pb.process_mode = Node.PROCESS_MODE_DISABLED
+
 func exit(confirm: bool) -> void:
 	if _furniture:
 		_furniture.visible = true
 		if _furniture_body:
 			_furniture_body.process_mode = Node.PROCESS_MODE_INHERIT
 		if confirm and _ghost and not _blocked:
+			var old_transform = _furniture.global_transform
 			_furniture.global_position = _ghost.global_position
 			_furniture.rotation.y = _ghost_y_rotation
+			_move_passengers(old_transform)
+	for passenger in _passengers:
+		if is_instance_valid(passenger):
+			passenger.visible = true
+			var pb = passenger.get_node_or_null("StaticBody3D")
+			if pb:
+				pb.process_mode = Node.PROCESS_MODE_INHERIT
+	_passengers.clear()
 	if _ghost:
 		_ghost.queue_free()
 		_ghost = null
@@ -56,6 +89,45 @@ func exit(confirm: bool) -> void:
 	_camera = null
 	_ghost_arrow_nodes.clear()
 
+func _move_passengers(old_transform: Transform3D) -> void:
+	if _passengers.is_empty():
+		return
+	var old_inv = old_transform.affine_inverse()
+	var new_transform = _furniture.global_transform
+	var delta_rot_y = _ghost_y_rotation - old_transform.basis.get_euler().y
+	for passenger in _passengers:
+		if not is_instance_valid(passenger):
+			continue
+		var local_pos = old_inv * passenger.global_position
+		passenger.global_position = new_transform * local_pos
+		passenger.rotation.y += delta_rot_y
+
+func _cast_placement_zone_ray() -> Node3D:
+	if _camera == null:
+		return null
+	var space_state = get_world_3d().direct_space_state
+	var from = _camera.global_position
+	var dir = -_camera.global_transform.basis.z
+	var ray = PhysicsRayQueryParameters3D.create(from, from + dir * 6.0, 8)
+	ray.collide_with_areas = true
+	ray.collide_with_bodies = false
+	var result = space_state.intersect_ray(ray)
+	if not result:
+		return null
+	var col = result.get("collider")
+	if col == null:
+		return null
+	var zone = col.get_parent() if col is Area3D else col
+	if zone.is_in_group("placement_zone"):
+		return zone
+	return null
+
+func snap_to_zone(zone: Node3D) -> void:
+	_ghost_y_rotation = zone.global_rotation.y
+	if _ghost:
+		_ghost.global_position = zone.global_position
+		_ghost.rotation.y = _ghost_y_rotation
+
 func rotate_ghost(delta_y: float) -> void:
 	_ghost_y_rotation += delta_y
 	if _ghost:
@@ -65,6 +137,27 @@ func _process(_delta: float) -> void:
 	if not active or _ghost == null or _camera == null:
 		return
 	var space_state = get_world_3d().direct_space_state
+
+	# Snap to placement zone if aiming at one — checked before normal positioning
+	var snap_zone = _cast_placement_zone_ray()
+	if snap_zone != null:
+		var down = PhysicsRayQueryParameters3D.create(
+			snap_zone.global_position + Vector3(0, 2, 0),
+			snap_zone.global_position - Vector3(0, 2, 0),
+			1
+		)
+		var down_result = space_state.intersect_ray(down)
+		var surface_y = snap_zone.global_position.y
+		if down_result:
+			surface_y = down_result.position.y
+		_ghost.global_position = Vector3(snap_zone.global_position.x, surface_y + _ground_clearance, snap_zone.global_position.z)
+		_ghost_y_rotation = snap_zone.global_rotation.y
+		_ghost.rotation = Vector3(0, _ghost_y_rotation, 0)
+		if _blocked:
+			_blocked = false
+			_apply_ghost_material(_ghost, false)
+		return
+
 	var from = _camera.global_position
 	var dir = -_camera.global_transform.basis.z
 	var ray = PhysicsRayQueryParameters3D.create(from, from + dir * 8.0)
@@ -132,6 +225,13 @@ func _clean_ghost(ghost: Node3D) -> void:
 	for node in to_remove:
 		ghost.remove_child(node)
 		node.free()
+	_clear_scripts(ghost)
+
+func _clear_scripts(node: Node) -> void:
+	for child in node.get_children():
+		if child.get_script():
+			child.set_script(null)
+		_clear_scripts(child)
 
 func _apply_ghost_material(node: Node, blocked: bool) -> void:
 	if node in _ghost_arrow_nodes:

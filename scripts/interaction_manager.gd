@@ -27,6 +27,10 @@ func _process(delta: float) -> void:
 	var hit2 = _cast_layer2_ray()
 	if hit2 != null:
 		hit = hit2
+	elif player_inventory.held_item != null and player_inventory.held_item.has_method("unpack_at"):
+		var zone_hit = _cast_placement_zone_ray()
+		if zone_hit != null:
+			hit = zone_hit
 	var interactable = _find_interactable(hit)
 
 	if interactable:
@@ -78,6 +82,23 @@ func _process(delta: float) -> void:
 
 func _is_product_shelf(target) -> bool:
 	return target != null and target.has_method("get_retrieve_hint")
+
+func _cast_placement_zone_ray():
+	var space = get_world_3d().direct_space_state
+	var ray = PhysicsRayQueryParameters3D.create(
+		global_position,
+		global_position + (-global_transform.basis.z * 4.0),
+		8  # layer 4 only — placement zones
+	)
+	ray.collide_with_areas = true
+	ray.collide_with_bodies = false
+	var result = space.intersect_ray(ray)
+	if not result:
+		return null
+	var col = result.get("collider")
+	if col == null:
+		return null
+	return col.get_parent() if col is Area3D else col
 
 func _cast_layer2_ray():
 	var space = get_world_3d().direct_space_state
@@ -200,6 +221,8 @@ func _unhandled_input(event: InputEvent) -> void:
 				if not build_mode.active and _lmb_hold_time < LMB_HOLD_THRESHOLD and not _shelf_lmb_was_active:
 					if current_target and current_target.has_method("try_trash"):
 						current_target.try_trash(player_inventory)
+					elif current_target and current_target.has_method("collect_all_prints"):
+						current_target.collect_all_prints(player_inventory)
 					elif current_target and current_target.has_method("get_collectable_item_type"):
 						var item_type: String = current_target.get_collectable_item_type()
 						if item_type != "" and player_inventory.collect_item(item_type, current_target.global_position):
