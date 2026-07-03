@@ -23,6 +23,15 @@ func hide_tooltip() -> void:
 func get_move_hint() -> String:
 	return "Move"
 
+func get_hidden_passengers() -> Array:
+	var passengers = []
+	for child in get_children():
+		if child.has_method("has_prints"):
+			for node in child.stored_print_nodes:
+				if is_instance_valid(node):
+					passengers.append(node)
+	return passengers
+
 func get_pack_hint(player_inventory) -> String:
 	if player_inventory.held_item == null:
 		return "Pack Away"

@@ -13,6 +13,7 @@ const SHELF_HOLD_INTERVAL: float = 0.18
 
 var _lmb_held: bool = false
 var _lmb_hold_time: float = 0.0
+var _lmb_confirmed_build: bool = false
 var _mmb_held: bool = false
 var _mmb_hold_time: float = 0.0
 var _shelf_lmb_active: bool = false
@@ -211,6 +212,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				_lmb_held = true
 				if build_mode.active:
 					build_mode.exit(true)
+					_lmb_confirmed_build = true
 				elif not build_mode.active and _is_product_shelf(current_target):
 					current_target.interact()
 					_shelf_lmb_active = true
@@ -218,7 +220,7 @@ func _unhandled_input(event: InputEvent) -> void:
 					_shelf_lmb_timer = 0.0
 			else:
 				_shelf_lmb_active = false
-				if not build_mode.active and _lmb_hold_time < LMB_HOLD_THRESHOLD and not _shelf_lmb_was_active:
+				if not build_mode.active and _lmb_hold_time < LMB_HOLD_THRESHOLD and not _shelf_lmb_was_active and not _lmb_confirmed_build:
 					if current_target and current_target.has_method("try_trash"):
 						current_target.try_trash(player_inventory)
 					elif current_target and current_target.has_method("collect_all_prints"):
@@ -230,6 +232,7 @@ func _unhandled_input(event: InputEvent) -> void:
 					elif current_target and current_target.has_method("interact"):
 						current_target.interact()
 				_shelf_lmb_was_active = false
+				_lmb_confirmed_build = false
 				_lmb_held = false
 				_lmb_hold_time = 0.0
 

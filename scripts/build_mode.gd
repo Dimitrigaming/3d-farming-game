@@ -12,6 +12,7 @@ var _ground_clearance: float = 0.0
 var _blocked: bool = false
 var _ghost_arrow_nodes: Array[Node] = []
 var _passengers: Array[Node3D] = []
+var _hidden_passengers: Array[Node3D] = []
 
 const GRID_SIZE: float = 0.5
 const ROTATE_STEP: float = PI / 12.0
@@ -62,6 +63,16 @@ func enter(furniture: Node3D) -> void:
 			if pb:
 				pb.process_mode = Node.PROCESS_MODE_DISABLED
 
+	# Hide passengers that don't need ghost images (prints on shelves, boxes)
+	_hidden_passengers.clear()
+	if furniture.has_method("get_hidden_passengers"):
+		for passenger in furniture.get_hidden_passengers():
+			if not is_instance_valid(passenger):
+				continue
+			_hidden_passengers.append(passenger)
+			passenger.visible = false
+			passenger.process_mode = Node.PROCESS_MODE_DISABLED
+
 func exit(confirm: bool) -> void:
 	if _furniture:
 		_furniture.visible = true
@@ -79,6 +90,11 @@ func exit(confirm: bool) -> void:
 			if pb:
 				pb.process_mode = Node.PROCESS_MODE_INHERIT
 	_passengers.clear()
+	for passenger in _hidden_passengers:
+		if is_instance_valid(passenger):
+			passenger.visible = true
+			passenger.process_mode = Node.PROCESS_MODE_INHERIT
+	_hidden_passengers.clear()
 	if _ghost:
 		_ghost.queue_free()
 		_ghost = null
@@ -90,12 +106,12 @@ func exit(confirm: bool) -> void:
 	_ghost_arrow_nodes.clear()
 
 func _move_passengers(old_transform: Transform3D) -> void:
-	if _passengers.is_empty():
+	if _passengers.is_empty() and _hidden_passengers.is_empty():
 		return
 	var old_inv = old_transform.affine_inverse()
 	var new_transform = _furniture.global_transform
 	var delta_rot_y = _ghost_y_rotation - old_transform.basis.get_euler().y
-	for passenger in _passengers:
+	for passenger in _passengers + _hidden_passengers:
 		if not is_instance_valid(passenger):
 			continue
 		var local_pos = old_inv * passenger.global_position
@@ -118,9 +134,17 @@ func _cast_placement_zone_ray() -> Node3D:
 	if col == null:
 		return null
 	var zone = col.get_parent() if col is Area3D else col
-	if zone.is_in_group("placement_zone"):
+	if zone.is_in_group("placement_zone") and not _is_descendant_of(zone, _furniture):
 		return zone
 	return null
+
+func _is_descendant_of(node: Node, ancestor: Node) -> bool:
+	var parent = node.get_parent()
+	while parent != null:
+		if parent == ancestor:
+			return true
+		parent = parent.get_parent()
+	return false
 
 func snap_to_zone(zone: Node3D) -> void:
 	_ghost_y_rotation = zone.global_rotation.y

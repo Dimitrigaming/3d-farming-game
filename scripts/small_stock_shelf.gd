@@ -77,6 +77,13 @@ func interact() -> void:
 func get_move_hint() -> String:
 	return "Move"
 
+func get_hidden_passengers() -> Array:
+	var passengers = []
+	for child in get_children():
+		if child.has_method("is_occupied") and child.stored_box != null and is_instance_valid(child.stored_box):
+			passengers.append(child.stored_box)
+	return passengers
+
 func get_pack_hint(player_inventory) -> String:
 	if player_inventory.held_item == null:
 		return "Pack Away"
