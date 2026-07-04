@@ -16,6 +16,7 @@ var _handed_off: bool = false
 var _queue_slot: int = 0
 const IDLE_RECHECK: float = 2.0
 const IDLE_RECHECK_FAIL: float = 8.0
+const IDLE_RECHECK_SHELF_EMPTY: float = 3.0
 
 func _ready() -> void:
 	add_to_group("npc")
@@ -65,6 +66,8 @@ func _physics_process(delta: float) -> void:
 						_queue_target = _register.get_queue_spot(_queue_slot)
 						_target_pos = _queue_target
 						state = State.GOING_TO_REGISTER
+					else:
+						_idle_timer = -IDLE_RECHECK_FAIL
 				else:
 					_shelf = _find_shelf_with_prints()
 					if _shelf != null:
@@ -78,7 +81,9 @@ func _on_arrive_at_shelf() -> void:
 	var count = randi_range(1, 3)
 	_items = _shelf.npc_take_prints(count)
 	if _items.is_empty():
-		_idle_timer = -IDLE_RECHECK_FAIL
+		# Shelf empty — short retry, wander away so others don't pile up
+		_idle_timer = -IDLE_RECHECK_SHELF_EMPTY
+		_target_pos = global_position + Vector3(randf_range(-3.0, 3.0), 0, randf_range(-3.0, 3.0))
 		state = State.IDLE
 		return
 	_register = _find_shortest_queue_register()
@@ -155,8 +160,12 @@ func _find_shortest_queue_register() -> Node3D:
 	return best
 
 func _find_shelf_with_prints() -> Node3D:
+	var claimed: Array = []
+	for npc in get_tree().get_nodes_in_group("npc"):
+		if npc != self and npc.state == State.GOING_TO_SHELF:
+			claimed.append(npc._shelf)
 	for shelf in get_tree().get_nodes_in_group("product_shelf"):
-		if shelf.has_method("has_any_prints") and shelf.has_any_prints():
+		if shelf.has_method("has_any_prints") and shelf.has_any_prints() and not shelf in claimed:
 			return shelf
 	return null
 
