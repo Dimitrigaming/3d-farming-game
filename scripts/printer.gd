@@ -7,8 +7,10 @@ const OWN_SCENE = preload("res://models/printer.tscn")
 
 @onready var tooltip: Label3D = $Tooltip
 @onready var print_start: Marker3D = $PrintStart
+@onready var _spool = $CSGCombiner3D/Cube/FilamentSpool
 
 var print_duration: float = 5.0
+var filament_cost_per_print: float = 0.1
 var is_printing: bool = false
 var print_finished: bool = false
 var current_model: Node3D = null
@@ -134,6 +136,17 @@ func start_print() -> void:
 		print_duration
 	)
 	tween.tween_callback(_on_print_complete)
+
+	if _spool and _spool.has_method("set_filament_level"):
+		var level_start: float = _spool.filament_remaining
+		var level_end: float = max(0.0, level_start - filament_cost_per_print)
+		var ftween = create_tween()
+		ftween.tween_method(
+			func(l: float): _spool.set_filament_level(l),
+			level_start,
+			level_end,
+			print_duration
+		)
 
 func _on_print_complete() -> void:
 	is_printing = false
