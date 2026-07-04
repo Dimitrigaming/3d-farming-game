@@ -6,4 +6,4 @@ func _process(delta: float) -> void:
 	_spawn_timer += delta
 	if _spawn_timer >= 1.0:
 		_spawn_timer = 0.0
-		add_print("default_print")
+		add_print("Default Model")

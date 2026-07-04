@@ -105,8 +105,8 @@ func _build_arrow() -> void:
 	shaft_mesh.height = 0.4
 	shaft.mesh = shaft_mesh
 	shaft.material_override = mat
-	shaft.position = Vector3(0, 2.1, -0.2)
-	shaft.rotation_degrees = Vector3(-90, 0, 0)
+	shaft.position = Vector3(0, 2.1, 0.2)
+	shaft.rotation_degrees = Vector3(-90, 180, 0)
 	add_child(shaft)
 
 	var head = MeshInstance3D.new()
@@ -116,6 +116,6 @@ func _build_arrow() -> void:
 	head_mesh.height = 0.25
 	head.mesh = head_mesh
 	head.material_override = mat
-	head.position = Vector3(0, 2.1, -0.55)
-	head.rotation_degrees = Vector3(-90, 0, 0)
+	head.position = Vector3(0, 2.1, 0.55)
+	head.rotation_degrees = Vector3(-90, 180, 0)
 	add_child(head)

@@ -1,6 +1,14 @@
 extends CanvasLayer
 
 @onready var hints_container: VBoxContainer = $Hints
+@onready var money_label: Label = $MoneyLabel
+
+func _ready() -> void:
+	money_label.text = "$%.2f" % GameState.money
+	GameState.money_changed.connect(_on_money_changed)
+
+func _on_money_changed(new_amount: float) -> void:
+	money_label.text = "$%.2f" % new_amount
 
 func set_hints(hints: Array[String]) -> void:
 	var existing := hints_container.get_children()

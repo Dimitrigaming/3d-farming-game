@@ -6,6 +6,13 @@ signal print_job_added(job: Dictionary)
 signal print_job_completed(job: Dictionary)
 
 var money: float = 500.0
+
+const ITEM_PRICES: Dictionary = {
+	"Default Model": 5.0,
+}
+
+func get_price(item_name: String) -> float:
+	return ITEM_PRICES.get(item_name, 0.0)
 var licenses: Array[String] = []
 var print_queue: Array[Dictionary] = []
 

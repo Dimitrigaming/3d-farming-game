@@ -7,6 +7,9 @@ const PRINT_MODEL = preload("res://models/default_model.tscn")
 var _pending_items: Array[String] = []
 var _counter_models: Array[Node3D] = []
 var _npc: Node3D = null
+var _transaction_total: float = 0.0
+var _scanned_total: float = 0.0
+var _total_label: Label3D = null
 
 func _ready() -> void:
 	add_to_group("interactable")
@@ -14,6 +17,35 @@ func _ready() -> void:
 	var zone = get_node_or_null("RegisterZone")
 	if zone:
 		zone.visible = false
+	_setup_total_label()
+
+func _setup_total_label() -> void:
+	var screen = get_node_or_null("RegisterScreen")
+	_total_label = Label3D.new()
+	_total_label.pixel_size = 0.002
+	_total_label.font_size = 28
+	_total_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_total_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	_total_label.modulate = Color(0.2, 1.0, 0.4, 1)
+	_total_label.no_depth_test = true
+	_total_label.visible = false
+	if screen:
+		_total_label.position = Vector3(0, 0, 0.06)
+		_total_label.rotation_degrees = Vector3(0, 180, 0)
+		screen.add_child(_total_label)
+	else:
+		_total_label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+		_total_label.position = Vector3(0, 1.2, 0)
+		add_child(_total_label)
+
+func _update_total_label() -> void:
+	if _total_label == null:
+		return
+	if _transaction_total <= 0.0:
+		_total_label.visible = false
+		return
+	_total_label.visible = true
+	_total_label.text = "$%.2f\n$%.2f total" % [_scanned_total, _transaction_total]
 
 func show_tooltip() -> void:
 	pass
@@ -46,9 +78,12 @@ func scan_item(item: Node3D) -> void:
 	var idx = _counter_models.find(item)
 	if idx == -1:
 		return
+	var item_name = _pending_items[idx]
+	_scanned_total += GameState.get_price(item_name)
 	_counter_models.remove_at(idx)
-	_pending_items.pop_back()
+	_pending_items.remove_at(idx)
 	item.queue_free()
+	_update_total_label()
 	if _pending_items.is_empty():
 		_checkout_complete()
 
@@ -61,11 +96,20 @@ func receive_npc_items(items: Array[String], npc: Node3D) -> void:
 	_pending_items = items.duplicate()
 	_npc = npc
 	_counter_models.clear()
+	_transaction_total = 0.0
+	_scanned_total = 0.0
+	for item_name in _pending_items:
+		_transaction_total += GameState.get_price(item_name)
 	for i in range(_pending_items.size()):
 		var model = _spawn_counter_model(i)
 		_counter_models.append(model)
+	_update_total_label()
 
 func _checkout_complete() -> void:
+	GameState.add_money(_transaction_total)
+	_transaction_total = 0.0
+	_scanned_total = 0.0
+	_update_total_label()
 	if _npc and is_instance_valid(_npc):
 		_npc.checkout_complete()
 	_npc = null
@@ -111,6 +155,8 @@ func pack_away(player_inventory) -> void:
 			model.queue_free()
 	_counter_models.clear()
 	_pending_items.clear()
+	_transaction_total = 0.0
+	_scanned_total = 0.0
 	var crate = PACKING_CRATE_SCENE.instantiate()
 	get_tree().current_scene.add_child(crate)
 	crate.pack("Register", OWN_SCENE)
