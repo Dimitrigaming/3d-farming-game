@@ -2,11 +2,13 @@ extends Marker3D
 
 const NPC_SCENE = preload("res://models/npc.tscn")
 const RESPAWN_DELAY: float = 3.0
+const MAX_NPCS: int = 6
 
 var _timer: float = 0.0
 
 func _process(delta: float) -> void:
-	if get_tree().get_nodes_in_group("npc").size() == 0:
+	var current = get_tree().get_nodes_in_group("npc").size()
+	if current < MAX_NPCS:
 		_timer += delta
 		if _timer >= RESPAWN_DELAY:
 			_timer = 0.0

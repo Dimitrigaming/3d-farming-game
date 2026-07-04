@@ -8,34 +8,276 @@ transform = Transform3D(-8.742278e-08, -2, 0, 2, -8.742278e-08, 0, 0, 0, 2, 0, 0
 script = ExtResource("1_74dws")
 filament = ExtResource("2_vnqwl")
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=48136443]
+[node name="Spool" type="CSGCombiner3D" parent="." unique_id=48136443]
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=1584556900]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Spool" unique_id=1584556900]
 radius = 0.1
 height = 0.05
 sides = 64
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D/CSGCylinder3D" unique_id=147490054]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Spool/CSGCylinder3D" unique_id=147490054]
 transform = Transform3D(1.05, 0, 0, 0, 0.9, 0, 0, 0, 1.05, 0, 0, 0)
 operation = 2
 radius = 0.1
 height = 0.05
 sides = 64
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=2139112971]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Spool" unique_id=2139112971]
 transform = Transform3D(0.3, 0, 0, 0, 1, 0, 0, 0, 0.3, 0, -0.00039062652, 0)
 radius = 0.1
 height = 0.045703124
 sides = 64
 
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D/CSGCylinder3D2" unique_id=1786624951]
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Spool/CSGCylinder3D2" unique_id=1786624951]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, 0, -0.00020751893, 0)
 operation = 2
 radius = 0.09
 height = 0.05710449
 sides = 64
 
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=1475193004]
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Spool" unique_id=1475193004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00036616944, 0)
+operation = 2
+radius = 0.02
+height = 0.072509766
+
+[node name="Filament" type="CSGCombiner3D" parent="." unique_id=2007210697]
+
+[node name="Filament1" type="CSGCylinder3D" parent="Filament" unique_id=2121036520]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.651162e-10, 0.022079285, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament2" type="CSGCylinder3D" parent="Filament" unique_id=1868356552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.143252e-10, 0.020917322, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament3" type="CSGCylinder3D" parent="Filament" unique_id=1359223850]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.649645e-10, 0.01978808, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament4" type="CSGCylinder3D" parent="Filament" unique_id=1798927540]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.141735e-10, 0.018626118, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament5" type="CSGCylinder3D" parent="Filament" unique_id=759792939]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6579304e-10, 0.017519303, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament6" type="CSGCylinder3D" parent="Filament" unique_id=420283740]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1500206e-10, 0.01635734, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament7" type="CSGCylinder3D" parent="Filament" unique_id=1662103312]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.656413e-10, 0.015228098, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament8" type="CSGCylinder3D" parent="Filament" unique_id=1963711429]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1485034e-10, 0.0140661355, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament9" type="CSGCylinder3D" parent="Filament" unique_id=385453867]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6754834e-10, 0.012983993, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament10" type="CSGCylinder3D" parent="Filament" unique_id=431064136]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1675736e-10, 0.01182203, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament11" type="CSGCylinder3D" parent="Filament" unique_id=45855522]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.673966e-10, 0.010692788, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament12" type="CSGCylinder3D" parent="Filament" unique_id=1153598447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.166056e-10, 0.009530826, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament13" type="CSGCylinder3D" parent="Filament" unique_id=1336500238]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6822517e-10, 0.00842401, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament14" type="CSGCylinder3D" parent="Filament" unique_id=1866856383]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1743416e-10, 0.0072620474, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament15" type="CSGCylinder3D" parent="Filament" unique_id=1101769638]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6807345e-10, 0.0061328057, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament16" type="CSGCylinder3D" parent="Filament" unique_id=1934554902]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1728244e-10, 0.004970843, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament17" type="CSGCylinder3D" parent="Filament" unique_id=499217045]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6563052e-10, 0.0037891846, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament18" type="CSGCylinder3D" parent="Filament" unique_id=1728533440]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1483951e-10, 0.0026272219, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament19" type="CSGCylinder3D" parent="Filament" unique_id=530325847]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5478796e-11, 0.0014979802, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament20" type="CSGCylinder3D" parent="Filament" unique_id=1500298061]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.468779e-11, 0.00033601746, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament21" type="CSGCylinder3D" parent="Filament" unique_id=1477866910]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.369265e-11, -0.00077079795, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament22" type="CSGCylinder3D" parent="Filament" unique_id=597725818]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4483656e-11, -0.0019327607, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament23" type="CSGCylinder3D" parent="Filament" unique_id=1611505919]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3384438e-10, -0.0030620024, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament24" type="CSGCylinder3D" parent="Filament" unique_id=1244927642]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8463538e-10, -0.004223965, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament25" type="CSGCylinder3D" parent="Filament" unique_id=1417737307]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3193734e-10, -0.005306108, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament26" type="CSGCylinder3D" parent="Filament" unique_id=1994739432]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8272834e-10, -0.0064680707, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament27" type="CSGCylinder3D" parent="Filament" unique_id=629270490]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3208908e-10, -0.0075973123, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament28" type="CSGCylinder3D" parent="Filament" unique_id=304346924]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8288006e-10, -0.008759275, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament29" type="CSGCylinder3D" parent="Filament" unique_id=1323449744]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.312605e-10, -0.0098660905, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament30" type="CSGCylinder3D" parent="Filament" unique_id=180404159]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.820515e-10, -0.011028053, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament31" type="CSGCylinder3D" parent="Filament" unique_id=445029895]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3141225e-10, -0.012157295, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament32" type="CSGCylinder3D" parent="Filament" unique_id=1269285722]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8220323e-10, -0.013319258, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament33" type="CSGCylinder3D" parent="Filament" unique_id=1378968000]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3217964e-10, -0.014462585, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament34" type="CSGCylinder3D" parent="Filament" unique_id=211114879]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.815404e-10, -0.015591826, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament35" type="CSGCylinder3D" parent="Filament" unique_id=1322269616]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3233136e-10, -0.016753789, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament36" type="CSGCylinder3D" parent="Filament" unique_id=2010438930]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8423756e-10, -0.017941264, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament37" type="CSGCylinder3D" parent="Filament" unique_id=48937110]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.335983e-10, -0.019070506, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament38" type="CSGCylinder3D" parent="Filament" unique_id=758460916]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.843893e-10, -0.020232469, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="Filament39" type="CSGCylinder3D" parent="Filament" unique_id=1408417492]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.298711e-10, -0.021272972, 0)
+radius = 0.09
+height = 0.001
+sides = 32
+
+[node name="CenterHole" type="CSGCylinder3D" parent="Filament" unique_id=367751760]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00036616944, 0)
 operation = 2
 radius = 0.02

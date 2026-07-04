@@ -4,12 +4,15 @@ const PACKING_CRATE_SCENE = preload("res://models/packing_crate.tscn")
 const OWN_SCENE = preload("res://models/register.tscn")
 const PRINT_MODEL = preload("res://models/default_model.tscn")
 
+const QUEUE_SPACING: float = 1.5
+
 var _pending_items: Array[String] = []
 var _counter_models: Array[Node3D] = []
 var _npc: Node3D = null
 var _transaction_total: float = 0.0
 var _scanned_total: float = 0.0
 var _total_label: Label3D = null
+var _queue: Array[Node3D] = []
 
 func _ready() -> void:
 	add_to_group("interactable")
@@ -73,6 +76,7 @@ func interact() -> void:
 	body.global_position = spot.global_position
 	body.look_rotation.y = spot.global_rotation.y
 	body.rotate_look(Vector2.ZERO)
+	_notify_front_npc()
 
 func scan_item(item: Node3D) -> void:
 	var idx = _counter_models.find(item)
@@ -88,7 +92,13 @@ func scan_item(item: Node3D) -> void:
 		_checkout_complete()
 
 func is_staffed() -> bool:
-	return _is_player_in_zone()
+	var body = _get_player_body()
+	var spot = get_node_or_null("RegisterSpot")
+	if body == null or spot == null:
+		return false
+	var diff = body.global_position - spot.global_position
+	diff.y = 0.0
+	return diff.length() < 1.5
 
 func receive_npc_items(items: Array[String], npc: Node3D) -> void:
 	if _pending_items.size() > 0:
@@ -110,9 +120,10 @@ func _checkout_complete() -> void:
 	_transaction_total = 0.0
 	_scanned_total = 0.0
 	_update_total_label()
-	if _npc and is_instance_valid(_npc):
-		_npc.checkout_complete()
+	var departing = _npc
 	_npc = null
+	if departing and is_instance_valid(departing):
+		departing.checkout_complete()
 
 func _spawn_counter_model(index: int) -> Node3D:
 	var zone = get_node_or_null("CounterZone")
@@ -157,11 +168,69 @@ func pack_away(player_inventory) -> void:
 	_pending_items.clear()
 	_transaction_total = 0.0
 	_scanned_total = 0.0
+	_queue.clear()
 	var crate = PACKING_CRATE_SCENE.instantiate()
 	get_tree().current_scene.add_child(crate)
 	crate.pack("Register", OWN_SCENE)
 	player_inventory.pick_up_item(crate)
 	queue_free()
+
+func join_queue(npc: Node3D) -> int:
+	_queue.append(npc)
+	return _queue.size() - 1
+
+func leave_queue(npc: Node3D) -> void:
+	var idx = _queue.find(npc)
+	if idx == -1:
+		return
+	_queue.remove_at(idx)
+	for i in range(idx, _queue.size()):
+		var queued = _queue[i]
+		if is_instance_valid(queued):
+			queued.update_queue_slot(i, get_queue_spot(i))
+	if is_staffed():
+		_notify_front_npc()
+
+func get_queue_member(index: int) -> Node3D:
+	if index < 0 or index >= _queue.size():
+		return null
+	return _queue[index]
+
+func _notify_front_npc() -> void:
+	if _queue.size() > 0 and is_instance_valid(_queue[0]) and _pending_items.is_empty():
+		_queue[0].register_is_staffed()
+
+func get_queue_spot(index: int) -> Vector3:
+	var spot = get_node_or_null("CustomerSpot")
+	if spot == null:
+		return global_position
+	var base = spot.global_position
+	var dir := _get_queue_direction()
+	return base + dir * index * QUEUE_SPACING
+
+func _get_queue_direction() -> Vector3:
+	var scene = get_tree().current_scene
+	var front = scene.get_node_or_null("StoreFront")
+	var back  = scene.get_node_or_null("StoreFront/StoreBack")
+	if front and back:
+		var d = back.global_position - front.global_position
+		d.y = 0
+		if d.length_squared() > 0.001:
+			return d.normalized()
+	# Fallback: direction from register toward CustomerSpot
+	var spot = get_node_or_null("CustomerSpot")
+	if spot:
+		var d = spot.global_position - global_position
+		d.y = 0
+		if d.length_squared() > 0.001:
+			return d.normalized()
+	return Vector3.FORWARD
+
+func queue_length() -> int:
+	return _queue.size()
+
+func is_front_of_queue(npc: Node3D) -> bool:
+	return _queue.size() > 0 and _queue[0] == npc
 
 func _is_player_in_zone() -> bool:
 	var body = _get_player_body()
@@ -171,7 +240,6 @@ func _is_player_in_zone() -> bool:
 	var half = zone.size / 2.0
 	var local_pos = zone.to_local(body.global_position)
 	return (abs(local_pos.x) <= half.x and
-			abs(local_pos.y) <= half.y and
 			abs(local_pos.z) <= half.z)
 
 func _get_player_body() -> Node3D:
