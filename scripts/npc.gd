@@ -106,9 +106,12 @@ func checkout_complete() -> void:
 func register_is_staffed() -> void:
 	if state != State.WAITING or _handed_off or _register == null:
 		return
+	_handed_off = true
+	await get_tree().create_timer(1.0).timeout
+	if _register == null or not is_instance_valid(_register):
+		return
 	_register.receive_npc_items(_items, self)
 	_items.clear()
-	_handed_off = true
 
 func update_queue_slot(slot: int, new_pos: Vector3) -> void:
 	_queue_slot = slot
@@ -160,12 +163,8 @@ func _find_shortest_queue_register() -> Node3D:
 	return best
 
 func _find_shelf_with_prints() -> Node3D:
-	var claimed: Array = []
-	for npc in get_tree().get_nodes_in_group("npc"):
-		if npc != self and npc.state == State.GOING_TO_SHELF:
-			claimed.append(npc._shelf)
 	for shelf in get_tree().get_nodes_in_group("product_shelf"):
-		if shelf.has_method("has_any_prints") and shelf.has_any_prints() and not shelf in claimed:
+		if shelf.has_method("has_any_prints") and shelf.has_any_prints():
 			return shelf
 	return null
 

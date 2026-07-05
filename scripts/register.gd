@@ -13,6 +13,8 @@ var _transaction_total: float = 0.0
 var _scanned_total: float = 0.0
 var _total_label: Label3D = null
 var _queue: Array[Node3D] = []
+var _operator: Node3D = null
+const OPERATOR_LEAVE_DIST: float = 2.5
 
 func _ready() -> void:
 	add_to_group("interactable")
@@ -60,12 +62,12 @@ func get_move_hint() -> String:
 	return "Move"
 
 func get_click_hint(_player_inventory) -> String:
-	if not _is_player_in_zone():
-		return "Go to Register"
-	return ""
+	if _operator != null:
+		return ""
+	return "Go to Register"
 
 func interact() -> void:
-	if _is_player_in_zone():
+	if _operator != null:
 		return
 	var body = _get_player_body()
 	if body == null:
@@ -73,10 +75,23 @@ func interact() -> void:
 	var spot = get_node_or_null("RegisterSpot")
 	if spot == null:
 		return
+	_operator = body
 	body.global_position = spot.global_position
 	body.look_rotation.y = spot.global_rotation.y
 	body.rotate_look(Vector2.ZERO)
 	_notify_front_npc()
+
+func _process(_delta: float) -> void:
+	if _operator == null or not is_instance_valid(_operator):
+		_operator = null
+		return
+	var spot = get_node_or_null("RegisterSpot")
+	if spot == null:
+		return
+	var diff = _operator.global_position - spot.global_position
+	var dist = Vector2(diff.x, diff.z).length()
+	if dist > OPERATOR_LEAVE_DIST:
+		_operator = null
 
 func scan_item(item: Node3D) -> void:
 	var idx = _counter_models.find(item)
@@ -92,13 +107,7 @@ func scan_item(item: Node3D) -> void:
 		_checkout_complete()
 
 func is_staffed() -> bool:
-	var body = _get_player_body()
-	var spot = get_node_or_null("RegisterSpot")
-	if body == null or spot == null:
-		return false
-	var diff = body.global_position - spot.global_position
-	diff.y = 0.0
-	return diff.length() < 1.5
+	return _operator != null and is_instance_valid(_operator)
 
 func receive_npc_items(items: Array[String], npc: Node3D) -> void:
 	if _pending_items.size() > 0:
@@ -231,16 +240,6 @@ func queue_length() -> int:
 
 func is_front_of_queue(npc: Node3D) -> bool:
 	return _queue.size() > 0 and _queue[0] == npc
-
-func _is_player_in_zone() -> bool:
-	var body = _get_player_body()
-	var zone = get_node_or_null("RegisterZone")
-	if body == null or zone == null:
-		return false
-	var half = zone.size / 2.0
-	var local_pos = zone.to_local(body.global_position)
-	return (abs(local_pos.x) <= half.x and
-			abs(local_pos.z) <= half.z)
 
 func _get_player_body() -> Node3D:
 	var inv = get_tree().get_first_node_in_group("player")

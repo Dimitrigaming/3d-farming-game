@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="3D_Printing_Simulator"
-run/main_scene="uid://dtestmap0001"
+run/main_scene="uid://dgbvboec6ldb0"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
