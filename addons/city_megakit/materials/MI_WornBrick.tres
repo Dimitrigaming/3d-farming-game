@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://dswa50plkjgyd"]
+
+[ext_resource type="Shader" uid="uid://cvenvp6d858qh" path="res://addons/quaternius/materials/M_BaseMaterial.gdshader" id="1_wov5u"]
+[ext_resource type="Texture2D" uid="uid://durebdd2dy82y" path="res://addons/quaternius/materials/T_WornBrick_BaseColor.png" id="2_f4p4c"]
+[ext_resource type="Texture2D" uid="uid://vehp6ifvj7ru" path="res://addons/quaternius/materials/T_WornBrick_Normal.png" id="3_wajgq"]
+[ext_resource type="Texture2D" uid="uid://bnlivtk78w64r" path="res://addons/quaternius/materials/T_WornBrick_ORM.png" id="4_2edhq"]
+[ext_resource type="Texture2D" uid="uid://dl43s6c8tklbg" path="res://addons/quaternius/materials/T_CornerDamage_Normal.png" id="4_c23dm"]
+[ext_resource type="Texture2D" uid="uid://dbxevwd2cw8gu" path="res://addons/quaternius/materials/T_Noise_Drips.png" id="6_fhs8l"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_wov5u")
+shader_parameter/albedo = ExtResource("2_f4p4c")
+shader_parameter/base_normal = ExtResource("3_wajgq")
+shader_parameter/detail_normal = ExtResource("4_c23dm")
+shader_parameter/orm = ExtResource("4_2edhq")
+shader_parameter/wear_texture = ExtResource("6_fhs8l")
+shader_parameter/color_tint = Color(1, 1, 1, 1)
+shader_parameter/wear_color = Color(0.292, 0.292, 0.292, 1)
+shader_parameter/use_detail_normal = true
+shader_parameter/detail_normal_intensity = 1.0

@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://cqmgaml5w7k5l"]
+
+[ext_resource type="Shader" uid="uid://cvenvp6d858qh" path="res://addons/quaternius/materials/M_BaseMaterial.gdshader" id="1_fh3ee"]
+[ext_resource type="Texture2D" uid="uid://bairidngy8bbi" path="res://addons/quaternius/materials/T_RedBrick_BaseColor.png" id="2_fb52a"]
+[ext_resource type="Texture2D" uid="uid://bjsq4ihjw4c18" path="res://addons/quaternius/materials/T_RedBrick_Normal.png" id="3_d72xi"]
+[ext_resource type="Texture2D" uid="uid://dl43s6c8tklbg" path="res://addons/quaternius/materials/T_CornerDamage_Normal.png" id="4_il2ig"]
+[ext_resource type="Texture2D" uid="uid://qha476tq8jes" path="res://addons/quaternius/materials/T_RedBrick_ORM.png" id="5_ubq52"]
+[ext_resource type="Texture2D" uid="uid://dbxevwd2cw8gu" path="res://addons/quaternius/materials/T_Noise_Drips.png" id="6_fb52a"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_fh3ee")
+shader_parameter/albedo = ExtResource("2_fb52a")
+shader_parameter/base_normal = ExtResource("3_d72xi")
+shader_parameter/detail_normal = ExtResource("4_il2ig")
+shader_parameter/orm = ExtResource("5_ubq52")
+shader_parameter/wear_texture = ExtResource("6_fb52a")
+shader_parameter/color_tint = Color(1, 1, 1, 1)
+shader_parameter/wear_color = Color(0.32172796, 0.32172796, 0.32172796, 1)
+shader_parameter/use_wear_color = true
+shader_parameter/use_detail_normal = true
+shader_parameter/detail_normal_intensity = 1.0

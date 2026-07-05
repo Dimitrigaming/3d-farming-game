@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://x81i0r1cgbf0"]
+
+[ext_resource type="Shader" uid="uid://cvenvp6d858qh" path="res://addons/quaternius/materials/M_BaseMaterial.gdshader" id="1_3jkb6"]
+[ext_resource type="Texture2D" uid="uid://bs03a36xrs2vv" path="res://addons/quaternius/materials/T_Concrete_Asphalt_BaseColor.png" id="2_reiv1"]
+[ext_resource type="Texture2D" uid="uid://bnwb1nw0npbkf" path="res://addons/quaternius/materials/T_Concrete_Normal.png" id="3_3ctcd"]
+[ext_resource type="Texture2D" uid="uid://cbcm6sie0xb2o" path="res://addons/quaternius/materials/T_Concrete_ORM.png" id="4_dgoat"]
+[ext_resource type="Texture2D" uid="uid://dl43s6c8tklbg" path="res://addons/quaternius/materials/T_CornerDamage_Normal.png" id="4_miah4"]
+[ext_resource type="Texture2D" uid="uid://dbxevwd2cw8gu" path="res://addons/quaternius/materials/T_Noise_Drips.png" id="6_7b8lh"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_3jkb6")
+shader_parameter/albedo = ExtResource("2_reiv1")
+shader_parameter/base_normal = ExtResource("3_3ctcd")
+shader_parameter/detail_normal = ExtResource("4_miah4")
+shader_parameter/orm = ExtResource("4_dgoat")
+shader_parameter/wear_texture = ExtResource("6_7b8lh")
+shader_parameter/color_tint = Color(1, 1, 1, 1)
+shader_parameter/wear_color = Color(0.292, 0.292, 0.292, 1)
+shader_parameter/use_wear_color = true
+shader_parameter/use_detail_normal = false
+shader_parameter/detail_normal_intensity = 1.0

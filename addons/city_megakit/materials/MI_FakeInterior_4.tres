@@ -1,0 +1,23 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://5ufbvno13rrn"]
+
+[ext_resource type="Shader" uid="uid://c5j2tqlobm57h" path="res://addons/quaternius/materials/M_FakeInterior.tres" id="1_swgrv"]
+[ext_resource type="Texture2D" uid="uid://dkq6vvmxhmc76" path="res://addons/quaternius/materials/T_Curtains.png" id="2_ln3bx"]
+[ext_resource type="Texture2D" uid="uid://b4frftpqwp6lp" path="res://addons/quaternius/materials/T_Dark_interior.png" id="3_ajwg3"]
+[ext_resource type="Texture2D" uid="uid://d0ynx742ltwtp" path="res://addons/quaternius/materials/T_Lit_interior_1.png" id="4_hvfk8"]
+[ext_resource type="Texture2D" uid="uid://ffuos0f3sw8w" path="res://addons/quaternius/materials/T_Lit_interior_2.png" id="5_gbvtk"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_swgrv")
+shader_parameter/depth = 0.6
+shader_parameter/percentage_lit = 0.42
+shader_parameter/manual_darkorLit = 1.0
+shader_parameter/manual_interiortype = 0.0
+shader_parameter/hasRandomWindows = false
+shader_parameter/percentage_variations = 0.5
+shader_parameter/light_intensity = 1.0
+shader_parameter/manual_curtain_type = 1.0
+shader_parameter/lit_interior_1 = ExtResource("4_hvfk8")
+shader_parameter/lit_interior_2 = ExtResource("5_gbvtk")
+shader_parameter/dark_interior = ExtResource("3_ajwg3")
+shader_parameter/curtain_texture = ExtResource("2_ln3bx")

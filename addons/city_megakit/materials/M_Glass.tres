@@ -1,0 +1,39 @@
+[gd_resource type="VisualShader" format=3 uid="uid://b73qvm4hxi13w"]
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_cguyg"]
+parameter_name = "Color"
+default_value_enabled = true
+default_value = Color(0.231373, 0.231373, 0.231373, 1)
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_0dmks"]
+parameter_name = "Metallic"
+default_value_enabled = true
+default_value = 1.0
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_ill3x"]
+parameter_name = "Specular"
+default_value_enabled = true
+default_value = 1.0
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_mrb43"]
+parameter_name = "Roughness"
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_mjlho"]
+parameter_name = "Opacity"
+default_value_enabled = true
+default_value = 0.5
+
+[resource]
+modes/cull = 2
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_cguyg")
+nodes/fragment/2/position = Vector2(-100, -80)
+nodes/fragment/3/node = SubResource("VisualShaderNodeFloatParameter_0dmks")
+nodes/fragment/3/position = Vector2(-240, 120)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatParameter_ill3x")
+nodes/fragment/4/position = Vector2(-220, 580)
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatParameter_mrb43")
+nodes/fragment/5/position = Vector2(-220, 360)
+nodes/fragment/6/node = SubResource("VisualShaderNodeFloatParameter_mjlho")
+nodes/fragment/6/position = Vector2(-120, 800)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 0, 2, 4, 0, 0, 4, 5, 0, 0, 3, 6, 0, 0, 1)

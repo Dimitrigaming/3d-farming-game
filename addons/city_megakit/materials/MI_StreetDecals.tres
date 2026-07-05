@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b3fgen0enpybk"]
+
+[ext_resource type="Shader" uid="uid://b0rvoduj6dds3" path="res://addons/quaternius/materials/M_StreetDecals.tres" id="1_pvliu"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_pvliu")
+shader_parameter/Color = Color(0.694118, 0.694118, 0.694118, 1)
