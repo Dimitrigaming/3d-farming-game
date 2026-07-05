@@ -104,6 +104,7 @@ tablet={
 [physics]
 
 3d/physics_engine="Jolt Physics"
+jolt_physics/limits/max_bodies=65536
 
 [rendering]
 

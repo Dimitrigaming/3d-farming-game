@@ -2,10 +2,16 @@ extends CanvasLayer
 
 @onready var hints_container: VBoxContainer = $Hints
 @onready var money_label: Label = $MoneyLabel
+@onready var noclip_label: Label = $NoclipLabel
 
 func _ready() -> void:
 	money_label.text = "$%.2f" % GameState.money
 	GameState.money_changed.connect(_on_money_changed)
+
+func _process(_delta: float) -> void:
+	var controller = get_parent()
+	if controller and "freeflying" in controller:
+		noclip_label.visible = controller.freeflying
 
 func _on_money_changed(new_amount: float) -> void:
 	money_label.text = "$%.2f" % new_amount
