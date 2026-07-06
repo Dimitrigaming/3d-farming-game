@@ -4,6 +4,7 @@ enum State { IDLE, GOING_TO_SHELF, GOING_TO_REGISTER, WAITING, LEAVING }
 
 const SPEED: float = 3.0
 const ARRIVE_DIST: float = 1.2
+const ARRIVE_DIST_SHELF: float = 0.35
 
 var state: int = State.IDLE
 var _items: Array[String] = []
@@ -31,7 +32,7 @@ func _physics_process(delta: float) -> void:
 
 	match state:
 		State.GOING_TO_SHELF:
-			if _navigate_to(_target_pos, delta):
+			if _navigate_to_dist(_target_pos, delta, ARRIVE_DIST_SHELF):
 				_on_arrive_at_shelf()
 		State.GOING_TO_REGISTER:
 			if _navigate_to(_target_pos, delta):
@@ -71,13 +72,21 @@ func _physics_process(delta: float) -> void:
 				else:
 					_shelf = _find_shelf_with_prints()
 					if _shelf != null:
-						var offset = Vector3(randf_range(-0.6, 0.6), 0, randf_range(-0.6, 0.6))
-						_target_pos = _shelf.global_position + offset
+						_target_pos = _shelf.get_npc_stand_pos() if _shelf.has_method("get_npc_stand_pos") else _shelf.global_position
 						state = State.GOING_TO_SHELF
 
 	move_and_slide()
 
 func _on_arrive_at_shelf() -> void:
+	velocity = Vector3.ZERO
+	_idle_timer = -30.0  # suppress idle recheck while browsing
+	state = State.IDLE
+	_tween_face_target(_shelf.global_position)
+	await get_tree().create_timer(randf_range(0.8, 1.5)).timeout
+	if _shelf == null or not is_instance_valid(_shelf):
+		state = State.IDLE
+		_idle_timer = 0.0
+		return
 	var count = randi_range(1, 3)
 	_items = _shelf.npc_take_prints(count)
 	if _items.is_empty():
@@ -118,15 +127,8 @@ func update_queue_slot(slot: int, new_pos: Vector3) -> void:
 	_queue_target = new_pos
 	_tween_face_queue_direction()
 
-func _tween_face_queue_direction() -> void:
-	if _register == null:
-		return
-	var look_pos: Vector3
-	if _queue_slot == 0:
-		look_pos = _register.global_position
-	else:
-		look_pos = _register.get_queue_spot(_queue_slot - 1)
-	var to_target = look_pos - global_position
+func _tween_face_target(world_pos: Vector3) -> void:
+	var to_target = world_pos - global_position
 	to_target.y = 0
 	if to_target.length_squared() < 0.01:
 		return
@@ -135,8 +137,32 @@ func _tween_face_queue_direction() -> void:
 	var t = create_tween()
 	t.tween_method(
 		func(a: float): rotation.y = lerp_angle(start_angle, target_angle, a),
-		0.0, 1.0, 0.4
+		0.0, 1.0, 0.3
 	).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+
+func _tween_face_queue_direction() -> void:
+	if _register == null:
+		return
+	var look_pos: Vector3
+	if _queue_slot == 0:
+		look_pos = _register.global_position
+	else:
+		look_pos = _register.get_queue_spot(_queue_slot - 1)
+	_tween_face_target(look_pos)
+
+func _navigate_to_dist(target: Vector3, delta: float, arrive_dist: float) -> bool:
+	var to_target = target - global_position
+	to_target.y = 0
+	var dist = to_target.length()
+	if dist <= arrive_dist:
+		velocity.x = 0
+		velocity.z = 0
+		return true
+	var dir = to_target / dist
+	velocity.x = dir.x * SPEED
+	velocity.z = dir.z * SPEED
+	rotation.y = lerp_angle(rotation.y, atan2(dir.x, dir.z), delta * 8.0)
+	return false
 
 func _navigate_to(target: Vector3, delta: float) -> bool:
 	var to_target = target - global_position

@@ -42,3 +42,6 @@ size = Vector3(0.74316406, 0.5837097, 0.50354004)
 [node name="PlacementZone3" parent="." unique_id=1731485833 instance=ExtResource("2_kfn13")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00048828125, 1.276598, -0.15985107)
 size = Vector3(0.74316406, 0.5837097, 0.50354004)
+
+[node name="NPCSpot" type="Marker3D" parent="." unique_id=1386720146]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.85418904)

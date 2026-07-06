@@ -161,6 +161,12 @@ func _first_available_zone(item_type: String = "") -> Node:
 		return child
 	return null
 
+func get_npc_stand_pos() -> Vector3:
+	var spot = get_node_or_null("NPCSpot")
+	if spot != null:
+		return spot.global_position
+	return global_position
+
 func has_any_prints() -> bool:
 	for child in get_children():
 		if child.has_method("has_prints") and child.has_prints():
