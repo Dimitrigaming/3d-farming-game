@@ -1,0 +1,40 @@
+[gd_scene format=4 uid="uid://dje1ai1pb0dfe"]
+
+[ext_resource type="Material" uid="uid://b3fgen0enpybk" path="res://addons/city_megakit/materials/MI_StreetDecals.tres" id="1_wxo4m"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5u3v3"]
+_surfaces = [{
+"aabb": AABB(-1.4000001, -0.148, -0.9999998, 2.3999996, 1e-05, 2.4000015),
+"format": 34896613377,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEAAwAFAAQABQAGAAQABQAHAAYABwAIAAYABwAJAAgACQAKAAgACQALAAoACwAMAAoACwANAAwADQAOAAwADQAPAA4ADwAQAA4ADwARABAAEQASABAAEQATABIAEwAUABIAEwAVABQA"),
+"name": "MI_StreetDecals",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 22,
+"vertex_data": PackedByteArray("VRUAAAAAAAAmAwAACygAAAAAAAAAAAAAOBgAALUkAACHDAAAG08AANEgAACDSAAA5hsAADh0AADoLgAAiGoAAOQwAAB4lgAAJkIAAO6JAAD6SgAABLUAABBaAADupQAAhmkAABrPAAAQdgAA2L0AAMaLAAAY5AAAdpUAABbRAADjsAAAd/MAAHu3AAAt3wAA89cAANj8AABJ2wAAxucAAP//AAD//wAA/v8AAKnqAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_o72mg"]
+resource_name = "Sidewalk_Corner_Round_2m_Stripe_Plane_023"
+_surfaces = [{
+"aabb": AABB(-1.4000001, -0.148, -0.9999998, 2.3999996, 1e-05, 2.4000015),
+"attribute_data": PackedByteArray("AABGAdgXXxAAAF8Q2BdGAeIxXxDiMUYB7EtfEOxLRgH1ZV8Q9WVGAf9/XxD/f0YBCZpfEAmaRgEStF8QErRGARzOXxAczkYBJuhfECboRgH//18Q//9GAQ=="),
+"format": 34896613399,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEAAwAFAAQABQAGAAQABQAHAAYABwAIAAYABwAJAAgACQAKAAgACQALAAoACwAMAAoACwANAAwADQAOAAwADQAPAA4ADwAQAA4ADwARABAAEQASABAAEQATABIAEwAUABIAEwAVABQA"),
+"material": ExtResource("1_wxo4m"),
+"name": "MI_StreetDecals",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 22,
+"vertex_data": PackedByteArray("VRUAAAAAgdMmAwAACyi80QAAAAAAAIHTOBgAALUkvNGHDAAAG09eztEgAACDSF7O5hsAADh0Q8voLgAAiGpDy+QwAAB4lnTIJkIAAO6JdMj6SgAABLX8xRBaAADupfzFhmkAABrP5MMQdgAA2L3kw8aLAAAY5DfCdpUAABbRN8LjsAAAd/P+wHu3AAAt3/7A89cAANj8P8BJ2wAAxuc/wP//AAD//w/A/v8AAKnqD8DtrIipQ69dqO2siKlDr12oLbTopS206KWCuT2jgrk9o2S/TKBkv0ygAMb+nADG/pyUzTSZlM00mXnWwpR51sKUNOFkjzThZI+W7rOIlu6ziKv2qYSr9qmE")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_5u3v3")
+
+[node name="Sidewalk_Corner_Round_2m_Stripe2" type="Node3D" unique_id=1803874599]
+
+[node name="Sidewalk_Corner_Round_2m_Stripe" type="MeshInstance3D" parent="." unique_id=2129643892]
+mesh = SubResource("ArrayMesh_o72mg")

@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://0sxp4up8wow3"]
+
+[ext_resource type="Material" uid="uid://b3fgen0enpybk" path="res://addons/city_megakit/materials/MI_StreetDecals.tres" id="1_q3kph"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_bk8c3"]
+_surfaces = [{
+"aabb": AABB(-1, -0.148, 1.2000003, 2, 1e-05, 0.19999981),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"name": "MI_StreetDecals",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_rpx5e"]
+resource_name = "Sidewalk_Straight_2m_Stripe_Plane_031"
+_surfaces = [{
+"aabb": AABB(-1, -0.148, 1.2000003, 2, 1e-05, 0.19999981),
+"attribute_data": PackedByteArray(152, 217, 70, 1, 132, 43, 95, 16, 132, 43, 70, 1, 152, 217, 95, 16),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"material": ExtResource("1_q3kph"),
+"name": "MI_StreetDecals",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 255, 127, 255, 191, 255, 127, 255, 191, 255, 127, 255, 191, 255, 127, 255, 191)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_bk8c3")
+
+[node name="Sidewalk_Straight_2m_Stripe2" type="Node3D" unique_id=98851564]
+
+[node name="Sidewalk_Straight_2m_Stripe" type="MeshInstance3D" parent="." unique_id=505548794]
+mesh = SubResource("ArrayMesh_rpx5e")

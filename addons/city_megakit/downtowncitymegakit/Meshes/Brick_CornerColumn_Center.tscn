@@ -1,0 +1,40 @@
+[gd_scene format=4 uid="uid://gyxr2sn8bd00"]
+
+[ext_resource type="Material" uid="uid://cn4uhywlw78ir" path="res://addons/city_megakit/materials/MI_RedBrick_Pale.tres" id="1_6kxso"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_3iowh"]
+_surfaces = [{
+"aabb": AABB(-0.9700001, 0, -0.97, 1.1400002, 3, 1.1400001),
+"format": 34896613377,
+"index_count": 96,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgABAAQAAAACAAUAAAAFAAYAAgAHAAUAAgAIAAcAAgAEAAgACAAJAAcACgAIAAQACAAKAAkACgAEAAsACgAMAAkACgALAA0ACgAOAAwACgANAA4ADAAOAA8ADQAPAA4ADQAQAA8ADAAPABEADwAQABIAEQAPABMADwASABMAEQATABQAEgAVABMAFAATABUAEgAWABUAFAAVABcAFgAYABUAFwAVABgAFgAZABgAFwAYABoA"),
+"name": "MI_RedBrick_Pale",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 27,
+"vertex_data": PackedByteArray("0tmzcQAAAAD//wAAAAAAAP7/s3EAAAAA0tkAAAAAAAD+/wAAuzsAAP////8AAAAA0tn//wAAAAD+////uzsAAP7/s3G7OwAA/v///zKzAAD+/7NxMrMAAP7/AAAyswAA/v//////AAD+/wAA//8AAP7/s3H//wAAMrOzcf//AAAyswAA//8AADKz/////wAAuzsAAP//AAC7O7Nx//8AALs7/////wAAAACzcf//AAAAAAAA//8AAAAA/////wAAAACzcdLZAAAAAAAA0tkAAAAA///S2QAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5tsuq"]
+resource_name = "Brick_CornerColumn_Center_Cube_018"
+_surfaces = [{
+"aabb": AABB(-0.9700001, 0, -0.97, 1.1400002, 3, 1.1400001),
+"attribute_data": PackedByteArray("/////ziO7r0Ci6Pg/////4eI//+rgnGL/////4eI7r2rgqPg/////ziO//8Ci3GL/////4eI7r3//6bg/////5V8///h8g6L/////5V87r3h8qbg/////4eI/////w6L/////7Fk7r3N1f///////5V8///N1f///////7Fk///N1f///////5V87r3N1f///////77Y//9tjnGL/////8vM7r2PgaPg/////77Y7r1tjqPg/////8vM//+PgXGL/////8vM//8R/uyL/////xvH7r2T9Z/g/////8vM7r0R/p/g/////xvH//+T9eyL/////////////w6L/////6Lw7r297qbg////////7r3//6bg/////6Lw//+97g6L/////6Lw7r3N1f///////77Y///N1f///////77Y7r3N1f///////6Lw///N1f///////7Fk7r2EkqPg/////1RV//+PgXGL/////1RV7r2PgaPg/////7Fk//+EknGL/////7FkrdKEkhD2/////1RV/3+PgXGL/////7Fk/3+EknGL/////1RVrdKPgRD2/////ziOrdICixD2/////4eI/3+rgnGL/////ziO/38Ci3GL/////4eIrdKrghD2/////4eIrdL//y32/////5V8/3/h8g6L/////4eI/3///w6L/////5V8rdLh8i32/////5V8rdLN1f///////7Fk/3/N1f///////5V8/3/N1f///////7FkrdLN1f///////6Lw/3/N1f///////77YrdLN1f///////77Y/3/N1f///////6LwrdLN1f///////////3///w6L/////6LwrdK97i32/////6Lw/3+97g6L////////rdL//y32/////8vM/38R/uyL/////xvHrdKT9ez1/////xvH/3+T9eyL/////8vMrdIR/uz1/////77Y/39tjnGL/////8vMrdKPgRD2/////8vM/3+PgXGL/////77YrdJtjhD2"),
+"format": 34896613439,
+"index_count": 96,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0AMAAxADIAMAAzADEANAA1ADYANAA3ADUAOAA5ADoAOAA7ADkAPAA9AD4APAA/AD0A"),
+"material": ExtResource("1_6kxso"),
+"name": "MI_RedBrick_Pale",
+"primitive": 3,
+"uv_scale": Vector4(3, 2.581686, 1.9850162, 1.3620389),
+"vertex_count": 64,
+"vertex_data": PackedByteArray("0tmzcQAA/////wAAAAD///7/s3EAAP//0tkAAAAA///+/7NxAAD/v/7/AAC7O/+//v+zcbs7/7///wAAAAD/v/7/s3Eys/+//v8AALs7/7/+/wAAMrP/v/7/s3G7O/+/uzsAAP//AIAAALNx//8AgLs7s3H//wCAAAAAAP//AIAAAAAA////vwAAs3HS2f+/AACzcf///78AAAAA0tn/v/7/AAD//wCAMrOzcf//AID+/7Nx//8AgDKzAAD//wCAMrOzcf//AIC7OwAA//8AgLs7s3H//wCAMrMAAP//AID+/7NxMrP/v/7/AAD///+//v+zcf///7/+/wAAMrP/v/7/s3Eys/+//v///////7/+////MrP/v/7/s3H///+/0tmzcQAA////////AAD//9LZ//8AAP///v+zcQAA///+/7NxAAD/v/7///+7O/+//////wAA/7/+/7Nxuzv/v/7/s3G7O/+//v///zKz/7/+////uzv/v/7/s3Eys/+/MrP/////AIC7O7Nx//8AgLs7/////wCAMrOzcf//AID+//////8AgDKzs3H//wCAMrP/////AID+/7Nx//8AgAAA//////+/AACzcdLZ/78AAP//0tn/vwAAs3H///+/uzv/////AIAAALNx//8AgAAA/////wCAuzuzcf//AID/f/7//3////9//v//f////38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/f////3////9/////f////3/+//9//v//f/7//3////9/////f////3////9/////f////3////9/////f////38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/f/7//3////9/////f/7//38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/f////3////9/////f////3////9/////f////3////9/////f/7//3////9//v//f////3////9/////f///")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_3iowh")
+
+[node name="Brick_CornerColumn_Center2" type="Node3D" unique_id=891353677]
+
+[node name="Brick_CornerColumn_Center" type="MeshInstance3D" parent="." unique_id=1086950656]
+mesh = SubResource("ArrayMesh_5tsuq")

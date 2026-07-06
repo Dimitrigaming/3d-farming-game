@@ -1,14 +1,43 @@
 [gd_scene format=3 uid="uid://dgbvboec6ldb0"]
 
-[ext_resource type="PackedScene" uid="uid://dcfpq3h8tffm0" path="res://City.tscn" id="1_gfjgm"]
+[ext_resource type="PackedScene" path="res://City.tscn" id="1_gfjgm"]
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="2_ctrl"]
+[ext_resource type="PackedScene" uid="uid://er1i3yp4jq5p" path="res://models/printer.tscn" id="3_prnt"]
+[ext_resource type="PackedScene" uid="uid://dnldinl4pqluh" path="res://models/box.tscn" id="4_box"]
+[ext_resource type="PackedScene" uid="uid://bot8ywuxfnkyh" path="res://models/trash_can.tscn" id="5_trash"]
+[ext_resource type="PackedScene" uid="uid://bnc614ppwsudh" path="res://models/small_stock_shelf.tscn" id="6_sss"]
+[ext_resource type="PackedScene" uid="uid://dm3llu07dng5r" path="res://models/small_product_shelf.tscn" id="7_sps"]
+[ext_resource type="PackedScene" uid="uid://bukjvfe20rjq1" path="res://models/register.tscn" id="8_reg"]
+[ext_resource type="PackedScene" uid="uid://dminshelf001" path="res://models/admin_small_product_shelf.tscn" id="9_adm"]
+[ext_resource type="Script" uid="uid://b5vq70s5ijf5b" path="res://scripts/npc_spawner.gd" id="10_spawner"]
+[ext_resource type="PackedScene" uid="uid://dfx2kqowlw0lv" path="res://models/small_station.tscn" id="11_station"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_1"]
+sky_material = SubResource("ProceduralSkyMaterial_1")
+
+[sub_resource type="Environment" id="Environment_1"]
+background_mode = 2
+sky = SubResource("Sky_1")
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_floor"]
 size = Vector3(500, 1, 500)
 
 [node name="Map" type="Node3D" unique_id=491304342]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1172350645]
+environment = SubResource("Environment_1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=266972376]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 20.2, 0)
+shadow_enabled = true
+
 [node name="City" parent="." unique_id=1620436365 instance=ExtResource("1_gfjgm")]
-visible = false
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1769916119]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -61.9)
@@ -18,3 +47,60 @@ shape = SubResource("BoxShape3D_floor")
 
 [node name="PlayerBuilding" type="Marker3D" parent="." unique_id=21619216]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.800001, 0, -57.4)
+
+[node name="ProtoController" parent="." unique_id=602093427 instance=ExtResource("2_ctrl")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7, 0.19999614, -57.4)
+can_sprint = true
+can_freefly = true
+input_left = "move_left"
+input_right = "move_right"
+input_forward = "move_forward"
+input_back = "move_backward"
+input_jump = "jump"
+input_freefly = "noclip"
+
+[node name="Printer" parent="." unique_id=76972310 instance=ExtResource("3_prnt")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 21, 0.5, -62.000004)
+
+[node name="Printer2" parent="." unique_id=1735470931 instance=ExtResource("3_prnt")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 21, 0.5, -60.000004)
+
+[node name="Printer3" parent="." unique_id=720513280 instance=ExtResource("3_prnt")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 21, 0.5, -58.000004)
+
+[node name="Box" parent="." unique_id=1117782866 instance=ExtResource("4_box")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.900002, 0.39999998, -55.2)
+
+[node name="Box2" parent="." unique_id=472429699 instance=ExtResource("4_box")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.2, 0.39999998, -55.2)
+
+[node name="TrashCan" parent="." unique_id=719366373 instance=ExtResource("5_trash")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.70000005, -60.000004)
+
+[node name="SmallStockShelf" parent="." unique_id=1026783817 instance=ExtResource("6_sss")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1, 0.75, -64.4)
+
+[node name="SmallProductShelf" parent="." unique_id=986751326 instance=ExtResource("7_sps")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 13.8, 0.5, -61.5)
+
+[node name="Register" parent="." unique_id=738022750 instance=ExtResource("8_reg")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 16.199999, 0.5, -52)
+
+[node name="AdminSmallProductShelf" parent="." unique_id=966644272 instance=ExtResource("9_adm")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 13.8, 0.5, -59.7)
+
+[node name="SmallStation" parent="." unique_id=1191770616 instance=ExtResource("11_station")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.699999, 0.5, -64.6)
+
+[node name="NPCSpawner" type="Marker3D" parent="." unique_id=1511927017]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.199999, 0.9, -48.300003)
+script = ExtResource("10_spawner")
+
+[node name="NPCDespawner" type="Marker3D" parent="." unique_id=447789293]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.199999, 0.9, -69.5)
+
+[node name="StoreFront" type="Marker3D" parent="." unique_id=557737033]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.199999, 0.9, -56.800003)
+
+[node name="StoreBack" type="Marker3D" parent="StoreFront" unique_id=1306876042]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4, 0, 0)

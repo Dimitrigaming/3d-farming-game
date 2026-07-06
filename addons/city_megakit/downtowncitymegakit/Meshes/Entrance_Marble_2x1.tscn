@@ -1,0 +1,40 @@
+[gd_scene format=4 uid="uid://boe51l6rybjjj"]
+
+[ext_resource type="Material" uid="uid://d2ia4l35dq0mh" path="res://addons/city_megakit/materials/MI_Trim.tres" id="1_8i0px"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ai8n7"]
+_surfaces = [{
+"aabb": AABB(-1.0000002, 0, -0.0017050505, 2.0000005, 1.0067486, 1.0032071),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAAAAAEAAEABAAAAAMAAQAFAAIAAgAFAAMABAAGAAEAAQAGAAUABAAHAAYABQAGAAcABAADAAcABQAHAAMA"),
+"name": "MI_Trim",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("////////AAAAAAAALf8AAAAA/////wAA/////9EAAAD//wAALf8AAAAA///RAAAAAAAAAAAAAAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ksfs8"]
+resource_name = "Entrance_Marble_2x1_Cube_048"
+_surfaces = [{
+"aabb": AABB(-1.0000002, 0, -0.0017050505, 2.0000005, 1.0067486, 1.0032071),
+"attribute_data": PackedByteArray("R7R70IdYCYZTln+XOnYIwUe0f5eHWAjBU5Z70Dp2CYZHtH+XOnYJhlOWe9DskwjBR7R70Dp2CMFTln+X7JMJhoiXYcgHdlZomG8LoIaT8YWplwugB3YJhndvYciGkz5oiJdhyAaxVmiYbwughpPxhXdvYciGkz5oqZcLoAaxCYasgprSh1gKSxahb5gHdgmGrIJvmIdYCYYWoZrSB3YKS/2gmtLskwmGk4JvmGyxCMH9oG+Y7JMIwZOCmtJssQmG"),
+"format": 34896613431,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": ExtResource("1_8i0px"),
+"name": "MI_Trim",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/////////78AAAAALf//vwAA//////+///8AAC3//78AAP//0QAXAP//AAAAABcA/////9EAFwAAAAAAAAAXAAAAAAAt//+/AAD//9EA/78AAP//////vwAAAAAAAP+///8AAC3/AAD/////0QAAAP//AAAAAAAA////////AAD//wAALf+qKgAAAAAAAKoqAAAAAC3/qir//wAAAACqKgAA/////1TV/////9EAVNX///////9U1QAA///RAFTVNADK/zQAyv80AMr/NADK//K/8r/yv/K/8r/yv/K/8r//f////3////9/////f////7//f/+//3//v/9//7//f1RVVFVUVVRVVFVUVVRVVFWqqqqqqqqqqqqqqqqqqqqq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ai8n7")
+
+[node name="Entrance_Marble_2x12" type="Node3D" unique_id=259144552]
+
+[node name="Entrance_Marble_2x1" type="MeshInstance3D" parent="." unique_id=940499486]
+mesh = SubResource("ArrayMesh_ksfs8")

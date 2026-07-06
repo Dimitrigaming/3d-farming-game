@@ -1,0 +1,65 @@
+[gd_scene format=4 uid="uid://xsm5nmkft4p5"]
+
+[ext_resource type="Material" uid="uid://bydcwglomkywu" path="res://addons/city_megakit/materials/MI_Concrete.tres" id="1_c7oxn"]
+[ext_resource type="Material" uid="uid://budxptsfqe8j8" path="res://addons/city_megakit/materials/MI_InteriorWall.tres" id="2_s8xio"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_p2sua"]
+_surfaces = [{
+"aabb": AABB(-1.0000001, 0, -2, 2, 3, 2.0000002),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAAKAAEACQAKAAAACgADAAEACQAIAAoACgALAAMACAALAAoACwAEAAMACAAGAAsACwAFAAQABgAFAAsABgAHAAUA"),
+"lods": [0.001174671, PackedByteArray("AAABAAIAAAADAAEAAAAEAAMAAAAFAAQABgAFAAAABgAHAAUACAAGAAAACQAIAAAA")],
+"name": "MI_Concrete",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("AAD///7/AAAAAKqqAAAAAAAA//8AAAAAAABVVQAAAAAAAAAAAAAAAAAAAAD+/wAA//9VVf7/AAD//wAA/v8AAP//qqr+/wAA////////AAAAAKqq/v8AAAAAVVX+/wAA")
+}, {
+"aabb": AABB(-0.8, 0, -2, 1.8, 3.0000005, 1.8),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEABQADAAAAAwAGAAQABQAHAAMABwAGAAMACAAHAAUABwAJAAYACAAKAAcACgAJAAcACgALAAkA"),
+"name": "MI_InteriorWall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("AACpqgAAAAAAAP////8AAAAA//8AAAAAAACpqv//AAD///7///8AAAAAVFUAAAAA//+pqv//AAAAAFRV//8AAAAAAAAAAAAA//9UVf//AAAAAAAA//8AAP//AAD//wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_3q57t"]
+resource_name = "Concrete_Corner_Cube_180"
+_surfaces = [{
+"aabb": AABB(-1.0000001, 0, -2, 2, 3, 2.0000002),
+"attribute_data": PackedByteArray("/////////3///yuJ//////9/qqp6tsew//////9//396tiuJ//////9/VNV6tmPY//////9///96tv///////////////////////////3/8yyuJ////////qqr8y8ew//////9//393giuJ////////VNX8y2PY//////9///93gv7////////////8y///////////qqr//8ew////////VNX//2PY//////9/qqp3gsew//////9/VNV3gmPY"),
+"format": 34896613439,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAAMAAEADAADAAEADAANAAMADQAEAAMADQAFAAQABgAOAAgABgAHAA4ABwAPAA4ABwAJAA8ACQAKAA8ACQALAAoA"),
+"lods": [0.001174671, PackedByteArray("AAABAAIAAAADAAEAAAAEAAMAAAAFAAQABgAHAAgABwAJAAgACQAKAAgACQALAAoA")],
+"material": ExtResource("1_c7oxn"),
+"name": "MI_Concrete",
+"primitive": 3,
+"uv_scale": Vector4(2, 3, 1.9728197, 1.8308792),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("AAD///7//78AAKqqAAD/vwAA//8AAP+/AABVVQAA/78AAAAAAAD/vwAAAAD+//+/////////AID//6qq/v8AgAAA///+/wCA//9VVf7/AIAAAAAA/v8AgP//AAD+/wCAAACqqv7//78AAFVV/v//vwAAqqr+/wCAAABVVf7/AID/f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f///")
+}, {
+"aabb": AABB(-0.8, 0, -2, 1.8, 3.0000005, 1.8),
+"attribute_data": PackedByteArray("/////////3//f/9//////5kZAAD/f/9/////////AAD/f/9//////5kZ/3//f/9//////////v//f/9//////5kZ////f/9///////7//3//f/9//////5kZAAD/f/9/////////AAD/f/9//////5kZ/3//f/9//////2Xm/3//f/9//////wAAAAD/f/9//////2XmAAD/f/9//////wAA/3//f/9//////2Xm/v//f/9//////wAA/3//f/9//////2Xm/3//f/9//////wAA////f/9//////wAAAAD/f/9//////2XmAAD/f/9/"),
+"format": 34896613439,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAADAAAABAAFAAMABgAHAAgABgAJAAcACgALAAwACgANAAsADgAPABAADgARAA8AEAAPABIAEAASABMA"),
+"material": ExtResource("2_s8xio"),
+"name": "MI_InteriorWall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("AACpqgAA/78AAP//////vwAA//8AAP+/AACpqv///78AAFRVAAD/vwAAVFX///+/AAAAAAAA/78AAFRV////vwAAVFUAAP+/AAAAAP///78AAAAA////////VFX/////AABUVf///////wAA/////wAAVFX///////+pqv////8AAKmq////////VFX////////+//////8AAP////////9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/f/7//3/+//9//v//f/7//3////9/////f////3////9/////f///")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_p2sua")
+
+[node name="Concrete_Corner2" type="Node3D" unique_id=152592349]
+
+[node name="Concrete_Corner" type="MeshInstance3D" parent="." unique_id=106057883]
+mesh = SubResource("ArrayMesh_3q57t")

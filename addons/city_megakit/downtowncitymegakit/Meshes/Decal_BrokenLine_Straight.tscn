@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://c7kraavjyjbej"]
+
+[ext_resource type="Material" uid="uid://b3fgen0enpybk" path="res://addons/city_megakit/materials/MI_StreetDecals.tres" id="1_qyv5k"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_iyy1t"]
+_surfaces = [{
+"aabb": AABB(-3, -0.13000001, -0.099999905, 6, 1e-05, 0.19999981),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"name": "MI_StreetDecals",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_0hoab"]
+resource_name = "Decal_BrokenLine_Straight_Plane_060"
+_surfaces = [{
+"aabb": AABB(-3, -0.13000001, -0.099999905, 6, 1e-05, 0.19999981),
+"attribute_data": PackedByteArray(255, 255, 55, 202, 0, 0, 255, 255, 0, 0, 254, 255, 0, 0, 255, 255, 0, 0, 55, 202, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 255, 255),
+"format": 34896613431,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"material": ExtResource("1_qyv5k"),
+"name": "MI_StreetDecals",
+"primitive": 3,
+"uv_scale": Vector4(2, 0.2807125, 0, 2),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 255, 127, 255, 191, 255, 127, 255, 191, 255, 127, 255, 191, 255, 127, 255, 191)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_iyy1t")
+
+[node name="Decal_BrokenLine_Straight2" type="Node3D" unique_id=1020005766]
+
+[node name="Decal_BrokenLine_Straight" type="MeshInstance3D" parent="." unique_id=1456018749]
+mesh = SubResource("ArrayMesh_0hoab")

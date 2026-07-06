@@ -1,0 +1,63 @@
+[gd_scene format=4 uid="uid://ruf564cvqtx5"]
+
+[ext_resource type="Material" uid="uid://sv4rse08cs5w" path="res://addons/city_megakit/materials/MI_Shop_Signs.tres" id="1_wa3m5"]
+[ext_resource type="Material" uid="uid://db8rfdl6dtic" path="res://addons/city_megakit/materials/MI_Trim_MetalConcrete.tres" id="2_l3e0b"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_41mcw"]
+_surfaces = [{
+"aabb": AABB(-2.7216868, 0, 0.10260475, 5.4433737, 1.1764952, 1e-05),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"name": "MI_Shop_Signs",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAAAAAAD/////JAEAAP//AAAAAAAAAAD//yQBAAA=")
+}, {
+"aabb": AABB(-2.7216868, 0, -0.0041376427, 5.4433737, 1.1764952, 0.106742434),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAwAEAAIABAAAAAIABQADAAEABAAGAAAABgAFAAcABQABAAcABgAHAAAAAAAHAAEA"),
+"name": "MI_Trim_MetalConcrete",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAAAAAAD/////AAAAAAAA//8AAAAA////////AAAAAP////8AAP//AAD+/wAAAAAAAP7/AAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vxeos"]
+resource_name = "Prop_Sign_Hannigan_Plane_081"
+_surfaces = [{
+"aabb": AABB(-2.7216868, 0, 0.10260475, 5.4433737, 1.1764952, 1e-05),
+"attribute_data": PackedByteArray("/////4YJRf//AAD/cbNc2/////9xs0X//wAA/4YJXds="),
+"format": 34896613407,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": ExtResource("1_wa3m5"),
+"name": "MI_Shop_Signs",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAAAAAID/////JAEAgP//AAAAAACAAAD//yQBAID/f////3////9/////f///")
+}, {
+"aabb": AABB(-2.7216868, 0, -0.0041376427, 5.4433737, 1.1764952, 0.106742434),
+"attribute_data": PackedByteArray("/////6vBrbz/AAD//3/+//8BAf+rwf////////9/rbz/////gjp9uf8AAP9CTtuw/////4I627D/AAD/Qk59uf8AAP9AnX25/////wCx27D/AQH/QJ3bsP////8AsX25/////wCxfbn//////v/bsP////8Asduw////////fbn/AAD/Qk59uf8BAf9Anduw/wAA/0JO27D/AAD/QJ19uQ=="),
+"format": 34896613407,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEA"),
+"material": ExtResource("2_l3e0b"),
+"name": "MI_Trim_MetalConcrete",
+"primitive": 3,
+"uv_scale": Vector4(3.8981147, 0.7910156, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("AAAAAAAAAAD/////AAAAAAAA//8AAAAA//8AAAAAAAD//wAA/v+qKv////8AAKoq//8AAAAAqir///////+qKgAA/////6oqAAAAAAAAqioAAP//AACqKgAAAAD+/6oqAAAAAP7//z///wAAAAD/PwAAAAAAAP8///8AAP7//z////////8AAAAA//8AAAAA/////wAAAAAAAP////8AAP9/////f////3////9///+qKqoqqiqqKqoqqiqqKqoqVFWpqlRVqapUVamqVFWqqgAA/38AAP9/AAD/fwAA/3//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_41mcw")
+
+[node name="Prop_Sign_Hannigan2" type="Node3D" unique_id=879662357]
+
+[node name="Prop_Sign_Hannigan" type="MeshInstance3D" parent="." unique_id=1593739484]
+mesh = SubResource("ArrayMesh_vxeos")

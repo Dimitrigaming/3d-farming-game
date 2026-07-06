@@ -1,0 +1,41 @@
+[gd_scene format=4 uid="uid://dngg4mmcqukjb"]
+
+[ext_resource type="Material" uid="uid://b3fgen0enpybk" path="res://addons/city_megakit/materials/MI_StreetDecals.tres" id="1_mnutm"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_3u4i3"]
+_surfaces = [{
+"aabb": AABB(-5.93333, -0.049333334, -5.933334, 5.9333286, 1e-05, 5.933338),
+"format": 34896613377,
+"index_count": 156,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEAAwAFAAQABQAGAAQABQAHAAYABwAIAAYABwAJAAgACQAKAAgACQALAAoACwAMAAoACwANAAwADQAOAAwADQAPAA4ADwAQAA4ADwARABAAEQASABAAEQATABIAEwAUABIAEwAVABQAFQAWABQAFQAXABYAFwAYABYAFwAZABgAGQAaABgAGQAbABoAGwAcABoAGwAdABwAHQAeABwAHQAfAB4AHwAgAB4AHwAhACAAIQAiACAAIQAjACIAIwAkACIAIwAlACQAJQAmACQAJQAnACYAJwAoACYAJwApACgAKQAqACgAKQArACoAKwAsACoAKwAtACwALQAuACwALQAvAC4ALwAwAC4ALwAxADAAMQAyADAAMQAzADIAMwA0ADIAMwA1ADQA"),
+"name": "MI_StreetDecals",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 54,
+"vertex_data": PackedByteArray("//8AAOACAACK8AAAdwAAAP//AAAAAAAAtvAAAFYDAAAj4QAA3QEAAHzhAAC4BAAA2dEAADEEAABe0gAABQcAALvCAABwBwAAa8MAADsKAADWswAAlwsAALG0AABWDgAAN6UAAKIQAAA9pgAAUxMAAO6WAACNFgAAHJgAAC0ZAAAHiQAAUh0AAF2KAADeHwAAj3sAAOskAAAMfQAAYScAAJJuAABQLQAANXAAAK4vAAAeYgAAejYAAORjAAC+OAAAPVYAAGFAAAAlWAAAiEIAAPpKAAD6SgAAA00AAANNAABhQAAAPVYAAIhCAAAlWAAAejYAAB5iAAC+OAAA5GMAAFAtAACSbgAAri8AADVwAADrJAAAj3sAAGEnAAAMfQAAUh0AAAeJAADeHwAAXYoAAI0WAADulgAALRkAAByYAACiEAAAN6UAAFMTAAA9pgAAlwsAANazAABWDgAAsbQAAHAHAAC7wgAAOwoAAGvDAAAxBAAA2dEAAAUHAABe0gAA3QEAACPhAAC4BAAAfOEAAHcAAACK8AAAVgMAALbwAAAAAAAA//8AAOACAAD+/wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1x08g"]
+resource_name = "Decal_Curve_4LaneLong_Stripe_Plane_079"
+_surfaces = [{
+"aabb": AABB(-5.93333, -0.049333334, -5.933334, 5.9333286, 1e-05, 5.933338),
+"attribute_data": PackedByteArray("/////weA+okAAP////////OE//8AAP///////weA//8AAP////////OE+okAAP///////9+J//8AAP///////9+J+okAAP///////8uO//8AAP///////8uO+okAAP///////7eT//8AAP///////7eT+okAAP///////6OY//8AAP///////6OY+okAAP///////4+d//8AAP///////4+d+okAAP///////3ui//8AAP///////3ui+okAAP///////2en//8AAP///////2en+okAAP///////1Os//8AAP///////1Os+okAAP///////z+x//8AAP///////z+x+okAAP///////yu2//8AAP///////yu2+okAAP///////xe7//8AAP///////xe7+okAAP///////wPA//8AAP///////wPA+okAAP///////+/E//8AAP///////+/E+okAAP///////9vJ//8AAP///////9vJ+okAAP///////8fO//8AAP///////8fO+okAAP///////7PT//8AAP///////7PT+okAAP///////5/Y//8AAP///////5/Y+okAAP///////4vd//8AAP///////4vd+okAAP///////3fi//8AAP///////3fi+okAAP///////2Pn//8AAP///////2Pn+okAAP///////0/s//8AAP///////0/s+okAAP///////zvx//8AAP///////zvx+okAAP///////yf2//8AAP///////yf2+okAAP///////xP7//8AAP///////xP7+okAAP////////////8AAP//////////+okAAP//"),
+"format": 34896613439,
+"index_count": 156,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEAAwAFAAQABQAGAAQABQAHAAYABwAIAAYABwAJAAgACQAKAAgACQALAAoACwAMAAoACwANAAwADQAOAAwADQAPAA4ADwAQAA4ADwARABAAEQASABAAEQATABIAEwAUABIAEwAVABQAFQAWABQAFQAXABYAFwAYABYAFwAZABgAGQAaABgAGQAbABoAGwAcABoAGwAdABwAHQAeABwAHQAfAB4AHwAgAB4AHwAhACAAIQAiACAAIQAjACIAIwAkACIAIwAlACQAJQAmACQAJQAnACYAJwAoACYAJwApACgAKQAqACgAKQArACoAKwAsACoAKwAtACwALQAuACwALQAvAC4ALwAwAC4ALwAxADAAMQAyADAAMQAzADIAMwA0ADIAMwA1ADQA"),
+"material": ExtResource("1_mnutm"),
+"name": "MI_StreetDecals",
+"primitive": 3,
+"uv_scale": Vector4(14.788123, 0.127918, 0, 2),
+"vertex_count": 54,
+"vertex_data": PackedByteArray("//8AAOACIP+K8AAAdwBB/v//AAAAACD/tvAAAFYDQf4j4QAA3QGE/HzhAAC4BIT82dEAADEEx/pe0gAABQfH+rvCAABwBwr5a8MAADsKCvnWswAAlwtP97G0AABWDk/3N6UAAKIQlPU9pgAAUxOU9e6WAACNFtvzHJgAAC0Z2/MHiQAAUh0j8l2KAADeHyPyj3sAAOskbfAMfQAAYSdt8JJuAABQLbnuNXAAAK4vue4eYgAAejYH7eRjAAC+OAftPVYAAGFAV+slWAAAiEJX6/pKAAD6SqrpA00AAANNqulhQAAAPVYA6IhCAAAlWADoejYAAB5iWea+OAAA5GNZ5lAtAACSbrbkri8AADVwtuTrJAAAj3sW42EnAAAMfRbjUh0AAAeJeuHeHwAAXYp64Y0WAADuluPfLRkAAByY49+iEAAAN6VQ3lMTAAA9plDelwsAANazwtxWDgAAsbTC3HAHAAC7wjnbOwoAAGvDOdsxBAAA2dG22QUHAABe0rbZ3QEAACPhOti4BAAAfOE62HcAAACK8MPWVgMAALbww9YAAAAA//8L1uACAAD+/wvW9YCEv+eBC7/1gIS/54ELv8GDHr7Bgx6+j4U3vY+FN71Sh1W8UodVvAyJeLsMiXi7vYqgur2KoLpnjMu5Z4zLuQqO+bgKjvm4qI8quKiPKrhAkV63QJFet9WSlLbVkpS2ZpTLtWaUy7X1lQS19ZUEtYKXPbSClz20Dpl3sw6Zd7OamrGympqxsiec67EnnOuxtJ0ksbSdJLFEn1ywRJ9csNagk6/WoJOvbKLIrmyiyK4GpPutBqT7raWlLK2lpSytSqdZrEqnWaz2qIOr9qiDq8+pF6vPqRer")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_3u4i3")
+
+[node name="Decal_Curve_4LaneLong_Stripe2" type="Node3D" unique_id=1545778892]
+
+[node name="Decal_Curve_4LaneLong_Stripe" type="MeshInstance3D" parent="." unique_id=269973215]
+transform = Transform3D(-3, 0, 9.775241e-07, 0, 3, 0, -9.775241e-07, 0, -3, 0, 0, 0)
+mesh = SubResource("ArrayMesh_1x08g")

@@ -1,0 +1,43 @@
+[gd_scene format=4 uid="uid://d0viprpj7ems5"]
+
+[ext_resource type="Material" uid="uid://bcnds571ntuae" path="res://addons/city_megakit/materials/MI_Ornaments.tres" id="1_ckpl0"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_2a83y"]
+_surfaces = [{
+"aabb": AABB(-1, -0.22, 0, 2, 0.42, 0.045566037),
+"format": 34896613377,
+"index_count": 78,
+"index_data": PackedByteArray("DAANAA4ADAAOAAYADQAAAA4AAAAGAA4AAAAHAAYAAgAHAAAADQACAAAAAgAEAAcABAACAA0ABgAHAAQABgAEAAMABAANAAMADAAGAAgADwADAA0ADAAPAA0ADwAFAAMACwAMAAgABQALAAgADAABAA8AAQAFAA8ACwAKAAwADAAKAAEABQAJAAsACgALAAkAAQAJAAUACgAJAAEA"),
+"lods": [0.00030246624, PackedByteArray("AAABAAIAAQADAAIABAACAAMAAQAFAAMABgAEAAMAAgAEAAcABgAHAAQAAgAHAAAAAAAHAAYAAAAGAAgAAQAJAAUAAAAKAAEACgAJAAEACwAAAAgACwAKAAAABQALAAgACgALAAkABQAJAAsA")],
+"name": "MI_Ornaments",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("////////AAAAAAAA//8AAAAA/////wAAAABX7gAAAAAAAP//AAAAAAAANxEAAAAA//9X7gAAAAD/////AAAAAP//NxEAAAAAAAAAAAAAAAD//wAA//8AAP//AAAAAAAA//83Ef//AAAAAFfu//8AAP//V+7//wAAAAA3Ef//AAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_lkegj"]
+resource_name = "Prop_Ornament_1_Cube_167"
+_surfaces = [{
+"aabb": AABB(-1, -0.22, 0, 2, 0.42, 0.045566037),
+"attribute_data": PackedByteArray("//8SAMgk9CgAAI414Ese4wAAEgDIJB7j/v+ONeBL9CgAACJg4Ev0KP//llYeUB7j//8iYOBLHuMAAJZWHlD0KAAA//8OVx7jAAD//1xU9CgAAP//Dlf0KAAA//9cVB7jAAAiYB5Q9Cj//5ZWXFQe4///ImAeUB7jAACWVlxU9CgAAP//Dlf0KAAA//+vWR7jAAD//w5XHuMAAP//r1n0KAMy1V9cVPQoAzKYW8gkHuORL9VfDlf0KIQOmFvgSx7j5xDVXw5X9CiEDtVfr1n0KAMymFvIJPQoAzLVX1xUHuORL9VfDlce4+cQ1V8OVx7jhA7VX69ZHuOEDphb4Ev0KP7/HTA/SfQoAAAPBHonHuP//w8Eeif0KAAAHTA/SR7jAAAPBHonHuP//w8Eeif0KP//HTA/SfQoAAAdMD9JHuORL5hbeice4+cQmFs/SR7jkS+YW3on9CjnEJhbP0n0KA=="),
+"format": 34896613431,
+"index_count": 78,
+"index_data": PackedByteArray("IAAhACIAIAAjACEABAAFAAYABAAHAAUAJAAAACUAJAACAAAACAAJAAoACAALAAkADAANAA4ADAAPAA0AJgABACcAJgADAAEAEAARABIAEAATABEAFAAoABYAFAAVACgAKQAWACgAKQAYABYAFwAYACkAFwAZABgAGgAcACoAGgAbABwAKwAqABwAKwAcAB0AHgArAB0AHgAfACsA"),
+"lods": [0.00030246624, PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFwAWABUAFwAYABYAFwAZABgAGgAbABwAGgAcAB0AHgAaAB0AHgAfABoA")],
+"material": ExtResource("1_ckpl0"),
+"name": "MI_Ornaments",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 44,
+"vertex_data": PackedByteArray("////////AIAAAAAA//8AgAAA/////wCA//8AAP//AIAAAP//////v/////8AAP+//////////78AAP//AAD/v///V+4AAP//AAD//wAA//8AAFfuAAD///////8AAP////8AAP////8AAAAAAAD//wAAAAD///////8AAAAA//8AADcRAAD/////AAAAAP////83EQAA//8AAAAAAAD//wAA//8AAKoqAAD/////qioAAFfuAACqKgAAAAD//6oqAAA3EQAAqioAAAAAAACqKv///////1TV/////wAAVNX//1fuAABU1f//NxEAAFTV//8AAAAAVNX//wAA//9U1f//NxH//wCAAABX7v//AID//1fu//8AgAAANxH//wCAAABX7v//AID//1fu//8AgP//NxH//wCAAAA3Ef//AIAAAFfu//+qKgAANxH//6oq//9X7v//VNX//zcR//9U1f9/////f////3////9///////9/////f////3////9/////f////3////9/////f/9//z//f/8//3//P/9//z////9/////f////3////9/VNVU1VTVVNVU1VTVVNVU1VTVVNVU1VTVqiqqKqoqqiqqKqoqqiqqKqoqqiqqKqoq/3////9/////f////3////9/////f////3////9///9U1VTVVNVU1aoqqiqqKqoq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_2a83y")
+
+[node name="Prop_Ornament_12" type="Node3D" unique_id=1638736153]
+
+[node name="Prop_Ornament_1" type="MeshInstance3D" parent="." unique_id=529212673]
+transform = Transform3D(1, 0, 0, 0, 0.9085342, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("ArrayMesh_lkegj")

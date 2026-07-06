@@ -1,0 +1,40 @@
+[gd_scene format=4 uid="uid://xuftgbqf2s4p"]
+
+[ext_resource type="Material" uid="uid://b3fgen0enpybk" path="res://addons/city_megakit/materials/MI_StreetDecals.tres" id="1_jffbf"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ljyew"]
+_surfaces = [{
+"aabb": AABB(-0.41769287, -0.13000001, -1.3737687, 1.7758837, 1e-05, 2.674592),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgABAAQAAgAEAAUABgACAAUABgAFAAcABwAFAAgABwAIAAkABgAHAAoABgAKAAsA"),
+"name": "MI_StreetDecals",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("AAAAADtrAAAcHAAAAAAAABwcAAA7awAAAAAAAEU9AAB/WgAAAAAAAJd8AAA7awAAHBwAAMS+AACXfAAAxL4AAP//AABhjgAA//8AAP2eAAA7VwAA//8AABwcAAD//wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_6kooc"]
+resource_name = "Decal_ArrowForwardRight_Plane_059"
+_surfaces = [{
+"aabb": AABB(-0.41769287, -0.13000001, -1.3737687, 1.7758837, 1e-05, 2.674592),
+"attribute_data": PackedByteArray("rcPR/BfjWfetw1n3JNHR/BfjN+utw5XkNKtZ9zSrleRhuQXLg7QFyxiY2esYmFn3"),
+"format": 34896613399,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgABAAQAAgAEAAUABgACAAUABgAFAAcABwAFAAgABwAIAAkABgAHAAoABgAKAAsA"),
+"material": ExtResource("1_jffbf"),
+"name": "MI_StreetDecals",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("AAAAADtrqiocHAAAAACqKhwcAAA7a6oqAAAAAEU9qip/WgAAAACqKpd8AAA7a6oqHBwAAMS+qiqXfAAAxL6qKv//AABhjqoq//8AAP2eqio7VwAA//+qKhwcAAD//6oqVNWqKlTVqipU1aoqVNWqKlTVqipU1aoqVNWqKlTVqipU1aoqVNWqKlTVqipU1aoq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ljyew")
+
+[node name="Decal_ArrowForwardRight2" type="Node3D" unique_id=1789280066]
+
+[node name="Decal_ArrowForwardRight" type="MeshInstance3D" parent="." unique_id=398682782]
+mesh = SubResource("ArrayMesh_6kooc")

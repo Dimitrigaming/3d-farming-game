@@ -1,0 +1,86 @@
+[gd_scene format=4 uid="uid://4jiucm6gd1pi"]
+
+[ext_resource type="Material" uid="uid://bsuhv1ofeeyh4" path="res://addons/city_megakit/materials/MI_Roof_Slate.tres" id="1_cm0y7"]
+[ext_resource type="Material" uid="uid://db8rfdl6dtic" path="res://addons/city_megakit/materials/MI_Trim_MetalConcrete.tres" id="2_xidqr"]
+[ext_resource type="Material" uid="uid://d2ia4l35dq0mh" path="res://addons/city_megakit/materials/MI_Trim.tres" id="3_xaaeb"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_h70yj"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -2, 2, 3, 2),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEAAwAFAAQA"),
+"name": "MI_Roof_Slate",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("AAAAAP//AAD//////38AAP//AAD//wAAAAD///9/AAD/////AAAAAAAA//8AAAAA")
+}, {
+"aabb": AABB(-1, 2.8, -2, 2, 0.20000005, 1e-05),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"name": "MI_Trim_MetalConcrete",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAD//wAAAAD//wAAAAAAAP////8AAAAAAAAAAAAAAAA=")
+}, {
+"aabb": AABB(-1, 2.7989926, -1.1, 2, 0.4010074, 0.40000004),
+"format": 34896613377,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAwAAAAIABAACAAEABAADAAIABAABAAUAAAAFAAEABAAGAAMAAwAGAAAABAAFAAcABAAHAAYABwAFAAgAAAAIAAUACQAGAAcABwAIAAkACgAAAAYACQAKAAYAAAALAAgACwAJAAgACgALAAAACwAKAAkA"),
+"name": "MI_Trim",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("//+6aP+/AAAAANFp//8AAP//0Wn//wAA////////AAAAAP////8AAAAAumj/vwAA/////wAAAAAAAP//AAAAAAAAAAD/vwAAAABJAQAAAAD//0kBAAAAAP//AAD/vwAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_xrypi"]
+resource_name = "Roof_SlateCornice_Center_Plane"
+_surfaces = [{
+"aabb": AABB(-1, 0, -2, 2, 3, 2),
+"attribute_data": PackedByteArray("/3///8Wr//////9///8Ws////////////3//f8WrFrP/f/9Pxas+lv///3///xaz////T///Ppb/f/9/xasWsw=="),
+"format": 34896613431,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
+"material": ExtResource("1_cm0y7"),
+"name": "MI_Roof_Slate",
+"primitive": 3,
+"uv_scale": Vector4(2, 2, 1.4692706, 1.6090546),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//G43//////38bjf//AAD//xuNAAD///9/G40AAP///3//P/////8AAP8///////9//z8AAP//AAD/P////3////9/////f////3////9/////f////3////9/")
+}, {
+"aabb": AABB(-1, 2.8, -2, 2, 0.20000005, 1e-05),
+"attribute_data": PackedByteArray("lrntGU9ANFJoRnIlELw0UmhG7RkQvDRSlrlyJU9ANFI="),
+"format": 34896613431,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": ExtResource("2_xidqr"),
+"name": "MI_Trim_MetalConcrete",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAD//wAA/////wAAAAD///////8AAP//AAAAAAAA////f////3/+//9//v//f///")
+}, {
+"aabb": AABB(-1, 2.7989926, -1.1, 2, 0.4010074, 0.40000004),
+"attribute_data": PackedByteArray("//9VGsSF+zoAAFsEN4L8gf//WwQ3gvs6AABVGsSF/IH//z8sPr4WiQAAajrlyBfQAAA/LD6+F9D//2o65cgWiQAA+xgLsBaJ//+TAD6+F9D///sYC7AX0AAAkwA+vhaJ//8fLFxWbjcAAOI6L1xvfgAAHyxcVm9+///iOi9cbjf//9A6Ak5vfgAACy1cVm43//8LLVxWb34AANA6Ak5uNyV7aJYCTm9+doMfqlxWb35rnGiWPr4WiSV7+qk3gvyBdoPEty9cb35rnJm35cgX0CV7aJYLsBfQdoMfqsSF+zole/qpXFZuN2ucaJY+vhfQa5yZt+XIFol2g8S3Pr4WiU0+VADlyBfQTLd4GD6+F9BNPngYPr4WiUy3VADlyBaJ"),
+"format": 34896613431,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAFgAVABgAFgAYABkAGgAbABwAGgAdABsAHgAbAB0AHgAfABsAIAAhACIAIAAjACEA"),
+"material": ExtResource("3_xaaeb"),
+"name": "MI_Trim",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("//+6aP+/TL8AANFp//9Mv///0Wn//0y/AAC6aP+/TL///wAA/79FwAAASQEAAEXAAAAAAP+/RcD//0kBAABFwAAA//////+//////wAA/7//////////vwAA//8AAP+///+6aP+/AIAAAAAA/78AgAAAumj/vwCA//8AAP+/AIAAAP//////////0Wn/////AADRaf///////////////wAA/////wAAAAC6aP+/AAAAAP//AAAAAAAA0Wn//wAAAAAAAP+/AAAAAEkBAAAAAP////////+///+6aP+//7///9Fp////v/////8AAP+///9JAQAA/7///wAA/7//vwAASQEAAP///////wAA//8AAP//AAD/////SQEAAP//AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9//3////9/////f////3////9//3//f/9//3//f/9//3//P/9//z//f/8//3//P/9//z//f/8//3//fwAA/38AAP9/AAD/fwAA/38AAP9/AAD///9/////f////3////9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_h70yj")
+
+[node name="Roof_SlateCornice_Center2" type="Node3D" unique_id=1771221150]
+
+[node name="Roof_SlateCornice_Center" type="MeshInstance3D" parent="." unique_id=1976172061]
+mesh = SubResource("ArrayMesh_xrypi")

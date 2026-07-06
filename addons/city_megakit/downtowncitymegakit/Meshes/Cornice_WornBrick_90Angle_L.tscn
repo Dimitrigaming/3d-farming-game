@@ -1,0 +1,40 @@
+[gd_scene format=4 uid="uid://co2lexic7ixg"]
+
+[ext_resource type="Material" uid="uid://dswa50plkjgyd" path="res://addons/city_megakit/materials/MI_WornBrick.tres" id="1_tpt76"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_06v7a"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -0.9000001, 2, 1, 0.90000015),
+"format": 34896613377,
+"index_count": 87,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIABAACAAUABgAEAAUABwACAAEABgAFAAgABwAFAAIACQAIAAUABwABAAoACQAFAAsABwALAAUADAAJAAsADAALAA0ADgAHAAoADgAKAA8ADgAPABAAEQAHAA4ACwAHABEADgAQABIAEQAOABIAEgAQABMAEQAUAAsAEQASABQADQALABQAEgATABQADQAUABUAFQAUABMAFQATABYA"),
+"name": "MI_WornBrick",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 23,
+"vertex_data": PackedByteArray("AAD//ziOAABmJsvMOI4AAGYm//84jgAAAADLzDiOAAAAAP////8AAJlZ/////wAAAAAAAP7/AABmJv//4zgAAJlZAAD+/wAAmVkAAMZxAABmJsvM4zgAAJlZ///GcQAA//8AAMZxAAD/////xnEAAGYm//8AAAAAZibLzAAAAAD/P8vMAAAAAP8////jOAAA/z///wAAAACZWcvMAAAAAJlZ//8AAAAA/////wAAAAD//8vMAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_g4qvo"]
+resource_name = "Cornice_WornBrick_90Angle_L_Cube_243"
+_surfaces = [{
+"aabb": AABB(-1, 0, -0.9000001, 2, 1, 0.90000015),
+"attribute_data": PackedByteArray("////////CYCO5/7//////8vsDIeO5/7//////8vsCYCO5/7/////////DIeO5/7/////////iMOO5/7//////8vsU9WO5/7//////zLTiMOO5/7/////////U9WO5/7/////////U9WO5/7//////zLziMOO5/7/////////bcyO5/7//////zLzU9WO5/7/////////U9WO5/7///////9///9D4YGm/////8ysVNX//xGJ/////8ys/////4Gm//////9/VNVD4RGJ//////9/bcyO5/7///////9/U9WO5/7//////8yMU9WO5/7///////9/U9WO5/7//////8yMCYCO5/7///////9/DIeO5/7//////8yMDIeO5/7///////9/CYCO5/7/////////CYCO5/7//////8vsDIeO5/7/////////DIeO5/7//////8vsCYCO5/7//////zLz//+Rlu3B/////zLTVNXdgdWJ/////zLzVNWRltWJ/////zLT///dge3B/////8yMCYCO5/7///////9/DIeO5/7///////9/CYCO5/7//////8yMDIeO5/7/////////CYCO5/7//////zLzDIeO5/7//////zLzCYCO5/7/////////DIeO5/7///////////+O5////////8ysVNWO5/7/////////VNWO5/7//////8ys//+O5/////////9/iMOO5/7//////zLTU9WO5/7///////9/U9WO5/7//////zLTiMOO5/7///////9/CYCO5/7//////zLTDIeO5/7///////9/DIeO5/7//////zLTCYCO5/7/"),
+"format": 34896613439,
+"index_count": 87,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAGAAUACAAJAAYACQAIAAoACgALAAkACgAMAAsADQAOAA8ADQAQAA4AEQASABMAEQATABQAFQAWABcAFQAYABYAGQAaABsAGQAcABoAHQAeAB8AHQAgAB4AIQAiACMAIQAkACIAJQAmACcAJQAoACYAKQAqACsAKQAsACoALQAuAC8ALQAwAC4AMQAyADMAMQA0ADIA"),
+"material": ExtResource("1_tpt76"),
+"name": "MI_WornBrick",
+"primitive": 3,
+"uv_scale": Vector4(2, 3, 1.9641423, 1.4498215),
+"vertex_count": 53,
+"vertex_data": PackedByteArray("AAD//ziO//9mJsvMOI7//2Ym//84jv//AADLzDiO//8AAP///////2Ym//84jqoqmVn/////qioAAP//OI7//2Ym///jOKoqmVn//8Zx////P///4zj//5lZ//8AAP///z///wAA//8AAAAA/v8AgJlZ/////wCAmVkAAP7/AIAAAP////8AgP8////jOP//Zib//+M4qipmJv//AAD///8///8AAP//Zib//wAAAABmJsvM4zgAAGYmy8wAAAAAZib//+M4AABmJv//4zgAAGYmy8w4jgAAZibLzOM4AABmJv//OI4AAJlZAADGcf+/mVn//////7+ZWf//xnH/v5lZAAD+//+/Zib//wAA////P8vMAAD///8///8AAP//ZibLzAAA////P///AAD//5lZy8wAAP//mVn//wAA////P8vMAAD/////AADGcQCAmVn//8ZxAID/////xnEAgJlZAADGcQCA/////8Zx//+ZWf//AAD///////8AAP//mVn//8Zx////////AAD//5lZy8wAAP/////LzAAA//+ZWf//AAD///9//v//f/7//3////9//v//f/+/VNWqKlTVqir/f/+/VNWqKv9//7//f/+//3//v/9//7//f////3////9/////f////3//v1TVqir/f/+//3//v/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//38AAP9/AAD/fwAA/38AAP9//v//f/7//3/+//9//v//f////3////9//v//f/7//3////9/////f////3////9//7//f/+//3//v/9//7//f/7//3////9//v//f///")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_06v7a")
+
+[node name="Cornice_WornBrick_90Angle_L2" type="Node3D" unique_id=1441934567]
+
+[node name="Cornice_WornBrick_90Angle_L" type="MeshInstance3D" parent="." unique_id=1297741812]
+mesh = SubResource("ArrayMesh_g4qvo")

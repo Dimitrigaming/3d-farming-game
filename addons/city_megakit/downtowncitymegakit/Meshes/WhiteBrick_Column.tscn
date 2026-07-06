@@ -1,0 +1,40 @@
+[gd_scene format=4 uid="uid://c0q38srpk0pg7"]
+
+[ext_resource type="Material" uid="uid://emb4hso8lj5g" path="res://addons/city_megakit/materials/MI_WhiteBrick.tres" id="1_idtv2"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_bfy72"]
+_surfaces = [{
+"aabb": AABB(-0.3600001, 0, -0.3600001, 0.72000027, 4, 0.7200002),
+"format": 34896613377,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIABQABAAMABAACAAYABQAHAAEABAAGAAgACQAHAAUABAAIAAoACQALAAcACgAIAAwACQANAAsACgAMAA4ACQAPAA0ADwAMAA0ADwAOAAwA"),
+"name": "MI_WhiteBrick",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("AAD///9/AAAAAAAA/v8AAAAAAAD/fwAAAAD///7/AAAAAP//AAAAAP9////+/wAAAAAAAAAAAAD/fwAA/v8AAP9/AAAAAAAA/v////7/AAD/f///AAAAAP7/AAD//wAA/v8AAAAAAAD+/wAA/38AAP////8AAAAA/v////9/AAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1grdb"]
+resource_name = "WhiteBrick_Column_Cube_191"
+_surfaces = [{
+"aabb": AABB(-0.3600001, 0, -0.3600001, 0.72000027, 4, 0.7200002),
+"attribute_data": PackedByteArray("//////+P/38x6QWL//////+f//////////////+P//8x6f////////+f/3/+/wWL//////+v/3/SmwWL//////+f//8Ehf////////+f/38EhQWL//////+v///Sm//////////P/38x6QWL///////f///+///////////P//8x6f/////////f/3/+/wWL///////v/3/SmwWL///////f//8Ehf/////////f/38EhQWL///////v///Sm/////////+//3/+/wWL//////+v//8x6f////////+v/38x6QWL//////+////+//////////9//38EhQWL//////+P///Sm/////////9///8Ehf////////+P/3/SmwWL//////+//38EhQWL///////P///Sm/////////+///8Ehf/////////P/3/SmwWL/////////3///wWL///////v//8x6f/////////v/38x6QWL//////7////+////"),
+"format": 34896613439,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0A"),
+"material": ExtResource("1_idtv2"),
+"name": "MI_WhiteBrick",
+"primitive": 3,
+"uv_scale": Vector4(2.8800004, 4, 1.9232001, 1.814392),
+"vertex_count": 32,
+"vertex_data": PackedByteArray("AAD///9//78AAAAA/v//vwAAAAD/f/+/AAD///7//7//f////v8AgAAAAAD+/wCAAAD///7/AID/fwAA/v8AgP7/////f/+//v8AAAAA/7/+/wAA/3//v/////8AAP+//3///wAA///+/wAAAAD///////8AAP///38AAAAA///+/////v8AgP9/AAD+/wCA/3////7/AID+/wAA//8AgAAA//8AAP+/AAAAAP9//78AAAAAAAD/vwAA////f/+//v////7//7/+/wAA/3//v/7/AAD///+//v////9//78AAP//AAD///9/AAAAAP///3///wAA//8AAAAAAAD///9//v//f////3////9//v//f////3////9/////f////38AAP9/AAD/fwAA/38AAP9//v//f/7//3/+//9//v//f////3////9/////f////3/+//9/////f////3/+//9/AAD/fwAA/38AAP9/AAD/f/7//3/+//9//v//f///")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_bfy72")
+
+[node name="WhiteBrick_Column2" type="Node3D" unique_id=1865332278]
+
+[node name="WhiteBrick_Column" type="MeshInstance3D" parent="." unique_id=454096821]
+mesh = SubResource("ArrayMesh_1grdb")

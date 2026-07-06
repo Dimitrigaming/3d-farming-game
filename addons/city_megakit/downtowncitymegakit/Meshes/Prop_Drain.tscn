@@ -1,0 +1,40 @@
+[gd_scene format=4 uid="uid://cna6t6yqg7s5l"]
+
+[ext_resource type="Material" uid="uid://bcnds571ntuae" path="res://addons/city_megakit/materials/MI_Ornaments.tres" id="1_1fk1o"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_0cvfj"]
+_surfaces = [{
+"aabb": AABB(-0.29259434, 0, -0.29259434, 0.5851887, 0.040405963, 0.5851887),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIAAwAFAAEABQACAAEAAwAGAAUABAACAAcABgAEAAcABQAHAAIABgAHAAUA"),
+"name": "MI_Ornaments",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAyBf//MgUAADIF///M+gAAAAAAAAAAAAD//wAA//8AAMz6//8yBQAA//8AAAAAAADM+v//zPoAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_iktcq"]
+resource_name = "Prop_Drain_Cube_173"
+_surfaces = [{
+"aabb": AABB(-0.29259434, 0, -0.29259434, 0.5851887, 0.040405963, 0.5851887),
+"attribute_data": PackedByteArray("mqFT/0qjE89Ko7H9mqFxzZqhcc2Q0xPPSqMTz0HVcc1B1XHNkNOx/ZDTE89B1VP/QdVT/0qjsf2Q07H9mqFT/5DTE89Ko7H9SqMTz5DTsf0="),
+"format": 34896613399,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEA"),
+"material": ExtResource("1_1fk1o"),
+"name": "MI_Ornaments",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("AAAAAP//rssyBf//MgVe0jIF///M+k/LAAAAAAAArdIAAAAAAABX9Mz6//8yBVf0MgX//zIFV/T//wAAAABX9P//AAAAAH/SzPr//8z6y8vM+v//MgXx0v//AAD//4fL//8AAP//p4syBf//zPqni8z6///M+qeLAAAAAP//p4vM+v//MgX/vzIF///M+v+/MgX//zIF/7/M+v//zPr/v1/Ups523vTKuNPjzuHezcr///9/////f////3////9/GrWkXmqxklRStTtfP7EcVP///3////9/////f////3////9/////f////3////9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_0cvfj")
+
+[node name="Prop_Drain2" type="Node3D" unique_id=1430693458]
+
+[node name="Prop_Drain" type="MeshInstance3D" parent="." unique_id=1735859147]
+mesh = SubResource("ArrayMesh_iktcq")

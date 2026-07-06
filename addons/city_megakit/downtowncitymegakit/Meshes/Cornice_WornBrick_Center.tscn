@@ -1,0 +1,40 @@
+[gd_scene format=4 uid="uid://2jykdfgsos4u"]
+
+[ext_resource type="Material" uid="uid://dswa50plkjgyd" path="res://addons/city_megakit/materials/MI_WornBrick.tres" id="1_y0qbx"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_7j0ku"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -0.4, 2, 1, 0.40000004),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAgADAAAAAgAEAAMAAAAFAAEABQAGAAEABQAHAAYABwAIAAYABwAJAAgA"),
+"name": "MI_WornBrick",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 10,
+"vertex_data": PackedByteArray("AAAAAP7/AAD///////8AAP//AAD+/wAAAAAAAGWGAAD//wAAZYYAAAAA/////wAA/////wAAAAAAAP//AAAAAP//y8wAAAAAAADLzAAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_k1cpn"]
+resource_name = "Cornice_WornBrick_Center_Cube_233"
+_surfaces = [{
+"aabb": AABB(-1, 0, -0.4, 2, 1, 0.40000004),
+"attribute_data": PackedByteArray("//////9/////////////////VNX///7///////////////////////9/VNX///7/////////iMP///7///////9/U9X///7///////9/iMP///7/////////U9X///7/////////CYD///7///////9/DIf///7///////9/CYD///7/////////DIf///7///////9/Goj//////////////3//////////////Goj///////////9//3//////"),
+"format": 34896613439,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0A"),
+"material": ExtResource("1_y0qbx"),
+"name": "MI_WornBrick",
+"primitive": 3,
+"uv_scale": Vector4(2, 3, 1.5891103, 1.4498215),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("AAAAAP7/AID///////8AgP//AAD+/wCAAAD/////AIAAAP////////////8AAP////////////8AAP//AAD//wAA//8AAP/////LzAAA////////AAD//wAAy8wAAP////8AAP7///8AAAAAZYb//wAAAAD+//////8AAGWG////f////3////9/////f////3//v/9//7//f/+//3//v/9//v//f/7//3/+//9//v//f/8//3//P/9//z//f/8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_7j0ku")
+
+[node name="Cornice_WornBrick_Center2" type="Node3D" unique_id=107343407]
+
+[node name="Cornice_WornBrick_Center" type="MeshInstance3D" parent="." unique_id=939814775]
+mesh = SubResource("ArrayMesh_k1cpn")

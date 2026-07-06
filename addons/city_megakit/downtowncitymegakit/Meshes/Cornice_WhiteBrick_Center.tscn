@@ -1,0 +1,40 @@
+[gd_scene format=4 uid="uid://b3u4t7bfhdpqu"]
+
+[ext_resource type="Material" uid="uid://d2ia4l35dq0mh" path="res://addons/city_megakit/materials/MI_Trim.tres" id="1_xistj"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_nf3gv"]
+_surfaces = [{
+"aabb": AABB(-1, 2.7939677e-09, -0.1, 2, 0.4, 0.4),
+"format": 34896613377,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAwAAAAIABAACAAEABAADAAIABAABAAUAAAAFAAEABAAGAAMAAwAGAAAABAAFAAcABAAHAAYABwAFAAgAAAAIAAUABwAIAAkAAAAKAAgACgAJAAgACwAAAAYACwAKAAAABwALAAYACgALAAkABwAJAAsA"),
+"name": "MI_Trim",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("//9YaP+/AAAAAHBp//8AAP//cGn//wAA////////AAAAAP////8AAAAAWGj/vwAA/////wAAAAAAAP//AAAAAAAAAAD/vwAAAAAAAAAAAAD//wAA/78AAP//AAAAAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_yloet"]
+resource_name = "Cornice_WhiteBrick_Center_Cube_196"
+_surfaces = [{
+"aabb": AABB(-1, 2.7939677e-09, -0.1, 2, 0.4, 0.4),
+"attribute_data": PackedByteArray("/v9WkjnVR6T/fwiD9tL0z/7/CIP20kek/39WkjnV9M/+/9GeNflS1P9/r6j+/////3/RnjX5///+/6+o//9S1P9/ZpEp8FLU/v9mgDX5///+/2aRKfD///9/ZoA1+VLU/v+7ngW3GKL/fwOpu7rEzf9/u54Ft8TN/v8Dqbu6GKL+//aos7HEzf9/X58Ftxii/v9fnwW3xM3/f/aos7EYopK9wuizscTNusF99gW3xM01zsLoNflS1JK9ZPb20vTPusH+/7u6xM01zuH//v///5K9wugp8P//usF99jnVR6SSvWT2BbcYojXOwug1+f//Nc7h////UtS6wf//NflS1P9/q5E1+VLU/v9NgDX5/////6uRNfn///9/TYA1+VLU"),
+"format": 34896613431,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAFgAVABgAFgAYABkAGgAbABwAGgAdABsAHgAbAB0AHgAfABsAIAAhACIAIAAjACEA"),
+"material": ExtResource("1_xistj"),
+"name": "MI_Trim",
+"primitive": 3,
+"uv_scale": Vector4(2.0000002, 1.4357165, 1.5695218, 1.6257529),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("//9YaP+/TL8AAHBp//9Mv///cGn//0y/AABYaP+/TL///wAA/7//vwAAAAAAAP+/AAAAAP+//7///wAAAAD/vwAA//////+//////wAA/7//////////vwAA//8AAP+///9YaP+/AIAAAAAA/78AgAAAWGj/vwCA//8AAP+/AIAAAP//////////cGn/////AABwaf///////////////wAA/////wAAAABYaP+/EAAAAP//AAAOAAAAcGn//wAAAAAAAP+/DgAAAAAAAAAxAP////////+///9YaP+//7///3Bp////v/////8AAP+///8AAAAA/7///wAA/7//vwAA//8AAP////8AAAAA////////AAD//wAAAAAAAP//AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9//3////9/////f////3////9//3//f/9//3//f/9//3//P/9/7P8IwAdAD4D/P/9/B0APgBtANoD/fwAAIIBCAP9/AAASgCUAOIBxAGyA2QD///9/////f/7//3////9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_nf3gv")
+
+[node name="Cornice_WhiteBrick_Center2" type="Node3D" unique_id=1424342232]
+
+[node name="Cornice_WhiteBrick_Center" type="MeshInstance3D" parent="." unique_id=421835026]
+mesh = SubResource("ArrayMesh_yloet")

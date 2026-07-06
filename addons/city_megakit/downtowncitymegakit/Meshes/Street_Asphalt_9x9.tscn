@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://hjr4gfeyva4d"]
+
+[ext_resource type="Material" uid="uid://x81i0r1cgbf0" path="res://addons/city_megakit/materials/MI_Asphalt.tres" id="1_anbdq"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ibkue"]
+_surfaces = [{
+"aabb": AABB(-9, -0.15, -9, 9, 1e-05, 9),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"name": "MI_Asphalt",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ypjqn"]
+resource_name = "Street_Asphalt_9x9_Plane_024"
+_surfaces = [{
+"aabb": AABB(-9, -0.15, -9, 9, 1e-05, 9),
+"attribute_data": PackedByteArray(255, 127, 255, 255, 255, 255, 255, 127, 255, 255, 255, 255, 255, 127, 255, 127),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"material": ExtResource("1_anbdq"),
+"name": "MI_Asphalt",
+"primitive": 3,
+"uv_scale": Vector4(5.999999, 6, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(255, 255, 0, 0, 255, 255, 84, 213, 0, 0, 0, 0, 0, 0, 84, 213, 255, 255, 0, 0, 0, 0, 84, 213, 0, 0, 0, 0, 255, 255, 84, 213, 84, 213, 170, 42, 84, 213, 170, 42, 84, 213, 170, 42, 84, 213, 170, 42)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ibkue")
+
+[node name="Street_Asphalt_9x92" type="Node3D" unique_id=394158831]
+
+[node name="Street_Asphalt_9x9" type="MeshInstance3D" parent="." unique_id=731320536]
+mesh = SubResource("ArrayMesh_ypjqn")

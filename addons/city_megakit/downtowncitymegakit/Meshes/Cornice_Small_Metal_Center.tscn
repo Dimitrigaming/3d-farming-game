@@ -1,0 +1,40 @@
+[gd_scene format=4 uid="uid://nqc6sxitu12e"]
+
+[ext_resource type="Material" uid="uid://db8rfdl6dtic" path="res://addons/city_megakit/materials/MI_Trim_MetalConcrete.tres" id="1_iepg6"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_q2j8q"]
+_surfaces = [{
+"aabb": AABB(-1, 5.9604645e-08, -0.1, 2, 0.54026765, 0.20000002),
+"format": 34896613377,
+"index_count": 66,
+"index_data": PackedByteArray("AAABAAIAAgADAAAAAgAEAAMAAwAEAAUAAwAFAAYABwAGAAUABwAFAAgACQAHAAgAAAAKAAEAAQABAAoAAQAKAAoACwABAAoACwAKAAwADAANAAsADAAOAA0ADgAPAA0ADgAQAA8ACQAIABEACQAJABEACQARABEAEgAJABEAEgARABMA"),
+"name": "MI_Trim_MetalConcrete",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("AADA2P//AAD///////8AAP//wNj//wAAAAC4yf+/AAD//7jJ/78AAP//Rjb/vwAAAABGNv+/AAAAAD4n/v8AAP//Pif+/wAAAAAAAP7/AAAAAP////8AAP////8AAAAAAAD//wAAAAD//zahAAAAAAAANqEAAAAA//9xQgAAAAAAAHFCAAAAAP//AAD+/wAAAAAAAAAAAAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_uxy3q"]
+resource_name = "Cornice_Small_Metal_Center_Cube_255"
+_surfaces = [{
+"aabb": AABB(-1, 5.9604645e-08, -0.1, 2, 0.54026765, 0.20000002),
+"attribute_data": PackedByteArray("/yQk//9/X6lB9////yQk////wJ/k8Nef/yQk////X6lB99ef/yQk//9/wJ/k8P///yQk////0qmg+////yQk//9/l61B99ef/yQk//9/0qmg+9ef/yQk////l61B9////yQk////wJ/k8P///yQk//9/0qmH6tef/yQk//9/wJ/k8Nef/yQk////0qmH6v///yQk//9/5p8l4////yQk////ma3E29ef/yQk////5p8l49ef/yQk//9/ma3E2////yQk////X6mg+9ef/yQk//9/JK3+/////yQk//9/X6mg+////yQk////JK3//9ef/yQk////5p8l49ef/yQk//9/ma2H6v///yQk//9/5p8l4////yQk////ma2H6tef/yQk//9/Yrjlr////yQk////6vzE29ef/yQk//9/6vzE2////yQk////Yrjlr9ef/yQk////tLb+/////yQk//9/tLb+/////yQk//9/tLb+/////yQk////tLb+/////yQk//9////+/////yQk///////+/////yQk///////+/////yQk//9////+/////yQk//7/1bcl4////yQk//9/19Yl49ef/yQk//9/1bcl49ef/yQk//7/19Yl4////yQk/4v/b58l4////yQk/4x/760l49ef/yQk/4x/b58l49ef/yQk/4v/760l4///"),
+"format": 34896613439,
+"index_count": 66,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkA"),
+"material": ExtResource("1_iepg6"),
+"name": "MI_Trim_MetalConcrete",
+"primitive": 3,
+"uv_scale": Vector4(2, 0.8257663, 1.0269462, 1.641435),
+"vertex_count": 44,
+"vertex_data": PackedByteArray("AADA2P//AID///////8AgP//wNj//wCAAAD/////AIAAAD4n/v//////Rjb/v/////8+J/7///8AAEY2/7///wAAAAD+//////8+J/7//////wAA/v///wAAPif+////AAAAAAAA/z///wAA/v//P///AAAAAP8/AAAAAP7//z///8DY///2qAAAuMn/v/aoAADA2P//9qj//7jJ/7/2qP////8AAP+/AAD//////78AAP//AAD/v/////////+/AAC4yf+/AID//0Y2/78AgAAARjb/vwCA//+4yf+/AID/////////vwAA//////+/AAD//////7//////////vwAAAAD+//+///8AAP7//7///wAA/v//vwAAAAD+//+/AAD//wAA/////zahAAD///////8AAP//AAA2oQAA//8AADahAAD/////cUIAAP////82oQAA//8AAHFCAAD///9/////f////3////9/////f2it/39orf9/aK3/f2it/3//f/9//3//f/9//3//fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/////f////3////9/////f/9/////f////3////9///////9/////f////3////9/////f////3////9/////f/9//v//f/7//3/+//9//v//f/7//3////9/////f/7/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_q2j8q")
+
+[node name="Cornice_Small_Metal_Center2" type="Node3D" unique_id=62218046]
+
+[node name="Cornice_Small_Metal_Center" type="MeshInstance3D" parent="." unique_id=1441141920]
+mesh = SubResource("ArrayMesh_uxy3q")

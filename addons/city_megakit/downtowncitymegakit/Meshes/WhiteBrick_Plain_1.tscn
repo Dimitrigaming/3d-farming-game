@@ -1,0 +1,63 @@
+[gd_scene format=4 uid="uid://ctcf6yox7xu01"]
+
+[ext_resource type="Material" uid="uid://emb4hso8lj5g" path="res://addons/city_megakit/materials/MI_WhiteBrick.tres" id="1_p3su1"]
+[ext_resource type="Material" uid="uid://budxptsfqe8j8" path="res://addons/city_megakit/materials/MI_InteriorWall.tres" id="2_a8qae"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_7s8gv"]
+_surfaces = [{
+"aabb": AABB(-1, 0, 0, 2, 1, 1e-05),
+"format": 34359742465,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"name": "MI_WhiteBrick",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AACAvwAAAAAAAACAAACAPwAAgD8uvTszAACAPwAAAAAAAACAAACAvwAAgD8tvTsz")
+}, {
+"aabb": AABB(-1, 0, -0.20000009, 2, 1.0000001, 1e-05),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"name": "MI_InteriorWall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAAAAAAD///7/AAAAAAAA//8AAAAA//8AAAAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_xymc0"]
+resource_name = "WhiteBrick_Plain_1_Cube_114"
+_surfaces = [{
+"aabb": AABB(-1, 0, 0, 2, 1, 1e-05),
+"attribute_data": PackedByteArray("/////wAAAAAAAMA/92dLP8CTOT//////AACAPwAAgD/3Z0s/vpM5P/////8AAIA/AADAP/dnSz/Akzk//////wAAAAAAAIA/92dLP76TOT8="),
+"format": 34359742527,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": ExtResource("1_p3su1"),
+"name": "MI_WhiteBrick",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AACAvwAAAAAAAACAAACAPwAAgD8uvTszAACAPwAAAAAAAACAAACAvwAAgD8tvTsz/3//f////7//f/9/////v/9//3////+//3//f////78=")
+}, {
+"aabb": AABB(-1, 0, -0.20000009, 2, 1.0000001, 1e-05),
+"attribute_data": PackedByteArray("//////7//3//f/9//////wAAAAD/f/9/////////AAD/f/9//////wAA/3//f/9/"),
+"format": 34896613439,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": ExtResource("2_a8qae"),
+"name": "MI_InteriorWall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAAAA//////7/AAD//wAA//8AAP////8AAAAA////f/7//3/+//9//v//f/7/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_7s8gv")
+
+[node name="WhiteBrick_Plain_12" type="Node3D" unique_id=2016891363]
+
+[node name="WhiteBrick_Plain_1" type="MeshInstance3D" parent="." unique_id=246047301]
+mesh = SubResource("ArrayMesh_xymc0")

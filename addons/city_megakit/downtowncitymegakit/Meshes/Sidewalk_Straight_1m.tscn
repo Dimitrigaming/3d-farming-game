@@ -1,0 +1,40 @@
+[gd_scene format=4 uid="uid://h2jf548l38tq"]
+
+[ext_resource type="Material" uid="uid://db8rfdl6dtic" path="res://addons/city_megakit/materials/MI_Trim_MetalConcrete.tres" id="1_j1j3l"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_0vlnc"]
+_surfaces = [{
+"aabb": AABB(-0.5, -0.15, -0.5, 1, 0.15000004, 1.0099999),
+"format": 34896613377,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAQADAAIABAAAAAIABQAAAAQAAwAGAAIABAACAAYAAwAHAAYABgAHAAgABgAIAAQABQAEAAgABQAJAAAAAAAJAAEACQAFAAoAAwABAAsACQALAAEAAwALAAwACgAMAAsACQANAAsACgALAA0ACQAKAA0A"),
+"name": "MI_Trim_MetalConcrete",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 14,
+"vertex_data": PackedByteArray("/////8TKAAAAAP//ZPgAAAAA///EygAAAAAAAMTKAAD/////AAAAAP//AADEygAAAAD//wAAAAAAAAAAAAAAAP//AAAAAAAA/////2T4AAD//wAA//8AAAAAzMz//wAAAAAAAP//AAD//8zM//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_763rp"]
+resource_name = "Sidewalk_Straight_1m_Cube_115"
+_surfaces = [{
+"aabb": AABB(-0.5, -0.15, -0.5, 1, 0.15000004, 1.0099999),
+"attribute_data": PackedByteArray("/wEB/5W1OMjP417+/wAA//qfVc+01v///wAA//qfOMi01l7+/wAA/5W1Vc/P4////////+3A///P49Hw/wAA/1KrSdW01l7+/////1Kr//+01tHw/wEB/+3ASdXP417+/wAA/5W1ntSa3CjI/wAA//qfZNAH27XV/wAA/5W1ZNAH2yjI/wAA//qfntSa3LXV/wAA/5W1Vc+i2ijI/wAA//qfVc+i2rXV/wAA////A8///1bX/////zbubMgH/uPk/wAA////bMgH/lbX/////zbuA8///+Pk/////9u/h8i01kPj/////1av3M7P40Pj/////1avh8jP40Pj/////9u/3M601kPj/xQU/3eQ99T//1bX/wAA/62Trc8H/rXV/wEB/3eQrc8H/lbX/wAA/zaU99T//03V/wAA/zaUvNBs/k3V/xQU////A8///1bX/////zbubMgH/uPk/////zbuA8///+Pk/wEB////bMgH/lbX/wAA/62Trc8H/rXV/wAA/3eQ99T//1bX/wAA/3eQrc8H/lbX/wAA/zaUvNBs/k3V/wAA/zaU99T//03V"),
+"format": 34896613439,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAAKAAkADAAJAA0ADgAPABAADgARAA8AEgATABQAEgAVABMAFgAXABgAFwAWABkAFwAZABoAGwAcAB0AGwAeABwAHwAgACEAIAAfACIAIAAiACMA"),
+"material": ExtResource("1_j1j3l"),
+"name": "MI_Trim_MetalConcrete",
+"primitive": 3,
+"uv_scale": Vector4(3.9497068, 1.9980401, 1.4509106, 1.4033508),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("/////8TK/78AAP//ZPj/rwAA///Eyv+//////2T4/6//////AAD/PwAA///Eyv8/AAD//wAA/z//////xMr/P///AAD//wCAAADMzP///4///8zM////jwAAAAD//wCA/////2T4/68AAP//ZPj/rwAAAADEyv+/AAD//wAA/78AAP//xMr/vwAAAAAAAP+/AAD//wAA/////wAAAAD///////8AAP//AAAAAAAA/////wAAxMoAAP////9k+AAA/////8TKAAD//wAA//8AAP//zMz//wAA//8AAMTKAAD/////AAAAAP//AAAAAAAA/////8TKAAAAAP//ZPj/vwAAAADEyv+/AAD//8TK/78AAMzM////vwAAAAD///+/////f////3////9/////f////3////9/////f////3//f///////f////3//f///////f////3//f/7//3/+//9//v//f/7//3////9/////f////3////+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/9//v//f/7//3////9//v//f///")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_0vlnc")
+
+[node name="Sidewalk_Straight_1m2" type="Node3D" unique_id=857731658]
+
+[node name="Sidewalk_Straight_1m" type="MeshInstance3D" parent="." unique_id=1974384850]
+mesh = SubResource("ArrayMesh_763rp")

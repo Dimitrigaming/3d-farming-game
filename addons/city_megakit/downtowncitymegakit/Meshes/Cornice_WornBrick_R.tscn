@@ -1,0 +1,40 @@
+[gd_scene format=4 uid="uid://ud637hxuxp1p"]
+
+[ext_resource type="Material" uid="uid://dswa50plkjgyd" path="res://addons/city_megakit/materials/MI_WornBrick.tres" id="1_c2o8c"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_f70kd"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -0.4, 2, 1, 0.40000004),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgABAAQAAgAEAAUABQAEAAYABQAGAAcA"),
+"name": "MI_WornBrick",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("//8AAP7/AAAAAP////8AAP/////+/wAAAAAAAP7/AAAAAP//AAAAAMzM//8AAAAAAADLzAAAAADMzMvMAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_pqnyo"]
+resource_name = "Cornice_WornBrick_R_Cube_235"
+_surfaces = [{
+"aabb": AABB(-1, 0, -0.4, 2, 1, 0.40000004),
+"attribute_data": PackedByteArray("//////////////////////9/VNXctHjT////////VNX//3jT//////9////ctP////////9/iMM856Hv////////U9U856Hv/////5mZU9U856Hv////////iMM856Hv/////5mZCYA856Hv////////DIc856Hv/////5mZDIc856Hv////////CYA856Hv"),
+"format": 34896613439,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkA"),
+"material": ExtResource("1_c2o8c"),
+"name": "MI_WornBrick",
+"primitive": 3,
+"uv_scale": Vector4(2, 3, 1.9702501, 1.6623849),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("//8AAP7/AIAAAP////8AgP/////+/wCAAAAAAP7/AID//////v///wAA//8AAP//zMz//wAA//8AAP///////8zM//8AAP//AADLzAAA///MzMvMAAD//wAA//8AAP///3////9/////f////3////9//7//f/+//3//v/9//7//f////3////9/////f///")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_f70kd")
+
+[node name="Cornice_WornBrick_R2" type="Node3D" unique_id=2108081176]
+
+[node name="Cornice_WornBrick_R" type="MeshInstance3D" parent="." unique_id=1168537723]
+mesh = SubResource("ArrayMesh_pqnyo")

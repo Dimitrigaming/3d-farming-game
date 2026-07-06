@@ -1,0 +1,40 @@
+[gd_scene format=4 uid="uid://5x8c0gb0o1cr"]
+
+[ext_resource type="Material" uid="uid://x81i0r1cgbf0" path="res://addons/city_megakit/materials/MI_Asphalt.tres" id="1_jjcf7"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8vcmv"]
+_surfaces = [{
+"aabb": AABB(-2, -0.2, -2, 4, 1e-05, 4),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIABAACAAUABgAAAAQABgAHAAAABwADAAAABwAIAAMA"),
+"name": "MI_Asphalt",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 9,
+"vertex_data": PackedByteArray("/38AAP9/AAD//wAAAAAAAP//AAD/fwAA/38AAAAAAAD/fwAA//8AAP//AAD//wAAAAAAAP//AAAAAAAA/38AAAAAAAAAAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_r1602"]
+resource_name = "Roof_4x4_Plane_075"
+_surfaces = [{
+"aabb": AABB(-2, -0.2, -2, 4, 1e-05, 4),
+"attribute_data": PackedByteArray("AAD/////AAD/////AAAAAAAA/////wAA/////wAAAAAAAP////8AAP////8AAAAAAAD/////AAD/////AAAAAA=="),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0A"),
+"material": ExtResource("1_jjcf7"),
+"name": "MI_Asphalt",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("/38AAP9//7///wAAAAD/v///AAD/f/+//38AAAAA/78AAAAA/3//v/9/AAAAAP+//38AAP9//78AAAAAAAD/vwAAAAD///+//38AAP9//7//fwAA////vwAAAAD/f/+//38AAP///7///wAA/3//v///AAD///+//38AAP9//7////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_8vcmv")
+
+[node name="Roof_4x42" type="Node3D" unique_id=1700235471]
+
+[node name="Roof_4x4" type="MeshInstance3D" parent="." unique_id=1697176575]
+mesh = SubResource("ArrayMesh_r1602")

@@ -1,0 +1,86 @@
+[gd_scene format=4 uid="uid://cg6yxwce3niei"]
+
+[ext_resource type="Material" uid="uid://cqmgaml5w7k5l" path="res://addons/city_megakit/materials/MI_RedBrick.tres" id="1_7ltm1"]
+[ext_resource type="Material" uid="uid://budxptsfqe8j8" path="res://addons/city_megakit/materials/MI_InteriorWall.tres" id="2_4j1kp"]
+[ext_resource type="Material" uid="uid://d2ia4l35dq0mh" path="res://addons/city_megakit/materials/MI_Trim.tres" id="3_froix"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_h3ppp"]
+_surfaces = [{
+"aabb": AABB(-1.0000001, 0, -2, 2, 2.6658435, 2),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgABAAQAAgAEAAUAAQAGAAQAAQAHAAYAAwAHAAEAAwAIAAcA"),
+"name": "MI_RedBrick",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 9,
+"vertex_data": PackedByteArray("AAAAAAAAAAAAAAdg//8AAAAAAAD//wAAAAAHYAAAAAD//wdg//8AAP//AAD//wAA////////AAAAAP////8AAAAA//8AAAAA")
+}, {
+"aabb": AABB(-0.79999995, 0, -2, 1.8, 3.0000005, 1.8),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAADAAAABAAFAAMABgADAAUABgAHAAMABwABAAMABwAIAAEA"),
+"name": "MI_InteriorWall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 9,
+"vertex_data": PackedByteArray("AAD/////AAD//1RV//8AAP///v///wAAAABUVf//AAAAAP//AAAAAAAAVFUAAAAAAAAAAAAAAAAAAAAA//8AAP//AAD//wAA")
+}, {
+"aabb": AABB(-1.0000001, 2.6658435, -2, 2, 0.3341565, 2),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEABQADAAAAAwAGAAQABQAHAAMABwAGAAMABwAIAAYA"),
+"name": "MI_Trim",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 9,
+"vertex_data": PackedByteArray("AAAAAP//AAD//15C//8AAP//AAD//wAAAABeQv//AAD///////8AAAAAAAAAAAAAAAD/////AAAAAF5CAAAAAAAA//8AAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_75fou"]
+resource_name = "Brick_TopTrim_Corner_Cube_6422"
+_surfaces = [{
+"aabb": AABB(-1.0000001, 0, -2, 2, 2.6658435, 2),
+"attribute_data": PackedByteArray("//////9///8Ntv//////////VNX//5TY//////////////////////9/VNUNtpTY////////QY7//+yW//////9/QY4NtuyW//////9///9kgv//////////VNVWzJTY//////////9WzP////////9/VNVkgpTY////////QY5WzOyW//////9/QY5kguyW"),
+"format": 34896613439,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEAAwAFAAQABgAHAAgABgAJAAcACQAKAAcACQALAAoA"),
+"material": ExtResource("1_7ltm1"),
+"name": "MI_RedBrick",
+"primitive": 3,
+"uv_scale": Vector4(2, 3, 1.9632571, 1.8415415),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("AAAAAAAA/78AAAdg////vwAAAAD///+/AAAHYAAA/78AAP//////vwAA//8AAP+/AAAAAP//AID//wdg//8AgP//AAD//wCAAAAHYP//AID///////8AgAAA/////wCA/3////9/////f////3////9/////f////3////9/////f////3////9/////f///")
+}, {
+"aabb": AABB(-0.79999995, 0, -2, 1.8, 3.0000005, 1.8),
+"attribute_data": PackedByteArray("/////2XmAAACphFD/////wAA//97UBmi/////wAAAAB7UBFD/////2Xm/v8Cphmi//////7//3+Dr5Vy/////5kZAAD8WRFD////////AACDrxFD/////5kZ/3/8WZVy/////2Xm/38CppVy/////wAAAAB7UBFD/////2XmAAACphFD/////wAA/397UJVy////////AACDrxFD/////5kZ///8WRmi/////5kZAAD8WRFD/////////v+Drxmi"),
+"format": 34896613439,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0A"),
+"material": ExtResource("2_4j1kp"),
+"name": "MI_InteriorWall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("AAD//////////1RV/////////v//////AABUVf////8AAAAAAAD/vwAAVFX///+/AABUVQAA/78AAAAA////vwAAAAD///////9UVf////8AAFRV////////AAD/////AAD//wAA/78AAFRV////vwAA//////+/AABUVQAA/7//f////3////9/////f/7//38AAP9/AAD/fwAA/38AAP9//v//f/7//3/+//9//v//fwAA/38AAP9/AAD/fwAA")
+}, {
+"aabb": AABB(-1.0000001, 2.6658435, -2, 2, 0.3341565, 2),
+"attribute_data": PackedByteArray("/////wAA4CWzBDcq////////pxrele0j////////4CXelTcq/////wAApxqzBO0j////////AADelfYR/////wAAAACzBPYR/////wAA4CUgajcq////////pxpL++0j////////4CVL+zcq/////wAApxogau0j////////AABL+/YR/////wAAAAAgavYR"),
+"format": 34896613439,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEAAwAFAAQABgAHAAgABgAJAAcACQAKAAcACQALAAoA"),
+"material": ExtResource("3_froix"),
+"name": "MI_Trim",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("AAAAAP//AID//15C//8AgP//AAD//wCAAABeQv//AID///////8AgAAA/////wCAAAAAAAAA/78AAF5C////vwAAAAD///+/AABeQgAA/78AAP//////vwAA//8AAP+//3////9/////f////3////9/////f////3////9/////f////3////9/////f///")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_h3ppp")
+
+[node name="Brick_TopTrim_Corner2" type="Node3D" unique_id=1913387331]
+
+[node name="Brick_TopTrim_Corner" type="MeshInstance3D" parent="." unique_id=74945242]
+mesh = SubResource("ArrayMesh_75fou")

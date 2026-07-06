@@ -1,0 +1,63 @@
+[gd_scene format=4 uid="uid://de5syi3hrcw2k"]
+
+[ext_resource type="Material" uid="uid://sv4rse08cs5w" path="res://addons/city_megakit/materials/MI_Shop_Signs.tres" id="1_34goi"]
+[ext_resource type="Material" uid="uid://db8rfdl6dtic" path="res://addons/city_megakit/materials/MI_Trim_MetalConcrete.tres" id="2_qmdxg"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ltym5"]
+_surfaces = [{
+"aabb": AABB(-2.9264576, -0.6342036, 0.13924676, 5.855052, 1.2680588, 1e-05),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"name": "MI_Shop_Signs",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAD//4YBAAD//wAAAAAAAAAAAAAAAAAA/////4YBAAA=")
+}, {
+"aabb": AABB(-3.0076735, -0.697389, 0.01201931, 6.0174837, 1.3944297, 0.12880665),
+"format": 34896613377,
+"index_count": 78,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIAAwAFAAEAAwAGAAUABgAEAAcABAACAAcABgAHAAUAAgABAAgABwACAAkAAgAIAAkABQAHAAoABwAJAAoAAQAFAAsAAQALAAgABQAKAAsADAAJAAgADQALAAoADgAKAAkADgANAAoADAAOAAkADQAPAAsADwAIAAsADwANAA4ADwAMAAgADwAOAAwA"),
+"name": "MI_Trim_MetalConcrete",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("ivyZC9v8AAD///////8AAP//AAD+/wAAivxl9Nv8AAB0A5kL2/wAAAAA/////wAAdANl9Nv8AAAAAAAA/v8AAP////8AAAAA//8AAAAAAAAAAAAAAAAAAAAA//8AAAAAivxl9CMDAAB0A5kLIwMAAIr8mQsjAwAAdANl9CMDAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_d4bgn"]
+resource_name = "Prop_Sign_JadeGarden_Plane_076"
+_surfaces = [{
+"aabb": AABB(-2.9264576, -0.6342036, 0.13924676, 5.855052, 1.2680588, 1e-05),
+"attribute_data": PackedByteArray("/wAA/28BfZcAAP///////y68cr8AAP///////28Bcr8AAP///wAA/y68fZcAAP//"),
+"format": 34896613439,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": ExtResource("1_34goi"),
+"name": "MI_Shop_Signs",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAD//4YBAID//wAAAAAAgAAAAAAAAACA/////4YBAID/f////3////9/////f///")
+}, {
+"aabb": AABB(-3.0076735, -0.697389, 0.01201931, 6.0174837, 1.3944297, 0.12880665),
+"attribute_data": PackedByteArray("/////9J0Frl+t+T//wAA/zR8q7Cbvlz9/////9J0q7B+t1z9/wAA/zR8FrmbvuT//////9qhFrnb4uT//////xzAq7D//1z9/////9qhq7Db4lz9/////xzAFrn//+T//wAA/8XGzrAL67nu/////2PcEbkL67T//wUF/8XGEbkL67nu/////2PczrAL67T//////wAAzrAL67T//////5NYEblBwrT//////wAAEbkL67T//////5NYzrBBwrT//////2+kb7lX5f///////0ax/LC18XT9/////2+k/LBX5XT9/////0axb7m18f///////ySRb7nD0v7//wUF/12U/LDe1XT9/////ySR/LDD0nT9/wAA/12Ub7ne1f7//wAA/zWhb7k84v///////2+k/LBX5XT9/wcH/zWh/LA84nT9/////2+kb7lX5f///wAA/12Ub7ne1f7//wcH/zWh/LA84nT9/wUF/12U/LDe1XT9/wAA/zWhb7k84v///////5NYzrBBwrT//wcH/zFuEblBwrnu/////5NYEblBwrT//wAA/zFuzrBBwrnu/wAA/zFuzrBBwrnu/wUF/8XGEbkL67nu/wcH/zFuEblBwrnu/wAA/8XGzrAL67nu/wAA/3eaFrm+2+T//////9qhq7Db4lz9/wAA/3eaq7C+21z9/////9qhFrnb4uT//wAA/zR8FrmbvuT//wAA/3eaq7C+21z9/wAA/zR8q7Cbvlz9/wAA/3eaFrm+2+T//wAA/1a5Fb1Bwrnu//////9//v8L67T//wAA//9/Fb0L67nu/////1a5//9BwrT/"),
+"format": 34896613439,
+"index_count": 78,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0AMAAxADIAMAAzADEA"),
+"material": ExtResource("2_qmdxg"),
+"name": "MI_Trim_MetalConcrete",
+"primitive": 3,
+"uv_scale": Vector4(4.4645705, 0.7929504, 1.4328431, 0.81494343),
+"vertex_count": 52,
+"vertex_data": PackedByteArray("ivyZC9v8/j/////////+P///AAD+//4/ivxl9Nv8/j90A5kL2/z6fv//AAD+//p+AAAAAP7/+n6K/JkL2/z6for8ZfQjA2////8AAAAAb///////AABv/4r8mQsjA2//ivyZCyMD//8AAAAAAAD/////AAAAAP//dAOZCyMD//8AAAAA/v//P///AAAAAP8/AAAAAAAA/z///wAA/v//P///AAD+/6oq/////wAAqir//wAAAACqKv///////6oqAAD/////qioAAAAAAACqKgAA//8AAKoqAAAAAP7/qir///////8AAAAA//8AAAAA/////wAAAAAAAP////8AAHQDmQsjA2//AAD//wAAb/8AAAAAAABv/3QDZfQjA2//dANl9CMD+v7/////AAD6/gAA//8AAPr+ivxl9CMD+v50A2X02/z+PwAAAAD+//4/AAD//////j90A5kL2/z+P4r8ZfTb/AAAAAD/////AAD///////8AAHQDZfTb/AAAdANl9CMD//+K/JkLIwP//4r8ZfQjA///dAOZCyMD///H/sf+x/7H/sf+x/7H/sf+/v//f/7//3/+//9//v//f05AsL9OQLC/TkCwv05AsL//f2r+/39q/v9/av7/f2r+AAD/fwAA/38AAP9/AAD/f6oqqiqqKqoqqiqqKqoqqipUVaqqVFWqqlRVqqpUVaqq/3//v/9//7//f/+//3//v7A/sD+wP7A/sD+wP7A/sD8AAP9/AAD/fwAA/38AAP9/N4HHfjeBx343gcd+N4HHfv9/an7/f2p+/39qfv9/an7/f/7//3/+//9//v//f/7/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ltym5")
+
+[node name="Prop_Sign_JadeGarden2" type="Node3D" unique_id=1118963158]
+
+[node name="Prop_Sign_JadeGarden" type="MeshInstance3D" parent="." unique_id=1460332227]
+mesh = SubResource("ArrayMesh_d4bgn")

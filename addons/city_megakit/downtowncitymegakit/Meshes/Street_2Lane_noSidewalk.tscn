@@ -1,0 +1,63 @@
+[gd_scene format=4 uid="uid://dna04vlnm73t2"]
+
+[ext_resource type="Material" uid="uid://x81i0r1cgbf0" path="res://addons/city_megakit/materials/MI_Asphalt.tres" id="1_darah"]
+[ext_resource type="Material" uid="uid://b3fgen0enpybk" path="res://addons/city_megakit/materials/MI_StreetDecals.tres" id="2_pvcvl"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_knb4m"]
+_surfaces = [{
+"aabb": AABB(-3.0000002, -0.15, -3, 6.0000005, 1e-05, 6),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAACAAMAAAAEAAEAAAADAAUABgAEAAAABgAAAAUABgAHAAQABgAFAAgA"),
+"name": "MI_Asphalt",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 9,
+"vertex_data": PackedByteArray("/38AAP9/AAD+/wAAAAAAAP//AAD/fwAA/v8AAP//AAD/fwAAAAAAAP9/AAD//wAAAAAAAP9/AAAAAAAAAAAAAAAAAAD//wAA")
+}, {
+"aabb": AABB(-3.000002, -0.148, -2.7999992, 6.000002, 1e-05, 5.6),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgABAAQAAgAEAAUABgAHAAgABgAJAAcACAAHAAoACAAKAAsA"),
+"name": "MI_StreetDecals",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("/v8AANr2AAD/fwAA/v8AAP9/AADa9gAA/v8AAP//AAAAAAAA/v8AAAAAAADa9gAAAAAAACQJAAD/fwAAAAAAAP9/AAAkCQAAAAAAAAAAAAD//wAAAAAAAP//AAAkCQAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8j5rx"]
+resource_name = "Street_2Lane_noSidewalk_Plane_228"
+_surfaces = [{
+"aabb": AABB(-3.0000002, -0.15, -3, 6.0000005, 1e-05, 6),
+"attribute_data": PackedByteArray("/////wAA//8AAP///ycn////AAAAAP////////////8AAP///wIC/wAAAAAAAP///woK////AAAAAP///wQE/wAAAAAAAP///////wAA//8AAP///wIC////AAAAAP////////////8AAP///wAA/wAAAAAAAP///wQE////AAAAAP///wsL/wAAAAAAAP//"),
+"format": 34896613439,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAAACAAQAAAAEAAUABgAHAAgABgAJAAcABgAIAAoABgAKAAsA"),
+"material": ExtResource("1_darah"),
+"name": "MI_Asphalt",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("/38AAP9//z/+/wAAAAD/v///AAD/f/8//38AAAAA/7/+/wAA////P/9/AAD///8/AAAAAP9//z//fwAAAAD/v/9/AAD/f/8/AAAAAAAA/7//fwAA////PwAAAAD///8/////f////3////9/////f////3////9/////f////3////9/////f////3////9/")
+}, {
+"aabb": AABB(-3.000002, -0.148, -2.7999992, 6.000002, 1e-05, 5.6),
+"attribute_data": PackedByteArray("/wAA////RgEAAP///wAA/wAAXxAAAP///wAA/wAARgEAAP///wAA////XxAAAP///wAA////RgEAAP///wAA/wAAXxAAAP///wAA/wAARgEAAP///wAA////XxAAAP///wAA////RgEAAP///wAA/wAAXxAAAP///wAA/wAARgEAAP///wAA////XxAAAP///wAA////RgEAAP///wAA/wAAXxAAAP///wAA/wAARgEAAP///wAA////XxAAAP//"),
+"format": 34896613439,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0A"),
+"material": ExtResource("2_pvcvl"),
+"name": "MI_StreetDecals",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("/v8AANr2/7//fwAA/v//v/9/AADa9v+//v8AAP///7//fwAA2vb/vwAAAAD+//+/AAAAANr2/7//fwAA/v//vwAAAAAkCf///38AAAAA////fwAAJAn//wAAAAAAAP///38AACQJ/////wAAAAD/////AAAkCf///38AAAAA///+//9//v//f/7//3/+//9//v//f/7//3/+//9//v//f/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_knb4m")
+
+[node name="Street_2Lane_noSidewalk2" type="Node3D" unique_id=533090575]
+
+[node name="Street_2Lane_noSidewalk" type="MeshInstance3D" parent="." unique_id=801704066]
+mesh = SubResource("ArrayMesh_8j5rx")

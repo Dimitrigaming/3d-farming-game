@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://b6rxuunktqka5"]
+
+[ext_resource type="Material" uid="uid://b3fgen0enpybk" path="res://addons/city_megakit/materials/MI_StreetDecals.tres" id="1_d50xy"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_2hnso"]
+_surfaces = [{
+"aabb": AABB(-3, -0.110000014, -0.19692576, 6, 1e-05, 0.39385152),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"name": "MI_StreetDecals",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_wm70k"]
+resource_name = "Decal_DoubleYellow_Straight_Plane_007"
+_surfaces = [{
+"aabb": AABB(-3, -0.110000014, -0.19692576, 6, 1e-05, 0.39385152),
+"attribute_data": PackedByteArray(255, 255, 73, 237, 0, 0, 254, 255, 0, 0, 73, 237, 255, 255, 255, 255),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"material": ExtResource("1_d50xy"),
+"name": "MI_StreetDecals",
+"primitive": 3,
+"uv_scale": Vector4(2, 1.0874567, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 255, 127, 255, 191, 255, 127, 255, 191, 255, 127, 255, 191, 255, 127, 255, 191)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_2hnso")
+
+[node name="Decal_DoubleYellow_Straight2" type="Node3D" unique_id=643224709]
+
+[node name="Decal_DoubleYellow_Straight" type="MeshInstance3D" parent="." unique_id=1161506659]
+mesh = SubResource("ArrayMesh_wm70k")

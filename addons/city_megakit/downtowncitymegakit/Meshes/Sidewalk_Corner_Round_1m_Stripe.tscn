@@ -1,0 +1,40 @@
+[gd_scene format=4 uid="uid://dujtwcpmmwdgj"]
+
+[ext_resource type="Material" uid="uid://b3fgen0enpybk" path="res://addons/city_megakit/materials/MI_StreetDecals.tres" id="1_e461t"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_66773"]
+_surfaces = [{
+"aabb": AABB(-0.90000033, -0.148, -0.49999982, 1.3999987, 1e-05, 1.400002),
+"format": 34896613377,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEAAwAFAAQABQAGAAQABQAHAAYABwAIAAYABwAJAAgACQAKAAgACQALAAoACwAMAAoACwANAAwADQAOAAwADQAPAA4ADwAQAA4ADwARABAA"),
+"name": "MI_StreetDecals",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 18,
+"vertex_data": PackedByteArray("kiQAAAAAAADrBAAA8TEAAAAAAAAAAAAAySgAAM4qAAB8EwAA92EAAEY1AAD4UwAAJCsAADmOAACMSQAA53kAAPpKAAAEtQAA1mQAACibAADFcQAA2tQAABaGAABytgAAB54AAILsAAAGrAAAuMoAAA3OAAAT+wAAMNUAADXXAAD//wAA//8AAP7/AABs2wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_wwdje"]
+resource_name = "Sidewalk_Corner_Round_1m_Stripe_Plane_025"
+_surfaces = [{
+"aabb": AABB(-0.90000033, -0.148, -0.49999982, 1.3999987, 1e-05, 1.400002),
+"attribute_data": PackedByteArray("jI9fEKN9RgGMj0YBo31fELprRgG6a18Q0llGAdJZXxDpR0YB6UdfEAA2RgEANl8QFyRGARckXxAvEkYBLxJfEEYARgFGAF8Q"),
+"format": 34896613399,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEAAwAFAAQABQAGAAQABQAHAAYABwAIAAYABwAJAAgACQAKAAgACQALAAoACwAMAAoACwANAAwADQAOAAwADQAPAA4ADwAQAA4ADwARABAA"),
+"material": ExtResource("1_e461t"),
+"name": "MI_StreetDecals",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 18,
+"vertex_data": PackedByteArray("kiQAAAAArdfrBAAA8TEX2gAAAAAAAK3XySgAAM4qF9p8EwAA92EZ30Y1AAD4UxnfJCsAADmOTeSMSQAA53lN5PpKAAAEtarp1mQAACibqunFcQAA2tQm7xaGAABytibvB54AAILsuPQGrAAAuMq49A3OAAAT+1j6MNUAADXXWPr//wAA//8r/f7/AABs2yv99NPqJ57SPSX00+onntI9JQbQDSAG0A0gfs3+Gn7N/hr6yvYV+sr2FWzI2xBsyNsQycWUC8nFlAsAwwEGAMMBBojBEQOIwRED")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_66773")
+
+[node name="Sidewalk_Corner_Round_1m_Stripe2" type="Node3D" unique_id=694722481]
+
+[node name="Sidewalk_Corner_Round_1m_Stripe" type="MeshInstance3D" parent="." unique_id=959097402]
+mesh = SubResource("ArrayMesh_wwdje")

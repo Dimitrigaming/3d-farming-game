@@ -1,0 +1,42 @@
+[gd_scene format=4 uid="uid://cul5d8lbbyub5"]
+
+[ext_resource type="Material" uid="uid://db8rfdl6dtic" path="res://addons/city_megakit/materials/MI_Trim_MetalConcrete.tres" id="1_av8og"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_25d3q"]
+_surfaces = [{
+"aabb": AABB(-1, -0.15, -0.5, 2, 0.15000004, 1.0099999),
+"format": 34896613377,
+"index_count": 90,
+"index_data": PackedByteArray("DwABAAIAAwABAAIAAQADAAQABQADAAIABQACAAYAAgAGABAABQAQAAYAAgAQAA8ABQAIABAACAAHABAADwAQAAcACAAJAAcACQAAAAcADwAHAAAACQAKAAAAAAARAA8ADwARAAEACgALAAAAAAALABEACwAKAAwACwAMABIADAATABIACwASABMACwATABEADAAOABMAEQANAAEAEQATAA0ADgANABMAAQAEAA0ADgAEAA0A"),
+"lods": [0.1701202, PackedByteArray("AAABAAIAAwABAAIAAQADAAQABQADAAIABQACAAYAAgAGAAcABQAHAAYAAgAHAAAABQAIAAcACAAJAAcACQAAAAcACQAKAAAACgALAAAAAAALAAEACwAKAAwACwANAAEADAANAAsAAQAEAA0ADAAOAA0ADgAEAA0A")],
+"name": "MI_Trim_MetalConcrete",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("/////8TKAAAAAP//ZPgAAAAA///EygAAAAAAAMTKAAAAAAAA//8AAAAAAAAAAAAAAAD//wAAAAD/////AAAAAP9/AAAAAAAA//8AAAAAAAD//wAAxMoAAP////9k+AAA//8AAP//AAAAAMzM//8AAP9/AAD//wAA/3///8TKAAD/f///AAAAAP9///9k+AAA///MzP//AAD/f8zM//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_nxjfo"]
+resource_name = "Sidewalk_Straight_1x2m_Cube_128"
+_surfaces = [{
+"aabb": AABB(-1, -0.15, -0.5, 2, 0.15000004, 1.0099999),
+"attribute_data": PackedByteArray("/wAA//7/OMjP417+/wAA/8KqVc+01v///wAA/8KqOMi01l7+/wAA//7/Vc/P4////wAA/2DVntSa3O/O/wAA/8KqntSa3LXV/wAA/8KqZNAH27XV/wAA////ntSa3CjI/wAA//7/Vc+i2ijI/wAA/8KqVc+i2rXV/wAA/zvVSdXP40Pj//////9///8H/rXV/wAA//9/SdUH/kPj/////zvV///P47XV/////yV+A8+r2ASr/wAA/0tSbMi01pK4/////yV+bMi01gSr/wAA/0tSA8+r2JK4/////0HaA8+i2pq6/////42CbMir2LXV/////0HabMir2Jq6/////2euA8+i2ijI/////42CA8+i2rXV/wAA/3ug99T//1bX/wAA/9Gmrc8H/rXV/wAA/3ugrc8H/lbX/wAA/9+n99T//03V/////yV+A8+r2ASr/wAA/0tSbMi01pK4/////yV+bMi01gSr/wAA/0tSA8+r2JK4/wAA/3ug99T//1bX/wAA/9Gmrc8H/rXV/wAA/3ugrc8H/lbX/wAA/9+n99T//03V/wAA/9+nvNBs/k3V/wAA/2DVOMhB3V7+/wAA/2DVVc9B3f///wAA/2DVZNAH2+/O/wAA//7/ZNAH2yjI/wAA/2DVVc+i2u/O/wAA/52qSdXr8EPj/////52q///r8LXV/////2eubMir2CjI/wAA/9+nvNBs/k3V"),
+"format": 34896613439,
+"index_count": 90,
+"index_data": PackedByteArray("JAABAAIAJAAlAAEAAAAlACQAAAADACUABAAGACYABAAFAAYABwAEACYABwAmACcACAAnACYACAAmACgAKAAmAAYAKAAGAAkAKQALAAwAKQAqAAsACgAqACkACgANACoADgAPABAADgARAA8AEgArABQAEgAVACsAFQATACsAFQAWABMAFwAYABkAGAAXABoAGAAaACwAGwAcAB0AGwAeABwAHwAgACEAIAAfACIAIAAiACMA"),
+"lods": [0.1701202, PackedByteArray("AAABAAIAAAADAAEABAAFAAYABwAEAAYABwAGAAgACAAGAAkACgALAAwACgANAAsADgAPABAADgARAA8AEgATABQAEgAVABMAFQAWABMAFwAYABkAGAAXABoAGwAcAB0AGwAeABwAHwAgACEAIAAfACIAIAAiACMA")],
+"material": ExtResource("1_av8og"),
+"name": "MI_Trim_MetalConcrete",
+"primitive": 3,
+"uv_scale": Vector4(2.002263, 1.9980398, 1.4509106, 1.4033508),
+"vertex_count": 45,
+"vertex_data": PackedByteArray("/////8TK/78AAP//ZPj/rwAA///Eyv+//////2T4/6//fwAA//8AgAAAAAD//wCAAADMzP///4///wAA//8AgP////9k+P+vAAD//2T4/68AAP//xMr///////8AAP///////8TK//8AAP//AAD/////AAAAAP+//////8TK/7//////AAD/v///AADEyv+/AAAAAAAA////////AAD//wAA//8AAP///38AAAAA/////wAAAAD/////AADEygAA/////2T4AAD/////xMoAAP//AAD//wAAAAAAAAAA/78AAP//xMr/vwAA//8AAP+/AAAAAMTK/78AAAAAxMoAAAAA//9k+AAAAAD//8TKAAAAAAAA//8AAAAAzMz//wAA/3///8TK/7//f///ZPj/r/9/zMz///+P///MzP///4//f///ZPj/r/9////Eyv///3///wAA////f///AAD/////zMz//wAA////f////3////9/////f/9/////f///////f/9///////9/////f/9//7//f/+//3//v/9//7//fwAA/38AAP9/AAD/fwAA/3////9//v//f////3/+//9//v//v/9//7//f/+//3//v/9//38AAP9/AAD/fwAA/38AAP+//3//v/9//7//f/+//3//v/9/////f////3////9/////f////3//f/+//3//v/9//v//v/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_25d3q")
+
+[node name="Sidewalk_Straight_1x2m2" type="Node3D" unique_id=1419132938]
+
+[node name="Sidewalk_Straight_1x2m" type="MeshInstance3D" parent="." unique_id=42503846]
+mesh = SubResource("ArrayMesh_nxjfo")

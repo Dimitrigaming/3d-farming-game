@@ -1,0 +1,86 @@
+[gd_scene format=4 uid="uid://84unty0gxhw7"]
+
+[ext_resource type="Material" uid="uid://bsuhv1ofeeyh4" path="res://addons/city_megakit/materials/MI_Roof_Slate.tres" id="1_p8koy"]
+[ext_resource type="Material" uid="uid://db8rfdl6dtic" path="res://addons/city_megakit/materials/MI_Trim_MetalConcrete.tres" id="2_26hdy"]
+[ext_resource type="Material" uid="uid://d2ia4l35dq0mh" path="res://addons/city_megakit/materials/MI_Trim.tres" id="3_p6kol"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8atdg"]
+_surfaces = [{
+"aabb": AABB(-2.0000012, 0, -1.0093106e-06, 2.0000012, 3, 2.000001),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAAACAAMAAQAEAAIAAwACAAQAAQAFAAQAAwAEAAYA"),
+"name": "MI_Roof_Slate",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 7,
+"vertex_data": PackedByteArray("//8AAAAAAAD+/////38AAP9/////fwAA/3///wAAAAAAAP///v8AAP7//////wAAAAD//wAAAAA=")
+}, {
+"aabb": AABB(-2.0000012, 2.8, -1.0093106e-06, 2.0000002, 0.20000005, 2.000001),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEABAABAAUA"),
+"name": "MI_Trim_MetalConcrete",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("////////AAAAAAAA/v8AAAAA///+/wAA//8AAP//AAAAAP//AAAAAAAAAAAAAAAA")
+}, {
+"aabb": AABB(-1.1000006, 2.7989926, -4.776348e-07, 1.1000003, 0.4010074, 1.1000006),
+"format": 34896613377,
+"index_count": 96,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAABAAMABAACAAEABAAFAAIABAADAAYABAAHAAUABAAGAAcABgADAAgAAAAIAAMABgAIAAkACQAHAAYACgAJAAgAAAAKAAgACgALAAkACQALAAcACgAMAAsADAAHAAsACgANAAwAAAANAAoADAAOAAcADgAMAA0ADwAFAAcADwAHAA4ADwACAAUAAAACABAADwAQAAIAAAARAA0ADgANABEAAAAQABEADwAOABEADwARABAA"),
+"name": "MI_Trim",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 18,
+"vertex_data": PackedByteArray("0UW6aC26AAD//9Fp6KIAABZd0WnoogAA//+6aC26AAD/////6KIAABZd///oogAA/v//////AAAAAP///v8AAP//AAAtugAA/v9JAf//AADRRQAALboAAAAASQH+/wAAAABJAQAAAADRRQAAAAAAAAAA//8AAAAAFl3//wAAAAAWXdFpAAAAANFFumgAAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_g70a4"]
+resource_name = "Roof_SlateCornice_InnerCorner_Plane_057"
+_surfaces = [{
+"aabb": AABB(-2.0000012, 0, -1.0093106e-06, 2.0000012, 3, 2.000001),
+"attribute_data": PackedByteArray("/3///8Wr////f/9/xasWs/+//3/i1Raz/3//T8WrPpb///9///8Ws/+//0/i1T6W/3//f8WrFrP/f/9Pxas+lv9//3/Fqxaz/3///8Wr////v/9/4tUWs/9//3/Fqxaz"),
+"format": 34896613431,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUAAwAGAAQABwAFAAQABwAEAAgACQAKAAsA"),
+"material": ExtResource("1_p8koy"),
+"name": "MI_Roof_Slate",
+"primitive": 3,
+"uv_scale": Vector4(2, 2, 1.4692706, 1.6090546),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("//8AAAAA///+/////3////9/////f////v////9/AAAAAP///v9U1f9/////f1TV/v//////AAD/f///AABU1QAA//8AAFTV//8AAAAAPwn/f////38/Cf9///8AAD8J/38g7v9/IO7/fyDu/3//v6mqqqqpqqqq/3//v6mqqqqpqqqqMbuaiTG7mokxu5qJ")
+}, {
+"aabb": AABB(-2.0000012, 2.8, -1.0093106e-06, 2.0000002, 0.20000005, 2.000001),
+"attribute_data": PackedByteArray("lrntGU9ANFJoRnIlELw0UmhG7RkQvDRSlrlyJU9ANFKWue0ZT0A0UmhGciUQvDRSlrlyJU9ANFJoRu0ZELw0Ug=="),
+"format": 34896613431,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
+"material": ExtResource("2_26hdy"),
+"name": "MI_Trim_MetalConcrete",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("////////AIAAAAAA/v8AgAAA///+/wCA//8AAP//AIAAAP//AAAAAAAAAAD+/wAAAAAAAAAAAAAAAP///v8AAP9/////f////3////9/////P/9//z//f/8//3//P/9/")
+}, {
+"aabb": AABB(-1.1000006, 2.7989926, -4.776348e-07, 1.1000003, 0.4010074, 1.1000006),
+"attribute_data": PackedByteArray("ZmZVGsSFlWUAAFsEN4L8gZlZWwQ3giJpAABVGsSF/IEAAFsEN4L8gQAAVRrEhfyBZWY/LD6+sLMAAGo65cgX0AAAPyw+vhfQzIxqOuXICqkAAGo65cgX0AAAPyw+vhfQZmYfLFxWCGIAAOI6L1xvfgAAHyxcVm9+ZWbiOi9cCGIle2iWAk5vfnaDH6pcVm9+a5xolj6+Fokle/qpN4L8gXaDxLcvXG9+a5yZt+XIF9BNPlQA5cgX0NmAeBg+viSwTT54GD6+FonZgFQA5cgKqQAA+xgLsBaJzIyTAD6+JLCZWfsYC7DwoQAAkwA+vhaJAAD7GAuwFokAAJMAPr4Wif//0DoCTm9+ZaYLLVxWlWX//wstXFZvfmWm0DoCTpVlZmYfLFxWCGIAAOI6L1xvfmVm4jovXAhiAAAfLFxWb34le2iWAk5vfnaDH6pcVm9+JXv6qTeC/IFrnGiWPr4WiXaDxLcvXG9+a5yZt+XIF9BNPlQA5cgX0NmAeBg+viSw2YBUAOXICqlNPngYPr4Wif//0DoCTm9+ZaYLLVxWlWVlptA6Ak6VZf//Cy1cVm9+"),
+"format": 34896613431,
+"index_count": 96,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAAACAAQAAAAEAAUABgAHAAgABgAJAAcABgAKAAkABgALAAoADAANAA4ADAAPAA0AEAARABIAEAATABEAEgARABQAEgAUABUAFgAXABgAFgAZABcAGgAbABwAGgAdABsAHgAcABsAHgAbAB8AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkAKwAsACkAKwAtACwALgAvADAALgAxAC8AMgAzADQAMgA1ADMA"),
+"material": ExtResource("3_p6kol"),
+"name": "MI_Trim",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 54,
+"vertex_data": PackedByteArray("0UW6aC26RCr//9Fp6KL//xZd0WnookQq//+6aC26//8WXdFpAABDKtFFumgAAEMq0UUAAC260yr+/0kB////////AAAtuv//AABJAf7/0yoAAEkBAADSKtFFAAAAANIq0UW6aC26/////wAALbr/////umgtuv//0UUAAC26////////6KIAAP//umgtugAA/v//////AAD//9Fp6KIAAP//AAAtugAA/v9JAf//AAD+/0kB/////wAA///+/////v////////8AAEkB/v/////////oov//AAD///7/qioWXf//6KKqKv7/////////Fl3//wAAqioAAP//AACqKv/////oov//Fl3Raeii/////9Fp6KL//xZd///oov//0UW6aC26AADRRQAAAAAAANFFAAAtugAA0UW6aAAAAAAWXf//AAD//9FFumgAAP//Fl3RaQAA//8AAP//AAD//9FFAAAAAP//AABJAQAA//8AAEkBAAD/PwAA///+//8/AABJAf7//z8AAP//AAD/PxZd//8AAP8/Fl3Raeii/z8WXf//6KL/PxZd0WkAAP8/iyoW1XO//v+LKhbVc7/+/y4qFtUuKhbVtipt1f9/NkD/fzZAtipt1dsqbNXbKmzV/3////9/////f////3////+//3//v/9//7//f/+//3//v/9//7//f/9//3//f/9//3//f/9//3//f/+/qaqqqqmqqqr/f/+/qaqqqqmqqqr+//9/////f/7//3////9//7//f/+//3//v/9//7//f/9//v//f/7//3/+//9//v//f////3/+//9/////f////3////9/////fwAA/38AAP9/AAD/fwAA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_8atdg")
+
+[node name="Roof_SlateCornice_InnerCorner2" type="Node3D" unique_id=912773543]
+
+[node name="Roof_SlateCornice_InnerCorner" type="MeshInstance3D" parent="." unique_id=1115402844]
+mesh = SubResource("ArrayMesh_g70a4")

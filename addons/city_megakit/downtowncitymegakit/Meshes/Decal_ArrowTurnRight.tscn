@@ -1,0 +1,40 @@
+[gd_scene format=4 uid="uid://bxyy2j6id42jw"]
+
+[ext_resource type="Material" uid="uid://b3fgen0enpybk" path="res://addons/city_megakit/materials/MI_StreetDecals.tres" id="1_hgqt7"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1tuac"]
+_surfaces = [{
+"aabb": AABB(-0.8421457, -0.13000001, -1.2345264, 1.9877815, 1e-05, 2.50253),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgAEAAAAAgAFAAQA"),
+"name": "MI_StreetDecals",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("AAAAAAAAAAD//wAA3HoAAF5FAADcegAA//8AAAAAAAAAAAAA//8AAF5FAAD//wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_uc1fx"]
+resource_name = "Decal_ArrowTurnRight_Plane_044"
+_surfaces = [{
+"aabb": AABB(-0.8421457, -0.13000001, -1.2345264, 1.9877815, 1e-05, 2.50253),
+"attribute_data": PackedByteArray("/////9Z3VY7/////uaoUrf////+ghRSt/////7mqVY7/////1ndmzv////+ghWbO"),
+"format": 34896613407,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgAEAAAAAgAFAAQA"),
+"material": ExtResource("1_hgqt7"),
+"name": "MI_StreetDecals",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("AAAAAAAA/7///wAA3Hr/v15FAADcev+///8AAAAA/78AAAAA////v15FAAD///+/////f////3/+//9/////f////3////9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_1tuac")
+
+[node name="Decal_ArrowTurnRight2" type="Node3D" unique_id=1274690066]
+
+[node name="Decal_ArrowTurnRight" type="MeshInstance3D" parent="." unique_id=226564657]
+mesh = SubResource("ArrayMesh_uc1fx")

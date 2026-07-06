@@ -1,0 +1,40 @@
+[gd_scene format=4 uid="uid://dvcsy4lxwi6nl"]
+
+[ext_resource type="Material" uid="uid://bcnds571ntuae" path="res://addons/city_megakit/materials/MI_Ornaments.tres" id="1_yt32s"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_sdocr"]
+_surfaces = [{
+"aabb": AABB(-0.569682, -0.2686419, -0.00073304336, 1.139364, 0.5372836, 0.051877066),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwAAAAIAAAAEAAEABAAAAAMABAAFAAEABAADAAYABAAGAAUAAwACAAcAAQAHAAIABgADAAcAAQAFAAcABgAHAAUA"),
+"name": "MI_Ornaments",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAD/////AAAAAAAAAAAAAAAA//8AAAAA////////AAAAAAAA/v8AAP//AAAAAAAA//8AAP7/AAD/////AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_jmu4n"]
+resource_name = "Prop_Ornament_2_Plane_072"
+_surfaces = [{
+"aabb": AABB(-0.569682, -0.2686419, -0.00073304336, 1.139364, 0.5372836, 0.051877066),
+"attribute_data": PackedByteArray("//+krhr8//9866ms//+j1P//qaz/////fOukrhr8o9T/v6SuGvyj1H2rqaz//0ep/7+prP//o9R9q6SuGvxHqX2rpK5Q9P//AICprDX4DKR9q6msNfj//wCApK5Q9AykfOukrjX4////v6msGvwMpHzrqawa/P///7+krjX4DKSrmf//pqP//8PPfOb7ywykq5l85vvL///Dz///pqMMpKuZ///7ywykw8985lD0///Dz///+8v//6uZfOZQ9Ayk"),
+"format": 34896613431,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": ExtResource("1_yt32s"),
+"name": "MI_Ornaments",
+"primitive": 3,
+"uv_scale": Vector4(2.0000694, 2, 1.7403301, 1.6188514),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAD/////VNUAAAAAAABU1QAA//8AAFTVAAAAAP7/VNX//wAA/v9U1f////8AAFTV//8AAAAAVNX///////9U1f////////+/AAD//wAA/7//////AAD/vwAA//////+/AAAAAP7//////wAAAAD//wAAAAAAAP////8AAP7///8AAAAAAAAAAP////8AAAAAAAD//wAAAAD//wAAAAAAAAAAAAD+/wCA////////AID//wAA/v8AgAAA/////wCAVNVU1VTVVNVU1VTVVNVU1amqVFWpqlRVqapUVamqVFX///9/////f////3////9//3//P/9//z//f/8//3//P////3////9/////f////3//f////3////9/////f///")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_sdocr")
+
+[node name="Prop_Ornament_22" type="Node3D" unique_id=578923024]
+
+[node name="Prop_Ornament_2" type="MeshInstance3D" parent="." unique_id=772538099]
+mesh = SubResource("ArrayMesh_jmu4n")

@@ -1,0 +1,40 @@
+[gd_scene format=4 uid="uid://cmc6xc8ax53dp"]
+
+[ext_resource type="Material" uid="uid://x81i0r1cgbf0" path="res://addons/city_megakit/materials/MI_Asphalt.tres" id="1_1ownp"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_a21v0"]
+_surfaces = [{
+"aabb": AABB(-1, -0.20000005, -1, 2, 1e-05, 2),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAADAAAABAAFAAMABgAEAAAABgAAAAcA"),
+"name": "MI_Asphalt",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/38AAMzMAAD//wAAAAAAAP//AADMzAAA/38AAAAAAAAAAAAAzMwAAAAAAAAAAAAAAAAAAP//AAD/fwAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_y1e37"]
+resource_name = "Roof_2x2_90Angle_L_Plane_066"
+_surfaces = [{
+"aabb": AABB(-1, -0.20000005, -1, 2, 1e-05, 2),
+"attribute_data": PackedByteArray("/3/MzP//AAD//8zM/38AAAAAzMwAAAAAAAD///9///8="),
+"format": 34896613399,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAADAAAABAAFAAMABgAEAAAABgAAAAcA"),
+"material": ExtResource("1_1ownp"),
+"name": "MI_Asphalt",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/38AAMzM/7///wAAAAD/v///AADMzP+//38AAAAA/78AAAAAzMz/vwAAAAAAAP+/AAAAAP///7//fwAA////v////3////9/////f////3////9/////f////3////9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_a21v0")
+
+[node name="Roof_2x2_90Angle_L2" type="Node3D" unique_id=1264781812]
+
+[node name="Roof_2x2_90Angle_L" type="MeshInstance3D" parent="." unique_id=1683330091]
+mesh = SubResource("ArrayMesh_y1e37")

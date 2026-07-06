@@ -1,0 +1,63 @@
+[gd_scene format=4 uid="uid://bmjamj0i7apkr"]
+
+[ext_resource type="Material" uid="uid://db8rfdl6dtic" path="res://addons/city_megakit/materials/MI_Trim_MetalConcrete.tres" id="1_5s7ww"]
+[ext_resource type="Material" uid="uid://budxptsfqe8j8" path="res://addons/city_megakit/materials/MI_InteriorWall.tres" id="2_t287s"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_lg7j0"]
+_surfaces = [{
+"aabb": AABB(-1.0000004, -2.3841858e-07, -3.5166772e-07, 2.0000005, 3.0000007, 1e-05),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwAAAAIAAAAEAAEABAAFAAEABAAGAAUAAwAHAAAABwADAAgABwAIAAkACAAKAAkACAALAAoACwAMAAoACwANAAwA"),
+"name": "MI_Trim_MetalConcrete",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 14,
+"vertex_data": PackedByteArray("AACAP2DEcT+IN9KzAQCAv/zPCj9QS9KzAACAv2jEcT+IN9KzAACAvwAAwD/izYwz//9/P/TPCj9QS9KzAQCAvwAAgDRQS9Kz//9/PwAAgLRQS9Kz+P9/P/3/vz/yMrW0AwCAv+mOA0DSzLy0+/9/P+WOA0DYzLy0//9/PwBMHUDYzIK0AQCAvwRMHUDSzIK0AQCAP/7/P0BbS9Kz//9/vwIAQEBFS9Kz")
+}, {
+"aabb": AABB(-1, 0, -0.20000009, 2, 3.0000005, 1e-05),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgABAAQAAgAEAAUABQAEAAYABQAGAAcA"),
+"name": "MI_InteriorWall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAAAAAAD//1RVAAAAAAAAVFUAAAAA//8AAAAAAAD//6mqAAAAAAAAqaoAAAAA///+/wAAAAAAAP//AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_iuk6l"]
+resource_name = "Metal_Plain_3_Cube_166"
+_surfaces = [{
+"aabb": AABB(-1.0000004, -2.3841858e-07, -3.5166772e-07, 2.0000005, 3.0000007, 1e-05),
+"attribute_data": PackedByteArray("/////wEAgD9UrDs+AAAAPwAAAD//////AACAM6yxuD4AAAA/AAAAP/////8AAIAzVKw7PgAAAD8AAAA//////wEAgD+ssbg+AAAAPwAAAD//////AAAANNDjzT4AAAA/AAAAP/////8CAIA/5Hw5PgAAAD8AAAA//////wIAgD/U480+AAAAPwAAAD//////AAAANNx8OT4AAAA/AAAAP/////8AAMA/xNHPPgAAAD8AAAA///////z//z6MPDc+AAAAPwAAAD//////AADAP5Q8Nz4AAAA/AAAAP/////8AAAA/wNHPPgAAAD8AAAA//////wEAgD9UrDs+////PgAAAD//////AACAM6yxuD4AAAA/AAAAP/////8AAIAzVKw7PgAAAD8AAAA//////wEAgD+ssbg+AAAAPwAAAD//////AAAANNDjzT4AAAA/AAAAP/////8CAIA/5Hw5PgAAAD8AAAA//////wIAgD/U480+AAAAPwAAAD//////AAAANNx8OT4AAAA/AAAAP/////8AAMA/xNHPPgAAAD8AAAA///////z//z6MPDc+////PgAAAD//////AADAP5Q8Nz4AAAA/AAAAP/////8AAAA/wNHPPgAAAD8AAAA/"),
+"format": 34359742527,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": ExtResource("1_5s7ww"),
+"name": "MI_Trim_MetalConcrete",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AACAP2DEcT+IN9KzAQCAv/zPCj9QS9KzAACAv2jEcT+IN9Kz//9/P/TPCj9QS9Kz//9/P/TPCj9QS9KzAQCAvwAAgDRQS9KzAQCAv/zPCj9QS9Kz//9/PwAAgLRQS9KzAACAvwAAwD/izYwzAACAP2DEcT+IN9KzAACAv2jEcT+IN9Kz+P9/P/3/vz/yMrW0AwCAv+mOA0DSzLy0//9/PwBMHUDYzIK0+/9/P+WOA0DYzLy0AQCAvwRMHUDSzIK0AQCAvwRMHUDSzIK0AQCAP/7/P0BbS9Kz//9/PwBMHUDYzIK0//9/vwIAQEBFS9Kz+P9/P/3/vz/yMrW0AwCAv+mOA0DSzLy0+/9/P+WOA0DYzLy0AACAvwAAwD/izYwz/3//f/7//7//f/9//v//v/9//3/+//+//3//f/7//7//f/9/AAD/v/9//38AAP+//3//fwAA/7//f/9/AAD/v/9//38AAP+//3//fwAA/7//f/9/AAD/v/9//38AAP+//3//fwAA/7//f/9/AAD/v/9//38AAP+//3//fwAA/7//f/9//v//v/9//3/+//+//3//f/7//7//f/9//v//v/9//3/+//+//3//f////7//f/9//v//v/9//3////+/")
+}, {
+"aabb": AABB(-1, 0, -0.20000009, 2, 3.0000005, 1e-05),
+"attribute_data": PackedByteArray("//////7//3//f/9//////wAAAAD/f/9/////////AAD/f/9//////wAA/3//f/9//////////v//f/9//////wAA/3//f/9//////////3//f/9//////wAA////f/9//////wAAAAD/f/9/////////AAD/f/9/"),
+"format": 34896613439,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUABgAFAAgABgAIAAkA"),
+"material": ExtResource("2_t287s"),
+"name": "MI_InteriorWall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 10,
+"vertex_data": PackedByteArray("AAAAAAAA/////1RVAAD//wAAVFUAAP////8AAAAA//8AAFRVAAD/////qaoAAP//AACpqgAA/////1RVAAD//////v8AAP//AAD//wAA////f/7//3/+//9//v//f/7//3////9/////f////3////9/////f///")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_lg7j0")
+
+[node name="Metal_Plain_32" type="Node3D" unique_id=1391824303]
+
+[node name="Metal_Plain_3" type="MeshInstance3D" parent="." unique_id=2145427704]
+mesh = SubResource("ArrayMesh_iuk6l")

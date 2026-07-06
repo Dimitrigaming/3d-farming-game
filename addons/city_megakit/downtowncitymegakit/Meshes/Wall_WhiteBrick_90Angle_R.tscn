@@ -1,0 +1,63 @@
+[gd_scene format=4 uid="uid://3r3sfyrnvxqm"]
+
+[ext_resource type="Material" uid="uid://emb4hso8lj5g" path="res://addons/city_megakit/materials/MI_WhiteBrick.tres" id="1_yi1kp"]
+[ext_resource type="Material" uid="uid://budxptsfqe8j8" path="res://addons/city_megakit/materials/MI_InteriorWall.tres" id="2_ypifx"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_3n0bq"]
+_surfaces = [{
+"aabb": AABB(0.29380298, 0, -0.6000001, 0.706197, 3, 0.6000001),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAwABAAQABQAEAAEAAAAGAAEABQABAAcABgAHAAEABgAIAAcA"),
+"name": "MI_WhiteBrick",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 9,
+"vertex_data": PackedByteArray("AAD//wAAAAAAAIEO/v8AAAAAgQ4AAAAAAAAAAAAAAAAAAAAA/v8AAP//AAD+/wAAAAD/////AAD//4EO/v8AAP///////wAA")
+}, {
+"aabb": AABB(1, 0, -0.7, 1e-05, 3.0000005, 0.49999988),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAADAAAABAAFAAMABgAFAAQABgAHAAUA"),
+"name": "MI_InteriorWall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AABUVf//AAAAAAAAAAAAAAAAAAD//wAAAABUVQAAAAAAAKmq//8AAAAAqaoAAAAAAAD/////AAAAAP//AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_j75q5"]
+resource_name = "Wall_WhiteBrick_90Angle_R_Cube_175"
+_surfaces = [{
+"aabb": AABB(0.29380298, 0, -0.6000001, 0.706197, 3, 0.6000001),
+"attribute_data": PackedByteArray("/////76n/3/46i35/////1TVvvj//7mH/////76nvvj46rmH/////1TV/3///y35/////1TV/394gln8////////vvgboeWK/////1TVvvh4guWK/////////38boVn8/////76n///46v///////1TVvvj//0H5/////1TV/////////////76nvvj46kH5//////////8boYqL/////1TVvvh4gkeS////////vvgboUeS/////1TV//94goqL"),
+"format": 34896613439,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0A"),
+"material": ExtResource("1_yi1kp"),
+"name": "MI_WhiteBrick",
+"primitive": 3,
+"uv_scale": Vector4(2, 3, 1.9667795, 1.8772032),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("AAD//wAA/78AAIEO/v//vwAAgQ4AAP+/AAD//////78AAP////8AgP//gQ7+/wCAAACBDv7/AID///////8AgAAAAAAAAP+/AACBDv7//78AAAAA/v//vwAAgQ4AAP+///8AAP7/AIAAAIEO/v8AgP//gQ7+/wCAAAAAAP7/AID/f/7//3////9/////f/7//3////9/////f////3////9/////f////3////9/////f////3////9/////f///")
+}, {
+"aabb": AABB(1, 0, -0.7, 1e-05, 3.0000005, 0.49999988),
+"attribute_data": PackedByteArray("////////AAD/f/9///////+//3//f/9///////7//3//f/9///////+/AAD/f/9/////////AAD/f/9///////+//3//f/9//////////3//f/9///////+/AAD/f/9///////+//v//f/9//////////v//f/9/"),
+"format": 34896613439,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUABgAFAAgABgAIAAkA"),
+"material": ExtResource("2_ypifx"),
+"name": "MI_InteriorWall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 10,
+"vertex_data": PackedByteArray("AABUVf//AAAAAAAAAAAAAAAAAAD//wAAAABUVQAAAAAAAP////8AAAAAqaoAAAAAAACpqv//AAAAAP//AAAAAAAAVFUAAAAAAABUVf//AAD/v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_3n0bq")
+
+[node name="Wall_WhiteBrick_90Angle_R2" type="Node3D" unique_id=1355142315]
+
+[node name="Wall_WhiteBrick_90Angle_R" type="MeshInstance3D" parent="." unique_id=394908662]
+mesh = SubResource("ArrayMesh_j75q5")

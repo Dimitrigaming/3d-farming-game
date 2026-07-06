@@ -1,0 +1,40 @@
+[gd_scene format=4 uid="uid://cixhcj7u5oydb"]
+
+[ext_resource type="Material" uid="uid://db8rfdl6dtic" path="res://addons/city_megakit/materials/MI_Trim_MetalConcrete.tres" id="1_vmxa1"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_nfpk7"]
+_surfaces = [{
+"aabb": AABB(-0.24888018, 0, -0.24911037, 0.49776033, 2.9999998, 0.4982207),
+"format": 34896613377,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIAAwAFAAEABAACAAYAAwAHAAUACAAEAAYABwAJAAUACAAGAAoABwALAAkADAAIAAoACwANAAkADAAKAA4ACwAPAA0ADwAMAA4ADwAOAA0A"),
+"name": "MI_Trim_MetalConcrete",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("/v8AAP9/AAD+/////v8AAP7/////fwAA/v8AAP//AAD//wAAAAAAAP9////+/wAA/v///wAAAAD/fwAA/v8AAP9/AAAAAAAAAAD///7/AAD/f///AAAAAAAAAAD+/wAAAAAAAAAAAAAAAP///38AAAAA//8AAAAAAAAAAP9/AAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ly57b"]
+resource_name = "Metal_Column_Center_Cube_158"
+_surfaces = [{
+"aabb": AABB(-0.24888018, 0, -0.24911037, 0.49776033, 2.9999998, 0.4982207),
+"attribute_data": PackedByteArray("mPu5DERAhyyWBYYA7USsBJYFuQztRMcsmPuGAERAQwSY+7kMRECHLJYFhgDtRKwElgW5DO1ExyyY+4YAREBDBJj7uQxDQIcslgWGAO1ErASWBbkM7UTHLJj7hgBDQEMEmPu5DENAhyyWBYYA7USsBJYFuQztRMcsmPuGAENAQwSY++0YQ0Aa+5YFuQztRBXTlgXtGO1EMPuY+7kMQ0DW0pj77RhDQBr7lgW5DO1EFdOWBe0Y7UQw+5j7uQxDQNbSmPvtGERAGvuWBbkM7UQV05YF7RjtRDD7mPu5DERA1tKY++0YREAa+5YFuQztRBXTlgXtGO1EMPuY+7kMREDW0g=="),
+"format": 34896613431,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0A"),
+"material": ExtResource("1_vmxa1"),
+"name": "MI_Trim_MetalConcrete",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 32,
+"vertex_data": PackedByteArray("/v8AAP9/qir+/////v+qKv7/////f6oq/v8AAP//qioAAAAA/3+qKgAA//8AAKoqAAD///9/qioAAAAAAACqKv9/AAAAAAAA/v///wAAAAD/f///AAAAAP//AAAAAAAA/38AAP7//z8AAP///v//P/9////+//8/AAAAAP7//z/+/wAA////P/9////+//8//v////7//z//fwAA/v//PwAAAAAAAAAA/3///wAAAAAAAP//AAAAAP9/AAAAAAAAAAAAAP7/qioAAP///3+qKgAA///+/6oqAAAAAP9/qir//wAAAACqKv7/////f6oq/v///wAAqir+/wAA/3+qKqqqVVWqqlVVqqpVVaqqVVVUVamqVFWpqlRVqapUVamq/7//P/+//z//v/8//7//P/9//3//f/9//3//f/9//3//f/9//3//f/9//3//f/9//7//P/+//z//v/8//7//P1RVqapUVamqVFWqqlRVqaqqqlVVqqpVVaqqVVWqqlVV")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_nfpk7")
+
+[node name="Metal_Column_Center2" type="Node3D" unique_id=1736599139]
+
+[node name="Metal_Column_Center" type="MeshInstance3D" parent="." unique_id=240254567]
+mesh = SubResource("ArrayMesh_ly57b")

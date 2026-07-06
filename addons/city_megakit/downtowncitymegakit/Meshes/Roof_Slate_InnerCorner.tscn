@@ -1,0 +1,63 @@
+[gd_scene format=4 uid="uid://bsng3rud3v38s"]
+
+[ext_resource type="Material" uid="uid://bsuhv1ofeeyh4" path="res://addons/city_megakit/materials/MI_Roof_Slate.tres" id="1_so8as"]
+[ext_resource type="Material" uid="uid://db8rfdl6dtic" path="res://addons/city_megakit/materials/MI_Trim_MetalConcrete.tres" id="2_q4v4h"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_kcldq"]
+_surfaces = [{
+"aabb": AABB(-2.0000012, 0, -1.0093106e-06, 2.0000012, 3, 2.000001),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAAACAAMAAQAEAAIAAwACAAQAAQAFAAQAAwAEAAYA"),
+"name": "MI_Roof_Slate",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 7,
+"vertex_data": PackedByteArray("//8AAAAAAAD+/////38AAP9/////fwAA/3///wAAAAAAAP///v8AAP7//////wAAAAD//wAAAAA=")
+}, {
+"aabb": AABB(-2.0000012, 2.8, -1.0093106e-06, 2.0000002, 0.20000005, 2.000001),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEABAABAAUA"),
+"name": "MI_Trim_MetalConcrete",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("////////AAAAAAAA/v8AAAAA///+/wAA//8AAP//AAAAAP//AAAAAAAAAAAAAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_lpk75"]
+resource_name = "Roof_Slate_InnerCorner_Plane_005"
+_surfaces = [{
+"aabb": AABB(-2.0000012, 0, -1.0093106e-06, 2.0000012, 3, 2.000001),
+"attribute_data": PackedByteArray("/3///8Wr////f/9/xasWs/+//3/i1Raz/3//T8WrPpb///9///8Ws/+//0/i1T6W/3//f8WrFrP/f/9Pxas+lv9//3/Fqxaz/3///8Wr////v/9/4tUWs/9//3/Fqxaz"),
+"format": 34896613431,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUAAwAGAAQABwAFAAQABwAEAAgACQAKAAsA"),
+"material": ExtResource("1_so8as"),
+"name": "MI_Roof_Slate",
+"primitive": 3,
+"uv_scale": Vector4(2, 2, 1.4692706, 1.6090546),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("//8AAAAA///+/////3////9/////f////v////9/AAAAAP///v9U1f9/////f1TV/v//////AAD/f///AABU1QAA//8AAFTV//8AAAAAPwn/f////38/Cf9///8AAD8J/38g7v9/IO7/fyDu/3//v6mqqqqpqqqq/3//v6mqqqqpqqqqMbuaiTG7mokxu5qJ")
+}, {
+"aabb": AABB(-2.0000012, 2.8, -1.0093106e-06, 2.0000002, 0.20000005, 2.000001),
+"attribute_data": PackedByteArray("lrntGU9ANFJoRnIlELw0UmhG7RkQvDRSlrlyJU9ANFKWue0ZT0A0UmhGciUQvDRSlrlyJU9ANFJoRu0ZELw0Ug=="),
+"format": 34896613431,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
+"material": ExtResource("2_q4v4h"),
+"name": "MI_Trim_MetalConcrete",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("////////AIAAAAAA/v8AgAAA///+/wCA//8AAP//AIAAAP//AAAAAAAAAAD+/wAAAAAAAAAAAAAAAP///v8AAP9/////f////3////9/////P/9//z//f/8//3//P/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_kcldq")
+
+[node name="Roof_Slate_InnerCorner2" type="Node3D" unique_id=670724189]
+
+[node name="Roof_Slate_InnerCorner" type="MeshInstance3D" parent="." unique_id=1708325797]
+mesh = SubResource("ArrayMesh_lpk75")

@@ -1,0 +1,40 @@
+[gd_scene format=4 uid="uid://cya5n36hxqifw"]
+
+[ext_resource type="Material" uid="uid://d2ia4l35dq0mh" path="res://addons/city_megakit/materials/MI_Trim.tres" id="1_6d4vh"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_01kk6"]
+_surfaces = [{
+"aabb": AABB(-1.3000001, 2.7939677e-09, -0.1, 2.3000002, 0.4, 0.4),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAAAFAAMABAAGAAIAAAAHAAUABAAIAAYABwAJAAUABAAKAAgABwALAAkACgAJAAsACgALAAgA"),
+"name": "MI_Trim",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("//9YaP+/AAAAAHBp//8AAP//cGn//wAAIQtYaP+/AAAAAP////8AACELAAD/vwAA////////AAD//wAA/78AAP////8AAAAAhSwAAAAAAACFLP//AAAAAP//AAAAAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_rw4x6"]
+resource_name = "Cornice_WhiteBrick_L_Cube_198"
+_surfaces = [{
+"aabb": AABB(-1.3000001, 2.7939677e-09, -0.1, 2.3000002, 0.4, 0.4),
+"attribute_data": PackedByteArray("//88uYvhxM3/f3mJBd7/////eYkF3sTN/388uYvhz/3//y7gEeX0z/9/+/6k73H5/38u4BHl//////v+pO/0z/9mTbZXv8TN//9AgXDN/////022V7////9/QIFwzYHW///o3zb69M//f/////////9/6N82+v/////+////9M///9f/cM3///9/6uG61cTN///q4brV////f9f/cM3Ezf//9IBwzYHW/38lt3DN////f/SAcM3/////JbdwzYHW"),
+"format": 34896613431,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": ExtResource("1_6d4vh"),
+"name": "MI_Trim",
+"primitive": 3,
+"uv_scale": Vector4(2, 0.46004176, 1.0073491, 1.6257529),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("//9YaP+/TL8AAHBp//9Mv///cGn//0y/IQtYaP+/TL///wAA/7//v4UsAAAAAP+/IQsAAP+//7///wAAAAD/vwAA//////+//////wAA/7//////////v4Us//8AAP+///9YaP+/AIAhCwAA/78AgCELWGj/vwCA//8AAP+/AIAAAP//////////cGn/////AABwaf///////////////4Us//8AAP////8AAAAA////////AAD//4UsAAAAAP//AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9//3////9/////f////3////9//3//f/9//3//f/9//3//f/7//3/+//9//v//f/7/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_01kk6")
+
+[node name="Cornice_WhiteBrick_L2" type="Node3D" unique_id=1688036556]
+
+[node name="Cornice_WhiteBrick_L" type="MeshInstance3D" parent="." unique_id=1264147844]
+mesh = SubResource("ArrayMesh_rw4x6")

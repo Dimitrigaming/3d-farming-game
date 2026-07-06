@@ -1,0 +1,40 @@
+[gd_scene format=4 uid="uid://ysstek0isdun"]
+
+[ext_resource type="Material" uid="uid://db8rfdl6dtic" path="res://addons/city_megakit/materials/MI_Trim_MetalConcrete.tres" id="1_1mrio"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_cchfy"]
+_surfaces = [{
+"aabb": AABB(-1.0000002, 0, -1.001705, 2.0000005, 1.0067486, 2.0033088),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAAAAAEAAEABAAAAAMAAQAFAAIAAgAFAAMABAAGAAEAAQAGAAUABAAHAAYABQAGAAcABAADAAcABQAHAAMA"),
+"name": "MI_Trim_MetalConcrete",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("////////AAAAAAAAlv8AAAAA/////wAA/////2gAAAD//wAAlv8AAAAA//9oAAAAAAAAAAAAAAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_2myfy"]
+resource_name = "Entrance_Concrete_2x2_Cube_046"
+_surfaces = [{
+"aabb": AABB(-1.0000002, 0, -1.001705, 2.0000005, 1.0067486, 2.0033088),
+"attribute_data": PackedByteArray("cv9a1frIRucNwI3u/////w3AWtX//0bncv+N7vrI//8NwFrV//9G53L/je76yP//cv9a1frIRucNwI3u/////53Aqf//////5P9Z6v//RueDwFnq//9G5///qf//////ncCp//rI///k/1nq+shG5///qf/6yP//g8BZ6vrIRudW/+3/+sj//0zAQNX/////TMDt//////9W/0DV+sj//1b/UtX//0bnTMD+//rIRudMwFLV+shG51b//////0bn"),
+"format": 34896613431,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": ExtResource("1_1mrio"),
+"name": "MI_Trim_MetalConcrete",
+"primitive": 3,
+"uv_scale": Vector4(1.3364023, 2.0005279, 1.6580089, 1.6777642),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("////////IIAAAAAAlv8ggAAA/////yCA//8AAJb/IIAAAP//aAAhAP//AAAAACEA/////2gAIQAAAAAAAAAhAAAAAACW/wAAAAD//2gAAAAAAP////8AAAAAAAAAAAAA//8AAJb//7//////aAD/v///AAAAAP+//////////7///wAAlv//PwAAAAAAAP8/AAAAAJb//z///wAAAAD/PwAA/////////////2gA/////////////wAA//9oAP//AAD/fwAA/38AAP9/AAD/f////3////9/////f////3//P/9//z//f/8//3//P/9//38AAP9/AAD/fwAA/38AAAAA/38AAP9/AAD/fwAA/3//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_cchfy")
+
+[node name="Entrance_Concrete_2x22" type="Node3D" unique_id=1224190680]
+
+[node name="Entrance_Concrete_2x2" type="MeshInstance3D" parent="." unique_id=312233855]
+mesh = SubResource("ArrayMesh_2myfy")

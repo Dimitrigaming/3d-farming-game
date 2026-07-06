@@ -1,0 +1,40 @@
+[gd_scene format=4 uid="uid://dhyp4lehwbrcw"]
+
+[ext_resource type="Material" uid="uid://b3fgen0enpybk" path="res://addons/city_megakit/materials/MI_StreetDecals.tres" id="1_75pwf"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_besea"]
+_surfaces = [{
+"aabb": AABB(-1.5, -0.148, -0.2999997, 3, 1e-05, 2.1999998),
+"format": 34896613377,
+"index_count": 42,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIABAACAAUABAAFAAYABAAGAAcACAAHAAYACAAGAAkACgAIAAkACgAJAAsADAAKAAsADAALAA0ADgAMAA0ADgANAA8A"),
+"name": "MI_StreetDecals",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("Z+8AAA3mAAD//wAA//8AAFbuAACE/QAA//8AALnoAAAQ6QAAlOMAAAjmAAD1+QAAz90AAG71AAAa5AAA7uAAAOzeAABW3QAA8dYAAPrvAABjFwAA6QsAAK8RAAANIAAAwAwAAIIEAABjCAAArhkAAAAAAAAAAAAAAAAAAEUXAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_oqotg"]
+resource_name = "Sidewalk_Inset_3m_R_Stripe_Plane_033"
+_surfaces = [{
+"aabb": AABB(-1.5, -0.148, -0.2999997, 3, 1e-05, 2.1999998),
+"attribute_data": PackedByteArray("ORBfEAAARgE5EEYBAABfEIoWXxDmFkYBox1GARMbXxAuH18QfyNGASjpXxCj7kYBk/RfELj4RgH//18Q//9GAQ=="),
+"format": 34896613399,
+"index_count": 42,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIABAACAAUABAAFAAYABAAGAAcACAAHAAYACAAGAAkACgAIAAkACgAJAAsADAAKAAsADAALAA0ADgAMAA0ADgANAA8A"),
+"material": ExtResource("1_75pwf"),
+"name": "MI_StreetDecals",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("Z+8AAA3mNPr//wAA///U/FbuAACE/YD6//8AALnonPwQ6QAAlONb9gjmAAD1+Tr2z90AAG71OPMa5AAA7uDd8+zeAABW3Zjv8dYAAPrvJu9jFwAA6Qst8K8RAAANIJLvwAwAAIIEy/VjCAAArhnq9QAAAAAAAB35AAAAAEUXBPoSwyYGtcFtA+vC2AXTwagD/cT9CQ3FHAqBxgQNMsZmDDfIcBBsyNoQ8cfkDzrIdhBExYkKNMVqCp/DQAcqw1cG")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_besea")
+
+[node name="Sidewalk_Inset_3m_R_Stripe2" type="Node3D" unique_id=140993256]
+
+[node name="Sidewalk_Inset_3m_R_Stripe" type="MeshInstance3D" parent="." unique_id=936839486]
+mesh = SubResource("ArrayMesh_oqotg")

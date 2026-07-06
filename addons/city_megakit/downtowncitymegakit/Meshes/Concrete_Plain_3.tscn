@@ -1,0 +1,63 @@
+[gd_scene format=4 uid="uid://pxrh7df1t8tp"]
+
+[ext_resource type="Material" uid="uid://bydcwglomkywu" path="res://addons/city_megakit/materials/MI_Concrete.tres" id="1_x3oku"]
+[ext_resource type="Material" uid="uid://budxptsfqe8j8" path="res://addons/city_megakit/materials/MI_InteriorWall.tres" id="2_bl73m"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tq4sk"]
+_surfaces = [{
+"aabb": AABB(-1, 0, 0, 2, 3, 1e-05),
+"format": 34359742465,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEAAwAFAAQA"),
+"name": "MI_Concrete",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("AACAvwAAAAAAAACAAACAPwAAgD8uvTszAACAPwAAAAAAAACAAACAvwAAgD8tvTszAACAPwAAQEDizQw0AACAvwAAQEDizQw0")
+}, {
+"aabb": AABB(-1, 0, -0.20000009, 2, 3.0000005, 1e-05),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgABAAQAAgAEAAUABQAEAAYABQAGAAcA"),
+"name": "MI_InteriorWall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAAAAAAD//1RVAAAAAAAAVFUAAAAA//8AAAAAAAD//6mqAAAAAAAAqaoAAAAA///+/wAAAAAAAP//AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_eteaq"]
+resource_name = "Concrete_Plain_3_Cube_108"
+_surfaces = [{
+"aabb": AABB(-1, 0, 0, 2, 3, 1e-05),
+"attribute_data": PackedByteArray("/////wAAAAAAAMA/92dLP8CTOT//////AACAPwAAgD/3Z0s/vpM5P/////8AAIA/AADAP/dnSz/Akzk//////wAAAAAAAIA/92dLP76TOT//////AACAPwAAAAD3Z0s/v5M5P/////8AAAAAAAAAAPdnSz+/kzk/"),
+"format": 34359742527,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEAAwAFAAQA"),
+"material": ExtResource("1_x3oku"),
+"name": "MI_Concrete",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("AACAvwAAAAAAAACAAACAPwAAgD8uvTszAACAPwAAAAAAAACAAACAvwAAgD8tvTszAACAPwAAQEDizQw0AACAvwAAQEDizQw0/3//f////7//f/9/////v/9//3////+//3//f////7//f/9/////v/9//3////+/")
+}, {
+"aabb": AABB(-1, 0, -0.20000009, 2, 3.0000005, 1e-05),
+"attribute_data": PackedByteArray("//////7//3//f/9//////wAAAAD/f/9/////////AAD/f/9//////wAA/3//f/9//////////v//f/9//////wAA/3//f/9//////////3//f/9//////wAA////f/9//////wAAAAD/f/9/////////AAD/f/9/"),
+"format": 34896613439,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUABgAFAAgABgAIAAkA"),
+"material": ExtResource("2_bl73m"),
+"name": "MI_InteriorWall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 10,
+"vertex_data": PackedByteArray("AAAAAAAA/////1RVAAD//wAAVFUAAP////8AAAAA//8AAFRVAAD/////qaoAAP//AACpqgAA/////1RVAAD//////v8AAP//AAD//wAA////f/7//3/+//9//v//f/7//3////9/////f////3////9/////f///")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_tq4sk")
+
+[node name="Concrete_Plain_32" type="Node3D" unique_id=1898440742]
+
+[node name="Concrete_Plain_3" type="MeshInstance3D" parent="." unique_id=1425433117]
+mesh = SubResource("ArrayMesh_eteaq")

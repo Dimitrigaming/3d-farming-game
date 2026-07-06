@@ -1,0 +1,63 @@
+[gd_scene format=4 uid="uid://dr6ovex7214il"]
+
+[ext_resource type="Material" uid="uid://cubg8rkn5asvv" path="res://addons/city_megakit/materials/MI_InteriorFloor.tres" id="1_gf50j"]
+[ext_resource type="Material" uid="uid://bdicvrs2w4u5o" path="res://addons/city_megakit/materials/MI_InteriorRoof.tres" id="2_gscl3"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_03rpi"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 1.3333333),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIABAACAAUA"),
+"name": "MI_InteriorFloor",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("AAAAAP9/AAD//wAAAAAAAP//AAD/fwAAAAAAAAAAAAAAAAAA//8AAP//AAD//wAA")
+}, {
+"aabb": AABB(-1, -0.1, -1, 2, 1e-05, 1.3333333),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAADAAAABAAFAAMA"),
+"name": "MI_InteriorRoof",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("AAAAAP9/AAD//wAAAAAAAAAAAAAAAAAA//8AAP9/AAAAAAAA//8AAP//AAD//wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_lwumx"]
+resource_name = "Floor_Inset_Plane_363"
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 1.3333333),
+"attribute_data": PackedByteArray("/////wAAVVX///////8AAP///////1RV/////wAAAAD/////AACqqv///////6mq"),
+"format": 34896613407,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIABAACAAUA"),
+"material": ExtResource("1_gf50j"),
+"name": "MI_InteriorFloor",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("AAAAAP9//7///wAAAAD/v///AAD/f/+/AAAAAAAA/78AAAAA////v///AAD///+/////f////3////9/////f////3////9/")
+}, {
+"aabb": AABB(-1, -0.1, -1, 2, 1e-05, 1.3333333),
+"attribute_data": PackedByteArray("/////wAAVFX///////8AAP////8AAAAA////////VVX/////AACpqv///////6qq"),
+"format": 34896613407,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAADAAAABAAFAAMA"),
+"material": ExtResource("2_gscl3"),
+"name": "MI_InteriorRoof",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("AAAAAP9//z///wAAAAD/PwAAAAAAAP8///8AAP9//z8AAAAA////P///AAD///8/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_03rpi")
+
+[node name="Floor_Inset2" type="Node3D" unique_id=939227711]
+
+[node name="Floor_Inset" type="MeshInstance3D" parent="." unique_id=503856854]
+mesh = SubResource("ArrayMesh_lwumx")

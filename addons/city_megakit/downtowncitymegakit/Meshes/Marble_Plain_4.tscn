@@ -1,0 +1,63 @@
+[gd_scene format=4 uid="uid://c1efo211kn3q8"]
+
+[ext_resource type="Material" uid="uid://d2ia4l35dq0mh" path="res://addons/city_megakit/materials/MI_Trim.tres" id="1_yhm0s"]
+[ext_resource type="Material" uid="uid://budxptsfqe8j8" path="res://addons/city_megakit/materials/MI_InteriorWall.tres" id="2_1aawa"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_2dtcr"]
+_surfaces = [{
+"aabb": AABB(-1, 0, 5.245365e-09, 2, 4, 1e-05),
+"format": 34359742465,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAAACAAMAAAADAAQAAAAFAAEABgABAAUABgAHAAEA"),
+"name": "MI_Trim",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("mZkZPwAAAAC4OrQx0MxMvgAAgEDizQw0mZkZPwAAgEDizQw0AACAPwAAgEDizQw0AACAPwAAAAC4OrQx0MxMvgAAAAC4OrQxAACAvwAAAAC4OrQxAACAvwAAgEDizQw0")
+}, {
+"aabb": AABB(-1, 0, -0.20000009, 2, 4.0000005, 1e-05),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEABAABAAUA"),
+"name": "MI_InteriorWall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("AAAAAAAAAAD///9/AAAAAAAA/38AAAAA//8AAAAAAAAAAP//AAAAAP///v8AAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ckhkr"]
+resource_name = "Marble_Plain_4_Cube_023"
+_surfaces = [{
+"aabb": AABB(-1, 0, 5.245365e-09, 2, 4, 1e-05),
+"attribute_data": PackedByteArray("/////wAAAADcFno+fKaYPoATSz7/////AACAP2Dr5z68pdE+/0JBP/////8AAIA/5BZ6PnymmD7/QkE//////wAAgD9qe7I+uU14Pv9CQT//////AAAAAGZ7sj65TXg+gBNLPv////8AAAAAXuvnPryl0T6AE0s+/////wAAAADcFno+flIFP4ATSz7/////AACAP+QWej5+UgU//0JBPw=="),
+"format": 34359742527,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAAACAAMAAAADAAQAAAAFAAEABgABAAUABgAHAAEA"),
+"material": ExtResource("1_yhm0s"),
+"name": "MI_Trim",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("mZkZPwAAAAC4OrQx0MxMvgAAgEDizQw0mZkZPwAAgEDizQw0AACAPwAAgEDizQw0AACAPwAAAAC4OrQx0MxMvgAAAAC4OrQxAACAvwAAAAC4OrQxAACAvwAAgEDizQw0/3//f/9/////f/9//3////9//3//f////3//f/9/////f/9//3////9//3//f////3//f/9/////f/9//3///w==")
+}, {
+"aabb": AABB(-1, 0, -0.20000009, 2, 4.0000005, 1e-05),
+"attribute_data": PackedByteArray("/////wAA////f/9///////7/AAD/f/9//////wAAAAD/f/9///////7/////f/9/////////AAD/f/9//////wAA////f/9//////wAAAAD/f/9//////////v//f/9/"),
+"format": 34896613439,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
+"material": ExtResource("2_1aawa"),
+"name": "MI_InteriorWall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAAAAAAD///9/AAAAAAAA/38AAAAA//8AAAAAAAAAAP//AAD//////38AAP/////+/wAA//8AAP9/AAD//////3////9/////f////3//f////3////9/////f/7/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_2dtcr")
+
+[node name="Marble_Plain_42" type="Node3D" unique_id=737981825]
+
+[node name="Marble_Plain_4" type="MeshInstance3D" parent="." unique_id=1802303167]
+mesh = SubResource("ArrayMesh_ckhkr")

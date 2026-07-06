@@ -1,0 +1,40 @@
+[gd_scene format=4 uid="uid://c6nww3v8lk5yw"]
+
+[ext_resource type="Material" uid="uid://d2ia4l35dq0mh" path="res://addons/city_megakit/materials/MI_Trim.tres" id="1_o5c8g"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_s4rgv"]
+_surfaces = [{
+"aabb": AABB(-0.2874465, 0, -0.0016935149, 0.574893, 4, 0.20440602),
+"format": 34896613377,
+"index_count": 42,
+"index_data": PackedByteArray("AAABAAIAAwAAAAIAAwAEAAAABQAAAAQABQAEAAYABwAAAAUABgAHAAUAAQAAAAcABgAIAAcACAAJAAcAAQAHAAkACAAKAAkACgABAAkACgALAAEA"),
+"name": "MI_Trim",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("/////1FjAAAPAP//AAAAAO////8AAAAA7/8AAAAAAAD//wAAUWMAAH3I/////wAAfcgAAP//AACBN/////8AAIE3AAD//wAAAAD//1FjAAAAAAAAUWMAAA8AAAAAAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_n1prj"]
+resource_name = "Marble_BevelColumn_Center_Cube_038"
+_surfaces = [{
+"aabb": AABB(-0.2874465, 0, -0.0016935149, 0.574893, 4, 0.20440602),
+"attribute_data": PackedByteArray("wIwmslBrJJPAzM++kYe7mMCMz75Qa7uYqL3PnueAmorYm8+e+nGaisDMJrKRhySTAAB9cS8tmXYf/9ZszZ2LdB//fXHNnZl2AADWbC8ti3QAAHtiiiypzB//ZE+8HwozH/97YoosCjMAAGRPvB+pzAAAZE8vLYxnH/8JRc2d+mIf/2RPzZ2MZwAACUUvLfpiAAAJRS8t+mIf/2NAzZ3sYB//CUXNnfpiAABjQC8t7GAf/3tizZ35bwAA1mwvLYt0AAB7Yi8t+W8f/9ZszZ2LdA=="),
+"format": 34896613431,
+"index_count": 42,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMAAwAAAAQAAQADAAUABgAHAAgABgAJAAcACgALAAwACgANAAsADgAPABAADgARAA8AEgATABQAEgAVABMAFgAXABgAFgAZABcA"),
+"material": ExtResource("1_o5c8g"),
+"name": "MI_Trim",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 26,
+"vertex_data": PackedByteArray("/////1Fj+/8PAP//AAC5/+////8AAP//gTf/////+f99yP///////wAA//9RYxX/7/8AAAAAXtX/////UWNe1e////8AAF7V//8AAFFjXtV9yAAA////v4E3//////+/fcj//////7+BNwAA////v4E3AAD//wPGAAD//1FjA8aBN/////8DxgAAAABRYwPGAAAAAFFjXtUPAP//AABe1QAA//9RY17VDwAAAAAAXtV9yP////8Dxv//AABRYwPGfcgAAP//A8b/////UWMDxgOA/b8lwEwA/3//vwLABQD/f/+/f8ABAbAqsCqwKrAqsCqwKrAqsCr/////////////////////9eL14vXi9eL14vXi9eL14k7VTtVO1U7VTtVO1U7VTtUJHQkdCR0JHQkdCR0JHQkd")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_s4rgv")
+
+[node name="Marble_BevelColumn_Center2" type="Node3D" unique_id=2115541459]
+
+[node name="Marble_BevelColumn_Center" type="MeshInstance3D" parent="." unique_id=1762233863]
+mesh = SubResource("ArrayMesh_n1prj")

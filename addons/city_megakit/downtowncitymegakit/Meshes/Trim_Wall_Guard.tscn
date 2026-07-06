@@ -1,0 +1,40 @@
+[gd_scene format=4 uid="uid://21o0quy0rid3"]
+
+[ext_resource type="Material" uid="uid://08qijf5mxu7" path="res://addons/city_megakit/materials/MI_Trim_Green.tres" id="1_8otux"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tikf1"]
+_surfaces = [{
+"aabb": AABB(-1, 0, 3.9777362e-08, 2, 0.64418423, 0.11848269),
+"format": 34896613377,
+"index_count": 96,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgABAAQABQABAAMABQAEAAEABgAFAAMABgADAAAABwAEAAUABwAFAAYAAgAEAAcABwAIAAIABgAJAAcABwAJAAgACgAGAAAABgALAAkACgALAAYADAAJAAsADAANAAkACAAJAA0ADgAMAAsADgALAAoACAANAA8AEAAOAAoAEQAIAA8AEAAKABIAEQAQABIAAAASAAoAAgASAAAAEQASABMAAgATABIAEQATAAgACAATAAIA"),
+"name": "MI_Trim_Green",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("JOxXif//AAAZF9mAiNwAANoTV4n//wAA5ejZgIjcAAAZF3wuiNwAAOXofC6I3AAAJOz+Jf//AADaE/4l//8AAAAAV4n//wAAAABfCv//AAD//1eJ//8AAP//Xwr//wAA//8AAAAAAAAAAAAAAAAAAP//V4kAAAAAAABXiQAAAAD/////AAAAAAAA//8AAAAA//859f//AAAAADn1//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_pcqvg"]
+resource_name = "Trim_Wall_Guard_Cube_050"
+_surfaces = [{
+"aabb": AABB(-1, 0, 3.9777362e-08, 2, 0.64418423, 0.11848269),
+"attribute_data": PackedByteArray("//////rJctX//////////5CQn9b//////////7CPctX//////////xrJn9b//////////4TrmZT//////////yypEo7//////////4TrEo7//////////yypmZT//////////7KUmZT//////////1pSEo7//////////7KUEo7//////////1pSmZT/////////////mZT//////////631Eo7/////////////Eo7//////////631mZT//////////4TrEo7//////////4TrmZT//////////2jD/////////////+3HYvP//////////+3H/////////////ymS/////////////6ONYvP//////////6ON/////////////7CP3ez//////////1aKxt///////////7CPctX//////////1aKH/L///////////rJ3ez//////////1PPH/L//////////1PPxt////////////rJctX//////////1KUPYD//////////xfBoo3//////////1KUoo3//////////xfBPYD//////////7CPctX//////////5CQsOv//////////7CP3ez//////////5CQn9b//////////7CP3ez//////////xrJsOv///////////rJ3ez//////////5CQsOv///////////rJ3ez//////////xrJn9b///////////rJctX//////////xrJsOv//////////wSfEo7//////////yypmZT//////////wSfmZT//////////yypEo7//////////7KUmZT//////////7KUEo7/////"),
+"format": 34896613439,
+"index_count": 96,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0ADwAQAA0ADwARABAAEgATABQAFQATABIAFQAWABMAFwAWABUAGAAZABoAGAAbABkAHAAbABgAHAAdABsAHgAdABwAHgAcAB8AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0AMAAxADIAMAAzADEANAAwADIANAA1ADAA"),
+"material": ExtResource("1_8otux"),
+"name": "MI_Trim_Green",
+"primitive": 3,
+"uv_scale": Vector4(2.994566, 1.8785263, 1.6094238, 1.6167064),
+"vertex_count": 54,
+"vertex_data": PackedByteArray("JOxXif//r5oZF9mAiNyvmtoTV4n//6+a5ejZgIjcr5r//wAAAAAqtwAAXwr//yq3//9fCv//KrcAAAAAAAAqtwAA//8AAP////859f////8AADn1//////////8AAP///////wAAVNX//1eJ//9U1f//OfX//1TV//9XiQAAVNX//18K//9U1f//AAAAAFTVJOxXif//AID//zn1//8AgP//V4n//wCA2hNXif//AIAAADn1//8AgAAAV4n//wCA2hP+Jf//n4QAAFeJ//9cktoTV4n//y6ZAABfCv//NoQk7P4l//+fhP//Xwr//zaE//9Xif//XJIk7FeJ//8umeXofC6I3P//GRfZgIjc///l6NmAiNz//xkXfC6I3P//2hNXif//O5kZF3wuiNx3mdoT/iX//wqaGRfZgIjclpraE/4l//+vmuXofC6I3K+aJOz+Jf//r5oZF3wuiNyvmiTs/iX//zuZ5ejZgIjcd5kk7FeJ//8KmuXofC6I3JaaAABXif//VNUAAAAAAABU1QAAV4kAAFTVAABfCv//VNUAAP//AABU1QAAOfX//1TVAAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3//f8W4/3/FuP9/xbj/f8W4qiqqKqoqqiqqKqoqqiqqKqoqqiqqKqoq/3////9/////f////3////9/////f////3//f/9//3//f/9//3//f///////////////////////f/9//3//f/9//3//f/9/8omiK4RSXwqmTkAL9YtxNP///3////9/////f////38MdlzUeq2g9VixvvQJdI3LVFWqqlRVqqpUVaqqVFWqqlRVqqpUVaqq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_tikf1")
+
+[node name="Trim_Wall_Guard2" type="Node3D" unique_id=158277678]
+
+[node name="Trim_Wall_Guard" type="MeshInstance3D" parent="." unique_id=1179293101]
+mesh = SubResource("ArrayMesh_pcqvg")

@@ -1,0 +1,40 @@
+[gd_scene format=4 uid="uid://buwfpkbn3khpl"]
+
+[ext_resource type="Material" uid="uid://emb4hso8lj5g" path="res://addons/city_megakit/materials/MI_WhiteBrick.tres" id="1_rx64t"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_6eko8"]
+_surfaces = [{
+"aabb": AABB(-0.3600001, 0, -1.1920929e-07, 0.7200002, 4, 0.2500002),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAABAAMABAAFAAEABgAFAAQABgAHAAUABgAIAAcABgAJAAgA"),
+"name": "MI_WhiteBrick",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 10,
+"vertex_data": PackedByteArray("AAD//wAAAAAAAAAA/v8AAAAAAAAAAAAAAAD///7/AAD/f////v8AAP9/AAD+/wAA/v////7/AAD+/wAA//8AAP7/AAAAAAAA/////wAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_gt1bk"]
+resource_name = "WhiteBrick_Column_Half_Cube_219"
+_surfaces = [{
+"aabb": AABB(-0.3600001, 0, -1.1920929e-07, 0.7200002, 4, 0.2500002),
+"attribute_data": PackedByteArray("/////5ys/3+x6AWL/////4m5//9E/////////5ys//+x6P///////4m5/39E/wWL/////03W/3+lmwWL/////4m5///NhP///////4m5/3/NhAWL/////03W//+lm////////xLz/3///wWL/////03W//8m6f///////03W/38m6QWL/////xLz///+/////////xLz/3+HhQWL//////7///8anP///////xLz//+Hhf///////////38anAWL"),
+"format": 34896613439,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0A"),
+"material": ExtResource("1_rx64t"),
+"name": "MI_WhiteBrick",
+"primitive": 3,
+"uv_scale": Vector4(1.601723, 3.9999998, 1.9262757, 1.8143919),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("AAD//wAA/78AAAAA/v//vwAAAAAAAP+/AAD///7//7//f////v8AgAAAAAD+/wCAAAD///7/AID/fwAA/v8AgP7////+/wCA/38AAP7/AID/f////v8AgP7/AAD//wCA/v////7//7/+/wAAAAD/v/7/AAD///+//////wAA/7//f/7//3////9/////f/7//3////9/////f////3////9/////f////3////9/////fwAA/38AAP9/AAD/fwAA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_6eko8")
+
+[node name="WhiteBrick_Column_Half2" type="Node3D" unique_id=1835152672]
+
+[node name="WhiteBrick_Column_Half" type="MeshInstance3D" parent="." unique_id=1936487548]
+mesh = SubResource("ArrayMesh_gt1bk")
