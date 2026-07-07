@@ -26,6 +26,10 @@ default_value = 0.5
 
 [resource]
 modes/cull = 2
+preview_params/Roughness = "0.0"
+preview_params/Specular = "1.0"
+preview_params/Color = "Color(0.231373, 0.231373, 0.231373, 1)"
+preview_params/Opacity = "1.0"
 nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_cguyg")
 nodes/fragment/2/position = Vector2(-100, -80)
 nodes/fragment/3/node = SubResource("VisualShaderNodeFloatParameter_0dmks")

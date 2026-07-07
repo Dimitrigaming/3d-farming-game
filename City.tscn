@@ -1,95 +1,99 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://bxcs8ap2f1klk"]
 
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Building_Large_3.tscn" id="1_1uacj"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Building_Medium_1.tscn" id="2_o40ui"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Building_Medium_2.tscn" id="3_er12m"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Building_Large_2.tscn" id="4_vvu38"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Building_Large_1.tscn" id="5_ltft3"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Building_Small_2.tscn" id="6_es2re"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Building_Small_1.tscn" id="7_cvxi6"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Street_4Lane.tscn" id="8_s0rx0"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Street_4Lane_noSidewalk.tscn" id="9_tqlwm"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Sidewalk_Straight_3m_Broken1.tscn" id="10_hf1nm"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Sidewalk_Straight_3m.tscn" id="11_8d38c"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Sidewalk_NoCurb_3m.tscn" id="12_aqvbi"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Street_TIntersection.tscn" id="13_76q6d"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Decal_BrokenLine_Straight.tscn" id="14_20wp3"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Decal_Slow.tscn" id="15_hhif5"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Decal_Only.tscn" id="16_qpfxf"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Decal_ArrowStraight.tscn" id="17_ty4ce"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Decal_ArrowTurnRight.tscn" id="18_psk52"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Decal_DoubleYellow_Straight.tscn" id="19_oivin"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Prop_FireEscape_Bottom.tscn" id="20_e6rx1"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Prop_FireEscape_Top.tscn" id="21_wy2q8"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Prop_FireEscape_Center.tscn" id="22_vtnej"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Prop_Bollard.tscn" id="23_emrti"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Prop_Sign_JadeGarden.tscn" id="24_87um0"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Prop_Sign_JadeGarden_Vertical.tscn" id="25_d3t0h"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Sidewalk_Planter.tscn" id="26_yme1a"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Prop_ManholeCover.tscn" id="27_gjyd6"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Door_4.tscn" id="28_ajj0t"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Door_2.tscn" id="29_g6oq4"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Door_3.tscn" id="30_e1ftq"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Street_4WayIntersection.tscn" id="31_4t1p7"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Street_Curve_4LaneShort.tscn" id="32_48wbv"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Street_Curve_4LaneLong.tscn" id="33_rhqgu"]
-[ext_resource type="PackedScene" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Street_2Lane.tscn" id="34_yxa3p"]
+[ext_resource type="PackedScene" uid="uid://bchmlxmooqk77" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Building_Large_3.tscn" id="1_1uacj"]
+[ext_resource type="PackedScene" uid="uid://ct3ywo1l6sntk" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Building_Medium_1.tscn" id="2_o40ui"]
+[ext_resource type="PackedScene" uid="uid://k634u8uijc0e" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Building_Medium_2.tscn" id="3_er12m"]
+[ext_resource type="PackedScene" uid="uid://b0rqufv8iuful" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Building_Large_2.tscn" id="4_vvu38"]
+[ext_resource type="PackedScene" uid="uid://lc0axhnfdyq6" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Building_Large_1.tscn" id="5_ltft3"]
+[ext_resource type="PackedScene" uid="uid://vhimfrxx5o8a" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Building_Small_2.tscn" id="6_es2re"]
+[ext_resource type="PackedScene" uid="uid://bkjo6lqwbupom" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Building_Small_1.tscn" id="7_cvxi6"]
+[ext_resource type="PackedScene" uid="uid://bgro2ths5qmca" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Street_4Lane.tscn" id="8_s0rx0"]
+[ext_resource type="PackedScene" uid="uid://dmqs5ettfyn2x" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Street_4Lane_noSidewalk.tscn" id="9_tqlwm"]
+[ext_resource type="PackedScene" uid="uid://bugpil0mmvyg8" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Sidewalk_Straight_3m_Broken1.tscn" id="10_hf1nm"]
+[ext_resource type="PackedScene" uid="uid://iy5hdmkb0rjm" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Sidewalk_Straight_3m.tscn" id="11_8d38c"]
+[ext_resource type="PackedScene" uid="uid://61ift2hng6rj" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Sidewalk_NoCurb_3m.tscn" id="12_aqvbi"]
+[ext_resource type="PackedScene" uid="uid://djp2jtpmbhurj" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Street_TIntersection.tscn" id="13_76q6d"]
+[ext_resource type="PackedScene" uid="uid://c7kraavjyjbej" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Decal_BrokenLine_Straight.tscn" id="14_20wp3"]
+[ext_resource type="PackedScene" uid="uid://c8lpoyp7e3me3" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Decal_Slow.tscn" id="15_hhif5"]
+[ext_resource type="PackedScene" uid="uid://73tqqt2yejob" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Decal_Only.tscn" id="16_qpfxf"]
+[ext_resource type="PackedScene" uid="uid://chklwxhn0b62o" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Decal_ArrowStraight.tscn" id="17_ty4ce"]
+[ext_resource type="PackedScene" uid="uid://bxyy2j6id42jw" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Decal_ArrowTurnRight.tscn" id="18_psk52"]
+[ext_resource type="PackedScene" uid="uid://b6rxuunktqka5" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Decal_DoubleYellow_Straight.tscn" id="19_oivin"]
+[ext_resource type="PackedScene" uid="uid://cbqhogomrjf5c" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Prop_FireEscape_Bottom.tscn" id="20_e6rx1"]
+[ext_resource type="PackedScene" uid="uid://cafsja0d86yty" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Prop_FireEscape_Top.tscn" id="21_wy2q8"]
+[ext_resource type="PackedScene" uid="uid://cxgl60m614v1e" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Prop_FireEscape_Center.tscn" id="22_vtnej"]
+[ext_resource type="PackedScene" uid="uid://da2hjyfse24mt" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Prop_Bollard.tscn" id="23_emrti"]
+[ext_resource type="PackedScene" uid="uid://de5syi3hrcw2k" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Prop_Sign_JadeGarden.tscn" id="24_87um0"]
+[ext_resource type="PackedScene" uid="uid://dx27lbheulwwd" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Prop_Sign_JadeGarden_Vertical.tscn" id="25_d3t0h"]
+[ext_resource type="PackedScene" uid="uid://cyrlu01e07cg3" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Sidewalk_Planter.tscn" id="26_yme1a"]
+[ext_resource type="PackedScene" uid="uid://ctgpbtqn5udmw" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Prop_ManholeCover.tscn" id="27_gjyd6"]
+[ext_resource type="PackedScene" uid="uid://dy8ufrj1jsb6l" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Door_4.tscn" id="28_ajj0t"]
+[ext_resource type="PackedScene" uid="uid://cf38qi0ac3q1x" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Door_2.tscn" id="29_g6oq4"]
+[ext_resource type="PackedScene" uid="uid://bv63jihmb3vsw" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Door_3.tscn" id="30_e1ftq"]
+[ext_resource type="PackedScene" uid="uid://bgv0ai01o3mk8" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Street_4WayIntersection.tscn" id="31_4t1p7"]
+[ext_resource type="PackedScene" uid="uid://dqgepycf3tr1q" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Street_Curve_4LaneShort.tscn" id="32_48wbv"]
+[ext_resource type="PackedScene" uid="uid://1ml3wyjpkhnj" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Street_Curve_4LaneLong.tscn" id="33_rhqgu"]
+[ext_resource type="PackedScene" uid="uid://dhqnw48clnpdp" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Street_2Lane.tscn" id="34_yxa3p"]
+[ext_resource type="PackedScene" uid="uid://d0ywbalx2fsqx" path="res://models/Player_Building.tscn" id="35_o40ui"]
 
 [node name="City" type="Node3D" unique_id=1620436365]
 
+[node name="Player_Building" parent="." unique_id=1094643967 instance=ExtResource("35_o40ui")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -11.834, 0.001, -57)
+
 [node name="Building_Large_33" parent="." unique_id=1421365888 instance=ExtResource("1_1uacj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -117)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0.001, -117)
 
 [node name="Building_Medium_15" parent="." unique_id=825160473 instance=ExtResource("2_o40ui")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, -117)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001, -117)
 
 [node name="Building_Medium_23" parent="." unique_id=1805456534 instance=ExtResource("3_er12m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -117)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0.001, -117)
 
 [node name="Building_Large_24" parent="." unique_id=1051800704 instance=ExtResource("4_vvu38")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.5, 0, -117)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.5, 0.001, -117)
 
 [node name="Building_Large_12" parent="." unique_id=216927629 instance=ExtResource("5_ltft3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0.001, -9)
 
 [node name="Building_Large_22" parent="." unique_id=996748325 instance=ExtResource("4_vvu38")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0.001, -9)
 
 [node name="Building_Medium_12" parent="." unique_id=1046327431 instance=ExtResource("2_o40ui")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 0.01, -9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 0.001, -9)
 
 [node name="Building_Small_22" parent="." unique_id=98350389 instance=ExtResource("6_es2re")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 0, -8.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 0.001, -8.5)
 
 [node name="Building_Small_12" parent="." unique_id=2002200192 instance=ExtResource("7_cvxi6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.5, 0, -9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.5, 0.001, -9)
 
 [node name="Building_Medium_22" parent="." unique_id=825196870 instance=ExtResource("3_er12m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 0, -9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 0.001, -9)
 
 [node name="Building_Small_13" parent="." unique_id=1935246818 instance=ExtResource("7_cvxi6")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12, 0, -40.5)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -77.899994, 0.001, -64.166664)
 
 [node name="Building_Medium_13" parent="." unique_id=450233069 instance=ExtResource("2_o40ui")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12, 0.01, -51.5)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -77.899994, 0.001, -53.166664)
 
 [node name="Building_Small_14" parent="." unique_id=1797431469 instance=ExtResource("7_cvxi6")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12, 0, -65)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -77.899994, 0.001, -39.666664)
 
 [node name="Building_Large_13" parent="." unique_id=564413471 instance=ExtResource("5_ltft3")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12, 0, -86.5)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.9, 0.001, -86.5)
 
 [node name="Building_Large_32" parent="." unique_id=900307903 instance=ExtResource("1_1uacj")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12, 0, -36)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12, 0.001, -36)
 
 [node name="Building_Small_23" parent="." unique_id=679363785 instance=ExtResource("6_es2re")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 11.5, 0, -57)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 11.5, 0.001, -57)
 
 [node name="Building_Medium_14" parent="." unique_id=194522633 instance=ExtResource("2_o40ui")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 11.5, 0.01, -73)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 11.5, 0.001, -73)
 
 [node name="Building_Large_23" parent="." unique_id=88795529 instance=ExtResource("4_vvu38")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12, 0, -90.5)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12, 0.001, -90.5)
 
 [node name="Street" type="Node3D" parent="." unique_id=1155666998]
 
@@ -620,30 +624,6 @@ transform = Transform3D(-2.1855695e-07, 0, -1, 0, 1, 0, 1, 0, -2.1855695e-07, 10
 
 [node name="Sidewalk_NoCurb_3m65" parent="Street2" unique_id=1842868520 instance=ExtResource("12_aqvbi")]
 transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 13.5, 0, -10.500003)
-
-[node name="Sidewalk_NoCurb_3m66" parent="Street2" unique_id=289811595 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(-2.1855695e-07, 0, -1, 0, 1, 0, 1, 0, -2.1855695e-07, 70.5, 0, -13.499996)
-
-[node name="Sidewalk_NoCurb_3m67" parent="Street2" unique_id=750268041 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 73.5, 0, -13.499995)
-
-[node name="Sidewalk_NoCurb_3m68" parent="Street2" unique_id=849580290 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(-2.1855695e-07, 0, -1, 0, 1, 0, 1, 0, -2.1855695e-07, 70.5, 0, -16.499996)
-
-[node name="Sidewalk_NoCurb_3m69" parent="Street2" unique_id=1725160231 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 73.5, 0, -16.499994)
-
-[node name="Sidewalk_NoCurb_3m70" parent="Street2" unique_id=1387021007 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(-2.1855695e-07, 0, -1, 0, 1, 0, 1, 0, -2.1855695e-07, 70.5, 0, -19.499996)
-
-[node name="Sidewalk_NoCurb_3m71" parent="Street2" unique_id=843286085 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 73.5, 0, -19.499994)
-
-[node name="Sidewalk_NoCurb_3m72" parent="Street2" unique_id=889418522 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(-2.1855695e-07, 0, -1, 0, 1, 0, 1, 0, -2.1855695e-07, 70.5, 0, -22.499996)
-
-[node name="Sidewalk_NoCurb_3m73" parent="Street2" unique_id=152110524 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 73.5, 0, -22.499994)
 
 [node name="Street3" type="Node3D" parent="." unique_id=68797934]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)

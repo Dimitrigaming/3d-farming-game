@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://pqxl3sk8bd37" path="res://models/building/Plain_3.tscn" id="18_3ci11"]
 [ext_resource type="PackedScene" uid="uid://bvm5uwy2juk0c" path="res://models/building/WindowLarge.tscn" id="18_t0vkd"]
 [ext_resource type="Material" uid="uid://c4b4e2g0o0m0d" path="res://materials/mat_Opaque_Glass.tres" id="20_d2r3s"]
+[ext_resource type="PackedScene" uid="uid://c8gftxigy8kho" path="res://models/building/InteriorWall.tscn" id="21_d2r3s"]
 [ext_resource type="Script" uid="uid://c428buwmu5t7h" path="res://scripts/door_controller.gd" id="door_ctrl"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_csnlo"]
@@ -1188,8 +1189,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -15.1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
 mesh = SubResource("ArrayMesh_8q8br")
 
+[node name="Plain_6" parent="Walls" unique_id=332848596 instance=ExtResource("18_3ci11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0000005, 0, 0)
+mesh = SubResource("ArrayMesh_8q8br")
+
+[node name="Plain_9" parent="Walls" unique_id=273829587 instance=ExtResource("18_3ci11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0000005, 0, 0)
+mesh = SubResource("ArrayMesh_8q8br")
+
 [node name="Plain_4" parent="Walls" unique_id=1783046109 instance=ExtResource("18_3ci11")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+mesh = SubResource("ArrayMesh_88yjg")
+
+[node name="Plain_5" parent="Walls" unique_id=940711481 instance=ExtResource("18_3ci11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
+mesh = SubResource("ArrayMesh_88yjg")
+
+[node name="Plain_7" parent="Walls" unique_id=2126002009 instance=ExtResource("18_3ci11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 0)
+mesh = SubResource("ArrayMesh_88yjg")
+
+[node name="Plain_8" parent="Walls" unique_id=545082830 instance=ExtResource("18_3ci11")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17, 0, -1.2)
 mesh = SubResource("ArrayMesh_88yjg")
 
 [node name="Windows" type="Node3D" parent="." unique_id=1472643944]
@@ -1198,6 +1219,25 @@ mesh = SubResource("ArrayMesh_88yjg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 mesh = SubResource("ArrayMesh_yc2d4")
 
+[node name="WindowLarge3" parent="Windows" unique_id=1906038086 instance=ExtResource("18_t0vkd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+mesh = SubResource("ArrayMesh_yc2d4")
+
 [node name="WindowLarge2" parent="Windows" unique_id=2125472285 instance=ExtResource("18_t0vkd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
 mesh = SubResource("ArrayMesh_ql1ng")
+
+[node name="Tier1Upgrade" type="Node3D" parent="." unique_id=1660113292]
+
+[node name="InteriorWall" parent="Tier1Upgrade" unique_id=8361307 instance=ExtResource("21_d2r3s")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.2000003, 0, -1.2)
+
+[node name="Tier1Keep" type="Node3D" parent="." unique_id=1284222113]
+
+[node name="Tier2Upgrade" type="Node3D" parent="." unique_id=880479793]
+
+[node name="Tier2Keep" type="Node3D" parent="." unique_id=1210354806]
+
+[node name="Tier3Upgrade" type="Node3D" parent="." unique_id=986146644]
+
+[node name="Tier3Keep" type="Node3D" parent="." unique_id=418847448]

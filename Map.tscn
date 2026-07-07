@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dgbvboec6ldb0"]
 
-[ext_resource type="PackedScene" path="res://City.tscn" id="1_gfjgm"]
+[ext_resource type="PackedScene" uid="uid://bxcs8ap2f1klk" path="res://City.tscn" id="1_gfjgm"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="2_ctrl"]
 [ext_resource type="PackedScene" uid="uid://er1i3yp4jq5p" path="res://models/printer.tscn" id="3_prnt"]
 [ext_resource type="PackedScene" uid="uid://dnldinl4pqluh" path="res://models/box.tscn" id="4_box"]
@@ -46,10 +46,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -61.9)
 shape = SubResource("BoxShape3D_floor")
 
 [node name="PlayerBuilding" type="Marker3D" parent="." unique_id=21619216]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.800001, 0, -57.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.199999, 0, -57.4)
 
 [node name="ProtoController" parent="." unique_id=602093427 instance=ExtResource("2_ctrl")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7, 0.19999614, -57.4)
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -7.1000004, 0.19999614, -57.300003)
 can_sprint = true
 can_freefly = true
 input_left = "move_left"
@@ -60,47 +60,48 @@ input_jump = "jump"
 input_freefly = "noclip"
 
 [node name="Printer" parent="." unique_id=76972310 instance=ExtResource("3_prnt")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 21, 0.5, -62.000004)
+transform = Transform3D(1.6391277e-07, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 1.6391277e-07, -22.159996, 0.5, -52.06)
 
 [node name="Printer2" parent="." unique_id=1735470931 instance=ExtResource("3_prnt")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 21, 0.5, -60.000004)
+transform = Transform3D(1.6391277e-07, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 1.6391277e-07, -22.159996, 0.5, -54.06)
 
 [node name="Printer3" parent="." unique_id=720513280 instance=ExtResource("3_prnt")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 21, 0.5, -58.000004)
+transform = Transform3D(1.6391277e-07, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 1.6391277e-07, -22.159996, 0.5, -56.06)
 
 [node name="Box" parent="." unique_id=1117782866 instance=ExtResource("4_box")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.900002, 0.39999998, -55.2)
+transform = Transform3D(-0.99999994, 0, 1.1920929e-07, 0, 1, 0, -1.1920929e-07, 0, -0.99999994, -21.059998, 0.39999998, -58.860004)
 
 [node name="Box2" parent="." unique_id=472429699 instance=ExtResource("4_box")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.2, 0.39999998, -55.2)
+transform = Transform3D(-0.99999994, 0, 1.1920929e-07, 0, 1, 0, -1.1920929e-07, 0, -0.99999994, -22.359997, 0.39999998, -58.860004)
 
 [node name="TrashCan" parent="." unique_id=719366373 instance=ExtResource("5_trash")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.70000005, -60.000004)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8, 0.70000005, -53.9)
 
 [node name="SmallStockShelf" parent="." unique_id=1026783817 instance=ExtResource("6_sss")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1, 0.75, -64.4)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -14.3600025, 0.75, -48.97999)
 
 [node name="SmallProductShelf" parent="." unique_id=986751326 instance=ExtResource("7_sps")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 13.8, 0.5, -61.5)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -14.060003, 0.5, -51.87999)
 
 [node name="Register" parent="." unique_id=738022750 instance=ExtResource("8_reg")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 16.199999, 0.5, -52)
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -16.46, 0.5, -61.37999)
 
 [node name="AdminSmallProductShelf" parent="." unique_id=966644272 instance=ExtResource("9_adm")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 13.8, 0.5, -59.7)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -14.060001, 0.5, -53.67999)
 
 [node name="SmallStation" parent="." unique_id=1191770616 instance=ExtResource("11_station")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.699999, 0.5, -64.6)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -17.960001, 0.5, -48.77999)
 
 [node name="NPCSpawner" type="Marker3D" parent="." unique_id=1511927017]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.199999, 0.9, -48.300003)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.200001, 0.9, -71.3)
 script = ExtResource("10_spawner")
+enabled = false
 
 [node name="NPCDespawner" type="Marker3D" parent="." unique_id=447789293]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.199999, 0.9, -69.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.200001, 0.9, -41)
 
 [node name="StoreFront" type="Marker3D" parent="." unique_id=557737033]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.199999, 0.9, -56.800003)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.300001, 0.9, -57.300003)
 
 [node name="StoreBack" type="Marker3D" parent="StoreFront" unique_id=1306876042]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.900002, 0, 0)
