@@ -114,10 +114,13 @@ func _cast_layer2_ray():
 func _find_interactable(hit) -> Node:
 	if hit == null:
 		return null
-	if hit.is_in_group("interactable"):
-		return hit
-	if hit.get_parent() and hit.get_parent().is_in_group("interactable"):
-		return hit.get_parent()
+	var node = hit
+	for i in range(5):
+		if node.is_in_group("interactable"):
+			return node
+		if node.get_parent() == null:
+			break
+		node = node.get_parent()
 	return null
 
 func _update_hud() -> void:
