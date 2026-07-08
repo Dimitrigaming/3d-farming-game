@@ -10,7 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://bgro2ths5qmca" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Street_4Lane.tscn" id="8_s0rx0"]
 [ext_resource type="PackedScene" uid="uid://dmqs5ettfyn2x" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Street_4Lane_noSidewalk.tscn" id="9_tqlwm"]
 [ext_resource type="PackedScene" uid="uid://bugpil0mmvyg8" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Sidewalk_Straight_3m_Broken1.tscn" id="10_hf1nm"]
+[ext_resource type="Material" uid="uid://bydcwglomkywu" path="res://addons/city_megakit/materials/MI_Concrete.tres" id="10_vvu38"]
 [ext_resource type="PackedScene" uid="uid://iy5hdmkb0rjm" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Sidewalk_Straight_3m.tscn" id="11_8d38c"]
+[ext_resource type="Script" uid="uid://sbdn6tpmm4q6" path="res://scripts/TiledPlane.gd" id="11_ltft3"]
 [ext_resource type="PackedScene" uid="uid://61ift2hng6rj" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Sidewalk_NoCurb_3m.tscn" id="12_aqvbi"]
 [ext_resource type="PackedScene" uid="uid://djp2jtpmbhurj" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Street_TIntersection.tscn" id="13_76q6d"]
 [ext_resource type="PackedScene" uid="uid://c7kraavjyjbej" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Decal_BrokenLine_Straight.tscn" id="14_20wp3"]
@@ -35,6 +37,17 @@
 [ext_resource type="PackedScene" uid="uid://1ml3wyjpkhnj" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Street_Curve_4LaneLong.tscn" id="33_rhqgu"]
 [ext_resource type="PackedScene" uid="uid://dhqnw48clnpdp" path="res://addons/city_megakit/downtowncitymegakit/Meshes/Street_2Lane.tscn" id="34_yxa3p"]
 [ext_resource type="PackedScene" uid="uid://d0ywbalx2fsqx" path="res://models/Player_Building.tscn" id="35_o40ui"]
+[ext_resource type="PackedScene" uid="uid://d3mfgfar18b40" path="res://models/building/Building_Medium.tscn" id="38_ltft3"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jq8tk"]
+material = ExtResource("10_vvu38")
+size = Vector2(69, 9)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ajj0t"]
+size = Vector3(69, 0.2, 9)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ltft3"]
+size = Vector3(69, 0.2, 9)
 
 [node name="City" type="Node3D" unique_id=1620436365]
 
@@ -55,6 +68,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.5, 0.001, -117)
 
 [node name="Building_Large_12" parent="." unique_id=216927629 instance=ExtResource("5_ltft3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0.001, -9)
+visible = false
 
 [node name="Building_Large_22" parent="." unique_id=996748325 instance=ExtResource("4_vvu38")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0.001, -9)
@@ -81,7 +95,8 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -77.
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -77.899994, 0.001, -39.666664)
 
 [node name="Building_Large_13" parent="." unique_id=564413471 instance=ExtResource("5_ltft3")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.9, 0.001, -86.5)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -68.100006, 0.001, -95.4)
+visible = false
 
 [node name="Building_Large_32" parent="." unique_id=900307903 instance=ExtResource("1_1uacj")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12, 0.001, -36)
@@ -89,75 +104,97 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12, 
 [node name="Building_Small_23" parent="." unique_id=679363785 instance=ExtResource("6_es2re")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 11.5, 0.001, -57)
 
+[node name="Building_Small_24" parent="." unique_id=321681938 instance=ExtResource("6_es2re")]
+transform = Transform3D(-1, 0, 3.1786506e-08, 0, 1, 0, -3.1786506e-08, 0, -1, -21.9, 0.001, -96.99999)
+
 [node name="Building_Medium_14" parent="." unique_id=194522633 instance=ExtResource("2_o40ui")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 11.5, 0.001, -73)
 
 [node name="Building_Large_23" parent="." unique_id=88795529 instance=ExtResource("4_vvu38")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12, 0.001, -90.5)
 
-[node name="Street" type="Node3D" parent="." unique_id=1155666998]
+[node name="Street" type="Node3D" parent="." unique_id=101735869]
 
-[node name="Street_4Lane6" parent="Street" unique_id=1411936517 instance=ExtResource("8_s0rx0")]
+[node name="SideWalk" type="MeshInstance3D" parent="Street" unique_id=545488117]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.500004, 0, -94.5)
+mesh = SubResource("PlaneMesh_jq8tk")
+script = ExtResource("11_ltft3")
+tile_count = Vector2i(23, 3)
+
+[node name="TiledCollider" type="StaticBody3D" parent="Street/SideWalk" unique_id=1118551657]
+visible = false
+
+[node name="@CollisionShape3D@126963" type="CollisionShape3D" parent="Street/SideWalk/TiledCollider" unique_id=1470367121]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("BoxShape3D_ajj0t")
+
+[node name="@CollisionShape3D@133258" type="CollisionShape3D" parent="Street/SideWalk/TiledCollider" unique_id=207547005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("BoxShape3D_ltft3")
+
+[node name="Street1" type="Node3D" parent="." unique_id=1155666998]
+
+[node name="Street_4Lane6" parent="Street1" unique_id=1411936517 instance=ExtResource("8_s0rx0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
 
-[node name="Street_4Lane3" parent="Street" unique_id=86988081 instance=ExtResource("8_s0rx0")]
+[node name="Street_4Lane3" parent="Street1" unique_id=86988081 instance=ExtResource("8_s0rx0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 0)
 
-[node name="Street_4Lane7" parent="Street" unique_id=540620954 instance=ExtResource("8_s0rx0")]
+[node name="Street_4Lane7" parent="Street1" unique_id=540620954 instance=ExtResource("8_s0rx0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 0, 0)
 
-[node name="Street_4Lane5" parent="Street" unique_id=1726986193 instance=ExtResource("8_s0rx0")]
+[node name="Street_4Lane5" parent="Street1" unique_id=1726986193 instance=ExtResource("8_s0rx0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, 0)
 
-[node name="Street_4Lane8" parent="Street" unique_id=359665353 instance=ExtResource("8_s0rx0")]
+[node name="Street_4Lane8" parent="Street1" unique_id=359665353 instance=ExtResource("8_s0rx0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 0, 0)
 
-[node name="Street_4Lane4" parent="Street" unique_id=273692489 instance=ExtResource("8_s0rx0")]
+[node name="Street_4Lane4" parent="Street1" unique_id=273692489 instance=ExtResource("8_s0rx0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0, 0)
 
-[node name="Street_4Lane10" parent="Street" unique_id=255344998 instance=ExtResource("8_s0rx0")]
+[node name="Street_4Lane10" parent="Street1" unique_id=255344998 instance=ExtResource("8_s0rx0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66, 0, 0)
 
-[node name="Street_4Lane11" parent="Street" unique_id=1685909747 instance=ExtResource("8_s0rx0")]
+[node name="Street_4Lane11" parent="Street1" unique_id=1685909747 instance=ExtResource("8_s0rx0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78, 0, 0)
 
-[node name="Street_4Lane12" parent="Street" unique_id=1418310139 instance=ExtResource("8_s0rx0")]
+[node name="Street_4Lane12" parent="Street1" unique_id=1418310139 instance=ExtResource("8_s0rx0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72, 0, 0)
 
-[node name="Street_4Lane9" parent="Street" unique_id=2019830145 instance=ExtResource("8_s0rx0")]
+[node name="Street_4Lane9" parent="Street1" unique_id=2019830145 instance=ExtResource("8_s0rx0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 0)
 
-[node name="Street_4Lane_noSidewalk3" parent="Street" unique_id=204201332 instance=ExtResource("9_tqlwm")]
+[node name="Street_4Lane_noSidewalk3" parent="Street1" unique_id=204201332 instance=ExtResource("9_tqlwm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
 
-[node name="Street_4Lane_noSidewalk2" parent="Street" unique_id=1013992821 instance=ExtResource("9_tqlwm")]
+[node name="Street_4Lane_noSidewalk2" parent="Street1" unique_id=1013992821 instance=ExtResource("9_tqlwm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 0)
 
-[node name="Sidewalk_Straight_3m_Broken14" parent="Street" unique_id=1211699795 instance=ExtResource("10_hf1nm")]
+[node name="Sidewalk_Straight_3m_Broken14" parent="Street1" unique_id=1211699795 instance=ExtResource("10_hf1nm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, -7.5)
 
-[node name="Sidewalk_Straight_3m_Broken18" parent="Street" unique_id=184911050 instance=ExtResource("10_hf1nm")]
+[node name="Sidewalk_Straight_3m_Broken18" parent="Street1" unique_id=184911050 instance=ExtResource("10_hf1nm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.5, 0, -7.5)
 
-[node name="Sidewalk_Straight_3m_Broken15" parent="Street" unique_id=1542604798 instance=ExtResource("10_hf1nm")]
+[node name="Sidewalk_Straight_3m_Broken15" parent="Street1" unique_id=1542604798 instance=ExtResource("10_hf1nm")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 19.5, 0, 7.499999)
 
-[node name="Sidewalk_Straight_3m_Broken16" parent="Street" unique_id=963997522 instance=ExtResource("10_hf1nm")]
+[node name="Sidewalk_Straight_3m_Broken16" parent="Street1" unique_id=963997522 instance=ExtResource("10_hf1nm")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.5, 0, 7.5)
 
-[node name="Sidewalk_Straight_3m_Broken17" parent="Street" unique_id=303061160 instance=ExtResource("10_hf1nm")]
+[node name="Sidewalk_Straight_3m_Broken17" parent="Street1" unique_id=303061160 instance=ExtResource("10_hf1nm")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 13.5, 0, 7.5)
 
-[node name="Sidewalk_Straight_3m3" parent="Street" unique_id=1673238804 instance=ExtResource("11_8d38c")]
+[node name="Sidewalk_Straight_3m3" parent="Street1" unique_id=1673238804 instance=ExtResource("11_8d38c")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 16.5, 0, 7.5)
 
-[node name="Sidewalk_Straight_3m_Broken12" parent="Street" unique_id=1422642863 instance=ExtResource("10_hf1nm")]
+[node name="Sidewalk_Straight_3m_Broken12" parent="Street1" unique_id=1422642863 instance=ExtResource("10_hf1nm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 0, -7.5)
 
-[node name="Sidewalk_Straight_3m_Broken13" parent="Street" unique_id=668517259 instance=ExtResource("10_hf1nm")]
+[node name="Sidewalk_Straight_3m_Broken13" parent="Street1" unique_id=668517259 instance=ExtResource("10_hf1nm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 0, -7.5)
 
-[node name="Sidewalk_Straight_3m2" parent="Street" unique_id=2052196596 instance=ExtResource("11_8d38c")]
+[node name="Sidewalk_Straight_3m2" parent="Street1" unique_id=2052196596 instance=ExtResource("11_8d38c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, -7.5)
 
 [node name="Street2" type="Node3D" parent="." unique_id=1112012733]
@@ -233,72 +270,72 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 0, -7.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, -7.5)
 
 [node name="Street_4Lane_noSidewalk5" parent="Street2" unique_id=1652484867 instance=ExtResource("9_tqlwm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.000004, 0, -90)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.00001, 0, -224.3)
 
 [node name="Sidewalk_Straight_3m_Broken22" parent="Street2" unique_id=2060427189 instance=ExtResource("10_hf1nm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.500004, 0, -97.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5000105, 0, -231.8)
 
 [node name="Sidewalk_Straight_3m_Broken23" parent="Street2" unique_id=417611327 instance=ExtResource("10_hf1nm")]
-transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 10.500004, 0, -82.5)
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 10.50001, 0, -216.8)
 
 [node name="Street_4Lane13" parent="Street2" unique_id=1131618014 instance=ExtResource("8_s0rx0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.000004, 0, -90.00001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.00001, 0, -224.3)
 
 [node name="Street_4Lane17" parent="Street2" unique_id=107160857 instance=ExtResource("8_s0rx0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.000004, 0, -90.00001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.00001, 0, -224.3)
 
 [node name="Street_4Lane18" parent="Street2" unique_id=2011008952 instance=ExtResource("8_s0rx0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.000004, 0, -90.00001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.00001, 0, -224.3)
 
 [node name="Street_4Lane19" parent="Street2" unique_id=540570761 instance=ExtResource("8_s0rx0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.000004, 0, -90.00001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.00001, 0, -224.3)
 
 [node name="Street_4Lane20" parent="Street2" unique_id=1605957519 instance=ExtResource("8_s0rx0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.000004, 0, -90.00001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.00001, 0, -224.3)
 
 [node name="Street_4Lane21" parent="Street2" unique_id=684683255 instance=ExtResource("8_s0rx0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.000004, 0, -90.00001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.00001, 0, -224.3)
 
 [node name="Street_4Lane22" parent="Street2" unique_id=1524675628 instance=ExtResource("8_s0rx0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.00001, 0, -90.00001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.00001, 0, -224.3)
 
 [node name="Street_4Lane23" parent="Street2" unique_id=68144799 instance=ExtResource("8_s0rx0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.00001, 0, -90.00001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.00001, 0, -224.3)
 
 [node name="Street_4Lane24" parent="Street2" unique_id=1787504260 instance=ExtResource("8_s0rx0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.00001, 0, -90.00001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.00001, 0, -224.3)
 
 [node name="Street_4Lane25" parent="Street2" unique_id=525188606 instance=ExtResource("8_s0rx0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.00001, 0, -90)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.00001, 0, -224.3)
 
 [node name="Street_4Lane26" parent="Street2" unique_id=992096886 instance=ExtResource("8_s0rx0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84.00001, 0, -90.00001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84.00001, 0, -224.3)
 
 [node name="Street_4Lane27" parent="Street2" unique_id=366221053 instance=ExtResource("8_s0rx0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.000004, 0, -90.00001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.00001, 0, -224.3)
 
 [node name="Street_4Lane_noSidewalk4" parent="Street2" unique_id=1719218065 instance=ExtResource("9_tqlwm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.000004, 0, -90.00001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.00001, 0, -224.3)
 
 [node name="Sidewalk_Straight_3m_Broken18" parent="Street2" unique_id=1073751803 instance=ExtResource("10_hf1nm")]
-transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 19.500004, 0, -82.50001)
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 19.50001, 0, -216.8)
 
 [node name="Sidewalk_Straight_3m_Broken19" parent="Street2" unique_id=703369093 instance=ExtResource("10_hf1nm")]
-transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 13.500004, 0, -82.50001)
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 13.50001, 0, -216.8)
 
 [node name="Sidewalk_Straight_3m4" parent="Street2" unique_id=306954634 instance=ExtResource("11_8d38c")]
-transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 16.500004, 0, -82.50001)
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 16.50001, 0, -216.8)
 
 [node name="Sidewalk_Straight_3m_Broken20" parent="Street2" unique_id=1356356828 instance=ExtResource("10_hf1nm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.500004, 0, -97.50001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.50001, 0, -231.8)
 
 [node name="Sidewalk_Straight_3m_Broken21" parent="Street2" unique_id=852698241 instance=ExtResource("10_hf1nm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.500004, 0, -97.50001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.50001, 0, -231.8)
 
 [node name="Sidewalk_Straight_3m5" parent="Street2" unique_id=1123542580 instance=ExtResource("11_8d38c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.500004, 0, -97.50001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5000105, 0, -231.8)
 
-[node name="Sidewalk_NoCurb_3m3" parent="Street2" unique_id=385938380 instance=ExtResource("12_aqvbi")]
+[node name="Sidewalk_NoCurb_3m3" parent="Street2" unique_id=237563832 instance=ExtResource("12_aqvbi")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 13.5, 0, 10.500001)
 
 [node name="Sidewalk_NoCurb_3m2" parent="Street2" unique_id=1359515754 instance=ExtResource("12_aqvbi")]
@@ -395,151 +432,13 @@ transform = Transform3D(-2.1855695e-07, 0, -1, 0, 1, 0, 1, 0, -2.1855695e-07, 94
 transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 97.5, 0, -10.499992)
 
 [node name="Street_4Lane28" parent="Street2" unique_id=2015930740 instance=ExtResource("8_s0rx0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.00001, 0, -90)
-
-[node name="Sidewalk_NoCurb_3m32" parent="Street2" unique_id=1609972146 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 97.5, 0, -79.5)
-
-[node name="Sidewalk_NoCurb_3m34" parent="Street2" unique_id=2097803887 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 97.5, 0, -76.5)
-
-[node name="Sidewalk_NoCurb_3m35" parent="Street2" unique_id=325997094 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 94.5, 0, -76.5)
-
-[node name="Sidewalk_NoCurb_3m33" parent="Street2" unique_id=39726268 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 94.5, 0, -79.5)
-
-[node name="Sidewalk_NoCurb_3m76" parent="Street2" unique_id=280990416 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 97.5, 0, -73.5)
-
-[node name="Sidewalk_NoCurb_3m77" parent="Street2" unique_id=280599665 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 97.5, 0, -70.5)
-
-[node name="Sidewalk_NoCurb_3m78" parent="Street2" unique_id=1560930442 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 94.5, 0, -70.5)
-
-[node name="Sidewalk_NoCurb_3m79" parent="Street2" unique_id=1856325805 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 94.5, 0, -73.5)
-
-[node name="Sidewalk_NoCurb_3m80" parent="Street2" unique_id=1141701184 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 97.5, 0, -67.5)
-
-[node name="Sidewalk_NoCurb_3m81" parent="Street2" unique_id=507389176 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 97.5, 0, -64.5)
-
-[node name="Sidewalk_NoCurb_3m82" parent="Street2" unique_id=1092912602 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 94.5, 0, -64.5)
-
-[node name="Sidewalk_NoCurb_3m83" parent="Street2" unique_id=288662624 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 94.5, 0, -67.5)
-
-[node name="Sidewalk_NoCurb_3m84" parent="Street2" unique_id=181873332 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 97.5, 0, -61.500004)
-
-[node name="Sidewalk_NoCurb_3m85" parent="Street2" unique_id=135001616 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 97.5, 0, -58.500004)
-
-[node name="Sidewalk_NoCurb_3m86" parent="Street2" unique_id=535422606 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 94.5, 0, -58.500004)
-
-[node name="Sidewalk_NoCurb_3m87" parent="Street2" unique_id=752050639 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 94.5, 0, -61.500004)
-
-[node name="Sidewalk_NoCurb_3m88" parent="Street2" unique_id=1295987119 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 97.5, 0, -34.500004)
-
-[node name="Sidewalk_NoCurb_3m89" parent="Street2" unique_id=658321460 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 97.5, 0, -31.500004)
-
-[node name="Sidewalk_NoCurb_3m90" parent="Street2" unique_id=1556697884 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 94.5, 0, -31.500004)
-
-[node name="Sidewalk_NoCurb_3m91" parent="Street2" unique_id=1193221471 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 94.5, 0, -34.500004)
-
-[node name="Sidewalk_NoCurb_3m92" parent="Street2" unique_id=2050332988 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 97.5, 0, -28.500004)
-
-[node name="Sidewalk_NoCurb_3m93" parent="Street2" unique_id=897875916 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 97.5, 0, -25.500004)
-
-[node name="Sidewalk_NoCurb_3m94" parent="Street2" unique_id=259054249 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 94.5, 0, -25.500004)
-
-[node name="Sidewalk_NoCurb_3m95" parent="Street2" unique_id=1286060015 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 94.5, 0, -28.500004)
-
-[node name="Sidewalk_NoCurb_3m96" parent="Street2" unique_id=324895822 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 97.5, 0, -22.500004)
-
-[node name="Sidewalk_NoCurb_3m97" parent="Street2" unique_id=265468405 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 97.5, 0, -19.500004)
-
-[node name="Sidewalk_NoCurb_3m98" parent="Street2" unique_id=1655872499 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 94.5, 0, -19.500004)
-
-[node name="Sidewalk_NoCurb_3m99" parent="Street2" unique_id=1399397547 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 94.5, 0, -22.500004)
-
-[node name="Sidewalk_NoCurb_3m100" parent="Street2" unique_id=858107796 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 97.5, 0, -16.500004)
-
-[node name="Sidewalk_NoCurb_3m101" parent="Street2" unique_id=1016651932 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 97.5, 0, -13.500004)
-
-[node name="Sidewalk_NoCurb_3m102" parent="Street2" unique_id=551917677 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 94.5, 0, -13.500004)
-
-[node name="Sidewalk_NoCurb_3m103" parent="Street2" unique_id=974811343 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 94.5, 0, -16.500004)
-
-[node name="Sidewalk_NoCurb_3m105" parent="Street2" unique_id=1425299977 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 97.5, 0, -55.500004)
-
-[node name="Sidewalk_NoCurb_3m106" parent="Street2" unique_id=1688063329 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 94.5, 0, -55.500004)
-
-[node name="Sidewalk_NoCurb_3m108" parent="Street2" unique_id=1747708045 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 97.5, 0, -52.500004)
-
-[node name="Sidewalk_NoCurb_3m109" parent="Street2" unique_id=4629504 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 97.5, 0, -49.500004)
-
-[node name="Sidewalk_NoCurb_3m110" parent="Street2" unique_id=723628991 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 94.5, 0, -49.500004)
-
-[node name="Sidewalk_NoCurb_3m111" parent="Street2" unique_id=640743036 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 94.5, 0, -52.500004)
-
-[node name="Sidewalk_NoCurb_3m112" parent="Street2" unique_id=1372532396 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 97.5, 0, -46.500004)
-
-[node name="Sidewalk_NoCurb_3m113" parent="Street2" unique_id=1237527958 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 97.5, 0, -43.500004)
-
-[node name="Sidewalk_NoCurb_3m114" parent="Street2" unique_id=95125781 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 94.5, 0, -43.500004)
-
-[node name="Sidewalk_NoCurb_3m115" parent="Street2" unique_id=109079107 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 94.5, 0, -46.500004)
-
-[node name="Sidewalk_NoCurb_3m116" parent="Street2" unique_id=588907124 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 97.5, 0, -40.500004)
-
-[node name="Sidewalk_NoCurb_3m117" parent="Street2" unique_id=1705660785 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 97.5, 0, -37.500004)
-
-[node name="Sidewalk_NoCurb_3m118" parent="Street2" unique_id=368009220 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 94.5, 0, -37.500004)
-
-[node name="Sidewalk_NoCurb_3m119" parent="Street2" unique_id=1299861649 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 94.5, 0, -40.500004)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.00001, 0, -224.3)
 
 [node name="Sidewalk_NoCurb_3m74" parent="Street2" unique_id=906361215 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(-2.1855695e-07, 0, -1, 0, 1, 0, 1, 0, -2.1855695e-07, 94.50001, 0, -100.49999)
+transform = Transform3D(-2.1855695e-07, 0, -1, 0, 1, 0, 1, 0, -2.1855695e-07, 94.50001, 0, -234.8)
 
 [node name="Sidewalk_NoCurb_3m75" parent="Street2" unique_id=462204644 instance=ExtResource("12_aqvbi")]
-transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 97.50001, 0, -100.49999)
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 97.50001, 0, -234.8)
 
 [node name="Sidewalk_NoCurb_3m38" parent="Street2" unique_id=870996843 instance=ExtResource("12_aqvbi")]
 transform = Transform3D(-2.1855695e-07, 0, -1, 0, 1, 0, 1, 0, -2.1855695e-07, 88.5, 0, -10.499993)
@@ -692,7 +591,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, -7.5)
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 27.199986, 0, -135.8)
 
 [node name="Street_TIntersection3" parent="Street3" unique_id=1683697027 instance=ExtResource("13_76q6d")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 90, 0, -7.86805e-06)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 224.3, 0, -1.960893e-05)
 
 [node name="Street4" type="Node3D" parent="." unique_id=1906785498]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -108)
@@ -743,10 +642,10 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 19.5
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.5, 0, 7.5)
 
 [node name="Sidewalk_Straight_3m_Broken18" parent="Street4" unique_id=560835367 instance=ExtResource("10_hf1nm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.5, 0, -7.4999924)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 234.8, 0, -7.499977)
 
 [node name="Sidewalk_Straight_3m_Broken19" parent="Street4" unique_id=367027891 instance=ExtResource("10_hf1nm")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 100.5, 0, 7.5000076)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 234.8, 0, 7.500023)
 
 [node name="Sidewalk_Straight_3m_Broken17" parent="Street4" unique_id=44960880 instance=ExtResource("10_hf1nm")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 13.5, 0, 7.5)
@@ -830,7 +729,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, -7.5)
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="Street_TIntersection4" parent="Street5" unique_id=1314382854 instance=ExtResource("13_76q6d")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -90, 0, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -224.3, 0, 0)
 
 [node name="StreetDecals2" type="Node3D" parent="." unique_id=1406284402]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0, 0, 0)
@@ -914,13 +813,13 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -16,
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -14, 0, -2.9999993)
 
 [node name="Decal_Slow3" parent="StreetDecals" unique_id=1423481273 instance=ExtResource("15_hhif5")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -14.999996, 0, 93.00001)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -14.99999, 0, 227.3)
 
 [node name="Decal_Only4" parent="StreetDecals" unique_id=1234652282 instance=ExtResource("16_qpfxf")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -15.999996, 0, 87.00001)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -15.99999, 0, 221.3)
 
 [node name="Decal_ArrowStraight3" parent="StreetDecals" unique_id=1312129105 instance=ExtResource("17_ty4ce")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.999996, 0, 87.100006)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.99999, 0, 221.40001)
 
 [node name="Decal_ArrowTurnRight2" parent="StreetDecals" unique_id=1274690066 instance=ExtResource("18_psk52")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.0000007, 0, -18)
@@ -1045,40 +944,40 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -90.00001, 0, -29)
 
 [node name="Decal_DoubleYellow_Straight16" parent="StreetDecals_DoubleYellow" unique_id=1985872724 instance=ExtResource("19_oivin")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -90.00001, 0, -35)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -224.3, 0, -35)
 
 [node name="Decal_DoubleYellow_Straight17" parent="StreetDecals_DoubleYellow" unique_id=37872919 instance=ExtResource("19_oivin")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -90.00001, 0, -41)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -224.3, 0, -41)
 
 [node name="Decal_DoubleYellow_Straight18" parent="StreetDecals_DoubleYellow" unique_id=2019666113 instance=ExtResource("19_oivin")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -90.00001, 0, -47)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -224.3, 0, -47)
 
 [node name="Decal_DoubleYellow_Straight19" parent="StreetDecals_DoubleYellow" unique_id=1521413446 instance=ExtResource("19_oivin")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -90.00001, 0, -53)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -224.3, 0, -53)
 
 [node name="Decal_DoubleYellow_Straight20" parent="StreetDecals_DoubleYellow" unique_id=1083439922 instance=ExtResource("19_oivin")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -90.00001, 0, -59)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -224.3, 0, -59)
 
 [node name="Decal_DoubleYellow_Straight21" parent="StreetDecals_DoubleYellow" unique_id=344367359 instance=ExtResource("19_oivin")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -90.00001, 0, -65)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -224.3, 0, -65)
 
 [node name="Decal_DoubleYellow_Straight22" parent="StreetDecals_DoubleYellow" unique_id=289384873 instance=ExtResource("19_oivin")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -90.00001, 0, -71)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -224.3, 0, -71)
 
 [node name="Decal_DoubleYellow_Straight23" parent="StreetDecals_DoubleYellow" unique_id=905920153 instance=ExtResource("19_oivin")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -90.00001, 0, -77)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -224.3, 0, -77)
 
 [node name="Decal_DoubleYellow_Straight24" parent="StreetDecals_DoubleYellow" unique_id=1543370852 instance=ExtResource("19_oivin")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -90.00001, 0, -83)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -224.3, 0, -83)
 
 [node name="Decal_DoubleYellow_Straight25" parent="StreetDecals_DoubleYellow" unique_id=354994449 instance=ExtResource("19_oivin")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -90.00001, 0, -89)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -224.3, 0, -89)
 
 [node name="Decal_DoubleYellow_Straight26" parent="StreetDecals_DoubleYellow" unique_id=1986864886 instance=ExtResource("19_oivin")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -90.00001, 0, -17)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -224.3, 0, -17)
 
 [node name="Decal_DoubleYellow_Straight27" parent="StreetDecals_DoubleYellow" unique_id=433992496 instance=ExtResource("19_oivin")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -90.00001, 0, -23)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -224.3, 0, -23)
 
 [node name="Prop_FireEscape" parent="." unique_id=690811077 instance=ExtResource("20_e6rx1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12, 5, -19)
@@ -1165,7 +1064,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
 
 [node name="Prop_ManholeCover3" parent="." unique_id=1725654238 instance=ExtResource("27_gjyd6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96, -0.15863156, 1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -230.3, -0.15863156, 1.5)
 
 [node name="Door_42" parent="." unique_id=2132986683 instance=ExtResource("28_ajj0t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.469788, 0, -9.158739)
@@ -1184,9 +1083,11 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 53, 
 
 [node name="Door_34" parent="." unique_id=1482170181 instance=ExtResource("30_e1ftq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 0, -9.184824)
+visible = false
 
 [node name="Door_35" parent="." unique_id=347081935 instance=ExtResource("30_e1ftq")]
 transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -25, 0, -9.184824)
+visible = false
 
 [node name="Street_4WayIntersection2" parent="." unique_id=90015632 instance=ExtResource("31_4t1p7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7881393e-07, 0, 1.4305115e-06)
@@ -1204,3 +1105,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5, 0, 71.4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5, 0, 87.3)
 
 [node name="Street_4WayIntersection3" parent="." unique_id=184633921 instance=ExtResource("31_4t1p7")]
+
+[node name="Building_Medium_25" parent="." unique_id=1214919410 instance=ExtResource("38_ltft3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, -9.000001)

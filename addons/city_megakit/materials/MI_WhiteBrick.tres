@@ -1,11 +1,11 @@
-[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://emb4hso8lj5g"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://emb4hso8lj5g"]
 
-[ext_resource type="Shader" uid="uid://cvenvp6d858qh" path="res://addons/quaternius/materials/M_BaseMaterial.gdshader" id="1_3hvba"]
-[ext_resource type="Texture2D" uid="uid://dhjeymkin8uxk" path="res://addons/quaternius/materials/T_WhiteBrick_BaseColor.png" id="2_w23vk"]
-[ext_resource type="Texture2D" uid="uid://bd7sypoi7qwak" path="res://addons/quaternius/materials/T_WhiteBrick_Normal.png" id="3_u1em1"]
-[ext_resource type="Texture2D" uid="uid://dl43s6c8tklbg" path="res://addons/quaternius/materials/T_CornerDamage_Normal.png" id="4_b4st6"]
-[ext_resource type="Texture2D" uid="uid://bgt0f61hx1j7m" path="res://addons/quaternius/materials/T_WhiteBrick_ORM.png" id="4_vmai6"]
-[ext_resource type="Texture2D" uid="uid://dbxevwd2cw8gu" path="res://addons/quaternius/materials/T_Noise_Drips.png" id="6_w7pdd"]
+[ext_resource type="Shader" uid="uid://cvenvp6d858qh" path="res://addons/city_megakit/materials/M_BaseMaterial.gdshader" id="1_3hvba"]
+[ext_resource type="Texture2D" uid="uid://dhjeymkin8uxk" path="res://addons/city_megakit/materials/T_WhiteBrick_BaseColor.png" id="2_w23vk"]
+[ext_resource type="Texture2D" uid="uid://bd7sypoi7qwak" path="res://addons/city_megakit/materials/T_WhiteBrick_Normal.png" id="3_u1em1"]
+[ext_resource type="Texture2D" uid="uid://dl43s6c8tklbg" path="res://addons/city_megakit/materials/T_CornerDamage_Normal.png" id="4_b4st6"]
+[ext_resource type="Texture2D" uid="uid://bgt0f61hx1j7m" path="res://addons/city_megakit/materials/T_WhiteBrick_ORM.png" id="4_vmai6"]
+[ext_resource type="Texture2D" uid="uid://dbxevwd2cw8gu" path="res://addons/city_megakit/materials/T_Noise_Drips.png" id="6_w7pdd"]
 
 [resource]
 render_priority = 0
@@ -17,5 +17,7 @@ shader_parameter/orm = ExtResource("4_vmai6")
 shader_parameter/wear_texture = ExtResource("6_w7pdd")
 shader_parameter/color_tint = Color(1, 1, 1, 1)
 shader_parameter/wear_color = Color(0.292, 0.292, 0.292, 1)
+shader_parameter/use_wear_color = true
 shader_parameter/use_detail_normal = true
 shader_parameter/detail_normal_intensity = 1.0
+shader_parameter/uv_scale = Vector2(1, 1)

@@ -1,10 +1,11 @@
 [gd_scene format=4 uid="uid://df7i5u04pb8i6"]
 
-[ext_resource type="Material" uid="uid://dswa50plkjgyd" path="res://addons/city_megakit/materials/MI_WornBrick.tres" id="1_pvjh5"]
+[ext_resource type="Material" uid="uid://emb4hso8lj5g" path="res://addons/city_megakit/materials/MI_WhiteBrick.tres" id="1_0jsjx"]
 [ext_resource type="Material" uid="uid://budxptsfqe8j8" path="res://addons/city_megakit/materials/MI_InteriorWall.tres" id="2_0jsjx"]
 [ext_resource type="Material" uid="uid://bu5irm27gotd7" path="res://addons/city_megakit/materials/MI_Trim_Dark.tres" id="3_ap4ab"]
 [ext_resource type="Material" uid="uid://db8rfdl6dtic" path="res://addons/city_megakit/materials/MI_Trim_MetalConcrete.tres" id="4_ydybt"]
 [ext_resource type="Material" uid="uid://citpbrkqilvd4" path="res://addons/city_megakit/materials/MI_Glass.tres" id="5_pj33w"]
+[ext_resource type="PackedScene" uid="uid://c5tpxsyykmwob" path="res://models/building/Plain_1.tscn" id="6_ap4ab"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_80mai"]
 _surfaces = [{
@@ -71,7 +72,7 @@ _surfaces = [{
 "index_count": 180,
 "index_data": PackedByteArray("AAABAAIAAAAoAAEAKAADAAEAKAApAAMAKQAEAAMAKQAqAAQABAAqAAUABAAFAAYABwArAAkAKwAKAAkABwAsACsADQAsAAcADQAMACwAKwAtAAoACgAtAAgACgAIAAsALgAvADAALwAxADAALgAyAC8ADgAyAC4ADgASADIALwAPADEAMQAPABEAMQARABAAMwA0ADUANAA2ADUAMwA3ADQAHAA3ADMAHAAaADcANAA4ADYANgA4AB0ANgAdABsAEwA5ADoAFgATADoAFgA6ABUAEwAUADkAOQAUABcAOQAXADsAGAA7ABcAGAAXABkAHgA8ACAAHgAfADwAPAAhACAAPAA9ACEAPQAjACEAPQAiACMAJAAlACYAJAAnACUAPgA/AEAAPgBBAD8AQgBBAD4AQgBDAEEARABDAEIARABFAEMARgBHAEgARgBJAEcASgBJAEYASgBLAEkATABLAEoATABNAEsA"),
 "lods": [0.15746543, PackedByteArray("AAABAAIAAAADAAEAAAAEAAMAAAAFAAQABAAFAAYABwAIAAkACAAKAAkACgAIAAsABwAMAAgADQAMAAcADgAPABAAEAAPABEADgASAA8AEwAUABUAFgATABUAFQAUABcAFQAXABgAGAAXABkAGgAbABwAGgAdABsAHgAfACAAHwAhACAAHwAiACEAIgAjACEAJAAlACYAJAAnACUA")],
-"material": ExtResource("1_pvjh5"),
+"material": ExtResource("1_0jsjx"),
 "name": "mat_Exterior",
 "primitive": 3,
 "uv_scale": Vector4(2, 2.582347, 1.1108569, 1.4688069),
@@ -136,6 +137,64 @@ size = Vector3(1, 3, 0.3)
 [sub_resource type="BoxShape3D" id="BoxShape3D_7cawi"]
 size = Vector3(4, 0.8, 0.2)
 
+[sub_resource type="ArrayMesh" id="ArrayMesh_b4pwh"]
+_surfaces = [{
+"aabb": AABB(-1, 0, 0, 2, 1, 1e-05),
+"format": 34359742465,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"name": "mat_Exterior",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AACAvwAAAAAAAACAAACAPwAAgD8uvTszAACAPwAAAAAAAACAAACAvwAAgD8tvTsz")
+}, {
+"aabb": AABB(-1, 0, -0.20000009, 2, 1.0000001, 1e-05),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"name": "mat_Interior",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAAAAAAD///7/AAAAAAAA//8AAAAA//8AAAAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ydybt"]
+resource_name = "WornBrick_Plain_1_Cube_246"
+_surfaces = [{
+"aabb": AABB(-1, 0, 0, 2, 1, 1e-05),
+"attribute_data": PackedByteArray("/////wAAAAAAAMA/92dLP8CTOT//////AACAPwAAgD/3Z0s/vpM5P/////8AAIA/AADAP/dnSz/Akzk//////wAAAAAAAIA/92dLP76TOT8="),
+"format": 34359742527,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": ExtResource("1_0jsjx"),
+"name": "mat_Exterior",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AACAvwAAAAAAAACAAACAPwAAgD8uvTszAACAPwAAAAAAAACAAACAvwAAgD8tvTsz/3//f////7//f/9/////v/9//3////+//3//f////78=")
+}, {
+"aabb": AABB(-1, 0, -0.20000009, 2, 1.0000001, 1e-05),
+"attribute_data": PackedByteArray("//////7//3//f/9//////wAAAAD/f/9/////////AAD/f/9//////wAA/3//f/9/"),
+"format": 34896613439,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": ExtResource("2_0jsjx"),
+"name": "mat_Interior",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAAAA//////7/AAD//wAA//8AAP////8AAAAA////f/7//3/+//9//v//f/7/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_b4pwh")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3xd07"]
+flip_faces = true
+size = Vector2(4, 0.2)
+
 [node name="DoorFrame" type="MeshInstance3D" unique_id=598765787]
 mesh = SubResource("ArrayMesh_a826x")
 
@@ -153,3 +212,15 @@ shape = SubResource("BoxShape3D_pvjh5")
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" unique_id=1001708028]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7881393e-07, 2.6, -0.050000034)
 shape = SubResource("BoxShape3D_7cawi")
+
+[node name="Plain_1" parent="." unique_id=1294791830 instance=ExtResource("6_ap4ab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9999998, 2.9999998, 0.010791495)
+mesh = SubResource("ArrayMesh_ydybt")
+
+[node name="Plain_2" parent="." unique_id=834444390 instance=ExtResource("6_ap4ab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0000002, 2.9999998, 0.010791495)
+mesh = SubResource("ArrayMesh_ydybt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2104178049]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0011594, -0.08844629)
+mesh = SubResource("PlaneMesh_3xd07")

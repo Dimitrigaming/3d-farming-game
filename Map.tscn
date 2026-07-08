@@ -75,7 +75,7 @@ transform = Transform3D(-0.99999994, 0, 1.1920929e-07, 0, 1, 0, -1.1920929e-07, 
 transform = Transform3D(-0.99999994, 0, 1.1920929e-07, 0, 1, 0, -1.1920929e-07, 0, -0.99999994, -22.359997, 0.39999998, -58.860004)
 
 [node name="TrashCan" parent="." unique_id=719366373 instance=ExtResource("5_trash")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8, 0.70000005, -53.9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8, 0.6, -60.300003)
 
 [node name="SmallStockShelf" parent="." unique_id=1026783817 instance=ExtResource("6_sss")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -14.3600025, 0.75, -48.97999)

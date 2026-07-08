@@ -1,11 +1,11 @@
-[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://budxptsfqe8j8"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://budxptsfqe8j8"]
 
-[ext_resource type="Shader" uid="uid://cvenvp6d858qh" path="res://addons/quaternius/materials/M_BaseMaterial.gdshader" id="1_yrnkt"]
-[ext_resource type="Texture2D" uid="uid://bairidngy8bbi" path="res://addons/quaternius/materials/T_RedBrick_BaseColor.png" id="2_uche1"]
-[ext_resource type="Texture2D" uid="uid://bjsq4ihjw4c18" path="res://addons/quaternius/materials/T_RedBrick_Normal.png" id="3_v11mo"]
-[ext_resource type="Texture2D" uid="uid://qha476tq8jes" path="res://addons/quaternius/materials/T_RedBrick_ORM.png" id="4_3cabl"]
-[ext_resource type="Texture2D" uid="uid://dl43s6c8tklbg" path="res://addons/quaternius/materials/T_CornerDamage_Normal.png" id="4_uclra"]
-[ext_resource type="Texture2D" uid="uid://dbxevwd2cw8gu" path="res://addons/quaternius/materials/T_Noise_Drips.png" id="6_8yidu"]
+[ext_resource type="Shader" uid="uid://cvenvp6d858qh" path="res://addons/city_megakit/materials/M_BaseMaterial.gdshader" id="1_yrnkt"]
+[ext_resource type="Texture2D" uid="uid://bairidngy8bbi" path="res://addons/city_megakit/materials/T_RedBrick_BaseColor.png" id="2_uche1"]
+[ext_resource type="Texture2D" uid="uid://bjsq4ihjw4c18" path="res://addons/city_megakit/materials/T_RedBrick_Normal.png" id="3_v11mo"]
+[ext_resource type="Texture2D" uid="uid://qha476tq8jes" path="res://addons/city_megakit/materials/T_RedBrick_ORM.png" id="4_3cabl"]
+[ext_resource type="Texture2D" uid="uid://dl43s6c8tklbg" path="res://addons/city_megakit/materials/T_CornerDamage_Normal.png" id="4_uclra"]
+[ext_resource type="Texture2D" uid="uid://dbxevwd2cw8gu" path="res://addons/city_megakit/materials/T_Noise_Drips.png" id="6_8yidu"]
 
 [resource]
 render_priority = 0
@@ -20,3 +20,4 @@ shader_parameter/wear_color = Color(0.292, 0.292, 0.292, 1)
 shader_parameter/use_wear_color = false
 shader_parameter/use_detail_normal = false
 shader_parameter/detail_normal_intensity = 1.0
+shader_parameter/uv_scale = Vector2(1, 1)
