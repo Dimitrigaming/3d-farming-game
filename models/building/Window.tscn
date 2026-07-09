@@ -64,6 +64,9 @@ shadow_mesh = SubResource("ArrayMesh_b4pwh")
 material = ExtResource("3_xvj7l")
 size = Vector3(1.799, 2.799, 0.1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_i56wm"]
+size = Vector3(2, 4, 0.2)
+
 [node name="Window" type="Node3D" unique_id=1223607222]
 
 [node name="Panel" parent="." unique_id=1294791830 instance=ExtResource("12_mfc6o")]
@@ -83,3 +86,10 @@ material = ExtResource("4_i56wm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1920929e-07, 0)
 operation = 2
 size = Vector3(1.8000001, 2.8, 0.2)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=14298950]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=681352888]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.1)
+shape = SubResource("BoxShape3D_i56wm")

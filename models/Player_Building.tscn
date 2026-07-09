@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://qha476tq8jes" path="res://addons/city_megakit/materials/T_RedBrick_ORM.png" id="24_f1nhi"]
 [ext_resource type="Texture2D" uid="uid://dbxevwd2cw8gu" path="res://addons/city_megakit/materials/T_Noise_Drips.png" id="25_4iv0a"]
 [ext_resource type="PackedScene" uid="uid://bemdl8aipocdb" path="res://models/building/Interior_Block.tscn" id="29_o7kdf"]
+[ext_resource type="Script" uid="uid://bqjsbpwk71y3r" path="res://scripts/zone_manager.gd" id="30_brhnq"]
 [ext_resource type="Script" uid="uid://c428buwmu5t7h" path="res://scripts/door_controller.gd" id="door_ctrl"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_csnlo"]
@@ -977,6 +978,10 @@ shadow_mesh = SubResource("ArrayMesh_nuilg")
 [sub_resource type="PlaneMesh" id="PlaneMesh_jq8tk"]
 material = ExtResource("17_d2r3s")
 size = Vector2(85, 70)
+
+[sub_resource type="QuadMesh" id="QuadMesh_3xd07"]
+size = Vector2(4, 4)
+orientation = 1
 
 [node name="Player_Building" type="Node3D" unique_id=98350389]
 script = ExtResource("1_painter")
@@ -2019,14 +2024,841 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.999, 0, -46.199997)
 [node name="InteriorBlock197" parent="Interior" unique_id=1024444862 instance=ExtResource("29_o7kdf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.999, 0, -50.199997)
 
-[node name="Tier1Upgrade" type="Node3D" parent="." unique_id=1660113292]
+[node name="ZoneMesh" type="Node3D" parent="." unique_id=382783420]
+script = ExtResource("30_brhnq")
+zones_unassigned = Array[NodePath]([NodePath("Zone5"), NodePath("Zone12"), NodePath("Zone13"), NodePath("Zone14"), NodePath("Zone15"), NodePath("Zone16"), NodePath("Zone6"), NodePath("Zone7"), NodePath("Zone8"), NodePath("Zone9"), NodePath("Zone10"), NodePath("Zone11"), NodePath("Zone21"), NodePath("Zone22"), NodePath("Zone23"), NodePath("Zone24"), NodePath("Zone25"), NodePath("Zone26"), NodePath("Zone27"), NodePath("Zone28"), NodePath("Zone29"), NodePath("Zone30"), NodePath("Zone31"), NodePath("Zone32"), NodePath("Zone37"), NodePath("Zone38"), NodePath("Zone39"), NodePath("Zone40"), NodePath("Zone41"), NodePath("Zone42"), NodePath("Zone43"), NodePath("Zone44"), NodePath("Zone45"), NodePath("Zone46"), NodePath("Zone47"), NodePath("Zone48"), NodePath("Zone49"), NodePath("Zone50"), NodePath("Zone51"), NodePath("Zone52"), NodePath("Zone53"), NodePath("Zone54"), NodePath("Zone55"), NodePath("Zone56"), NodePath("Zone57"), NodePath("Zone58"), NodePath("Zone59"), NodePath("Zone60"), NodePath("Zone61"), NodePath("Zone62"), NodePath("Zone63"), NodePath("Zone64"), NodePath("Zone65"), NodePath("Zone66"), NodePath("Zone67"), NodePath("Zone68"), NodePath("Zone69"), NodePath("Zone70"), NodePath("Zone71"), NodePath("Zone72"), NodePath("Zone73"), NodePath("Zone74"), NodePath("Zone75"), NodePath("Zone76"), NodePath("Zone77"), NodePath("Zone78"), NodePath("Zone79"), NodePath("Zone80"), NodePath("Zone81"), NodePath("Zone82"), NodePath("Zone83"), NodePath("Zone84"), NodePath("Zone85"), NodePath("Zone86"), NodePath("Zone87"), NodePath("Zone88"), NodePath("Zone89"), NodePath("Zone90"), NodePath("Zone91"), NodePath("Zone92"), NodePath("Zone93"), NodePath("Zone94"), NodePath("Zone95"), NodePath("Zone96"), NodePath("Zone97"), NodePath("Zone98"), NodePath("Zone99"), NodePath("Zone100"), NodePath("Zone101"), NodePath("Zone102"), NodePath("Zone103"), NodePath("Zone104"), NodePath("Zone105"), NodePath("Zone106"), NodePath("Zone107"), NodePath("Zone108"), NodePath("Zone109"), NodePath("Zone110"), NodePath("Zone111"), NodePath("Zone112"), NodePath("Zone113"), NodePath("Zone114"), NodePath("Zone115"), NodePath("Zone116"), NodePath("Zone117"), NodePath("Zone118"), NodePath("Zone119"), NodePath("Zone120"), NodePath("Zone121"), NodePath("Zone122"), NodePath("Zone123"), NodePath("Zone124"), NodePath("Zone125"), NodePath("Zone126"), NodePath("Zone127"), NodePath("Zone128"), NodePath("Zone129"), NodePath("Zone130"), NodePath("Zone131"), NodePath("Zone132"), NodePath("Zone133"), NodePath("Zone134"), NodePath("Zone135"), NodePath("Zone136"), NodePath("Zone137"), NodePath("Zone138"), NodePath("Zone139"), NodePath("Zone140"), NodePath("Zone141"), NodePath("Zone142"), NodePath("Zone143"), NodePath("Zone144"), NodePath("Zone145"), NodePath("Zone146"), NodePath("Zone147"), NodePath("Zone148"), NodePath("Zone149"), NodePath("Zone150"), NodePath("Zone151"), NodePath("Zone152"), NodePath("Zone153"), NodePath("Zone154"), NodePath("Zone155"), NodePath("Zone156"), NodePath("Zone157"), NodePath("Zone158"), NodePath("Zone159"), NodePath("Zone160"), NodePath("Zone161"), NodePath("Zone162"), NodePath("Zone163"), NodePath("Zone164"), NodePath("Zone165"), NodePath("Zone166"), NodePath("Zone167"), NodePath("Zone168"), NodePath("Zone169"), NodePath("Zone170"), NodePath("Zone171"), NodePath("Zone172"), NodePath("Zone173"), NodePath("Zone174"), NodePath("Zone175"), NodePath("Zone176"), NodePath("Zone177"), NodePath("Zone178"), NodePath("Zone179"), NodePath("Zone180"), NodePath("Zone181"), NodePath("Zone182"), NodePath("Zone183"), NodePath("Zone184"), NodePath("Zone185"), NodePath("Zone186"), NodePath("Zone187"), NodePath("Zone188"), NodePath("Zone189"), NodePath("Zone190"), NodePath("Zone191"), NodePath("Zone192"), NodePath("Zone193"), NodePath("Zone194"), NodePath("Zone195"), NodePath("Zone196"), NodePath("Zone197"), NodePath("Zone198"), NodePath("Zone199"), NodePath("Zone200"), NodePath("Zone201"), NodePath("Zone202"), NodePath("Zone203"), NodePath("Zone204"), NodePath("Zone205"), NodePath("Zone206"), NodePath("Zone207"), NodePath("Zone208")])
+zones_sales = Array[NodePath]([NodePath("Zone"), NodePath("Zone2"), NodePath("Zone3"), NodePath("Zone4"), NodePath("Zone17"), NodePath("Zone18"), NodePath("Zone19"), NodePath("Zone20"), NodePath("Zone33"), NodePath("Zone34"), NodePath("Zone35"), NodePath("Zone36")])
 
-[node name="Tier1Keep" type="Node3D" parent="." unique_id=1284222113]
+[node name="DoorAnchor" type="Marker3D" parent="ZoneMesh" unique_id=763622254]
 
-[node name="Tier2Upgrade" type="Node3D" parent="." unique_id=880479793]
+[node name="Zone" type="MeshInstance3D" parent="ZoneMesh" unique_id=1149852595]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.01, -2.2)
+mesh = SubResource("QuadMesh_3xd07")
 
-[node name="Tier2Keep" type="Node3D" parent="." unique_id=1210354806]
+[node name="Zone2" type="MeshInstance3D" parent="ZoneMesh" unique_id=1479855977]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.01, -2.2)
+mesh = SubResource("QuadMesh_3xd07")
 
-[node name="Tier3Upgrade" type="Node3D" parent="." unique_id=986146644]
+[node name="Zone3" type="MeshInstance3D" parent="ZoneMesh" unique_id=179958482]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.01, -2.2)
+mesh = SubResource("QuadMesh_3xd07")
 
-[node name="Tier3Keep" type="Node3D" parent="." unique_id=418847448]
+[node name="Zone4" type="MeshInstance3D" parent="ZoneMesh" unique_id=1553138997]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.01, -2.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone5" type="MeshInstance3D" parent="ZoneMesh" unique_id=1274314704]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.01, -2.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone12" type="MeshInstance3D" parent="ZoneMesh" unique_id=1649348034]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.000002, 0.01, -2.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone13" type="MeshInstance3D" parent="ZoneMesh" unique_id=2017107252]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.000002, 0.01, -2.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone14" type="MeshInstance3D" parent="ZoneMesh" unique_id=1769932484]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.000002, 0.01, -2.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone15" type="MeshInstance3D" parent="ZoneMesh" unique_id=1035375162]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.000001, 0.01, -2.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone16" type="MeshInstance3D" parent="ZoneMesh" unique_id=1021592729]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.000001, 0.01, -2.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone6" type="MeshInstance3D" parent="ZoneMesh" unique_id=1828597026]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.01, -2.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone7" type="MeshInstance3D" parent="ZoneMesh" unique_id=1731832256]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.01, -2.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone8" type="MeshInstance3D" parent="ZoneMesh" unique_id=410234285]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.01, -2.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone9" type="MeshInstance3D" parent="ZoneMesh" unique_id=343425045]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.01, -2.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone10" type="MeshInstance3D" parent="ZoneMesh" unique_id=606639404]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.01, -2.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone11" type="MeshInstance3D" parent="ZoneMesh" unique_id=1169107299]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.01, -2.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone17" type="MeshInstance3D" parent="ZoneMesh" unique_id=1289351554]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.01, -6.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone18" type="MeshInstance3D" parent="ZoneMesh" unique_id=1190818574]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.01, -6.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone19" type="MeshInstance3D" parent="ZoneMesh" unique_id=1237034028]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.01, -6.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone20" type="MeshInstance3D" parent="ZoneMesh" unique_id=739386689]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.01, -6.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone21" type="MeshInstance3D" parent="ZoneMesh" unique_id=1050404143]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.01, -6.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone22" type="MeshInstance3D" parent="ZoneMesh" unique_id=1664342546]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.000002, 0.01, -6.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone23" type="MeshInstance3D" parent="ZoneMesh" unique_id=1961775591]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.000002, 0.01, -6.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone24" type="MeshInstance3D" parent="ZoneMesh" unique_id=480195985]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.000002, 0.01, -6.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone25" type="MeshInstance3D" parent="ZoneMesh" unique_id=1597542395]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.000001, 0.01, -6.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone26" type="MeshInstance3D" parent="ZoneMesh" unique_id=744326002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.000001, 0.01, -6.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone27" type="MeshInstance3D" parent="ZoneMesh" unique_id=1120045324]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.01, -6.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone28" type="MeshInstance3D" parent="ZoneMesh" unique_id=962938855]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.01, -6.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone29" type="MeshInstance3D" parent="ZoneMesh" unique_id=1986781251]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.01, -6.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone30" type="MeshInstance3D" parent="ZoneMesh" unique_id=641366745]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.01, -6.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone31" type="MeshInstance3D" parent="ZoneMesh" unique_id=847379575]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.01, -6.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone32" type="MeshInstance3D" parent="ZoneMesh" unique_id=306025459]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.01, -6.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone33" type="MeshInstance3D" parent="ZoneMesh" unique_id=2140790981]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.01, -10.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone34" type="MeshInstance3D" parent="ZoneMesh" unique_id=1459815155]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.01, -10.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone35" type="MeshInstance3D" parent="ZoneMesh" unique_id=1408770736]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.01, -10.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone36" type="MeshInstance3D" parent="ZoneMesh" unique_id=1173083326]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.01, -10.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone37" type="MeshInstance3D" parent="ZoneMesh" unique_id=668394559]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.01, -10.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone38" type="MeshInstance3D" parent="ZoneMesh" unique_id=305361948]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.000002, 0.01, -10.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone39" type="MeshInstance3D" parent="ZoneMesh" unique_id=845363481]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.000002, 0.01, -10.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone40" type="MeshInstance3D" parent="ZoneMesh" unique_id=1121738689]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.000002, 0.01, -10.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone41" type="MeshInstance3D" parent="ZoneMesh" unique_id=1631714731]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.000001, 0.01, -10.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone42" type="MeshInstance3D" parent="ZoneMesh" unique_id=2045312816]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.000001, 0.01, -10.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone43" type="MeshInstance3D" parent="ZoneMesh" unique_id=1938655814]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.01, -10.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone44" type="MeshInstance3D" parent="ZoneMesh" unique_id=1268749399]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.01, -10.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone45" type="MeshInstance3D" parent="ZoneMesh" unique_id=1736073987]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.01, -10.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone46" type="MeshInstance3D" parent="ZoneMesh" unique_id=839080252]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.01, -10.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone47" type="MeshInstance3D" parent="ZoneMesh" unique_id=1610405079]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.01, -10.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone48" type="MeshInstance3D" parent="ZoneMesh" unique_id=2142982295]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.01, -10.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone49" type="MeshInstance3D" parent="ZoneMesh" unique_id=314055970]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.01, -14.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone50" type="MeshInstance3D" parent="ZoneMesh" unique_id=1617469009]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.01, -14.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone51" type="MeshInstance3D" parent="ZoneMesh" unique_id=216900059]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.01, -14.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone52" type="MeshInstance3D" parent="ZoneMesh" unique_id=1319855452]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.01, -14.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone53" type="MeshInstance3D" parent="ZoneMesh" unique_id=1233529705]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.01, -14.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone54" type="MeshInstance3D" parent="ZoneMesh" unique_id=1912022787]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.000002, 0.01, -14.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone55" type="MeshInstance3D" parent="ZoneMesh" unique_id=263681687]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.000002, 0.01, -14.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone56" type="MeshInstance3D" parent="ZoneMesh" unique_id=217920586]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.000002, 0.01, -14.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone57" type="MeshInstance3D" parent="ZoneMesh" unique_id=442609557]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.000001, 0.01, -14.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone58" type="MeshInstance3D" parent="ZoneMesh" unique_id=638203571]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.000001, 0.01, -14.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone59" type="MeshInstance3D" parent="ZoneMesh" unique_id=685744267]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.01, -14.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone60" type="MeshInstance3D" parent="ZoneMesh" unique_id=509865063]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.01, -14.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone61" type="MeshInstance3D" parent="ZoneMesh" unique_id=40940228]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.01, -14.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone62" type="MeshInstance3D" parent="ZoneMesh" unique_id=1973706268]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.01, -14.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone63" type="MeshInstance3D" parent="ZoneMesh" unique_id=1251966542]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.01, -14.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone64" type="MeshInstance3D" parent="ZoneMesh" unique_id=1681988324]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.01, -14.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone65" type="MeshInstance3D" parent="ZoneMesh" unique_id=828977154]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.01, -18.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone66" type="MeshInstance3D" parent="ZoneMesh" unique_id=137410171]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.01, -18.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone67" type="MeshInstance3D" parent="ZoneMesh" unique_id=1869314484]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.01, -18.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone68" type="MeshInstance3D" parent="ZoneMesh" unique_id=2031714563]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.01, -18.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone69" type="MeshInstance3D" parent="ZoneMesh" unique_id=989440491]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.01, -18.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone70" type="MeshInstance3D" parent="ZoneMesh" unique_id=1580764682]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.000002, 0.01, -18.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone71" type="MeshInstance3D" parent="ZoneMesh" unique_id=1121170082]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.000002, 0.01, -18.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone72" type="MeshInstance3D" parent="ZoneMesh" unique_id=2039415879]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.000002, 0.01, -18.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone73" type="MeshInstance3D" parent="ZoneMesh" unique_id=104536933]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.000001, 0.01, -18.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone74" type="MeshInstance3D" parent="ZoneMesh" unique_id=75743630]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.000001, 0.01, -18.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone75" type="MeshInstance3D" parent="ZoneMesh" unique_id=1839938232]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.01, -18.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone76" type="MeshInstance3D" parent="ZoneMesh" unique_id=1543668072]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.01, -18.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone77" type="MeshInstance3D" parent="ZoneMesh" unique_id=334292285]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.01, -18.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone78" type="MeshInstance3D" parent="ZoneMesh" unique_id=1695078351]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.01, -18.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone79" type="MeshInstance3D" parent="ZoneMesh" unique_id=1540604945]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.01, -18.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone80" type="MeshInstance3D" parent="ZoneMesh" unique_id=965091548]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.01, -18.2)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone81" type="MeshInstance3D" parent="ZoneMesh" unique_id=1379817292]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.01, -22.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone82" type="MeshInstance3D" parent="ZoneMesh" unique_id=1355694455]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.01, -22.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone83" type="MeshInstance3D" parent="ZoneMesh" unique_id=786870192]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.01, -22.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone84" type="MeshInstance3D" parent="ZoneMesh" unique_id=2142317163]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.01, -22.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone85" type="MeshInstance3D" parent="ZoneMesh" unique_id=418929644]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.01, -22.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone86" type="MeshInstance3D" parent="ZoneMesh" unique_id=444234555]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.000002, 0.01, -22.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone87" type="MeshInstance3D" parent="ZoneMesh" unique_id=1503726253]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.000002, 0.01, -22.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone88" type="MeshInstance3D" parent="ZoneMesh" unique_id=950269115]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.000002, 0.01, -22.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone89" type="MeshInstance3D" parent="ZoneMesh" unique_id=1812629175]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.000001, 0.01, -22.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone90" type="MeshInstance3D" parent="ZoneMesh" unique_id=895831664]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.000001, 0.01, -22.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone91" type="MeshInstance3D" parent="ZoneMesh" unique_id=291731150]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.01, -22.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone92" type="MeshInstance3D" parent="ZoneMesh" unique_id=985034280]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.01, -22.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone93" type="MeshInstance3D" parent="ZoneMesh" unique_id=18994472]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.01, -22.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone94" type="MeshInstance3D" parent="ZoneMesh" unique_id=395219448]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.01, -22.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone95" type="MeshInstance3D" parent="ZoneMesh" unique_id=926755082]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.01, -22.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone96" type="MeshInstance3D" parent="ZoneMesh" unique_id=863453259]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.01, -22.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone97" type="MeshInstance3D" parent="ZoneMesh" unique_id=2016893407]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.01, -26.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone98" type="MeshInstance3D" parent="ZoneMesh" unique_id=965136888]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.01, -26.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone99" type="MeshInstance3D" parent="ZoneMesh" unique_id=839825889]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.01, -26.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone100" type="MeshInstance3D" parent="ZoneMesh" unique_id=1307707260]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.01, -26.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone101" type="MeshInstance3D" parent="ZoneMesh" unique_id=1593188637]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.01, -26.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone102" type="MeshInstance3D" parent="ZoneMesh" unique_id=1386583203]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.000002, 0.01, -26.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone103" type="MeshInstance3D" parent="ZoneMesh" unique_id=518854592]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.000002, 0.01, -26.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone104" type="MeshInstance3D" parent="ZoneMesh" unique_id=1641458748]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.000002, 0.01, -26.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone105" type="MeshInstance3D" parent="ZoneMesh" unique_id=1087416061]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.000001, 0.01, -26.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone106" type="MeshInstance3D" parent="ZoneMesh" unique_id=1520134981]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.000001, 0.01, -26.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone107" type="MeshInstance3D" parent="ZoneMesh" unique_id=125475175]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.01, -26.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone108" type="MeshInstance3D" parent="ZoneMesh" unique_id=65594181]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.01, -26.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone109" type="MeshInstance3D" parent="ZoneMesh" unique_id=1941271385]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.01, -26.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone110" type="MeshInstance3D" parent="ZoneMesh" unique_id=981147135]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.01, -26.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone111" type="MeshInstance3D" parent="ZoneMesh" unique_id=24640471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.01, -26.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone112" type="MeshInstance3D" parent="ZoneMesh" unique_id=1336247563]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.01, -26.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone113" type="MeshInstance3D" parent="ZoneMesh" unique_id=1163505821]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.01, -30.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone114" type="MeshInstance3D" parent="ZoneMesh" unique_id=1360331649]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.01, -30.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone115" type="MeshInstance3D" parent="ZoneMesh" unique_id=2081838760]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.01, -30.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone116" type="MeshInstance3D" parent="ZoneMesh" unique_id=1113576736]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.01, -30.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone117" type="MeshInstance3D" parent="ZoneMesh" unique_id=835907296]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.01, -30.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone118" type="MeshInstance3D" parent="ZoneMesh" unique_id=1236487027]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.000002, 0.01, -30.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone119" type="MeshInstance3D" parent="ZoneMesh" unique_id=1842257476]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.000002, 0.01, -30.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone120" type="MeshInstance3D" parent="ZoneMesh" unique_id=2128994275]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.000002, 0.01, -30.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone121" type="MeshInstance3D" parent="ZoneMesh" unique_id=1323477168]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.000001, 0.01, -30.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone122" type="MeshInstance3D" parent="ZoneMesh" unique_id=83792836]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.000001, 0.01, -30.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone123" type="MeshInstance3D" parent="ZoneMesh" unique_id=728143186]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.01, -30.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone124" type="MeshInstance3D" parent="ZoneMesh" unique_id=855058636]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.01, -30.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone125" type="MeshInstance3D" parent="ZoneMesh" unique_id=1518009697]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.01, -30.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone126" type="MeshInstance3D" parent="ZoneMesh" unique_id=1050277647]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.01, -30.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone127" type="MeshInstance3D" parent="ZoneMesh" unique_id=143750616]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.01, -30.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone128" type="MeshInstance3D" parent="ZoneMesh" unique_id=2044728006]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.01, -30.199999)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone129" type="MeshInstance3D" parent="ZoneMesh" unique_id=1768592079]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.01, -34.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone130" type="MeshInstance3D" parent="ZoneMesh" unique_id=290344062]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.01, -34.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone131" type="MeshInstance3D" parent="ZoneMesh" unique_id=604382396]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.01, -34.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone132" type="MeshInstance3D" parent="ZoneMesh" unique_id=318827131]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.01, -34.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone133" type="MeshInstance3D" parent="ZoneMesh" unique_id=1584281692]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.01, -34.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone134" type="MeshInstance3D" parent="ZoneMesh" unique_id=1023696389]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.000002, 0.01, -34.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone135" type="MeshInstance3D" parent="ZoneMesh" unique_id=1053227100]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.000002, 0.01, -34.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone136" type="MeshInstance3D" parent="ZoneMesh" unique_id=1344272908]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.000002, 0.01, -34.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone137" type="MeshInstance3D" parent="ZoneMesh" unique_id=2012991326]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.000001, 0.01, -34.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone138" type="MeshInstance3D" parent="ZoneMesh" unique_id=574611947]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.000001, 0.01, -34.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone139" type="MeshInstance3D" parent="ZoneMesh" unique_id=665450139]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.01, -34.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone140" type="MeshInstance3D" parent="ZoneMesh" unique_id=1042696514]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.01, -34.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone141" type="MeshInstance3D" parent="ZoneMesh" unique_id=477811353]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.01, -34.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone142" type="MeshInstance3D" parent="ZoneMesh" unique_id=1593922779]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.01, -34.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone143" type="MeshInstance3D" parent="ZoneMesh" unique_id=1921788043]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.01, -34.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone144" type="MeshInstance3D" parent="ZoneMesh" unique_id=1585277323]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.01, -34.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone145" type="MeshInstance3D" parent="ZoneMesh" unique_id=1943448141]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.01, -38.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone146" type="MeshInstance3D" parent="ZoneMesh" unique_id=930568553]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.01, -38.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone147" type="MeshInstance3D" parent="ZoneMesh" unique_id=1034714967]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.01, -38.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone148" type="MeshInstance3D" parent="ZoneMesh" unique_id=792237748]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.01, -38.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone149" type="MeshInstance3D" parent="ZoneMesh" unique_id=572997410]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.01, -38.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone150" type="MeshInstance3D" parent="ZoneMesh" unique_id=393504276]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.000002, 0.01, -38.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone151" type="MeshInstance3D" parent="ZoneMesh" unique_id=1756041193]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.000002, 0.01, -38.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone152" type="MeshInstance3D" parent="ZoneMesh" unique_id=1380771479]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.000002, 0.01, -38.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone153" type="MeshInstance3D" parent="ZoneMesh" unique_id=1004214257]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.000001, 0.01, -38.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone154" type="MeshInstance3D" parent="ZoneMesh" unique_id=791996809]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.000001, 0.01, -38.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone155" type="MeshInstance3D" parent="ZoneMesh" unique_id=1247145381]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.01, -38.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone156" type="MeshInstance3D" parent="ZoneMesh" unique_id=1569286243]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.01, -38.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone157" type="MeshInstance3D" parent="ZoneMesh" unique_id=1887340553]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.01, -38.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone158" type="MeshInstance3D" parent="ZoneMesh" unique_id=1826707250]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.01, -38.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone159" type="MeshInstance3D" parent="ZoneMesh" unique_id=969809503]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.01, -38.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone160" type="MeshInstance3D" parent="ZoneMesh" unique_id=1530564498]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.01, -38.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone161" type="MeshInstance3D" parent="ZoneMesh" unique_id=139920523]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.01, -42.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone162" type="MeshInstance3D" parent="ZoneMesh" unique_id=1889304648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.01, -42.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone163" type="MeshInstance3D" parent="ZoneMesh" unique_id=571278384]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.01, -42.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone164" type="MeshInstance3D" parent="ZoneMesh" unique_id=77481456]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.01, -42.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone165" type="MeshInstance3D" parent="ZoneMesh" unique_id=461543700]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.01, -42.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone166" type="MeshInstance3D" parent="ZoneMesh" unique_id=1068217153]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.000002, 0.01, -42.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone167" type="MeshInstance3D" parent="ZoneMesh" unique_id=980591126]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.000002, 0.01, -42.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone168" type="MeshInstance3D" parent="ZoneMesh" unique_id=1506522683]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.000002, 0.01, -42.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone169" type="MeshInstance3D" parent="ZoneMesh" unique_id=1674020992]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.000001, 0.01, -42.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone170" type="MeshInstance3D" parent="ZoneMesh" unique_id=1113916205]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.000001, 0.01, -42.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone171" type="MeshInstance3D" parent="ZoneMesh" unique_id=698734548]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.01, -42.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone172" type="MeshInstance3D" parent="ZoneMesh" unique_id=1531278907]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.01, -42.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone173" type="MeshInstance3D" parent="ZoneMesh" unique_id=1707151365]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.01, -42.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone174" type="MeshInstance3D" parent="ZoneMesh" unique_id=937123644]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.01, -42.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone175" type="MeshInstance3D" parent="ZoneMesh" unique_id=289785496]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.01, -42.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone176" type="MeshInstance3D" parent="ZoneMesh" unique_id=1187818228]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.01, -42.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone177" type="MeshInstance3D" parent="ZoneMesh" unique_id=83803505]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.01, -46.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone178" type="MeshInstance3D" parent="ZoneMesh" unique_id=389239814]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.01, -46.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone179" type="MeshInstance3D" parent="ZoneMesh" unique_id=17779864]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.01, -46.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone180" type="MeshInstance3D" parent="ZoneMesh" unique_id=292112561]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.01, -46.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone181" type="MeshInstance3D" parent="ZoneMesh" unique_id=513158512]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.01, -46.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone182" type="MeshInstance3D" parent="ZoneMesh" unique_id=761125568]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.000002, 0.01, -46.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone183" type="MeshInstance3D" parent="ZoneMesh" unique_id=966326534]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.000002, 0.01, -46.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone184" type="MeshInstance3D" parent="ZoneMesh" unique_id=73221302]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.000002, 0.01, -46.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone185" type="MeshInstance3D" parent="ZoneMesh" unique_id=1724833510]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.000001, 0.01, -46.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone186" type="MeshInstance3D" parent="ZoneMesh" unique_id=214513147]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.000001, 0.01, -46.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone187" type="MeshInstance3D" parent="ZoneMesh" unique_id=1202181324]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.01, -46.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone188" type="MeshInstance3D" parent="ZoneMesh" unique_id=1086037691]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.01, -46.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone189" type="MeshInstance3D" parent="ZoneMesh" unique_id=979935904]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.01, -46.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone190" type="MeshInstance3D" parent="ZoneMesh" unique_id=988200495]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.01, -46.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone191" type="MeshInstance3D" parent="ZoneMesh" unique_id=1940943182]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.01, -46.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone192" type="MeshInstance3D" parent="ZoneMesh" unique_id=1575522121]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.01, -46.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone193" type="MeshInstance3D" parent="ZoneMesh" unique_id=1616402641]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.01, -50.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone194" type="MeshInstance3D" parent="ZoneMesh" unique_id=1535687691]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.01, -50.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone195" type="MeshInstance3D" parent="ZoneMesh" unique_id=1190678875]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.01, -50.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone196" type="MeshInstance3D" parent="ZoneMesh" unique_id=218089791]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.01, -50.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone197" type="MeshInstance3D" parent="ZoneMesh" unique_id=1688431212]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.01, -50.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone198" type="MeshInstance3D" parent="ZoneMesh" unique_id=1748687548]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.000002, 0.01, -50.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone199" type="MeshInstance3D" parent="ZoneMesh" unique_id=94533745]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.000002, 0.01, -50.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone200" type="MeshInstance3D" parent="ZoneMesh" unique_id=474196763]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.000002, 0.01, -50.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone201" type="MeshInstance3D" parent="ZoneMesh" unique_id=1364790278]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.000001, 0.01, -50.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone202" type="MeshInstance3D" parent="ZoneMesh" unique_id=1245947248]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.000001, 0.01, -50.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone203" type="MeshInstance3D" parent="ZoneMesh" unique_id=1423111842]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.01, -50.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone204" type="MeshInstance3D" parent="ZoneMesh" unique_id=595825610]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.01, -50.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone205" type="MeshInstance3D" parent="ZoneMesh" unique_id=759656825]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.01, -50.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone206" type="MeshInstance3D" parent="ZoneMesh" unique_id=1959122215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.01, -50.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone207" type="MeshInstance3D" parent="ZoneMesh" unique_id=291678666]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.01, -50.199997)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="Zone208" type="MeshInstance3D" parent="ZoneMesh" unique_id=574844044]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.01, -50.199997)
+mesh = SubResource("QuadMesh_3xd07")

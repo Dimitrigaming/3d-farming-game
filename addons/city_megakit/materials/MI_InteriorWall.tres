@@ -20,4 +20,4 @@ shader_parameter/wear_color = Color(0.292, 0.292, 0.292, 1)
 shader_parameter/use_wear_color = false
 shader_parameter/use_detail_normal = false
 shader_parameter/detail_normal_intensity = 1.0
-shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_scale = Vector2(2, 2)

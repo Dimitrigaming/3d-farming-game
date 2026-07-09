@@ -161,7 +161,37 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_ydybt"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_0jsjx"]
+resource_name = "WornBrick_Plain_1_Cube_246"
+_surfaces = [{
+"aabb": AABB(-1, 0, 0, 2, 1, 1e-05),
+"attribute_data": PackedByteArray("/////wAAAAAAAMA/92dLP8CTOT//////AACAPwAAgD/3Z0s/vpM5P/////8AAIA/AADAP/dnSz/Akzk//////wAAAAAAAIA/92dLP76TOT8="),
+"format": 34359742527,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": ExtResource("1_0jsjx"),
+"name": "mat_Exterior",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AACAvwAAAAAAAACAAACAPwAAgD8uvTszAACAPwAAAAAAAACAAACAvwAAgD8tvTsz/3//f////7//f/9/////v/9//3////+//3//f////78=")
+}, {
+"aabb": AABB(-1, 0, -0.20000009, 2, 1.0000001, 1e-05),
+"attribute_data": PackedByteArray("//////7//3//f/9//////wAAAAD/f/9/////////AAD/f/9//////wAA/3//f/9/"),
+"format": 34896613439,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": ExtResource("2_0jsjx"),
+"name": "mat_Interior",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAAAA//////7/AAD//wAA//8AAP////8AAAAA////f/7//3/+//9//v//f/7/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_b4pwh")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ap4ab"]
 resource_name = "WornBrick_Plain_1_Cube_246"
 _surfaces = [{
 "aabb": AABB(-1, 0, 0, 2, 1, 1e-05),
@@ -214,12 +244,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7881393e-07, 2.6, -0.050000
 shape = SubResource("BoxShape3D_7cawi")
 
 [node name="Plain_1" parent="." unique_id=1294791830 instance=ExtResource("6_ap4ab")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9999998, 2.9999998, 0.010791495)
-mesh = SubResource("ArrayMesh_ydybt")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9999998, 2.9999998, -0.0018934757)
+mesh = SubResource("ArrayMesh_0jsjx")
 
 [node name="Plain_2" parent="." unique_id=834444390 instance=ExtResource("6_ap4ab")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0000002, 2.9999998, 0.010791495)
-mesh = SubResource("ArrayMesh_ydybt")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0000002, 2.9999998, -0.0018934757)
+mesh = SubResource("ArrayMesh_ap4ab")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2104178049]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0011594, -0.08844629)

@@ -60,25 +60,25 @@ input_jump = "jump"
 input_freefly = "noclip"
 
 [node name="Printer" parent="." unique_id=76972310 instance=ExtResource("3_prnt")]
-transform = Transform3D(1.6391277e-07, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 1.6391277e-07, -22.159996, 0.5, -52.06)
+transform = Transform3D(1.6391277e-07, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 1.6391277e-07, -21.859997, 0.5, -54.56)
 
 [node name="Printer2" parent="." unique_id=1735470931 instance=ExtResource("3_prnt")]
-transform = Transform3D(1.6391277e-07, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 1.6391277e-07, -22.159996, 0.5, -54.06)
+transform = Transform3D(1.6391277e-07, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 1.6391277e-07, -21.859997, 0.5, -56.56)
 
 [node name="Printer3" parent="." unique_id=720513280 instance=ExtResource("3_prnt")]
-transform = Transform3D(1.6391277e-07, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 1.6391277e-07, -22.159996, 0.5, -56.06)
+transform = Transform3D(1.6391277e-07, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 1.6391277e-07, -21.859997, 0.5, -58.56)
 
 [node name="Box" parent="." unique_id=1117782866 instance=ExtResource("4_box")]
-transform = Transform3D(-0.99999994, 0, 1.1920929e-07, 0, 1, 0, -1.1920929e-07, 0, -0.99999994, -21.059998, 0.39999998, -58.860004)
+transform = Transform3D(-0.99999994, 0, 1.1920929e-07, 0, 1, 0, -1.1920929e-07, 0, -0.99999994, -20.959997, 0.39999998, -60.560005)
 
 [node name="Box2" parent="." unique_id=472429699 instance=ExtResource("4_box")]
-transform = Transform3D(-0.99999994, 0, 1.1920929e-07, 0, 1, 0, -1.1920929e-07, 0, -0.99999994, -22.359997, 0.39999998, -58.860004)
+transform = Transform3D(-0.99999994, 0, 1.1920929e-07, 0, 1, 0, -1.1920929e-07, 0, -0.99999994, -22.259996, 0.39999998, -60.560005)
 
 [node name="TrashCan" parent="." unique_id=719366373 instance=ExtResource("5_trash")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8, 0.6, -60.300003)
 
 [node name="SmallStockShelf" parent="." unique_id=1026783817 instance=ExtResource("6_sss")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -14.3600025, 0.75, -48.97999)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -16.260002, 0.75, -52.079987)
 
 [node name="SmallProductShelf" parent="." unique_id=986751326 instance=ExtResource("7_sps")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -14.060003, 0.5, -51.87999)
@@ -90,7 +90,7 @@ transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -16.
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -14.060001, 0.5, -53.67999)
 
 [node name="SmallStation" parent="." unique_id=1191770616 instance=ExtResource("11_station")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -17.960001, 0.5, -48.77999)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -18.76, 0.5, -51.77999)
 
 [node name="NPCSpawner" type="Marker3D" parent="." unique_id=1511927017]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.200001, 0.9, -71.3)
