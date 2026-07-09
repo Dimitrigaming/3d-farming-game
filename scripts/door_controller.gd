@@ -3,8 +3,8 @@ extends Node3D
 var _open: bool = false
 var _tweening: bool = false
 
-@onready var _door: Node3D = $DoorFrame/Door
-@onready var _door2: Node3D = $DoorFrame/Door2
+@onready var _door: Node3D = $Door
+@onready var _door2: Node3D = $Door2
 
 const OPEN_ROT_1: float = 130.0
 const CLOSE_ROT_1: float = 0.0
