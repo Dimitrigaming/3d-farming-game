@@ -17,10 +17,15 @@ extends MeshInstance3D
 		_update()
 
 func _ready():
+	if mesh:
+		mesh = mesh.duplicate()
+	var mat = get_active_material(0)
+	if mat:
+		set_surface_override_material(0, mat.duplicate())
 	_update()
 
 func _update():
-	if not mesh:
+	if not mesh or not mesh is PlaneMesh:
 		mesh = PlaneMesh.new()
 	var plane = mesh as PlaneMesh
 	if plane:

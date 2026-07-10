@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dl0qmlopji1qm"]
+
+[ext_resource type="Material" path="res://materials/mat_Path.tres" id="1_uiymr"]
+[ext_resource type="Script" uid="uid://b43h7aopn0k0w" path="res://scripts/walking_path.gd" id="2_script"]
+[ext_resource type="Script" uid="uid://dsq8xde5u6vpb" path="res://scripts/sidewalk_point.gd" id="3_spscript"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_A"]
+radius = 0.3
+height = 0.6
+
+[sub_resource type="StandardMaterial3D" id="Mat_A"]
+transparency = 1
+shading_mode = 2
+albedo_color = Color(0, 1, 0.2, 0.9)
+emission_enabled = true
+emission = Color(0, 1, 0.2, 1)
+emission_energy_multiplier = 0.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_B"]
+radius = 0.3
+height = 0.6
+
+[node name="WalkingPath" type="CSGBox3D" unique_id=1942596055]
+size = Vector3(2, 0.05, 2)
+material = ExtResource("1_uiymr")
+script = ExtResource("2_script")
+point_a = NodePath("PointA")
+point_b = NodePath("PointB")
+
+[node name="PointA" type="Node3D" parent="." unique_id=1000000001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+script = ExtResource("3_spscript")
+
+[node name="PointAMarker" type="MeshInstance3D" parent="PointA" unique_id=1000000003]
+mesh = SubResource("SphereMesh_A")
+surface_material_override/0 = SubResource("Mat_A")
+
+[node name="PointB" type="Node3D" parent="." unique_id=1000000002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+script = ExtResource("3_spscript")
+
+[node name="PointBMarker" type="MeshInstance3D" parent="PointB" unique_id=1000000004]
+mesh = SubResource("SphereMesh_B")
+surface_material_override/0 = SubResource("Mat_A")
