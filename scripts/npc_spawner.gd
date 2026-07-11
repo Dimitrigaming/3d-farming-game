@@ -5,7 +5,6 @@ const NPC_SCENE = preload("res://models/npc.tscn")
 @export var enabled: bool = true
 @export var spawn_interval: float = 5.0
 @export var max_npcs: int = 10
-## 0.0 = no interest, 1.0 = guaranteed entry. Overrides calculated interest for testing.
 @export_range(0.0, 1.0) var debug_store_interest: float = 0.0
 
 var _timer: float = 0.0
@@ -26,21 +25,39 @@ func _process(delta: float) -> void:
 		_spawn()
 
 func _spawn() -> void:
-	var path = _find_nearest_walking_path()
-	if path == null:
+	var destination = _pick_opposite_destination()
+	if destination == null:
+		return
+	var spawn_path = _find_nearest_walking_path()
+	if spawn_path == null:
 		return
 	var npc = NPC_SCENE.instantiate()
 	get_tree().current_scene.add_child(npc)
-	npc.global_position = global_position
-	if npc.has_method("assign_path"):
-		npc.assign_path(path, debug_store_interest)
+	npc.global_position = spawn_path.get_nearest_point(global_position)
+	if npc.has_method("set_street_destination"):
+		npc.set_street_destination.call_deferred(destination.global_position, debug_store_interest)
 
 func _find_nearest_walking_path() -> Node3D:
 	var best: Node3D = null
 	var best_dist: float = INF
 	for node in get_tree().get_nodes_in_group("walking_path"):
+		if not node.has_method("get_nearest_point"):
+			continue
 		var d = global_position.distance_to(node.global_position)
 		if d < best_dist:
 			best_dist = d
 			best = node
 	return best
+
+func _pick_opposite_destination() -> Node3D:
+	var my_side = get_parent()
+	if my_side == null:
+		return null
+	var npc_markers = my_side.get_parent()
+	if npc_markers == null:
+		return null
+	var opposite_name = "Right" if my_side.name == "Left" else "Left"
+	var opposite = npc_markers.get_node_or_null(opposite_name)
+	if opposite == null or opposite.get_child_count() == 0:
+		return null
+	return opposite.get_child(randi() % opposite.get_child_count())

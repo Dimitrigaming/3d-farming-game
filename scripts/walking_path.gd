@@ -7,21 +7,30 @@ func _ready() -> void:
 	add_to_group("walking_path")
 	visible = false
 
-func _process(_delta: float) -> void:
-	if not Engine.is_editor_hint():
-		return
-	var a = get_node_or_null("PointA")
-	var b = get_node_or_null("PointB")
-	if a:
-		a.position = Vector3(0, 0, -size.z * 0.5)
-	if b:
-		b.position = Vector3(0, 0, size.z * 0.5)
+func get_random_point() -> Vector3:
+	var half_x = size.x * 0.5
+	var half_z = size.z * 0.5
+	var local_point = Vector3(
+		randf_range(-half_x, half_x),
+		0.0,
+		randf_range(-half_z, half_z)
+	)
+	return global_transform * local_point
 
-func get_exit_point(from_world_pos: Vector3) -> Vector3:
-	var local_from = global_transform.affine_inverse() * from_world_pos
-	var exit_z: float
-	if local_from.z >= 0.0:
-		exit_z = -size.z * 0.5
+func get_exit_toward(world_dir: Vector3) -> Vector3:
+	var half_x = size.x * 0.5
+	var half_z = size.z * 0.5
+	var local_dir = global_transform.basis.inverse() * world_dir
+	var exit_local: Vector3
+	if abs(local_dir.x) > abs(local_dir.z):
+		exit_local = Vector3(half_x * sign(local_dir.x), 0, randf_range(-half_z, half_z))
 	else:
-		exit_z = size.z * 0.5
-	return global_transform * Vector3(0, 0, exit_z)
+		exit_local = Vector3(randf_range(-half_x, half_x), 0, half_z * sign(local_dir.z))
+	return global_transform * exit_local
+
+func get_nearest_point(world_pos: Vector3) -> Vector3:
+	var local = global_transform.affine_inverse() * world_pos
+	local.x = clamp(local.x, -size.x * 0.5, size.x * 0.5)
+	local.y = 0.0
+	local.z = clamp(local.z, -size.z * 0.5, size.z * 0.5)
+	return global_transform * local
