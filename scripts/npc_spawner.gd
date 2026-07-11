@@ -29,26 +29,13 @@ func _spawn() -> void:
 	var destination = _get_destination()
 	if destination == null:
 		return
-	var spawn_path = _find_nearest_walking_path()
-	if spawn_path == null:
-		return
 	var npc = NPC_SCENE.instantiate()
 	get_tree().current_scene.add_child(npc)
-	npc.global_position = spawn_path.get_nearest_point(global_position)
+	var map = get_world_3d().get_navigation_map()
+	var snapped = NavigationServer3D.map_get_closest_point(map, global_position)
+	npc.global_position = snapped
 	if npc.has_method("set_street_destination"):
 		npc.set_street_destination.call_deferred(destination.global_position, debug_store_interest)
-
-func _find_nearest_walking_path() -> Node3D:
-	var best: Node3D = null
-	var best_dist: float = INF
-	for node in get_tree().get_nodes_in_group("walking_path"):
-		if not node.has_method("get_nearest_point"):
-			continue
-		var d = global_position.distance_to(node.global_position)
-		if d < best_dist:
-			best_dist = d
-			best = node
-	return best
 
 func _get_destination() -> Node3D:
 	if fixed_destination != NodePath(""):

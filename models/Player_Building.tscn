@@ -19,7 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://bjsq4ihjw4c18" path="res://addons/city_megakit/materials/T_RedBrick_Normal.png" id="22_brhnq"]
 [ext_resource type="Texture2D" uid="uid://dl43s6c8tklbg" path="res://addons/city_megakit/materials/T_CornerDamage_Normal.png" id="23_64tq5"]
 [ext_resource type="Texture2D" uid="uid://qha476tq8jes" path="res://addons/city_megakit/materials/T_RedBrick_ORM.png" id="24_f1nhi"]
-[ext_resource type="Material" path="res://materials/mat_Path.tres" id="24_ql1ng"]
 [ext_resource type="Texture2D" uid="uid://dbxevwd2cw8gu" path="res://addons/city_megakit/materials/T_Noise_Drips.png" id="25_4iv0a"]
 [ext_resource type="PackedScene" uid="uid://bemdl8aipocdb" path="res://models/building/Interior_Block.tscn" id="29_o7kdf"]
 [ext_resource type="Script" uid="uid://bqjsbpwk71y3r" path="res://scripts/zone_manager.gd" id="30_brhnq"]
@@ -718,38 +717,26 @@ size = Vector2(85, 70)
 size = Vector2(4, 4)
 orientation = 1
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ql1ng"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_88yjg"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
 albedo_color = Color(1, 0.1, 0.1, 0.45)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qf6xf"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ql1ng"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
 albedo_color = Color(1, 1, 1, 0.35)
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_store"]
-vertices = PackedVector3Array(-0.34999847, 0.474, -0.75, -0.099998474, 0.474, 3.5, 0.40000153, 0.474, -0.75, 27.150002, 0.474, -0.75, 27.150002, 0.474, -51.25, -35.1, 0.474, -51.25, -35.1, 0.474, -0.75)
-polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 2), PackedInt32Array(4, 2, 0), PackedInt32Array(6, 5, 0), PackedInt32Array(0, 5, 4)]
-agent_height = 1.8
-agent_radius = 0.4
-agent_max_climb = 0.3
-
-[sub_resource type="BoxMesh" id="BoxMesh_ql1ng"]
-material = ExtResource("24_ql1ng")
-size = Vector3(63.3, 0.05, 51.3)
-
-[sub_resource type="BoxMesh" id="BoxMesh_qf6xf"]
-material = ExtResource("24_ql1ng")
-size = Vector3(1, 0.05, 8)
-
 [node name="Player_Building" type="Node3D" unique_id=98350389]
 script = ExtResource("1_painter")
 
 [node name="StoreEntryPoint" type="Node3D" parent="." unique_id=218717750]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.2105417)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.8105416)
+
+[node name="StoreExitPoint" type="Node3D" parent="." unique_id=417488995]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.7894583)
 
 [node name="Lights" type="Node3D" parent="." unique_id=1849238883]
 
@@ -758,7 +745,6 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3
 
 [node name="StoreEntrance" parent="." unique_id=1624891090 instance=ExtResource("2_88yjg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.9000001)
-visible = false
 
 [node name="Exterior" type="Node3D" parent="." unique_id=381319350]
 
@@ -1802,1050 +1788,1039 @@ zones_sales = Array[NodePath]([NodePath("Zone"), NodePath("Zone2"), NodePath("Zo
 [node name="Zone" type="MeshInstance3D" parent="ZoneMesh" unique_id=1149852595]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.01, -2.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
+surface_material_override/0 = SubResource("StandardMaterial3D_88yjg")
 
 [node name="Zone2" type="MeshInstance3D" parent="ZoneMesh" unique_id=1479855977]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.01, -2.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
+surface_material_override/0 = SubResource("StandardMaterial3D_88yjg")
 
 [node name="Zone3" type="MeshInstance3D" parent="ZoneMesh" unique_id=179958482]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.01, -2.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
+surface_material_override/0 = SubResource("StandardMaterial3D_88yjg")
 
 [node name="Zone4" type="MeshInstance3D" parent="ZoneMesh" unique_id=1553138997]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.01, -2.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
+surface_material_override/0 = SubResource("StandardMaterial3D_88yjg")
 
 [node name="Zone5" type="MeshInstance3D" parent="ZoneMesh" unique_id=1274314704]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.01, -2.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone12" type="MeshInstance3D" parent="ZoneMesh" unique_id=1649348034]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.000002, 0.01, -2.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone13" type="MeshInstance3D" parent="ZoneMesh" unique_id=2017107252]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.000002, 0.01, -2.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone14" type="MeshInstance3D" parent="ZoneMesh" unique_id=1769932484]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.000002, 0.01, -2.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone15" type="MeshInstance3D" parent="ZoneMesh" unique_id=1035375162]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.000001, 0.01, -2.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone16" type="MeshInstance3D" parent="ZoneMesh" unique_id=1021592729]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.000001, 0.01, -2.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone6" type="MeshInstance3D" parent="ZoneMesh" unique_id=1828597026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.01, -2.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone7" type="MeshInstance3D" parent="ZoneMesh" unique_id=1731832256]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.01, -2.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone8" type="MeshInstance3D" parent="ZoneMesh" unique_id=410234285]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.01, -2.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone9" type="MeshInstance3D" parent="ZoneMesh" unique_id=343425045]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.01, -2.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone10" type="MeshInstance3D" parent="ZoneMesh" unique_id=606639404]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.01, -2.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone11" type="MeshInstance3D" parent="ZoneMesh" unique_id=1169107299]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.01, -2.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone17" type="MeshInstance3D" parent="ZoneMesh" unique_id=1289351554]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.01, -6.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
+surface_material_override/0 = SubResource("StandardMaterial3D_88yjg")
 
 [node name="Zone18" type="MeshInstance3D" parent="ZoneMesh" unique_id=1190818574]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.01, -6.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
+surface_material_override/0 = SubResource("StandardMaterial3D_88yjg")
 
 [node name="Zone19" type="MeshInstance3D" parent="ZoneMesh" unique_id=1237034028]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.01, -6.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
+surface_material_override/0 = SubResource("StandardMaterial3D_88yjg")
 
 [node name="Zone20" type="MeshInstance3D" parent="ZoneMesh" unique_id=739386689]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.01, -6.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
+surface_material_override/0 = SubResource("StandardMaterial3D_88yjg")
 
 [node name="Zone21" type="MeshInstance3D" parent="ZoneMesh" unique_id=1050404143]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.01, -6.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone22" type="MeshInstance3D" parent="ZoneMesh" unique_id=1664342546]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.000002, 0.01, -6.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone23" type="MeshInstance3D" parent="ZoneMesh" unique_id=1961775591]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.000002, 0.01, -6.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone24" type="MeshInstance3D" parent="ZoneMesh" unique_id=480195985]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.000002, 0.01, -6.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone25" type="MeshInstance3D" parent="ZoneMesh" unique_id=1597542395]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.000001, 0.01, -6.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone26" type="MeshInstance3D" parent="ZoneMesh" unique_id=744326002]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.000001, 0.01, -6.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone27" type="MeshInstance3D" parent="ZoneMesh" unique_id=1120045324]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.01, -6.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone28" type="MeshInstance3D" parent="ZoneMesh" unique_id=962938855]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.01, -6.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone29" type="MeshInstance3D" parent="ZoneMesh" unique_id=1986781251]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.01, -6.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone30" type="MeshInstance3D" parent="ZoneMesh" unique_id=641366745]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.01, -6.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone31" type="MeshInstance3D" parent="ZoneMesh" unique_id=847379575]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.01, -6.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone32" type="MeshInstance3D" parent="ZoneMesh" unique_id=306025459]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.01, -6.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone33" type="MeshInstance3D" parent="ZoneMesh" unique_id=2140790981]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.01, -10.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
+surface_material_override/0 = SubResource("StandardMaterial3D_88yjg")
 
 [node name="Zone34" type="MeshInstance3D" parent="ZoneMesh" unique_id=1459815155]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.01, -10.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
+surface_material_override/0 = SubResource("StandardMaterial3D_88yjg")
 
 [node name="Zone35" type="MeshInstance3D" parent="ZoneMesh" unique_id=1408770736]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.01, -10.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
+surface_material_override/0 = SubResource("StandardMaterial3D_88yjg")
 
 [node name="Zone36" type="MeshInstance3D" parent="ZoneMesh" unique_id=1173083326]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.01, -10.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
+surface_material_override/0 = SubResource("StandardMaterial3D_88yjg")
 
 [node name="Zone37" type="MeshInstance3D" parent="ZoneMesh" unique_id=668394559]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.01, -10.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone38" type="MeshInstance3D" parent="ZoneMesh" unique_id=305361948]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.000002, 0.01, -10.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone39" type="MeshInstance3D" parent="ZoneMesh" unique_id=845363481]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.000002, 0.01, -10.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone40" type="MeshInstance3D" parent="ZoneMesh" unique_id=1121738689]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.000002, 0.01, -10.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone41" type="MeshInstance3D" parent="ZoneMesh" unique_id=1631714731]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.000001, 0.01, -10.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone42" type="MeshInstance3D" parent="ZoneMesh" unique_id=2045312816]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.000001, 0.01, -10.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone43" type="MeshInstance3D" parent="ZoneMesh" unique_id=1938655814]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.01, -10.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone44" type="MeshInstance3D" parent="ZoneMesh" unique_id=1268749399]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.01, -10.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone45" type="MeshInstance3D" parent="ZoneMesh" unique_id=1736073987]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.01, -10.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone46" type="MeshInstance3D" parent="ZoneMesh" unique_id=839080252]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.01, -10.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone47" type="MeshInstance3D" parent="ZoneMesh" unique_id=1610405079]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.01, -10.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone48" type="MeshInstance3D" parent="ZoneMesh" unique_id=2142982295]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.01, -10.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone49" type="MeshInstance3D" parent="ZoneMesh" unique_id=314055970]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.01, -14.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone50" type="MeshInstance3D" parent="ZoneMesh" unique_id=1617469009]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.01, -14.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone51" type="MeshInstance3D" parent="ZoneMesh" unique_id=216900059]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.01, -14.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone52" type="MeshInstance3D" parent="ZoneMesh" unique_id=1319855452]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.01, -14.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone53" type="MeshInstance3D" parent="ZoneMesh" unique_id=1233529705]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.01, -14.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone54" type="MeshInstance3D" parent="ZoneMesh" unique_id=1912022787]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.000002, 0.01, -14.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone55" type="MeshInstance3D" parent="ZoneMesh" unique_id=263681687]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.000002, 0.01, -14.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone56" type="MeshInstance3D" parent="ZoneMesh" unique_id=217920586]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.000002, 0.01, -14.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone57" type="MeshInstance3D" parent="ZoneMesh" unique_id=442609557]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.000001, 0.01, -14.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone58" type="MeshInstance3D" parent="ZoneMesh" unique_id=638203571]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.000001, 0.01, -14.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone59" type="MeshInstance3D" parent="ZoneMesh" unique_id=685744267]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.01, -14.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone60" type="MeshInstance3D" parent="ZoneMesh" unique_id=509865063]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.01, -14.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone61" type="MeshInstance3D" parent="ZoneMesh" unique_id=40940228]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.01, -14.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone62" type="MeshInstance3D" parent="ZoneMesh" unique_id=1973706268]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.01, -14.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone63" type="MeshInstance3D" parent="ZoneMesh" unique_id=1251966542]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.01, -14.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone64" type="MeshInstance3D" parent="ZoneMesh" unique_id=1681988324]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.01, -14.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone65" type="MeshInstance3D" parent="ZoneMesh" unique_id=828977154]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.01, -18.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone66" type="MeshInstance3D" parent="ZoneMesh" unique_id=137410171]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.01, -18.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone67" type="MeshInstance3D" parent="ZoneMesh" unique_id=1869314484]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.01, -18.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone68" type="MeshInstance3D" parent="ZoneMesh" unique_id=2031714563]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.01, -18.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone69" type="MeshInstance3D" parent="ZoneMesh" unique_id=989440491]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.01, -18.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone70" type="MeshInstance3D" parent="ZoneMesh" unique_id=1580764682]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.000002, 0.01, -18.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone71" type="MeshInstance3D" parent="ZoneMesh" unique_id=1121170082]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.000002, 0.01, -18.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone72" type="MeshInstance3D" parent="ZoneMesh" unique_id=2039415879]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.000002, 0.01, -18.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone73" type="MeshInstance3D" parent="ZoneMesh" unique_id=104536933]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.000001, 0.01, -18.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone74" type="MeshInstance3D" parent="ZoneMesh" unique_id=75743630]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.000001, 0.01, -18.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone75" type="MeshInstance3D" parent="ZoneMesh" unique_id=1839938232]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.01, -18.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone76" type="MeshInstance3D" parent="ZoneMesh" unique_id=1543668072]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.01, -18.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone77" type="MeshInstance3D" parent="ZoneMesh" unique_id=334292285]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.01, -18.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone78" type="MeshInstance3D" parent="ZoneMesh" unique_id=1695078351]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.01, -18.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone79" type="MeshInstance3D" parent="ZoneMesh" unique_id=1540604945]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.01, -18.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone80" type="MeshInstance3D" parent="ZoneMesh" unique_id=965091548]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.01, -18.2)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone81" type="MeshInstance3D" parent="ZoneMesh" unique_id=1379817292]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.01, -22.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone82" type="MeshInstance3D" parent="ZoneMesh" unique_id=1355694455]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.01, -22.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone83" type="MeshInstance3D" parent="ZoneMesh" unique_id=786870192]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.01, -22.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone84" type="MeshInstance3D" parent="ZoneMesh" unique_id=2142317163]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.01, -22.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone85" type="MeshInstance3D" parent="ZoneMesh" unique_id=418929644]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.01, -22.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone86" type="MeshInstance3D" parent="ZoneMesh" unique_id=444234555]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.000002, 0.01, -22.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone87" type="MeshInstance3D" parent="ZoneMesh" unique_id=1503726253]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.000002, 0.01, -22.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone88" type="MeshInstance3D" parent="ZoneMesh" unique_id=950269115]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.000002, 0.01, -22.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone89" type="MeshInstance3D" parent="ZoneMesh" unique_id=1812629175]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.000001, 0.01, -22.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone90" type="MeshInstance3D" parent="ZoneMesh" unique_id=895831664]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.000001, 0.01, -22.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone91" type="MeshInstance3D" parent="ZoneMesh" unique_id=291731150]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.01, -22.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone92" type="MeshInstance3D" parent="ZoneMesh" unique_id=985034280]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.01, -22.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone93" type="MeshInstance3D" parent="ZoneMesh" unique_id=18994472]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.01, -22.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone94" type="MeshInstance3D" parent="ZoneMesh" unique_id=395219448]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.01, -22.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone95" type="MeshInstance3D" parent="ZoneMesh" unique_id=926755082]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.01, -22.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone96" type="MeshInstance3D" parent="ZoneMesh" unique_id=863453259]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.01, -22.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone97" type="MeshInstance3D" parent="ZoneMesh" unique_id=2016893407]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.01, -26.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone98" type="MeshInstance3D" parent="ZoneMesh" unique_id=965136888]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.01, -26.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone99" type="MeshInstance3D" parent="ZoneMesh" unique_id=839825889]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.01, -26.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone100" type="MeshInstance3D" parent="ZoneMesh" unique_id=1307707260]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.01, -26.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone101" type="MeshInstance3D" parent="ZoneMesh" unique_id=1593188637]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.01, -26.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone102" type="MeshInstance3D" parent="ZoneMesh" unique_id=1386583203]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.000002, 0.01, -26.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone103" type="MeshInstance3D" parent="ZoneMesh" unique_id=518854592]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.000002, 0.01, -26.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone104" type="MeshInstance3D" parent="ZoneMesh" unique_id=1641458748]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.000002, 0.01, -26.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone105" type="MeshInstance3D" parent="ZoneMesh" unique_id=1087416061]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.000001, 0.01, -26.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone106" type="MeshInstance3D" parent="ZoneMesh" unique_id=1520134981]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.000001, 0.01, -26.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone107" type="MeshInstance3D" parent="ZoneMesh" unique_id=125475175]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.01, -26.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone108" type="MeshInstance3D" parent="ZoneMesh" unique_id=65594181]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.01, -26.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone109" type="MeshInstance3D" parent="ZoneMesh" unique_id=1941271385]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.01, -26.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone110" type="MeshInstance3D" parent="ZoneMesh" unique_id=981147135]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.01, -26.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone111" type="MeshInstance3D" parent="ZoneMesh" unique_id=24640471]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.01, -26.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone112" type="MeshInstance3D" parent="ZoneMesh" unique_id=1336247563]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.01, -26.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone113" type="MeshInstance3D" parent="ZoneMesh" unique_id=1163505821]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.01, -30.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone114" type="MeshInstance3D" parent="ZoneMesh" unique_id=1360331649]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.01, -30.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone115" type="MeshInstance3D" parent="ZoneMesh" unique_id=2081838760]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.01, -30.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone116" type="MeshInstance3D" parent="ZoneMesh" unique_id=1113576736]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.01, -30.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone117" type="MeshInstance3D" parent="ZoneMesh" unique_id=835907296]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.01, -30.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone118" type="MeshInstance3D" parent="ZoneMesh" unique_id=1236487027]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.000002, 0.01, -30.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone119" type="MeshInstance3D" parent="ZoneMesh" unique_id=1842257476]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.000002, 0.01, -30.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone120" type="MeshInstance3D" parent="ZoneMesh" unique_id=2128994275]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.000002, 0.01, -30.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone121" type="MeshInstance3D" parent="ZoneMesh" unique_id=1323477168]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.000001, 0.01, -30.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone122" type="MeshInstance3D" parent="ZoneMesh" unique_id=83792836]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.000001, 0.01, -30.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone123" type="MeshInstance3D" parent="ZoneMesh" unique_id=728143186]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.01, -30.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone124" type="MeshInstance3D" parent="ZoneMesh" unique_id=855058636]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.01, -30.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone125" type="MeshInstance3D" parent="ZoneMesh" unique_id=1518009697]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.01, -30.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone126" type="MeshInstance3D" parent="ZoneMesh" unique_id=1050277647]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.01, -30.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone127" type="MeshInstance3D" parent="ZoneMesh" unique_id=143750616]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.01, -30.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone128" type="MeshInstance3D" parent="ZoneMesh" unique_id=2044728006]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.01, -30.199999)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone129" type="MeshInstance3D" parent="ZoneMesh" unique_id=1768592079]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.01, -34.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone130" type="MeshInstance3D" parent="ZoneMesh" unique_id=290344062]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.01, -34.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone131" type="MeshInstance3D" parent="ZoneMesh" unique_id=604382396]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.01, -34.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone132" type="MeshInstance3D" parent="ZoneMesh" unique_id=318827131]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.01, -34.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone133" type="MeshInstance3D" parent="ZoneMesh" unique_id=1584281692]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.01, -34.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone134" type="MeshInstance3D" parent="ZoneMesh" unique_id=1023696389]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.000002, 0.01, -34.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone135" type="MeshInstance3D" parent="ZoneMesh" unique_id=1053227100]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.000002, 0.01, -34.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone136" type="MeshInstance3D" parent="ZoneMesh" unique_id=1344272908]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.000002, 0.01, -34.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone137" type="MeshInstance3D" parent="ZoneMesh" unique_id=2012991326]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.000001, 0.01, -34.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone138" type="MeshInstance3D" parent="ZoneMesh" unique_id=574611947]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.000001, 0.01, -34.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone139" type="MeshInstance3D" parent="ZoneMesh" unique_id=665450139]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.01, -34.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone140" type="MeshInstance3D" parent="ZoneMesh" unique_id=1042696514]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.01, -34.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone141" type="MeshInstance3D" parent="ZoneMesh" unique_id=477811353]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.01, -34.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone142" type="MeshInstance3D" parent="ZoneMesh" unique_id=1593922779]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.01, -34.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone143" type="MeshInstance3D" parent="ZoneMesh" unique_id=1921788043]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.01, -34.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone144" type="MeshInstance3D" parent="ZoneMesh" unique_id=1585277323]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.01, -34.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone145" type="MeshInstance3D" parent="ZoneMesh" unique_id=1943448141]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.01, -38.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone146" type="MeshInstance3D" parent="ZoneMesh" unique_id=930568553]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.01, -38.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone147" type="MeshInstance3D" parent="ZoneMesh" unique_id=1034714967]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.01, -38.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone148" type="MeshInstance3D" parent="ZoneMesh" unique_id=792237748]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.01, -38.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone149" type="MeshInstance3D" parent="ZoneMesh" unique_id=572997410]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.01, -38.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone150" type="MeshInstance3D" parent="ZoneMesh" unique_id=393504276]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.000002, 0.01, -38.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone151" type="MeshInstance3D" parent="ZoneMesh" unique_id=1756041193]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.000002, 0.01, -38.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone152" type="MeshInstance3D" parent="ZoneMesh" unique_id=1380771479]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.000002, 0.01, -38.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone153" type="MeshInstance3D" parent="ZoneMesh" unique_id=1004214257]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.000001, 0.01, -38.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone154" type="MeshInstance3D" parent="ZoneMesh" unique_id=791996809]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.000001, 0.01, -38.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone155" type="MeshInstance3D" parent="ZoneMesh" unique_id=1247145381]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.01, -38.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone156" type="MeshInstance3D" parent="ZoneMesh" unique_id=1569286243]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.01, -38.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone157" type="MeshInstance3D" parent="ZoneMesh" unique_id=1887340553]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.01, -38.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone158" type="MeshInstance3D" parent="ZoneMesh" unique_id=1826707250]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.01, -38.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone159" type="MeshInstance3D" parent="ZoneMesh" unique_id=969809503]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.01, -38.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone160" type="MeshInstance3D" parent="ZoneMesh" unique_id=1530564498]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.01, -38.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone161" type="MeshInstance3D" parent="ZoneMesh" unique_id=139920523]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.01, -42.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone162" type="MeshInstance3D" parent="ZoneMesh" unique_id=1889304648]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.01, -42.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone163" type="MeshInstance3D" parent="ZoneMesh" unique_id=571278384]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.01, -42.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone164" type="MeshInstance3D" parent="ZoneMesh" unique_id=77481456]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.01, -42.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone165" type="MeshInstance3D" parent="ZoneMesh" unique_id=461543700]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.01, -42.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone166" type="MeshInstance3D" parent="ZoneMesh" unique_id=1068217153]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.000002, 0.01, -42.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone167" type="MeshInstance3D" parent="ZoneMesh" unique_id=980591126]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.000002, 0.01, -42.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone168" type="MeshInstance3D" parent="ZoneMesh" unique_id=1506522683]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.000002, 0.01, -42.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone169" type="MeshInstance3D" parent="ZoneMesh" unique_id=1674020992]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.000001, 0.01, -42.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone170" type="MeshInstance3D" parent="ZoneMesh" unique_id=1113916205]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.000001, 0.01, -42.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone171" type="MeshInstance3D" parent="ZoneMesh" unique_id=698734548]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.01, -42.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone172" type="MeshInstance3D" parent="ZoneMesh" unique_id=1531278907]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.01, -42.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone173" type="MeshInstance3D" parent="ZoneMesh" unique_id=1707151365]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.01, -42.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone174" type="MeshInstance3D" parent="ZoneMesh" unique_id=937123644]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.01, -42.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone175" type="MeshInstance3D" parent="ZoneMesh" unique_id=289785496]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.01, -42.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone176" type="MeshInstance3D" parent="ZoneMesh" unique_id=1187818228]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.01, -42.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone177" type="MeshInstance3D" parent="ZoneMesh" unique_id=83803505]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.01, -46.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone178" type="MeshInstance3D" parent="ZoneMesh" unique_id=389239814]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.01, -46.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone179" type="MeshInstance3D" parent="ZoneMesh" unique_id=17779864]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.01, -46.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone180" type="MeshInstance3D" parent="ZoneMesh" unique_id=292112561]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.01, -46.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone181" type="MeshInstance3D" parent="ZoneMesh" unique_id=513158512]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.01, -46.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone182" type="MeshInstance3D" parent="ZoneMesh" unique_id=761125568]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.000002, 0.01, -46.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone183" type="MeshInstance3D" parent="ZoneMesh" unique_id=966326534]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.000002, 0.01, -46.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone184" type="MeshInstance3D" parent="ZoneMesh" unique_id=73221302]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.000002, 0.01, -46.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone185" type="MeshInstance3D" parent="ZoneMesh" unique_id=1724833510]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.000001, 0.01, -46.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone186" type="MeshInstance3D" parent="ZoneMesh" unique_id=214513147]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.000001, 0.01, -46.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone187" type="MeshInstance3D" parent="ZoneMesh" unique_id=1202181324]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.01, -46.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone188" type="MeshInstance3D" parent="ZoneMesh" unique_id=1086037691]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.01, -46.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone189" type="MeshInstance3D" parent="ZoneMesh" unique_id=979935904]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.01, -46.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone190" type="MeshInstance3D" parent="ZoneMesh" unique_id=988200495]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.01, -46.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone191" type="MeshInstance3D" parent="ZoneMesh" unique_id=1940943182]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.01, -46.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone192" type="MeshInstance3D" parent="ZoneMesh" unique_id=1575522121]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.01, -46.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone193" type="MeshInstance3D" parent="ZoneMesh" unique_id=1616402641]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.01, -50.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone194" type="MeshInstance3D" parent="ZoneMesh" unique_id=1535687691]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.01, -50.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone195" type="MeshInstance3D" parent="ZoneMesh" unique_id=1190678875]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.01, -50.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone196" type="MeshInstance3D" parent="ZoneMesh" unique_id=218089791]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.01, -50.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone197" type="MeshInstance3D" parent="ZoneMesh" unique_id=1688431212]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.01, -50.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone198" type="MeshInstance3D" parent="ZoneMesh" unique_id=1748687548]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.000002, 0.01, -50.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone199" type="MeshInstance3D" parent="ZoneMesh" unique_id=94533745]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.000002, 0.01, -50.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone200" type="MeshInstance3D" parent="ZoneMesh" unique_id=474196763]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.000002, 0.01, -50.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone201" type="MeshInstance3D" parent="ZoneMesh" unique_id=1364790278]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.000001, 0.01, -50.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone202" type="MeshInstance3D" parent="ZoneMesh" unique_id=1245947248]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.000001, 0.01, -50.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone203" type="MeshInstance3D" parent="ZoneMesh" unique_id=1423111842]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.01, -50.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone204" type="MeshInstance3D" parent="ZoneMesh" unique_id=595825610]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.01, -50.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone205" type="MeshInstance3D" parent="ZoneMesh" unique_id=759656825]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.01, -50.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone206" type="MeshInstance3D" parent="ZoneMesh" unique_id=1959122215]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.01, -50.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone207" type="MeshInstance3D" parent="ZoneMesh" unique_id=291678666]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.01, -50.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 
 [node name="Zone208" type="MeshInstance3D" parent="ZoneMesh" unique_id=574844044]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.01, -50.199997)
 mesh = SubResource("QuadMesh_3xd07")
-surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
-
-[node name="StoreNav" type="NavigationRegion3D" parent="." unique_id=1183571566]
-navigation_mesh = SubResource("NavigationMesh_store")
-
-[node name="StoreFloor" type="MeshInstance3D" parent="StoreNav" unique_id=158529875]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.95, -0.001, -26.1)
-mesh = SubResource("BoxMesh_ql1ng")
-
-[node name="StoreEntranceNav" type="MeshInstance3D" parent="StoreNav" unique_id=430293098]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.001, -0.1)
-mesh = SubResource("BoxMesh_qf6xf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")

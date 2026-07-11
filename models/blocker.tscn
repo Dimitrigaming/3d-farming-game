@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://chvdfj11wimcu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_blocker"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0.6, 0, 0, 0.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_blocker"]
+size = Vector3(1, 2, 1)
+
+[node name="Blocker" type="CSGBox3D" unique_id=1439597169]
+size = Vector3(1, 2, 1)
+material = SubResource("StandardMaterial3D_blocker")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1547782167]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1842895861]
+shape = SubResource("BoxShape3D_blocker")

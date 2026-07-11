@@ -40,6 +40,7 @@ var _handed_off: bool = false
 var _queue_slot: int = 0
 var _queue_target: Vector3 = Vector3.ZERO
 var _store_interest_checked: bool = false
+var _exited_store: bool = false
 
 const IDLE_RECHECK: float = 2.0
 const IDLE_RECHECK_FAIL: float = 8.0
@@ -105,8 +106,15 @@ func _physics_process(delta: float) -> void:
 					register_is_staffed()
 		State.LEAVING:
 			if _nav.is_navigation_finished():
-				queue_free()
-				return
+				if not _exited_store:
+					_exited_store = true
+					var dest = _street_destination if _street_destination != Vector3.ZERO else global_position + Vector3(0, 0, 20)
+					_log("reached exit — heading to street")
+					_set_nav_target(dest)
+				else:
+					_log("left store — freeing")
+					queue_free()
+					return
 			else:
 				_move_along_nav(delta)
 		State.IDLE:
@@ -138,6 +146,8 @@ func _set_nav_target(pos: Vector3) -> void:
 
 func _move_along_nav(delta: float) -> void:
 	var next = _nav.get_next_path_position()
+	if _nav_frames < 10:
+		_log("next=%s pos=%s finished=%s" % [next, global_position, _nav.is_navigation_finished()])
 	var dir = (next - global_position)
 	dir.y = 0
 	var dist = dir.length()
@@ -196,10 +206,11 @@ func _on_arrive_at_shelf() -> void:
 func checkout_complete() -> void:
 	if _register and is_instance_valid(_register):
 		_register.leave_queue(self)
-	var dest = _street_destination if _street_destination != Vector3.ZERO else global_position + Vector3(0, 0, 20)
+	var exit_point = get_node_or_null("/root/Map/City/Player_Building/StoreExitPoint")
+	var dest = exit_point.global_position if exit_point else _street_destination
+	_log("checkout done — heading to exit")
 	_set_nav_target(dest)
 	state = State.LEAVING
-	_log("checkout done — leaving")
 
 func register_is_staffed() -> void:
 	if state != State.WAITING or _handed_off or _register == null:

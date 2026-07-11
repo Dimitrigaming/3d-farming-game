@@ -21,14 +21,19 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("console"):
-		c_visible = not c_visible
-		c_panel.visible = c_visible
-		if c_visible:
-			c_line_edit.grab_focus()
-			_set_player_input(false)
-		else:
-			_set_player_input(true)
-		get_viewport().set_input_as_handled()
+		_toggle()
+	elif event.is_action_pressed("ui_cancel") and c_visible:
+		_toggle()
+
+func _toggle() -> void:
+	c_visible = not c_visible
+	c_panel.visible = c_visible
+	if c_visible:
+		c_line_edit.grab_focus()
+		_set_player_input(false)
+	else:
+		_set_player_input(true)
+	get_viewport().set_input_as_handled()
 
 func _set_player_input(enabled: bool) -> void:
 	var controller = get_tree().get_first_node_in_group("proto_controller")
