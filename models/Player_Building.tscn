@@ -726,6 +726,9 @@ cull_mode = 2
 shading_mode = 0
 albedo_color = Color(1, 1, 1, 0.35)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_door1"]
+size = Vector3(5, 3.5, 4)
+
 [node name="Player_Building" type="Node3D" unique_id=98350389]
 script = ExtResource("1_painter")
 
@@ -750,6 +753,12 @@ mesh = SubResource("ArrayMesh_p1acs")
 [node name="Door2" parent="Exterior/DoorFrame" unique_id=1740740435 instance=ExtResource("16_4iv0a")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1, 0, -0.1)
 mesh = SubResource("ArrayMesh_v6710")
+
+[node name="DoorEntrance" type="Area3D" parent="Exterior/DoorFrame" unique_id=112233445]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Exterior/DoorFrame/DoorEntrance" unique_id=112233446]
+shape = SubResource("BoxShape3D_door1")
 
 [node name="Plain_6" parent="Exterior" unique_id=318898166 instance=ExtResource("18_3ci11")]
 transform = Transform3D(-4.3711372e-09, 0, -1, 0, 1, 0, 0.099999964, 0, -4.371139e-08, -2.0000005, 0, -0.1)
