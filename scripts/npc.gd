@@ -68,7 +68,6 @@ func _physics_process(delta: float) -> void:
 	match state:
 		State.WALKING_PATH:
 			_nav_frames += 1
-			_check_store_trigger()
 			if _nav_frames > 5 and _nav.is_navigation_finished():
 				queue_free()
 				return
@@ -151,24 +150,20 @@ func _move_along_nav(delta: float) -> void:
 		velocity.x = 0
 		velocity.z = 0
 
-func _check_store_trigger() -> void:
-	if _store_interest_checked:
+func try_enter_store(entry_pos: Vector3) -> void:
+	if _store_interest_checked or state != State.WALKING_PATH:
 		return
-	for trigger in get_tree().get_nodes_in_group("store_entrance"):
-		if trigger.overlaps_body(self):
-			_store_interest_checked = true
-			if store_interest <= _get_store_attractiveness():
-				_log("[color=green]entering store (interest=%.2f)[/color]" % store_interest)
-				var entrance = trigger.global_position
-				entrance.y = global_position.y
-				_set_nav_target(entrance)
-				state = State.ENTERING_STORE
-			else:
-				_log("passed store (interest=%.2f too low)" % store_interest)
-			return
+	_store_interest_checked = true
+	if store_interest >= _get_store_attractiveness():
+		_log("[color=green]entering store (interest=%.2f)[/color]" % store_interest)
+		_log("nav target set to %s" % entry_pos)
+		_set_nav_target(entry_pos)
+		state = State.ENTERING_STORE
+	else:
+		_log("passed store (interest=%.2f too low)" % store_interest)
 
 func _get_store_attractiveness() -> float:
-	return 0.8
+	return 0.3
 
 
 func _on_arrive_at_shelf() -> void:

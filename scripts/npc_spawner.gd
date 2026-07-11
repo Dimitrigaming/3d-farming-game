@@ -6,6 +6,7 @@ const NPC_SCENE = preload("res://models/npc.tscn")
 @export var spawn_interval: float = 5.0
 @export var max_npcs: int = 10
 @export_range(0.0, 1.0) var debug_store_interest: float = 0.0
+@export var fixed_destination: NodePath = NodePath("")
 
 var _timer: float = 0.0
 
@@ -25,7 +26,7 @@ func _process(delta: float) -> void:
 		_spawn()
 
 func _spawn() -> void:
-	var destination = _pick_opposite_destination()
+	var destination = _get_destination()
 	if destination == null:
 		return
 	var spawn_path = _find_nearest_walking_path()
@@ -48,6 +49,11 @@ func _find_nearest_walking_path() -> Node3D:
 			best_dist = d
 			best = node
 	return best
+
+func _get_destination() -> Node3D:
+	if fixed_destination != NodePath(""):
+		return get_node_or_null(fixed_destination)
+	return _pick_opposite_destination()
 
 func _pick_opposite_destination() -> Node3D:
 	var my_side = get_parent()
