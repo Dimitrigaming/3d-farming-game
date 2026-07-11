@@ -184,7 +184,8 @@ func _on_arrive_at_shelf() -> void:
 func checkout_complete() -> void:
 	if _register and is_instance_valid(_register):
 		_register.leave_queue(self)
-	_set_nav_target(global_position + Vector3(0, 0, 20))
+	var dest = _street_destination if _street_destination != Vector3.ZERO else global_position + Vector3(0, 0, 20)
+	_set_nav_target(dest)
 	state = State.LEAVING
 
 func register_is_staffed() -> void:
