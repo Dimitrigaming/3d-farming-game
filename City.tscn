@@ -386,11 +386,17 @@ size = Vector3(69, 0.2, 15)
 [sub_resource type="BoxShape3D" id="BoxShape3D_xlcga"]
 size = Vector3(69, 0.2, 15)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_8ph7n"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_8ph7n"]
+size = Vector3(69, 0.2, 15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_37b0d"]
+size = Vector3(69, 0.2, 15)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ogr4w"]
 material = ExtResource("10_vvu38")
 size = Vector2(69, 15)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_x6dw2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6nbhf"]
 render_priority = 0
 shader = ExtResource("11_aqvbi")
 shader_parameter/albedo = ExtResource("12_76q6d")
@@ -438,11 +444,17 @@ size = Vector3(69, 0.2, 15)
 [sub_resource type="BoxShape3D" id="BoxShape3D_qem83"]
 size = Vector3(69, 0.2, 15)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_4rtwl"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_4rtwl"]
+size = Vector3(69, 0.2, 15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_idluv"]
+size = Vector3(69, 0.2, 15)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_n1b7h"]
 material = ExtResource("10_vvu38")
 size = Vector2(69, 15)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b5l6m"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5n5mv"]
 render_priority = 0
 shader = ExtResource("11_aqvbi")
 shader_parameter/albedo = ExtResource("12_76q6d")
@@ -484,11 +496,17 @@ size = Vector3(69, 0.2, 15)
 [sub_resource type="BoxShape3D" id="BoxShape3D_c21o6"]
 size = Vector3(69, 0.2, 15)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_15rdj"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_15rdj"]
+size = Vector3(69, 0.2, 15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gdpqm"]
+size = Vector3(69, 0.2, 15)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3m4o5"]
 material = ExtResource("10_vvu38")
 size = Vector2(69, 15)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_on0jq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rgydy"]
 render_priority = 0
 shader = ExtResource("11_aqvbi")
 shader_parameter/albedo = ExtResource("12_76q6d")
@@ -530,11 +548,17 @@ size = Vector3(69, 0.2, 15)
 [sub_resource type="BoxShape3D" id="BoxShape3D_a6w8i"]
 size = Vector3(69, 0.2, 15)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_vkwyd"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_vkwyd"]
+size = Vector3(69, 0.2, 15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t7grn"]
+size = Vector3(69, 0.2, 15)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8w37q"]
 material = ExtResource("10_vvu38")
 size = Vector2(162, 15)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kejgt"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m8pp6"]
 render_priority = 0
 shader = ExtResource("11_aqvbi")
 shader_parameter/albedo = ExtResource("12_76q6d")
@@ -811,6 +835,12 @@ size = Vector3(162, 0.2, 15)
 size = Vector3(162, 0.2, 15)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y6yte"]
+size = Vector3(162, 0.2, 15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i24aw"]
+size = Vector3(162, 0.2, 15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pp8ru"]
 size = Vector3(162, 0.2, 15)
 
 [node name="City" type="Node3D" unique_id=1620436365]
@@ -1421,10 +1451,18 @@ shape = SubResource("BoxShape3D_fgja5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 shape = SubResource("BoxShape3D_xlcga")
 
+[node name="@CollisionShape3D@55634" type="CollisionShape3D" parent="Street/SideWalk/TiledCollider" unique_id=208512113]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("BoxShape3D_8ph7n")
+
+[node name="@CollisionShape3D@56730" type="CollisionShape3D" parent="Street/SideWalk/TiledCollider" unique_id=1060801477]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("BoxShape3D_37b0d")
+
 [node name="SideWalk2" type="MeshInstance3D" parent="Street" unique_id=1090905729]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.499992, -0.001, -97.5)
-mesh = SubResource("PlaneMesh_8ph7n")
-surface_material_override/0 = SubResource("ShaderMaterial_x6dw2")
+mesh = SubResource("PlaneMesh_ogr4w")
+surface_material_override/0 = SubResource("ShaderMaterial_6nbhf")
 script = ExtResource("11_ltft3")
 tile_count = Vector2i(23, 5)
 
@@ -1863,10 +1901,18 @@ shape = SubResource("BoxShape3D_x6dw2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 shape = SubResource("BoxShape3D_qem83")
 
+[node name="@CollisionShape3D@55635" type="CollisionShape3D" parent="Street/SideWalk2/TiledCollider" unique_id=1665223503]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("BoxShape3D_4rtwl")
+
+[node name="@CollisionShape3D@56731" type="CollisionShape3D" parent="Street/SideWalk2/TiledCollider" unique_id=1176840036]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("BoxShape3D_idluv")
+
 [node name="SideWalk4" type="MeshInstance3D" parent="Street" unique_id=57494521]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.499992, -0.001, -10.499996)
-mesh = SubResource("PlaneMesh_4rtwl")
-surface_material_override/0 = SubResource("ShaderMaterial_b5l6m")
+mesh = SubResource("PlaneMesh_n1b7h")
+surface_material_override/0 = SubResource("ShaderMaterial_5n5mv")
 script = ExtResource("11_ltft3")
 tile_count = Vector2i(23, 5)
 
@@ -2309,10 +2355,18 @@ shape = SubResource("BoxShape3D_b5l6m")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 shape = SubResource("BoxShape3D_c21o6")
 
+[node name="@CollisionShape3D@55636" type="CollisionShape3D" parent="Street/SideWalk4/TiledCollider" unique_id=1175976565]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("BoxShape3D_15rdj")
+
+[node name="@CollisionShape3D@56732" type="CollisionShape3D" parent="Street/SideWalk4/TiledCollider" unique_id=1891358717]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("BoxShape3D_gdpqm")
+
 [node name="SideWalk5" type="MeshInstance3D" parent="Street" unique_id=279207550]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.500015, -0.001, -10.499997)
-mesh = SubResource("PlaneMesh_15rdj")
-surface_material_override/0 = SubResource("ShaderMaterial_on0jq")
+mesh = SubResource("PlaneMesh_3m4o5")
+surface_material_override/0 = SubResource("ShaderMaterial_rgydy")
 script = ExtResource("11_ltft3")
 tile_count = Vector2i(23, 5)
 
@@ -2759,10 +2813,18 @@ shape = SubResource("BoxShape3D_on0jq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 shape = SubResource("BoxShape3D_a6w8i")
 
+[node name="@CollisionShape3D@55637" type="CollisionShape3D" parent="Street/SideWalk5/TiledCollider" unique_id=1302664238]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("BoxShape3D_vkwyd")
+
+[node name="@CollisionShape3D@56733" type="CollisionShape3D" parent="Street/SideWalk5/TiledCollider" unique_id=160204054]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("BoxShape3D_t7grn")
+
 [node name="SideWalk3" type="MeshInstance3D" parent="Street" unique_id=1267040747]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2999916, -0.001, -130.5)
-mesh = SubResource("PlaneMesh_vkwyd")
-surface_material_override/0 = SubResource("ShaderMaterial_kejgt")
+mesh = SubResource("PlaneMesh_8w37q")
+surface_material_override/0 = SubResource("ShaderMaterial_m8pp6")
 script = ExtResource("11_ltft3")
 tile_count = Vector2i(54, 5)
 
@@ -3520,6 +3582,14 @@ shape = SubResource("BoxShape3D_kejgt")
 [node name="@CollisionShape3D@25607" type="CollisionShape3D" parent="Street/SideWalk3/TiledCollider" unique_id=972633355]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 shape = SubResource("BoxShape3D_y6yte")
+
+[node name="@CollisionShape3D@55638" type="CollisionShape3D" parent="Street/SideWalk3/TiledCollider" unique_id=915277126]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("BoxShape3D_i24aw")
+
+[node name="@CollisionShape3D@56734" type="CollisionShape3D" parent="Street/SideWalk3/TiledCollider" unique_id=943317858]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("BoxShape3D_pp8ru")
 
 [node name="Street1" type="Node3D" parent="." unique_id=1155666998]
 

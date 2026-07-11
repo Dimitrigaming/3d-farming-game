@@ -1,5 +1,16 @@
 extends CharacterBody3D
 
+const NPC_LOGGING: bool = true
+
+func _log(msg: String) -> void:
+	if not NPC_LOGGING:
+		return
+	var label = "[NPC %d] " % (get_instance_id() % 10000)
+	if has_node("/root/DebugConsole"):
+		get_node("/root/DebugConsole").print_line(label + msg)
+	else:
+		print(label + msg)
+
 enum State {
 	WALKING_PATH,
 	CHOOSING_NEXT,
@@ -48,6 +59,7 @@ func set_street_destination(destination: Vector3, debug_interest: float = 0.0) -
 	_nav_frames = 0
 	_set_nav_target(destination)
 	state = State.WALKING_PATH
+	_log("spawned — interest=%.2f dest=%s" % [store_interest, destination])
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -64,12 +76,14 @@ func _physics_process(delta: float) -> void:
 				_move_along_nav(delta)
 		State.ENTERING_STORE:
 			if _nav.is_navigation_finished():
+				_log("[color=cyan]arrived inside store[/color]")
 				state = State.IDLE
 				_idle_timer = 0.0
 			else:
 				_move_along_nav(delta)
 		State.GOING_TO_SHELF:
 			if _nav.is_navigation_finished():
+				_log("arrived at shelf")
 				_on_arrive_at_shelf()
 			else:
 				_move_along_nav(delta)
@@ -144,14 +158,17 @@ func _check_store_trigger() -> void:
 		if trigger.overlaps_body(self):
 			_store_interest_checked = true
 			if store_interest <= _get_store_attractiveness():
+				_log("[color=green]entering store (interest=%.2f)[/color]" % store_interest)
 				var entrance = trigger.global_position
 				entrance.y = global_position.y
 				_set_nav_target(entrance)
 				state = State.ENTERING_STORE
+			else:
+				_log("passed store (interest=%.2f too low)" % store_interest)
 			return
 
 func _get_store_attractiveness() -> float:
-	return 0.3
+	return 0.8
 
 
 func _on_arrive_at_shelf() -> void:
@@ -187,6 +204,7 @@ func checkout_complete() -> void:
 	var dest = _street_destination if _street_destination != Vector3.ZERO else global_position + Vector3(0, 0, 20)
 	_set_nav_target(dest)
 	state = State.LEAVING
+	_log("checkout done — leaving")
 
 func register_is_staffed() -> void:
 	if state != State.WAITING or _handed_off or _register == null:

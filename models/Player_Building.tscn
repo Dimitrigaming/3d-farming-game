@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bjsq4ihjw4c18" path="res://addons/city_megakit/materials/T_RedBrick_Normal.png" id="22_brhnq"]
 [ext_resource type="Texture2D" uid="uid://dl43s6c8tklbg" path="res://addons/city_megakit/materials/T_CornerDamage_Normal.png" id="23_64tq5"]
 [ext_resource type="Texture2D" uid="uid://qha476tq8jes" path="res://addons/city_megakit/materials/T_RedBrick_ORM.png" id="24_f1nhi"]
+[ext_resource type="Material" path="res://materials/mat_Path.tres" id="24_ql1ng"]
 [ext_resource type="Texture2D" uid="uid://dbxevwd2cw8gu" path="res://addons/city_megakit/materials/T_Noise_Drips.png" id="25_4iv0a"]
 [ext_resource type="PackedScene" uid="uid://bemdl8aipocdb" path="res://models/building/Interior_Block.tscn" id="29_o7kdf"]
 [ext_resource type="Script" uid="uid://bqjsbpwk71y3r" path="res://scripts/zone_manager.gd" id="30_brhnq"]
@@ -234,6 +235,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_pb5yg")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_door1"]
+size = Vector3(5, 3.5, 4)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_mfbgo"]
 _surfaces = [{
@@ -726,8 +730,20 @@ cull_mode = 2
 shading_mode = 0
 albedo_color = Color(1, 1, 1, 0.35)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_door1"]
-size = Vector3(5, 3.5, 4)
+[sub_resource type="NavigationMesh" id="NavigationMesh_store"]
+vertices = PackedVector3Array(-0.3500023, 1.05, -0.75, -0.10000229, 0.79999995, 3.5, 0.3999977, 1.05, -0.75, 27.149998, 1.05, -0.75, 27.149998, 1.05, -51.25, -35.100002, 1.05, -51.25, -35.100002, 1.05, -0.75)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 2), PackedInt32Array(4, 2, 0), PackedInt32Array(6, 5, 0), PackedInt32Array(0, 5, 4)]
+agent_height = 1.8
+agent_radius = 0.4
+agent_max_climb = 0.3
+
+[sub_resource type="BoxMesh" id="BoxMesh_ql1ng"]
+material = ExtResource("24_ql1ng")
+size = Vector3(63.3, 0.5, 51.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qf6xf"]
+material = ExtResource("24_ql1ng")
+size = Vector3(1, 0.5, 8)
 
 [node name="Player_Building" type="Node3D" unique_id=98350389]
 script = ExtResource("1_painter")
@@ -2817,3 +2833,14 @@ surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.01, -50.199997)
 mesh = SubResource("QuadMesh_3xd07")
 surface_material_override/0 = SubResource("StandardMaterial3D_qf6xf")
+
+[node name="StoreNav" type="NavigationRegion3D" parent="." unique_id=1183571566]
+navigation_mesh = SubResource("NavigationMesh_store")
+
+[node name="StoreFloor" type="MeshInstance3D" parent="StoreNav" unique_id=158529875]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9500017, 0.5, -26.1)
+mesh = SubResource("BoxMesh_ql1ng")
+
+[node name="StoreEntranceNav" type="MeshInstance3D" parent="StoreNav" unique_id=430293098]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29999998, -0.099999785)
+mesh = SubResource("BoxMesh_qf6xf")
