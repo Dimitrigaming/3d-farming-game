@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3vvtc1h10aw7"]
+
+[ext_resource type="PackedScene" uid="uid://dvribfsvy2kvs" path="res://addons/nature_megakit/assets/Pebble_Round_5.gltf" id="1_i3fh4"]
+
+[node name="Pebble_Round_52" instance=ExtResource("1_i3fh4")]

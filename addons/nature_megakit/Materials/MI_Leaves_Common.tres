@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://jxmgrllc6jdj"]
+
+[ext_resource type="Shader" path="res://addons/nature_megakit/Materials/M_Leaves_GiantPine.gdshader" id="1_f4sos"]
+[ext_resource type="Texture2D" uid="uid://b8pyt25inmlul" path="res://addons/nature_megakit/assets/Leaves_NormalTree.png" id="2_h0cem"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_f4sos")
+shader_parameter/Leaf_Color = Color(0.47419, 0.632726, 0.089304, 1)
+shader_parameter/ExtraColor = Color(0.13, 0.33, 0.25, 1)
+shader_parameter/SSS_Color = Color(0.458824, 0.721569, 0, 1)
+shader_parameter/WindSpeed = 10.0
+shader_parameter/WindStrength = 0.1
+shader_parameter/SSS_Strength = 2.0
+shader_parameter/SSS_Blend = 0.2
+shader_parameter/GlobalVariation = true
+shader_parameter/Alpha = ExtResource("2_h0cem")

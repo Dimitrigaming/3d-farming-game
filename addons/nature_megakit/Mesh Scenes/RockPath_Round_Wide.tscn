@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7h1hricaae67"]
+
+[ext_resource type="PackedScene" uid="uid://bau7nohybb6fe" path="res://addons/nature_megakit/assets/RockPath_Round_Wide.gltf" id="1_gig3q"]
+
+[node name="RockPath_Round_Wide2" instance=ExtResource("1_gig3q")]

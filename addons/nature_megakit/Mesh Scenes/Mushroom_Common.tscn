@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://yuu55abilefd"]
+
+[ext_resource type="PackedScene" uid="uid://cgnh04hty60uq" path="res://addons/nature_megakit/assets/Mushroom_Common.gltf" id="1_wcavv"]
+
+[node name="Mushroom_Common2" instance=ExtResource("1_wcavv")]

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbb3rtnc26r85"]
+
+[ext_resource type="PackedScene" uid="uid://esce6fy77q8j" path="res://addons/nature_megakit/assets/Rock_Big_2.gltf" id="1_allcc"]
+
+[node name="Rock_Big_22" instance=ExtResource("1_allcc")]

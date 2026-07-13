@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://slb4t4v6tg1q"]
+
+[ext_resource type="Shader" path="res://addons/nature_megakit/Materials/M_Leaves.gdshader" id="1_6mc4a"]
+[ext_resource type="Texture2D" uid="uid://dxddybe2nxnxp" path="res://addons/nature_megakit/assets/Leaves_CherryBlossom.png" id="2_1l786"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_6mc4a")
+shader_parameter/Leaf_Color = Color(0.882524, 0.483479, 0.787299, 1)
+shader_parameter/SSS_Color = Color(0.811706, 0.495229, 1, 1)
+shader_parameter/WindSpeed = 10.0
+shader_parameter/WindStrength = 0.1
+shader_parameter/SSS_Strength = 1.836
+shader_parameter/SSS_Blend = 0.335
+shader_parameter/GlobalVariation = true
+shader_parameter/Alpha = ExtResource("2_1l786")

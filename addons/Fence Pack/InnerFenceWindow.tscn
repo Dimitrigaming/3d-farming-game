@@ -1,0 +1,36 @@
+[gd_scene format=4 uid="uid://ed24ystx4g8"]
+
+[ext_resource type="PackedScene" uid="uid://80k5p2wi38ux" path="res://addons/Fence Pack/InnerFenceWindow.fbx" id="1_innwn"]
+[ext_resource type="Texture2D" uid="uid://cy3oedvbjww7u" path="res://addons/Fence Pack/Textures/rough_block_wall_diff_1k.jpg" id="2_innwn"]
+[ext_resource type="Texture2D" uid="uid://bvxfo42iivksf" path="res://addons/Fence Pack/Textures/gravel_embedded_concrete_diff_1k.jpg" id="3_innwn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bricks"]
+resource_name = "Bricks"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_innwn")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0
+normal_enabled = true
+normal_scale = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_concrete"]
+resource_name = "Concrete"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_innwn")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0
+normal_enabled = true
+normal_scale = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_metal"]
+resource_name = "Metal"
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.1764706, 0.1764706, 0.1764706, 0)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0
+
+[node name="InnerFenceWindow" instance=ExtResource("1_innwn")]

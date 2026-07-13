@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://db7cvjpo5d5jm"]
+
+[ext_resource type="PackedScene" uid="uid://dejhbw5lde2c8" path="res://addons/nature_megakit/assets/Rock_Medium_3.gltf" id="1_c2p24"]
+
+[node name="Rock_Medium_32" instance=ExtResource("1_c2p24")]

@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://d0yummb7ba4aq"]
+
+[ext_resource type="Shader" path="res://addons/nature_megakit/Materials/M_Leaves.gdshader" id="1_lhv2r"]
+[ext_resource type="Texture2D" uid="uid://csdd6p1p0cfiy" path="res://addons/nature_megakit/assets/Leaves_TallThick.png" id="2_8oond"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_lhv2r")
+shader_parameter/Leaf_Color = Color(0.489253, 0.629485, 1.92523e-07, 1)
+shader_parameter/SSS_Color = Color(0.528613, 0.736813, 1.15514e-06, 1)
+shader_parameter/WindSpeed = 10.0
+shader_parameter/WindStrength = 0.1
+shader_parameter/SSS_Strength = 2.0
+shader_parameter/SSS_Blend = 0.2
+shader_parameter/GlobalVariation = true
+shader_parameter/Alpha = ExtResource("2_8oond")

@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dglydpf0lfs8x"]
+
+[ext_resource type="Shader" uid="uid://q3rcpubmqy18" path="res://addons/nature_megakit/Materials/M_Leaves.gdshader" id="1_ew5at"]
+[ext_resource type="Texture2D" uid="uid://c7nytlmjhhr7r" path="res://addons/nature_megakit/assets/Leaves_Birch.png" id="2_a8mml"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ew5at")
+shader_parameter/Leaf_Color = Color(1, 0.251884, 0.0657694, 1)
+shader_parameter/ExtraColor = Color(0.13, 0.33, 0.25, 1)
+shader_parameter/Alpha = ExtResource("2_a8mml")
+shader_parameter/SSS_Color = Color(1, 0.494814, 0.127128, 1)
+shader_parameter/WindSpeed = 10.0
+shader_parameter/WindStrength = 0.1
+shader_parameter/SSS_Strength = 1.836
+shader_parameter/SSS_Blend = 0.335
+shader_parameter/GlobalVariation = true

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxa2r8gvsbklk"]
+
+[ext_resource type="PackedScene" uid="uid://bk3jb450snrxw" path="res://addons/nature_megakit/assets/Pebble_Square_3.gltf" id="1_2buwp"]
+
+[node name="Pebble_Square_32" instance=ExtResource("1_2buwp")]

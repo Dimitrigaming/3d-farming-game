@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://gbphie4dqgwb"]
+
+[ext_resource type="Shader" path="res://addons/nature_megakit/Materials/M_Grass.gdshader" id="1_paecy"]
+[ext_resource type="Texture2D" uid="uid://h35uej8tofad" path="res://addons/nature_megakit/Materials/T_FoliageNoise.tres" id="2_ksphx"]
+[ext_resource type="Texture2D" uid="uid://dvsu16i3c8e" path="res://addons/nature_megakit/assets/Noise_Wind.png" id="3_g0hhv"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_paecy")
+shader_parameter/Color_Top = Color(0.233496, 0.719475, 0, 1)
+shader_parameter/Color_Bottom = Color(0, 0.247293, 0.0183231, 1)
+shader_parameter/wind_line_color = Color(0.354369, 0.639962, 0, 1)
+shader_parameter/WindSpeed = 2.0
+shader_parameter/WindIntensity = 0.2
+shader_parameter/NoisePanSpeed = Vector2(0.03, 0)
+shader_parameter/NoiseScale = 50.0
+shader_parameter/WindLineStrength = 1.0
+shader_parameter/WindLineSaturation = 5.0
+shader_parameter/World_Color_Variation = Color(0.192624, 0.512266, 0, 1)
+shader_parameter/NoiseTexture = ExtResource("3_g0hhv")
+shader_parameter/GeneratedNoise = ExtResource("2_ksphx")

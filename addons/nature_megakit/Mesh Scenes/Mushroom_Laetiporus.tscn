@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://byrr0hiu0rvpg"]
+
+[ext_resource type="PackedScene" uid="uid://h8ccj4gcdifs" path="res://addons/nature_megakit/assets/Mushroom_Laetiporus.gltf" id="1_no4ms"]
+
+[node name="Mushroom_Laetiporus2" instance=ExtResource("1_no4ms")]

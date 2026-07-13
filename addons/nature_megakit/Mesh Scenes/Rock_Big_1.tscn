@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dim8p2gq1djm"]
+
+[ext_resource type="PackedScene" uid="uid://dsoi0a2kugtfd" path="res://addons/nature_megakit/assets/Rock_Big_1.gltf" id="1_npdar"]
+
+[node name="Rock_Big_12" instance=ExtResource("1_npdar")]
