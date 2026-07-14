@@ -29,6 +29,11 @@ window/stretch/aspect="expand"
 
 enabled=PackedStringArray("res://addons/terrain_3d/plugin.cfg", "res://addons/tiled_plane/plugin.cfg")
 
+[global_group]
+
+npc_path=""
+npc_playerbuilding=""
+
 [input]
 
 move_left={

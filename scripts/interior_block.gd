@@ -12,6 +12,9 @@ func get_interact_hint() -> String:
 func interact() -> void:
 	if game_state.unlock_block():
 		get_parent().queue_free()
+		var nav = get_tree().get_first_node_in_group("store_nav")
+		if nav:
+			nav.bake_navigation_mesh()
 	else:
 		hud.show_notification("Not enough money!")
 
