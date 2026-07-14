@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://jpsaamwk66bm"]
 
 [ext_resource type="PackedScene" uid="uid://cd7pp4kgg0tiq" path="res://addons/Fence Pack/FenceConnector.fbx" id="1_pbf8y"]
-[ext_resource type="Texture2D" uid="uid://cy3oedvbjww7u" path="res://addons/Fence Pack/Textures/rough_block_wall_diff_1k.jpg" id="2_gx12l"]
-[ext_resource type="Texture2D" uid="uid://bvxfo42iivksf" path="res://addons/Fence Pack/Textures/gravel_embedded_concrete_diff_1k.jpg" id="3_t36gc"]
+[ext_resource type="Texture2D" uid="uid://cy3oedvbjww7u" path="res://addons/Fence Pack/textures/rough_block_wall_diff_1k.jpg" id="2_gx12l"]
+[ext_resource type="Texture2D" uid="uid://bvxfo42iivksf" path="res://addons/Fence Pack/textures/gravel_embedded_concrete_diff_1k.jpg" id="3_t36gc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k87fh"]
 resource_name = "Bricks"

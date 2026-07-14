@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://biy1r2uybpu53"]
 
-[ext_resource type="Texture2D" uid="uid://cy3oedvbjww7u" path="res://addons/Fence Pack/Textures/rough_block_wall_diff_1k.jpg" id="2_pdwmt"]
+[ext_resource type="Texture2D" uid="uid://cy3oedvbjww7u" path="res://addons/Fence Pack/textures/rough_block_wall_diff_1k.jpg" id="2_pdwmt"]
 [ext_resource type="Material" uid="uid://msnv16udaem3" path="res://materials/mat_clear.tres" id="2_qxyqq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6q6wx"]

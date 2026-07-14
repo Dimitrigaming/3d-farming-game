@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://81ei27lowweg"]
 
 [ext_resource type="PackedScene" uid="uid://dgqisytrc4uhe" path="res://addons/Fence Pack/Fencecorner.fbx" id="1_2ucam"]
-[ext_resource type="Texture2D" uid="uid://cy3oedvbjww7u" path="res://addons/Fence Pack/Textures/rough_block_wall_diff_1k.jpg" id="2_3m6jc"]
-[ext_resource type="Texture2D" uid="uid://bvxfo42iivksf" path="res://addons/Fence Pack/Textures/gravel_embedded_concrete_diff_1k.jpg" id="3_hlhme"]
+[ext_resource type="Texture2D" uid="uid://cy3oedvbjww7u" path="res://addons/Fence Pack/textures/rough_block_wall_diff_1k.jpg" id="2_3m6jc"]
+[ext_resource type="Texture2D" uid="uid://bvxfo42iivksf" path="res://addons/Fence Pack/textures/gravel_embedded_concrete_diff_1k.jpg" id="3_hlhme"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a5iad"]
 resource_name = "Metal"

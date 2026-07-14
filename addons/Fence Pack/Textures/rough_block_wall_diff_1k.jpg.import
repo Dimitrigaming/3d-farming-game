@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cy3oedvbjww7u"
-path.s3tc="res://.godot/imported/rough_block_wall_diff_1k.jpg-14907e48ab86550b2f3560172001f1cf.s3tc.ctex"
+path.s3tc="res://.godot/imported/rough_block_wall_diff_1k.jpg-2521122247fafeac2362d388a18b1645.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://addons/Fence Pack/Textures/rough_block_wall_diff_1k.jpg"
-dest_files=["res://.godot/imported/rough_block_wall_diff_1k.jpg-14907e48ab86550b2f3560172001f1cf.s3tc.ctex"]
+source_file="res://addons/Fence Pack/textures/rough_block_wall_diff_1k.jpg"
+dest_files=["res://.godot/imported/rough_block_wall_diff_1k.jpg-2521122247fafeac2362d388a18b1645.s3tc.ctex"]
 
 [params]
 

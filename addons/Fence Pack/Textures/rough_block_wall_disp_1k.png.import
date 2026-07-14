@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://0xo26stp56pm"
-path="res://.godot/imported/rough_block_wall_disp_1k.png-9cb92cb2a6820a12f21d9155beb94387.ctex"
+path="res://.godot/imported/rough_block_wall_disp_1k.png-5f36cc22910efc9d0c85ed365ad3ada4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/Fence Pack/Textures/rough_block_wall_disp_1k.png"
-dest_files=["res://.godot/imported/rough_block_wall_disp_1k.png-9cb92cb2a6820a12f21d9155beb94387.ctex"]
+source_file="res://addons/Fence Pack/textures/rough_block_wall_disp_1k.png"
+dest_files=["res://.godot/imported/rough_block_wall_disp_1k.png-5f36cc22910efc9d0c85ed365ad3ada4.ctex"]
 
 [params]
 
