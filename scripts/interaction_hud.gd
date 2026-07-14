@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var noclip_label: Label = $NoclipLabel
 
 func _ready() -> void:
+	add_to_group("hud")
 	money_label.text = "$%.2f" % GameState.money
 	GameState.money_changed.connect(_on_money_changed)
 
@@ -15,6 +16,20 @@ func _process(_delta: float) -> void:
 
 func _on_money_changed(new_amount: float) -> void:
 	money_label.text = "$%.2f" % new_amount
+
+func show_notification(text: String, duration: float = 2.5) -> void:
+	var label = Label.new()
+	label.text = text
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.add_theme_font_size_override("font_size", 20)
+	label.add_theme_color_override("font_color", Color(1, 0.3, 0.3))
+	label.add_theme_color_override("font_shadow_color", Color(0, 0, 0, 0.8))
+	label.add_theme_constant_override("shadow_offset_x", 1)
+	label.add_theme_constant_override("shadow_offset_y", 1)
+	add_child(label)
+	label.set_anchors_preset(Control.PRESET_CENTER)
+	await get_tree().create_timer(duration).timeout
+	label.queue_free()
 
 func set_hints(hints: Array[String]) -> void:
 	var existing := hints_container.get_children()

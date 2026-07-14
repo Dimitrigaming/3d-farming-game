@@ -9,7 +9,7 @@ var money: float = 500.0
 var blocks_unlocked: int = 0
 
 func get_next_unlock_price() -> int:
-	return 500 + blocks_unlocked * 250
+	return 10
 
 func unlock_block() -> bool:
 	var price = get_next_unlock_price()

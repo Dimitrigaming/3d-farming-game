@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bemdl8aipocdb"]
 
 [ext_resource type="Material" uid="uid://budxptsfqe8j8" path="res://addons/city_megakit/materials/MI_InteriorWall.tres" id="1_5ocwo"]
+[ext_resource type="Script" path="res://scripts/interior_block.gd" id="2_block"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_3xd07"]
 material = ExtResource("1_5ocwo")
@@ -46,6 +47,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2)
 mesh = SubResource("PlaneMesh_4yf7h")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=288478236]
+script = ExtResource("2_block")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=513857578]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2.9802322e-08)

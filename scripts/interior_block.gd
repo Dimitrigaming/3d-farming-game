@@ -1,7 +1,7 @@
 extends StaticBody3D
 
 @onready var game_state: Node = get_node("/root/GameState")
-@onready var hud = get_node("/root/Map/Player/HUD")
+@onready var hud = get_tree().get_first_node_in_group("hud")
 
 func _ready() -> void:
 	add_to_group("interactable")
@@ -11,7 +11,7 @@ func get_interact_hint() -> String:
 
 func interact() -> void:
 	if game_state.unlock_block():
-		queue_free()
+		get_parent().queue_free()
 	else:
 		hud.show_notification("Not enough money!")
 

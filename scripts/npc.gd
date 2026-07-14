@@ -146,8 +146,6 @@ func _set_nav_target(pos: Vector3) -> void:
 
 func _move_along_nav(delta: float) -> void:
 	var next = _nav.get_next_path_position()
-	if _nav_frames < 10:
-		_log("next=%s pos=%s finished=%s" % [next, global_position, _nav.is_navigation_finished()])
 	var dir = (next - global_position)
 	dir.y = 0
 	var dist = dir.length()
