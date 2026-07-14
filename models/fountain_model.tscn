@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://cmuq0m128x8ru"]
+
+[node name="Fountain" type="Node3D" unique_id=755600000]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=852124704]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=832572580]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25000003, 0)
+radius = 2.5
+height = 0.5
+sides = 32
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D/CSGCylinder3D" unique_id=466957795]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+operation = 2
+radius = 2.25
+height = 0.5
+sides = 32
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=124403335]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4140663, 0)
+radius = 0.2
+height = 0.75
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCombiner3D/CSGCylinder3D2" unique_id=1843862209]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2831938, 0)
+radius = 2.0
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="CSGCombiner3D/CSGCylinder3D2/CSGSphere3D" unique_id=2004605295]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.023357153, 0)
+operation = 2
+radius = 1.9
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/CSGCylinder3D2/CSGSphere3D" unique_id=1667996026]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08921814, 0.27161145, 0.044433594)
+operation = 2
+size = Vector3(4.2947693, 3.5521994, 4.116211)
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=720222454]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.92691064, 0)
+radius = 0.2
+height = 0.75
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCombiner3D/CSGCylinder3D3" unique_id=386612091]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2831938, 0)
+radius = 2.0
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="CSGCombiner3D/CSGCylinder3D3/CSGSphere3D" unique_id=2026550973]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.023357153, 0)
+operation = 2
+radius = 1.9
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/CSGCylinder3D3/CSGSphere3D" unique_id=382117834]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08921814, 0.27161145, 0.044433594)
+operation = 2
+size = Vector3(4.2947693, 3.5521994, 4.116211)
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=1466983598]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.4742376, 0)
+radius = 0.2
+height = 0.75
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCombiner3D/CSGCylinder3D4" unique_id=2096345365]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2831938, 0)
+radius = 2.0
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="CSGCombiner3D/CSGCylinder3D4/CSGSphere3D" unique_id=662654862]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.023357153, 0)
+operation = 2
+radius = 1.9
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/CSGCylinder3D4/CSGSphere3D" unique_id=817669982]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08921814, 0.27161145, 0.044433594)
+operation = 2
+size = Vector3(4.2947693, 3.5521994, 4.116211)
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=2002947304]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1.8102745, 0)
+radius = 0.2
+height = 1.5311279
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCombiner3D/CSGCylinder3D5" unique_id=547846772]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6696787, 0)
+radius = 2.0
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="CSGCombiner3D/CSGCylinder3D5/CSGSphere3D" unique_id=299082740]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.023357153, 0)
+operation = 2
+radius = 1.9
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/CSGCylinder3D5/CSGSphere3D" unique_id=428878118]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08921814, 0.27161145, 0.044433594)
+operation = 2
+size = Vector3(4.2947693, 3.5521994, 4.116211)

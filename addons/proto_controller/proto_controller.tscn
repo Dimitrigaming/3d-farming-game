@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bs72ogkvdd7d6"]
+[gd_scene format=3 uid="uid://bs72ogkvdd7d6"]
 
-[ext_resource type="Script" path="res://addons/proto_controller/proto_controller.gd" id="1_ucva2"]
-[ext_resource type="Script" path="res://scripts/interaction_manager.gd" id="2_interact"]
-[ext_resource type="Script" path="res://scripts/player_inventory.gd" id="3_inventory"]
-[ext_resource type="Script" path="res://scripts/interaction_hud.gd" id="4_hud"]
-[ext_resource type="Script" path="res://scripts/build_mode.gd" id="5_buildmode"]
+[ext_resource type="Script" uid="uid://cjgquqhnsyux7" path="res://addons/proto_controller/proto_controller.gd" id="1_ucva2"]
+[ext_resource type="Script" uid="uid://bpd2uk632dhvf" path="res://scripts/interaction_manager.gd" id="2_interact"]
+[ext_resource type="Script" uid="uid://d283bo7ip4paa" path="res://scripts/player_inventory.gd" id="3_inventory"]
+[ext_resource type="Script" uid="uid://cbii3ky2ad6q1" path="res://scripts/interaction_hud.gd" id="4_hud"]
+[ext_resource type="Script" uid="uid://c61ggstqpho4u" path="res://scripts/build_mode.gd" id="5_buildmode"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iof21"]
 albedo_color = Color(0.91806, 0.575202, 0.222449, 1)
@@ -17,42 +17,43 @@ height = 1.8
 radius = 0.4
 height = 1.8
 
-[node name="ProtoController" type="CharacterBody3D"]
+[node name="ProtoController" type="CharacterBody3D" unique_id=1965895804]
 script = ExtResource("1_ucva2")
 
-[node name="Mesh" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1700171988]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 material_override = SubResource("StandardMaterial3D_iof21")
 cast_shadow = 0
 mesh = SubResource("CapsuleMesh_ucva2")
 
-[node name="Collider" type="CollisionShape3D" parent="."]
+[node name="Collider" type="CollisionShape3D" parent="." unique_id=1550631761]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_iof21")
 
-[node name="Head" type="Node3D" parent="."]
+[node name="Head" type="Node3D" parent="." unique_id=28016313]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Head"]
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=809935066]
 
-[node name="InteractionRay" type="RayCast3D" parent="Head/Camera3D"]
+[node name="InteractionRay" type="RayCast3D" parent="Head/Camera3D" unique_id=1141915841]
 target_position = Vector3(0, 0, -3)
 collide_with_areas = true
 script = ExtResource("2_interact")
 
-[node name="HoldPoint" type="Marker3D" parent="Head/Camera3D"]
+[node name="HoldPoint" type="Marker3D" parent="Head/Camera3D" unique_id=1587450460]
 transform = Transform3D(1, 0, 0, 0, 0.9397, -0.342, 0, 0.342, 0.9397, 0, -0.65, -1.1)
 
-[node name="PlayerInventory" type="Node3D" parent="."]
+[node name="PlayerInventory" type="Node3D" parent="." unique_id=1383110303]
 script = ExtResource("3_inventory")
 
-[node name="BuildMode" type="Node3D" parent="."]
+[node name="BuildMode" type="Node3D" parent="." unique_id=946990163]
 script = ExtResource("5_buildmode")
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1163543329]
 script = ExtResource("4_hud")
 
-[node name="Crosshair" type="ColorRect" parent="HUD"]
+[node name="Crosshair" type="ColorRect" parent="HUD" unique_id=976413124]
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -61,10 +62,11 @@ offset_left = -3.0
 offset_top = -3.0
 offset_right = 3.0
 offset_bottom = 3.0
-color = Color(0.75, 0.75, 0.75, 0.85)
 mouse_filter = 2
+color = Color(0.75, 0.75, 0.75, 0.85)
 
-[node name="Hints" type="VBoxContainer" parent="HUD"]
+[node name="Hints" type="VBoxContainer" parent="HUD" unique_id=1610358205]
+anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -77,29 +79,22 @@ grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="NoclipLabel" type="Label" parent="HUD"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="NoclipLabel" type="Label" parent="HUD" unique_id=1847984615]
+visible = false
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 220.0
 offset_bottom = 50.0
-mouse_filter = 2
 text = "NO CLIP"
-visible = false
 
-[node name="MoneyLabel" type="Label" parent="HUD"]
+[node name="MoneyLabel" type="Label" parent="HUD" unique_id=1644954873]
+anchors_preset = 1
 anchor_left = 1.0
-anchor_top = 0.0
 anchor_right = 1.0
-anchor_bottom = 0.0
 offset_left = -220.0
 offset_top = 20.0
 offset_right = -20.0
 offset_bottom = 50.0
 grow_horizontal = 0
-mouse_filter = 2
-horizontal_alignment = 1
 text = "$500.00"
+horizontal_alignment = 1
