@@ -11,10 +11,11 @@ func get_interact_hint() -> String:
 
 func interact() -> void:
 	if game_state.unlock_block():
+		var parent = get_parent()
 		var manager = get_tree().get_first_node_in_group("nav_links_store")
+		parent.queue_free()
 		if manager:
-			manager.refresh_at(get_parent().global_position)
-		get_parent().queue_free()
+			manager.refresh_at(parent.global_position)
 	else:
 		hud.show_notification("Not enough money!")
 
