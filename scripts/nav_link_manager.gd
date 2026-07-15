@@ -1,9 +1,10 @@
 extends Node3D
 
 const BLOCK_SIZE := 4.0
-const WALL_MASK := 4
 
+# Stores {link_key -> {link, pos_a, pos_b}}
 var _grid_links: Dictionary = {}
+# Stores {block_key -> {link, target_pos}}
 var _star_links: Dictionary = {}
 var _origin: Node3D
 
@@ -27,41 +28,63 @@ func _build_links() -> void:
 
 		for dir in [Vector3(BLOCK_SIZE, 0, 0), Vector3(-BLOCK_SIZE, 0, 0),
 					Vector3(0, 0, BLOCK_SIZE), Vector3(0, 0, -BLOCK_SIZE)]:
-			var neighbor_pos = pos + dir
-			if not pos_set.has(_key(neighbor_pos)):
+			var nb = pos + dir
+			if not pos_set.has(_key(nb)):
 				continue
-			var lkey = _link_key(pos, neighbor_pos)
+			var lkey = _link_key(pos, nb)
 			if not _grid_links.has(lkey):
-				_grid_links[lkey] = _make_link(pos, neighbor_pos)
+				_grid_links[lkey] = {
+					"link": _make_link(pos, nb),
+					"pos_a": pos,
+					"pos_b": nb,
+				}
 
 		var skey = _key(pos)
 		if not _star_links.has(skey):
-			_star_links[skey] = _make_link(_origin.global_position, pos)
+			_star_links[skey] = {
+				"link": _make_link(_origin.global_position, pos),
+				"target": pos,
+			}
 
 func _refresh_all() -> void:
-	var space = get_world_3d().direct_space_state
-	for link in _grid_links.values():
-		link.enabled = _ray_clear(space, to_global(link.start_position), to_global(link.end_position))
-	for link in _star_links.values():
-		link.enabled = _ray_clear(space, to_global(link.start_position), to_global(link.end_position))
+	var blocks = get_tree().get_nodes_in_group("interior_block")
+	for entry in _grid_links.values():
+		entry["link"].enabled = _grid_clear(entry["pos_a"], entry["pos_b"], blocks)
+	for entry in _star_links.values():
+		entry["link"].enabled = _star_clear(_origin.global_position, entry["target"], blocks)
 
-func refresh_at(removed_pos: Vector3) -> void:
-	await get_tree().physics_frame
-	var space = get_world_3d().direct_space_state
+func refresh_at(_removed_pos: Vector3) -> void:
+	await get_tree().process_frame
+	_refresh_all()
 
-	for dir in [Vector3(BLOCK_SIZE, 0, 0), Vector3(-BLOCK_SIZE, 0, 0),
-				Vector3(0, 0, BLOCK_SIZE), Vector3(0, 0, -BLOCK_SIZE)]:
-		var lkey = _link_key(removed_pos, removed_pos + dir)
-		if _grid_links.has(lkey):
-			var link: NavigationLink3D = _grid_links[lkey]
-			link.enabled = _ray_clear(space, to_global(link.start_position), to_global(link.end_position))
+# A grid link between A and B is open when neither block still exists
+func _grid_clear(pos_a: Vector3, pos_b: Vector3, blocks: Array) -> bool:
+	for block in blocks:
+		var bp = block.global_position
+		if _xz_dist(bp, pos_a) < 1.0 or _xz_dist(bp, pos_b) < 1.0:
+			return false
+	return true
 
-	for link in _star_links.values():
-		link.enabled = _ray_clear(space, to_global(link.start_position), to_global(link.end_position))
+# A star link to target is open when no remaining block is near the straight line
+func _star_clear(from: Vector3, target: Vector3, blocks: Array) -> bool:
+	for block in blocks:
+		if _xz_dist_to_segment(block.global_position, from, target) < BLOCK_SIZE * 0.6:
+			return false
+	return true
 
-func _ray_clear(space: PhysicsDirectSpaceState3D, from: Vector3, to: Vector3) -> bool:
-	var query = PhysicsRayQueryParameters3D.create(from, to, WALL_MASK)
-	return space.intersect_ray(query).is_empty()
+func _xz_dist(a: Vector3, b: Vector3) -> float:
+	return Vector2(a.x, a.z).distance_to(Vector2(b.x, b.z))
+
+func _xz_dist_to_segment(point: Vector3, a: Vector3, b: Vector3) -> float:
+	var p = Vector2(point.x, point.z)
+	var av = Vector2(a.x, a.z)
+	var bv = Vector2(b.x, b.z)
+	var ab = bv - av
+	var len_sq = ab.length_squared()
+	if len_sq == 0.0:
+		return p.distance_to(av)
+	var t = clampf((p - av).dot(ab) / len_sq, 0.0, 1.0)
+	return p.distance_to(av + ab * t)
 
 func _make_link(from: Vector3, to: Vector3) -> NavigationLink3D:
 	var link = NavigationLink3D.new()
