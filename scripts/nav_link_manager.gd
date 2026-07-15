@@ -9,13 +9,7 @@ var _all_positions: Array = []     # every block pos, for flood-fill seed check
 var _origin: Node3D
 
 func _ready() -> void:
-	await get_tree().physics_frame
-	_origin = get_tree().get_first_node_in_group("nav_link_origin")
-	if not _origin:
-		push_warning("NavLinkManager: no nav_link_origin group node found")
-		return
-	_build_links()
-	_refresh_all()
+	return  # disabled while manual raycast links are being set up
 
 func _build_links() -> void:
 	var blocks = get_tree().get_nodes_in_group("interior_block")
