@@ -51,7 +51,7 @@ func _refresh_all() -> void:
 		var removed = not blocks_in_scene.has(skey)
 		var link: NavigationLink3D = _entry_links[skey]
 		var block_pos = to_global(link.end_position)
-		var adjacent = _xz_dist(block_pos, _origin.global_position) < BLOCK_SIZE * 1.5
+		var adjacent = _xz_dist(block_pos, _origin.global_position) < 15.0
 		link.enabled = removed and adjacent
 
 	for lkey in _chain_links:
