@@ -1,7 +1,7 @@
 extends NavigationLink3D
 
-# Collision mask matching the Interior Block blocker walls (collision_layer = 4)
-@export var wall_mask: int = 4
+# How close an interior block must be to end_position to count as blocking
+@export var block_radius: float = 2.5
 @export var check_interval: float = 0.5
 
 var _timer: float = 0.0
@@ -18,8 +18,9 @@ func _physics_process(delta: float) -> void:
 		_check()
 
 func _check() -> void:
-	var space = get_world_3d().direct_space_state
-	var from = to_global(start_position)
-	var to_pos = to_global(end_position)
-	var query = PhysicsRayQueryParameters3D.create(from, to_pos, wall_mask)
-	enabled = space.intersect_ray(query).is_empty()
+	var end_global = to_global(end_position)
+	for block in get_tree().get_nodes_in_group("interior_block"):
+		if (block as Node3D).global_position.distance_to(end_global) < block_radius:
+			enabled = false
+			return
+	enabled = true
