@@ -26,8 +26,12 @@ func _build_links() -> void:
 		var pos = block.global_position
 		var skey = _key(pos)
 
+		# entry link only for border blocks (at least one open neighbor)
 		if not _entry_links.has(skey):
-			_entry_links[skey] = {"link": _make_link(_origin.global_position, pos), "pos": pos}
+			for dir in [Vector3(BLOCK_SIZE,0,0), Vector3(-BLOCK_SIZE,0,0), Vector3(0,0,BLOCK_SIZE), Vector3(0,0,-BLOCK_SIZE)]:
+				if not pos_set.has(_key(pos + dir)):
+					_entry_links[skey] = {"link": _make_link(_origin.global_position, pos), "pos": pos}
+					break
 
 		for dir in [Vector3(BLOCK_SIZE, 0, 0), Vector3(0, 0, BLOCK_SIZE)]:
 			var nb = pos + dir
