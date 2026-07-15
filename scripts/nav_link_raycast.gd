@@ -1,6 +1,6 @@
 extends NavigationLink3D
 
-@export var wall_mask: int = 4
+@export var wall_mask: int = 16
 
 var _ray: RayCast3D
 var _tick: float = 0.0
