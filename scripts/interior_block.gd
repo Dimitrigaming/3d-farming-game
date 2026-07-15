@@ -11,11 +11,17 @@ func get_interact_hint() -> String:
 
 func interact() -> void:
 	if game_state.unlock_block():
-		var parent = get_parent()
+		var block = get_parent()
+		block.visible = false
+		block.remove_from_group("interior_block")
+		for body in block.find_children("*", "StaticBody3D", true, false):
+			body.collision_layer = 0
+			body.collision_mask = 0
 		var manager = get_tree().get_first_node_in_group("nav_links_store")
-		parent.queue_free()
 		if manager:
-			manager.refresh_at(parent.global_position)
+			manager.refresh_at(block.global_position)
+		await get_tree().create_timer(5.0).timeout
+		block.queue_free()
 	else:
 		hud.show_notification("Not enough money!")
 
