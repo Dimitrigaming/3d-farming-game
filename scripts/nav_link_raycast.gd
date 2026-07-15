@@ -1,37 +1,29 @@
 extends NavigationLink3D
 
-# Collision mask matching the Interior Block blocker walls (collision_layer = 4)
 @export var wall_mask: int = 4
-# Sphere radius for the sweep — large enough to catch the thin blocker walls
-@export var sweep_radius: float = 1.5
-@export var check_interval: float = 0.5
 
-var _timer: float = 0.0
-var _shape: SphereShape3D
+var _ray: RayCast3D
 
 func _ready() -> void:
 	enabled = false
-	_shape = SphereShape3D.new()
-	_shape.radius = sweep_radius
-	await get_tree().physics_frame
-	_check()
+	_ray = get_node_or_null("RayCast3D")
+	if not _ray:
+		push_warning(name + ": no RayCast3D child found")
+		return
+	# aim the ray from start to end in local space
+	_ray.position = start_position
+	_ray.target_position = end_position - start_position
+	_ray.collision_mask = wall_mask
+	_ray.collide_with_bodies = true
+	_ray.collide_with_areas = false
+	_ray.enabled = true
 
-func _physics_process(delta: float) -> void:
-	_timer += delta
-	if _timer >= check_interval:
-		_timer = 0.0
-		_check()
-
-func _check() -> void:
-	var from = to_global(start_position)
-	var to_pos = to_global(end_position)
-
-	var params = PhysicsShapeQueryParameters3D.new()
-	params.shape = _shape
-	params.transform = Transform3D(Basis.IDENTITY, from)
-	params.motion = to_pos - from
-	params.collision_mask = wall_mask
-
-	var result = get_world_3d().direct_space_state.cast_motion(params)
-	# result is [safe_fraction, unsafe_fraction]; safe < 1.0 means a wall was hit
-	enabled = result.is_empty() or result[0] >= 1.0
+func _physics_process(_delta: float) -> void:
+	if not _ray:
+		return
+	if _ray.is_colliding():
+		var hit = _ray.get_collider()
+		print("[NavLink %s] hitting: %s at %s" % [name, hit.name, _ray.get_collision_point()])
+		enabled = false
+	else:
+		enabled = true
