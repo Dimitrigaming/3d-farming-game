@@ -4,6 +4,7 @@ const BLOCK_SIZE := 4.0
 
 var _entry_links: Dictionary = {}  # block_key -> {link, pos}
 var _chain_links: Array = []       # [{link, pos_a, pos_b}]
+var _all_positions: Array = []     # every block pos, for flood-fill seed check
 
 var _origin: Node3D
 
@@ -21,6 +22,7 @@ func _build_links() -> void:
 	var pos_set: Dictionary = {}
 	for block in blocks:
 		pos_set[_key(block.global_position)] = block.global_position
+		_all_positions.append(block.global_position)
 
 	for block in blocks:
 		var pos = block.global_position
@@ -49,11 +51,6 @@ func _build_links() -> void:
 func _refresh_all(just_removed: Vector3 = Vector3(INF, INF, INF)) -> void:
 	var blocks = get_tree().get_nodes_in_group("interior_block")
 
-	# collect all known block positions (present + all that ever existed)
-	var all_known: Array = []
-	for skey in _entry_links:
-		all_known.append(_entry_links[skey]["pos"])
-
 	# find removed blocks that border open floor (seed for flood-fill)
 	var removed: Array = []
 	for skey in _entry_links:
@@ -61,7 +58,7 @@ func _refresh_all(just_removed: Vector3 = Vector3(INF, INF, INF)) -> void:
 		if not _any_block_at(pos, blocks, just_removed):
 			removed.append(pos)
 
-	var reachable = _flood_fill(removed, all_known)
+	var reachable = _flood_fill(removed, _all_positions)
 
 	for skey in _entry_links:
 		var entry = _entry_links[skey]
