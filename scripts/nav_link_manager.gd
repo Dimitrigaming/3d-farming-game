@@ -45,16 +45,55 @@ func _build_links() -> void:
 func _refresh_all(just_removed: Vector3 = Vector3(INF, INF, INF)) -> void:
 	var blocks = get_tree().get_nodes_in_group("interior_block")
 
+	# collect all known block positions (present + all that ever existed)
+	var all_known: Array = []
+	for skey in _entry_links:
+		all_known.append(_entry_links[skey]["pos"])
+
+	# find removed blocks that border open floor (seed for flood-fill)
+	var removed: Array = []
+	for skey in _entry_links:
+		var pos = _entry_links[skey]["pos"]
+		if not _any_block_at(pos, blocks, just_removed):
+			removed.append(pos)
+
+	var reachable = _flood_fill(removed, all_known)
+
 	for skey in _entry_links:
 		var entry = _entry_links[skey]
-		var removed = not _any_block_at(entry["pos"], blocks, just_removed)
-		var adjacent = _xz_dist(entry["pos"], _origin.global_position) < 15.0
-		entry["link"].enabled = removed and adjacent
+		entry["link"].enabled = _in_set(entry["pos"], reachable)
 
 	for entry in _chain_links:
-		var a_clear = not _any_block_at(entry["pos_a"], blocks, just_removed)
-		var b_clear = not _any_block_at(entry["pos_b"], blocks, just_removed)
-		entry["link"].enabled = a_clear and b_clear
+		entry["link"].enabled = _in_set(entry["pos_a"], reachable) and _in_set(entry["pos_b"], reachable)
+
+func _flood_fill(removed: Array, all_known: Array) -> Array:
+	var reachable: Array = []
+	var queue: Array = []
+	# seed: removed blocks that have at least one neighbor with no block (open floor)
+	for pos in removed:
+		for dir in [Vector3(BLOCK_SIZE,0,0), Vector3(-BLOCK_SIZE,0,0), Vector3(0,0,BLOCK_SIZE), Vector3(0,0,-BLOCK_SIZE)]:
+			if not _in_set(pos + dir, all_known):
+				reachable.append(pos)
+				queue.append(pos)
+				break
+	while not queue.is_empty():
+		var cur: Vector3 = queue.pop_front()
+		for dir in [Vector3(BLOCK_SIZE,0,0), Vector3(-BLOCK_SIZE,0,0), Vector3(0,0,BLOCK_SIZE), Vector3(0,0,-BLOCK_SIZE)]:
+			var nb = cur + dir
+			if _in_set(nb, reachable):
+				continue
+			for rpos in removed:
+				if _xz_dist(rpos, nb) < 1.0:
+					reachable.append(rpos)
+					queue.append(rpos)
+					break
+	return reachable
+
+func _in_set(pos: Vector3, set: Array) -> bool:
+	for p in set:
+		if _xz_dist(p, pos) < 1.0:
+			return true
+	return false
 
 func _any_block_at(pos: Vector3, blocks: Array, just_removed: Vector3 = Vector3(INF, INF, INF)) -> bool:
 	if _xz_dist(pos, just_removed) < 1.0:
