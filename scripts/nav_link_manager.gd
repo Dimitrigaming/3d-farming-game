@@ -28,12 +28,10 @@ func _build_links() -> void:
 		var pos = block.global_position
 		var skey = _key(pos)
 
-		# entry link only for border blocks (at least one open neighbor)
+		# entry link only for blocks directly adjacent to the entrance (within one block of NavLinkStart)
 		if not _entry_links.has(skey):
-			for dir in [Vector3(BLOCK_SIZE,0,0), Vector3(-BLOCK_SIZE,0,0), Vector3(0,0,BLOCK_SIZE), Vector3(0,0,-BLOCK_SIZE)]:
-				if not pos_set.has(_key(pos + dir)):
-					_entry_links[skey] = {"link": _make_link(_origin.global_position, pos), "pos": pos}
-					break
+			if _xz_dist(pos, _origin.global_position) < BLOCK_SIZE * 1.5:
+				_entry_links[skey] = {"link": _make_link(_origin.global_position, pos), "pos": pos}
 
 		for dir in [Vector3(BLOCK_SIZE, 0, 0), Vector3(0, 0, BLOCK_SIZE)]:
 			var nb = pos + dir
@@ -51,14 +49,13 @@ func _build_links() -> void:
 func _refresh_all(just_removed: Vector3 = Vector3(INF, INF, INF)) -> void:
 	var blocks = get_tree().get_nodes_in_group("interior_block")
 
-	# find removed blocks that border open floor (seed for flood-fill)
+	# all removed block positions (from the full known list)
 	var removed: Array = []
-	for skey in _entry_links:
-		var pos = _entry_links[skey]["pos"]
+	for pos in _all_positions:
 		if not _any_block_at(pos, blocks, just_removed):
 			removed.append(pos)
 
-	var reachable = _flood_fill(removed, _all_positions)
+	var reachable = _flood_fill(removed)
 
 	for skey in _entry_links:
 		var entry = _entry_links[skey]
@@ -67,16 +64,14 @@ func _refresh_all(just_removed: Vector3 = Vector3(INF, INF, INF)) -> void:
 	for entry in _chain_links:
 		entry["link"].enabled = _in_set(entry["pos_a"], reachable) and _in_set(entry["pos_b"], reachable)
 
-func _flood_fill(removed: Array, all_known: Array) -> Array:
+func _flood_fill(removed: Array) -> Array:
 	var reachable: Array = []
 	var queue: Array = []
-	# seed: removed blocks that have at least one neighbor with no block (open floor)
+	# seed: removed blocks directly adjacent to NavLinkStart (entrance)
 	for pos in removed:
-		for dir in [Vector3(BLOCK_SIZE,0,0), Vector3(-BLOCK_SIZE,0,0), Vector3(0,0,BLOCK_SIZE), Vector3(0,0,-BLOCK_SIZE)]:
-			if not _in_set(pos + dir, all_known):
-				reachable.append(pos)
-				queue.append(pos)
-				break
+		if _xz_dist(pos, _origin.global_position) < BLOCK_SIZE * 1.5:
+			reachable.append(pos)
+			queue.append(pos)
 	while not queue.is_empty():
 		var cur: Vector3 = queue.pop_front()
 		for dir in [Vector3(BLOCK_SIZE,0,0), Vector3(-BLOCK_SIZE,0,0), Vector3(0,0,BLOCK_SIZE), Vector3(0,0,-BLOCK_SIZE)]:
