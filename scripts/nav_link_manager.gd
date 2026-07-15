@@ -42,29 +42,31 @@ func _build_links() -> void:
 			if not already:
 				_chain_links.append({"link": _make_link(pos, nb), "pos_a": pos, "pos_b": nb, "key": lkey})
 
-func _refresh_all() -> void:
+func _refresh_all(just_removed: Vector3 = Vector3(INF, INF, INF)) -> void:
 	var blocks = get_tree().get_nodes_in_group("interior_block")
 
 	for skey in _entry_links:
 		var entry = _entry_links[skey]
-		var removed = not _any_block_at(entry["pos"], blocks)
+		var removed = not _any_block_at(entry["pos"], blocks, just_removed)
 		var adjacent = _xz_dist(entry["pos"], _origin.global_position) < 15.0
 		entry["link"].enabled = removed and adjacent
 
 	for entry in _chain_links:
-		var a_clear = not _any_block_at(entry["pos_a"], blocks)
-		var b_clear = not _any_block_at(entry["pos_b"], blocks)
+		var a_clear = not _any_block_at(entry["pos_a"], blocks, just_removed)
+		var b_clear = not _any_block_at(entry["pos_b"], blocks, just_removed)
 		entry["link"].enabled = a_clear and b_clear
 
-func _any_block_at(pos: Vector3, blocks: Array) -> bool:
+func _any_block_at(pos: Vector3, blocks: Array, just_removed: Vector3 = Vector3(INF, INF, INF)) -> bool:
+	if _xz_dist(pos, just_removed) < 1.0:
+		return false
 	for block in blocks:
 		if _xz_dist(block.global_position, pos) < 1.0:
 			return true
 	return false
 
-func refresh_at(_removed_pos: Vector3) -> void:
+func refresh_at(removed_pos: Vector3) -> void:
 	await get_tree().process_frame
-	_refresh_all()
+	_refresh_all(removed_pos)
 
 func _xz_dist(a: Vector3, b: Vector3) -> float:
 	return Vector2(a.x, a.z).distance_to(Vector2(b.x, b.z))
