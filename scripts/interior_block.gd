@@ -17,6 +17,9 @@ func interact() -> void:
 		for body in block.find_children("*", "StaticBody3D", true, false):
 			body.collision_layer = 0
 			body.collision_mask = 0
+		var interior = get_tree().get_first_node_in_group("interior_manager")
+		if interior:
+			interior.spawn_nav_link(block.global_position)
 		var manager = get_tree().get_first_node_in_group("nav_links_store")
 		if manager:
 			manager.refresh_at(block.global_position)
