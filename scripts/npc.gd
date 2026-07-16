@@ -5,7 +5,7 @@ const NPC_LOGGING: bool = true
 func _log(msg: String) -> void:
 	if not NPC_LOGGING:
 		return
-	Logger.debug("NPC %d" % (get_instance_id() % 10000), msg)
+	GameLogger.debug("NPC %d" % (get_instance_id() % 10000), msg)
 
 enum State {
 	WALKING_PATH,

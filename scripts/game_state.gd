@@ -14,10 +14,10 @@ func get_next_unlock_price() -> int:
 func unlock_block() -> bool:
 	var price = get_next_unlock_price()
 	if not spend_money(price):
-		Logger.warning("GameState", "unlock_block failed — not enough money (have $%.0f, need $%d)" % [money, price])
+		GameLogger.warning("GameState", "unlock_block failed — not enough money (have $%.0f, need $%d)" % [money, price])
 		return false
 	blocks_unlocked += 1
-	Logger.info("GameState", "block unlocked — total=%d money=$%.0f" % [blocks_unlocked, money])
+	GameLogger.info("GameState", "block unlocked — total=%d money=$%.0f" % [blocks_unlocked, money])
 	return true
 
 const ITEM_PRICES: Dictionary = {
@@ -31,21 +31,21 @@ var print_queue: Array[Dictionary] = []
 
 func add_money(amount: float) -> void:
 	money += amount
-	Logger.debug("GameState", "+$%.2f → total $%.2f" % [amount, money])
+	GameLogger.debug("GameState", "+$%.2f → total $%.2f" % [amount, money])
 	money_changed.emit(money)
 
 func spend_money(amount: float) -> bool:
 	if money < amount:
 		return false
 	money -= amount
-	Logger.debug("GameState", "-$%.2f → total $%.2f" % [amount, money])
+	GameLogger.debug("GameState", "-$%.2f → total $%.2f" % [amount, money])
 	money_changed.emit(money)
 	return true
 
 func unlock_license(license_id: String) -> void:
 	if license_id not in licenses:
 		licenses.append(license_id)
-		Logger.info("GameState", "license unlocked: " + license_id)
+		GameLogger.info("GameState", "license unlocked: " + license_id)
 		license_unlocked.emit(license_id)
 
 func has_license(license_id: String) -> bool:

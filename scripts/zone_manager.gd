@@ -116,5 +116,5 @@ func _check_connectivity() -> void:
 				queue.append(next)
 	for cell in sales_cells:
 		if not visited.has(cell):
-			Logger.warning("ZoneManager", "sales cell %s is disconnected from the front door" % cell)
+			GameLogger.warning("ZoneManager", "sales cell %s is disconnected from the front door" % cell)
 			return

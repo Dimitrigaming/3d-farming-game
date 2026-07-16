@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Logger="*res://scripts/logger.gd"
+GameLogger="*res://scripts/logger.gd"
 GameState="*res://scripts/game_state.gd"
 DebugConsole="*res://models/DebugConsole.tscn"
 

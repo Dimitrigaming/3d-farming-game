@@ -1,5 +1,5 @@
 extends Node
-class_name Logger
+class_name GameLogger
 
 enum Level { DEBUG, INFO, WARNING, ERROR }
 

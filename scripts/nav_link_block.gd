@@ -42,4 +42,4 @@ func _physics_process(_delta: float) -> void:
 		set_physics_process(false)
 
 func _log(msg: String) -> void:
-	Logger.debug("NavLinkBlock", msg)
+	GameLogger.debug("NavLinkBlock", msg)
