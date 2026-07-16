@@ -33,7 +33,7 @@ func error(category: String, msg: String) -> void:
 	_write(Level.ERROR, category, msg)
 
 func _write(level: int, category: String, msg: String) -> void:
-	var level_str := ["DEBUG", "INFO ", "WARN ", "ERROR"][level]
+	var level_str: String = ["DEBUG", "INFO ", "WARN ", "ERROR"][level]
 	var time := Time.get_time_string_from_system()
 	var line := "[%s] [%s] [%s] %s" % [time, level_str, category, msg]
 
