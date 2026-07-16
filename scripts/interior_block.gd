@@ -26,7 +26,12 @@ func interact() -> void:
 		await get_tree().create_timer(5.0).timeout
 		block.queue_free()
 	else:
-		hud.show_notification("Not enough money!")
+		if hud:
+			hud.show_notification("Not enough money!")
+		else:
+			if has_node("/root/DebugConsole"):
+				get_node("/root/DebugConsole").print_line("[InteriorBlock] Not enough money!")
+			print("[InteriorBlock] Not enough money!")
 
 
 func show_tooltip() -> void:
