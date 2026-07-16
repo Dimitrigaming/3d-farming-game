@@ -1,12 +1,11 @@
 extends Node
-class_name GameLogger
 
 enum Level { DEBUG, INFO, WARNING, ERROR }
 
 const CONSOLE_MIN_LEVEL := Level.WARNING
 
-static var _file: FileAccess
-static var _path: String
+var _file: FileAccess
+var _path: String
 
 func _ready() -> void:
 	DirAccess.make_dir_absolute("user://logs")
@@ -15,25 +14,25 @@ func _ready() -> void:
 		dt["year"], dt["month"], dt["day"],
 		dt["hour"], dt["minute"], dt["second"]
 	]
-	GameLogger._path = "user://logs/" + filename
-	GameLogger._file = FileAccess.open(GameLogger._path, FileAccess.WRITE)
-	if not GameLogger._file:
-		push_warning("Logger: could not open log file at " + GameLogger._path)
-	GameLogger._write(Level.INFO, "Logger", "Session started — " + GameLogger._path)
+	_path = "user://logs/" + filename
+	_file = FileAccess.open(_path, FileAccess.WRITE)
+	if not _file:
+		push_warning("GameLogger: could not open log file at " + _path)
+	_write(Level.INFO, "Logger", "Session started — " + _path)
 
-static func debug(category: String, msg: String) -> void:
+func debug(category: String, msg: String) -> void:
 	_write(Level.DEBUG, category, msg)
 
-static func info(category: String, msg: String) -> void:
+func info(category: String, msg: String) -> void:
 	_write(Level.INFO, category, msg)
 
-static func warning(category: String, msg: String) -> void:
+func warning(category: String, msg: String) -> void:
 	_write(Level.WARNING, category, msg)
 
-static func error(category: String, msg: String) -> void:
+func error(category: String, msg: String) -> void:
 	_write(Level.ERROR, category, msg)
 
-static func _write(level: int, category: String, msg: String) -> void:
+func _write(level: int, category: String, msg: String) -> void:
 	var level_str: String = ["DEBUG", "INFO ", "WARN ", "ERROR"][level]
 	var time := Time.get_time_string_from_system()
 	var line := "[%s] [%s] [%s] %s" % [time, level_str, category, msg]
@@ -45,15 +44,13 @@ static func _write(level: int, category: String, msg: String) -> void:
 	print(line)
 
 	if level >= CONSOLE_MIN_LEVEL:
-		var tree := Engine.get_main_loop() as SceneTree
-		if tree:
-			var console = tree.root.get_node_or_null("DebugConsole")
-			if console:
-				console.print_line(line)
+		var console = get_node_or_null("/root/DebugConsole")
+		if console:
+			console.print_line(line)
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_CRASH or what == NOTIFICATION_WM_CLOSE_REQUEST:
-		GameLogger._write(Level.ERROR, "Logger", "Session ended — " + ("CRASH" if what == NOTIFICATION_CRASH else "quit"))
-		if GameLogger._file:
-			GameLogger._file.flush()
-			GameLogger._file.close()
+		_write(Level.ERROR, "Logger", "Session ended — " + ("CRASH" if what == NOTIFICATION_CRASH else "quit"))
+		if _file:
+			_file.flush()
+			_file.close()
