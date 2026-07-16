@@ -26,7 +26,6 @@ func _physics_process(_delta: float) -> void:
 				_log(link.name + " BLOCKED by " + str(ray.get_collider().name))
 			else:
 				_log(link.name + " CLEAR — enabled")
-				ray.enabled = false
 
 func _log(msg: String) -> void:
 	var full = "[NavLinkBlock] " + msg
