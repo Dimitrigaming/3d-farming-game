@@ -15,11 +15,11 @@ func _ready() -> void:
 		dt["year"], dt["month"], dt["day"],
 		dt["hour"], dt["minute"], dt["second"]
 	]
-	Logger._path = "user://logs/" + filename
-	Logger._file = FileAccess.open(Logger._path, FileAccess.WRITE)
-	if not Logger._file:
-		push_warning("Logger: could not open log file at " + Logger._path)
-	Logger._write(Level.INFO, "Logger", "Session started — " + Logger._path)
+	GameLogger._path = "user://logs/" + filename
+	GameLogger._file = FileAccess.open(GameLogger._path, FileAccess.WRITE)
+	if not GameLogger._file:
+		push_warning("Logger: could not open log file at " + GameLogger._path)
+	GameLogger._write(Level.INFO, "Logger", "Session started — " + GameLogger._path)
 
 static func debug(category: String, msg: String) -> void:
 	_write(Level.DEBUG, category, msg)
@@ -53,7 +53,7 @@ static func _write(level: int, category: String, msg: String) -> void:
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_CRASH or what == NOTIFICATION_WM_CLOSE_REQUEST:
-		Logger._write(Level.ERROR, "Logger", "Session ended — " + ("CRASH" if what == NOTIFICATION_CRASH else "quit"))
-		if Logger._file:
-			Logger._file.flush()
-			Logger._file.close()
+		GameLogger._write(Level.ERROR, "Logger", "Session ended — " + ("CRASH" if what == NOTIFICATION_CRASH else "quit"))
+		if GameLogger._file:
+			GameLogger._file.flush()
+			GameLogger._file.close()
