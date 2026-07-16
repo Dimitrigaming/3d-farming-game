@@ -33,6 +33,8 @@ enabled=PackedStringArray("res://addons/terrain_3d/plugin.cfg", "res://addons/ti
 
 npc_path=""
 npc_playerbuilding=""
+nav_link_origin=""
+nav_links_store=""
 
 [input]
 

@@ -28,7 +28,6 @@ orientation = 2
 [sub_resource type="BoxShape3D" id="BoxShape3D_5ocwo"]
 size = Vector3(4, 4, 4)
 
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_blocker"]
 transparency = 1
 cull_mode = 2
@@ -38,7 +37,7 @@ albedo_color = Color(0.6, 0, 0, 0.4)
 [sub_resource type="BoxShape3D" id="BoxShape3D_xu1wp"]
 size = Vector3(4, 2, 0.1)
 
-[node name="InteriorBlock" type="Node3D" unique_id=1561421072 groups=["npc_playerbuilding", "interior_block"]]
+[node name="InteriorBlock" type="Node3D" unique_id=1561421072 groups=["interior_block", "npc_playerbuilding"]]
 
 [node name="Panel" type="MeshInstance3D" parent="." unique_id=1271584810]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 0)

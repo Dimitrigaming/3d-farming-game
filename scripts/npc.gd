@@ -175,6 +175,16 @@ func _get_store_attractiveness() -> float:
 
 
 func _on_arrive_at_shelf() -> void:
+	if _shelf == null or not is_instance_valid(_shelf):
+		state = State.IDLE
+		_idle_timer = 0.0
+		return
+	var stand = _shelf.get_npc_stand_pos() if _shelf.has_method("get_npc_stand_pos") else _shelf.global_position
+	if global_position.distance_to(stand) > 2.0:
+		_log("nav failed to reach shelf — retrying")
+		_idle_timer = -IDLE_RECHECK_FAIL
+		state = State.IDLE
+		return
 	velocity = Vector3.ZERO
 	_idle_timer = -30.0
 	state = State.IDLE
