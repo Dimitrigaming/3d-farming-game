@@ -6,12 +6,16 @@ class_name NavLinkBlockManager
 var _links: Array = []
 
 func _ready() -> void:
+	set_physics_process(false)
 	for link in find_children("*", "NavigationLink3D", true, false):
 		var ray = link.find_child("*", true, false)
 		if ray is RayCast3D:
 			_links.append({ "link": link, "ray": ray, "last_blocked": true })
 		else:
 			push_warning("NavLinkBlock: NavigationLink3D '%s' has no RayCast3D child" % link.name)
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	set_physics_process(true)
 
 func _physics_process(_delta: float) -> void:
 	for entry in _links:
