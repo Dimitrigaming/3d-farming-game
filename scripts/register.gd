@@ -112,6 +112,7 @@ func is_staffed() -> bool:
 func receive_npc_items(items: Array[String], npc: Node3D) -> void:
 	if _pending_items.size() > 0:
 		return
+	Logger.info("Register", "NPC %d handing off %d item(s)" % [npc.get_instance_id() % 10000, items.size()])
 	_pending_items = items.duplicate()
 	_npc = npc
 	_counter_models.clear()
@@ -125,6 +126,7 @@ func receive_npc_items(items: Array[String], npc: Node3D) -> void:
 	_update_total_label()
 
 func _checkout_complete() -> void:
+	Logger.info("Register", "checkout complete — earned $%.2f" % _transaction_total)
 	GameState.add_money(_transaction_total)
 	_transaction_total = 0.0
 	_scanned_total = 0.0

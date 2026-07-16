@@ -11,6 +11,7 @@ const NPC_SCENE = preload("res://models/npc.tscn")
 var _timer: float = 0.0
 
 func _ready() -> void:
+	Logger.debug("NpcSpawner", "ready — interval=%.1fs max=%d" % [spawn_interval, max_npcs])
 	_timer = -randf_range(0.0, spawn_interval)
 
 func _process(delta: float) -> void:
@@ -28,8 +29,10 @@ func _process(delta: float) -> void:
 func _spawn() -> void:
 	var destination = _get_destination()
 	if destination == null:
+		Logger.warning("NpcSpawner", "no destination found — skipping spawn")
 		return
 	var npc = NPC_SCENE.instantiate()
+	Logger.debug("NpcSpawner", "spawning NPC → %s" % destination.name)
 	get_tree().current_scene.add_child(npc)
 	var map = get_world_3d().get_navigation_map()
 	var snapped = NavigationServer3D.map_get_closest_point(map, global_position)

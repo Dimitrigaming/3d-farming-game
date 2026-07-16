@@ -13,5 +13,7 @@ func _ready() -> void:
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("npc") and body.has_method("try_enter_store"):
 		var entry_point = get_node_or_null("/root/Map/City/Player_Building/StoreEntryPoint")
+		if entry_point == null:
+			Logger.warning("StoreEntrance", "StoreEntryPoint not found — using entrance position")
 		var target = entry_point.global_position if entry_point else global_position
 		body.try_enter_store(target)

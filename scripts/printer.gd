@@ -99,6 +99,7 @@ func clear_print() -> void:
 func start_print() -> void:
 	if is_printing or print_finished:
 		return
+	Logger.info("Printer", "print started — duration=%.1fs" % print_duration)
 	is_printing = true
 
 	var model: Node3D = PRINT_MODEL.instantiate()
@@ -151,6 +152,7 @@ func start_print() -> void:
 func _on_print_complete() -> void:
 	is_printing = false
 	print_finished = true
+	Logger.info("Printer", "print complete — ready to collect")
 	_update_tooltip()
 
 func _update_tooltip() -> void:

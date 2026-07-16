@@ -5,11 +5,7 @@ const NPC_LOGGING: bool = true
 func _log(msg: String) -> void:
 	if not NPC_LOGGING:
 		return
-	var label = "[NPC %d] " % (get_instance_id() % 10000)
-	if has_node("/root/DebugConsole"):
-		get_node("/root/DebugConsole").print_line(label + msg)
-	else:
-		print(label + msg)
+	Logger.debug("NPC %d" % (get_instance_id() % 10000), msg)
 
 enum State {
 	WALKING_PATH,

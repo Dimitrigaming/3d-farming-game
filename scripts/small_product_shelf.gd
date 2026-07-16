@@ -186,6 +186,7 @@ func npc_take_prints(count: int) -> Array[String]:
 		if node:
 			node.queue_free()
 		taken.append(item_type)
+	Logger.debug("Shelf", "NPC took %d/%d prints" % [taken.size(), count])
 	return taken
 
 func _any_occupied_zone() -> Node:

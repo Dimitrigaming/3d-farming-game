@@ -42,7 +42,4 @@ func _physics_process(_delta: float) -> void:
 		set_physics_process(false)
 
 func _log(msg: String) -> void:
-	var full = "[NavLinkBlock] " + msg
-	if has_node("/root/DebugConsole"):
-		get_node("/root/DebugConsole").print_line(full)
-	print(full)
+	Logger.debug("NavLinkBlock", msg)
