@@ -48,3 +48,47 @@ target_position = Vector3(0, 0, -4)
 collision_mask = 16
 debug_shape_custom_color = Color(1, 0, 0, 0.5529412)
 debug_shape_thickness = 5
+
+[node name="NavigationLink3D5" type="NavigationLink3D" parent="." unique_id=120574450]
+enabled = false
+end_position = Vector3(-4, 0, -4)
+
+[node name="RayCast3D" type="RayCast3D" parent="NavigationLink3D5" unique_id=909763566]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+target_position = Vector3(-4, 0, -4)
+collision_mask = 16
+debug_shape_custom_color = Color(1, 0, 0, 0.5529412)
+debug_shape_thickness = 5
+
+[node name="NavigationLink3D6" type="NavigationLink3D" parent="." unique_id=8638312]
+enabled = false
+end_position = Vector3(4, 0, -4)
+
+[node name="RayCast3D" type="RayCast3D" parent="NavigationLink3D6" unique_id=1958160099]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+target_position = Vector3(4, 0, -4)
+collision_mask = 16
+debug_shape_custom_color = Color(1, 0, 0, 0.5529412)
+debug_shape_thickness = 5
+
+[node name="NavigationLink3D7" type="NavigationLink3D" parent="." unique_id=1316542472]
+enabled = false
+end_position = Vector3(-4, 0, 4)
+
+[node name="RayCast3D" type="RayCast3D" parent="NavigationLink3D7" unique_id=614355550]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+target_position = Vector3(-4, 0, 4)
+collision_mask = 16
+debug_shape_custom_color = Color(1, 0, 0, 0.5529412)
+debug_shape_thickness = 5
+
+[node name="NavigationLink3D8" type="NavigationLink3D" parent="." unique_id=7770015]
+enabled = false
+end_position = Vector3(4, 0, 4)
+
+[node name="RayCast3D" type="RayCast3D" parent="NavigationLink3D8" unique_id=1871793597]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+target_position = Vector3(4, 0, 4)
+collision_mask = 16
+debug_shape_custom_color = Color(1, 0, 0, 0.5529412)
+debug_shape_thickness = 5
