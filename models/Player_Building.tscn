@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dqp6ty4lurog" path="res://models/building/Window.tscn" id="22_88yjg"]
 [ext_resource type="Texture2D" uid="uid://bjsq4ihjw4c18" path="res://addons/city_megakit/materials/T_RedBrick_Normal.png" id="22_brhnq"]
 [ext_resource type="Texture2D" uid="uid://dl43s6c8tklbg" path="res://addons/city_megakit/materials/T_CornerDamage_Normal.png" id="23_64tq5"]
+[ext_resource type="Script" uid="uid://cbbpscorc7v5" path="res://scripts/interior_manager.gd" id="23_qf6xf"]
 [ext_resource type="Texture2D" uid="uid://qha476tq8jes" path="res://addons/city_megakit/materials/T_RedBrick_ORM.png" id="24_f1nhi"]
 [ext_resource type="Texture2D" uid="uid://dbxevwd2cw8gu" path="res://addons/city_megakit/materials/T_Noise_Drips.png" id="25_4iv0a"]
 [ext_resource type="PackedScene" uid="uid://bemdl8aipocdb" path="res://models/building/Interior_Block.tscn" id="29_o7kdf"]
@@ -736,6 +737,9 @@ cull_mode = 2
 shading_mode = 0
 albedo_color = Color(1, 1, 1, 0.35)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_3xd07"]
+size = Vector3(0.1, 4, 51.9)
+
 [node name="Player_Building" type="Node3D" unique_id=98350389]
 script = ExtResource("1_painter")
 
@@ -1205,7 +1209,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1, -0.01, -34.899998)
 mesh = SubResource("PlaneMesh_jq8tk")
 
-[node name="Interior" type="Node3D" parent="." unique_id=2116217146]
+[node name="Interior" type="Node3D" parent="." unique_id=2116217146 groups=["interior_manager", "spawn_nav_link"]]
+script = ExtResource("23_qf6xf")
 
 [node name="InteriorBlock" parent="Interior" unique_id=1561421072 groups=["nav_store"] instance=ExtResource("29_o7kdf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0, -2.1999998)
@@ -2841,3 +2846,28 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0.01, -50.199997)
 mesh = SubResource("QuadMesh_3xd07")
 surface_material_override/0 = SubResource("StandardMaterial3D_ql1ng")
+
+[node name="RaycastBlocker" type="Node3D" parent="." unique_id=1208234322]
+
+[node name="RaycastBlocker_StaticBody3D" type="StaticBody3D" parent="RaycastBlocker" unique_id=49162258]
+collision_layer = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RaycastBlocker/RaycastBlocker_StaticBody3D" unique_id=1594730242]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 2, -0.09999997)
+shape = SubResource("BoxShape3D_3xd07")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="RaycastBlocker/RaycastBlocker_StaticBody3D" unique_id=1754726910]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2, -0.09999997)
+shape = SubResource("BoxShape3D_3xd07")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="RaycastBlocker/RaycastBlocker_StaticBody3D" unique_id=1661215598]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.000001, 2, -52.1)
+shape = SubResource("BoxShape3D_3xd07")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="RaycastBlocker/RaycastBlocker_StaticBody3D" unique_id=858691884]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.9, 965.5, -26.199995)
+shape = SubResource("BoxShape3D_3xd07")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="RaycastBlocker/RaycastBlocker_StaticBody3D" unique_id=977943145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.899998, 965.5, -26.199995)
+shape = SubResource("BoxShape3D_3xd07")

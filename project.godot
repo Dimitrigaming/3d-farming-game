@@ -35,6 +35,7 @@ npc_path=""
 npc_playerbuilding=""
 nav_link_origin=""
 nav_links_store=""
+interior_manager=""
 
 [input]
 
@@ -123,6 +124,14 @@ console={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194332,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+
+[layer_names]
+
+3d_physics/layer_1="World/floor/default physics — player, boxes, building geometry, nav baking"
+3d_physics/layer_2="NPCs, register queue detection body"
+3d_physics/layer_3="Blocker"
+3d_physics/layer_4="Placement zones"
+3d_physics/layer_5="Interior block main body (raycast detection for nav links)"
 
 [physics]
 

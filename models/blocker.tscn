@@ -13,9 +13,9 @@ size = Vector3(1, 2, 1)
 size = Vector3(1, 2, 1)
 material = SubResource("StandardMaterial3D_blocker")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1547782167]
+[node name="Blocker_StaticBody3D" type="StaticBody3D" parent="." unique_id=1547782167]
 collision_layer = 4
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1842895861]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocker_StaticBody3D" unique_id=1842895861]
 shape = SubResource("BoxShape3D_blocker")
