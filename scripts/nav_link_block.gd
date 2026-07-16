@@ -23,6 +23,9 @@ func _physics_process(_delta: float) -> void:
 		var ray: RayCast3D = entry["ray"]
 		var link: NavigationLink3D = entry["link"]
 		if ray.is_colliding():
+			if not entry.get("logged_blocked", false):
+				entry["logged_blocked"] = true
+				_log(link.name + " BLOCKED by " + str(ray.get_collider().name))
 			still_pending.append(entry)
 		else:
 			link.enabled = true
