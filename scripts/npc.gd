@@ -77,8 +77,14 @@ func _physics_process(delta: float) -> void:
 		State.ENTERING_STORE:
 			if _nav.is_navigation_finished():
 				_log("[color=cyan]arrived inside store[/color]")
-				state = State.IDLE
-				_idle_timer = 0.0
+				_shelf = _find_shelf_with_prints()
+				if _shelf != null:
+					var stand = _shelf.get_npc_stand_pos() if _shelf.has_method("get_npc_stand_pos") else _shelf.global_position
+					_set_nav_target(stand)
+					state = State.GOING_TO_SHELF
+				else:
+					state = State.IDLE
+					_idle_timer = 0.0
 			else:
 				_move_along_nav(delta)
 		State.GOING_TO_SHELF:
