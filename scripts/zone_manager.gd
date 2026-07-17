@@ -1,4 +1,4 @@
-@tool
+﻿@tool
 extends Node3D
 
 enum ZoneType { UNASSIGNED, SALES, PRODUCTION, STORAGE }
@@ -116,5 +116,6 @@ func _check_connectivity() -> void:
 				queue.append(next)
 	for cell in sales_cells:
 		if not visited.has(cell):
-			GameLogger.warning("ZoneManager", "sales cell %s is disconnected from the front door" % cell)
+			get_node_or_null("/root/GameLogger").warning("ZoneManager", "sales cell %s is disconnected from the front door" % cell)
 			return
+

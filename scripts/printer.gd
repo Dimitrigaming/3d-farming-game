@@ -1,4 +1,4 @@
-extends Node3D
+﻿extends Node3D
 
 const PRINT_MODEL = preload("res://models/default_model.tscn")
 const PRINT_SHADER = preload("res://shaders/print_reveal.gdshader")
@@ -76,7 +76,7 @@ func _shelve_print() -> void:
 	for shelf in get_tree().get_nodes_in_group("product_shelf"):
 		if shelf.has_method("add_print") and shelf.add_print(item_type, model):
 			return
-	# No shelf available — restore state
+	# No shelf available â€” restore state
 	get_tree().current_scene.remove_child(model)
 	add_child(model)
 	current_model = model
@@ -100,7 +100,7 @@ func clear_print() -> void:
 func start_print() -> void:
 	if is_printing or print_finished:
 		return
-	GameLogger.info("Printer", "print started — duration=%.1fs" % print_duration)
+	get_node_or_null("/root/GameLogger").info("Printer", "print started â€” duration=%.1fs" % print_duration)
 	is_printing = true
 
 	var model: Node3D = PRINT_MODEL.instantiate()
@@ -153,7 +153,7 @@ func start_print() -> void:
 func _on_print_complete() -> void:
 	is_printing = false
 	print_finished = true
-	GameLogger.info("Printer", "print complete — ready to collect")
+	get_node_or_null("/root/GameLogger").info("Printer", "print complete â€” ready to collect")
 	_update_tooltip()
 
 func _update_tooltip() -> void:
@@ -161,3 +161,4 @@ func _update_tooltip() -> void:
 		tooltip.text = "3D Printer\nLeft click to collect"
 	else:
 		tooltip.text = "3D Printer\nPress E to print"
+

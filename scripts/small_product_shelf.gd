@@ -1,4 +1,4 @@
-extends Node3D
+﻿extends Node3D
 
 const PACKING_CRATE_SCENE = preload("res://models/packing_crate.tscn")
 const OWN_SCENE = preload("res://models/small_product_shelf.tscn")
@@ -186,7 +186,7 @@ func npc_take_prints(count: int) -> Array[String]:
 		if node:
 			node.queue_free()
 		taken.append(item_type)
-	GameLogger.debug("Shelf", "NPC took %d/%d prints" % [taken.size(), count])
+	get_node_or_null("/root/GameLogger").debug("Shelf", "NPC took %d/%d prints" % [taken.size(), count])
 	return taken
 
 func _any_occupied_zone() -> Node:
@@ -205,3 +205,4 @@ func _nearest_occupied_zone() -> Node:
 				best_y = y_dist
 				best = child
 	return best
+

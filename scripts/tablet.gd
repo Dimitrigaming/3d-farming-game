@@ -1,4 +1,4 @@
-extends CanvasLayer
+﻿extends CanvasLayer
 
 const PACKING_CRATE = preload("res://models/packing_crate.tscn")
 
@@ -42,7 +42,7 @@ func _input(event: InputEvent) -> void:
 		_toggle()
 		get_viewport().set_input_as_handled()
 
-# ── toggle ───────────────────────────────────────────────────────────────────
+# â”€â”€ toggle â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 func _toggle() -> void:
 	visible = not visible
@@ -74,7 +74,7 @@ func _get_controller() -> CharacterBody3D:
 		return null
 	return players[0].get_parent() as CharacterBody3D
 
-# ── tabs ──────────────────────────────────────────────────────────────────────
+# â”€â”€ tabs â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 func _show_tab(idx: int) -> void:
 	_current_tab = idx
@@ -87,7 +87,7 @@ func _show_tab(idx: int) -> void:
 		TAB_QUEUE: _refresh_queue()
 		TAB_SHOP:  _refresh_shop()
 
-# ── refresh ───────────────────────────────────────────────────────────────────
+# â”€â”€ refresh â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 func _refresh_store() -> void:
 	_money_label.text = "$%.2f" % GameState.money
@@ -105,7 +105,7 @@ func _refresh_queue() -> void:
 		var status: String
 		var color: Color
 		if printer.is_printing:
-			status = "Printing…"
+			status = "Printingâ€¦"
 			color = Color(1.0, 0.85, 0.2)
 		elif printer.print_finished:
 			status = "Ready to collect"
@@ -120,7 +120,7 @@ func _refresh_queue() -> void:
 		row.add_child(_make_label(status, color))
 		_queue_container.add_child(row)
 	if not GameState.print_queue.is_empty():
-		_queue_container.add_child(_make_label("— Queued jobs —", Color(0.7, 0.7, 0.7)))
+		_queue_container.add_child(_make_label("â€” Queued jobs â€”", Color(0.7, 0.7, 0.7)))
 		for job in GameState.print_queue:
 			_queue_container.add_child(_make_label(str(job.get("model", "Unknown")), Color.WHITE))
 
@@ -136,11 +136,11 @@ func _on_money_changed(new_amount: float) -> void:
 	if visible and _current_tab == TAB_SHOP:
 		_refresh_shop()
 
-# ── purchase ──────────────────────────────────────────────────────────────────
+# â”€â”€ purchase â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 func _purchase(item: Dictionary) -> void:
 	if not GameState.spend_money(item.price):
-		GameLogger.warning("Tablet", "not enough money to buy: " + item.name)
+		get_node_or_null("/root/GameLogger").warning("Tablet", "not enough money to buy: " + item.name)
 		return
 	var scene: PackedScene = load(item.scene)
 	var crate = PACKING_CRATE.instantiate()
@@ -149,9 +149,9 @@ func _purchase(item: Dictionary) -> void:
 	var player_inv = get_tree().get_first_node_in_group("player")
 	if player_inv:
 		player_inv.pick_up_item(crate)
-	GameLogger.info("Tablet", "purchased %s for $%.2f" % [item.name, item.price])
+	get_node_or_null("/root/GameLogger").info("Tablet", "purchased %s for $%.2f" % [item.name, item.price])
 
-# ── UI construction ───────────────────────────────────────────────────────────
+# â”€â”€ UI construction â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 func _build_ui() -> void:
 	_root = Control.new()
@@ -322,7 +322,7 @@ func _make_shop_row(item: Dictionary) -> Control:
 
 	return row
 
-# ── helpers ───────────────────────────────────────────────────────────────────
+# â”€â”€ helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 func _section_label(text: String) -> Label:
 	var lbl = Label.new()
@@ -349,3 +349,4 @@ func _make_label(text: String, color: Color) -> Label:
 	lbl.text = text
 	lbl.add_theme_color_override("font_color", color)
 	return lbl
+

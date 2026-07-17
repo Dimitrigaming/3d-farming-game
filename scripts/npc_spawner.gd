@@ -1,4 +1,4 @@
-extends Node3D
+﻿extends Node3D
 
 const NPC_SCENE = preload("res://models/npc.tscn")
 
@@ -11,7 +11,7 @@ const NPC_SCENE = preload("res://models/npc.tscn")
 var _timer: float = 0.0
 
 func _ready() -> void:
-	GameLogger.debug("NpcSpawner", "ready — interval=%.1fs max=%d" % [spawn_interval, max_npcs])
+	get_node_or_null("/root/GameLogger").debug("NpcSpawner", "ready â€” interval=%.1fs max=%d" % [spawn_interval, max_npcs])
 	_timer = -randf_range(0.0, spawn_interval)
 
 func _process(delta: float) -> void:
@@ -29,10 +29,10 @@ func _process(delta: float) -> void:
 func _spawn() -> void:
 	var destination = _get_destination()
 	if destination == null:
-		GameLogger.warning("NpcSpawner", "no destination found — skipping spawn")
+		get_node_or_null("/root/GameLogger").warning("NpcSpawner", "no destination found â€” skipping spawn")
 		return
 	var npc = NPC_SCENE.instantiate()
-	GameLogger.debug("NpcSpawner", "spawning NPC → %s" % destination.name)
+	get_node_or_null("/root/GameLogger").debug("NpcSpawner", "spawning NPC â†’ %s" % destination.name)
 	get_tree().current_scene.add_child(npc)
 	var map = get_world_3d().get_navigation_map()
 	var snapped = NavigationServer3D.map_get_closest_point(map, global_position)
@@ -57,3 +57,4 @@ func _pick_opposite_destination() -> Node3D:
 	if opposite == null or opposite.get_child_count() == 0:
 		return null
 	return opposite.get_child(randi() % opposite.get_child_count())
+

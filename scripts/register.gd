@@ -1,4 +1,4 @@
-extends Node3D
+﻿extends Node3D
 
 const PACKING_CRATE_SCENE = preload("res://models/packing_crate.tscn")
 const OWN_SCENE = preload("res://models/register.tscn")
@@ -112,7 +112,7 @@ func is_staffed() -> bool:
 func receive_npc_items(items: Array[String], npc: Node3D) -> void:
 	if _pending_items.size() > 0:
 		return
-	GameLogger.info("Register", "NPC %d handing off %d item(s)" % [npc.get_instance_id() % 10000, items.size()])
+	get_node_or_null("/root/GameLogger").info("Register", "NPC %d handing off %d item(s)" % [npc.get_instance_id() % 10000, items.size()])
 	_pending_items = items.duplicate()
 	_npc = npc
 	_counter_models.clear()
@@ -126,7 +126,7 @@ func receive_npc_items(items: Array[String], npc: Node3D) -> void:
 	_update_total_label()
 
 func _checkout_complete() -> void:
-	GameLogger.info("Register", "checkout complete — earned $%.2f" % _transaction_total)
+	get_node_or_null("/root/GameLogger").info("Register", "checkout complete â€” earned $%.2f" % _transaction_total)
 	GameState.add_money(_transaction_total)
 	_transaction_total = 0.0
 	_scanned_total = 0.0
@@ -248,3 +248,4 @@ func _get_player_body() -> Node3D:
 	if inv == null:
 		return null
 	return inv.get_parent() as Node3D
+
