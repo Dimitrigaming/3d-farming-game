@@ -84,8 +84,8 @@ func _physics_process(delta: float) -> void:
 					_set_nav_target(stand)
 					state = State.GOING_TO_SHELF
 				else:
-					state = State.IDLE
-					_idle_timer = 0.0
+					_log("entered store but shelves empty — leaving")
+					_leave_store()
 			else:
 				_move_along_nav(delta)
 		State.GOING_TO_SHELF:
