@@ -173,6 +173,10 @@ func try_enter_store(entry_pos: Vector3) -> void:
 		if _find_shelf_with_prints() == null:
 			_log("passed store — no products on shelves")
 			return
+		var in_store = get_tree().get_nodes_in_group("npc").filter(func(n): return n.state != State.WALKING_PATH and n.state != State.CHOOSING_NEXT and n.state != State.IDLE and n != self)
+		if in_store.size() >= 6:
+			_log("passed store — full (6 customers)")
+			return
 		_log("[color=green]entering store (interest=%.2f)[/color]" % store_interest)
 		_log("nav target set to %s" % entry_pos)
 		_set_nav_target(entry_pos)
