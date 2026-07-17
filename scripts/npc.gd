@@ -165,6 +165,9 @@ func try_enter_store(entry_pos: Vector3) -> void:
 		return
 	_store_interest_checked = true
 	if store_interest >= _get_store_attractiveness():
+		if _find_shelf_with_prints() == null:
+			_log("passed store — no products on shelves")
+			return
 		_log("[color=green]entering store (interest=%.2f)[/color]" % store_interest)
 		_log("nav target set to %s" % entry_pos)
 		_set_nav_target(entry_pos)
