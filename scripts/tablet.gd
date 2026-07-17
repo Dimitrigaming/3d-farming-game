@@ -1,11 +1,19 @@
 extends CanvasLayer
 
+const PACKING_CRATE = preload("res://models/packing_crate.tscn")
+
+const SHOP_ITEMS: Array[Dictionary] = [
+	{ "name": "3D Printer",          "price": 150.0, "scene": "res://models/printer.tscn",             "desc": "Prints products to sell to customers." },
+	{ "name": "Small Product Shelf", "price":  75.0, "scene": "res://models/small_product_shelf.tscn", "desc": "Display printed products for customers." },
+	{ "name": "Register",            "price": 200.0, "scene": "res://models/register.tscn",            "desc": "Process customer purchases." },
+]
+
 const TAB_STORE = 0
 const TAB_QUEUE = 1
+const TAB_SHOP  = 2
 
 var _current_tab: int = TAB_STORE
 
-# UI nodes built in _ready
 var _root: Control
 var _tab_btns: Array[Button] = []
 var _panels: Array[Control] = []
@@ -18,6 +26,9 @@ var _licenses_label: Label
 # Queue tab
 var _queue_container: VBoxContainer
 
+# Shop tab
+var _shop_container: VBoxContainer
+
 func _ready() -> void:
 	layer = 20
 	visible = false
@@ -29,7 +40,7 @@ func _input(event: InputEvent) -> void:
 		_toggle()
 		get_viewport().set_input_as_handled()
 
-# ── toggle ──────────────────────────────────────────────────────────────────
+# ── toggle ───────────────────────────────────────────────────────────────────
 
 func _toggle() -> void:
 	visible = not visible
@@ -61,7 +72,7 @@ func _get_controller() -> CharacterBody3D:
 		return null
 	return players[0].get_parent() as CharacterBody3D
 
-# ── tab switching ────────────────────────────────────────────────────────────
+# ── tabs ──────────────────────────────────────────────────────────────────────
 
 func _show_tab(idx: int) -> void:
 	_current_tab = idx
@@ -72,26 +83,22 @@ func _show_tab(idx: int) -> void:
 	match idx:
 		TAB_STORE: _refresh_store()
 		TAB_QUEUE: _refresh_queue()
+		TAB_SHOP:  _refresh_shop()
 
-# ── data refresh ─────────────────────────────────────────────────────────────
+# ── refresh ───────────────────────────────────────────────────────────────────
 
 func _refresh_store() -> void:
 	_money_label.text = "$%.2f" % GameState.money
 	_blocks_label.text = str(GameState.blocks_unlocked)
-	if GameState.licenses.is_empty():
-		_licenses_label.text = "None"
-	else:
-		_licenses_label.text = "\n".join(GameState.licenses)
+	_licenses_label.text = "None" if GameState.licenses.is_empty() else "\n".join(GameState.licenses)
 
 func _refresh_queue() -> void:
 	for child in _queue_container.get_children():
 		child.queue_free()
-
 	var printers = get_tree().get_nodes_in_group("printer")
 	if printers.is_empty():
-		_queue_container.add_child(_row_label("No printers placed.", Color(0.6, 0.6, 0.6)))
+		_queue_container.add_child(_make_label("No printers placed.", Color(0.6, 0.6, 0.6)))
 		return
-
 	for printer in printers:
 		var status: String
 		var color: Color
@@ -104,108 +111,104 @@ func _refresh_queue() -> void:
 		else:
 			status = "Idle"
 			color = Color(0.6, 0.6, 0.6)
-
 		var row = HBoxContainer.new()
-		var name_lbl = Label.new()
-		name_lbl.text = "Printer"
+		var name_lbl = _make_label("Printer", Color.WHITE)
 		name_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		name_lbl.add_theme_color_override("font_color", Color.WHITE)
-		var status_lbl = Label.new()
-		status_lbl.text = status
-		status_lbl.add_theme_color_override("font_color", color)
 		row.add_child(name_lbl)
-		row.add_child(status_lbl)
+		row.add_child(_make_label(status, color))
 		_queue_container.add_child(row)
-
-	# GameState queued jobs (future use)
 	if not GameState.print_queue.is_empty():
-		_queue_container.add_child(_row_label("— Queued jobs —", Color(0.7, 0.7, 0.7)))
+		_queue_container.add_child(_make_label("— Queued jobs —", Color(0.7, 0.7, 0.7)))
 		for job in GameState.print_queue:
-			var lbl = _row_label(str(job.get("model", "Unknown")), Color.WHITE)
-			_queue_container.add_child(lbl)
+			_queue_container.add_child(_make_label(str(job.get("model", "Unknown")), Color.WHITE))
+
+func _refresh_shop() -> void:
+	for child in _shop_container.get_children():
+		child.queue_free()
+	for item in SHOP_ITEMS:
+		_shop_container.add_child(_make_shop_row(item))
 
 func _on_money_changed(new_amount: float) -> void:
 	if visible and _current_tab == TAB_STORE:
 		_money_label.text = "$%.2f" % new_amount
+	if visible and _current_tab == TAB_SHOP:
+		_refresh_shop()
 
-# ── UI construction ──────────────────────────────────────────────────────────
+# ── purchase ──────────────────────────────────────────────────────────────────
+
+func _purchase(item: Dictionary) -> void:
+	if not GameState.spend_money(item.price):
+		GameLogger.warning("Tablet", "not enough money to buy: " + item.name)
+		return
+	var scene: PackedScene = load(item.scene)
+	var crate = PACKING_CRATE.instantiate()
+	get_tree().current_scene.add_child(crate)
+	crate.pack(item.name, scene)
+	var player_inv = get_tree().get_first_node_in_group("player")
+	if player_inv:
+		player_inv.pick_up_item(crate)
+	GameLogger.info("Tablet", "purchased %s for $%.2f" % [item.name, item.price])
+
+# ── UI construction ───────────────────────────────────────────────────────────
 
 func _build_ui() -> void:
 	_root = Control.new()
 	_root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(_root)
 
-	# dim background
 	var bg = ColorRect.new()
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	bg.color = Color(0, 0, 0, 0.55)
 	_root.add_child(bg)
 
-	# tablet panel — centered, fixed size
 	var panel = Panel.new()
-	panel.set_anchors_preset(Control.PRESET_CENTER)
-	panel.custom_minimum_size = Vector2(600, 420)
-	panel.offset_left = -300
-	panel.offset_top = -210
-	panel.offset_right = 300
-	panel.offset_bottom = 210
-	var panel_style = StyleBoxFlat.new()
-	panel_style.bg_color = Color(0.1, 0.12, 0.15)
-	panel_style.corner_radius_top_left = 12
-	panel_style.corner_radius_top_right = 12
-	panel_style.corner_radius_bottom_left = 12
-	panel_style.corner_radius_bottom_right = 12
-	panel_style.border_color = Color(0.25, 0.28, 0.35)
-	panel_style.border_width_bottom = 2
-	panel_style.border_width_top = 2
-	panel_style.border_width_left = 2
-	panel_style.border_width_right = 2
-	panel.add_theme_stylebox_override("panel", panel_style)
+	panel.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	var style = StyleBoxFlat.new()
+	style.bg_color = Color(0.1, 0.12, 0.15)
+	style.border_color = Color(0.25, 0.28, 0.35)
+	for side in [SIDE_LEFT, SIDE_TOP, SIDE_RIGHT, SIDE_BOTTOM]:
+		style.set_border_width(side, 2)
+	panel.add_theme_stylebox_override("panel", style)
 	_root.add_child(panel)
 
-	var vbox = VBoxContainer.new()
-	vbox.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	vbox.offset_left = 16
-	vbox.offset_top = 12
-	vbox.offset_right = -16
-	vbox.offset_bottom = -12
-	panel.add_child(vbox)
+	var margin = MarginContainer.new()
+	margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	for side in ["left", "top", "right", "bottom"]:
+		margin.add_theme_constant_override("margin_" + side, 20)
+	panel.add_child(margin)
 
-	# title
+	var vbox = VBoxContainer.new()
+	margin.add_child(vbox)
+
 	var title = Label.new()
 	title.text = "Store Tablet"
-	title.add_theme_font_size_override("font_size", 22)
+	title.add_theme_font_size_override("font_size", 24)
 	title.add_theme_color_override("font_color", Color(0.85, 0.9, 1.0))
 	vbox.add_child(title)
 
-	# tab bar
 	var tab_bar = HBoxContainer.new()
 	tab_bar.add_theme_constant_override("separation", 4)
 	vbox.add_child(tab_bar)
 
-	var tab_names = ["Store Management", "Print Queue"]
-	for i in tab_names.size():
+	for i in ["Store Management", "Print Queue", "Shop"]:
 		var btn = Button.new()
-		btn.text = tab_names[i]
+		btn.text = i
 		btn.toggle_mode = true
 		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		btn.pressed.connect(_show_tab.bind(i))
+		btn.pressed.connect(_show_tab.bind(_tab_btns.size()))
 		tab_bar.add_child(btn)
 		_tab_btns.append(btn)
 
-	# separator
-	var sep = HSeparator.new()
-	vbox.add_child(sep)
+	vbox.add_child(HSeparator.new())
 
-	# content area
 	var content = Control.new()
 	content.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	vbox.add_child(content)
 
 	_panels.append(_build_store_panel(content))
 	_panels.append(_build_queue_panel(content))
+	_panels.append(_build_shop_panel(content))
 
-	# close hint
 	var hint = Label.new()
 	hint.text = "Press Tab to close"
 	hint.add_theme_color_override("font_color", Color(0.4, 0.4, 0.5))
@@ -219,17 +222,19 @@ func _build_store_panel(parent: Control) -> Control:
 	parent.add_child(p)
 
 	p.add_child(_section_label("Finances"))
-	p.add_child(_kv_row("Balance", ""))
-	_money_label = p.get_child(p.get_child_count() - 1).get_child(1)
+	var row_bal = _kv_row("Balance", "")
+	p.add_child(row_bal)
+	_money_label = row_bal.get_child(1)
 
 	p.add_child(_section_label("Store"))
-	p.add_child(_kv_row("Blocks Unlocked", ""))
-	_blocks_label = p.get_child(p.get_child_count() - 1).get_child(1)
+	var row_blk = _kv_row("Blocks Unlocked", "")
+	p.add_child(row_blk)
+	_blocks_label = row_blk.get_child(1)
 
 	p.add_child(_section_label("Licenses"))
-	var lic_row = _kv_row("Active", "")
-	p.add_child(lic_row)
-	_licenses_label = lic_row.get_child(1)
+	var row_lic = _kv_row("Active", "")
+	p.add_child(row_lic)
+	_licenses_label = row_lic.get_child(1)
 
 	return p
 
@@ -250,7 +255,72 @@ func _build_queue_panel(parent: Control) -> Control:
 
 	return p
 
-# ── helpers ──────────────────────────────────────────────────────────────────
+func _build_shop_panel(parent: Control) -> Control:
+	var p = VBoxContainer.new()
+	p.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	p.visible = false
+	parent.add_child(p)
+
+	p.add_child(_section_label("Available Items"))
+	var scroll = ScrollContainer.new()
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	p.add_child(scroll)
+
+	_shop_container = VBoxContainer.new()
+	_shop_container.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_shop_container.add_theme_constant_override("separation", 8)
+	scroll.add_child(_shop_container)
+
+	return p
+
+func _make_shop_row(item: Dictionary) -> Control:
+	var row = PanelContainer.new()
+	var row_style = StyleBoxFlat.new()
+	row_style.bg_color = Color(0.15, 0.17, 0.2)
+	row_style.set_corner_radius_all(6)
+	row.add_theme_stylebox_override("panel", row_style)
+
+	var hbox = HBoxContainer.new()
+	hbox.add_theme_constant_override("separation", 12)
+	row.add_child(hbox)
+
+	var info = VBoxContainer.new()
+	info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	hbox.add_child(info)
+
+	var name_lbl = Label.new()
+	name_lbl.text = item.name
+	name_lbl.add_theme_font_size_override("font_size", 16)
+	name_lbl.add_theme_color_override("font_color", Color.WHITE)
+	info.add_child(name_lbl)
+
+	var desc_lbl = Label.new()
+	desc_lbl.text = item.desc
+	desc_lbl.add_theme_color_override("font_color", Color(0.65, 0.65, 0.65))
+	desc_lbl.add_theme_font_size_override("font_size", 13)
+	info.add_child(desc_lbl)
+
+	var right = VBoxContainer.new()
+	right.alignment = BoxContainer.ALIGNMENT_CENTER
+	hbox.add_child(right)
+
+	var price_lbl = Label.new()
+	price_lbl.text = "$%.0f" % item.price
+	price_lbl.add_theme_font_size_override("font_size", 18)
+	var can_afford = GameState.money >= item.price
+	price_lbl.add_theme_color_override("font_color", Color(0.3, 1.0, 0.4) if can_afford else Color(1.0, 0.4, 0.4))
+	right.add_child(price_lbl)
+
+	var btn = Button.new()
+	btn.text = "Buy"
+	btn.disabled = not can_afford
+	btn.custom_minimum_size = Vector2(80, 0)
+	btn.pressed.connect(_purchase.bind(item))
+	right.add_child(btn)
+
+	return row
+
+# ── helpers ───────────────────────────────────────────────────────────────────
 
 func _section_label(text: String) -> Label:
 	var lbl = Label.new()
@@ -272,7 +342,7 @@ func _kv_row(key: String, value: String) -> HBoxContainer:
 	row.add_child(v)
 	return row
 
-func _row_label(text: String, color: Color) -> Label:
+func _make_label(text: String, color: Color) -> Label:
 	var lbl = Label.new()
 	lbl.text = text
 	lbl.add_theme_color_override("font_color", color)

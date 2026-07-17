@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://2hwx1pmgm2t"]
 
-[ext_resource type="Script" path="res://scripts/tablet.gd" id="1_tablet"]
+[ext_resource type="Script" uid="uid://cpslgiwgdhmku" path="res://scripts/tablet.gd" id="1_tablet"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 bg_color = Color(0.1, 0.12, 0.15, 1)
@@ -9,17 +9,20 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.25, 0.28, 0.35, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
 
-[node name="Tablet" type="CanvasLayer"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shoprow"]
+bg_color = Color(0.15, 0.17, 0.2, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="Tablet" type="CanvasLayer" unique_id=1104580814]
 layer = 20
-script = ExtResource("1_tablet")
 visible = false
+script = ExtResource("1_tablet")
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=1691772337]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,7 +30,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Background" type="ColorRect" parent="Control"]
+[node name="Background" type="ColorRect" parent="Control" unique_id=966553409]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,64 +39,67 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.55)
 
-[node name="Panel" type="Panel" parent="Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -210.0
-offset_right = 300.0
-offset_bottom = 210.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel"]
+[node name="Panel" type="Panel" parent="Control" unique_id=2140884982]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-offset_left = 16.0
-offset_top = 12.0
-offset_right = -16.0
-offset_bottom = -12.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
-[node name="Title" type="Label" parent="Control/Panel/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel" unique_id=112233445]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/MarginContainer" unique_id=136705990]
 layout_mode = 2
-text = "Store Tablet"
-theme_override_font_sizes/font_size = 22
-theme_override_colors/font_color = Color(0.85, 0.9, 1.0, 1)
 
-[node name="TabBar" type="HBoxContainer" parent="Control/Panel/VBoxContainer"]
+[node name="Title" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer" unique_id=1625294270]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "Store Tablet"
+
+[node name="TabBar" type="HBoxContainer" parent="Control/Panel/MarginContainer/VBoxContainer" unique_id=1990976606]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="BtnStore" type="Button" parent="Control/Panel/VBoxContainer/TabBar"]
+[node name="BtnStore" type="Button" parent="Control/Panel/MarginContainer/VBoxContainer/TabBar" unique_id=241545602]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 button_pressed = true
 text = "Store Management"
 
-[node name="BtnQueue" type="Button" parent="Control/Panel/VBoxContainer/TabBar"]
+[node name="BtnQueue" type="Button" parent="Control/Panel/MarginContainer/VBoxContainer/TabBar" unique_id=1728184405]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Print Queue"
 
-[node name="HSeparator" type="HSeparator" parent="Control/Panel/VBoxContainer"]
+[node name="BtnShop" type="Button" parent="Control/Panel/MarginContainer/VBoxContainer/TabBar" unique_id=330011223]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Shop"
+
+[node name="HSeparator" type="HSeparator" parent="Control/Panel/MarginContainer/VBoxContainer" unique_id=1487736242]
 layout_mode = 2
 
-[node name="Content" type="Control" parent="Control/Panel/VBoxContainer"]
+[node name="Content" type="Control" parent="Control/Panel/MarginContainer/VBoxContainer" unique_id=1199739064]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="StorePanel" type="VBoxContainer" parent="Control/Panel/VBoxContainer/Content"]
+[node name="StorePanel" type="VBoxContainer" parent="Control/Panel/MarginContainer/VBoxContainer/Content" unique_id=1974470158]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -101,92 +107,116 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SectionFinances" type="Label" parent="Control/Panel/VBoxContainer/Content/StorePanel"]
+[node name="SectionFinances" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer/Content/StorePanel" unique_id=1550300475]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.75, 1, 1)
+theme_override_font_sizes/font_size = 15
 text = "Finances"
-theme_override_font_sizes/font_size = 15
-theme_override_colors/font_color = Color(0.5, 0.75, 1.0, 1)
 
-[node name="RowBalance" type="HBoxContainer" parent="Control/Panel/VBoxContainer/Content/StorePanel"]
+[node name="RowBalance" type="HBoxContainer" parent="Control/Panel/MarginContainer/VBoxContainer/Content/StorePanel" unique_id=878493517]
 layout_mode = 2
 
-[node name="Key" type="Label" parent="Control/Panel/VBoxContainer/Content/StorePanel/RowBalance"]
+[node name="Key" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer/Content/StorePanel/RowBalance" unique_id=1583263454]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 text = "Balance"
-theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 
-[node name="Value" type="Label" parent="Control/Panel/VBoxContainer/Content/StorePanel/RowBalance"]
+[node name="Value" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer/Content/StorePanel/RowBalance" unique_id=392683614]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "$0.00"
-theme_override_colors/font_color = Color(1, 1, 1, 1)
 
-[node name="SectionStore" type="Label" parent="Control/Panel/VBoxContainer/Content/StorePanel"]
+[node name="SectionStore" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer/Content/StorePanel" unique_id=180963254]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.75, 1, 1)
+theme_override_font_sizes/font_size = 15
 text = "Store"
-theme_override_font_sizes/font_size = 15
-theme_override_colors/font_color = Color(0.5, 0.75, 1.0, 1)
 
-[node name="RowBlocks" type="HBoxContainer" parent="Control/Panel/VBoxContainer/Content/StorePanel"]
+[node name="RowBlocks" type="HBoxContainer" parent="Control/Panel/MarginContainer/VBoxContainer/Content/StorePanel" unique_id=920160107]
 layout_mode = 2
 
-[node name="Key" type="Label" parent="Control/Panel/VBoxContainer/Content/StorePanel/RowBlocks"]
+[node name="Key" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer/Content/StorePanel/RowBlocks" unique_id=759294717]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 text = "Blocks Unlocked"
-theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 
-[node name="Value" type="Label" parent="Control/Panel/VBoxContainer/Content/StorePanel/RowBlocks"]
+[node name="Value" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer/Content/StorePanel/RowBlocks" unique_id=1751418660]
 layout_mode = 2
-text = "0"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "0"
 
-[node name="SectionLicenses" type="Label" parent="Control/Panel/VBoxContainer/Content/StorePanel"]
+[node name="SectionLicenses" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer/Content/StorePanel" unique_id=2135709660]
 layout_mode = 2
-text = "Licenses"
+theme_override_colors/font_color = Color(0.5, 0.75, 1, 1)
 theme_override_font_sizes/font_size = 15
-theme_override_colors/font_color = Color(0.5, 0.75, 1.0, 1)
+text = "Licenses"
 
-[node name="RowLicenses" type="HBoxContainer" parent="Control/Panel/VBoxContainer/Content/StorePanel"]
+[node name="RowLicenses" type="HBoxContainer" parent="Control/Panel/MarginContainer/VBoxContainer/Content/StorePanel" unique_id=1803951547]
 layout_mode = 2
 
-[node name="Key" type="Label" parent="Control/Panel/VBoxContainer/Content/StorePanel/RowLicenses"]
+[node name="Key" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer/Content/StorePanel/RowLicenses" unique_id=1191354734]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Active"
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+text = "Active"
 
-[node name="Value" type="Label" parent="Control/Panel/VBoxContainer/Content/StorePanel/RowLicenses"]
+[node name="Value" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer/Content/StorePanel/RowLicenses" unique_id=1609129814]
 layout_mode = 2
-text = "None"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "None"
 
-[node name="QueuePanel" type="VBoxContainer" parent="Control/Panel/VBoxContainer/Content"]
+[node name="QueuePanel" type="VBoxContainer" parent="Control/Panel/MarginContainer/VBoxContainer/Content" unique_id=2124279708]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-visible = false
 
-[node name="SectionPrinters" type="Label" parent="Control/Panel/VBoxContainer/Content/QueuePanel"]
+[node name="SectionPrinters" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer/Content/QueuePanel" unique_id=1585500603]
 layout_mode = 2
-text = "Printers"
+theme_override_colors/font_color = Color(0.5, 0.75, 1, 1)
 theme_override_font_sizes/font_size = 15
-theme_override_colors/font_color = Color(0.5, 0.75, 1.0, 1)
+text = "Printers"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Control/Panel/VBoxContainer/Content/QueuePanel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/Panel/MarginContainer/VBoxContainer/Content/QueuePanel" unique_id=1205659330]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="QueueContainer" type="VBoxContainer" parent="Control/Panel/VBoxContainer/Content/QueuePanel/ScrollContainer"]
+[node name="QueueContainer" type="VBoxContainer" parent="Control/Panel/MarginContainer/VBoxContainer/Content/QueuePanel/ScrollContainer" unique_id=520274670]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CloseHint" type="Label" parent="Control/Panel/VBoxContainer"]
+[node name="ShopPanel" type="VBoxContainer" parent="Control/Panel/MarginContainer/VBoxContainer/Content" unique_id=667788990]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SectionShop" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer/Content/ShopPanel" unique_id=445566778]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.75, 1, 1)
+theme_override_font_sizes/font_size = 15
+text = "Available Items"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/Panel/MarginContainer/VBoxContainer/Content/ShopPanel" unique_id=889900112]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ShopContainer" type="VBoxContainer" parent="Control/Panel/MarginContainer/VBoxContainer/Content/ShopPanel/ScrollContainer" unique_id=223344556]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="CloseHint" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer" unique_id=904994065]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.4, 0.5, 1)
+theme_override_font_sizes/font_size = 13
 text = "Press Tab to close"
 horizontal_alignment = 2
-theme_override_font_sizes/font_size = 13
-theme_override_colors/font_color = Color(0.4, 0.4, 0.5, 1)
