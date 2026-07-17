@@ -1,4 +1,4 @@
-﻿extends Node3D
+extends Node3D
 
 const NPC_SCENE = preload("res://models/npc.tscn")
 
@@ -57,4 +57,3 @@ func _pick_opposite_destination() -> Node3D:
 	if opposite == null or opposite.get_child_count() == 0:
 		return null
 	return opposite.get_child(randi() % opposite.get_child_count())
-

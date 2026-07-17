@@ -767,7 +767,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.7894583)
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.5000002, -5.6)
 
 [node name="StoreEntrance" parent="." unique_id=1624891090 instance=ExtResource("2_88yjg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.9000001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.8000016)
 
 [node name="NavStore" type="Node3D" parent="." unique_id=362448878]
 

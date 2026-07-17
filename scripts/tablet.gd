@@ -1,4 +1,4 @@
-﻿extends CanvasLayer
+extends CanvasLayer
 
 const PACKING_CRATE = preload("res://models/packing_crate.tscn")
 
@@ -349,4 +349,3 @@ func _make_label(text: String, color: Color) -> Label:
 	lbl.text = text
 	lbl.add_theme_color_override("font_color", color)
 	return lbl
-

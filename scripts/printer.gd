@@ -1,4 +1,4 @@
-﻿extends Node3D
+extends Node3D
 
 const PRINT_MODEL = preload("res://models/default_model.tscn")
 const PRINT_SHADER = preload("res://shaders/print_reveal.gdshader")
@@ -161,4 +161,3 @@ func _update_tooltip() -> void:
 		tooltip.text = "3D Printer\nLeft click to collect"
 	else:
 		tooltip.text = "3D Printer\nPress E to print"
-

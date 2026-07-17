@@ -1,4 +1,4 @@
-﻿extends Node
+extends Node
 
 signal money_changed(new_amount: float)
 signal license_unlocked(license_id: String)
@@ -58,4 +58,3 @@ func add_print_job(job: Dictionary) -> void:
 func complete_print_job(job: Dictionary) -> void:
 	print_queue.erase(job)
 	print_job_completed.emit(job)
-
