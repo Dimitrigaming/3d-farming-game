@@ -211,9 +211,13 @@ func _on_arrive_at_shelf() -> void:
 	var count = randi_range(1, 3)
 	_items = _shelf.npc_take_prints(count)
 	if _items.is_empty():
-		_idle_timer = -IDLE_RECHECK_SHELF_EMPTY
-		_set_nav_target(global_position + Vector3(randf_range(-3.0, 3.0), 0, randf_range(-3.0, 3.0)))
-		state = State.IDLE
+		if _find_shelf_with_prints() == null:
+			_log("shelf empty and no stock anywhere — leaving")
+			_leave_store()
+		else:
+			_idle_timer = -IDLE_RECHECK_SHELF_EMPTY
+			_set_nav_target(global_position + Vector3(randf_range(-3.0, 3.0), 0, randf_range(-3.0, 3.0)))
+			state = State.IDLE
 		return
 	_register = _find_shortest_queue_register()
 	if _register == null:
@@ -225,14 +229,17 @@ func _on_arrive_at_shelf() -> void:
 	_set_nav_target(_queue_target)
 	state = State.GOING_TO_REGISTER
 
+func _leave_store() -> void:
+	var exit_point = get_node_or_null("/root/Map/City/Player_Building/StoreExitPoint")
+	var dest = exit_point.global_position if exit_point else _street_destination
+	_set_nav_target(dest)
+	state = State.LEAVING
+
 func checkout_complete() -> void:
 	if _register and is_instance_valid(_register):
 		_register.leave_queue(self)
-	var exit_point = get_node_or_null("/root/Map/City/Player_Building/StoreExitPoint")
-	var dest = exit_point.global_position if exit_point else _street_destination
 	_log("checkout done — heading to exit")
-	_set_nav_target(dest)
-	state = State.LEAVING
+	_leave_store()
 
 func register_is_staffed() -> void:
 	if state != State.WAITING or _handed_off or _register == null:
