@@ -34,7 +34,32 @@ func _unhandled_input(event: InputEvent) -> void:
 func _toggle() -> void:
 	visible = not visible
 	if visible:
-		_show_tab(_current_tab)
+		_on_open()
+	else:
+		_on_close()
+
+func _on_open() -> void:
+	_show_tab(_current_tab)
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	var controller = _get_controller()
+	if controller:
+		controller.can_move = false
+		controller.can_jump = false
+		controller.mouse_captured = false
+
+func _on_close() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	var controller = _get_controller()
+	if controller:
+		controller.can_move = true
+		controller.can_jump = true
+		controller.mouse_captured = true
+
+func _get_controller() -> CharacterBody3D:
+	var players = get_tree().get_nodes_in_group("player")
+	if players.is_empty():
+		return null
+	return players[0].get_parent() as CharacterBody3D
 
 # ── tab switching ────────────────────────────────────────────────────────────
 
