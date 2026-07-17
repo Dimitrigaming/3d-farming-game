@@ -5,6 +5,8 @@ const PACKING_CRATE = preload("res://models/packing_crate.tscn")
 const SHOP_ITEMS: Array[Dictionary] = [
 	{ "name": "3D Printer",          "price": 150.0, "scene": "res://models/printer.tscn",             "desc": "Prints products to sell to customers." },
 	{ "name": "Small Product Shelf", "price":  75.0, "scene": "res://models/small_product_shelf.tscn", "desc": "Display printed products for customers." },
+	{ "name": "Small Station",       "price": 100.0, "scene": "res://models/small_station.tscn",       "desc": "A compact workstation for your store." },
+	{ "name": "Small Stock Shelf",   "price":  60.0, "scene": "res://models/small_stock_shelf.tscn",   "desc": "Store extra stock in the back." },
 	{ "name": "Register",            "price": 200.0, "scene": "res://models/register.tscn",            "desc": "Process customer purchases." },
 ]
 
