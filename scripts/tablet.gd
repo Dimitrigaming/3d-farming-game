@@ -24,7 +24,7 @@ func _ready() -> void:
 	_build_ui()
 	GameState.money_changed.connect(_on_money_changed)
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("tablet"):
 		_toggle()
 		get_viewport().set_input_as_handled()
