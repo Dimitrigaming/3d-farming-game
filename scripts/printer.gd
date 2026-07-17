@@ -18,6 +18,7 @@ var current_model: Node3D = null
 func _ready() -> void:
 	tooltip.visible = false
 	add_to_group("interactable")
+	add_to_group("printer")
 
 func show_tooltip() -> void:
 	tooltip.visible = true
