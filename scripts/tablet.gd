@@ -499,10 +499,11 @@ func _apply_production_floor_tier(tier: int) -> void:
 	if pf == null:
 		return
 
-	# Back wall slides further back
+	# Back wall slides further back and widens
 	var back = pf.get_node_or_null("CSGBox3D")
 	if back:
 		back.position = Vector3(back.position.x, back.position.y, -(d + 0.1))
+		back.size = Vector3(hw * 2.0, 4.0, 0.1)
 
 	# Side walls: shift X and Z, stretch depth
 	var left_wall = pf.get_node_or_null("CSGBox3D4")
