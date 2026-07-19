@@ -1,0 +1,192 @@
+[gd_scene format=3 uid="uid://bct8yqanuya75"]
+
+[ext_resource type="Script" path="res://scripts/production_floor.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bairidngy8bbi" path="res://addons/city_megakit/materials/T_RedBrick_BaseColor.png" id="2_fpan8"]
+[ext_resource type="Texture2D" uid="uid://bjsq4ihjw4c18" path="res://addons/city_megakit/materials/T_RedBrick_Normal.png" id="3_1ehr2"]
+[ext_resource type="Texture2D" uid="uid://dl43s6c8tklbg" path="res://addons/city_megakit/materials/T_CornerDamage_Normal.png" id="4_a8pua"]
+[ext_resource type="Texture2D" uid="uid://qha476tq8jes" path="res://addons/city_megakit/materials/T_RedBrick_ORM.png" id="5_oghi2"]
+[ext_resource type="Texture2D" uid="uid://dbxevwd2cw8gu" path="res://addons/city_megakit/materials/T_Noise_Drips.png" id="6_fva50"]
+[ext_resource type="Shader" uid="uid://cvenvp6d858qh" path="res://addons/city_megakit/materials/M_BaseMaterial.gdshader" id="7_0blwj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_koibg"]
+render_priority = 0
+shader = ExtResource("7_0blwj")
+shader_parameter/albedo = ExtResource("2_fpan8")
+shader_parameter/base_normal = ExtResource("3_1ehr2")
+shader_parameter/detail_normal = ExtResource("4_a8pua")
+shader_parameter/orm = ExtResource("5_oghi2")
+shader_parameter/wear_texture = ExtResource("6_fva50")
+shader_parameter/color_tint = Color(1, 1, 1, 1)
+shader_parameter/wear_color = Color(0.292, 0.292, 0.292, 1)
+shader_parameter/use_wear_color = false
+shader_parameter/use_detail_normal = false
+shader_parameter/detail_normal_intensity = 1.0
+shader_parameter/uv_scale = Vector2(2.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3xd07"]
+size = Vector3(10, 4, 0.1)
+
+[sub_resource type="Shader" id="Shader_41k4p"]
+code = "shader_type spatial;
+uniform sampler2D albedo : source_color;
+uniform sampler2D base_normal : hint_normal;
+uniform sampler2D detail_normal : hint_normal;
+uniform sampler2D orm : hint_roughness_g;
+uniform sampler2D wear_texture : hint_default_white;
+uniform vec4 color_tint : source_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform vec4 wear_color : source_color = vec4(0.292, 0.292, 0.292, 1.0);
+uniform bool use_wear_color = true;
+uniform bool use_detail_normal = true;
+uniform float detail_normal_intensity : hint_range(0.0, 1.0) = 1.0;
+uniform vec2 uv_scale = vec2(1.0, 1.0);
+void fragment() {
+    vec2 scaled_uv = UV * uv_scale;
+    vec3 base = texture(albedo, scaled_uv).rgb * color_tint.rgb;
+    float wear_mask = texture(wear_texture, scaled_uv).r;
+    float vertex_wear = (1.0 - COLOR.g) * (1.0 - COLOR.b);
+    float wear_amount = wear_mask * vertex_wear;
+    vec3 worn = base * wear_color.rgb;
+    ALBEDO = use_wear_color ? mix(base, worn, wear_amount) : base;
+    vec3 orm_tex = texture(orm, scaled_uv).rgb;
+    AO = orm_tex.r;
+    ROUGHNESS = orm_tex.g;
+    METALLIC = orm_tex.b;
+    vec3 t = texture(base_normal, scaled_uv).rgb * 2.0 - 1.0;
+    if (use_detail_normal) {
+        vec3 u = texture(detail_normal, UV2).rgb * 2.0 - 1.0;
+        u = mix(vec3(0.0, 0.0, 1.0), u, detail_normal_intensity);
+        u = u * vec3(-1.0, -1.0, 1.0);
+        t = t + vec3(0.0, 0.0, 1.0);
+        vec3 blended = t * dot(t, u) - u * t.z;
+        NORMAL_MAP = normalize(blended) * 0.5 + 0.5;
+    } else {
+        NORMAL_MAP = texture(base_normal, UV).rgb;
+    }
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8n6ds"]
+render_priority = 0
+shader = SubResource("Shader_41k4p")
+shader_parameter/albedo = ExtResource("2_fpan8")
+shader_parameter/base_normal = ExtResource("3_1ehr2")
+shader_parameter/detail_normal = ExtResource("4_a8pua")
+shader_parameter/orm = ExtResource("5_oghi2")
+shader_parameter/wear_texture = ExtResource("6_fva50")
+shader_parameter/color_tint = Color(1, 1, 1, 1)
+shader_parameter/wear_color = Color(0.292, 0.292, 0.292, 1)
+shader_parameter/use_wear_color = false
+shader_parameter/use_detail_normal = false
+shader_parameter/detail_normal_intensity = 1.0
+shader_parameter/uv_scale = Vector2(1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jym1g"]
+size = Vector3(4, 4, 0.1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_47wta"]
+render_priority = 0
+shader = SubResource("Shader_41k4p")
+shader_parameter/albedo = ExtResource("2_fpan8")
+shader_parameter/base_normal = ExtResource("3_1ehr2")
+shader_parameter/detail_normal = ExtResource("4_a8pua")
+shader_parameter/orm = ExtResource("5_oghi2")
+shader_parameter/wear_texture = ExtResource("6_fva50")
+shader_parameter/color_tint = Color(1, 1, 1, 1)
+shader_parameter/wear_color = Color(0.292, 0.292, 0.292, 1)
+shader_parameter/use_wear_color = false
+shader_parameter/use_detail_normal = false
+shader_parameter/detail_normal_intensity = 1.0
+shader_parameter/uv_scale = Vector2(1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t8c6y"]
+size = Vector3(4, 4, 0.1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ha32v"]
+render_priority = 0
+shader = ExtResource("7_0blwj")
+shader_parameter/albedo = ExtResource("2_fpan8")
+shader_parameter/base_normal = ExtResource("3_1ehr2")
+shader_parameter/detail_normal = ExtResource("4_a8pua")
+shader_parameter/orm = ExtResource("5_oghi2")
+shader_parameter/wear_texture = ExtResource("6_fva50")
+shader_parameter/color_tint = Color(1, 1, 1, 1)
+shader_parameter/wear_color = Color(0.292, 0.292, 0.292, 1)
+shader_parameter/use_wear_color = false
+shader_parameter/use_detail_normal = false
+shader_parameter/detail_normal_intensity = 1.0
+shader_parameter/uv_scale = Vector2(2.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3it8i"]
+size = Vector3(10, 4, 0.1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h4qoq"]
+render_priority = 0
+shader = ExtResource("7_0blwj")
+shader_parameter/albedo = ExtResource("2_fpan8")
+shader_parameter/base_normal = ExtResource("3_1ehr2")
+shader_parameter/detail_normal = ExtResource("4_a8pua")
+shader_parameter/orm = ExtResource("5_oghi2")
+shader_parameter/wear_texture = ExtResource("6_fva50")
+shader_parameter/color_tint = Color(1, 1, 1, 1)
+shader_parameter/wear_color = Color(0.292, 0.292, 0.292, 1)
+shader_parameter/use_wear_color = false
+shader_parameter/use_detail_normal = false
+shader_parameter/detail_normal_intensity = 1.0
+shader_parameter/uv_scale = Vector2(2.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_odwws"]
+size = Vector3(10, 4, 0.1)
+
+[node name="ProductionFloor" type="Node3D" unique_id=842713878]
+script = ExtResource("1_script")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1043356174]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -10.1)
+size = Vector3(10, 4, 0.1)
+material = SubResource("ShaderMaterial_koibg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CSGBox3D" unique_id=897367356]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D/StaticBody3D" unique_id=443593671]
+shape = SubResource("BoxShape3D_3xd07")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=296980865]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -0.10000014)
+size = Vector3(4, 4, 0.1)
+material = SubResource("ShaderMaterial_8n6ds")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="CSGBox3D2" unique_id=518965586]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D2/StaticBody3D2" unique_id=1007934955]
+shape = SubResource("BoxShape3D_jym1g")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=912256544]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -0.10000014)
+size = Vector3(4, 4, 0.1)
+material = SubResource("ShaderMaterial_47wta")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="CSGBox3D5" unique_id=547340348]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D5/StaticBody3D2" unique_id=1049298616]
+shape = SubResource("BoxShape3D_t8c6y")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1612318095]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5, 2, -5.1)
+size = Vector3(10, 4, 0.1)
+material = SubResource("ShaderMaterial_ha32v")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="CSGBox3D3" unique_id=1653783683]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D3/StaticBody3D3" unique_id=1629892734]
+shape = SubResource("BoxShape3D_3it8i")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=1087512542]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5, 2, -5.1)
+size = Vector3(10, 4, 0.1)
+material = SubResource("ShaderMaterial_h4qoq")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="CSGBox3D4" unique_id=1536282794]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D4/StaticBody3D4" unique_id=1935457889]
+shape = SubResource("BoxShape3D_odwws")
+
+[node name="ShopEntrance" type="Node3D" parent="." unique_id=900854381]

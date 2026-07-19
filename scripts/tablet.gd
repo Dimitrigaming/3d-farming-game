@@ -24,6 +24,10 @@ var _panels: Array[Control] = []
 var _money_label: Label
 var _blocks_label: Label
 var _licenses_label: Label
+var _shop_floor_tier_label: Label
+var _shop_floor_upgrade_btn: Button
+var _production_floor_tier_label: Label
+var _production_floor_upgrade_btn: Button
 
 # Queue tab
 var _queue_container: VBoxContainer
@@ -93,6 +97,23 @@ func _refresh_store() -> void:
 	_money_label.text = "$%.2f" % GameState.money
 	_blocks_label.text = str(GameState.blocks_unlocked)
 	_licenses_label.text = "None" if GameState.licenses.is_empty() else "\n".join(GameState.licenses)
+	_refresh_upgrade_row(_shop_floor_tier_label, _shop_floor_upgrade_btn,
+		GameState.shop_floor_tier, GameState.SHOP_FLOOR_COSTS)
+	_refresh_upgrade_row(_production_floor_tier_label, _production_floor_upgrade_btn,
+		GameState.production_floor_tier, GameState.PRODUCTION_FLOOR_COSTS)
+
+func _refresh_upgrade_row(tier_lbl: Label, btn: Button, tier: int, costs: Array[float]) -> void:
+	if tier_lbl == null or btn == null:
+		return
+	var max_tier: int = GameState.MAX_ROOM_TIER
+	tier_lbl.text = "Tier %d / %d" % [tier, max_tier]
+	if tier >= max_tier:
+		btn.text = "Maxed"
+		btn.disabled = true
+	else:
+		var cost: float = costs[tier]
+		btn.text = "$%.0f" % cost
+		btn.disabled = GameState.money < cost
 
 func _refresh_queue() -> void:
 	for child in _queue_container.get_children():
@@ -132,7 +153,7 @@ func _refresh_shop() -> void:
 
 func _on_money_changed(new_amount: float) -> void:
 	if visible and _current_tab == TAB_STORE:
-		_money_label.text = "$%.2f" % new_amount
+		_refresh_store()
 	if visible and _current_tab == TAB_SHOP:
 		_refresh_shop()
 
@@ -237,6 +258,19 @@ func _build_store_panel(parent: Control) -> Control:
 	var row_lic = _kv_row("Active", "")
 	p.add_child(row_lic)
 	_licenses_label = row_lic.get_child(1)
+
+	p.add_child(_section_label("Room Upgrades"))
+	var shop_row = _upgrade_row("Shop Floor")
+	p.add_child(shop_row)
+	_shop_floor_tier_label = shop_row.get_node("TierLabel")
+	_shop_floor_upgrade_btn = shop_row.get_node("UpgradeBtn")
+	_shop_floor_upgrade_btn.pressed.connect(_on_upgrade_shop_floor)
+
+	var prod_row = _upgrade_row("Production Floor")
+	p.add_child(prod_row)
+	_production_floor_tier_label = prod_row.get_node("TierLabel")
+	_production_floor_upgrade_btn = prod_row.get_node("UpgradeBtn")
+	_production_floor_upgrade_btn.pressed.connect(_on_upgrade_production_floor)
 
 	return p
 
@@ -343,6 +377,46 @@ func _kv_row(key: String, value: String) -> HBoxContainer:
 	row.add_child(k)
 	row.add_child(v)
 	return row
+
+func _upgrade_row(room_name: String) -> HBoxContainer:
+	var row = HBoxContainer.new()
+	row.add_theme_constant_override("separation", 8)
+
+	var name_lbl = Label.new()
+	name_lbl.text = room_name
+	name_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	name_lbl.add_theme_color_override("font_color", Color(0.85, 0.85, 0.85))
+	row.add_child(name_lbl)
+
+	var tier_lbl = Label.new()
+	tier_lbl.name = "TierLabel"
+	tier_lbl.add_theme_color_override("font_color", Color(0.6, 0.6, 0.7))
+	tier_lbl.add_theme_font_size_override("font_size", 13)
+	row.add_child(tier_lbl)
+
+	var btn = Button.new()
+	btn.name = "UpgradeBtn"
+	btn.text = "Upgrade"
+	btn.custom_minimum_size = Vector2(90, 0)
+	row.add_child(btn)
+
+	return row
+
+func _on_upgrade_shop_floor() -> void:
+	if not GameState.upgrade_shop_floor():
+		return
+	var floor_node = get_tree().get_first_node_in_group("shop_floor")
+	if floor_node and floor_node.has_method("apply_tier"):
+		floor_node.apply_tier(GameState.shop_floor_tier)
+	_refresh_store()
+
+func _on_upgrade_production_floor() -> void:
+	if not GameState.upgrade_production_floor():
+		return
+	var floor_node = get_tree().get_first_node_in_group("production_floor")
+	if floor_node and floor_node.has_method("apply_tier"):
+		floor_node.apply_tier(GameState.production_floor_tier)
+	_refresh_store()
 
 func _make_label(text: String, color: Color) -> Label:
 	var lbl = Label.new()
