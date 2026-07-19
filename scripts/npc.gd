@@ -1,4 +1,4 @@
-extends CharacterBody3D
+﻿extends CharacterBody3D
 
 const NPC_LOGGING: bool = true
 
@@ -61,7 +61,7 @@ func set_street_destination(destination: Vector3, debug_interest: float = 0.0) -
 	_nav_frames = 0
 	_set_nav_target(destination)
 	state = State.WALKING_PATH
-	_log("spawned — interest=%.2f dest=%s" % [store_interest, destination])
+	_log("spawned -- interest=%.2f dest=%s" % [store_interest, destination])
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -84,7 +84,7 @@ func _physics_process(delta: float) -> void:
 					_set_nav_target(stand)
 					state = State.GOING_TO_SHELF
 				else:
-					_log("entered store but shelves empty — leaving")
+					_log("entered store but shelves empty -- leaving")
 					_leave_store()
 			else:
 				_move_along_nav(delta)
@@ -116,10 +116,10 @@ func _physics_process(delta: float) -> void:
 				if not _exited_store:
 					_exited_store = true
 					var dest = _street_destination if _street_destination != Vector3.ZERO else global_position + Vector3(0, 0, 20)
-					_log("reached exit — heading to street")
+					_log("reached exit -- heading to street")
 					_set_nav_target(dest)
 				else:
-					_log("left store — freeing")
+					_log("left store -- freeing")
 					queue_free()
 					return
 			else:
@@ -171,11 +171,11 @@ func try_enter_store(entry_pos: Vector3) -> void:
 	_store_interest_checked = true
 	if store_interest >= _get_store_attractiveness():
 		if _find_shelf_with_prints() == null:
-			_log("passed store — no products on shelves")
+			_log("passed store -- no products on shelves")
 			return
 		var in_store = get_tree().get_nodes_in_group("npc").filter(func(n): return n.state != State.WALKING_PATH and n.state != State.CHOOSING_NEXT and n.state != State.IDLE and n != self)
 		if in_store.size() >= 6:
-			_log("passed store — full (6 customers)")
+			_log("passed store -- full (6 customers)")
 			return
 		_log("[color=green]entering store (interest=%.2f)[/color]" % store_interest)
 		_log("nav target set to %s" % entry_pos)
@@ -195,7 +195,7 @@ func _on_arrive_at_shelf() -> void:
 		return
 	var stand = _shelf.get_npc_stand_pos() if _shelf.has_method("get_npc_stand_pos") else _shelf.global_position
 	if global_position.distance_to(stand) > 2.0:
-		_log("nav failed to reach shelf — retrying")
+		_log("nav failed to reach shelf -- retrying")
 		_idle_timer = -IDLE_RECHECK_FAIL
 		state = State.IDLE
 		return
@@ -212,7 +212,7 @@ func _on_arrive_at_shelf() -> void:
 	_items = _shelf.npc_take_prints(count)
 	if _items.is_empty():
 		if _find_shelf_with_prints() == null:
-			_log("shelf empty and no stock anywhere — leaving")
+			_log("shelf empty and no stock anywhere -- leaving")
 			_leave_store()
 		else:
 			_idle_timer = -IDLE_RECHECK_SHELF_EMPTY
@@ -238,7 +238,7 @@ func _leave_store() -> void:
 func checkout_complete() -> void:
 	if _register and is_instance_valid(_register):
 		_register.leave_queue(self)
-	_log("checkout done — heading to exit")
+	_log("checkout done -- heading to exit")
 	_leave_store()
 
 func register_is_staffed() -> void:

@@ -1,4 +1,4 @@
-extends Node3D
+﻿extends Node3D
 
 var active: bool = false
 var grid_snap: bool = false
@@ -162,7 +162,7 @@ func _process(_delta: float) -> void:
 		return
 	var space_state = get_world_3d().direct_space_state
 
-	# Snap to placement zone if aiming at one — checked before normal positioning
+	# Snap to placement zone if aiming at one -- checked before normal positioning
 	var snap_zone = _cast_placement_zone_ray()
 	if snap_zone != null:
 		var down = PhysicsRayQueryParameters3D.create(

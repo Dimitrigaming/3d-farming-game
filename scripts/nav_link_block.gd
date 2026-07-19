@@ -1,4 +1,4 @@
-extends Node3D
+﻿extends Node3D
 
 class_name NavLinkBlockManager
 
@@ -28,7 +28,7 @@ func _physics_process(_delta: float) -> void:
 				entry["logged_blocked"] = true
 				_log(link.name + " BLOCKED by " + collider_name)
 			if collider_name == "RaycastBlocker_StaticBody3D":
-				_log(link.name + " — permanent wall, removing")
+				_log(link.name + " -- permanent wall, removing")
 				ray.queue_free()
 				link.queue_free()
 			else:
@@ -36,7 +36,7 @@ func _physics_process(_delta: float) -> void:
 		else:
 			link.enabled = true
 			ray.enabled = false
-			_log(link.name + " CLEAR — enabled")
+			_log(link.name + " CLEAR -- enabled")
 	_links = still_pending
 	if _links.is_empty():
 		set_physics_process(false)

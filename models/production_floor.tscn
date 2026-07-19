@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bct8yqanuya75"]
 
-[ext_resource type="Script" path="res://scripts/production_floor.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://7apg5ijnduec" path="res://scripts/production_floor.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://bairidngy8bbi" path="res://addons/city_megakit/materials/T_RedBrick_BaseColor.png" id="2_fpan8"]
 [ext_resource type="Texture2D" uid="uid://bjsq4ihjw4c18" path="res://addons/city_megakit/materials/T_RedBrick_Normal.png" id="3_1ehr2"]
 [ext_resource type="Texture2D" uid="uid://dl43s6c8tklbg" path="res://addons/city_megakit/materials/T_CornerDamage_Normal.png" id="4_a8pua"]

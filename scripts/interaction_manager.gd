@@ -1,4 +1,4 @@
-extends RayCast3D
+﻿extends RayCast3D
 
 @onready var player_inventory: Node = get_node("../../../PlayerInventory")
 @onready var hud = get_node("../../../HUD")
@@ -89,7 +89,7 @@ func _cast_placement_zone_ray():
 	var ray = PhysicsRayQueryParameters3D.create(
 		global_position,
 		global_position + (-global_transform.basis.z * 4.0),
-		8  # layer 4 only — placement zones
+		8  # layer 4 only -- placement zones
 	)
 	ray.collide_with_areas = true
 	ray.collide_with_bodies = false
@@ -106,7 +106,7 @@ func _cast_layer2_ray():
 	var ray = PhysicsRayQueryParameters3D.create(
 		global_position,
 		global_position + (-global_transform.basis.z * 4.0),
-		2  # layer 2 only — passes through layer-1 geometry
+		2  # layer 2 only -- passes through layer-1 geometry
 	)
 	var result = space.intersect_ray(ray)
 	return result.get("collider") if result else null
@@ -140,7 +140,7 @@ func _update_hud() -> void:
 	if held and held is RigidBody3D:
 		if _mmb_held:
 			var pct = int(clamp(_mmb_hold_time / MMB_MAX_CHARGE, 0.0, 1.0) * 100)
-			hints.append("[MMB] Throw — %d%%" % pct)
+			hints.append("[MMB] Throw -- %d%%" % pct)
 		else:
 			hints.append("[MMB] Throw")
 

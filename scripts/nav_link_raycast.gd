@@ -1,4 +1,4 @@
-extends NavigationLink3D
+﻿extends NavigationLink3D
 
 @export var wall_mask: int = 16
 
@@ -17,7 +17,7 @@ func _ready() -> void:
 	_ray.collide_with_bodies = true
 	_ray.collide_with_areas = false
 	_ray.enabled = true
-	_log("ready — ray from %s to %s mask=%d" % [start_position, end_position, wall_mask])
+	_log("ready -- ray from %s to %s mask=%d" % [start_position, end_position, wall_mask])
 
 func _physics_process(delta: float) -> void:
 	if not _ray:
@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 			_log("BLOCKED by: " + str(_ray.get_collider().name))
 	else:
 		if not enabled:
-			_log("CLEAR — enabling link")
+			_log("CLEAR -- enabling link")
 		enabled = true
 
 func _log(msg: String) -> void:

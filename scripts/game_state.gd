@@ -1,4 +1,4 @@
-extends Node
+﻿extends Node
 
 signal money_changed(new_amount: float)
 signal license_unlocked(license_id: String)
@@ -39,10 +39,10 @@ func get_next_unlock_price() -> int:
 func unlock_block() -> bool:
 	var price = get_next_unlock_price()
 	if not spend_money(price):
-		get_node_or_null("/root/GameLogger").warning("GameState", "unlock_block failed â€” not enough money (have $%.0f, need $%d)" % [money, price])
+		get_node_or_null("/root/GameLogger").warning("GameState", "unlock_block failed  not enough money (have $%.0f, need $%d)" % [money, price])
 		return false
 	blocks_unlocked += 1
-	get_node_or_null("/root/GameLogger").info("GameState", "block unlocked â€” total=%d money=$%.0f" % [blocks_unlocked, money])
+	get_node_or_null("/root/GameLogger").info("GameState", "block unlocked  total=%d money=$%.0f" % [blocks_unlocked, money])
 	return true
 
 const ITEM_PRICES: Dictionary = {
@@ -56,14 +56,14 @@ var print_queue: Array[Dictionary] = []
 
 func add_money(amount: float) -> void:
 	money += amount
-	get_node_or_null("/root/GameLogger").debug("GameState", "+$%.2f â†’ total $%.2f" % [amount, money])
+	get_node_or_null("/root/GameLogger").debug("GameState", "+$%.2f -> total $%.2f" % [amount, money])
 	money_changed.emit(money)
 
 func spend_money(amount: float) -> bool:
 	if money < amount:
 		return false
 	money -= amount
-	get_node_or_null("/root/GameLogger").debug("GameState", "-$%.2f â†’ total $%.2f" % [amount, money])
+	get_node_or_null("/root/GameLogger").debug("GameState", "-$%.2f -> total $%.2f" % [amount, money])
 	money_changed.emit(money)
 	return true
 

@@ -126,7 +126,7 @@ func _refresh_queue() -> void:
 		var status: String
 		var color: Color
 		if printer.is_printing:
-			status = "Printingâ€¦"
+			status = "Printing"
 			color = Color(1.0, 0.85, 0.2)
 		elif printer.print_finished:
 			status = "Ready to collect"
@@ -141,7 +141,7 @@ func _refresh_queue() -> void:
 		row.add_child(_make_label(status, color))
 		_queue_container.add_child(row)
 	if not GameState.print_queue.is_empty():
-		_queue_container.add_child(_make_label("â€” Queued jobs â€”", Color(0.7, 0.7, 0.7)))
+		_queue_container.add_child(_make_label(" Queued jobs ", Color(0.7, 0.7, 0.7)))
 		for job in GameState.print_queue:
 			_queue_container.add_child(_make_label(str(job.get("model", "Unknown")), Color.WHITE))
 

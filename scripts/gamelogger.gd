@@ -1,4 +1,4 @@
-extends Node
+﻿extends Node
 
 enum Level { DEBUG, INFO, WARNING, ERROR }
 
@@ -18,7 +18,7 @@ func _ready() -> void:
 	_file = FileAccess.open(_path, FileAccess.WRITE)
 	if not _file:
 		push_warning("GameLogger: could not open log file at " + _path)
-	_write(Level.INFO, "GameLogger", "Session started — " + _path)
+	_write(Level.INFO, "GameLogger", "Session started -- " + _path)
 
 func debug(category: String, msg: String) -> void:
 	_write(Level.DEBUG, category, msg)
@@ -50,7 +50,7 @@ func _write(level: int, category: String, msg: String) -> void:
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_CRASH or what == NOTIFICATION_WM_CLOSE_REQUEST:
-		_write(Level.ERROR, "GameLogger", "Session ended — " + ("CRASH" if what == NOTIFICATION_CRASH else "quit"))
+		_write(Level.ERROR, "GameLogger", "Session ended -- " + ("CRASH" if what == NOTIFICATION_CRASH else "quit"))
 		if _file:
 			_file.flush()
 			_file.close()

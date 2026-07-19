@@ -126,7 +126,7 @@ func receive_npc_items(items: Array[String], npc: Node3D) -> void:
 	_update_total_label()
 
 func _checkout_complete() -> void:
-	get_node_or_null("/root/GameLogger").info("Register", "checkout complete â€” earned $%.2f" % _transaction_total)
+	get_node_or_null("/root/GameLogger").info("Register", "checkout complete  earned $%.2f" % _transaction_total)
 	GameState.add_money(_transaction_total)
 	_transaction_total = 0.0
 	_scanned_total = 0.0

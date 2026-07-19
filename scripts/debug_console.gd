@@ -1,4 +1,4 @@
-extends CanvasLayer
+﻿extends CanvasLayer
 
 const MAX_LINES: int = 200
 
@@ -102,7 +102,7 @@ func _on_line_edit_gui_input(event: InputEvent) -> void:
 func _cmd_help(_args: Array) -> void:
 	print_line("[color=yellow]Available commands:[/color]")
 	for cmd_name in c_commands:
-		print_line("  [color=cyan]%s[/color] — %s" % [cmd_name, c_commands[cmd_name].description])
+		print_line("  [color=cyan]%s[/color] -- %s" % [cmd_name, c_commands[cmd_name].description])
 
 func _cmd_clear(_args: Array) -> void:
 	c_lines.clear()
