@@ -1,4 +1,4 @@
-extends CanvasLayer
+﻿extends CanvasLayer
 
 const PACKING_CRATE = preload("res://models/packing_crate.tscn")
 
@@ -46,7 +46,7 @@ func _input(event: InputEvent) -> void:
 		_toggle()
 		get_viewport().set_input_as_handled()
 
-# â”€â”€ toggle â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# --- toggle ---
 
 func _toggle() -> void:
 	visible = not visible
@@ -78,7 +78,7 @@ func _get_controller() -> CharacterBody3D:
 		return null
 	return players[0].get_parent() as CharacterBody3D
 
-# â”€â”€ tabs â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# --- tabs ---
 
 func _show_tab(idx: int) -> void:
 	_current_tab = idx
@@ -91,7 +91,7 @@ func _show_tab(idx: int) -> void:
 		TAB_QUEUE: _refresh_queue()
 		TAB_SHOP:  _refresh_shop()
 
-# â”€â”€ refresh â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# --- refresh ---
 
 func _refresh_store() -> void:
 	_money_label.text = "$%.2f" % GameState.money
@@ -157,7 +157,7 @@ func _on_money_changed(new_amount: float) -> void:
 	if visible and _current_tab == TAB_SHOP:
 		_refresh_shop()
 
-# â”€â”€ purchase â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# --- purchase ---
 
 func _purchase(item: Dictionary) -> void:
 	if not GameState.spend_money(item.price):
@@ -172,7 +172,7 @@ func _purchase(item: Dictionary) -> void:
 		player_inv.pick_up_item(crate)
 	get_node_or_null("/root/GameLogger").info("Tablet", "purchased %s for $%.2f" % [item.name, item.price])
 
-# â”€â”€ UI construction â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# --- UI construction ---
 
 func _build_ui() -> void:
 	_root = Control.new()
@@ -356,7 +356,7 @@ func _make_shop_row(item: Dictionary) -> Control:
 
 	return row
 
-# â”€â”€ helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# --- helpers ---
 
 func _section_label(text: String) -> Label:
 	var lbl = Label.new()
