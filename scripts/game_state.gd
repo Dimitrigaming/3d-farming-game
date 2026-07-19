@@ -5,14 +5,14 @@ signal license_unlocked(license_id: String)
 signal print_job_added(job: Dictionary)
 signal print_job_completed(job: Dictionary)
 
-var money: float = 0.0      # 500.0
+var money: float = 10000.0      # 500.0
 var blocks_unlocked: int = 0
 
 var shop_floor_tier: int = 0
 var production_floor_tier: int = 0
 
-const SHOP_FLOOR_COSTS: Array[float] = [300.0, 800.0]
-const PRODUCTION_FLOOR_COSTS: Array[float] = [400.0, 1000.0]
+const SHOP_FLOOR_COSTS = [300.0, 800.0]
+const PRODUCTION_FLOOR_COSTS = [400.0, 1000.0]
 const MAX_ROOM_TIER: int = 2
 
 func upgrade_shop_floor() -> bool:
