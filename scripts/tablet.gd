@@ -102,7 +102,7 @@ func _refresh_store() -> void:
 	_refresh_upgrade_row(_production_floor_tier_label, _production_floor_upgrade_btn,
 		GameState.production_floor_tier, GameState.PRODUCTION_FLOOR_COSTS)
 
-func _refresh_upgrade_row(tier_lbl: Label, btn: Button, tier: int, costs: Array[float]) -> void:
+func _refresh_upgrade_row(tier_lbl: Label, btn: Button, tier: int, costs: Array) -> void:
 	if tier_lbl == null or btn == null:
 		return
 	var max_tier: int = GameState.MAX_ROOM_TIER
