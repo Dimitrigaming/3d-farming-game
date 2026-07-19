@@ -425,39 +425,50 @@ func _get_floor_node(name: String) -> Node3D:
 	return node
 
 func _apply_shop_floor_tier(tier: int) -> void:
-	# Expands width (X axis): 10 -> 16 -> 22 units wide
-	const HALF_WIDTHS = [5.0, 8.0, 11.0]
-	tier = clampi(tier, 0, HALF_WIDTHS.size() - 1)
-	var hw: float = HALF_WIDTHS[tier]
-	print("[Tablet] apply_shop_floor_tier %d hw=%.1f" % [tier, hw])
+	# Expands depth (Z axis): 10 -> 14 -> 18 units deep.
+	# Back wall + door slide back; ProductionFloor shifts with them.
+	const DEPTHS = [10.0, 14.0, 18.0]
+	tier = clampi(tier, 0, DEPTHS.size() - 1)
+	var d: float = DEPTHS[tier]
+	print("[Tablet] apply_shop_floor_tier %d depth=%.1f" % [tier, d])
 	var sf = _get_floor_node("ShopFloor")
 	if sf == null:
 		return
 
-	var front = sf.get_node_or_null("CSGBox3D")
-	if front:
-		front.size = Vector3(hw * 2.0, 4.0, 0.1)
-
-	var left_wall = sf.get_node_or_null("CSGBox3D4")
-	if left_wall:
-		left_wall.position = Vector3(-hw, left_wall.position.y, left_wall.position.z)
-
-	var right_wall = sf.get_node_or_null("CSGBox3D3")
-	if right_wall:
-		right_wall.position = Vector3(hw, right_wall.position.y, right_wall.position.z)
-
-	var panel_w: float = hw - 1.0
-	var panel_cx: float = -(hw + 1.0) / 2.0
-
+	# Back wall panels slide to new z
 	var bl = sf.get_node_or_null("CSGBox3D2")
 	if bl:
-		bl.position = Vector3(panel_cx, bl.position.y, bl.position.z)
-		bl.size = Vector3(panel_w, 4.0, 0.1)
+		bl.position = Vector3(bl.position.x, bl.position.y, -(d + 0.1))
 
 	var br = sf.get_node_or_null("CSGBox3D5")
 	if br:
-		br.position = Vector3(-panel_cx, br.position.y, br.position.z)
-		br.size = Vector3(panel_w, 4.0, 0.1)
+		br.position = Vector3(br.position.x, br.position.y, -(d + 0.1))
+
+	# Side walls stretch and shift center z
+	var left_wall = sf.get_node_or_null("CSGBox3D4")
+	if left_wall:
+		left_wall.position = Vector3(left_wall.position.x, left_wall.position.y, -(d / 2.0 + 0.1))
+		left_wall.size = Vector3(d, 4.0, 0.1)
+
+	var right_wall = sf.get_node_or_null("CSGBox3D3")
+	if right_wall:
+		right_wall.position = Vector3(right_wall.position.x, right_wall.position.y, -(d / 2.0 + 0.1))
+		right_wall.size = Vector3(d, 4.0, 0.1)
+
+	# Door frame slides to new z
+	var door = sf.get_node_or_null("DoorFrame")
+	if door:
+		door.position = Vector3(door.position.x, door.position.y, -(d + 0.05))
+
+	# ProductionEntrance marker follows
+	var entrance = sf.get_node_or_null("ProductionEntrance")
+	if entrance:
+		entrance.position = Vector3(entrance.position.x, entrance.position.y, -(d + 0.1))
+
+	# Shift the entire ProductionFloor node back to stay connected
+	var pf = _get_floor_node("ProductionFloor")
+	if pf:
+		pf.position = Vector3(pf.position.x, pf.position.y, -(d + 0.1))
 
 func _apply_production_floor_tier(tier: int) -> void:
 	# Expands depth (Z axis): 10 -> 16 -> 22 units deep
