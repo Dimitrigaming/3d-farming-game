@@ -425,42 +425,56 @@ func _get_floor_node(name: String) -> Node3D:
 	return node
 
 func _apply_shop_floor_tier(tier: int) -> void:
-	# Expands depth (Z axis): 10 -> 14 -> 18 units deep.
-	# Back wall + door slide back; ProductionFloor shifts with them.
-	const DEPTHS = [10.0, 14.0, 18.0]
-	tier = clampi(tier, 0, DEPTHS.size() - 1)
-	var d: float = DEPTHS[tier]
-	print("[Tablet] apply_shop_floor_tier %d depth=%.1f" % [tier, d])
+	# Expands both width (X) and depth (Z). Back wall + door slide back;
+	# side walls widen and stretch; ProductionFloor shifts back with the door.
+	const SIZES = [
+		{"hw": 5.0, "depth": 10.0},
+		{"hw": 8.0, "depth": 14.0},
+		{"hw": 11.0, "depth": 18.0},
+	]
+	tier = clampi(tier, 0, SIZES.size() - 1)
+	var hw: float = SIZES[tier].hw
+	var d: float  = SIZES[tier].depth
+	print("[Tablet] apply_shop_floor_tier %d hw=%.1f depth=%.1f" % [tier, hw, d])
 	var sf = _get_floor_node("ShopFloor")
 	if sf == null:
 		return
 
-	# Back wall panels slide to new z
-	var bl = sf.get_node_or_null("CSGBox3D2")
-	if bl:
-		bl.position = Vector3(bl.position.x, bl.position.y, -(d + 0.1))
+	# Front wall (invisible) — just update width
+	var front = sf.get_node_or_null("CSGBox3D")
+	if front:
+		front.size = Vector3(hw * 2.0, 4.0, 0.1)
 
-	var br = sf.get_node_or_null("CSGBox3D5")
-	if br:
-		br.position = Vector3(br.position.x, br.position.y, -(d + 0.1))
-
-	# Side walls stretch and shift center z
+	# Side walls: shift X and Z, stretch depth
 	var left_wall = sf.get_node_or_null("CSGBox3D4")
 	if left_wall:
-		left_wall.position = Vector3(left_wall.position.x, left_wall.position.y, -(d / 2.0 + 0.1))
+		left_wall.position = Vector3(-hw, left_wall.position.y, -(d / 2.0 + 0.1))
 		left_wall.size = Vector3(d, 4.0, 0.1)
 
 	var right_wall = sf.get_node_or_null("CSGBox3D3")
 	if right_wall:
-		right_wall.position = Vector3(right_wall.position.x, right_wall.position.y, -(d / 2.0 + 0.1))
+		right_wall.position = Vector3(hw, right_wall.position.y, -(d / 2.0 + 0.1))
 		right_wall.size = Vector3(d, 4.0, 0.1)
 
-	# Door frame slides to new z
+	# Back panels flank the door (gap = 2 units centered at x=0)
+	var panel_w: float  = hw - 1.0
+	var panel_cx: float = -(hw + 1.0) / 2.0
+
+	var bl = sf.get_node_or_null("CSGBox3D2")
+	if bl:
+		bl.position = Vector3(panel_cx, bl.position.y, -(d + 0.1))
+		bl.size = Vector3(panel_w, 4.0, 0.1)
+
+	var br = sf.get_node_or_null("CSGBox3D5")
+	if br:
+		br.position = Vector3(-panel_cx, br.position.y, -(d + 0.1))
+		br.size = Vector3(panel_w, 4.0, 0.1)
+
+	# Door frame and entrance marker slide back
 	var door = sf.get_node_or_null("DoorFrame")
 	if door:
 		door.position = Vector3(door.position.x, door.position.y, -(d + 0.05))
 
-	# ProductionEntrance marker follows
 	var entrance = sf.get_node_or_null("ProductionEntrance")
 	if entrance:
 		entrance.position = Vector3(entrance.position.x, entrance.position.y, -(d + 0.1))
@@ -471,28 +485,49 @@ func _apply_shop_floor_tier(tier: int) -> void:
 		pf.position = Vector3(pf.position.x, pf.position.y, -(d + 0.1))
 
 func _apply_production_floor_tier(tier: int) -> void:
-	# Expands depth (Z axis): 10 -> 16 -> 22 units deep
-	const DEPTHS = [10.0, 16.0, 22.0]
-	tier = clampi(tier, 0, DEPTHS.size() - 1)
-	var d: float = DEPTHS[tier]
-	print("[Tablet] apply_production_floor_tier %d depth=%.1f" % [tier, d])
+	# Expands both width (X) and depth (Z).
+	const SIZES = [
+		{"hw": 5.0, "depth": 10.0},
+		{"hw": 8.0, "depth": 16.0},
+		{"hw": 11.0, "depth": 22.0},
+	]
+	tier = clampi(tier, 0, SIZES.size() - 1)
+	var hw: float = SIZES[tier].hw
+	var d: float  = SIZES[tier].depth
+	print("[Tablet] apply_production_floor_tier %d hw=%.1f depth=%.1f" % [tier, hw, d])
 	var pf = _get_floor_node("ProductionFloor")
 	if pf == null:
 		return
 
+	# Back wall slides further back
 	var back = pf.get_node_or_null("CSGBox3D")
 	if back:
 		back.position = Vector3(back.position.x, back.position.y, -(d + 0.1))
 
+	# Side walls: shift X and Z, stretch depth
 	var left_wall = pf.get_node_or_null("CSGBox3D4")
 	if left_wall:
-		left_wall.position = Vector3(left_wall.position.x, left_wall.position.y, -(d / 2.0 + 0.1))
+		left_wall.position = Vector3(-hw, left_wall.position.y, -(d / 2.0 + 0.1))
 		left_wall.size = Vector3(d, 4.0, 0.1)
 
 	var right_wall = pf.get_node_or_null("CSGBox3D3")
 	if right_wall:
-		right_wall.position = Vector3(right_wall.position.x, right_wall.position.y, -(d / 2.0 + 0.1))
+		right_wall.position = Vector3(hw, right_wall.position.y, -(d / 2.0 + 0.1))
 		right_wall.size = Vector3(d, 4.0, 0.1)
+
+	# Front panels flank the ShopEntrance door (gap = 2 units centered at x=0)
+	var panel_w: float  = hw - 1.0
+	var panel_cx: float = -(hw + 1.0) / 2.0
+
+	var fl = pf.get_node_or_null("CSGBox3D2")
+	if fl:
+		fl.position = Vector3(panel_cx, fl.position.y, fl.position.z)
+		fl.size = Vector3(panel_w, 4.0, 0.1)
+
+	var fr = pf.get_node_or_null("CSGBox3D5")
+	if fr:
+		fr.position = Vector3(-panel_cx, fr.position.y, fr.position.z)
+		fr.size = Vector3(panel_w, 4.0, 0.1)
 
 func _make_label(text: String, color: Color) -> Label:
 	var lbl = Label.new()
