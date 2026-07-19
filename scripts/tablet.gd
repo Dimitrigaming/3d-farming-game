@@ -405,18 +405,83 @@ func _upgrade_row(room_name: String) -> HBoxContainer:
 func _on_upgrade_shop_floor() -> void:
 	if not GameState.upgrade_shop_floor():
 		return
-	var floor_node = get_tree().get_first_node_in_group("shop_floor")
-	if floor_node and floor_node.has_method("apply_tier"):
-		floor_node.apply_tier(GameState.shop_floor_tier)
+	_apply_shop_floor_tier(GameState.shop_floor_tier)
 	_refresh_store()
 
 func _on_upgrade_production_floor() -> void:
 	if not GameState.upgrade_production_floor():
 		return
-	var floor_node = get_tree().get_first_node_in_group("production_floor")
-	if floor_node and floor_node.has_method("apply_tier"):
-		floor_node.apply_tier(GameState.production_floor_tier)
+	_apply_production_floor_tier(GameState.production_floor_tier)
 	_refresh_store()
+
+func _get_floor_node(name: String) -> Node3D:
+	var interior = get_tree().get_first_node_in_group("interior_manager")
+	if interior == null:
+		print("[Tablet] interior_manager group not found")
+		return null
+	var node = interior.get_node_or_null(name)
+	if node == null:
+		print("[Tablet] %s not found under Interior" % name)
+	return node
+
+func _apply_shop_floor_tier(tier: int) -> void:
+	# Expands width (X axis): 10 -> 16 -> 22 units wide
+	const HALF_WIDTHS = [5.0, 8.0, 11.0]
+	tier = clampi(tier, 0, HALF_WIDTHS.size() - 1)
+	var hw: float = HALF_WIDTHS[tier]
+	print("[Tablet] apply_shop_floor_tier %d hw=%.1f" % [tier, hw])
+	var sf = _get_floor_node("ShopFloor")
+	if sf == null:
+		return
+
+	var front = sf.get_node_or_null("CSGBox3D")
+	if front:
+		front.size = Vector3(hw * 2.0, 4.0, 0.1)
+
+	var left_wall = sf.get_node_or_null("CSGBox3D4")
+	if left_wall:
+		left_wall.position = Vector3(-hw, left_wall.position.y, left_wall.position.z)
+
+	var right_wall = sf.get_node_or_null("CSGBox3D3")
+	if right_wall:
+		right_wall.position = Vector3(hw, right_wall.position.y, right_wall.position.z)
+
+	var panel_w: float = hw - 1.0
+	var panel_cx: float = -(hw + 1.0) / 2.0
+
+	var bl = sf.get_node_or_null("CSGBox3D2")
+	if bl:
+		bl.position = Vector3(panel_cx, bl.position.y, bl.position.z)
+		bl.size = Vector3(panel_w, 4.0, 0.1)
+
+	var br = sf.get_node_or_null("CSGBox3D5")
+	if br:
+		br.position = Vector3(-panel_cx, br.position.y, br.position.z)
+		br.size = Vector3(panel_w, 4.0, 0.1)
+
+func _apply_production_floor_tier(tier: int) -> void:
+	# Expands depth (Z axis): 10 -> 16 -> 22 units deep
+	const DEPTHS = [10.0, 16.0, 22.0]
+	tier = clampi(tier, 0, DEPTHS.size() - 1)
+	var d: float = DEPTHS[tier]
+	print("[Tablet] apply_production_floor_tier %d depth=%.1f" % [tier, d])
+	var pf = _get_floor_node("ProductionFloor")
+	if pf == null:
+		return
+
+	var back = pf.get_node_or_null("CSGBox3D")
+	if back:
+		back.position = Vector3(back.position.x, back.position.y, -(d + 0.1))
+
+	var left_wall = pf.get_node_or_null("CSGBox3D4")
+	if left_wall:
+		left_wall.position = Vector3(left_wall.position.x, left_wall.position.y, -(d / 2.0 + 0.1))
+		left_wall.size = Vector3(d, 4.0, 0.1)
+
+	var right_wall = pf.get_node_or_null("CSGBox3D3")
+	if right_wall:
+		right_wall.position = Vector3(right_wall.position.x, right_wall.position.y, -(d / 2.0 + 0.1))
+		right_wall.size = Vector3(d, 4.0, 0.1)
 
 func _make_label(text: String, color: Color) -> Label:
 	var lbl = Label.new()
