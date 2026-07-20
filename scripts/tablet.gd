@@ -40,6 +40,9 @@ func _ready() -> void:
 	visible = false
 	_build_ui()
 	GameState.money_changed.connect(_on_money_changed)
+	await get_tree().process_frame
+	_apply_shop_floor_tier(GameState.shop_floor_tier)
+	_apply_production_floor_tier(GameState.production_floor_tier)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("tablet"):
@@ -484,6 +487,13 @@ func _apply_shop_floor_tier(tier: int) -> void:
 	if pf:
 		pf.position = Vector3(pf.position.x, pf.position.y, -(d + 0.1))
 
+	# Resize room detection area
+	var sf_area_cs = sf.get_node_or_null("ShopFloorArea/CollisionShape3D")
+	if sf_area_cs and sf_area_cs.shape is BoxShape3D:
+		sf_area_cs.shape = sf_area_cs.shape.duplicate()
+		sf_area_cs.shape.size = Vector3(hw * 2.0, 4.0, d)
+		sf_area_cs.position = Vector3(0, 2, -(d / 2.0))
+
 func _apply_production_floor_tier(tier: int) -> void:
 	# Expands both width (X) and depth (Z).
 	const SIZES = [
@@ -529,6 +539,13 @@ func _apply_production_floor_tier(tier: int) -> void:
 	if fr:
 		fr.position = Vector3(-panel_cx, fr.position.y, fr.position.z)
 		fr.size = Vector3(panel_w, 4.0, 0.1)
+
+	# Resize room detection area
+	var pf_area_cs = pf.get_node_or_null("ProductionFloorArea/CollisionShape3D")
+	if pf_area_cs and pf_area_cs.shape is BoxShape3D:
+		pf_area_cs.shape = pf_area_cs.shape.duplicate()
+		pf_area_cs.shape.size = Vector3(hw * 2.0, 4.0, d)
+		pf_area_cs.position = Vector3(0, 2, -(d / 2.0))
 
 func _make_label(text: String, color: Color) -> Label:
 	var lbl = Label.new()

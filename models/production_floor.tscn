@@ -136,6 +136,9 @@ shader_parameter/uv_scale = Vector2(2.5, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_odwws"]
 size = Vector3(10, 4, 0.1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_prodroom"]
+size = Vector3(10, 0.1, 10)
+
 [node name="ProductionFloor" type="Node3D" unique_id=842713878]
 script = ExtResource("1_script")
 
@@ -190,3 +193,11 @@ material = SubResource("ShaderMaterial_h4qoq")
 shape = SubResource("BoxShape3D_odwws")
 
 [node name="ShopEntrance" type="Node3D" parent="." unique_id=900854381]
+
+[node name="ProductionFloorArea" type="Area3D" parent="." unique_id=200003 groups=["ProductionFloorArea"]]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProductionFloorArea" unique_id=200004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, -5)
+shape = SubResource("BoxShape3D_prodroom")

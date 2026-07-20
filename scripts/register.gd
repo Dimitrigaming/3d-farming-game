@@ -1,5 +1,8 @@
 ﻿extends Node3D
 
+enum PlacementRoom { ANYWHERE, SHOP_ONLY, PRODUCTION_ONLY }
+@export var placement_room: PlacementRoom = PlacementRoom.SHOP_ONLY
+
 const PACKING_CRATE_SCENE = preload("res://models/packing_crate.tscn")
 const OWN_SCENE = preload("res://models/register.tscn")
 const PRINT_MODEL = preload("res://models/default_model.tscn")

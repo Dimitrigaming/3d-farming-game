@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://o03boiuw8wg"]
 
-[ext_resource type="Script" uid="uid://b0lrwaebgsyb" path="res://scripts/shop_floor.gd" id="1_script"]
 [ext_resource type="Material" path="res://materials/mat_Path.tres" id="1_3it8i"]
+[ext_resource type="Script" uid="uid://b0lrwaebgsyb" path="res://scripts/shop_floor.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://bairidngy8bbi" path="res://addons/city_megakit/materials/T_RedBrick_BaseColor.png" id="2_6tfa5"]
 [ext_resource type="Texture2D" uid="uid://bjsq4ihjw4c18" path="res://addons/city_megakit/materials/T_RedBrick_Normal.png" id="3_2d6xy"]
 [ext_resource type="Texture2D" uid="uid://dl43s6c8tklbg" path="res://addons/city_megakit/materials/T_CornerDamage_Normal.png" id="4_jym1g"]
@@ -120,6 +120,9 @@ shader_parameter/uv_scale = Vector2(2.5, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_odwws"]
 size = Vector3(10, 4, 0.1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_shoproom"]
+size = Vector3(10, 0.1, 10)
+
 [node name="ShopFloor" type="Node3D" unique_id=842713878]
 script = ExtResource("1_script")
 
@@ -174,3 +177,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.05)
 
 [node name="ProductionEntrance" type="Node3D" parent="." unique_id=1115924760]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.1)
+
+[node name="ShopFloorArea" type="Area3D" parent="." unique_id=200001 groups=["ShopFloorArea"]]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShopFloorArea" unique_id=200002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, -5)
+shape = SubResource("BoxShape3D_shoproom")

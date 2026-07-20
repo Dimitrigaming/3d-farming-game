@@ -3,6 +3,21 @@
 var active: bool = false
 var grid_snap: bool = false
 
+func _get_room_at(world_pos: Vector3) -> String:
+	var space_state = get_world_3d().direct_space_state
+	var query = PhysicsPointQueryParameters3D.new()
+	query.position = Vector3(world_pos.x, 2.0, world_pos.z)
+	query.collision_mask = 8
+	query.collide_with_areas = true
+	query.collide_with_bodies = false
+	for r in space_state.intersect_point(query, 4):
+		var col = r["collider"]
+		if col.is_in_group("ShopFloorArea"):
+			return "shop"
+		if col.is_in_group("ProductionFloorArea"):
+			return "production"
+	return ""
+
 var _furniture: Node3D = null
 var _furniture_body: CollisionObject3D = null
 var _ghost: Node3D = null
@@ -191,7 +206,7 @@ func _process(_delta: float) -> void:
 		if grid_snap:
 			pos.x = round(pos.x / GRID_SIZE) * GRID_SIZE
 			pos.z = round(pos.z / GRID_SIZE) * GRID_SIZE
-		_ghost.global_position = Vector3(pos.x, pos.y + _ground_clearance, pos.z)
+		_ghost.global_position = Vector3(pos.x, pos.y + _ground_clearance - 0.1, pos.z)
 	_ghost.rotation = Vector3(0, _ghost_y_rotation, 0)
 
 	var now_blocked = _is_blocked(result)
@@ -205,6 +220,18 @@ func _is_blocked(ray_result: Dictionary) -> bool:
 		var hit = ray_result.get("collider")
 		if hit != null:
 			if hit.is_in_group("interactable") or (hit.get_parent() and hit.get_parent().is_in_group("interactable")):
+				return true
+
+	# Room restriction: placement must be inside ShopFloor or ProductionFloor
+	if _ghost != null and _furniture != null:
+		var room = _get_room_at(_ghost.global_position)
+		if room == "":
+			return true
+		if "placement_room" in _furniture:
+			var pr: int = _furniture.placement_room
+			if pr == 1 and room != "shop":
+				return true
+			if pr == 2 and room != "production":
 				return true
 
 	# Block if the ghost shape overlaps any interactable
