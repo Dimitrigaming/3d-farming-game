@@ -57,16 +57,16 @@ input_jump = "jump"
 input_freefly = "noclip"
 
 [node name="Printer" parent="." unique_id=76972310 instance=ExtResource("3_prnt")]
-transform = Transform3D(1.6391277e-07, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 1.6391277e-07, -22.959997, 0.5, -57.06)
+transform = Transform3D(1.6391277e-07, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 1.6391277e-07, -19.159998, 0.5, -57.06)
 
 [node name="TrashCan" parent="." unique_id=719366373 instance=ExtResource("5_trash")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5, 0.6, -62.600002)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1, 0.6, -59.7)
 
 [node name="SmallProductShelf" parent="." unique_id=986751326 instance=ExtResource("7_sps")]
-transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, -17.760004, 0.5, -49.67999)
+transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, -17.760004, 0.5, -53.97999)
 
 [node name="Register" parent="." unique_id=738022750 instance=ExtResource("8_reg")]
-transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -16.46, 0.5, -61.37999)
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -16.46, 0.5, -59.07999)
 
 [node name="NPCSpawner" type="Marker3D" parent="." unique_id=1511927017]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.200001, 0.9, -71.3)

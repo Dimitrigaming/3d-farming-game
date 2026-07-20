@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c7iyy5ubkxg15"]
+
+[ext_resource type="Material" uid="uid://doawqpv8r13bh" path="res://materials/mat_metal.tres" id="1_kgu6s"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3xd07"]
+size = Vector3(2, 1.2, 0.2)
+
+[node name="DoorFrame" type="Node3D" unique_id=611361286]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1269600029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95, 2, -0.099999994)
+size = Vector3(0.1, 4, 0.2)
+material = ExtResource("1_kgu6s")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=406495956]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 2, -0.099999994)
+size = Vector3(0.1, 4, 0.2)
+material = ExtResource("1_kgu6s")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1255341578]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.940697e-08, 3.4, -0.099999994)
+size = Vector3(2, 1.2, 0.2)
+material = ExtResource("1_kgu6s")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CSGBox3D3" unique_id=727122276]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D3/StaticBody3D" unique_id=1365073286]
+shape = SubResource("BoxShape3D_3xd07")

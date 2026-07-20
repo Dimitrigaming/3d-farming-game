@@ -1,4 +1,4 @@
-﻿extends Node3D
+extends Node3D
 
 const NPC_SCENE = preload("res://models/npc.tscn")
 
@@ -32,7 +32,7 @@ func _spawn() -> void:
 		get_node_or_null("/root/GameLogger").warning("NpcSpawner", "no destination found  skipping spawn")
 		return
 	var npc = NPC_SCENE.instantiate()
-	get_node_or_null("/root/GameLogger").debug("NpcSpawner", "spawning NPC  %s" % destination.name)
+	get_node_or_null("/root/GameLogger").debug("NpcSpawner", "spawning NPC %s" % destination.name)
 	get_tree().current_scene.add_child(npc)
 	var map = get_world_3d().get_navigation_map()
 	var snapped = NavigationServer3D.map_get_closest_point(map, global_position)

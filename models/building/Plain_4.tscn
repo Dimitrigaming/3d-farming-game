@@ -1,7 +1,27 @@
 [gd_scene format=4 uid="uid://cust02sgwuwhk"]
 
 [ext_resource type="Material" uid="uid://dswa50plkjgyd" path="res://addons/city_megakit/materials/MI_WornBrick.tres" id="1_fsbb3"]
-[ext_resource type="Material" uid="uid://budxptsfqe8j8" path="res://addons/city_megakit/materials/MI_InteriorWall.tres" id="2_vf14t"]
+[ext_resource type="Shader" uid="uid://cvenvp6d858qh" path="res://addons/city_megakit/materials/M_BaseMaterial.gdshader" id="2_ng5x6"]
+[ext_resource type="Texture2D" uid="uid://bairidngy8bbi" path="res://addons/city_megakit/materials/T_RedBrick_BaseColor.png" id="3_git5n"]
+[ext_resource type="Texture2D" uid="uid://bjsq4ihjw4c18" path="res://addons/city_megakit/materials/T_RedBrick_Normal.png" id="4_j4exl"]
+[ext_resource type="Texture2D" uid="uid://dl43s6c8tklbg" path="res://addons/city_megakit/materials/T_CornerDamage_Normal.png" id="5_lfbik"]
+[ext_resource type="Texture2D" uid="uid://qha476tq8jes" path="res://addons/city_megakit/materials/T_RedBrick_ORM.png" id="6_x78fo"]
+[ext_resource type="Texture2D" uid="uid://dbxevwd2cw8gu" path="res://addons/city_megakit/materials/T_Noise_Drips.png" id="7_6at4f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_adpi4"]
+render_priority = 0
+shader = ExtResource("2_ng5x6")
+shader_parameter/albedo = ExtResource("3_git5n")
+shader_parameter/base_normal = ExtResource("4_j4exl")
+shader_parameter/detail_normal = ExtResource("5_lfbik")
+shader_parameter/orm = ExtResource("6_x78fo")
+shader_parameter/wear_texture = ExtResource("7_6at4f")
+shader_parameter/color_tint = Color(1, 1, 1, 1)
+shader_parameter/wear_color = Color(0.292, 0.292, 0.292, 1)
+shader_parameter/use_wear_color = false
+shader_parameter/use_detail_normal = false
+shader_parameter/detail_normal_intensity = 1.0
+shader_parameter/uv_scale = Vector2(1, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_nuilg"]
 _surfaces = [{
@@ -47,7 +67,7 @@ _surfaces = [{
 "format": 34896613439,
 "index_count": 12,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
-"material": ExtResource("2_vf14t"),
+"material": SubResource("ShaderMaterial_adpi4"),
 "name": "mat_Interior",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
