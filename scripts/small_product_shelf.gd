@@ -59,7 +59,7 @@ func pack_away(player_inventory) -> void:
 func get_click_hint(player_inventory) -> String:
 	var held = player_inventory.held_item
 	if held != null and held.has_method("remove_item") and not held.is_empty():
-		if _first_available_zone(held.item_type) != null:
+		if _aimed_zone(held.item_type) != null:
 			return "Stock Shelf"
 	return ""
 
@@ -82,12 +82,14 @@ func retrieve_print(player_inv) -> void:
 	var zone = _nearest_occupied_zone()
 	if zone == null:
 		return
+	var held = player_inv.held_item
+	if held != null and held.has_method("is_full") and held.is_full():
+		return
 	var item_type = zone.stored_print_type
 	var print_node: Node3D = zone.stored_print_nodes.pop_back()
 	if zone.stored_print_nodes.is_empty():
 		zone.stored_print_type = ""
 
-	var held = player_inv.held_item
 	if held == null or not held.has_method("add_item"):
 		# Spawn a box via collect_item; animate from shelf position
 		var from_pos = print_node.global_position if print_node else global_position
@@ -108,8 +110,13 @@ func retrieve_print(player_inv) -> void:
 		var tween = get_tree().create_tween()
 		tween.tween_property(print_node, "global_position", target, 0.3).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
 		tween.tween_callback(func():
-			print_node.queue_free()
-			held.add_item(item_type)
+			if held.add_item(item_type):
+				print_node.queue_free()
+			else:
+				zone.stored_print_nodes.append(print_node)
+				if zone.stored_print_type == "":
+					zone.stored_print_type = item_type
+				print_node.global_position = _slot_world_pos(zone, zone.stored_print_nodes.size() - 1)
 		)
 	else:
 		held.add_item(item_type)
@@ -133,7 +140,7 @@ func add_print(item_type: String, existing_model: Node3D = null) -> bool:
 	return true
 
 func _send_box_item_to_shelf(box: Node3D) -> void:
-	var zone = _first_available_zone(box.item_type)
+	var zone = _aimed_zone(box.item_type)
 	if zone == null:
 		return
 	var item_type = box.remove_item()
@@ -154,6 +161,24 @@ func _slot_world_pos(zone, index: int) -> Vector3:
 	var lz = (row - 0.5) * (zone.size.z / 2.0)
 	var ly = -zone.size.y / 2.0 + PRINT_HALF_HEIGHT
 	return zone.to_global(Vector3(lx, ly, lz))
+
+func _aimed_zone(item_type: String = "") -> Node:
+	# Find the closest zone to the aim point regardless of capacity
+	var best = null
+	var best_dist = INF
+	for child in get_children():
+		if not child.has_method("is_occupied"):
+			continue
+		var dist = child.global_position.distance_to(_aim_point)
+		if dist < best_dist:
+			best_dist = dist
+			best = child
+	# Only return it if that specific zone has room and accepts this item type
+	if best == null or best.is_occupied():
+		return null
+	if best.stored_print_type != "" and best.stored_print_type != item_type:
+		return null
+	return best
 
 func _first_available_zone(item_type: String = "") -> Node:
 	for child in get_children():
@@ -200,12 +225,15 @@ func _any_occupied_zone() -> Node:
 
 func _nearest_occupied_zone() -> Node:
 	var best = null
-	var best_y = INF
+	var best_dist = INF
 	for child in get_children():
-		if child.has_method("has_prints") and child.has_prints():
-			var y_dist = abs(child.global_position.y - _aim_point.y)
-			if y_dist < best_y:
-				best_y = y_dist
-				best = child
+		if not child.has_method("has_prints"):
+			continue
+		var dist = child.global_position.distance_to(_aim_point)
+		if dist < best_dist:
+			best_dist = dist
+			best = child
+	if best == null or not best.has_prints():
+		return null
 	return best
 
