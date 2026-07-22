@@ -1,8 +1,11 @@
 [gd_scene format=4 uid="uid://paat5xxjn3qj"]
 
+[ext_resource type="Texture2D" uid="uid://ey5qrcqwfepx" path="res://addons/Toon/Toon City/Models/Update/Textures/Brownstone_2A_D.png" id="1_m20c8"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1fcny"]
 resource_name = "Brownstone_2A_D"
 vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_m20c8")
 emission_enabled = true
 emission = Color(0.9063318, 0.9063318, 0.9063318, 1)
 emission_energy_multiplier = 0.0
