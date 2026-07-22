@@ -22,7 +22,8 @@ enum State {
 	GOING_TO_SHELF,
 	GOING_TO_REGISTER,
 	WAITING,
-	LEAVING
+	LEAVING,
+	DISAPPOINTED
 }
 
 const SPEED: float = 3.0
@@ -35,6 +36,8 @@ var store_interest: float = 0.0
 var _nav: NavigationAgent3D
 var _anim_player: AnimationPlayer = null
 var _current_anim: String = ""
+var _walk_keyword: String = "walking"
+var _paid: bool = false
 var _street_destination: Vector3 = Vector3.ZERO
 var _nav_frames: int = 0
 var _shelf: Node3D = null
@@ -186,8 +189,12 @@ func _physics_process(delta: float) -> void:
 			else:
 				velocity.x = 0
 				velocity.z = 0
+				_play_anim("idle")
 				if not _handed_off and _register != null and _register.is_staffed() and _register.is_front_of_queue(self):
 					register_is_staffed()
+		State.DISAPPOINTED:
+			velocity.x = 0
+			velocity.z = 0
 		State.LEAVING:
 			if _nav.is_navigation_finished():
 				if not _exited_store:
@@ -239,7 +246,7 @@ func _move_along_nav(delta: float) -> void:
 		velocity.x = dir.x * SPEED
 		velocity.z = dir.z * SPEED
 		rotation.y = lerp_angle(rotation.y, atan2(dir.x, dir.z), delta * 8.0)
-		_play_anim("walking")
+		_play_anim(_walk_keyword)
 	else:
 		velocity.x = 0
 		velocity.z = 0
@@ -252,6 +259,7 @@ func try_enter_store(entry_pos: Vector3) -> void:
 	if store_interest >= _get_store_attractiveness():
 		if _find_shelf_with_prints() == null:
 			_log("passed store -- no products on shelves")
+			_disappoint_then_leave()
 			return
 		var in_store = get_tree().get_nodes_in_group("npc").filter(func(n): return n.state != State.WALKING_PATH and n.state != State.CHOOSING_NEXT and n.state != State.IDLE and n != self)
 		if in_store.size() >= 6:
@@ -293,7 +301,7 @@ func _on_arrive_at_shelf() -> void:
 	if _items.is_empty():
 		if _find_shelf_with_prints() == null:
 			_log("shelf empty and no stock anywhere -- leaving")
-			_leave_store()
+			_disappoint_then_leave()
 		else:
 			_idle_timer = -IDLE_RECHECK_SHELF_EMPTY
 			_set_nav_target(global_position + Vector3(randf_range(-3.0, 3.0), 0, randf_range(-3.0, 3.0)))
@@ -309,6 +317,15 @@ func _on_arrive_at_shelf() -> void:
 	_set_nav_target(_queue_target)
 	state = State.GOING_TO_REGISTER
 
+func _disappoint_then_leave() -> void:
+	state = State.DISAPPOINTED
+	velocity = Vector3.ZERO
+	_play_anim("disappointed")
+	await get_tree().create_timer(2.5).timeout
+	if not is_instance_valid(self):
+		return
+	_leave_store()
+
 func _leave_store() -> void:
 	var exit_point = get_node_or_null("/root/Map/City/Player_Building/StoreExitPoint")
 	var dest = exit_point.global_position if exit_point else _street_destination
@@ -319,6 +336,8 @@ func checkout_complete() -> void:
 	if _register and is_instance_valid(_register):
 		_register.leave_queue(self)
 	_log("checkout done -- heading to exit")
+	_paid = true
+	_walk_keyword = "shopping"
 	_leave_store()
 
 func register_is_staffed() -> void:
