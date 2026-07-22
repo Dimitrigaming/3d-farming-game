@@ -1,0 +1,584 @@
+[gd_scene format=4 uid="uid://b7waij0urmpen"]
+
+[ext_resource type="PackedScene" uid="uid://csjmbc5vcyd00" path="res://addons/Toon/Toon City/Models/Building_1A.tscn" id="a1"]
+[ext_resource type="PackedScene" uid="uid://dp73upe875bg3" path="res://addons/Toon/Toon City/Models/Building_2A.tscn" id="a2"]
+[ext_resource type="PackedScene" uid="uid://dka41ke77lp7c" path="res://addons/Toon/Toon City/Models/Building_3A.tscn" id="a3"]
+[ext_resource type="PackedScene" uid="uid://cmjiwpo80l005" path="res://addons/Toon/Toon City/Models/Building_4A.tscn" id="a4"]
+[ext_resource type="PackedScene" uid="uid://bfqk47s7ari0y" path="res://addons/Toon/Toon City/Models/Building_5A.tscn" id="a5"]
+[ext_resource type="PackedScene" uid="uid://bwnhx8sf6x7d4" path="res://addons/Toon/Toon City/Models/Building_6A.tscn" id="a6"]
+[ext_resource type="PackedScene" uid="uid://cto2mwe6mk6d8" path="res://addons/Toon/Toon City/Models/Building_7A.tscn" id="a7"]
+[ext_resource type="PackedScene" uid="uid://ccqiqgfbabdv6" path="res://addons/Toon/Toon City/Models/Air_Conditioner_1A.tscn" id="a8"]
+[ext_resource type="PackedScene" uid="uid://cn2lu7qy0ab1" path="res://addons/Toon/Toon City/Models/Air_Conditioner_2A.tscn" id="a9"]
+[ext_resource type="PackedScene" uid="uid://bg7hqpqug78sx" path="res://addons/Toon/Toon City/Models/Air_Vent_1A.tscn" id="a10"]
+[ext_resource type="PackedScene" uid="uid://dhqxsb51upvd8" path="res://addons/Toon/Toon City/Models/Air_Vent_2A.tscn" id="a11"]
+[ext_resource type="PackedScene" uid="uid://gluulv3rxp2t" path="res://addons/Toon/Toon City/Models/Antenna_1A.tscn" id="a12"]
+[ext_resource type="PackedScene" uid="uid://clrcmm1tf4twh" path="res://addons/Toon/Toon City/Models/Antenna_2A.tscn" id="a13"]
+[ext_resource type="PackedScene" uid="uid://d1vhssyw7cnf4" path="res://addons/Toon/Toon City/Models/Water_Tank_1A.tscn" id="a14"]
+[ext_resource type="PackedScene" uid="uid://bu6i505vyljaw" path="res://addons/Toon/Toon City/Models/Water_Tank_1B.tscn" id="a15"]
+[ext_resource type="PackedScene" uid="uid://dvrjvwaxjvefb" path="res://addons/Toon/Toon City/Models/Solar_Panels_1A.tscn" id="a16"]
+[ext_resource type="PackedScene" uid="uid://cu5umpg4xs05f" path="res://addons/Toon/Toon City/Models/Skylight_1A.tscn" id="a17"]
+[ext_resource type="PackedScene" uid="uid://ks1nu14uth32" path="res://addons/Toon/Toon City/Models/Skylight_1B.tscn" id="a18"]
+[ext_resource type="PackedScene" uid="uid://dqf56c13xk7u7" path="res://addons/Toon/Toon City/Models/Industrial_Ventilation_1A.tscn" id="a19"]
+[ext_resource type="PackedScene" uid="uid://bk24q4x7nikxr" path="res://addons/Toon/Toon City/Models/Building_8A.tscn" id="a20"]
+[ext_resource type="PackedScene" uid="uid://v7n10j0yyxcf" path="res://addons/Toon/Toon City/Models/Building_9A.tscn" id="a21"]
+[ext_resource type="PackedScene" uid="uid://chqudtcxr7hq" path="res://addons/Toon/Toon City/Models/Building_10A.tscn" id="a22"]
+[ext_resource type="PackedScene" uid="uid://bhstop5h5jmrl" path="res://addons/Toon/Toon City/Models/Building_11A.tscn" id="a23"]
+[ext_resource type="PackedScene" uid="uid://co6slk14drcvm" path="res://addons/Toon/Toon City/Models/Building_12A.tscn" id="a24"]
+[ext_resource type="PackedScene" uid="uid://bwjkrb4utmgqw" path="res://addons/Toon/Toon City/Models/Building_13A.tscn" id="a25"]
+[ext_resource type="PackedScene" uid="uid://d3pvi2naj0qdf" path="res://addons/Toon/Toon City/Models/Building_14A.tscn" id="a26"]
+[ext_resource type="PackedScene" uid="uid://chsnpyag8gyr6" path="res://addons/Toon/Toon City/Models/Emergency_Staircase_1A.tscn" id="a27"]
+[ext_resource type="PackedScene" uid="uid://doth007rylepp" path="res://addons/Toon/Toon City/Models/Emergency_Stairs_1A.tscn" id="a28"]
+[ext_resource type="PackedScene" uid="uid://bdr4ivxl1sg5q" path="res://addons/Toon/Toon City/Models/Scaffolding_1A.tscn" id="a29"]
+[ext_resource type="PackedScene" uid="uid://pke8oihliy8i" path="res://addons/Toon/Toon City/Models/Window_Washer_1A.tscn" id="a30"]
+[ext_resource type="PackedScene" uid="uid://dexqatjxtjgas" path="res://addons/Toon/Toon City/Models/Skyscraper_1A.tscn" id="a31"]
+[ext_resource type="PackedScene" uid="uid://uf2gi5j1whur" path="res://addons/Toon/Toon City/Models/Skyscraper_1B.tscn" id="a32"]
+[ext_resource type="PackedScene" uid="uid://dck2xaf1w6fxt" path="res://addons/Toon/Toon City/Models/Skyscraper_2A.tscn" id="a33"]
+[ext_resource type="PackedScene" uid="uid://buf4nfopx4r00" path="res://addons/Toon/Toon City/Models/Skyscraper_2B.tscn" id="a34"]
+[ext_resource type="PackedScene" uid="uid://clg6uxypgnxrv" path="res://addons/Toon/Toon City/Models/Building_20A.tscn" id="a35"]
+[ext_resource type="PackedScene" uid="uid://bawlux85u225r" path="res://addons/Toon/Toon City/Models/Building_21A.tscn" id="a36"]
+[ext_resource type="PackedScene" uid="uid://bkr4yyqm1lyok" path="res://addons/Toon/Toon City/Models/Helipad_1A.tscn" id="a37"]
+[ext_resource type="PackedScene" uid="uid://b6dl86fndcxjj" path="res://addons/Toon/Toon City/Models/Helipad_1B.tscn" id="a38"]
+[ext_resource type="PackedScene" uid="uid://cfp16pggbpwdd" path="res://addons/Toon/Toon City/Models/Cloud_1A.tscn" id="a39"]
+[ext_resource type="PackedScene" uid="uid://cb0tr0egq3r4v" path="res://addons/Toon/Toon City/Models/Cloud_1B.tscn" id="a40"]
+[ext_resource type="PackedScene" uid="uid://b55akdwkubhvx" path="res://addons/Toon/Toon City/Models/News_Helicopter_1A.tscn" id="a41"]
+[ext_resource type="PackedScene" uid="uid://vxmfmqyrydsj" path="res://addons/Toon/Toon City/Models/Service_Helicopter_1A.tscn" id="a42"]
+[ext_resource type="PackedScene" uid="uid://230x051xxdpt" path="res://addons/Toon/Toon City/Models/Car_2D.tscn" id="a43"]
+[ext_resource type="PackedScene" uid="uid://clr1evs2hnc53" path="res://addons/Toon/Toon City/Models/Car_3B.tscn" id="a44"]
+[ext_resource type="PackedScene" uid="uid://blphqray16wy8" path="res://addons/Toon/Toon City/Models/Car_6D.tscn" id="a45"]
+[ext_resource type="PackedScene" uid="uid://wy6wagsov7tl" path="res://addons/Toon/Toon City/Models/Car_7D.tscn" id="a46"]
+[ext_resource type="PackedScene" uid="uid://7telxfxym2wj" path="res://addons/Toon/Toon City/Models/Car_7F.tscn" id="a47"]
+[ext_resource type="PackedScene" uid="uid://c7aldl26tyca8" path="res://addons/Toon/Toon City/Models/Car_8D.tscn" id="a48"]
+[ext_resource type="PackedScene" uid="uid://cnojn7vi1j6j8" path="res://addons/Toon/Toon City/Models/Car_9A.tscn" id="a49"]
+[ext_resource type="PackedScene" uid="uid://buwp7m7st6vv2" path="res://addons/Toon/Toon City/Models/Car_10C.tscn" id="a50"]
+[ext_resource type="PackedScene" uid="uid://m2moximxjvwi" path="res://addons/Toon/Toon City/Models/Car_11A.tscn" id="a51"]
+[ext_resource type="PackedScene" uid="uid://60dalbqufoev" path="res://addons/Toon/Toon City/Models/Car_14C.tscn" id="a52"]
+[ext_resource type="PackedScene" uid="uid://cl5hn6uv100an" path="res://addons/Toon/Toon City/Models/Car_16A.tscn" id="a53"]
+[ext_resource type="PackedScene" uid="uid://c574ugicgqgsa" path="res://addons/Toon/Toon City/Models/Car_17A.tscn" id="a54"]
+[ext_resource type="PackedScene" uid="uid://icuqcrtcfnlm" path="res://addons/Toon/Toon City/Models/Tree_1A.tscn" id="a55"]
+[ext_resource type="PackedScene" uid="uid://clhlx7t4fs2t5" path="res://addons/Toon/Toon City/Models/Tree_1C.tscn" id="a56"]
+[ext_resource type="PackedScene" uid="uid://2wupgsursnad" path="res://addons/Toon/Toon City/Models/Tree_1E.tscn" id="a57"]
+[ext_resource type="PackedScene" uid="uid://djalv33tm7vdl" path="res://addons/Toon/Toon City/Models/Tree_2A.tscn" id="a58"]
+[ext_resource type="PackedScene" uid="uid://ria0207fsg2o" path="res://addons/Toon/Toon City/Models/Tree_2C.tscn" id="a59"]
+[ext_resource type="PackedScene" uid="uid://cm8e33mvlj7ye" path="res://addons/Toon/Toon City/Models/Tree_2E.tscn" id="a60"]
+[ext_resource type="PackedScene" uid="uid://cowkyqtriq1mi" path="res://addons/Toon/Toon City/Models/Tree_3A.tscn" id="a61"]
+[ext_resource type="PackedScene" uid="uid://x5ep2athbynn" path="res://addons/Toon/Toon City/Models/Tree_3B.tscn" id="a62"]
+[ext_resource type="PackedScene" uid="uid://bdifqk3xjwfnh" path="res://addons/Toon/Toon City/Models/Tree_4A.tscn" id="a63"]
+[ext_resource type="PackedScene" uid="uid://dydorc6302ngm" path="res://addons/Toon/Toon City/Models/Tree_4B.tscn" id="a64"]
+[ext_resource type="PackedScene" uid="uid://dh7ydbboo6ixr" path="res://addons/Toon/Toon City/Models/Bush_1A.tscn" id="a65"]
+[ext_resource type="PackedScene" uid="uid://lgonmuj520k7" path="res://addons/Toon/Toon City/Models/Bush_2A.tscn" id="a66"]
+[ext_resource type="PackedScene" uid="uid://cp6wvyc1u52oa" path="res://addons/Toon/Toon City/Models/Bush_3A.tscn" id="a67"]
+[ext_resource type="PackedScene" uid="uid://m78rtjbgsa48" path="res://addons/Toon/Toon City/Models/Flower_1A.tscn" id="a68"]
+[ext_resource type="PackedScene" uid="uid://4gxdtitjlhe6" path="res://addons/Toon/Toon City/Models/Flower_2A.tscn" id="a69"]
+[ext_resource type="PackedScene" uid="uid://b3qug1081se43" path="res://addons/Toon/Toon City/Models/Grass_Patch_1A.tscn" id="a70"]
+[ext_resource type="PackedScene" uid="uid://c2nkydx3b7xrw" path="res://addons/Toon/Toon City/Models/Rock_Cluster_2A.tscn" id="a71"]
+[ext_resource type="PackedScene" uid="uid://cs2ot1irlp1tk" path="res://addons/Toon/Toon City/Models/Rock_Cluster_2B.tscn" id="a72"]
+[ext_resource type="PackedScene" uid="uid://nmvdd3x2bwh5" path="res://addons/Toon/Toon City/Models/Billboard_1A.tscn" id="a73"]
+[ext_resource type="PackedScene" uid="uid://bweojw3n6midj" path="res://addons/Toon/Toon City/Models/Billboard_1B.tscn" id="a74"]
+[ext_resource type="PackedScene" uid="uid://r0g3c8byfcgx" path="res://addons/Toon/Toon City/Models/Billboard_2A.tscn" id="a75"]
+[ext_resource type="PackedScene" uid="uid://dp07qde7y03nc" path="res://addons/Toon/Toon City/Models/Billboard_3A.tscn" id="a76"]
+[ext_resource type="PackedScene" uid="uid://csjqaav31tagu" path="res://addons/Toon/Toon City/Models/Billboard_3B.tscn" id="a77"]
+[ext_resource type="PackedScene" uid="uid://cniiwrkeax036" path="res://addons/Toon/Toon City/Models/Billboard_5A.tscn" id="a78"]
+[ext_resource type="PackedScene" uid="uid://b2la8tq4bd8cx" path="res://addons/Toon/Toon City/Models/Road_1A.tscn" id="a79"]
+[ext_resource type="PackedScene" uid="uid://fnjakk0i0uo5" path="res://addons/Toon/Toon City/Models/Road_1B.tscn" id="a80"]
+[ext_resource type="PackedScene" uid="uid://cwgbmdbir4nq0" path="res://addons/Toon/Toon City/Models/Road_1C.tscn" id="a81"]
+[ext_resource type="PackedScene" uid="uid://ct3cm3j561wht" path="res://addons/Toon/Toon City/Models/Road_2A.tscn" id="a82"]
+[ext_resource type="PackedScene" uid="uid://yj7mc7a0w2ii" path="res://addons/Toon/Toon City/Models/Streetlight_1A.tscn" id="a83"]
+[ext_resource type="PackedScene" uid="uid://bqv1womjaob4h" path="res://addons/Toon/Toon City/Models/Streetlight_2A.tscn" id="a84"]
+[ext_resource type="PackedScene" uid="uid://c1qvuerjb63e5" path="res://addons/Toon/Toon City/Models/Streetlight_3A.tscn" id="a85"]
+[ext_resource type="PackedScene" uid="uid://bsjuy7it7ql3g" path="res://addons/Toon/Toon City/Models/Highway_Streetlight_1A.tscn" id="a86"]
+[ext_resource type="PackedScene" uid="uid://1mf5cl4aywad" path="res://addons/Toon/Toon City/Models/Streetsign_1A.tscn" id="a87"]
+[ext_resource type="PackedScene" uid="uid://cdmhaotq1tn1g" path="res://addons/Toon/Toon City/Models/Streetsign_2A.tscn" id="a88"]
+[ext_resource type="PackedScene" uid="uid://pt1oqq0cy2sv" path="res://addons/Toon/Toon City/Models/Highway_Streetsign_1A.tscn" id="a89"]
+[ext_resource type="PackedScene" uid="uid://kyy8r0bfak0w" path="res://addons/Toon/Toon City/Models/Bench_1A.tscn" id="a90"]
+[ext_resource type="PackedScene" uid="uid://k1pk644f6ixq" path="res://addons/Toon/Toon City/Models/Bench_2A.tscn" id="a91"]
+[ext_resource type="PackedScene" uid="uid://bc1uhphsyxw5b" path="res://addons/Toon/Toon City/Models/Mailbox_1A.tscn" id="a92"]
+[ext_resource type="PackedScene" uid="uid://djoexs7nh72tu" path="res://addons/Toon/Toon City/Models/Mailbox_2A.tscn" id="a93"]
+[ext_resource type="PackedScene" uid="uid://bsjt1if2f3a6g" path="res://addons/Toon/Toon City/Models/Hydrant_1A.tscn" id="a94"]
+[ext_resource type="PackedScene" uid="uid://c5e2us55wniln" path="res://addons/Toon/Toon City/Models/Parking_Meter_1A.tscn" id="a95"]
+[ext_resource type="PackedScene" uid="uid://d14gk4ui0p6a3" path="res://addons/Toon/Toon City/Models/Traffic_Cone_1A.tscn" id="a96"]
+[ext_resource type="PackedScene" uid="uid://ba57tqub1u2q" path="res://addons/Toon/Toon City/Models/Traffic_Cone_2A.tscn" id="a97"]
+[ext_resource type="PackedScene" uid="uid://budjv4d52j15m" path="res://addons/Toon/Toon City/Models/Manhole_1A.tscn" id="a98"]
+[ext_resource type="PackedScene" uid="uid://dnuvrhgsld8gc" path="res://addons/Toon/Toon City/Models/Toll_Booth_1A.tscn" id="a99"]
+[ext_resource type="PackedScene" uid="uid://64326yk106gg" path="res://addons/Toon/Toon City/Models/Barrel_1A.tscn" id="a100"]
+[ext_resource type="PackedScene" uid="uid://dl7q78xa0vvfr" path="res://addons/Toon/Toon City/Models/Barrel_1B.tscn" id="a101"]
+[ext_resource type="PackedScene" uid="uid://cxtricfcdhn85" path="res://addons/Toon/Toon City/Models/Barrel_1C.tscn" id="a102"]
+[ext_resource type="PackedScene" uid="uid://5s5v6dy52bhf" path="res://addons/Toon/Toon City/Models/Barrel_2A.tscn" id="a103"]
+[ext_resource type="PackedScene" uid="uid://drhudjsm8vtkw" path="res://addons/Toon/Toon City/Models/Paper_Pack_1A.tscn" id="a104"]
+[ext_resource type="PackedScene" uid="uid://mqrn1f00vya1" path="res://addons/Toon/Toon City/Models/Paper_Pack_2A.tscn" id="a105"]
+[ext_resource type="PackedScene" uid="uid://cvu5umx7a415q" path="res://addons/Toon/Toon City/Models/Wooden_Box_1A.tscn" id="a106"]
+[ext_resource type="PackedScene" uid="uid://dtwxyc35kui7l" path="res://addons/Toon/Toon City/Models/Wooden_Pallet_1A.tscn" id="a107"]
+[ext_resource type="PackedScene" uid="uid://bg46g1mfnpmkr" path="res://addons/Toon/Toon City/Models/Trash_Bag_1A.tscn" id="a108"]
+[ext_resource type="PackedScene" uid="uid://rn1p12tcn8fa" path="res://addons/Toon/Toon City/Models/Trash_Bag_2A.tscn" id="a109"]
+[ext_resource type="PackedScene" uid="uid://iobf3btaf8ns" path="res://addons/Toon/Toon City/Models/Trash_Can_1A.tscn" id="a110"]
+[ext_resource type="PackedScene" uid="uid://j27wvjv80kki" path="res://addons/Toon/Toon City/Models/Trash_Can_1B.tscn" id="a111"]
+[ext_resource type="PackedScene" uid="uid://cbqr8jifdf4co" path="res://addons/Toon/Toon City/Models/Trash_Container_1A.tscn" id="a112"]
+[ext_resource type="PackedScene" uid="uid://c12ehubcn61bj" path="res://addons/Toon/Toon City/Models/Power_Box_1A.tscn" id="a113"]
+[ext_resource type="PackedScene" uid="uid://qnh6y7iiadw0" path="res://addons/Toon/Toon City/Models/Power_Box_1B.tscn" id="a114"]
+[ext_resource type="PackedScene" uid="uid://dmeipv8wyxsrr" path="res://addons/Toon/Toon City/Models/Plant_Pot_1A.tscn" id="a115"]
+[ext_resource type="PackedScene" uid="uid://b0e1el8tl0e28" path="res://addons/Toon/Toon City/Models/Plant_Pot_2A.tscn" id="a116"]
+[ext_resource type="PackedScene" uid="uid://65x1sqby7p5f" path="res://addons/Toon/Toon City/Models/Table_1A.tscn" id="a117"]
+[ext_resource type="PackedScene" uid="uid://jvjchaf4sqve" path="res://addons/Toon/Toon City/Models/Chair_1A.tscn" id="a118"]
+[ext_resource type="PackedScene" uid="uid://42vrqe38m0lt" path="res://addons/Toon/Toon City/Models/Umbrella_1A.tscn" id="a119"]
+[ext_resource type="PackedScene" uid="uid://cyydynrgtuutk" path="res://addons/Toon/Toon City/Models/Umbrella_2A.tscn" id="a120"]
+[ext_resource type="PackedScene" uid="uid://dapeuuslf6v1x" path="res://addons/Toon/Toon City/Models/Light_Projector_1A.tscn" id="a121"]
+[ext_resource type="PackedScene" uid="uid://bpnlfjut7khty" path="res://addons/Toon/Toon City/Models/Pipe_1A.tscn" id="a122"]
+[ext_resource type="PackedScene" uid="uid://d0o2u8ro68k1e" path="res://addons/Toon/Toon City/Models/Pipe_1B.tscn" id="a123"]
+[ext_resource type="PackedScene" uid="uid://wy2kaf21yon4" path="res://addons/Toon/Toon City/Models/Pipe_2A.tscn" id="a124"]
+[ext_resource type="PackedScene" uid="uid://ben8na732il2s" path="res://addons/Toon/Toon City/Models/Pipe_3A.tscn" id="a125"]
+[ext_resource type="PackedScene" uid="uid://clquhfuxqxbow" path="res://addons/Toon/Toon City/Models/Pipe_Support_1A.tscn" id="a126"]
+[ext_resource type="PackedScene" uid="uid://b5ppmjtxxgw0a" path="res://addons/Toon/Toon City/Models/Cable_Pole_1A.tscn" id="a127"]
+[ext_resource type="PackedScene" uid="uid://dnhuldh34t36f" path="res://addons/Toon/Toon City/Models/Cable_Pole_1B.tscn" id="a128"]
+[ext_resource type="PackedScene" uid="uid://cw2cml0i8igr1" path="res://addons/Toon/Toon City/Models/Cable_1A.tscn" id="a129"]
+[ext_resource type="PackedScene" uid="uid://dj8sykyyq1kvf" path="res://addons/Toon/Toon City/Models/Concrete_Fence_1A.tscn" id="a130"]
+[ext_resource type="PackedScene" uid="uid://d0dy8nw661j47" path="res://addons/Toon/Toon City/Models/Concrete_Fence_1B.tscn" id="a131"]
+[ext_resource type="PackedScene" uid="uid://cdirn0m6ac854" path="res://addons/Toon/Toon City/Models/Concrete_Barrier_1A.tscn" id="a132"]
+[ext_resource type="PackedScene" uid="uid://c3jswrlsp4iif" path="res://addons/Toon/Toon City/Models/Concrete_Barrier_2A.tscn" id="a133"]
+[ext_resource type="PackedScene" uid="uid://ebohpqdxgm7y" path="res://addons/Toon/Toon City/Models/Concrete_Pole_1A.tscn" id="a134"]
+[ext_resource type="PackedScene" uid="uid://rweuudxmoiuu" path="res://addons/Toon/Toon City/Models/Safety_Net_1A.tscn" id="a135"]
+[ext_resource type="PackedScene" uid="uid://bv4ukpdtuasdm" path="res://addons/Toon/Toon City/Models/Highway_Fence_1A.tscn" id="a136"]
+[ext_resource type="PackedScene" uid="uid://d0bswo7mjjglb" path="res://addons/Toon/Toon City/Models/Highway_Barrier_1A.tscn" id="a137"]
+[ext_resource type="PackedScene" uid="uid://rck6kb8j8yrs" path="res://addons/Toon/Toon City/Models/Pavement_1A_4x4.tscn" id="a138"]
+[ext_resource type="PackedScene" uid="uid://b1rxxfkiwqpse" path="res://addons/Toon/Toon City/Models/Pavement_1B_4x4.tscn" id="a139"]
+[ext_resource type="PackedScene" uid="uid://ba8rox0l2twal" path="res://addons/Toon/Toon City/Models/Pavement_1C_4x4.tscn" id="a140"]
+[ext_resource type="PackedScene" uid="uid://dyfubkw6xr1th" path="res://addons/Toon/Toon City/Models/Pavement_1D_4x4.tscn" id="a141"]
+[ext_resource type="PackedScene" uid="uid://dkfx1hjug3srt" path="res://addons/Toon/Toon City/Models/Pavement_1E_4x4.tscn" id="a142"]
+[ext_resource type="PackedScene" uid="uid://bftejwe1bswd5" path="res://addons/Toon/Toon City/Models/Pavement_Special_1A_12X12.tscn" id="a143"]
+[ext_resource type="PackedScene" uid="uid://bfkr0763ra2au" path="res://addons/Toon/Toon City/Models/Parking_1A.tscn" id="a144"]
+[ext_resource type="PackedScene" uid="uid://bp6fhq8s5yjoc" path="res://addons/Toon/Toon City/Models/Parking_2A.tscn" id="a145"]
+
+[node name="Demo_Map" type="Node3D"]
+
+[node name="Building_1A" parent="." instance=ExtResource("a1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -150, 0, 0)
+
+[node name="Building_2A" parent="." instance=ExtResource("a2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, 0)
+
+[node name="Building_3A" parent="." instance=ExtResource("a3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 0, 0)
+
+[node name="Building_4A" parent="." instance=ExtResource("a4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Building_5A" parent="." instance=ExtResource("a5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0)
+
+[node name="Building_6A" parent="." instance=ExtResource("a6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 0)
+
+[node name="Building_7A" parent="." instance=ExtResource("a7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150, 0, 0)
+
+[node name="Air_Conditioner_1A" parent="." instance=ExtResource("a8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -162, 0, -25)
+
+[node name="Air_Conditioner_2A" parent="." instance=ExtResource("a9")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -148, 0, -25)
+
+[node name="Air_Vent_1A" parent="." instance=ExtResource("a10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110, 0, -25)
+
+[node name="Air_Vent_2A" parent="." instance=ExtResource("a11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, -25)
+
+[node name="Antenna_1A" parent="." instance=ExtResource("a12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, -25)
+
+[node name="Antenna_2A" parent="." instance=ExtResource("a13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 0, -25)
+
+[node name="Water_Tank_1A" parent="." instance=ExtResource("a14")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -25)
+
+[node name="Water_Tank_1B" parent="." instance=ExtResource("a15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -25)
+
+[node name="Solar_Panels_1A" parent="." instance=ExtResource("a16")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, -25)
+
+[node name="Skylight_1A" parent="." instance=ExtResource("a17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 0, -25)
+
+[node name="Skylight_1B" parent="." instance=ExtResource("a18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102, 0, -25)
+
+[node name="Industrial_Ventilation_1A" parent="." instance=ExtResource("a19")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140, 0, -25)
+
+[node name="Building_8A" parent="." instance=ExtResource("a20")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -160, 0, 80)
+
+[node name="Building_9A" parent="." instance=ExtResource("a21")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110, 0, 80)
+
+[node name="Building_10A" parent="." instance=ExtResource("a22")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 80)
+
+[node name="Building_11A" parent="." instance=ExtResource("a23")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 80)
+
+[node name="Building_12A" parent="." instance=ExtResource("a24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 80)
+
+[node name="Building_13A" parent="." instance=ExtResource("a25")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 0, 80)
+
+[node name="Building_14A" parent="." instance=ExtResource("a26")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140, 0, 80)
+
+[node name="Emergency_Staircase_1A" parent="." instance=ExtResource("a27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -168, 0, 93)
+
+[node name="Emergency_Stairs_1A" parent="." instance=ExtResource("a28")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118, 0, 93)
+
+[node name="Scaffolding_1A" parent="." instance=ExtResource("a29")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68, 0, 93)
+
+[node name="Window_Washer_1A" parent="." instance=ExtResource("a30")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 93)
+
+[node name="Skyscraper_1A" parent="." instance=ExtResource("a31")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120, 0, 170)
+
+[node name="Skyscraper_1B" parent="." instance=ExtResource("a32")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 0, 170)
+
+[node name="Skyscraper_2A" parent="." instance=ExtResource("a33")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 170)
+
+[node name="Skyscraper_2B" parent="." instance=ExtResource("a34")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 170)
+
+[node name="Building_20A" parent="." instance=ExtResource("a35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 0, 170)
+
+[node name="Building_21A" parent="." instance=ExtResource("a36")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140, 0, 170)
+
+[node name="Helipad_1A" parent="." instance=ExtResource("a37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 158)
+
+[node name="Helipad_1B" parent="." instance=ExtResource("a38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -116, 0, 158)
+
+[node name="Cloud_1A" parent="." instance=ExtResource("a39")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80, 80, 170)
+
+[node name="Cloud_1B" parent="." instance=ExtResource("a40")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 80, 170)
+
+[node name="News_Helicopter_1A" parent="." instance=ExtResource("a41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 80, 170)
+
+[node name="Service_Helicopter_1A" parent="." instance=ExtResource("a42")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110, 80, 170)
+
+[node name="Car_2D" parent="." instance=ExtResource("a43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -170, 0, 260)
+
+[node name="Car_3B" parent="." instance=ExtResource("a44")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -148, 0, 260)
+
+[node name="Car_6D" parent="." instance=ExtResource("a45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -126, 0, 260)
+
+[node name="Car_7D" parent="." instance=ExtResource("a46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104, 0, 260)
+
+[node name="Car_7F" parent="." instance=ExtResource("a47")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82, 0, 260)
+
+[node name="Car_8D" parent="." instance=ExtResource("a48")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 260)
+
+[node name="Car_9A" parent="." instance=ExtResource("a49")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 0, 260)
+
+[node name="Car_10C" parent="." instance=ExtResource("a50")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 260)
+
+[node name="Car_11A" parent="." instance=ExtResource("a51")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 260)
+
+[node name="Car_14C" parent="." instance=ExtResource("a52")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 260)
+
+[node name="Car_16A" parent="." instance=ExtResource("a53")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 260)
+
+[node name="Car_17A" parent="." instance=ExtResource("a54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72, 0, 260)
+
+[node name="Tree_1A" parent="." instance=ExtResource("a55")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -140, 0, 350)
+
+[node name="Tree_1C" parent="." instance=ExtResource("a56")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -125, 0, 350)
+
+[node name="Tree_1E" parent="." instance=ExtResource("a57")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110, 0, 350)
+
+[node name="Tree_2A" parent="." instance=ExtResource("a58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 0, 350)
+
+[node name="Tree_2C" parent="." instance=ExtResource("a59")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75, 0, 350)
+
+[node name="Tree_2E" parent="." instance=ExtResource("a60")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 350)
+
+[node name="Tree_3A" parent="." instance=ExtResource("a61")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, 350)
+
+[node name="Tree_3B" parent="." instance=ExtResource("a62")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 350)
+
+[node name="Tree_4A" parent="." instance=ExtResource("a63")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 350)
+
+[node name="Tree_4B" parent="." instance=ExtResource("a64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 350)
+
+[node name="Bush_1A" parent="." instance=ExtResource("a65")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 350)
+
+[node name="Bush_2A" parent="." instance=ExtResource("a66")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, 350)
+
+[node name="Bush_3A" parent="." instance=ExtResource("a67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49, 0, 350)
+
+[node name="Flower_1A" parent="." instance=ExtResource("a68")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 0, 350)
+
+[node name="Flower_2A" parent="." instance=ExtResource("a69")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74, 0, 350)
+
+[node name="Grass_Patch_1A" parent="." instance=ExtResource("a70")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88, 0, 350)
+
+[node name="Rock_Cluster_2A" parent="." instance=ExtResource("a71")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103, 0, 350)
+
+[node name="Rock_Cluster_2B" parent="." instance=ExtResource("a72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118, 0, 350)
+
+[node name="Billboard_1A" parent="." instance=ExtResource("a73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120, 0, 430)
+
+[node name="Billboard_1B" parent="." instance=ExtResource("a74")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80, 0, 430)
+
+[node name="Billboard_2A" parent="." instance=ExtResource("a75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, 430)
+
+[node name="Billboard_3A" parent="." instance=ExtResource("a76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 430)
+
+[node name="Billboard_3B" parent="." instance=ExtResource("a77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 430)
+
+[node name="Billboard_5A" parent="." instance=ExtResource("a78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 0, 430)
+
+[node name="Road_1A" parent="." instance=ExtResource("a79")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -150, 0, 510)
+
+[node name="Road_1B" parent="." instance=ExtResource("a80")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120, 0, 510)
+
+[node name="Road_1C" parent="." instance=ExtResource("a81")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 0, 510)
+
+[node name="Road_2A" parent="." instance=ExtResource("a82")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 510)
+
+[node name="Streetlight_1A" parent="." instance=ExtResource("a83")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -155, 0, 500)
+
+[node name="Streetlight_2A" parent="." instance=ExtResource("a84")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -125, 0, 500)
+
+[node name="Streetlight_3A" parent="." instance=ExtResource("a85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95, 0, 500)
+
+[node name="Highway_Streetlight_1A" parent="." instance=ExtResource("a86")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65, 0, 500)
+
+[node name="Streetsign_1A" parent="." instance=ExtResource("a87")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 510)
+
+[node name="Streetsign_2A" parent="." instance=ExtResource("a88")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 510)
+
+[node name="Highway_Streetsign_1A" parent="." instance=ExtResource("a89")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, 510)
+
+[node name="Bench_1A" parent="." instance=ExtResource("a90")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 0, 510)
+
+[node name="Bench_2A" parent="." instance=ExtResource("a91")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67, 0, 510)
+
+[node name="Mailbox_1A" parent="." instance=ExtResource("a92")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 0, 510)
+
+[node name="Mailbox_2A" parent="." instance=ExtResource("a93")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 0, 510)
+
+[node name="Hydrant_1A" parent="." instance=ExtResource("a94")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103, 0, 510)
+
+[node name="Parking_Meter_1A" parent="." instance=ExtResource("a95")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114, 0, 510)
+
+[node name="Traffic_Cone_1A" parent="." instance=ExtResource("a96")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126, 0, 510)
+
+[node name="Traffic_Cone_2A" parent="." instance=ExtResource("a97")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136, 0, 510)
+
+[node name="Manhole_1A" parent="." instance=ExtResource("a98")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148, 0, 510)
+
+[node name="Toll_Booth_1A" parent="." instance=ExtResource("a99")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165, 0, 510)
+
+[node name="Barrel_1A" parent="." instance=ExtResource("a100")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -160, 0, 590)
+
+[node name="Barrel_1B" parent="." instance=ExtResource("a101")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -150, 0, 590)
+
+[node name="Barrel_1C" parent="." instance=ExtResource("a102")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -140, 0, 590)
+
+[node name="Barrel_2A" parent="." instance=ExtResource("a103")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 590)
+
+[node name="Paper_Pack_1A" parent="." instance=ExtResource("a104")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110, 0, 590)
+
+[node name="Paper_Pack_2A" parent="." instance=ExtResource("a105")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -98, 0, 590)
+
+[node name="Wooden_Box_1A" parent="." instance=ExtResource("a106")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82, 0, 590)
+
+[node name="Wooden_Pallet_1A" parent="." instance=ExtResource("a107")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68, 0, 590)
+
+[node name="Trash_Bag_1A" parent="." instance=ExtResource("a108")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55, 0, 590)
+
+[node name="Trash_Bag_2A" parent="." instance=ExtResource("a109")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, 0, 590)
+
+[node name="Trash_Can_1A" parent="." instance=ExtResource("a110")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, 590)
+
+[node name="Trash_Can_1B" parent="." instance=ExtResource("a111")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, 590)
+
+[node name="Trash_Container_1A" parent="." instance=ExtResource("a112")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 590)
+
+[node name="Power_Box_1A" parent="." instance=ExtResource("a113")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 590)
+
+[node name="Power_Box_1B" parent="." instance=ExtResource("a114")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 590)
+
+[node name="Plant_Pot_1A" parent="." instance=ExtResource("a115")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 0, 590)
+
+[node name="Plant_Pot_2A" parent="." instance=ExtResource("a116")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 0, 590)
+
+[node name="Table_1A" parent="." instance=ExtResource("a117")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68, 0, 590)
+
+[node name="Chair_1A" parent="." instance=ExtResource("a118")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 0, 590)
+
+[node name="Umbrella_1A" parent="." instance=ExtResource("a119")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95, 0, 590)
+
+[node name="Umbrella_2A" parent="." instance=ExtResource("a120")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109, 0, 590)
+
+[node name="Light_Projector_1A" parent="." instance=ExtResource("a121")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125, 0, 590)
+
+[node name="Pipe_1A" parent="." instance=ExtResource("a122")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -160, 0, 670)
+
+[node name="Pipe_1B" parent="." instance=ExtResource("a123")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -148, 0, 670)
+
+[node name="Pipe_2A" parent="." instance=ExtResource("a124")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -136, 0, 670)
+
+[node name="Pipe_3A" parent="." instance=ExtResource("a125")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124, 0, 670)
+
+[node name="Pipe_Support_1A" parent="." instance=ExtResource("a126")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110, 0, 670)
+
+[node name="Cable_Pole_1A" parent="." instance=ExtResource("a127")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 0, 670)
+
+[node name="Cable_Pole_1B" parent="." instance=ExtResource("a128")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72, 0, 670)
+
+[node name="Cable_1A" parent="." instance=ExtResource("a129")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 0, 670)
+
+[node name="Concrete_Fence_1A" parent="." instance=ExtResource("a130")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, 670)
+
+[node name="Concrete_Fence_1B" parent="." instance=ExtResource("a131")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 670)
+
+[node name="Concrete_Barrier_1A" parent="." instance=ExtResource("a132")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 670)
+
+[node name="Concrete_Barrier_2A" parent="." instance=ExtResource("a133")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 670)
+
+[node name="Concrete_Pole_1A" parent="." instance=ExtResource("a134")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 670)
+
+[node name="Safety_Net_1A" parent="." instance=ExtResource("a135")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 670)
+
+[node name="Highway_Fence_1A" parent="." instance=ExtResource("a136")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 0, 670)
+
+[node name="Highway_Barrier_1A" parent="." instance=ExtResource("a137")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 0, 670)
+
+[node name="Pavement_1A_4x4" parent="." instance=ExtResource("a138")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80, 0, 750)
+
+[node name="Pavement_1B_4x4" parent="." instance=ExtResource("a139")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55, 0, 750)
+
+[node name="Pavement_1C_4x4" parent="." instance=ExtResource("a140")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 750)
+
+[node name="Pavement_1D_4x4" parent="." instance=ExtResource("a141")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 750)
+
+[node name="Pavement_1E_4x4" parent="." instance=ExtResource("a142")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 750)
+
+[node name="Pavement_Special_1A_12X12" parent="." instance=ExtResource("a143")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 750)
+
+[node name="Parking_1A" parent="." instance=ExtResource("a144")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105, 0, 750)
+
+[node name="Parking_2A" parent="." instance=ExtResource("a145")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140, 0, 750)
