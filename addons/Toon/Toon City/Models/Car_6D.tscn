@@ -1,7 +1,10 @@
 [gd_scene format=4 uid="uid://blphqray16wy8"]
 
+[ext_resource type="Texture2D" uid="uid://bx2rumkx5eeee" path="res://addons/Toon/Toon City/Textures/Car_6D_D.png" id="tx_1"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4yk0u"]
 resource_name = "Car_6D_D"
+albedo_texture = ExtResource("tx_1")
 vertex_color_use_as_albedo = true
 emission_enabled = true
 emission = Color(0.9063318, 0.9063318, 0.9063318, 1)

@@ -1,7 +1,11 @@
 [gd_scene format=4 uid="uid://42vrqe38m0lt"]
 
+[ext_resource type="Texture2D" uid="uid://bt17ecp68d4uc" path="res://addons/Toon/Toon City/Textures/Building_8A_D.png" id="tx_1"]
+[ext_resource type="Texture2D" uid="uid://cki6iwycjtttf" path="res://addons/Toon/Toon City/Textures/Road_1A_D.png" id="tx_2"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ws5s"]
 resource_name = "Building_8A_D"
+albedo_texture = ExtResource("tx_1")
 vertex_color_use_as_albedo = true
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
@@ -43,6 +47,7 @@ shadow_mesh = SubResource("ArrayMesh_5lax8")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w6bi6"]
 resource_name = "Road_1A_D"
+albedo_texture = ExtResource("tx_2")
 vertex_color_use_as_albedo = true
 emission_enabled = true
 emission = Color(0.9063318, 0.9063318, 0.9063318, 1)

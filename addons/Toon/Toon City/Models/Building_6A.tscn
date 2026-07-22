@@ -1,7 +1,10 @@
 [gd_scene format=4 uid="uid://bwnhx8sf6x7d4"]
 
+[ext_resource type="Texture2D" uid="uid://cnmbh0e8x1e7j" path="res://addons/Toon/Toon City/Textures/Building_6A_D.png" id="tx_1"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bjxmy"]
 resource_name = "Building_6A_D"
+albedo_texture = ExtResource("tx_1")
 vertex_color_use_as_albedo = true
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
