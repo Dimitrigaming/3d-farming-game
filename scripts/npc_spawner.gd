@@ -7,6 +7,7 @@ const NPC_SCENE = preload("res://models/npc.tscn")
 @export var max_npcs: int = 10
 @export_range(0.0, 1.0) var debug_store_interest: float = 0.0
 @export var fixed_destination: NodePath = NodePath("")
+@export var character_scenes: Array[PackedScene] = []
 
 var _timer: float = 0.0
 
@@ -32,6 +33,8 @@ func _spawn() -> void:
 		get_node_or_null("/root/GameLogger").warning("NpcSpawner", "no destination found  skipping spawn")
 		return
 	var npc = NPC_SCENE.instantiate()
+	if character_scenes.size() > 0:
+		npc.character_scene = character_scenes[randi() % character_scenes.size()]
 	get_node_or_null("/root/GameLogger").debug("NpcSpawner", "spawning NPC %s" % destination.name)
 	get_tree().current_scene.add_child(npc)
 	var map = get_world_3d().get_navigation_map()

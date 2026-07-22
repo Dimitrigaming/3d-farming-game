@@ -27,6 +27,8 @@
 [ext_resource type="Script" uid="uid://c428buwmu5t7h" path="res://scripts/door_controller.gd" id="door_ctrl"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_3xd07"]
+vertices = PackedVector3Array(-35.399998, 0.45, -51.6, -35.399998, 0.45, -0.8499985, 27.350002, 0.45, -0.8499985, 27.350002, 0.45, -51.6)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 geometry_source_geometry_mode = 1
 geometry_source_group_name = &"nav_store"
 
@@ -797,7 +799,6 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.8000016)
 
 [node name="NavStore" type="Node3D" parent="." unique_id=362448878]
-visible = false
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="NavStore" unique_id=1442798640]
 navigation_mesh = SubResource("NavigationMesh_3xd07")

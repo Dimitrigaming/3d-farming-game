@@ -1,0 +1,45 @@
+[gd_scene format=4 uid="uid://dh8jryw5j45wa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xxwuf"]
+resource_name = "Road_1A_D"
+vertex_color_use_as_albedo = true
+emission_enabled = true
+emission = Color(0.9063318, 0.9063318, 0.9063318, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_fxslq"]
+_surfaces = [{
+"aabb": AABB(-0.051180348, -0.099999994, -3.624213e-09, 0.102360755, 0.5992638, 1e-05),
+"format": 34359742465,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUA"),
+"name": "Road_1A_D",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("fKJRvczMzL0AAAAAZMCXOYKf/z4AAAAAjKJRPczMzL0AAAAAjKJRPczMzL3UDXkxZLiXuYKf/z6XRLStfKJRvczMzL3UDXmx")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_u2sej"]
+resource_name = "Mesh_472"
+_surfaces = [{
+"aabb": AABB(-0.051180348, -0.099999994, -3.624213e-09, 0.102360755, 0.5992638, 1e-05),
+"attribute_data": PackedByteArray("IHccPto0fj9UYxE+esZNP9xICj6Yfn8/IHccPto0fj9UYxE+esZNP9xICj6Yfn8/"),
+"format": 34359742487,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUA"),
+"material": SubResource("StandardMaterial3D_xxwuf"),
+"name": "Road_1A_D",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("fKJRvczMzL0AAAAAZMCXOYKf/z4AAAAAjKJRPczMzL0AAAAAjKJRPczMzL3UDXkxZLiXuYKf/z6XRLStfKJRvczMzL3UDXmx/3//fwwRhUj/f/9/DBGFSP9//38MEYVI//////LuhUj/////8u6FSP/////y7oVI")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_fxslq")
+
+[node name="Grass_Blade_1B" type="Node3D" unique_id=878054345]
+
+[node name="Grass_Blade_1B" type="MeshInstance3D" parent="." unique_id=626778281]
+mesh = SubResource("ArrayMesh_u2sej")

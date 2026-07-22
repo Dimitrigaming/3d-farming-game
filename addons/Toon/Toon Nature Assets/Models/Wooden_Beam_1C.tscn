@@ -1,0 +1,45 @@
+[gd_scene format=4 uid="uid://dbqfkcxnyg4nc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bowqr"]
+resource_name = "Atlas_1A_D"
+vertex_color_use_as_albedo = true
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_krovr"]
+_surfaces = [{
+"aabb": AABB(-1.9174653, 0, -0.11174433, 3.8329253, 0.25, 0.22000003),
+"format": 34359742465,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAAACAAMAAwACAAEAAwAEAAAABAADAAUABQADAAEABgAAAAQAAAAGAAEABQAHAAQABAAHAAYABwAFAAgABQABAAgABgAHAAgACAABAAkABgAJAAEABgAIAAkA"),
+"name": "Atlas_1A_D",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 10,
+"vertex_data": PackedByteArray("zC31PwAAAAAqtd09RVvDvwAAgD5sUsI9zC31PwAAgD4qtd09zC31PwAAgD422uS9zC31PwAAAAA22uS9gW/1vwAAgD7SWca9gG/1vwAAAAB0Nb89gW/1vwAAAADSWca9gG/1vwAAgD788EY9gG/1v4UhUj50Nb89")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_cao03"]
+resource_name = "Plane_2734"
+_surfaces = [{
+"aabb": AABB(-1.9174653, 0, -0.11174433, 3.8329253, 0.25, 0.22000003),
+"attribute_data": PackedByteArray("iw17Psh8dj6CQ2k+XPVjPosNez5c9WM+0T1nPsh8dj7SPWc+SEdnPtPzvD5EAWQ+0/O8Puz7XT7T87w+7PtdPtPzvD5EAWQ+0T1nPkxMWD6DQ2k+TExYPtE9Zz5QTFg+iw17PkxMWD6LDXs+TExYPtE9Zz7wFXw+iw17PvAVfD6LDXs+7BV8PtE9Zz7sFXw+iw17PsR8dj6LDXs+XPVjPtE9Zz5c9WM+0T1nPsB8dj43dLM+HERqPkJ0sz7YfWc+OHSzPkhYaz760rI+RAFkPvrSsj7s+10++tKyPhgQXz760rI+RAFkPvrSsj7s+10+"),
+"format": 34359742487,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEABQAGAAcABwAIAAUACQAKAAsACQAMAAoADAANAAoADgAPABAAEAARAA4AEgATABQAFAAVABIAFgAXABgAGQAaABsAGQAcABoAHAAdABoA"),
+"material": SubResource("StandardMaterial3D_bowqr"),
+"name": "Atlas_1A_D",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 30,
+"vertex_data": PackedByteArray("zC31PwAAAAAqtd09RVvDvwAAgD5sUsI9zC31PwAAgD4qtd09gG/1vwAAAAB0Nb89gG/1v4UhUj50Nb89zC31PwAAAAAqtd09zC31PwAAgD4qtd09zC31PwAAgD422uS9zC31PwAAAAA22uS9gW/1vwAAgD7SWca9RVvDvwAAgD5sUsI9gG/1vwAAgD788EY9zC31PwAAgD422uS9zC31PwAAgD4qtd09gG/1vwAAAAB0Nb89zC31PwAAAAAqtd09zC31PwAAAAA22uS9gW/1vwAAAADSWca9zC31PwAAAAA22uS9zC31PwAAgD422uS9gW/1vwAAgD7SWca9gW/1vwAAAADSWca9gG/1vwAAgD788EY9RVvDvwAAgD5sUsI9gG/1v4UhUj50Nb89gG/1vwAAAAB0Nb89gG/1vwAAgD788EY9gG/1v4UhUj50Nb89gW/1vwAAAADSWca9gW/1vwAAgD7SWca9gH//f4D//7+Af/9/gP//v4B//3+A//+/gH//f4D//7+Af/9/gP//v////3////+/////f////7////9/////v////3////+//3///+bV/7//f///5tX/v/9////m1f+//3///////7//f///////v/9/AAD//8Q//38AAID//z//fwAAiP//P/9/AAD//8A/AACA////wD8AAID////APwAAgP/+/8A/AACA//7/wD/YeGu8+Mr1tNh4a7z4yvW02HhrvPjK9bQAAP9/////PwAA/3////8/AAD/f////z8AAP9/////PwAA/3////8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_krovr")
+
+[node name="Wooden_Beam_1C" type="Node3D" unique_id=868238470]
+
+[node name="Wooden_Beam_1C" type="MeshInstance3D" parent="." unique_id=770351936]
+mesh = SubResource("ArrayMesh_cao03")

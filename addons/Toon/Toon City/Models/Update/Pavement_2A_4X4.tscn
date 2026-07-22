@@ -1,0 +1,45 @@
+[gd_scene format=4 uid="uid://cayt7cm64xrwv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hp40i"]
+resource_name = "Road_1A_D"
+vertex_color_use_as_albedo = true
+emission_enabled = true
+emission = Color(0.9063318, 0.9063318, 0.9063318, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_x43pw"]
+_surfaces = [{
+"aabb": AABB(-2, 0, -2, 4, 0.3, 4),
+"format": 34359742465,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAQAEAAMABAABAAAAAgADAAUAAAAGAAQABQAHAAIAAgAHAAAABwAFAAYABgAAAAcA"),
+"name": "Road_1A_D",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("mZn5P5qZmT6Zmfm/mZn5P5qZmT6Zmfk/mZn5v5qZmT6Zmfk/AAAAwAAAAAAAAABAAAAAQAAAAAAAAABAAAAAwAAAAAAAAADAAAAAQAAAAAAAAADAmZn5v5qZmT6Zmfm/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_s5y3b"]
+resource_name = "Mesh_676"
+_surfaces = [{
+"aabb": AABB(-2, 0, -2, 4, 0.3, 4),
+"attribute_data": PackedByteArray("I+cfP8CmET4ungI/wKYRPi6eAj/AphE+I+cfP8CmET4j5x8/OI35PiPnHz/wkJo9I+cfP/CQmj0ungI/OI35PiPnHz84jfk+Lp4CP/CQmj0ungI/8JCaPS6eAj84jfk+"),
+"format": 34359742487,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABQAEAAcABgAIAAQABwAJAAUACAAGAAoACQAHAAsACgALAAgACwAKAAkA"),
+"material": SubResource("StandardMaterial3D_hp40i"),
+"name": "Road_1A_D",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("mZn5P5qZmT6Zmfm/mZn5P5qZmT6Zmfk/mZn5v5qZmT6Zmfk/mZn5v5qZmT6Zmfm/AAAAQAAAAAAAAADAmZn5P5qZmT6Zmfm/mZn5v5qZmT6Zmfm/AAAAQAAAAAAAAABAAAAAwAAAAAAAAADAmZn5P5qZmT6Zmfk/mZn5v5qZmT6Zmfk/AAAAwAAAAAAAAABA/3///////7//f///////v/9///////+//3///////7+17SPJdBEtmrXtI8l0ES2aSRIjyYru0WXatkiSiu7Q5UkSI8mK7tFl2rZIkoru0OUkSUiSdBEuGiRJSJJ0ES4a")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_x43pw")
+
+[node name="Pavement_2A_4X4" type="Node3D" unique_id=943207713]
+
+[node name="Pavement_2A_4X4" type="MeshInstance3D" parent="." unique_id=747284618]
+mesh = SubResource("ArrayMesh_s5y3b")

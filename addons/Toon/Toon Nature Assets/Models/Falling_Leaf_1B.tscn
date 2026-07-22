@@ -1,0 +1,38 @@
+[gd_scene format=4 uid="uid://dcjgjdrjo240o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_stdym"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_7slfa"]
+_surfaces = [{
+"aabb": AABB(-0.15777326, 0, -0.123922825, 0.27931714, 1e-05, 0.27764797),
+"format": 34359742465,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAQAAAAIA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 3,
+"vertex_data": PackedByteArray("UI8hvgAAAAAAJfS8AOz4PQAAAABAy/29QGUUPQAAAAAgah0+")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_f11rf"]
+resource_name = "Plane_2726"
+_surfaces = [{
+"aabb": AABB(-0.15777326, 0, -0.123922825, 0.27931714, 1e-05, 0.27764797),
+"attribute_data": PackedByteArray("VnpzPmj6oT1WenM+OBCjPQZscT5ANKM9VnpzPjgQoz1WenM+aPqhPQZscT5ANKM9"),
+"format": 34359742487,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUA"),
+"material": SubResource("StandardMaterial3D_stdym"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("UI8hvgAAAAAAJfS8AOz4PQAAAABAy/29QGUUPQAAAAAgah0+AOz4PQAAAABAy/29UI8hvgAAAAAAJfS8QGUUPQAAAAAgah0+/3//////Fu3/f/////8W7f9//////xbt/38AAP//6BL/fwAA///oEv9/AAD//+gS")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_7slfa")
+
+[node name="Falling_Leaf_1B" type="Node3D" unique_id=1354724174]
+
+[node name="Falling_Leaf_1B" type="MeshInstance3D" parent="." unique_id=451624425]
+mesh = SubResource("ArrayMesh_f11rf")

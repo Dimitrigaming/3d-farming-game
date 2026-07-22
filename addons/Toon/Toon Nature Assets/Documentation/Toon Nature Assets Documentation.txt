@@ -1,0 +1,32 @@
+Thank you for purchasing Toon Nature Assets!
+
+If you like it, pleaase review it :)
+
+	Version 1.3.0:
+
+The assets are very simple to use, just drag and drop one of the prefabs into the scene.
+Objects are easy to place in the scene if you use vertex snapping, or if you use a 1x1 grid placement system.
+
+All models come with centered pivot points at the base.
+
+The naming convention uses the “.L” and “.R” suffixes 
+for wheels and objects that may be animated on the left-hand side and right-hand side respectively.
+Example: the wheel on the front right of a vehicle uses the name "Wheel_F.R”
+
+Each model uses the toon shader, and most assets use the same material with an atlased texture.
+The water shader is unlit, so when changin lighting settings, say from day to night, you might want to edit the colors to better match the lighting.
+
+A few assets, such as vehicles, streetlights and buildings have lighting addons in the object hierarchy.
+If you plan on using the assets during day-time light settings, you might want to disable those.
+
+Added URP compatibility from 2021.3 and later.
+URP Compatibility for Unity 2023 will be added in a future update.
+
+Updated Unity version to 2019.4.0 LTS
+
+
+For additional info, details or requests, don’t hesitate to contact at:
+
+sics.production@gmail.com
+
+https://discord.gg/nwQpAet

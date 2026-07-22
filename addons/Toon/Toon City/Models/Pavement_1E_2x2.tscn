@@ -1,0 +1,45 @@
+[gd_scene format=4 uid="uid://0p71eldhe8tj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kapjb"]
+resource_name = "Road_1A_D"
+vertex_color_use_as_albedo = true
+emission_enabled = true
+emission = Color(0.9063318, 0.9063318, 0.9063318, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_0h1x7"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 0.3, 2),
+"format": 34359742465,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAgADAAAAAQAAAAQAAwACAAUABQACAAEABQAGAAMABAAHAAEAAQAHAAUABwAEAAYABgAFAAcA"),
+"name": "Road_1A_D",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AACAPwAAAAAAAIC/AACAP5qZmT4AAIC/AACAv5qZmT4AAIC/AACAvwAAAAAAAIC/AACAPwAAAAAAAIA/AACAv5qZmT4AAIA/AACAvwAAAAAAAIA/AACAP5qZmT4AAIA/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_10iuv"]
+resource_name = "Mesh_024"
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 0.3, 2),
+"attribute_data": PackedByteArray("I+cfPziN+T4j5x8/8JCaPSPnHz/wkJo9I+cfPziN+T4ungI/OI35Pi6eAj/wkJo9Lp4CP/CQmj0ungI/OI35PiPnHz84jfk+I+cfP/CQmj0ungI/8JCaPS6eAj84jfk+Lp4CPziN+T4ungI/8JCaPSPnHz/wkJo9I+cfPziN+T4OzQ0/wKZxPg7NDT/ApnE+ywcFP8CmcT7LBwU/wKZxPg=="),
+"format": 34359742487,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAA"),
+"material": SubResource("StandardMaterial3D_kapjb"),
+"name": "Road_1A_D",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("AACAPwAAAAAAAIC/AACAP5qZmT4AAIC/AACAv5qZmT4AAIC/AACAvwAAAAAAAIC/AACAvwAAAAAAAIA/AACAv5qZmT4AAIA/AACAP5qZmT4AAIA/AACAPwAAAAAAAIA/AACAvwAAAAAAAIC/AACAv5qZmT4AAIC/AACAv5qZmT4AAIA/AACAvwAAAAAAAIA/AACAPwAAAAAAAIA/AACAP5qZmT4AAIA/AACAP5qZmT4AAIC/AACAPwAAAAAAAIC/AACAP5qZmT4AAIC/AACAP5qZmT4AAIA/AACAv5qZmT4AAIA/AACAv5qZmT4AAIC//////////7//////////v/////////+//////////7//f/9/////P/9//3////8//3//f////z//f/9/////PwAA/3///wAAAAD/f///AAAAAP9///8AAAAA/3///wAA////f/////////9//////////3//////////f///////f///////v/9///////+//3///////7//f///////vw==")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_0h1x7")
+
+[node name="Pavement_1E_2x2" type="Node3D" unique_id=1533840855]
+
+[node name="Pavement_1E_2x2" type="MeshInstance3D" parent="." unique_id=1649982640]
+mesh = SubResource("ArrayMesh_10iuv")

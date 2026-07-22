@@ -57,7 +57,19 @@ input_jump = "jump"
 input_freefly = "noclip"
 
 [node name="Printer" parent="." unique_id=76972310 instance=ExtResource("3_prnt")]
-transform = Transform3D(1.6391277e-07, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 1.6391277e-07, -19.159998, 0.5, -57.06)
+transform = Transform3D(1.6391277e-07, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 1.6391277e-07, -29.959997, 0.5, -54.460003)
+
+[node name="Printer2" parent="." unique_id=1494709232 instance=ExtResource("3_prnt")]
+transform = Transform3D(1.6391277e-07, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 1.6391277e-07, -29.959997, 0.5, -55.860004)
+
+[node name="Printer3" parent="." unique_id=20784984 instance=ExtResource("3_prnt")]
+transform = Transform3D(1.6391277e-07, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 1.6391277e-07, -29.959997, 0.5, -57.260006)
+
+[node name="Printer4" parent="." unique_id=56442958 instance=ExtResource("3_prnt")]
+transform = Transform3D(1.6391277e-07, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 1.6391277e-07, -29.959997, 0.5, -58.760006)
+
+[node name="Printer5" parent="." unique_id=1803349013 instance=ExtResource("3_prnt")]
+transform = Transform3D(1.6391277e-07, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 1.6391277e-07, -29.959997, 0.5, -60.160007)
 
 [node name="TrashCan" parent="." unique_id=719366373 instance=ExtResource("5_trash")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1, 0.6, -59.7)

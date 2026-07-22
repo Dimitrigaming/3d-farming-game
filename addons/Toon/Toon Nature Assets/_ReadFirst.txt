@@ -1,0 +1,10 @@
+Thanks for purchasing TOON Nature Assets!
+Glad to have you as a customer.
+
+Two easy steps are required in order to ensure proper function of the pack.
+
+	1. Please make sure you install the proper version in your Unity Project. At the moment,
+only built-in (2019.4.40 and later) and URP (2021.3.0 and later) are supported. An installer for
+URP for 2023.1.0 will be added soon.
+
+	2. Enjoy!

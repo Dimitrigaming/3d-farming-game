@@ -1,0 +1,47 @@
+[gd_scene format=4 uid="uid://btigxv830dc6w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b8h8w"]
+resource_name = "Road_1A_D"
+vertex_color_use_as_albedo = true
+emission_enabled = true
+emission = Color(0.9063318, 0.9063318, 0.9063318, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_bntlt"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 0.3, 2),
+"format": 34359742465,
+"index_count": 30,
+"index_data": PackedByteArray("BgABAAcABQAHAAEAAQADAAUAAwABAAYABwAFAAQABgAAAAMABAACAAcABwACAAYAAgAEAAAAAAAGAAIA"),
+"lods": [1.1443604, PackedByteArray("AAABAAIAAQAAAAMAAgAEAAAAAQADAAUAAgAFAAQABQACAAEA")],
+"name": "Road_1A_D",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AACAPwAAAAAAAIC/MzNzP5qZmT4zM3M/MzNzv5qZmT4zM3O/AACAPwAAAAAAAIA/AACAvwAAAAAAAIC/AACAvwAAAAAAAIA/MzNzP5qZmT4zM3O/MzNzv5qZmT4zM3M/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vtnnr"]
+resource_name = "Mesh_676"
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 0.3, 2),
+"attribute_data": PackedByteArray("I+cfPziN+T4ungI/8JCaPSPnHz/wkJo9Lp4CPziN+T4j5x8/OI35Pi6eAj84jfk+I+cfP8CmET4ungI/wKYRPi6eAj/AphE+I+cfP8CmET4j5x8/8JCaPS6eAj/wkJo9"),
+"format": 34359742487,
+"index_count": 30,
+"index_data": PackedByteArray("BgAHAAgACAAJAAYAAAAKAAIACgAAAAMAAgAEAAAAAwABAAoABAACAAsAAQADAAUACwAFAAQABQALAAEA"),
+"lods": [1.1443604, PackedByteArray("AAABAAIAAQAAAAMAAgAEAAAAAQADAAUAAgAFAAQABQACAAEA")],
+"material": SubResource("StandardMaterial3D_b8h8w"),
+"name": "Road_1A_D",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("AACAPwAAAAAAAIC/MzNzP5qZmT4zM3M/MzNzv5qZmT4zM3O/AACAPwAAAAAAAIA/AACAvwAAAAAAAIC/AACAvwAAAAAAAIA/MzNzP5qZmT4zM3O/MzNzP5qZmT4zM3M/MzNzv5qZmT4zM3M/MzNzv5qZmT4zM3O/MzNzP5qZmT4zM3O/MzNzv5qZmT4zM3M/te0jyXQRLZratkiSiu7Q5UkSI8mK7tFl2rZIkoru0OVJEiPJiu7RZSRJSJJ0ES4a/3///////7//f///////v/9///////+//3///////7+17SPJdBEtmiRJSJJ0ES4a")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_bntlt")
+
+[node name="Pavement_2A_2X2" type="Node3D" unique_id=385458131]
+
+[node name="Pavement_2A_2X2" type="MeshInstance3D" parent="." unique_id=898519646]
+mesh = SubResource("ArrayMesh_vtnnr")

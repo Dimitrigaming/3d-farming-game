@@ -1,0 +1,38 @@
+[gd_scene format=4 uid="uid://ccdbdrxgcya3y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_li5xw"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_pjb2j"]
+_surfaces = [{
+"aabb": AABB(-0.025373219, -0.035339594, -0.030080914, 0.050746437, 4.3621197, 2.3968081),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAAAQAAAAQABAAAAAMABQACAAEAAwACAAUABAAGAAEAAQAGAAUABQAGAAQAAwAHAAQABAAHAAUABQAHAAMA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("f9vPvHjsiEBAbPa8f9vPvPx0ikCxZYk/f9vPvKTtDj92eBdAf9vPvEDAEL3Ap2C8f9vPPHjsiEBAbPa8f9vPPKTtDj92eBdAf9vPPPx0ikCxZYk/f9vPPEDAEL3Ap2C8")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_2jxqu"]
+resource_name = "Plane_2476"
+_surfaces = [{
+"aabb": AABB(-0.025373219, -0.035339594, -0.030080914, 0.050746437, 4.3621197, 2.3968081),
+"attribute_data": PackedByteArray("AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"material": SubResource("StandardMaterial3D_li5xw"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("f9vPvHjsiEBAbPa8f9vPvPx0ikCxZYk/f9vPvKTtDj92eBdAf9vPvEDAEL3Ap2C8f9vPPHjsiEBAbPa8f9vPvHjsiEBAbPa8f9vPvEDAEL3Ap2C8f9vPPEDAEL3Ap2C8f9vPPKTtDj92eBdAf9vPPPx0ikCxZYk/f9vPPHjsiEBAbPa8f9vPPEDAEL3Ap2C8f9vPvPx0ikCxZYk/f9vPPPx0ikCxZYk/f9vPPKTtDj92eBdAf9vPvKTtDj92eBdAf9vPPKTtDj92eBdAf9vPPEDAEL3Ap2C8f9vPvEDAEL3Ap2C8f9vPvKTtDj92eBdAf9vPvPx0ikCxZYk/f9vPvHjsiEBAbPa8f9vPPHjsiEBAbPa8f9vPPPx0ikCxZYk/AAD/f////78AAP9/////vwAA/3////+/AAD/f////7+D/wAA////v4P/AAD///+/g/8AAP///7+D/wAA////v////3////+/////f////7////9/////v////3////+//3+zoP///z//f7Og////P/9/s6D///8//3+zoP///z//f4wZ////P/9/jBn///8//3+MGf///z//f4wZ////P1OF//////+/U4X//////79Thf//////v1OF//////+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_pjb2j")
+
+[node name="Catamaran_1A_Sail_MeshCollider" type="Node3D" unique_id=1590236455]
+
+[node name="Catamaran_1A_Sail_MeshCollider" type="MeshInstance3D" parent="." unique_id=1407565616]
+mesh = SubResource("ArrayMesh_2jxqu")

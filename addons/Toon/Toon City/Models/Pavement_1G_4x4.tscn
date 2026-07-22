@@ -1,0 +1,45 @@
+[gd_scene format=4 uid="uid://cxvplevsqmr2d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u6q0c"]
+resource_name = "Road_1A_D"
+vertex_color_use_as_albedo = true
+emission_enabled = true
+emission = Color(0.9063318, 0.9063318, 0.9063318, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_14cv6"]
+_surfaces = [{
+"aabb": AABB(-2, 0, -2, 4, 0.3, 4),
+"format": 34359742465,
+"index_count": 54,
+"index_data": PackedByteArray("AAABAAIAAwABAAAAAwACAAEAAAAEAAMAAgADAAUABAAAAAYAAgAGAAAABAAGAAcABgACAAgABQAIAAIACAAHAAYABwAJAAQABQAKAAgABwAIAAoACgAFAAkACQAHAAsACgALAAcACQALAAoA"),
+"name": "Road_1A_D",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("AAAAQJqZmT4AAADAAAAAQJqZmT4AAABAAACAP5qZmT4AAABAAAAAQAAAAAAAAABAAAAAQAAAAAAAAADAAAAAwAAAAAAAAABAAACAP5qZmT4AAADAAACAv5qZmT4AAADAAACAv5qZmT4AAABAAAAAwAAAAAAAAADAAAAAwJqZmT4AAABAAAAAwJqZmT4AAADA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_wp8fj"]
+resource_name = "Mesh_055"
+_surfaces = [{
+"aabb": AABB(-2, 0, -2, 4, 0.3, 4),
+"attribute_data": PackedByteArray("I+cfP8CmET4ungI/wKYRPi6eAj/AphE+I+cfP8CmET4j5x8/OI35PiPnHz/wkJo9I+cfP/CQmj0j5x8/8JCaPSPnHz84jfk+I+cfP/CQmj0ungI/OI35Pi6eAj/wkJo9Lp4CP/CQmj0ungI/8JCaPS6eAj84jfk+Lp4CP/CQmj0j5x8/OI35PiPnHz/wkJo9Lp4CP/CQmj0ungI/OI35Pi6eAj84jfk+Lp4CP/CQmj0j5x8/8JCaPSPnHz84jfk+I+cfP8CmcT4ungI/wKZxPi6eAj/ApnE+I+cfP8CmcT4j5x8/wKYRPi6eAj/AphE+Lp4CP8CmET4j5x8/wKYRPg=="),
+"format": 34359742487,
+"index_count": 54,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABAAGAAcABwAIAAQACAAHAAkACgALAAwACgAMAA0ADQAOAAoADgANAA8AEAARABIAEgATABAAFAAVABYAFgAXABQAGAAZABoAGgAbABgAHAAdAB4AHgAfABwA"),
+"material": SubResource("StandardMaterial3D_u6q0c"),
+"name": "Road_1A_D",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 32,
+"vertex_data": PackedByteArray("AAAAQJqZmT4AAADAAAAAQJqZmT4AAABAAACAP5qZmT4AAABAAACAP5qZmT4AAADAAAAAQAAAAAAAAADAAAAAQJqZmT4AAADAAACAP5qZmT4AAADAAACAv5qZmT4AAADAAAAAwAAAAAAAAADAAAAAwJqZmT4AAADAAAAAwAAAAAAAAABAAAAAwJqZmT4AAABAAACAv5qZmT4AAABAAACAP5qZmT4AAABAAAAAQAAAAAAAAABAAAAAQJqZmT4AAABAAAAAwAAAAAAAAADAAAAAwJqZmT4AAADAAAAAwJqZmT4AAABAAAAAwAAAAAAAAABAAAAAQAAAAAAAAABAAAAAQJqZmT4AAABAAAAAQJqZmT4AAADAAAAAQAAAAAAAAADAAACAP5qZmT4AAADAAACAP5qZmT4AAABAAACAv5qZmT4AAABAAACAv5qZmT4AAADAAACAv5qZmT4AAADAAACAv5qZmT4AAABAAAAAwJqZmT4AAABAAAAAwJqZmT4AAADA/3///////7//f///////v/9///////+//3///////7//////////v/////////+//////////7//////////v/////////+//////////7//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3////8//3//f////z8AAP9///8AAAAA/3///wAAAAD/f///AAAAAP9///8AAP///3//////////f/////////9//////////3///////3///////7//f///////v/9///////+//3///////7//f///////v/9///////+//3///////7//f///////vw==")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_14cv6")
+
+[node name="Pavement_1G_4x4" type="Node3D" unique_id=1018245889]
+
+[node name="Pavement_1G_4x4" type="MeshInstance3D" parent="." unique_id=1171281513]
+mesh = SubResource("ArrayMesh_wp8fj")

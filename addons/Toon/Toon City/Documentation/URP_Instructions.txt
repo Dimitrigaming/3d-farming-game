@@ -1,0 +1,10 @@
+Added URP compatibility from 2021.3.24 and later.
+
+
+When importing the pack in a URP project, open the "URP_Install_Toon City" file from the project hierarchy.
+Right after installing, right click the "Models" and "Prefabs" folders and select "Reimport" if the asset previews are pink.
+
+Renderer settings:
+
+You might want to check the "Depth Texture" and "Opaque Texture" boxes just in case there are some custom shaders coming in the next updates.
+Make sure the "Lut size" in the "Post-processing" tab is set to 16 instead of 32.

@@ -2,6 +2,8 @@
 
 const NPC_LOGGING: bool = true
 
+@export var character_scene: PackedScene
+
 func _log(msg: String) -> void:
 	if not NPC_LOGGING:
 		return
@@ -31,6 +33,8 @@ var state: int = State.IDLE
 var store_interest: float = 0.0
 
 var _nav: NavigationAgent3D
+var _anim_player: AnimationPlayer = null
+var _current_anim: String = ""
 var _street_destination: Vector3 = Vector3.ZERO
 var _nav_frames: int = 0
 var _shelf: Node3D = null
@@ -52,7 +56,80 @@ func _ready() -> void:
 	_nav = $NavigationAgent3D
 	_build_arrow()
 	_idle_timer = randf_range(0.0, IDLE_RECHECK)
+	_spawn_character()
 	await get_tree().process_frame
+
+func _spawn_character() -> void:
+	if character_scene == null:
+		return
+	var character = character_scene.instantiate()
+	add_child(character)
+	character.position = Vector3.ZERO
+	_randomize_appearance(character)
+	_play_idle(character)
+
+func _play_idle(character: Node) -> void:
+	_anim_player = character.find_child("AnimationPlayer", true, false)
+	if _anim_player == null:
+		_log("no AnimationPlayer found on character")
+		return
+	_play_anim("idle")
+
+func _play_anim(keyword: String) -> void:
+	if _anim_player == null:
+		return
+	for lib_name in _anim_player.get_animation_library_list():
+		if lib_name.to_lower().contains(keyword):
+			var lib = _anim_player.get_animation_library(lib_name)
+			for anim_name in lib.get_animation_list():
+				var full_name = lib_name + "/" + anim_name
+				if _current_anim == full_name:
+					return
+				_anim_player.play(full_name)
+				_current_anim = full_name
+				return
+
+func _randomize_appearance(character: Node) -> void:
+	var cc = character if character.get_script() != null else null
+	if cc == null or not cc.get_script() or not cc.get_script().resource_path.contains("CharacterCustomizer"):
+		cc = character.find_child("*", true, false)
+		for child in character.get_children():
+			if child.get_script() and child.get_script().resource_path.contains("CharacterCustomizer"):
+				cc = child
+				break
+	if cc == null:
+		return
+
+	var pairs = [
+		["hairstyle", "hairstyles"],
+		["head", "heads"],
+		["skin", "skins"],
+		["beard", "beards"],
+		["glass", "glasses"],
+		["earring", "earrings"],
+		["watch", "watches"],
+		["bracelet", "bracelets"],
+		["headphone", "headphones"],
+		["hat", "hats"],
+		["choker", "chokers"],
+		["fanny_pack", "fanny_packs"],
+		["tie", "ties"],
+		["shirt", "shirts"],
+		["jacket", "jackets"],
+		["dress", "dresses"],
+		["apron", "aprons"],
+		["skirt", "skirts"],
+		["pant", "pants"],
+		["leg", "legs"],
+		["shoe", "shoes"],
+	]
+
+	for pair in pairs:
+		var index_prop = pair[0]
+		var array_prop = pair[1]
+		var arr = cc.get(array_prop)
+		if arr is Array and arr.size() > 0:
+			cc.set(index_prop, randi() % arr.size())
 
 func set_street_destination(destination: Vector3, debug_interest: float = 0.0) -> void:
 	_street_destination = destination
@@ -127,6 +204,7 @@ func _physics_process(delta: float) -> void:
 		State.IDLE:
 			velocity.x = 0
 			velocity.z = 0
+			_play_anim("idle")
 			_idle_timer += delta
 			if _idle_timer >= IDLE_RECHECK:
 				_idle_timer = randf_range(0.0, 1.0)
@@ -161,9 +239,11 @@ func _move_along_nav(delta: float) -> void:
 		velocity.x = dir.x * SPEED
 		velocity.z = dir.z * SPEED
 		rotation.y = lerp_angle(rotation.y, atan2(dir.x, dir.z), delta * 8.0)
+		_play_anim("walking")
 	else:
 		velocity.x = 0
 		velocity.z = 0
+		_play_anim("idle")
 
 func try_enter_store(entry_pos: Vector3) -> void:
 	if _store_interest_checked or state != State.WALKING_PATH:

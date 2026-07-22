@@ -1,0 +1,45 @@
+[gd_scene format=4 uid="uid://ebohpqdxgm7y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ekd5l"]
+resource_name = "Road_1A_D"
+vertex_color_use_as_albedo = true
+emission_enabled = true
+emission = Color(0.9063318, 0.9063318, 0.9063318, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_43avo"]
+_surfaces = [{
+"aabb": AABB(-0.19999999, -0.2, -0.19999999, 0.39999998, 2.7183397, 0.39999998),
+"format": 34359742465,
+"index_count": 78,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMAAgAEAAAABQAEAAIAAwAGAAEABgADAAUAAgABAAYABQAHAAYABgAHAAIAAgAHAAUACAAJAAoACQAIAAsACgAMAAgACwANAAkACgAJAA0ADQALAA4ADAAKAA8ADQAPAAoADwAOAAwADgAPAA0AEAARABIAEgATABAAFAASABEAEQAVABQAFgAUABUAFQAXABYA"),
+"name": "Road_1A_D",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("zMxMvs3MTL7MzEy+zMxMvnosIUDMzEy+zMxMvnosIUDMzMy9zMxMPs3MTL7MzEy+zMxMvs3MTL7MzMy9zMxMPs3MTL7MzMy9zMxMPnosIUDMzEy+zMxMPnosIUDMzMy9zMxMPs3MTL7MzEw+zMxMPnosIUDMzEw+zMxMPnosIUDMzMw9zMxMvs3MTL7MzEw+zMxMPs3MTL7MzMw9zMxMvnosIUDMzEw+zMxMvs3MTL7MzMw9zMxMvnosIUDMzMw9zMzMPc3MTL7MzMw9zMzMPf//H0DMzMw9zMzMPf//H0DMzMy9zMzMPc3MTL7MzMy9zMzMvf//H0DMzMy9zMzMvf//H0DMzMw9zMzMvc3MTL7MzMy9zMzMvc3MTL7MzMw9")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_x3nv4"]
+resource_name = "Mesh_286"
+_surfaces = [{
+"aabb": AABB(-0.19999999, -0.2, -0.19999999, 0.39999998, 2.7183397, 0.39999998),
+"attribute_data": PackedByteArray("q2olP2o+0T6raiU/MmKSPtwmIz8yYpI+3CYjP2o+0T5tWxw/aj7RPm1bHD8yYpI+PZ8ePzJikj49nx4/aj7RPj2fHj8yYpI+PZ8eP2o+0T49nx4/aj7RPj2fHj8yYpI+PZ8eP2Kb+D49nx4/Kr+5PtwmIz8qv7k+3CYjP2Kb+D7cJiM/aj7RPtwmIz8yYpI+q2olPzJikj6raiU/aj7RPuC3Hz9gHes9EHQdP2Ad6z0QdB0/YB3rPeC3Hz9gHes9PZ8eP2o+0T49nx4/MmKSPm1bHD8yYpI+bVscP2o+0T7cJiM/MmKSPtwmIz8yYpI+3CYjP2o+0T7cJiM/aj7RPj2fHj8qv7k+PZ8eP2Kb+D7cJiM/Ypv4PtwmIz8qv7k+fz8kP2Ad6z1OgyY/YB3rPU6DJj9gHes9fz8kP2Ad6z1tWxw/wmevPm1bHD8UF2E+bVscPxQXYT5tWxw/wmevPqtqJT/CZ68+q2olPxQXYT6raiU/FBdhPqtqJT/CZ68+fz8kP2Ad6z1/PyQ/YB3rPeC3Hz9gHes94LcfP2Ad6z0="),
+"format": 34359742487,
+"index_count": 78,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQAGAAZABoAGgAbABgAHAAdAB4AHgAfABwAIAAhACIAIgAjACAAJAAlACYAJgAnACQAKAApACoAKgArACgALAAtAC4ALgAvACwAMAAxADIAMgAzADAA"),
+"material": SubResource("StandardMaterial3D_ekd5l"),
+"name": "Road_1A_D",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 52,
+"vertex_data": PackedByteArray("zMxMvs3MTL7MzEy+zMxMvnosIUDMzEy+zMxMvnosIUDMzMy9zMxMvs3MTL7MzMy9zMxMPs3MTL7MzEw+zMxMPnosIUDMzEw+zMxMPnosIUDMzMw9zMxMPs3MTL7MzMw9zMxMvnosIUDMzMw9zMxMvs3MTL7MzMw9zMxMPs3MTL7MzMw9zMxMPnosIUDMzMw9zMzMPc3MTL7MzMw9zMzMPf//H0DMzMw9zMzMPf//H0DMzMy9zMzMPc3MTL7MzMy9zMxMPs3MTL7MzMy9zMxMPnosIUDMzMy9zMxMPnosIUDMzEy+zMxMPs3MTL7MzEy+zMxMPnosIUDMzMw9zMxMPnosIUDMzEw+zMxMvnosIUDMzEw+zMxMvnosIUDMzMw9zMxMvs3MTL7MzMw9zMxMvnosIUDMzMw9zMxMvnosIUDMzEw+zMxMvs3MTL7MzEw+zMxMvnosIUDMzMy9zMxMPnosIUDMzMy9zMxMPs3MTL7MzMy9zMxMvs3MTL7MzMy9zMzMvf//H0DMzMw9zMzMvc3MTL7MzMw9zMzMvc3MTL7MzMy9zMzMvf//H0DMzMy9zMxMvnosIUDMzMy9zMxMvnosIUDMzEy+zMxMPnosIUDMzEy+zMxMPnosIUDMzMy9zMxMvs3MTL7MzEw+zMxMvnosIUDMzEw+zMxMPnosIUDMzEw+zMxMPs3MTL7MzEw+zMxMPs3MTL7MzEy+zMxMPnosIUDMzEy+zMxMvnosIUDMzEy+zMxMvs3MTL7MzEy+zMzMvf//H0DMzMy9zMzMPf//H0DMzMy9zMzMPf//H0DMzMw9zMzMvf//H0DMzMw9AAD/f///AAAAAP9///8AAAAA/3///wAAAAD/f///AAD///9//////////3//////////f/////////9///////////////+//////////7//////////v/////////+/////f/////////9//////////3//////////f/////////9//////////3//////////f/////////9///////9///////+//3///////7//f///////v/9///////+/AAD/f///AAAAAP9///8AAAAA/3///wAAAAD/f///AAD/f/9/////P/9//3////8//3//f////z//f/9/////PwAA/3///wAAAAD/f///AAAAAP9///8AAAAA/3///wAA/3///////7//f///////v/9///////+//3///////7//f/9/////P/9//3////8//3//f////z//f/9/////P/////////+//////////7//////////v/////////+//3///////7//f///////v/9///////+//3///////78=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_43avo")
+
+[node name="Concrete_Pole_1A" type="Node3D" unique_id=2076110157]
+
+[node name="Concrete_Pole_1A" type="MeshInstance3D" parent="." unique_id=29415763]
+mesh = SubResource("ArrayMesh_x3nv4")
