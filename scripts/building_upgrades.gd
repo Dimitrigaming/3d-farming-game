@@ -22,6 +22,7 @@ const MAX_TIER: int = 5
 @onready var _back: CSGBox3D = $BackWall
 
 func _ready() -> void:
+	add_to_group("building_tiers")
 	set_tier(current_tier)
 
 func set_tier(tier: int) -> void:

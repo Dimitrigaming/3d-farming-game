@@ -11,9 +11,9 @@ var blocks_unlocked: int = 0
 var shop_floor_tier: int = 0
 var production_floor_tier: int = 0
 
-const SHOP_FLOOR_COSTS = [300.0, 800.0]
-const PRODUCTION_FLOOR_COSTS = [400.0, 1000.0]
-const MAX_ROOM_TIER: int = 2
+const SHOP_FLOOR_COSTS = [300.0, 800.0, 1500.0, 2500.0, 4000.0]
+const PRODUCTION_FLOOR_COSTS = [400.0, 1000.0, 1800.0, 3000.0, 5000.0]
+const MAX_ROOM_TIER: int = 5
 
 func upgrade_shop_floor() -> bool:
 	if shop_floor_tier >= MAX_ROOM_TIER:

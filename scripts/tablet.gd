@@ -428,71 +428,11 @@ func _get_floor_node(name: String) -> Node3D:
 	return node
 
 func _apply_shop_floor_tier(tier: int) -> void:
-	# Expands both width (X) and depth (Z). Back wall + door slide back;
-	# side walls widen and stretch; ProductionFloor shifts back with the door.
-	const SIZES = [
-		{"hw": 5.0, "depth": 10.0},
-		{"hw": 8.0, "depth": 14.0},
-		{"hw": 11.0, "depth": 18.0},
-	]
-	tier = clampi(tier, 0, SIZES.size() - 1)
-	var hw: float = SIZES[tier].hw
-	var d: float  = SIZES[tier].depth
-	print("[Tablet] apply_shop_floor_tier %d hw=%.1f depth=%.1f" % [tier, hw, d])
-	var sf = _get_floor_node("ShopFloor")
-	if sf == null:
+	var tiers_node = get_tree().get_first_node_in_group("building_tiers")
+	if tiers_node == null:
+		print("[Tablet] building_tiers group not found")
 		return
-
-	# Front wall (invisible) — just update width
-	var front = sf.get_node_or_null("CSGBox3D")
-	if front:
-		front.size = Vector3(hw * 2.0, 4.0, 0.1)
-
-	# Side walls: shift X and Z, stretch depth
-	var left_wall = sf.get_node_or_null("CSGBox3D4")
-	if left_wall:
-		left_wall.position = Vector3(-hw, left_wall.position.y, -(d / 2.0 + 0.1))
-		left_wall.size = Vector3(d, 4.0, 0.1)
-
-	var right_wall = sf.get_node_or_null("CSGBox3D3")
-	if right_wall:
-		right_wall.position = Vector3(hw, right_wall.position.y, -(d / 2.0 + 0.1))
-		right_wall.size = Vector3(d, 4.0, 0.1)
-
-	# Back panels flank the door (gap = 2 units centered at x=0)
-	var panel_w: float  = hw - 1.0
-	var panel_cx: float = -(hw + 1.0) / 2.0
-
-	var bl = sf.get_node_or_null("CSGBox3D2")
-	if bl:
-		bl.position = Vector3(panel_cx, bl.position.y, -(d + 0.1))
-		bl.size = Vector3(panel_w, 4.0, 0.1)
-
-	var br = sf.get_node_or_null("CSGBox3D5")
-	if br:
-		br.position = Vector3(-panel_cx, br.position.y, -(d + 0.1))
-		br.size = Vector3(panel_w, 4.0, 0.1)
-
-	# Door frame and entrance marker slide back
-	var door = sf.get_node_or_null("DoorFrame")
-	if door:
-		door.position = Vector3(door.position.x, door.position.y, -(d + 0.05))
-
-	var entrance = sf.get_node_or_null("ProductionEntrance")
-	if entrance:
-		entrance.position = Vector3(entrance.position.x, entrance.position.y, -(d + 0.1))
-
-	# Shift the entire ProductionFloor node back to stay connected
-	var pf = _get_floor_node("ProductionFloor")
-	if pf:
-		pf.position = Vector3(pf.position.x, pf.position.y, -(d + 0.1))
-
-	# Resize room detection area
-	var sf_area_cs = sf.get_node_or_null("ShopFloorArea/CollisionShape3D")
-	if sf_area_cs and sf_area_cs.shape is BoxShape3D:
-		sf_area_cs.shape = sf_area_cs.shape.duplicate()
-		sf_area_cs.shape.size = Vector3(hw * 2.0, 4.0, d)
-		sf_area_cs.position = Vector3(0, 2, -(d / 2.0))
+	tiers_node.set_tier(tier)
 
 func _apply_production_floor_tier(tier: int) -> void:
 	# Expands both width (X) and depth (Z).
