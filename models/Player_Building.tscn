@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://b4kov7e3t4aih"]
+[gd_scene format=4 uid="uid://17m7q1cyohiw"]
 
 [ext_resource type="Texture2D" uid="uid://ckqiqf6trhyg8" path="res://addons/Toon/Toon City/Textures/Building_13A_D.png" id="1_5q3rh"]
 [ext_resource type="Texture2D" uid="uid://8b0501u5tdlg" path="res://models/Window_Lights_13D_solid_Building_13A_D.png" id="2_jtpqj"]
@@ -6,7 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://crm0q08cve63w" path="res://models/window.tscn" id="4_a40gp"]
 [ext_resource type="PackedScene" uid="uid://c1wmdgpbkrpq0" path="res://models/door.tscn" id="5_u6oqh"]
 [ext_resource type="Texture2D" uid="uid://cj1dfw8rjeglc" path="res://materials/WindowFrame.png" id="6_la24m"]
-[ext_resource type="Script" path="res://scripts/building_upgrades.gd" id="7_upgrd"]
+[ext_resource type="Script" uid="uid://dclhlumrcxqw0" path="res://scripts/building_upgrades.gd" id="7_upgrd"]
+[ext_resource type="PackedScene" uid="uid://bs1ydwpwpgnee" path="res://models/shop_floor_doorway.tscn" id="8_y6dc1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ffqbd"]
 resource_name = "Building_13A_D.001"
@@ -155,7 +156,7 @@ _surfaces = [{
 }]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_floor"]
-size = Vector3(26.5, 0.6, 28)
+size = Vector3(25.800001, 0.6, 28)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5q3rh"]
 size = Vector3(2.9154663, 0.29951173, 28)
@@ -332,7 +333,7 @@ mesh = SubResource("ArrayMesh_hahmy")
 [node name="FloorBody" type="StaticBody3D" parent="Floor" unique_id=771100001]
 
 [node name="FloorShape" type="CollisionShape3D" parent="Floor/FloorBody" unique_id=771100002]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4626465, 0.3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8126459, 0.3, 0)
 shape = SubResource("BoxShape3D_floor")
 
 [node name="FloorShape2" type="CollisionShape3D" parent="Floor/FloorBody" unique_id=916150978]
@@ -633,9 +634,16 @@ script = ExtResource("7_upgrd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.265, 3.473, 4.3)
 size = Vector3(8.6, 5.851, 0.1)
 
+[node name="ShopFloorDoorway" parent="Tiers" unique_id=2107841766 instance=ExtResource("8_y6dc1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.6, 0)
+
 [node name="BackWall" type="CSGBox3D" parent="Tiers" unique_id=292844672]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.473, 0)
-size = Vector3(0.1, 5.851, 8.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.473, -3.4500003)
+size = Vector3(0.1, 5.851, 1.7)
+
+[node name="BackWall2" type="CSGBox3D" parent="Tiers" unique_id=1130012172]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.473, 3.4499998)
+size = Vector3(0.1, 5.851, 1.7)
 
 [node name="LeftWall" type="CSGBox3D" parent="Tiers" unique_id=71734603]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.303, 3.473, -4.3)
