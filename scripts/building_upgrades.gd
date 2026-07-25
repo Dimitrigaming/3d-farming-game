@@ -98,6 +98,11 @@ func set_tier(tier: int) -> void:
 	# Stays centered at Z=0, moves back in X with the back wall.
 	_doorway.position.x = back_x
 
+	_sync_wall_collision(_right)
+	_sync_wall_collision(_left)
+	_sync_wall_collision(_back)
+	_sync_wall_collision(_back2)
+
 	# --- Shift ProductionTiers to keep its front face aligned with ShopFloorDoorway ---
 	var prod = get_tree().get_first_node_in_group("production_tiers")
 	if prod:
@@ -106,6 +111,17 @@ func set_tier(tier: int) -> void:
 	_apply_glass_tiers(t)
 	_resize_store_area(t)
 	_resize_production_area(t, GameState.production_floor_tier)
+
+func _sync_wall_collision(wall: CSGBox3D) -> void:
+	var body = wall.get_node_or_null("StaticBody3D")
+	if body == null:
+		return
+	var cs = body.get_node_or_null("CollisionShape3D")
+	if cs == null:
+		return
+	var shape = BoxShape3D.new()
+	shape.size = wall.size
+	cs.shape = shape
 
 func _resize_store_area(t_s: int) -> void:
 	var area = get_tree().get_first_node_in_group("ShopFloorArea")

@@ -87,8 +87,25 @@ func set_tier(tier: int) -> void:
 	_front.position.z  = -((BACK_INNER_Z + outer_z) / 2.0)
 	_front.size.z      = panel_sz
 
+	_sync_wall_collision(_right)
+	_sync_wall_collision(_left)
+	_sync_wall_collision(_back3)
+	_sync_wall_collision(_front)
+	_sync_wall_collision(_front2)
+
 	_apply_glass_tiers(t)
 	_resize_production_area(t)
+
+func _sync_wall_collision(wall: CSGBox3D) -> void:
+	var body = wall.get_node_or_null("StaticBody3D")
+	if body == null:
+		return
+	var cs = body.get_node_or_null("CollisionShape3D")
+	if cs == null:
+		return
+	var shape = BoxShape3D.new()
+	shape.size = wall.size
+	cs.shape = shape
 
 func _resize_production_area(t_p: int) -> void:
 	var area = get_tree().get_first_node_in_group("ProductionFloorArea")

@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://17m7q1cyohiw"]
+[gd_scene format=4 uid="uid://dofdtbidd8sv4"]
 
 [ext_resource type="Texture2D" uid="uid://ckqiqf6trhyg8" path="res://addons/Toon/Toon City/Textures/Building_13A_D.png" id="1_5q3rh"]
 [ext_resource type="Texture2D" uid="uid://8b0501u5tdlg" path="res://models/Window_Lights_13D_solid_Building_13A_D.png" id="2_jtpqj"]
@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://dclhlumrcxqw0" path="res://scripts/building_upgrades.gd" id="7_upgrd"]
 [ext_resource type="PackedScene" uid="uid://bs1ydwpwpgnee" path="res://models/shop_floor_doorway.tscn" id="8_y6dc1"]
 [ext_resource type="PackedScene" uid="uid://wi50xntde5lh" path="res://models/production_floor_doorway.tscn" id="10_la24m"]
-[ext_resource type="Script" path="res://scripts/production_upgrades.gd" id="11_produ"]
+[ext_resource type="Script" uid="uid://bt3kqrk2u6vh0" path="res://scripts/production_upgrades.gd" id="11_produ"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ny1xi"]
 resource_name = "Building_13A_D.001"
@@ -52,6 +52,33 @@ size = Vector3(0.8767357, 0.29951173, 1.5653076)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jtpqj"]
 size = Vector3(1.5124207, 0.29951173, 6.677246)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sw_r"]
+size = Vector3(8.6, 5.851, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sw_l"]
+size = Vector3(8.6, 5.851, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sw_b"]
+size = Vector3(0.1, 5.851, 1.7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sw_b2"]
+size = Vector3(0.1, 5.851, 1.7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pw_r"]
+size = Vector3(8.6, 5.851, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pw_l"]
+size = Vector3(8.6, 5.851, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pw_b"]
+size = Vector3(0.1, 5.851, 1.7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pw_b2"]
+size = Vector3(0.1, 5.851, 1.7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pw_b3"]
+size = Vector3(0.1, 5.851, 8.6)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6x0ju"]
 resource_name = "Skyscraper_2A_D_001"
@@ -131,11 +158,11 @@ _surfaces = [{
 
 [sub_resource type="BoxMesh" id="BoxMesh_5q3rh"]
 material = ExtResource("3_y6dc1")
-size = Vector3(0.06750488, 5.7203064, 1.4137306)
+size = Vector3(0.06750488, 5.8, 1.4137306)
 
 [sub_resource type="BoxMesh" id="BoxMesh_y2s3s"]
 material = ExtResource("3_y6dc1")
-size = Vector3(0.06750488, 5.7203064, 1.4137306)
+size = Vector3(0.06750488, 5.8, 1.4137306)
 
 [sub_resource type="BoxMesh" id="BoxMesh_3xd07"]
 size = Vector3(0.087890625, 6.0240707, 0.291687)
@@ -145,43 +172,43 @@ size = Vector3(0.087890625, 0.25654888, 3.3107147)
 
 [sub_resource type="BoxMesh" id="BoxMesh_jtpqj"]
 material = ExtResource("3_y6dc1")
-size = Vector3(0.06750488, 5.7203064, 1.4212208)
+size = Vector3(0.06750488, 5.8, 1.4212208)
 
 [sub_resource type="BoxMesh" id="BoxMesh_hc4re"]
 material = ExtResource("3_y6dc1")
-size = Vector3(0.06750488, 5.7203064, 1.4212208)
+size = Vector3(0.06750488, 5.8, 1.4212208)
 
 [sub_resource type="BoxMesh" id="BoxMesh_y6dc1"]
 material = ExtResource("3_y6dc1")
-size = Vector3(0.06750488, 5.7203064, 1.4223976)
+size = Vector3(0.06750488, 5.8, 1.4223976)
 
 [sub_resource type="BoxMesh" id="BoxMesh_3f5e4"]
 material = ExtResource("3_y6dc1")
-size = Vector3(0.06750488, 5.7203064, 1.4223976)
+size = Vector3(0.06750488, 5.8, 1.4223976)
 
 [sub_resource type="BoxMesh" id="BoxMesh_a40gp"]
 material = ExtResource("3_y6dc1")
-size = Vector3(0.06750488, 5.7203064, 1.428257)
+size = Vector3(0.06750488, 5.8, 1.428257)
 
 [sub_resource type="BoxMesh" id="BoxMesh_mgeao"]
 material = ExtResource("3_y6dc1")
-size = Vector3(0.06750488, 5.7203064, 1.428257)
+size = Vector3(0.06750488, 5.8, 1.428257)
 
 [sub_resource type="BoxMesh" id="BoxMesh_u6oqh"]
 material = ExtResource("3_y6dc1")
-size = Vector3(0.06750488, 5.7203064, 1.428484)
+size = Vector3(0.06750488, 5.8, 1.428484)
 
 [sub_resource type="BoxMesh" id="BoxMesh_abxmn"]
 material = ExtResource("3_y6dc1")
-size = Vector3(0.06750488, 5.7203064, 1.428484)
+size = Vector3(0.06750488, 5.8, 1.428484)
 
 [sub_resource type="BoxMesh" id="BoxMesh_la24m"]
 material = ExtResource("3_y6dc1")
-size = Vector3(0.06750488, 5.7203064, 1.4297047)
+size = Vector3(0.06750488, 5.8, 1.4297047)
 
 [sub_resource type="BoxMesh" id="BoxMesh_06kei"]
 material = ExtResource("3_y6dc1")
-size = Vector3(0.06750488, 5.7203064, 1.4297047)
+size = Vector3(0.06750488, 5.8, 1.4297047)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y2s3s"]
 albedo_texture = ExtResource("6_la24m")
@@ -249,11 +276,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.135, 0, -35.14)
 mesh = SubResource("ArrayMesh_xgys5")
 
 [node name="Glass" type="MeshInstance3D" parent="Windows/Window/Window" unique_id=451705922]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.202097, 3.1881604, 36.10054)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.202097, 3.1483135, 36.10054)
 mesh = SubResource("BoxMesh_5q3rh")
 
 [node name="Glass2" type="MeshInstance3D" parent="Windows/Window/Window" unique_id=431109744]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.202097, 3.1881604, 37.529884)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.202097, 3.1483135, 37.529884)
 mesh = SubResource("BoxMesh_y2s3s")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Windows/Window/Window" unique_id=216328418]
@@ -272,11 +299,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.135, 0, -35.14)
 mesh = SubResource("ArrayMesh_xgys5")
 
 [node name="Glass" type="MeshInstance3D" parent="Windows/Window2/Window" unique_id=428971679]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.202097, 3.1881604, 36.104286)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.202097, 3.1483135, 36.104286)
 mesh = SubResource("BoxMesh_jtpqj")
 
 [node name="Glass2" type="MeshInstance3D" parent="Windows/Window2/Window" unique_id=300633303]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.202097, 3.1881604, 37.53849)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.202097, 3.1483135, 37.53849)
 mesh = SubResource("BoxMesh_hc4re")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Windows/Window2/Window" unique_id=601496432]
@@ -295,11 +322,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.135, 0, -35.14)
 mesh = SubResource("ArrayMesh_xgys5")
 
 [node name="Glass" type="MeshInstance3D" parent="Windows/Window3/Window" unique_id=447017318]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.202097, 3.1881604, 36.104874)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.202097, 3.1483135, 36.104874)
 mesh = SubResource("BoxMesh_y6dc1")
 
 [node name="Glass2" type="MeshInstance3D" parent="Windows/Window3/Window" unique_id=1561766537]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.202097, 3.1881604, 37.540524)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.202097, 3.1483135, 37.540524)
 mesh = SubResource("BoxMesh_3f5e4")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Windows/Window3/Window" unique_id=1693154952]
@@ -318,11 +345,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.135, 0, -35.14)
 mesh = SubResource("ArrayMesh_xgys5")
 
 [node name="Glass" type="MeshInstance3D" parent="Windows/Window4/Window" unique_id=1680102228]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.202097, 3.1881604, 36.107803)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.202097, 3.1483135, 36.107803)
 mesh = SubResource("BoxMesh_a40gp")
 
 [node name="Glass2" type="MeshInstance3D" parent="Windows/Window4/Window" unique_id=1121430397]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.202097, 3.1881604, 37.544487)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.202097, 3.1483135, 37.544487)
 mesh = SubResource("BoxMesh_mgeao")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Windows/Window4/Window" unique_id=1515832735]
@@ -341,11 +368,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.135, 0, -35.14)
 mesh = SubResource("ArrayMesh_xgys5")
 
 [node name="Glass" type="MeshInstance3D" parent="Windows/Window5/Window" unique_id=1876751557]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.202097, 3.1881604, 36.107918)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.202097, 3.1483135, 36.107918)
 mesh = SubResource("BoxMesh_u6oqh")
 
 [node name="Glass2" type="MeshInstance3D" parent="Windows/Window5/Window" unique_id=1826879676]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.202097, 3.1881604, 37.543583)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.202097, 3.1483135, 37.543583)
 mesh = SubResource("BoxMesh_abxmn")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Windows/Window5/Window" unique_id=1746104437]
@@ -364,11 +391,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.135, 0, -35.14)
 mesh = SubResource("ArrayMesh_xgys5")
 
 [node name="Glass" type="MeshInstance3D" parent="Windows/Window6/Window" unique_id=885483611]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.202097, 3.1881604, 36.10853)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.202097, 3.1483135, 36.10853)
 mesh = SubResource("BoxMesh_la24m")
 
 [node name="Glass2" type="MeshInstance3D" parent="Windows/Window6/Window" unique_id=578970768]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.202097, 3.1881604, 37.54255)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.202097, 3.1483135, 37.54255)
 mesh = SubResource("BoxMesh_06kei")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Windows/Window6/Window" unique_id=1377982276]
@@ -471,36 +498,51 @@ material = SubResource("StandardMaterial3D_mgeao")
 [node name="Walls" type="Node3D" parent="." unique_id=1768304589]
 
 [node name="Wall" type="CSGBox3D" parent="Walls" unique_id=1895106109]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04595852, 3.464273, 12.380986)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.046, 3.464, 12.501)
 material_override = ExtResource("7_u6oqh")
-size = Vector3(21.190094, 5.805542, 0.12841797)
+size = Vector3(21.19, 5.806, 0.1)
 
 [node name="Wall5" type="CSGBox3D" parent="Walls" unique_id=12051739]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.329863, 3.464273, 12.380986)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.33, 3.464, 12.501)
 material_override = ExtResource("7_u6oqh")
-size = Vector3(21.400833, 5.805542, 0.12841797)
+size = Vector3(21.401, 5.806, 0.1)
 
 [node name="Wall2" type="CSGBox3D" parent="Walls" unique_id=1702591337]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04595852, 3.464273, -12.471558)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.046, 3.464, -12.501)
 material_override = ExtResource("7_u6oqh")
-size = Vector3(21.190094, 5.805542, 0.12841797)
+size = Vector3(21.190094, 5.805542, 0.1)
 
 [node name="Wall6" type="CSGBox3D" parent="Walls" unique_id=731390457]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.318548, 3.464273, -12.471558)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.319, 3.464, -12.501)
 material_override = ExtResource("7_u6oqh")
-size = Vector3(21.474075, 5.805542, 0.12841797)
+size = Vector3(21.474075, 5.805542, 0.1)
 
 [node name="Wall7" type="CSGBox3D" parent="Walls" unique_id=1741986912]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.979343, 3.464273, -0.028471947)
 material_override = ExtResource("7_u6oqh")
 size = Vector3(0.1, 5.806, 24.986572)
 
-[node name="ShopTiers" type="Node3D" parent="." unique_id=569717867]
+[node name="ShopTiers" type="Node3D" parent="." unique_id=569717867 node_paths=PackedStringArray("tier1_glass_a", "tier1_glass_b", "tier2_glass_a", "tier2_glass_b", "tier3_glass_a", "tier3_glass_b", "tier4_glass_a", "tier4_glass_b", "tier5_glass_a", "tier5_glass_b")]
 script = ExtResource("7_upgrd")
+tier1_glass_a = NodePath("../Windows/Window/Window/Glass2")
+tier1_glass_b = NodePath("../Windows/Window6/Window/Glass")
+tier2_glass_a = NodePath("../Windows/Window2/Window/Glass")
+tier2_glass_b = NodePath("../Windows/Window5/Window/Glass2")
+tier3_glass_a = NodePath("../Windows/Window2/Window/Glass2")
+tier3_glass_b = NodePath("../Windows/Window5/Window/Glass")
+tier4_glass_a = NodePath("../Windows/Window3/Window/Glass")
+tier4_glass_b = NodePath("../Windows/Window4/Window/Glass2")
+tier5_glass_a = NodePath("../Windows/Window3/Window/Glass2")
+tier5_glass_b = NodePath("../Windows/Window4/Window/Glass")
 
 [node name="RightWall" type="CSGBox3D" parent="ShopTiers" unique_id=1432776070]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.265, 3.473, 4.3)
 size = Vector3(8.6, 5.851, 0.1)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ShopTiers/RightWall" unique_id=791100001]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShopTiers/RightWall/StaticBody3D" unique_id=791100002]
+shape = SubResource("BoxShape3D_sw_r")
 
 [node name="ShopFloorDoorway" parent="ShopTiers" unique_id=2107841766 instance=ExtResource("8_y6dc1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.6, 0)
@@ -509,13 +551,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.6, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.473, -3.4500003)
 size = Vector3(0.1, 5.851, 1.7)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="ShopTiers/BackWall" unique_id=791100003]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShopTiers/BackWall/StaticBody3D" unique_id=791100004]
+shape = SubResource("BoxShape3D_sw_b")
+
 [node name="BackWall2" type="CSGBox3D" parent="ShopTiers" unique_id=1130012172]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.473, 3.4499998)
 size = Vector3(0.1, 5.851, 1.7)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="ShopTiers/BackWall2" unique_id=791100005]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShopTiers/BackWall2/StaticBody3D" unique_id=791100006]
+shape = SubResource("BoxShape3D_sw_b2")
+
 [node name="LeftWall" type="CSGBox3D" parent="ShopTiers" unique_id=71734603]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.303, 3.473, -4.3)
 size = Vector3(8.6, 5.851, 0.1)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ShopTiers/LeftWall" unique_id=791100007]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShopTiers/LeftWall/StaticBody3D" unique_id=791100008]
+shape = SubResource("BoxShape3D_sw_l")
 
 [node name="ProductionTiers" type="Node3D" parent="." unique_id=1583194865]
 script = ExtResource("11_produ")
@@ -524,6 +581,11 @@ script = ExtResource("11_produ")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3350005, 3.473, 4.3)
 size = Vector3(8.6, 5.851, 0.1)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="ProductionTiers/RightWall" unique_id=791100009]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProductionTiers/RightWall/StaticBody3D" unique_id=791100010]
+shape = SubResource("BoxShape3D_pw_r")
+
 [node name="ProductionFloorDoorway" parent="ProductionTiers" unique_id=240184996 instance=ExtResource("10_la24m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 0.6, 0)
 
@@ -531,14 +593,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 0.6, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 3.473, -3.4500003)
 size = Vector3(0.1, 5.851, 1.7)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="ProductionTiers/BackWall" unique_id=791100011]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProductionTiers/BackWall/StaticBody3D" unique_id=791100012]
+shape = SubResource("BoxShape3D_pw_b")
+
 [node name="BackWall2" type="CSGBox3D" parent="ProductionTiers" unique_id=314306340]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 3.473, 3.4499998)
 size = Vector3(0.1, 5.851, 1.7)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProductionTiers/BackWall2" unique_id=791100013]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProductionTiers/BackWall2/StaticBody3D" unique_id=791100014]
+shape = SubResource("BoxShape3D_pw_b2")
 
 [node name="LeftWall" type="CSGBox3D" parent="ProductionTiers" unique_id=628673219]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3969998, 3.473, -4.3)
 size = Vector3(8.6, 5.851, 0.1)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="ProductionTiers/LeftWall" unique_id=791100015]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProductionTiers/LeftWall/StaticBody3D" unique_id=791100016]
+shape = SubResource("BoxShape3D_pw_l")
+
 [node name="BackWall3" type="CSGBox3D" parent="ProductionTiers" unique_id=2015002793]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.707131, 3.473262, -0.017676115)
 size = Vector3(0.1, 5.851, 8.6)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ProductionTiers/BackWall3" unique_id=791100017]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProductionTiers/BackWall3/StaticBody3D" unique_id=791100018]
+shape = SubResource("BoxShape3D_pw_b3")
