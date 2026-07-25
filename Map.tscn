@@ -24,10 +24,10 @@ glow_enabled = true
 size = Vector3(500, 0.1, 500)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3xd07"]
-size = Vector3(21.1, 1, 24.800001)
+size = Vector3(21.1, 6.0, 24.800001)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8qak7"]
-size = Vector3(21.1, 1, 24.800001)
+size = Vector3(21.1, 6.0, 24.800001)
 
 [node name="Map" type="Node3D" unique_id=491304342]
 
@@ -82,18 +82,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.9, -1.4000015)
 [node name="StoreBack" type="Marker3D" parent="PlayerStore/StoreFront" unique_id=1306876042]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.900002, 0, 0)
 
-[node name="StoreArea" type="Area3D" parent="PlayerStore" groups=["ShopFloorArea"] unique_id=1977628151]
+[node name="StoreArea" type="Area3D" parent="PlayerStore" unique_id=1977628151 groups=["ShopFloorArea"]]
 collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerStore/StoreArea" unique_id=1476915770]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.75, 0, 0.10000086)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.75, 3, 0.10000086)
 shape = SubResource("BoxShape3D_3xd07")
 
-[node name="ProductionArea" type="Area3D" parent="PlayerStore" groups=["ProductionFloorArea"] unique_id=648176456]
+[node name="ProductionArea" type="Area3D" parent="PlayerStore" unique_id=648176456 groups=["ProductionFloorArea"]]
 collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerStore/ProductionArea" unique_id=1515966665]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.85, 0, 0.10000086)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.85, 3, 0.10000086)
 shape = SubResource("BoxShape3D_8qak7")
