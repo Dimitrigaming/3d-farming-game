@@ -435,57 +435,11 @@ func _apply_shop_floor_tier(tier: int) -> void:
 	tiers_node.set_tier(tier)
 
 func _apply_production_floor_tier(tier: int) -> void:
-	# Expands both width (X) and depth (Z).
-	const SIZES = [
-		{"hw": 5.0, "depth": 10.0},
-		{"hw": 8.0, "depth": 16.0},
-		{"hw": 11.0, "depth": 22.0},
-	]
-	tier = clampi(tier, 0, SIZES.size() - 1)
-	var hw: float = SIZES[tier].hw
-	var d: float  = SIZES[tier].depth
-	print("[Tablet] apply_production_floor_tier %d hw=%.1f depth=%.1f" % [tier, hw, d])
-	var pf = _get_floor_node("ProductionFloor")
-	if pf == null:
+	var prod_node = get_tree().get_first_node_in_group("production_tiers")
+	if prod_node == null:
+		print("[Tablet] production_tiers group not found")
 		return
-
-	# Back wall slides further back and widens
-	var back = pf.get_node_or_null("CSGBox3D")
-	if back:
-		back.position = Vector3(back.position.x, back.position.y, -(d + 0.1))
-		back.size = Vector3(hw * 2.0, 4.0, 0.1)
-
-	# Side walls: shift X and Z, stretch depth
-	var left_wall = pf.get_node_or_null("CSGBox3D4")
-	if left_wall:
-		left_wall.position = Vector3(-hw, left_wall.position.y, -(d / 2.0 + 0.1))
-		left_wall.size = Vector3(d, 4.0, 0.1)
-
-	var right_wall = pf.get_node_or_null("CSGBox3D3")
-	if right_wall:
-		right_wall.position = Vector3(hw, right_wall.position.y, -(d / 2.0 + 0.1))
-		right_wall.size = Vector3(d, 4.0, 0.1)
-
-	# Front panels flank the ShopEntrance door (gap = 2 units centered at x=0)
-	var panel_w: float  = hw - 1.0
-	var panel_cx: float = -(hw + 1.0) / 2.0
-
-	var fl = pf.get_node_or_null("CSGBox3D2")
-	if fl:
-		fl.position = Vector3(panel_cx, fl.position.y, fl.position.z)
-		fl.size = Vector3(panel_w, 4.0, 0.1)
-
-	var fr = pf.get_node_or_null("CSGBox3D5")
-	if fr:
-		fr.position = Vector3(-panel_cx, fr.position.y, fr.position.z)
-		fr.size = Vector3(panel_w, 4.0, 0.1)
-
-	# Resize room detection area
-	var pf_area_cs = pf.get_node_or_null("ProductionFloorArea/CollisionShape3D")
-	if pf_area_cs and pf_area_cs.shape is BoxShape3D:
-		pf_area_cs.shape = pf_area_cs.shape.duplicate()
-		pf_area_cs.shape.size = Vector3(hw * 2.0, 4.0, d)
-		pf_area_cs.position = Vector3(0, 2, -(d / 2.0))
+	prod_node.set_tier(tier)
 
 func _make_label(text: String, color: Color) -> Label:
 	var lbl = Label.new()

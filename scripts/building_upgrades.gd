@@ -67,6 +67,11 @@ func set_tier(tier: int) -> void:
 	# Stays centered at Z=0, moves back in X with the back wall.
 	_doorway.position.x = back_x
 
+	# --- Shift ProductionTiers to keep its front face aligned with ShopFloorDoorway ---
+	var prod = get_tree().get_first_node_in_group("production_tiers")
+	if prod:
+		prod.position.x = -BACK_DELTA * t
+
 func upgrade() -> bool:
 	if current_tier >= MAX_TIER:
 		return false
