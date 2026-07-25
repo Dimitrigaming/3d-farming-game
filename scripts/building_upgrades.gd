@@ -19,6 +19,31 @@ const MAX_TIER: int = 5
 
 @export var current_tier: int = 0 : set = set_tier
 
+const _MAT_GLASS:  Material = preload("res://materials/mat_Glass.tres")
+const _MAT_OPAQUE: Material = preload("res://materials/mat_Opaque_Glass.tres")
+
+@export_group("Tier 1 Glass")
+@export var tier1_glass_a: MeshInstance3D
+@export var tier1_glass_b: MeshInstance3D
+
+@export_group("Tier 2 Glass")
+@export var tier2_glass_a: MeshInstance3D
+@export var tier2_glass_b: MeshInstance3D
+
+@export_group("Tier 3 Glass")
+@export var tier3_glass_a: MeshInstance3D
+@export var tier3_glass_b: MeshInstance3D
+
+@export_group("Tier 4 Glass")
+@export var tier4_glass_a: MeshInstance3D
+@export var tier4_glass_b: MeshInstance3D
+
+@export_group("Tier 5 Glass")
+@export var tier5_glass_a: MeshInstance3D
+@export var tier5_glass_b: MeshInstance3D
+
+@export_group("")
+
 @onready var _right:   CSGBox3D = $RightWall
 @onready var _left:    CSGBox3D = $LeftWall
 @onready var _back:    CSGBox3D = $BackWall
@@ -71,6 +96,20 @@ func set_tier(tier: int) -> void:
 	var prod = get_tree().get_first_node_in_group("production_tiers")
 	if prod:
 		prod.position.x = -BACK_DELTA * t
+
+	_apply_glass_tiers(t)
+
+func _set_glass(node: MeshInstance3D, unlocked: bool) -> void:
+	if node == null:
+		return
+	node.set_surface_override_material(0, _MAT_GLASS if unlocked else _MAT_OPAQUE)
+
+func _apply_glass_tiers(t: int) -> void:
+	_set_glass(tier1_glass_a, t >= 1); _set_glass(tier1_glass_b, t >= 1)
+	_set_glass(tier2_glass_a, t >= 2); _set_glass(tier2_glass_b, t >= 2)
+	_set_glass(tier3_glass_a, t >= 3); _set_glass(tier3_glass_b, t >= 3)
+	_set_glass(tier4_glass_a, t >= 4); _set_glass(tier4_glass_b, t >= 4)
+	_set_glass(tier5_glass_a, t >= 5); _set_glass(tier5_glass_b, t >= 5)
 
 func upgrade() -> bool:
 	if current_tier >= MAX_TIER:
