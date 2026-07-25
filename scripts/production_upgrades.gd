@@ -16,6 +16,11 @@ const BACK_INNER_Z: float = 2.6
 
 const MAX_TIER: int = 5
 
+# ProductionArea base geometry (tier 0) — matches Map.tscn CollisionShape3D
+const PROD_BASE_SIZE_X: float   = 21.1
+const PROD_BASE_SIZE_Z: float   = 24.8
+const PROD_BASE_CENTER_X: float = -31.85
+
 @export var current_tier: int = 0 : set = set_tier
 
 const _MAT_GLASS:  Material = preload("res://materials/mat_Glass.tres")
@@ -83,6 +88,23 @@ func set_tier(tier: int) -> void:
 	_front.size.z      = panel_sz
 
 	_apply_glass_tiers(t)
+	_resize_production_area(t)
+
+func _resize_production_area(t_p: int) -> void:
+	var area = get_tree().get_first_node_in_group("ProductionFloorArea")
+	if area == null:
+		return
+	var cs = area.get_node_or_null("CollisionShape3D")
+	if cs == null:
+		return
+	var t_s = GameState.shop_floor_tier
+	var shape = BoxShape3D.new()
+	shape.size = Vector3(
+		PROD_BASE_SIZE_X + BACK_DELTA * t_p,
+		6.0,
+		PROD_BASE_SIZE_Z + SIDE_DELTA * 2.0 * t_p)
+	cs.shape = shape
+	cs.position.x = PROD_BASE_CENTER_X - (BACK_DELTA / 2.0) * t_p - BACK_DELTA * t_s
 
 func _set_glass(node: MeshInstance3D, unlocked: bool) -> void:
 	if node == null:
