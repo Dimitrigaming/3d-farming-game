@@ -13,7 +13,10 @@ func _get_gizmo_name() -> String:
 
 func _has_gizmo(node: Node3D) -> bool:
 	var s = node.get_script()
-	return s != null and s.resource_path == SIDEWALK_SCRIPT
+	if s == null:
+		return false
+	print("[SidewalkGizmo] checking: ", s.resource_path)
+	return s.resource_path == SIDEWALK_SCRIPT
 
 func _redraw(gizmo: EditorNode3DGizmo) -> void:
 	gizmo.clear()
