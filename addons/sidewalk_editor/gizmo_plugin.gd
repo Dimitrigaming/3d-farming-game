@@ -73,21 +73,10 @@ func _set_handle(gizmo: EditorNode3DGizmo, handle_id: int, _secondary: bool,
 
 func _commit_handle(gizmo: EditorNode3DGizmo, handle_id: int, _secondary: bool,
 		restore: Variant, cancel: bool) -> void:
-	var node: Node3D = gizmo.get_node_3d()
-	if cancel:
-		if handle_id <= 1:
-			node.width  = restore
-		else:
-			node.depth  = restore
+	if not cancel:
 		return
-
-	var undo := EditorInterface.get_editor_undo_redo()
+	var node: Node3D = gizmo.get_node_3d()
 	if handle_id <= 1:
-		undo.create_action("Resize Sidewalk Width")
-		undo.add_do_property(node, "width",  node.get("width"))
-		undo.add_undo_property(node, "width", restore)
+		node.width = restore
 	else:
-		undo.create_action("Resize Sidewalk Depth")
-		undo.add_do_property(node, "depth",  node.get("depth"))
-		undo.add_undo_property(node, "depth", restore)
-	undo.commit_action()
+		node.depth = restore
