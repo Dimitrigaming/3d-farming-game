@@ -2,8 +2,6 @@
 class_name SidewalkGizmo
 extends EditorNode3DGizmoPlugin
 
-const SIDEWALK_SCRIPT = "res://tools/sidewalk.gd"
-
 func _init():
 	create_material("main", Color(0.4, 0.85, 0.85))
 	create_handle_material("handles")
@@ -12,11 +10,7 @@ func _get_gizmo_name() -> String:
 	return "Sidewalk"
 
 func _has_gizmo(node: Node3D) -> bool:
-	var s = node.get_script()
-	if s == null:
-		return false
-	print("[SidewalkGizmo] checking: ", s.resource_path)
-	return s.resource_path == SIDEWALK_SCRIPT
+	return node is Sidewalk
 
 func _redraw(gizmo: EditorNode3DGizmo) -> void:
 	gizmo.clear()

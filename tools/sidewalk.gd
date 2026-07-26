@@ -1,4 +1,5 @@
 @tool
+class_name Sidewalk
 extends Node3D
 
 ## Sidewalk tile placer. Drag width/depth in the Inspector — they snap to
