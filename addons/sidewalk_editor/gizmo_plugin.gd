@@ -61,7 +61,7 @@ func _set_handle(gizmo: EditorNode3DGizmo, handle_id: int, _secondary: bool,
 	if hit == null:
 		return
 
-	var local := gt.affine_inverse() * hit
+	var local: Vector3 = gt.affine_inverse() * (hit as Vector3)
 
 	match handle_id:
 		0: node.width =  local.x * 2.0   # +X handle
