@@ -1,25 +1,26 @@
 @tool
+class_name SidewalkGizmo
 extends EditorNode3DGizmoPlugin
+
+const SIDEWALK_SCRIPT = "res://tools/sidewalk.gd"
+
+func _init():
+	create_material("main", Color(0.4, 0.85, 0.85))
+	create_handle_material("handles")
 
 func _get_gizmo_name() -> String:
 	return "Sidewalk"
 
 func _has_gizmo(node: Node3D) -> bool:
-	var script = node.get_script()
-	return script != null and "sidewalk" in (script.resource_path as String).to_lower()
+	var s = node.get_script()
+	return s != null and s.resource_path == SIDEWALK_SCRIPT
 
 func _redraw(gizmo: EditorNode3DGizmo) -> void:
 	gizmo.clear()
-	var node: Node3D = gizmo.get_node_3d()
-	var w: float = node.get("width")
-	var d: float = node.get("depth")
-	if w == null or d == null:
-		return
+	var node = gizmo.get_node_3d()
+	var hw: float = node.width * 0.5
+	var hd: float = node.depth * 0.5
 
-	var hw := w * 0.5
-	var hd := d * 0.5
-
-	# Wireframe outline on the ground plane.
 	var lines := PackedVector3Array([
 		Vector3(-hw, 0.0, -hd), Vector3( hw, 0.0, -hd),
 		Vector3( hw, 0.0, -hd), Vector3( hw, 0.0,  hd),
@@ -28,55 +29,46 @@ func _redraw(gizmo: EditorNode3DGizmo) -> void:
 	])
 	gizmo.add_lines(lines, get_material("main", gizmo))
 
-	# Four mid-edge handles — one per side, just like CSGBox3D.
 	var handles := PackedVector3Array([
-		Vector3( hw, 0.0,  0.0),  # 0  +X  (right)
-		Vector3(-hw, 0.0,  0.0),  # 1  -X  (left)
-		Vector3( 0.0, 0.0,  hd),  # 2  +Z  (front)
-		Vector3( 0.0, 0.0, -hd),  # 3  -Z  (back)
+		Vector3( hw, 0.0,  0.0),
+		Vector3(-hw, 0.0,  0.0),
+		Vector3( 0.0, 0.0,  hd),
+		Vector3( 0.0, 0.0, -hd),
 	])
-	gizmo.add_handles(handles, get_material("handles", gizmo), [0, 1, 2, 3])
+	gizmo.add_handles(handles, get_material("handles", gizmo), [])
 
-# ── handle metadata ───────────────────────────────────────────────────────────
+func _get_handle_name(gizmo: EditorNode3DGizmo, handle_id: int, secondary: bool) -> String:
+	return ["Width +X", "Width -X", "Depth +Z", "Depth -Z"][handle_id]
 
-func _get_handle_name(_gizmo: EditorNode3DGizmo, handle_id: int, _secondary: bool) -> String:
-	return "Width" if handle_id <= 1 else "Depth"
+func _get_handle_value(gizmo: EditorNode3DGizmo, handle_id: int, secondary: bool) -> Variant:
+	var node = gizmo.get_node_3d()
+	return Vector2(node.width, node.depth)
 
-func _get_handle_value(gizmo: EditorNode3DGizmo, handle_id: int, _secondary: bool) -> Variant:
-	var node: Node3D = gizmo.get_node_3d()
-	return node.get("width") if handle_id <= 1 else node.get("depth")
-
-# ── live drag ─────────────────────────────────────────────────────────────────
-
-func _set_handle(gizmo: EditorNode3DGizmo, handle_id: int, _secondary: bool,
-		camera: Camera3D, screen_pos: Vector2) -> void:
-	var node: Node3D = gizmo.get_node_3d()
-	var gt   := node.global_transform
-	var from := camera.project_ray_origin(screen_pos)
-	var dir  := camera.project_ray_normal(screen_pos)
-
-	# Intersect a horizontal plane at the node's world Y.
-	var plane := Plane(Vector3.UP, gt.origin.y)
-	var hit   = plane.intersects_ray(from, dir)
-	if hit == null:
+func _set_handle(gizmo: EditorNode3DGizmo, handle_id: int, secondary: bool, camera: Camera3D, screen_pos: Vector2) -> void:
+	var node = gizmo.get_node_3d()
+	var ray_o := camera.project_ray_origin(screen_pos)
+	var ray_d := camera.project_ray_normal(screen_pos)
+	if abs(ray_d.y) < 0.0001:
 		return
-
-	var local: Vector3 = gt.affine_inverse() * (hit as Vector3)
-
+	var t := -ray_o.y / ray_d.y
+	var hit_world := ray_o + ray_d * t
+	var local: Vector3 = node.global_transform.affine_inverse() * hit_world
 	match handle_id:
-		0: node.width =  local.x * 2.0   # +X handle
-		1: node.width = -local.x * 2.0   # -X handle
-		2: node.depth =  local.z * 2.0   # +Z handle
-		3: node.depth = -local.z * 2.0   # -Z handle
+		0: node.width  = max(4.0,  local.x * 2.0)
+		1: node.width  = max(4.0, -local.x * 2.0)
+		2: node.depth  = max(4.0,  local.z * 2.0)
+		3: node.depth  = max(4.0, -local.z * 2.0)
 
-# ── commit (undo support) ─────────────────────────────────────────────────────
-
-func _commit_handle(gizmo: EditorNode3DGizmo, handle_id: int, _secondary: bool,
-		restore: Variant, cancel: bool) -> void:
-	if not cancel:
-		return
-	var node: Node3D = gizmo.get_node_3d()
-	if handle_id <= 1:
-		node.width = restore
+func _commit_handle(gizmo: EditorNode3DGizmo, handle_id: int, secondary: bool, restore: Variant, cancel: bool) -> void:
+	var node = gizmo.get_node_3d()
+	if cancel:
+		node.width = restore.x
+		node.depth = restore.y
 	else:
-		node.depth = restore
+		var undo := EditorInterface.get_editor_undo_redo()
+		undo.create_action("Resize Sidewalk")
+		undo.add_do_property(node, "width", node.width)
+		undo.add_do_property(node, "depth", node.depth)
+		undo.add_undo_property(node, "width", restore.x)
+		undo.add_undo_property(node, "depth", restore.y)
+		undo.commit_action()
