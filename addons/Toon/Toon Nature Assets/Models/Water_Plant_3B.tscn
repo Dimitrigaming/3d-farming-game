@@ -1,7 +1,10 @@
 [gd_scene format=4 uid="uid://do5k6iddg0hig"]
 
+[ext_resource type="Texture2D" uid="uid://ckxqadjmuyyi1" path="res://addons/Toon/Toon Nature Assets/Textures/Atlas_1A_D.png" id="1_tna"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04tjq"]
 resource_name = "Atlas_1A_D"
+albedo_texture = ExtResource("1_tna")
 vertex_color_use_as_albedo = true
 emission_enabled = true
 emission = Color(1, 1, 1, 1)

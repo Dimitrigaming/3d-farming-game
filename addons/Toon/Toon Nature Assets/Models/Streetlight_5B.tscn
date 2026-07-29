@@ -1,7 +1,11 @@
 [gd_scene format=4 uid="uid://bg06pn8s47eoo"]
 
+[ext_resource type="Texture2D" uid="uid://ckxqadjmuyyi1" path="res://addons/Toon/Toon Nature Assets/Textures/Atlas_1A_D.png" id="1_tna"]
+[ext_resource type="Texture2D" uid="uid://bh1uqtf27icf6" path="res://addons/Toon/Toon Nature Assets/Textures/Atlas_Lights_1A_D.png" id="2_tna"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bgbim"]
 resource_name = "Atlas_1A_D"
+albedo_texture = ExtResource("1_tna")
 vertex_color_use_as_albedo = true
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
@@ -43,6 +47,7 @@ shadow_mesh = SubResource("ArrayMesh_u25hd")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5e52d"]
 resource_name = "Atlas_Lights_1A_D"
+albedo_texture = ExtResource("2_tna")
 vertex_color_use_as_albedo = true
 emission_enabled = true
 emission = Color(0.9063318, 0.9063318, 0.9063318, 1)

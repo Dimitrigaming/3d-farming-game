@@ -10,7 +10,8 @@ func _get_gizmo_name() -> String:
 	return "Sidewalk"
 
 func _has_gizmo(node: Node3D) -> bool:
-	return node is Sidewalk
+	var s = node.get_script()
+	return s != null and s.resource_path == "res://tools/sidewalk.gd"
 
 func _redraw(gizmo: EditorNode3DGizmo) -> void:
 	gizmo.clear()
