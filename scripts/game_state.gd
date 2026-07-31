@@ -1,11 +1,11 @@
-﻿extends Node
+extends Node
 
 signal money_changed(new_amount: float)
 signal license_unlocked(license_id: String)
 signal print_job_added(job: Dictionary)
 signal print_job_completed(job: Dictionary)
 
-var money: float = 10000.0      # 500.0
+var money: float = 100000.0      # 500.0
 var blocks_unlocked: int = 0
 
 var shop_floor_tier: int = 0

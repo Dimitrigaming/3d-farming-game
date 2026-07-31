@@ -4,8 +4,8 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_isft2"]
 resource_name = "Car_15B_D"
-albedo_texture = ExtResource("tx_1")
 vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("tx_1")
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 0.0
@@ -214,6 +214,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hm8o8")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_3xd07"]
+size = Vector3(3, 3.5, 6.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wd8iy"]
+size = Vector3(3, 2, 2)
+
 [node name="Car_15C" type="Node3D" unique_id=506250747]
 
 [node name="Car_15C" type="MeshInstance3D" parent="." unique_id=1088434351]
@@ -237,3 +243,13 @@ mesh = SubResource("ArrayMesh_fji80")
 [node name="Wheel_15C_R_R" type="MeshInstance3D" parent="Car_15C" unique_id=685366674]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.245964, 0.52799946, -2.1947374)
 mesh = SubResource("ArrayMesh_kwdow")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=2127895737]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1797534284]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, -1.3499999)
+shape = SubResource("BoxShape3D_3xd07")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="RigidBody3D" unique_id=633156032]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 2.9)
+shape = SubResource("BoxShape3D_wd8iy")

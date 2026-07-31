@@ -4,8 +4,8 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_261me"]
 resource_name = "Road_1A_D"
-albedo_texture = ExtResource("tx_1")
 vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("tx_1")
 emission_enabled = true
 emission = Color(0.9063318, 0.9063318, 0.9063318, 1)
 emission_energy_multiplier = 0.0
@@ -78,6 +78,16 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_yss2h")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_3xd07"]
+size = Vector3(1.2, 0.3, 1.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yfh8k"]
+size = Vector3(0.6, 2.2, 11)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jq8tk"]
+height = 5.45
+radius = 0.4
+
 [node name="Parking_1A" type="Node3D" unique_id=1750221700]
 
 [node name="Parking_1A" type="MeshInstance3D" parent="." unique_id=406966406]
@@ -86,3 +96,17 @@ mesh = SubResource("ArrayMesh_4gy75")
 [node name="Parking_1A_Logo" type="MeshInstance3D" parent="Parking_1A" unique_id=672408042]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
 mesh = SubResource("ArrayMesh_2ff61")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=481489042]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=172377871]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.35, 2.2351742e-08)
+shape = SubResource("BoxShape3D_3xd07")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" unique_id=1200953255]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 6.7, -2.3841858e-07)
+shape = SubResource("BoxShape3D_yfh8k")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=2020266525]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2.925, 0)
+shape = SubResource("CylinderShape3D_jq8tk")

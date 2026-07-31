@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bs1ydwpwpgnee"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jq8tk"]
+size = Vector3(0.1, 2.8825607, 2.872879)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xksut"]
+size = Vector3(0.1, 5.8331757, 1.3544312)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_82w40"]
+size = Vector3(0.1, 5.8380585, 1.3544312)
+
+[node name="ShopFloorDoorway" type="Node3D" unique_id=2107841766]
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=1105872234]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.397808, -0.0026227236)
+size = Vector3(0.1, 2.8825607, 2.872879)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CSGBox3D4" unique_id=1300978197]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D4/StaticBody3D" unique_id=851176075]
+shape = SubResource("BoxShape3D_jq8tk")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1275391994]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9165878, 1.9257708)
+size = Vector3(0.1, 5.8331757, 1.3544312)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CSGBox3D2" unique_id=1037234318]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D2/StaticBody3D" unique_id=1680947111]
+shape = SubResource("BoxShape3D_xksut")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1133222173]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9190292, -1.913846)
+size = Vector3(0.1, 5.8380585, 1.3544312)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CSGBox3D3" unique_id=2042286141]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D3/StaticBody3D" unique_id=1919324711]
+shape = SubResource("BoxShape3D_82w40")
