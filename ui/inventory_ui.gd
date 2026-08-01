@@ -5,6 +5,7 @@ extends CanvasLayer
 
 func _ready() -> void:
 	Inventory.inventory_changed.connect(_refresh)
+	call_deferred("_refresh")
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):
@@ -13,7 +14,13 @@ func _unhandled_input(event: InputEvent) -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		_set_player_enabled(not visible)
 		get_viewport().set_input_as_handled()
+
+func _set_player_enabled(enabled: bool) -> void:
+	var controller = get_tree().get_first_node_in_group("proto_controller")
+	if controller:
+		controller.process_mode = Node.PROCESS_MODE_DISABLED if not enabled else Node.PROCESS_MODE_INHERIT
 
 func _refresh() -> void:
 	_refresh_grid(grid.get_children(), 0)
