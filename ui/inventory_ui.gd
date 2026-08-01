@@ -1,0 +1,30 @@
+extends CanvasLayer
+
+@onready var grid = $Panel/VBox/Grid
+@onready var hotbar = $Panel/VBox/Hotbar
+
+func _ready() -> void:
+	Inventory.inventory_changed.connect(_refresh)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("inventory"):
+		visible = not visible
+		get_viewport().set_input_as_handled()
+
+func _refresh() -> void:
+	_refresh_grid(grid.get_children(), 0)
+	_refresh_grid(hotbar.get_children(), Inventory.HOTBAR_START)
+
+func _refresh_grid(slot_nodes: Array, offset: int) -> void:
+	for i in slot_nodes.size():
+		var slot_data = Inventory.slots[offset + i]
+		var slot_node = slot_nodes[i]
+		var icon = slot_node.get_node("Icon")
+		var count = slot_node.get_node("Count")
+		var has_item = slot_data["item_id"] != ""
+		icon.visible = has_item
+		count.visible = has_item and slot_data["amount"] > 1
+		if has_item:
+			count.text = str(slot_data["amount"])
+			var def = ItemDB.get_item(slot_data["item_id"])
+			icon.texture = def.icon if def else null

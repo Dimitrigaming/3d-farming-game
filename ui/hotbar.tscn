@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://hotbar001"]
+
+[ext_resource type="Script" uid="uid://du0qcg6rbhtga" path="res://ui/hotbar.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://dmoi5hnboeqtx" path="res://ui/inventory_slot.tscn" id="2_slot"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hotbar"]
+bg_color = Color(0.2, 0.2, 0.2, 0.55)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5, 0.5, 0.5, 0.5)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="Hotbar" type="CanvasLayer" unique_id=300000001]
+script = ExtResource("1_script")
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=300000002]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -310.0
+offset_top = -84.0
+offset_right = 310.0
+offset_bottom = -12.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hotbar")
+
+[node name="Grid" type="GridContainer" parent="Panel" unique_id=300000003]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 9
+
+[node name="Slot36" parent="Panel/Grid" unique_id=1043540603 instance=ExtResource("2_slot")]
+layout_mode = 2
+
+[node name="Slot37" parent="Panel/Grid" unique_id=41489886 instance=ExtResource("2_slot")]
+layout_mode = 2
+
+[node name="Slot38" parent="Panel/Grid" unique_id=1484334788 instance=ExtResource("2_slot")]
+layout_mode = 2
+
+[node name="Slot39" parent="Panel/Grid" unique_id=794061002 instance=ExtResource("2_slot")]
+layout_mode = 2
+
+[node name="Slot40" parent="Panel/Grid" unique_id=1875066287 instance=ExtResource("2_slot")]
+layout_mode = 2
+
+[node name="Slot41" parent="Panel/Grid" unique_id=1156653947 instance=ExtResource("2_slot")]
+layout_mode = 2
+
+[node name="Slot42" parent="Panel/Grid" unique_id=221584477 instance=ExtResource("2_slot")]
+layout_mode = 2
+
+[node name="Slot43" parent="Panel/Grid" unique_id=1873958294 instance=ExtResource("2_slot")]
+layout_mode = 2
+
+[node name="Slot44" parent="Panel/Grid" unique_id=1839452268 instance=ExtResource("2_slot")]
+layout_mode = 2
