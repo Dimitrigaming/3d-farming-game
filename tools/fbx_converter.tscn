@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://eoithgtl70sc"]
+
+[ext_resource type="Script" uid="uid://cctalxgae44d0" path="res://tools/convert_fbx_to_tscn.gd" id="1_script"]
+
+[node name="FBXConverter" type="Node" unique_id=335732809]
+script = ExtResource("1_script")

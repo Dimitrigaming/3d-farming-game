@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://bffx0ja2v2dlq"]
+
+[ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://cmhp363rj3aa4" path="res://models/tools/HammerV1.tscn" id="2_equip"]
+[ext_resource type="Texture2D" uid="uid://bt5g53yexto7c" path="res://icons/hammer.png" id="2_rp0i6"]
+
+[resource]
+script = ExtResource("1_def")
+id = "hammer"
+name = "Hammer"
+icon = ExtResource("2_rp0i6")
+type = 5
+max_stack = 1
+buy_price = 40
+description = "Build and repair structures."
+equip_scene = ExtResource("2_equip")

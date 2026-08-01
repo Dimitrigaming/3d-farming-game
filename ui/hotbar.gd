@@ -1,10 +1,58 @@
 extends CanvasLayer
 
+signal slot_selected(index: int)
+
+var selected_slot: int = 0
+
 @onready var grid = $Panel/Grid
 
 func _ready() -> void:
 	Inventory.inventory_changed.connect(_refresh)
 	_refresh()
+	_update_highlight()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo:
+		var key = event.keycode
+		if key >= KEY_1 and key <= KEY_9:
+			selected_slot = key - KEY_1
+			_update_highlight()
+			slot_selected.emit(selected_slot)
+			_notify_equipper()
+			get_viewport().set_input_as_handled()
+	elif event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			selected_slot = (selected_slot - 1 + 9) % 9
+			_update_highlight()
+			slot_selected.emit(selected_slot)
+			_notify_equipper()
+			get_viewport().set_input_as_handled()
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			selected_slot = (selected_slot + 1) % 9
+			_update_highlight()
+			slot_selected.emit(selected_slot)
+			_notify_equipper()
+			get_viewport().set_input_as_handled()
+
+func _update_highlight() -> void:
+	var slots = grid.get_children()
+	for i in slots.size():
+		var panel = slots[i]
+		if i == selected_slot:
+			var style = StyleBoxFlat.new()
+			style.bg_color = Color(0.35, 0.35, 0.35, 0.9)
+			style.set_border_width_all(2)
+			style.border_color = Color(1, 0.85, 0.2, 1)
+			panel.add_theme_stylebox_override("panel", style)
+		else:
+			panel.remove_theme_stylebox_override("panel")
+
+func _notify_equipper() -> void:
+	var equipper = get_tree().get_first_node_in_group("tool_equipper")
+	if not equipper:
+		return
+	var slot_data = Inventory.slots[Inventory.HOTBAR_START + selected_slot]
+	equipper.equip(slot_data["item_id"])
 
 func _refresh() -> void:
 	var slot_nodes = grid.get_children()

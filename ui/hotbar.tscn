@@ -28,12 +28,14 @@ offset_left = -310.0
 offset_top = -84.0
 offset_right = 310.0
 offset_bottom = -12.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_hotbar")
 
 [node name="Grid" type="GridContainer" parent="Panel" unique_id=300000003]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 columns = 9
 
 [node name="Slot36" parent="Panel/Grid" unique_id=1043540603 instance=ExtResource("2_slot")]

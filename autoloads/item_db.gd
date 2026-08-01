@@ -9,18 +9,23 @@ func _ready() -> void:
 
 func _load_all() -> void:
 	_db.clear()
-	var dir = DirAccess.open(ITEMS_PATH)
+	_scan_dir(ITEMS_PATH)
+
+func _scan_dir(path: String) -> void:
+	var dir = DirAccess.open(path)
 	if not dir:
-		push_warning("ItemDB: items folder not found at " + ITEMS_PATH)
+		push_warning("ItemDB: folder not found: " + path)
 		return
 	dir.list_dir_begin()
-	var file = dir.get_next()
-	while file != "":
-		if file.ends_with(".tres"):
-			var res = load(ITEMS_PATH + file) as ItemDefinition
+	var entry = dir.get_next()
+	while entry != "":
+		if dir.current_is_dir() and entry != "." and entry != "..":
+			_scan_dir(path + entry + "/")
+		elif entry.ends_with(".tres"):
+			var res = load(path + entry) as ItemDefinition
 			if res and res.id != "":
 				_db[res.id] = res
-		file = dir.get_next()
+		entry = dir.get_next()
 	dir.list_dir_end()
 
 func get_item(id: String) -> ItemDefinition:
