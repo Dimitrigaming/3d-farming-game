@@ -1,0 +1,278 @@
+[gd_scene format=3 uid="uid://dahlli6qv5lma"]
+
+[ext_resource type="Script" uid="uid://dkttytni0xmcg" path="res://ui/shop_ui.gd" id="1_shopui"]
+[ext_resource type="PackedScene" path="res://ui/item_row.tscn" id="2_ddy65"]
+[ext_resource type="Texture2D" uid="uid://gbn45ilqbclx" path="res://icons/axe_36x36.png" id="3_pe5jp"]
+
+[sub_resource type="StyleBoxFlat" id="Style_Panel"]
+bg_color = Color(0.118, 0.125, 0.157, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.188, 0.196, 0.243, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="Style_Bar"]
+content_margin_left = 18.0
+content_margin_top = 12.0
+content_margin_right = 18.0
+content_margin_bottom = 12.0
+bg_color = Color(0.075, 0.078, 0.102, 1)
+border_width_bottom = 1
+border_color = Color(0.188, 0.196, 0.243, 1)
+
+[sub_resource type="StyleBoxFlat" id="Style_MoneyBadge"]
+content_margin_left = 12.0
+content_margin_top = 4.0
+content_margin_right = 12.0
+content_margin_bottom = 4.0
+bg_color = Color(0.784, 0.573, 0.165, 0.12)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.784, 0.573, 0.165, 0.3)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="Style_CloseNormal"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.188, 0.196, 0.243, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="Style_CloseHover"]
+bg_color = Color(0.753, 0.224, 0.169, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.753, 0.224, 0.169, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="Style_TabBarBg"]
+content_margin_left = 18.0
+content_margin_top = 0.0
+content_margin_right = 18.0
+content_margin_bottom = 0.0
+bg_color = Color(0.075, 0.078, 0.102, 1)
+border_width_bottom = 1
+border_color = Color(0.188, 0.196, 0.243, 1)
+
+[sub_resource type="StyleBoxFlat" id="Style_TabNormal"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="Style_TabHover"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(1, 1, 1, 0.04)
+
+[sub_resource type="StyleBoxFlat" id="Style_TabHover2"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(1, 1, 1, 0.04)
+
+[sub_resource type="StyleBoxFlat" id="Style_TabHover3"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(1, 1, 1, 0.04)
+
+[sub_resource type="StyleBoxFlat" id="Style_TabHover4"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(1, 1, 1, 0.04)
+
+[sub_resource type="StyleBoxFlat" id="Style_ScrollBg"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="Style_Footer"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+bg_color = Color(0.075, 0.078, 0.102, 1)
+border_width_top = 1
+border_color = Color(0.188, 0.196, 0.243, 1)
+
+[node name="ShopUI" type="CanvasLayer" unique_id=1343921064]
+layer = 10
+script = ExtResource("1_shopui")
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=1728086405]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -260.0
+offset_right = 280.0
+offset_bottom = 260.0
+theme_override_styles/panel = SubResource("Style_Panel")
+
+[node name="VBox" type="VBoxContainer" parent="Panel" unique_id=1608797046]
+layout_mode = 2
+
+[node name="Header" type="PanelContainer" parent="Panel/VBox" unique_id=1535435888]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_Bar")
+
+[node name="HeaderRow" type="HBoxContainer" parent="Panel/VBox/Header" unique_id=1915885882]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Panel/VBox/Header/HeaderRow" unique_id=2051050354]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.784, 0.573, 0.165, 1)
+theme_override_font_sizes/font_size = 14
+text = "MARKET STALL"
+
+[node name="MoneyBadge" type="PanelContainer" parent="Panel/VBox/Header/HeaderRow" unique_id=818662047]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_MoneyBadge")
+
+[node name="MoneyRow" type="HBoxContainer" parent="Panel/VBox/Header/HeaderRow/MoneyBadge" unique_id=1484399291]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="CoinIcon" type="Label" parent="Panel/VBox/Header/HeaderRow/MoneyBadge/MoneyRow" unique_id=941548040]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "🪙"
+
+[node name="MoneyLabel" type="Label" parent="Panel/VBox/Header/HeaderRow/MoneyBadge/MoneyRow" unique_id=1847402691]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.784, 0.573, 0.165, 1)
+theme_override_font_sizes/font_size = 13
+text = "$0.00"
+
+[node name="CloseButton" type="Button" parent="Panel/VBox/Header/HeaderRow" unique_id=37068519]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.541, 0.529, 0.6, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("Style_CloseNormal")
+theme_override_styles/pressed = SubResource("Style_CloseHover")
+theme_override_styles/hover = SubResource("Style_CloseHover")
+theme_override_styles/focus = SubResource("Style_CloseNormal")
+text = "✕"
+
+[node name="TabBar" type="PanelContainer" parent="Panel/VBox" unique_id=1885903731]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_TabBarBg")
+
+[node name="TabRow" type="HBoxContainer" parent="Panel/VBox/TabBar" unique_id=81201002]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TabAll" type="Button" parent="Panel/VBox/TabBar/TabRow" unique_id=178165279]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.784, 0.573, 0.165, 1)
+theme_override_colors/font_hover_color = Color(0.929, 0.91, 0.875, 1)
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("Style_TabNormal")
+theme_override_styles/pressed = SubResource("Style_TabNormal")
+theme_override_styles/hover = SubResource("Style_TabHover")
+theme_override_styles/focus = SubResource("Style_TabNormal")
+text = "ALL ITEMS"
+
+[node name="TabSeeds" type="Button" parent="Panel/VBox/TabBar/TabRow" unique_id=144506289]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.541, 0.529, 0.6, 1)
+theme_override_colors/font_hover_color = Color(0.929, 0.91, 0.875, 1)
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("Style_TabNormal")
+theme_override_styles/pressed = SubResource("Style_TabNormal")
+theme_override_styles/hover = SubResource("Style_TabHover2")
+theme_override_styles/focus = SubResource("Style_TabNormal")
+text = "SEEDS"
+
+[node name="TabTools" type="Button" parent="Panel/VBox/TabBar/TabRow" unique_id=910020518]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.541, 0.529, 0.6, 1)
+theme_override_colors/font_hover_color = Color(0.929, 0.91, 0.875, 1)
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("Style_TabNormal")
+theme_override_styles/pressed = SubResource("Style_TabNormal")
+theme_override_styles/hover = SubResource("Style_TabHover3")
+theme_override_styles/focus = SubResource("Style_TabNormal")
+text = "TOOLS"
+
+[node name="TabMaterials" type="Button" parent="Panel/VBox/TabBar/TabRow" unique_id=1326951595]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.541, 0.529, 0.6, 1)
+theme_override_colors/font_hover_color = Color(0.929, 0.91, 0.875, 1)
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("Style_TabNormal")
+theme_override_styles/pressed = SubResource("Style_TabNormal")
+theme_override_styles/hover = SubResource("Style_TabHover4")
+theme_override_styles/focus = SubResource("Style_TabNormal")
+text = "MATERIALS"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBox" unique_id=2026208965]
+custom_minimum_size = Vector2(0, 380)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("Style_ScrollBg")
+
+[node name="ItemList" type="VBoxContainer" parent="Panel/VBox/ScrollContainer" unique_id=676955540]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="ItemRow" parent="Panel/VBox/ScrollContainer/ItemList" unique_id=1854494158 instance=ExtResource("2_ddy65")]
+layout_mode = 2
+
+[node name="Icon" parent="Panel/VBox/ScrollContainer/ItemList/ItemRow/HBox" index="0"]
+texture = ExtResource("3_pe5jp")
+
+[node name="Footer" type="PanelContainer" parent="Panel/VBox" unique_id=219021315]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_Footer")
+
+[node name="FooterRow" type="HBoxContainer" parent="Panel/VBox/Footer" unique_id=184870464]
+layout_mode = 2
+
+[node name="CountLabel" type="Label" parent="Panel/VBox/Footer/FooterRow" unique_id=1802187511]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.541, 0.529, 0.6, 1)
+theme_override_font_sizes/font_size = 11
+text = "0 items available"
+
+[node name="HintLabel" type="Label" parent="Panel/VBox/Footer/FooterRow" unique_id=642674399]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.541, 0.529, 0.6, 1)
+theme_override_font_sizes/font_size = 11
+text = "Press E or Esc to close"
+
+[editable path="Panel/VBox/ScrollContainer/ItemList/ItemRow"]

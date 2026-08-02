@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-@onready var grid = $Panel/VBox/Grid
-@onready var hotbar = $Panel/VBox/Hotbar
+@onready var grid = $Panel/VBox/GridBg/Grid
+@onready var hotbar = $Panel/VBox/HotbarBg/Hotbar
 
 func _ready() -> void:
 	Inventory.inventory_changed.connect(_refresh)

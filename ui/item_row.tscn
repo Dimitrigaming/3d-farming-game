@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://item_row001"]
+
+[sub_resource type="StyleBoxFlat" id="Style_RowBg"]
+bg_color = Color(0.137, 0.145, 0.184, 1.0)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="Style_BuyNormal"]
+bg_color = Color(0.784, 0.573, 0.165, 1.0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+content_margin_left = 12.0
+content_margin_right = 12.0
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="Style_BuyHover"]
+bg_color = Color(0.878, 0.659, 0.188, 1.0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+content_margin_left = 12.0
+content_margin_right = 12.0
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="Style_BuyFocus"]
+bg_color = Color(0.784, 0.573, 0.165, 1.0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="ItemRow" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 52)
+theme_override_styles/panel = SubResource("Style_RowBg")
+
+[node name="HBox" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Icon" type="TextureRect" parent="HBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(36, 36)
+size_flags_vertical = 4
+stretch_mode = 5
+
+[node name="ItemName" type="Label" parent="HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.929, 0.910, 0.875, 1.0)
+text = "Item Name"
+
+[node name="Price" type="Label" parent="HBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(56, 0)
+size_flags_vertical = 4
+horizontal_alignment = 2
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.784, 0.573, 0.165, 1.0)
+text = "$0"
+
+[node name="BuyButton" type="Button" parent="HBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(60, 36)
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.1, 0.08, 0.04, 1.0)
+theme_override_styles/normal = SubResource("Style_BuyNormal")
+theme_override_styles/hover = SubResource("Style_BuyHover")
+theme_override_styles/pressed = SubResource("Style_BuyNormal")
+theme_override_styles/focus = SubResource("Style_BuyFocus")
+text = "Buy"

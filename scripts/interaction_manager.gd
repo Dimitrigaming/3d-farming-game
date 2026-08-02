@@ -1,4 +1,4 @@
-﻿extends RayCast3D
+extends RayCast3D
 
 @onready var player_inventory: Node = get_node("../../../PlayerInventory")
 @onready var hud = get_node("../../../HUD")
@@ -37,11 +37,13 @@ func _process(delta: float) -> void:
 	if interactable:
 		if interactable != current_target:
 			if current_target:
-				current_target.hide_tooltip()
+				if current_target.has_method("hide_tooltip"):
+					current_target.hide_tooltip()
 				if current_target.has_method("on_look_away"):
 					current_target.on_look_away()
 			current_target = interactable
-			current_target.show_tooltip()
+			if current_target.has_method("show_tooltip"):
+				current_target.show_tooltip()
 			_shelf_lmb_timer = 0.0
 			_shelf_rmb_timer = 0.0
 		if current_target.has_method("on_aimed_at"):
@@ -50,7 +52,8 @@ func _process(delta: float) -> void:
 			current_target.set_aim_point(get_collision_point())
 	else:
 		if current_target:
-			current_target.hide_tooltip()
+			if current_target.has_method("hide_tooltip"):
+				current_target.hide_tooltip()
 			if current_target.has_method("on_look_away"):
 				current_target.on_look_away()
 			current_target = null

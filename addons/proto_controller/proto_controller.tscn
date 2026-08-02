@@ -3,9 +3,10 @@
 [ext_resource type="Script" uid="uid://cjgquqhnsyux7" path="res://addons/proto_controller/proto_controller.gd" id="1_ucva2"]
 [ext_resource type="Script" uid="uid://bpd2uk632dhvf" path="res://scripts/interaction_manager.gd" id="2_interact"]
 [ext_resource type="Script" uid="uid://d283bo7ip4paa" path="res://scripts/player_inventory.gd" id="3_inventory"]
+[ext_resource type="Script" uid="uid://qxpk1iwq6ki3" path="res://player/player_interaction.gd" id="3_ujot4"]
 [ext_resource type="Script" uid="uid://cbii3ky2ad6q1" path="res://scripts/interaction_hud.gd" id="4_hud"]
 [ext_resource type="Script" uid="uid://c61ggstqpho4u" path="res://scripts/build_mode.gd" id="5_buildmode"]
-[ext_resource type="PackedScene" path="res://models/tablet.tscn" id="6_h60nn"]
+[ext_resource type="PackedScene" uid="uid://2hwx1pmgm2t" path="res://models/tablet.tscn" id="6_h60nn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iof21"]
 albedo_color = Color(0.91806, 0.575202, 0.222449, 1)
@@ -43,6 +44,10 @@ script = ExtResource("2_interact")
 
 [node name="HoldPoint" type="Marker3D" parent="Head/Camera3D" unique_id=1587450460]
 transform = Transform3D(1, 0, 0, 0, 0.9397, -0.342, 0, 0.342, 0.9397, 0, -0.65, -1.1)
+
+[node name="PlayerInteraction" type="RayCast3D" parent="Head/Camera3D" unique_id=1165692050]
+target_position = Vector3(0, 0, -3)
+script = ExtResource("3_ujot4")
 
 [node name="PlayerInventory" type="Node3D" parent="." unique_id=1383110303]
 script = ExtResource("3_inventory")

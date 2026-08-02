@@ -68,6 +68,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_b0b6l")
 
 [node name="HammerV1" type="Node3D" unique_id=461853798]
+transform = Transform3D(-0.34202015, 0, 0.9396926, 0, 1, 0, -0.9396926, 0, -0.34202015, 0, 0, 0)
 
 [node name="HammerV1" type="MeshInstance3D" parent="." unique_id=2054746632]
 mesh = SubResource("ArrayMesh_fbudk")

@@ -96,6 +96,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_bxqlc")
 
 [node name="PickAxeV1" type="Node3D" unique_id=1839755320]
+transform = Transform3D(0.34202012, 0, -0.9396926, 0, 1, 0, 0.9396926, 0, 0.34202012, 0, 0, 0)
 
 [node name="PickAxeV1" type="MeshInstance3D" parent="." unique_id=528046792]
 mesh = SubResource("ArrayMesh_8ex0g")

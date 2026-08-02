@@ -1,0 +1,129 @@
+extends CanvasLayer
+
+signal closed
+
+const COLOR_ACCENT := Color(0.784, 0.573, 0.165, 1.0)
+const COLOR_DIM    := Color(0.541, 0.529, 0.600, 1.0)
+const COLOR_TEXT   := Color(0.929, 0.910, 0.875, 1.0)
+const ROW_SCENE    := preload("res://ui/item_row.tscn")
+
+@onready var item_list   = $Panel/VBox/ScrollContainer/ItemList
+@onready var money_label = $Panel/VBox/Header/HeaderRow/MoneyBadge/MoneyRow/MoneyLabel
+@onready var close_btn   = $Panel/VBox/Header/HeaderRow/CloseButton
+@onready var count_label = $Panel/VBox/Footer/FooterRow/CountLabel
+@onready var tab_all      = $Panel/VBox/TabBar/TabRow/TabAll
+@onready var tab_seeds    = $Panel/VBox/TabBar/TabRow/TabSeeds
+@onready var tab_tools    = $Panel/VBox/TabBar/TabRow/TabTools
+@onready var tab_materials = $Panel/VBox/TabBar/TabRow/TabMaterials
+
+var _active_tab: String = "all"
+
+func _ready() -> void:
+	visible = false
+	close_btn.pressed.connect(close_shop)
+	GameState.money_changed.connect(_on_money_changed)
+	tab_all.pressed.connect(func(): _set_tab("all"))
+	tab_seeds.pressed.connect(func(): _set_tab("seeds"))
+	tab_tools.pressed.connect(func(): _set_tab("tools"))
+	tab_materials.pressed.connect(func(): _set_tab("materials"))
+
+func open_shop() -> void:
+	_populate()
+	_on_money_changed(GameState.money)
+	visible = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	var controller = get_tree().get_first_node_in_group("proto_controller")
+	if controller:
+		controller.process_mode = Node.PROCESS_MODE_DISABLED
+
+func close_shop() -> void:
+	visible = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	var controller = get_tree().get_first_node_in_group("proto_controller")
+	if controller:
+		controller.process_mode = Node.PROCESS_MODE_INHERIT
+	closed.emit()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if visible and (event.is_action_pressed("inventory") or event.is_action_pressed("interact")):
+		close_shop()
+		get_viewport().set_input_as_handled()
+
+func _on_money_changed(amount: float) -> void:
+	money_label.text = "$%.2f" % amount
+
+func _set_tab(tab: String) -> void:
+	_active_tab = tab
+	_update_tab_styles()
+	_populate()
+
+func _update_tab_styles() -> void:
+	var tabs = {
+		"all": tab_all,
+		"seeds": tab_seeds,
+		"tools": tab_tools,
+		"materials": tab_materials,
+	}
+	for key in tabs:
+		var btn: Button = tabs[key]
+		if key == _active_tab:
+			btn.add_theme_color_override("font_color", COLOR_ACCENT)
+		else:
+			btn.add_theme_color_override("font_color", COLOR_DIM)
+
+func _item_matches_tab(item: ItemDefinition) -> bool:
+	match _active_tab:
+		"all":       return true
+		"seeds":     return item.id.contains("seed") or item.name.to_lower().contains("seed")
+		"tools":     return item.type == 5
+		"materials": return item.type != 5 and not (item.id.contains("seed") or item.name.to_lower().contains("seed"))
+		_:           return true
+
+func _populate() -> void:
+	for child in item_list.get_children():
+		child.queue_free()
+
+	# TEMP: preview rows for layout testing
+	for i in 4:
+		var dummy = ItemDefinition.new()
+		dummy.id = "test_%d" % i
+		dummy.name = ["Carrot Seeds", "Watering Can", "Fertilizer", "Wheat Seeds"][i]
+		dummy.buy_price = [12, 40, 30, 8][i]
+		item_list.add_child(_make_row(dummy))
+	count_label.text = "4 items available"
+	return
+	# END TEMP
+
+	var items = ItemDB.all_items()
+	items.sort_custom(func(a, b): return a.name < b.name)
+
+	var count := 0
+	for item in items:
+		if item.buy_price <= 0:
+			continue
+		if not _item_matches_tab(item):
+			continue
+		item_list.add_child(_make_row(item))
+		count += 1
+
+	count_label.text = "%d item%s available" % [count, "s" if count != 1 else ""]
+
+func _make_row(item: ItemDefinition) -> PanelContainer:
+	var row = ROW_SCENE.instantiate()
+	row.get_node("HBox/Icon").texture = item.icon
+	row.get_node("HBox/ItemName").text = item.name
+	row.get_node("HBox/Price").text = "$%d" % item.buy_price
+	var buy_btn = row.get_node("HBox/BuyButton") as Button
+	buy_btn.pressed.connect(_on_buy.bind(item, buy_btn))
+	return row
+
+func _on_buy(item: ItemDefinition, btn: Button) -> void:
+	if not GameState.spend_money(item.buy_price):
+		return
+	Inventory.add_item(item.id)
+	btn.text = "✓"
+	btn.disabled = true
+	await get_tree().create_timer(0.6).timeout
+	if is_instance_valid(btn):
+		btn.text = "Buy"
+		btn.disabled = false

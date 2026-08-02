@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://cdo545rbdmn5t"]
 
+[ext_resource type="Texture2D" uid="uid://bxle760hh7psa" path="res://icons/inventory/inventory_1x1_black.png" id="2_j1vmf"]
 [ext_resource type="Script" uid="uid://bv3a4vsmojnt1" path="res://ui/inventory_ui.gd" id="2_script"]
 [ext_resource type="PackedScene" uid="uid://dmoi5hnboeqtx" path="res://ui/inventory_slot.tscn" id="3_slot"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
-bg_color = Color(0.18, 0.18, 0.18, 0.95)
+bg_color = Color(0.18, 0.18, 0.18, 0)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
@@ -15,11 +16,33 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sep"]
-bg_color = Color(0.4, 0.4, 0.4, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBox_Grid"]
+texture = ExtResource("2_j1vmf")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_normal"]
+bg_color = Color(0.22, 0.22, 0.22, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.45, 0.45, 0.45, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxTexture" id="StyleBox_Hotbar"]
+texture = ExtResource("2_j1vmf")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
 
 [node name="InventoryUI" type="CanvasLayer" unique_id=919419101]
-visible = false
 script = ExtResource("2_script")
 
 [node name="Panel" type="PanelContainer" parent="." unique_id=200000001]
@@ -47,150 +70,198 @@ theme_override_font_sizes/font_size = 18
 text = "Inventory"
 horizontal_alignment = 1
 
-[node name="Grid" type="GridContainer" parent="Panel/VBox" unique_id=200000004]
+[node name="GridBg" type="PanelContainer" parent="Panel/VBox" unique_id=200000007]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBox_Grid")
+
+[node name="Grid" type="GridContainer" parent="Panel/VBox/GridBg" unique_id=200000004]
 layout_mode = 2
 columns = 9
 
-[node name="Slot0" parent="Panel/VBox/Grid" unique_id=788826124 instance=ExtResource("3_slot")]
+[node name="Slot0" parent="Panel/VBox/GridBg/Grid" unique_id=788826124 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot1" parent="Panel/VBox/Grid" unique_id=2018213056 instance=ExtResource("3_slot")]
+[node name="Slot1" parent="Panel/VBox/GridBg/Grid" unique_id=2018213056 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot2" parent="Panel/VBox/Grid" unique_id=1111687549 instance=ExtResource("3_slot")]
+[node name="Slot2" parent="Panel/VBox/GridBg/Grid" unique_id=1111687549 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot3" parent="Panel/VBox/Grid" unique_id=5502906 instance=ExtResource("3_slot")]
+[node name="Slot3" parent="Panel/VBox/GridBg/Grid" unique_id=5502906 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot4" parent="Panel/VBox/Grid" unique_id=2041161517 instance=ExtResource("3_slot")]
+[node name="Slot4" parent="Panel/VBox/GridBg/Grid" unique_id=2041161517 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot5" parent="Panel/VBox/Grid" unique_id=2016109647 instance=ExtResource("3_slot")]
+[node name="Slot5" parent="Panel/VBox/GridBg/Grid" unique_id=2016109647 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot6" parent="Panel/VBox/Grid" unique_id=308341594 instance=ExtResource("3_slot")]
+[node name="Slot6" parent="Panel/VBox/GridBg/Grid" unique_id=308341594 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot7" parent="Panel/VBox/Grid" unique_id=203238600 instance=ExtResource("3_slot")]
+[node name="Slot7" parent="Panel/VBox/GridBg/Grid" unique_id=203238600 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot8" parent="Panel/VBox/Grid" unique_id=947144071 instance=ExtResource("3_slot")]
+[node name="Slot8" parent="Panel/VBox/GridBg/Grid" unique_id=947144071 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot9" parent="Panel/VBox/Grid" unique_id=580684021 instance=ExtResource("3_slot")]
+[node name="Slot9" parent="Panel/VBox/GridBg/Grid" unique_id=580684021 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot10" parent="Panel/VBox/Grid" unique_id=494827375 instance=ExtResource("3_slot")]
+[node name="Slot10" parent="Panel/VBox/GridBg/Grid" unique_id=494827375 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot11" parent="Panel/VBox/Grid" unique_id=1996140460 instance=ExtResource("3_slot")]
+[node name="Slot11" parent="Panel/VBox/GridBg/Grid" unique_id=1996140460 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot12" parent="Panel/VBox/Grid" unique_id=1315863608 instance=ExtResource("3_slot")]
+[node name="Slot12" parent="Panel/VBox/GridBg/Grid" unique_id=1315863608 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot13" parent="Panel/VBox/Grid" unique_id=1908471410 instance=ExtResource("3_slot")]
+[node name="Slot13" parent="Panel/VBox/GridBg/Grid" unique_id=1908471410 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot14" parent="Panel/VBox/Grid" unique_id=670533077 instance=ExtResource("3_slot")]
+[node name="Slot14" parent="Panel/VBox/GridBg/Grid" unique_id=670533077 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot15" parent="Panel/VBox/Grid" unique_id=1673901071 instance=ExtResource("3_slot")]
+[node name="Slot15" parent="Panel/VBox/GridBg/Grid" unique_id=1673901071 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot16" parent="Panel/VBox/Grid" unique_id=880928860 instance=ExtResource("3_slot")]
+[node name="Slot16" parent="Panel/VBox/GridBg/Grid" unique_id=880928860 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot17" parent="Panel/VBox/Grid" unique_id=1515590955 instance=ExtResource("3_slot")]
+[node name="Slot17" parent="Panel/VBox/GridBg/Grid" unique_id=1515590955 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot18" parent="Panel/VBox/Grid" unique_id=646210051 instance=ExtResource("3_slot")]
+[node name="Slot18" parent="Panel/VBox/GridBg/Grid" unique_id=646210051 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot19" parent="Panel/VBox/Grid" unique_id=1186852603 instance=ExtResource("3_slot")]
+[node name="Slot19" parent="Panel/VBox/GridBg/Grid" unique_id=1186852603 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot20" parent="Panel/VBox/Grid" unique_id=1173303362 instance=ExtResource("3_slot")]
+[node name="Slot20" parent="Panel/VBox/GridBg/Grid" unique_id=1173303362 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot21" parent="Panel/VBox/Grid" unique_id=962220146 instance=ExtResource("3_slot")]
+[node name="Slot21" parent="Panel/VBox/GridBg/Grid" unique_id=962220146 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot22" parent="Panel/VBox/Grid" unique_id=1096840464 instance=ExtResource("3_slot")]
+[node name="Slot22" parent="Panel/VBox/GridBg/Grid" unique_id=1096840464 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot23" parent="Panel/VBox/Grid" unique_id=1588106378 instance=ExtResource("3_slot")]
+[node name="Slot23" parent="Panel/VBox/GridBg/Grid" unique_id=1588106378 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot24" parent="Panel/VBox/Grid" unique_id=956579995 instance=ExtResource("3_slot")]
+[node name="Slot24" parent="Panel/VBox/GridBg/Grid" unique_id=956579995 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot25" parent="Panel/VBox/Grid" unique_id=1169907050 instance=ExtResource("3_slot")]
+[node name="Slot25" parent="Panel/VBox/GridBg/Grid" unique_id=1169907050 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot26" parent="Panel/VBox/Grid" unique_id=177553906 instance=ExtResource("3_slot")]
+[node name="Slot26" parent="Panel/VBox/GridBg/Grid" unique_id=177553906 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot27" parent="Panel/VBox/Grid" unique_id=1886877610 instance=ExtResource("3_slot")]
+[node name="Slot27" parent="Panel/VBox/GridBg/Grid" unique_id=1886877610 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot28" parent="Panel/VBox/Grid" unique_id=1768394840 instance=ExtResource("3_slot")]
+[node name="Slot28" parent="Panel/VBox/GridBg/Grid" unique_id=1768394840 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot29" parent="Panel/VBox/Grid" unique_id=2011942406 instance=ExtResource("3_slot")]
+[node name="Slot29" parent="Panel/VBox/GridBg/Grid" unique_id=2011942406 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot30" parent="Panel/VBox/Grid" unique_id=115101550 instance=ExtResource("3_slot")]
+[node name="Slot30" parent="Panel/VBox/GridBg/Grid" unique_id=115101550 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot31" parent="Panel/VBox/Grid" unique_id=1870115413 instance=ExtResource("3_slot")]
+[node name="Slot31" parent="Panel/VBox/GridBg/Grid" unique_id=1870115413 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot32" parent="Panel/VBox/Grid" unique_id=1663722908 instance=ExtResource("3_slot")]
+[node name="Slot32" parent="Panel/VBox/GridBg/Grid" unique_id=1663722908 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot33" parent="Panel/VBox/Grid" unique_id=611315505 instance=ExtResource("3_slot")]
+[node name="Slot33" parent="Panel/VBox/GridBg/Grid" unique_id=611315505 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot34" parent="Panel/VBox/Grid" unique_id=845326387 instance=ExtResource("3_slot")]
+[node name="Slot34" parent="Panel/VBox/GridBg/Grid" unique_id=845326387 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot35" parent="Panel/VBox/Grid" unique_id=802975100 instance=ExtResource("3_slot")]
+[node name="Slot35" parent="Panel/VBox/GridBg/Grid" unique_id=802975100 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Separator" type="PanelContainer" parent="Panel/VBox" unique_id=200000005]
-custom_minimum_size = Vector2(0, 2)
+[node name="HotbarBg" type="PanelContainer" parent="Panel/VBox" unique_id=200000008]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_sep")
+theme_override_styles/panel = SubResource("StyleBox_Hotbar")
 
-[node name="Hotbar" type="GridContainer" parent="Panel/VBox" unique_id=200000006]
+[node name="Hotbar" type="GridContainer" parent="Panel/VBox/HotbarBg" unique_id=200000006]
 layout_mode = 2
 columns = 9
 
-[node name="Slot36" parent="Panel/VBox/Hotbar" unique_id=1801064244 instance=ExtResource("3_slot")]
+[node name="Slot36" parent="Panel/VBox/HotbarBg/Hotbar" unique_id=1801064244 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot37" parent="Panel/VBox/Hotbar" unique_id=358068835 instance=ExtResource("3_slot")]
+[node name="Slot37" parent="Panel/VBox/HotbarBg/Hotbar" unique_id=358068835 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot38" parent="Panel/VBox/Hotbar" unique_id=442555328 instance=ExtResource("3_slot")]
+[node name="Slot38" parent="Panel/VBox/HotbarBg/Hotbar" unique_id=442555328 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot39" parent="Panel/VBox/Hotbar" unique_id=602675310 instance=ExtResource("3_slot")]
+[node name="Slot39" parent="Panel/VBox/HotbarBg/Hotbar" unique_id=602675310 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot40" parent="Panel/VBox/Hotbar" unique_id=317559517 instance=ExtResource("3_slot")]
+[node name="Slot40" parent="Panel/VBox/HotbarBg/Hotbar" unique_id=317559517 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot41" parent="Panel/VBox/Hotbar" unique_id=376178461 instance=ExtResource("3_slot")]
+[node name="Slot41" parent="Panel/VBox/HotbarBg/Hotbar" unique_id=376178461 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot42" parent="Panel/VBox/Hotbar" unique_id=1635013504 instance=ExtResource("3_slot")]
+[node name="Slot42" parent="Panel/VBox/HotbarBg/Hotbar" unique_id=1635013504 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot43" parent="Panel/VBox/Hotbar" unique_id=1805594451 instance=ExtResource("3_slot")]
+[node name="Slot43" parent="Panel/VBox/HotbarBg/Hotbar" unique_id=1805594451 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
 
-[node name="Slot44" parent="Panel/VBox/Hotbar" unique_id=1361414242 instance=ExtResource("3_slot")]
+[node name="Slot44" parent="Panel/VBox/HotbarBg/Hotbar" unique_id=1361414242 instance=ExtResource("3_slot")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_normal")

@@ -1,20 +1,18 @@
 [gd_scene format=3 uid="uid://dmoi5hnboeqtx"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_normal"]
-bg_color = Color(0.22, 0.22, 0.22, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.45, 0.45, 0.45, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+[ext_resource type="Texture2D" uid="uid://bxle760hh7psa" path="res://icons/inventory/inventory_1x1_black.png" id="1_d1f1n"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_normal"]
+texture = ExtResource("1_d1f1n")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+modulate_color = Color(1, 1, 1, 0.5882353)
 
 [node name="InventorySlot" type="PanelContainer" unique_id=1195094592]
 custom_minimum_size = Vector2(64, 64)
-theme_override_styles/panel = SubResource("StyleBoxFlat_normal")
+theme_override_styles/panel = SubResource("StyleBoxTexture_normal")
 
 [node name="Icon" type="TextureRect" parent="." unique_id=111111001]
 visible = false

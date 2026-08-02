@@ -1,14 +1,17 @@
-[gd_resource type="Resource" script_class="ItemDefinition" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://cere8nmgd3fwf"]
 
-[ext_resource type="Script" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://c5yol4p2fousm" path="res://models/crops/SM_Tomato_Seed.tscn" id="1_xw01i"]
+[ext_resource type="Texture2D" uid="uid://dc76o1p3sxpmk" path="res://icons/Pouch.png" id="2_8abo0"]
 
 [resource]
 script = ExtResource("1_def")
 id = "tomato_seed"
 name = "Tomato Seed"
+icon = ExtResource("2_8abo0")
 type = 0
-max_stack = 99
 sell_price = 8
 buy_price = 30
 unlock_level = 3
 description = "Plant in a tilled soil plot to grow tomatoes."
+equip_scene = ExtResource("1_xw01i")

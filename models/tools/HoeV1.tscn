@@ -70,6 +70,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_wsl1e")
 
 [node name="HoeV1" type="Node3D" unique_id=145246625]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="HoeV1" type="MeshInstance3D" parent="." unique_id=689306484]
 mesh = SubResource("ArrayMesh_8k6eh")
