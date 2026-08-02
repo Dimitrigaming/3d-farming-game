@@ -35,7 +35,13 @@ func _unhandled_input(event: InputEvent) -> void:
 			_notify_equipper()
 			get_viewport().set_input_as_handled()
 
+var _slot_default_style: StyleBox = null
+
 func _update_highlight() -> void:
+	if _slot_default_style == null:
+		var slots = grid.get_children()
+		if slots.size() > 0:
+			_slot_default_style = slots[0].get_theme_stylebox("panel")
 	var slots = grid.get_children()
 	for i in slots.size():
 		var panel = slots[i]
@@ -46,7 +52,10 @@ func _update_highlight() -> void:
 			style.border_color = Color(1, 0.85, 0.2, 1)
 			panel.add_theme_stylebox_override("panel", style)
 		else:
-			panel.remove_theme_stylebox_override("panel")
+			if _slot_default_style:
+				panel.add_theme_stylebox_override("panel", _slot_default_style)
+			else:
+				panel.remove_theme_stylebox_override("panel")
 
 func _notify_equipper() -> void:
 	var equipper = get_tree().get_first_node_in_group("tool_equipper")

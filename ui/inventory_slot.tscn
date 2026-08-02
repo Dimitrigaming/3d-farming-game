@@ -8,7 +8,6 @@ texture_margin_left = 8.0
 texture_margin_top = 8.0
 texture_margin_right = 8.0
 texture_margin_bottom = 8.0
-modulate_color = Color(1, 1, 1, 0.5882353)
 
 [node name="InventorySlot" type="PanelContainer" unique_id=1195094592]
 custom_minimum_size = Vector2(64, 64)
