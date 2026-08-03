@@ -46,16 +46,19 @@ func open_shop() -> void:
 
 func close_shop() -> void:
 	visible = false
-	call_deferred("_recapture_mouse")
 	_set_crosshair_visible(true)
 	var inv = _get_inventory_ui()
 	if inv:
 		inv.hide_for_shop()
 	_set_panel_position(false)
+	closed.emit()
+	call_deferred("_finish_close")
+
+func _finish_close() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	var controller = get_tree().get_first_node_in_group("proto_controller")
 	if controller:
 		controller.process_mode = Node.PROCESS_MODE_INHERIT
-	closed.emit()
 
 func _set_panel_position(shop_mode: bool) -> void:
 	var panel = $Panel
@@ -65,9 +68,6 @@ func _set_panel_position(shop_mode: bool) -> void:
 	else:
 		panel.offset_left = -280.0
 		panel.offset_right = 280.0
-
-func _recapture_mouse() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if visible and (event.is_action_pressed("inventory") or event.is_action_pressed("interact") or event.is_action_pressed("ui_cancel")):
