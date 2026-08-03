@@ -9,6 +9,7 @@ const LIB_PATH = "res://farm/farm_mesh_library.tres"
 
 var cell_state: Dictionary = {}
 var _plots: Dictionary = {}
+var _crops: Dictionary = {}
 
 @onready var grid_map: GridMap = $GridMap
 
@@ -79,6 +80,35 @@ func till_cell(x: int, z: int) -> void:
 	plot.position = Vector3(local_pos.x, 0.0, local_pos.z)
 	_plots[key] = plot
 
+func plant_crop(x: int, z: int, seed_item_id: String) -> void:
+	var key = Vector3i(x, 0, z)
+	if cell_state.get(key, -1) != TILLED:
+		return
+	if _crops.has(key):
+		return
+	var crop_def = CropDB.get_crop_for_seed(seed_item_id)
+	if crop_def == null:
+		return
+	var crop = PlantedCrop.new()
+	add_child(crop)
+	var local_pos = grid_map.map_to_local(key)
+	crop.position = Vector3(local_pos.x, 0.05, local_pos.z)
+	crop.setup(crop_def)
+	_crops[key] = crop
+
+func harvest_crop(x: int, z: int) -> String:
+	var key = Vector3i(x, 0, z)
+	var crop = _crops.get(key) as PlantedCrop
+	if crop == null or not crop.is_ready_to_harvest():
+		return ""
+	var yield_id = crop.harvest()
+	crop.queue_free()
+	_crops.erase(key)
+	return yield_id
+
+func get_crop(x: int, z: int) -> PlantedCrop:
+	return _crops.get(Vector3i(x, 0, z), null)
+
 func untill_cell(x: int, z: int) -> void:
 	var key = Vector3i(x, 0, z)
 	if cell_state.get(key, -1) != TILLED:
@@ -86,6 +116,9 @@ func untill_cell(x: int, z: int) -> void:
 	if _plots.has(key):
 		_plots[key].queue_free()
 		_plots.erase(key)
+	if _crops.has(key):
+		_crops[key].queue_free()
+		_crops.erase(key)
 	cell_state[key] = DIRT
 
 func set_cell(x: int, z: int, state: int) -> void:

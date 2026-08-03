@@ -30,11 +30,11 @@ func add_item(item_id: String, amount: int = 1) -> bool:
 	return false  # inventory full
 
 func remove_item(item_id: String, amount: int = 1) -> bool:
-	for slot in slots:
-		if slot["item_id"] == item_id:
-			slot["amount"] -= amount
-			if slot["amount"] <= 0:
-				slot = _empty_slot()
+	for i in slots.size():
+		if slots[i]["item_id"] == item_id:
+			slots[i]["amount"] -= amount
+			if slots[i]["amount"] <= 0:
+				slots[i] = _empty_slot()
 			inventory_changed.emit()
 			return true
 	return false

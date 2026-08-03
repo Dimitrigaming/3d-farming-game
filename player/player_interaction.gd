@@ -4,6 +4,7 @@ var _highlight: MeshInstance3D = null
 var _prompt_label: Label = null
 var _hovered_cell: Vector3i = Vector3i(-1, -1, -1)
 var _hovered_farm = null
+var _hovered_is_harvestable: bool = false
 var _current_interactable = null
 
 func _ready() -> void:
@@ -60,6 +61,7 @@ func _setup_prompt() -> void:
 func _process(_delta: float) -> void:
 	_hovered_cell = Vector3i(-1, -1, -1)
 	_hovered_farm = null
+	_hovered_is_harvestable = false
 
 	if _prompt_label:
 		_prompt_label.visible = false
@@ -72,35 +74,15 @@ func _process(_delta: float) -> void:
 
 	var hit = get_collider()
 
-	# Check for interactable (shop, NPC, etc.)
 	_current_interactable = _find_interactable(hit)
-
 	if _current_interactable != null:
 		if _prompt_label and _current_interactable.has_method("get_interact_hint"):
 			_prompt_label.text = "[E] %s" % _current_interactable.get_interact_hint()
 			_prompt_label.visible = true
 		return
 
-	# Farm tile highlighting
 	if hit == null:
 		return
-
-	var equipper = get_tree().get_first_node_in_group("tool_equipper")
-	if not equipper:
-		return
-
-	var item_id = equipper.current_item_id
-	var target_state: int
-	var highlight_color: Color
-	match item_id:
-		"hoe":
-			target_state = 1
-			highlight_color = Color(1.0, 0.85, 0.2, 0.5)
-		"shovel":
-			target_state = 2
-			highlight_color = Color(1.0, 0.35, 0.2, 0.5)
-		_:
-			return
 
 	var farm = get_tree().get_first_node_in_group("farm_grid")
 	if not farm:
@@ -108,35 +90,79 @@ func _process(_delta: float) -> void:
 
 	var hit_pos = get_collision_point()
 	var cell = _world_to_cell(farm, hit_pos)
-	if farm.cell_state.get(cell, -1) != target_state:
-		return
+	var state = farm.cell_state.get(cell, -1)
 
-	(_highlight.material_override as StandardMaterial3D).albedo_color = highlight_color
-	_highlight.global_position = _cell_to_world(farm, cell)
-	_highlight.visible = true
-	_hovered_cell = cell
-	_hovered_farm = farm
+	var equipper = get_tree().get_first_node_in_group("tool_equipper")
+	var item_id = equipper.current_item_id if equipper else ""
+
+	var highlight_color: Color
+	var valid := false
+
+	match item_id:
+		"hoe":
+			if state == farm.DIRT:
+				highlight_color = Color(1.0, 0.85, 0.2, 0.5)
+				valid = true
+		"shovel":
+			if state == farm.TILLED:
+				highlight_color = Color(1.0, 0.35, 0.2, 0.5)
+				valid = true
+		_:
+			if item_id.ends_with("_seed") and state == farm.TILLED and farm.get_crop(cell.x, cell.z) == null:
+				highlight_color = Color(0.2, 1.0, 0.4, 0.5)
+				valid = true
+
+	# Harvestable crop — show regardless of equipped item
+	if not valid and state == farm.TILLED:
+		var crop = farm.get_crop(cell.x, cell.z)
+		if crop and crop.is_ready_to_harvest():
+			highlight_color = Color(1.0, 0.9, 0.1, 0.6)
+			valid = true
+			_hovered_is_harvestable = true
+			if _prompt_label:
+				_prompt_label.text = "[E] Harvest"
+				_prompt_label.visible = true
+
+	if valid:
+		(_highlight.material_override as StandardMaterial3D).albedo_color = highlight_color
+		_highlight.global_position = _cell_to_world(farm, cell)
+		_highlight.visible = true
+		_hovered_cell = cell
+		_hovered_farm = farm
 
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
 		return
 
-	if event.is_action_pressed("interact") and _current_interactable != null:
-		_current_interactable.interact()
-		get_viewport().set_input_as_handled()
-		return
+	if event.is_action_pressed("interact"):
+		if _current_interactable != null:
+			_current_interactable.interact()
+			get_viewport().set_input_as_handled()
+			return
+		if _hovered_is_harvestable and _hovered_farm != null:
+			var yield_id = _hovered_farm.harvest_crop(_hovered_cell.x, _hovered_cell.z)
+			if yield_id != "":
+				Inventory.add_item(yield_id)
+			get_viewport().set_input_as_handled()
+			return
 
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+	if event is InputEventMouseButton and event.pressed:
 		if _hovered_farm == null or _hovered_cell == Vector3i(-1, -1, -1):
 			return
 		var equipper = get_tree().get_first_node_in_group("tool_equipper")
 		if not equipper:
 			return
-		match equipper.current_item_id:
-			"hoe":
-				_hovered_farm.till_cell(_hovered_cell.x, _hovered_cell.z)
-			"shovel":
-				_hovered_farm.untill_cell(_hovered_cell.x, _hovered_cell.z)
+		var item_id = equipper.current_item_id
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			match item_id:
+				"hoe":
+					_hovered_farm.till_cell(_hovered_cell.x, _hovered_cell.z)
+				"shovel":
+					_hovered_farm.untill_cell(_hovered_cell.x, _hovered_cell.z)
+		elif event.button_index == MOUSE_BUTTON_RIGHT:
+			if item_id.ends_with("_seed") and Inventory.has_item(item_id):
+				_hovered_farm.plant_crop(_hovered_cell.x, _hovered_cell.z, item_id)
+				Inventory.remove_item(item_id)
 
 func _world_to_cell(farm: Node3D, world_pos: Vector3) -> Vector3i:
 	var local = farm.grid_map.to_local(world_pos)
