@@ -27,24 +27,36 @@ func _ready() -> void:
 	tab_tools.pressed.connect(func(): _set_tab("tools"))
 	tab_materials.pressed.connect(func(): _set_tab("materials"))
 
+func _get_inventory_ui() -> CanvasLayer:
+	return get_tree().get_root().find_child("InventoryUI", true, false)
+
 func open_shop() -> void:
 	_populate()
 	_on_money_changed(GameState.money)
 	visible = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	_set_crosshair_visible(false)
+	var inv = _get_inventory_ui()
+	if inv:
+		inv.show_for_shop()
 	var controller = get_tree().get_first_node_in_group("proto_controller")
 	if controller:
 		controller.process_mode = Node.PROCESS_MODE_DISABLED
 
 func close_shop() -> void:
 	visible = false
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	call_deferred("_recapture_mouse")
 	_set_crosshair_visible(true)
+	var inv = _get_inventory_ui()
+	if inv:
+		inv.hide_for_shop()
 	var controller = get_tree().get_first_node_in_group("proto_controller")
 	if controller:
 		controller.process_mode = Node.PROCESS_MODE_INHERIT
 	closed.emit()
+
+func _recapture_mouse() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if visible and (event.is_action_pressed("inventory") or event.is_action_pressed("interact") or event.is_action_pressed("ui_cancel")):
@@ -111,17 +123,15 @@ func _make_row(item: ItemDefinition) -> PanelContainer:
 	row.get_node("HBox/Icon").texture = item.icon
 	row.get_node("HBox/ItemName").text = item.name
 	row.get_node("HBox/Price").text = "$%d" % item.buy_price
+	var qty_box = row.get_node("HBox/Qty") as SpinBox
 	var buy_btn = row.get_node("HBox/BuyButton") as Button
-	buy_btn.pressed.connect(_on_buy.bind(item, buy_btn))
+	buy_btn.pressed.connect(_on_buy.bind(item, qty_box))
 	return row
 
-func _on_buy(item: ItemDefinition, btn: Button) -> void:
-	if not GameState.spend_money(item.buy_price):
+func _on_buy(item: ItemDefinition, qty_box: SpinBox) -> void:
+	var qty = int(qty_box.value)
+	var total = item.buy_price * qty
+	if not GameState.spend_money(total):
 		return
-	Inventory.add_item(item.id)
-	btn.text = "✓"
-	btn.disabled = true
-	await get_tree().create_timer(0.6).timeout
-	if is_instance_valid(btn):
-		btn.text = "Buy"
-		btn.disabled = false
+	for i in qty:
+		Inventory.add_item(item.id)

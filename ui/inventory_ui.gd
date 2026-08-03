@@ -38,15 +38,30 @@ func _unhandled_input(event: InputEvent) -> void:
 		if visible:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			call_deferred("_recapture_mouse")
 		_set_player_enabled(not visible)
 		_set_crosshair_visible(not visible)
 		get_viewport().set_input_as_handled()
+
+func _recapture_mouse() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _set_player_enabled(enabled: bool) -> void:
 	var controller = get_tree().get_first_node_in_group("proto_controller")
 	if controller:
 		controller.process_mode = Node.PROCESS_MODE_DISABLED if not enabled else Node.PROCESS_MODE_INHERIT
+
+func show_for_shop() -> void:
+	visible = true
+	var panel = $Panel
+	panel.offset_left = -600.0
+	panel.offset_right = -12.0
+
+func hide_for_shop() -> void:
+	visible = false
+	var panel = $Panel
+	panel.offset_left = -304.0
+	panel.offset_right = 288.0
 
 func _set_crosshair_visible(visible: bool) -> void:
 	var controller = get_tree().get_first_node_in_group("proto_controller")
