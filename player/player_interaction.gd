@@ -112,15 +112,15 @@ func _process(_delta: float) -> void:
 				highlight_color = Color(0.2, 1.0, 0.4, 0.5)
 				valid = true
 
-	# Harvestable crop — show regardless of equipped item
-	if not valid and state == farm.TILLED:
+	# Harvestable crop — show when scythe equipped
+	if not valid and item_id == "scythe" and state == farm.TILLED:
 		var crop = farm.get_crop(cell.x, cell.z)
 		if crop and crop.is_ready_to_harvest():
 			highlight_color = Color(1.0, 0.9, 0.1, 0.6)
 			valid = true
 			_hovered_is_harvestable = true
 			if _prompt_label:
-				_prompt_label.text = "[E] Harvest"
+				_prompt_label.text = "[LMB] Harvest"
 				_prompt_label.visible = true
 
 	if valid:
@@ -134,17 +134,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
 		return
 
-	if event.is_action_pressed("interact"):
-		if _current_interactable != null:
-			_current_interactable.interact()
-			get_viewport().set_input_as_handled()
-			return
-		if _hovered_is_harvestable and _hovered_farm != null:
-			var yield_id = _hovered_farm.harvest_crop(_hovered_cell.x, _hovered_cell.z)
-			if yield_id != "":
-				Inventory.add_item(yield_id)
-			get_viewport().set_input_as_handled()
-			return
+	if event.is_action_pressed("interact") and _current_interactable != null:
+		_current_interactable.interact()
+		get_viewport().set_input_as_handled()
+		return
 
 	if event is InputEventMouseButton and event.pressed:
 		if _hovered_farm == null or _hovered_cell == Vector3i(-1, -1, -1):
@@ -159,6 +152,11 @@ func _unhandled_input(event: InputEvent) -> void:
 					_hovered_farm.till_cell(_hovered_cell.x, _hovered_cell.z)
 				"shovel":
 					_hovered_farm.untill_cell(_hovered_cell.x, _hovered_cell.z)
+				"scythe":
+					if _hovered_is_harvestable:
+						var yield_id = _hovered_farm.harvest_crop(_hovered_cell.x, _hovered_cell.z)
+						if yield_id != "":
+							Inventory.add_item(yield_id)
 		elif event.button_index == MOUSE_BUTTON_RIGHT:
 			if item_id.ends_with("_seed") and Inventory.has_item(item_id):
 				_hovered_farm.plant_crop(_hovered_cell.x, _hovered_cell.z, item_id)
