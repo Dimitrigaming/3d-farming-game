@@ -6,6 +6,9 @@ var _hovered_cell: Vector3i = Vector3i(-1, -1, -1)
 var _hovered_farm = null
 var _hovered_is_harvestable: bool = false
 var _current_interactable = null
+var _left_held: bool = false
+var _right_held: bool = false
+var _last_acted_cell: Vector3i = Vector3i(-1, -1, -1)
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -70,6 +73,8 @@ func _process(_delta: float) -> void:
 
 	if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
 		_current_interactable = null
+		_left_held = false
+		_right_held = false
 		return
 
 	var hit = get_collider()
@@ -130,6 +135,36 @@ func _process(_delta: float) -> void:
 		_hovered_cell = cell
 		_hovered_farm = farm
 
+	# Held-button continuous use — only fires when moving to a new cell
+	if _hovered_farm != null and _hovered_cell != Vector3i(-1, -1, -1) and _hovered_cell != _last_acted_cell:
+		var equipper = get_tree().get_first_node_in_group("tool_equipper")
+		var item_id = equipper.current_item_id if equipper else ""
+		if _left_held:
+			_do_left_action(item_id)
+		elif _right_held:
+			_do_right_action(item_id)
+
+func _do_left_action(item_id: String) -> void:
+	match item_id:
+		"hoe":
+			_hovered_farm.till_cell(_hovered_cell.x, _hovered_cell.z)
+			_last_acted_cell = _hovered_cell
+		"shovel":
+			_hovered_farm.untill_cell(_hovered_cell.x, _hovered_cell.z)
+			_last_acted_cell = _hovered_cell
+		"scythe":
+			if _hovered_is_harvestable:
+				var yield_id = _hovered_farm.harvest_crop(_hovered_cell.x, _hovered_cell.z)
+				if yield_id != "":
+					Inventory.add_item(yield_id)
+				_last_acted_cell = _hovered_cell
+
+func _do_right_action(item_id: String) -> void:
+	if item_id.ends_with("_seed") and Inventory.has_item(item_id):
+		_hovered_farm.plant_crop(_hovered_cell.x, _hovered_cell.z, item_id)
+		Inventory.remove_item(item_id)
+		_last_acted_cell = _hovered_cell
+
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
 		return
@@ -139,28 +174,22 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		return
 
-	if event is InputEventMouseButton and event.pressed:
-		if _hovered_farm == null or _hovered_cell == Vector3i(-1, -1, -1):
-			return
-		var equipper = get_tree().get_first_node_in_group("tool_equipper")
-		if not equipper:
-			return
-		var item_id = equipper.current_item_id
+	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			match item_id:
-				"hoe":
-					_hovered_farm.till_cell(_hovered_cell.x, _hovered_cell.z)
-				"shovel":
-					_hovered_farm.untill_cell(_hovered_cell.x, _hovered_cell.z)
-				"scythe":
-					if _hovered_is_harvestable:
-						var yield_id = _hovered_farm.harvest_crop(_hovered_cell.x, _hovered_cell.z)
-						if yield_id != "":
-							Inventory.add_item(yield_id)
+			_left_held = event.pressed
 		elif event.button_index == MOUSE_BUTTON_RIGHT:
-			if item_id.ends_with("_seed") and Inventory.has_item(item_id):
-				_hovered_farm.plant_crop(_hovered_cell.x, _hovered_cell.z, item_id)
-				Inventory.remove_item(item_id)
+			_right_held = event.pressed
+		if event.pressed:
+			if _hovered_farm == null or _hovered_cell == Vector3i(-1, -1, -1):
+				return
+			var equipper = get_tree().get_first_node_in_group("tool_equipper")
+			if not equipper:
+				return
+			var item_id = equipper.current_item_id
+			if event.button_index == MOUSE_BUTTON_LEFT:
+				_do_left_action(item_id)
+			elif event.button_index == MOUSE_BUTTON_RIGHT:
+				_do_right_action(item_id)
 
 func _world_to_cell(farm: Node3D, world_pos: Vector3) -> Vector3i:
 	var local = farm.grid_map.to_local(world_pos)
