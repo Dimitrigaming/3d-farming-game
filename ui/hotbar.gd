@@ -81,7 +81,7 @@ func _refresh() -> void:
 		var slot_data = Inventory.slots[Inventory.HOTBAR_START + i]
 		var slot_node = slot_nodes[i]
 		var icon = slot_node.get_node("Icon")
-		var count = slot_node.get_node("Count")
+		var count = slot_node.get_node("Overlay/Count")
 		var has_item = slot_data["item_id"] != ""
 		icon.visible = has_item
 		count.visible = has_item and slot_data["amount"] > 1
