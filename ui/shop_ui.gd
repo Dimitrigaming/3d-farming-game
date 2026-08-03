@@ -74,25 +74,14 @@ func _update_tab_styles() -> void:
 func _item_matches_tab(item: ItemDefinition) -> bool:
 	match _active_tab:
 		"all":       return true
-		"seeds":     return item.id.contains("seed") or item.name.to_lower().contains("seed")
-		"tools":     return item.type == 5
-		"materials": return item.type != 5 and not (item.id.contains("seed") or item.name.to_lower().contains("seed"))
+		"seeds":     return item.type == ItemDefinition.ItemType.SEED
+		"tools":     return item.type == ItemDefinition.ItemType.TOOL
+		"materials": return item.type == ItemDefinition.ItemType.MATERIAL
 		_:           return true
 
 func _populate() -> void:
 	for child in item_list.get_children():
 		child.queue_free()
-
-	# TEMP: preview rows for layout testing
-	for i in 4:
-		var dummy = ItemDefinition.new()
-		dummy.id = "test_%d" % i
-		dummy.name = ["Carrot Seeds", "Watering Can", "Fertilizer", "Wheat Seeds"][i]
-		dummy.buy_price = [12, 40, 30, 8][i]
-		item_list.add_child(_make_row(dummy))
-	count_label.text = "4 items available"
-	return
-	# END TEMP
 
 	var items = ItemDB.all_items()
 	items.sort_custom(func(a, b): return a.name < b.name)
