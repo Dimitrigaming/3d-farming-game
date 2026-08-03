@@ -137,12 +137,11 @@ func _process(_delta: float) -> void:
 
 	# Held-button continuous use — only fires when moving to a new cell
 	if _hovered_farm != null and _hovered_cell != Vector3i(-1, -1, -1) and _hovered_cell != _last_acted_cell:
-		var equipper = get_tree().get_first_node_in_group("tool_equipper")
-		var item_id = equipper.current_item_id if equipper else ""
+		var held_item_id = equipper.current_item_id if equipper else ""
 		if _left_held:
-			_do_left_action(item_id)
+			_do_left_action(held_item_id)
 		elif _right_held:
-			_do_right_action(item_id)
+			_do_right_action(held_item_id)
 
 func _do_left_action(item_id: String) -> void:
 	match item_id:
