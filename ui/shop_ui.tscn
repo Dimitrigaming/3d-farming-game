@@ -218,30 +218,26 @@ theme_override_styles/hover = SubResource("Style_TabHover4")
 theme_override_styles/focus = SubResource("Style_TabNormal")
 text = "MATERIALS"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBox" unique_id=2026208965]
+[node name="ScrollBg" type="PanelContainer" parent="Panel/VBox" unique_id=2026208964]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxTexture_rc43a")
 
-[node name="ScrollWrap" type="MarginContainer" parent="Panel/VBox/ScrollContainer" unique_id=2026208960]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBox/ScrollBg" unique_id=2026208965]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/margin_top = 6
-theme_override_constants/margin_bottom = 6
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_right = 0
 
-[node name="ItemList" type="VBoxContainer" parent="Panel/VBox/ScrollContainer/ScrollWrap" unique_id=676955540]
+[node name="ItemList" type="VBoxContainer" parent="Panel/VBox/ScrollBg/ScrollContainer" unique_id=676955640]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 4
 
-[node name="ItemRow" parent="Panel/VBox/ScrollContainer/ScrollWrap/ItemList" unique_id=1854494158 instance=ExtResource("2_ddy65")]
+[node name="ItemRow" parent="Panel/VBox/ScrollBg/ScrollContainer/ItemList" unique_id=1854494158 instance=ExtResource("2_ddy65")]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBox_Grid")
 
-[node name="Icon" parent="Panel/VBox/ScrollContainer/ScrollWrap/ItemList/ItemRow/HBox" parent_id_path=PackedInt32Array(1854494158, 637075315) index="0" unique_id=1464844269]
+[node name="Icon" parent="Panel/VBox/ScrollBg/ScrollContainer/ItemList/ItemRow/HBox" parent_id_path=PackedInt32Array(1854494158, 637075315) index="0" unique_id=1464844269]
 texture = ExtResource("4_nm3p2")
 
 [node name="Footer" type="PanelContainer" parent="Panel/VBox" unique_id=219021315]
@@ -264,4 +260,4 @@ theme_override_colors/font_color = Color(0.541, 0.529, 0.6, 1)
 theme_override_font_sizes/font_size = 11
 text = "Press E or Esc to close"
 
-[editable path="Panel/VBox/ScrollContainer/ScrollWrap/ItemList/ItemRow"]
+[editable path="Panel/VBox/ScrollBg/ScrollContainer/ItemList/ItemRow"]
