@@ -6,8 +6,7 @@ var _hand: Node3D = null
 
 func _ready() -> void:
 	add_to_group("tool_equipper")
-	Inventory.inventory_changed.connect(_on_inventory_changed)
-	_hand = Node3D.new()
+_hand = Node3D.new()
 	_hand.name = "Hand"
 	_hand.position = Vector3(0.35, -0.3, -0.5)
 	var camera = _find_camera(get_parent())
@@ -28,10 +27,6 @@ func equip(item_id: String) -> void:
 		return
 	_equipped = def.equip_scene.instantiate()
 	_hand.add_child(_equipped)
-
-func _on_inventory_changed() -> void:
-	if current_item_id != "" and not Inventory.has_item(current_item_id):
-		equip("")
 
 func _find_camera(node: Node) -> Camera3D:
 	if node is Camera3D:

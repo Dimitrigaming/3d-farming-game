@@ -89,3 +89,4 @@ func _refresh() -> void:
 			count.text = str(slot_data["amount"])
 			var def = ItemDB.get_item(slot_data["item_id"])
 			icon.texture = def.icon if def else null
+	_notify_equipper()
