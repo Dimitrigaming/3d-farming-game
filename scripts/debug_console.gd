@@ -58,8 +58,8 @@ func print_line(text: String) -> void:
 	await get_tree().process_frame
 	c_output.scroll_to_line(c_output.get_line_count())
 
-func register_command(name: String, callable: Callable, description: String = "") -> void:
-	c_commands[name] = {callable = callable, description = description}
+func register_command(cmd_name: String, callable: Callable, description: String = "") -> void:
+	c_commands[cmd_name] = {callable = callable, description = description}
 
 func _on_submit(text: String) -> void:
 	var trimmed = text.strip_edges()

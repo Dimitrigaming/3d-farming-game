@@ -53,7 +53,6 @@ const _MAT_OPAQUE: Material = preload("res://materials/mat_Opaque_Glass.tres")
 @onready var _back3:   CSGBox3D = $BackWall3
 @onready var _front:   CSGBox3D = $BackWall
 @onready var _front2:  CSGBox3D = $BackWall2
-@onready var _doorway: Node3D   = $ProductionFloorDoorway
 
 func _ready() -> void:
 	add_to_group("production_tiers")

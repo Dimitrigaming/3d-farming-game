@@ -47,11 +47,10 @@ var _slot_default_style: StyleBox = null
 var _inventory_ui: CanvasLayer = null
 
 func _update_highlight() -> void:
+	var slots = grid.get_children()
 	if _slot_default_style == null:
-		var slots = grid.get_children()
 		if slots.size() > 0:
 			_slot_default_style = slots[0].get_theme_stylebox("panel")
-	var slots = grid.get_children()
 	for i in slots.size():
 		var panel = slots[i]
 		if i == selected_slot:

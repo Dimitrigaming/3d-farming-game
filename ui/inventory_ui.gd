@@ -65,20 +65,20 @@ func hide_for_shop() -> void:
 	panel.offset_top = -268.5
 	panel.offset_right = 288.0
 
-func _set_crosshair_visible(visible: bool) -> void:
+func _set_crosshair_visible(show: bool) -> void:
 	var controller = get_tree().get_first_node_in_group("proto_controller")
 	if controller:
 		var crosshair = controller.get_node_or_null("HUD/Crosshair")
 		if crosshair:
-			crosshair.visible = visible
+			crosshair.visible = show
 
 func _refresh() -> void:
 	_refresh_grid(grid.get_children(), 0)
 	_refresh_grid(hotbar.get_children(), Inventory.HOTBAR_START)
 
-func _refresh_grid(slot_nodes: Array, offset: int) -> void:
+func _refresh_grid(slot_nodes: Array, slot_offset: int) -> void:
 	for i in slot_nodes.size():
-		var slot_data = Inventory.slots[offset + i]
+		var slot_data = Inventory.slots[slot_offset + i]
 		var slot_node = slot_nodes[i]
 		var icon = slot_node.get_node("Icon")
 		var count = slot_node.get_node("Count")

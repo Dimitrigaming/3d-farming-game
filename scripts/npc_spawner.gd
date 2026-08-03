@@ -38,8 +38,8 @@ func _spawn() -> void:
 	get_node_or_null("/root/GameLogger").debug("NpcSpawner", "spawning NPC %s" % destination.name)
 	get_tree().current_scene.add_child(npc)
 	var map = get_world_3d().get_navigation_map()
-	var snapped = NavigationServer3D.map_get_closest_point(map, global_position)
-	npc.global_position = snapped
+	var spawn_point = NavigationServer3D.map_get_closest_point(map, global_position)
+	npc.global_position = spawn_point
 	if npc.has_method("set_street_destination"):
 		npc.set_street_destination.call_deferred(destination.global_position, debug_store_interest)
 
