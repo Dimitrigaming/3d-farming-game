@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://lk4xcnkw80yi"]
 
-[ext_resource type="Script" path="res://autoloads/crop_definition.gd" id="1_def"]
+[ext_resource type="Script" uid="uid://cqjkmsb31rfok" path="res://autoloads/crop_definition.gd" id="1_def"]
 [ext_resource type="PackedScene" uid="uid://dgnl6hnfcu5l4" path="res://models/crops/SM_Beetroot_Seed.tscn" id="2_s0"]
 [ext_resource type="PackedScene" uid="uid://bcmyq1i6pye2s" path="res://models/crops/SM_Beetroot_Stage1.tscn" id="3_s1"]
 [ext_resource type="PackedScene" uid="uid://8xnq78ii4m7u" path="res://models/crops/SM_Beetroot_Stage2.tscn" id="4_s2"]
