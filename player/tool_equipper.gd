@@ -6,7 +6,7 @@ var _hand: Node3D = null
 
 func _ready() -> void:
 	add_to_group("tool_equipper")
-_hand = Node3D.new()
+	_hand = Node3D.new()
 	_hand.name = "Hand"
 	_hand.position = Vector3(0.35, -0.3, -0.5)
 	var camera = _find_camera(get_parent())
