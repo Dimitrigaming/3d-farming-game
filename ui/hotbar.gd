@@ -14,6 +14,7 @@ func _ready() -> void:
 	_refresh()
 	_update_highlight()
 	call_deferred("_notify_equipper")
+	call_deferred("_cache_inventory_ui")
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
@@ -25,6 +26,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			_notify_equipper()
 			get_viewport().set_input_as_handled()
 	elif event is InputEventMouseButton and event.pressed:
+		if _inventory_ui and _inventory_ui.visible:
+			return
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			selected_slot = (selected_slot - 1 + 9) % 9
 			_update_highlight()
@@ -39,6 +42,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 
 var _slot_default_style: StyleBox = null
+var _inventory_ui: CanvasLayer = null
 
 func _update_highlight() -> void:
 	if _slot_default_style == null:
@@ -59,6 +63,9 @@ func _update_highlight() -> void:
 				panel.add_theme_stylebox_override("panel", _slot_default_style)
 			else:
 				panel.remove_theme_stylebox_override("panel")
+
+func _cache_inventory_ui() -> void:
+	_inventory_ui = get_tree().get_root().find_child("InventoryUI", true, false)
 
 func _notify_equipper() -> void:
 	var equipper = get_tree().get_first_node_in_group("tool_equipper")
