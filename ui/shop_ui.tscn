@@ -1,29 +1,18 @@
 [gd_scene format=3 uid="uid://dahlli6qv5lma"]
 
 [ext_resource type="Script" uid="uid://dkttytni0xmcg" path="res://ui/shop_ui.gd" id="1_shopui"]
-[ext_resource type="PackedScene" path="res://ui/item_row.tscn" id="2_ddy65"]
-[ext_resource type="Texture2D" uid="uid://gbn45ilqbclx" path="res://icons/axe_36x36.png" id="3_pe5jp"]
+[ext_resource type="PackedScene" uid="uid://pwp0kkmugqx5" path="res://ui/item_row.tscn" id="2_ddy65"]
+[ext_resource type="Texture2D" uid="uid://bxle760hh7psa" path="res://icons/inventory/inventory_1x1_black.png" id="2_nm3p2"]
+[ext_resource type="Texture2D" uid="uid://chydajej3k1e6" path="res://icons/tools/axe.png" id="4_nm3p2"]
 
-[sub_resource type="StyleBoxFlat" id="Style_Panel"]
-bg_color = Color(0.118, 0.125, 0.157, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.188, 0.196, 0.243, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="Style_Bar"]
-content_margin_left = 18.0
-content_margin_top = 12.0
-content_margin_right = 18.0
-content_margin_bottom = 12.0
-bg_color = Color(0.075, 0.078, 0.102, 1)
-border_width_bottom = 1
-border_color = Color(0.188, 0.196, 0.243, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBox_Grid"]
+texture = ExtResource("2_nm3p2")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+content_margin_top = 6.0
+content_margin_bottom = 6.0
 
 [sub_resource type="StyleBoxFlat" id="Style_MoneyBadge"]
 content_margin_left = 12.0
@@ -65,15 +54,6 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="Style_TabBarBg"]
-content_margin_left = 18.0
-content_margin_top = 0.0
-content_margin_right = 18.0
-content_margin_bottom = 0.0
-bg_color = Color(0.075, 0.078, 0.102, 1)
-border_width_bottom = 1
-border_color = Color(0.188, 0.196, 0.243, 1)
-
 [sub_resource type="StyleBoxFlat" id="Style_TabNormal"]
 content_margin_left = 16.0
 content_margin_top = 10.0
@@ -109,18 +89,6 @@ content_margin_right = 16.0
 content_margin_bottom = 10.0
 bg_color = Color(1, 1, 1, 0.04)
 
-[sub_resource type="StyleBoxFlat" id="Style_ScrollBg"]
-bg_color = Color(0, 0, 0, 0)
-
-[sub_resource type="StyleBoxFlat" id="Style_Footer"]
-content_margin_left = 18.0
-content_margin_top = 10.0
-content_margin_right = 18.0
-content_margin_bottom = 10.0
-bg_color = Color(0.075, 0.078, 0.102, 1)
-border_width_top = 1
-border_color = Color(0.188, 0.196, 0.243, 1)
-
 [node name="ShopUI" type="CanvasLayer" unique_id=1343921064]
 layer = 10
 script = ExtResource("1_shopui")
@@ -135,14 +103,14 @@ offset_left = -280.0
 offset_top = -260.0
 offset_right = 280.0
 offset_bottom = 260.0
-theme_override_styles/panel = SubResource("Style_Panel")
+theme_override_styles/panel = SubResource("StyleBox_Grid")
 
 [node name="VBox" type="VBoxContainer" parent="Panel" unique_id=1608797046]
 layout_mode = 2
 
 [node name="Header" type="PanelContainer" parent="Panel/VBox" unique_id=1535435888]
 layout_mode = 2
-theme_override_styles/panel = SubResource("Style_Bar")
+theme_override_styles/panel = SubResource("StyleBox_Grid")
 
 [node name="HeaderRow" type="HBoxContainer" parent="Panel/VBox/Header" unique_id=1915885882]
 layout_mode = 2
@@ -188,7 +156,7 @@ text = "✕"
 
 [node name="TabBar" type="PanelContainer" parent="Panel/VBox" unique_id=1885903731]
 layout_mode = 2
-theme_override_styles/panel = SubResource("Style_TabBarBg")
+theme_override_styles/panel = SubResource("StyleBox_Grid")
 
 [node name="TabRow" type="HBoxContainer" parent="Panel/VBox/TabBar" unique_id=81201002]
 layout_mode = 2
@@ -242,7 +210,7 @@ text = "MATERIALS"
 custom_minimum_size = Vector2(0, 380)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("Style_ScrollBg")
+theme_override_styles/panel = SubResource("StyleBox_Grid")
 
 [node name="ItemList" type="VBoxContainer" parent="Panel/VBox/ScrollContainer" unique_id=676955540]
 layout_mode = 2
@@ -251,13 +219,14 @@ theme_override_constants/separation = 4
 
 [node name="ItemRow" parent="Panel/VBox/ScrollContainer/ItemList" unique_id=1854494158 instance=ExtResource("2_ddy65")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBox_Grid")
 
-[node name="Icon" parent="Panel/VBox/ScrollContainer/ItemList/ItemRow/HBox" index="0"]
-texture = ExtResource("3_pe5jp")
+[node name="Icon" parent="Panel/VBox/ScrollContainer/ItemList/ItemRow/HBox" parent_id_path=PackedInt32Array(1854494158, 637075315) index="0" unique_id=1464844269]
+texture = ExtResource("4_nm3p2")
 
 [node name="Footer" type="PanelContainer" parent="Panel/VBox" unique_id=219021315]
 layout_mode = 2
-theme_override_styles/panel = SubResource("Style_Footer")
+theme_override_styles/panel = SubResource("StyleBox_Grid")
 
 [node name="FooterRow" type="HBoxContainer" parent="Panel/VBox/Footer" unique_id=184870464]
 layout_mode = 2
