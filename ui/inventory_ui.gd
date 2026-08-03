@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var hotbar = $Panel/VBox/HotbarBg/Hotbar
 
 var _hovered_slot: int = -1
+var _reenable_controller: bool = false
 
 func _ready() -> void:
 	Inventory.inventory_changed.connect(_refresh)
@@ -24,6 +25,11 @@ func _assign_indices() -> void:
 		slot.mouse_entered.connect(func(): _hovered_slot = slot.slot_index)
 		slot.mouse_exited.connect(func(): if _hovered_slot == slot.slot_index: _hovered_slot = -1)
 
+func _process(_delta: float) -> void:
+	if _reenable_controller and not Input.is_key_pressed(KEY_ESCAPE):
+		_reenable_controller = false
+		_set_player_enabled(true)
+
 func _unhandled_input(event: InputEvent) -> void:
 	if visible and event is InputEventKey and event.pressed and not event.echo:
 		var key = event.keycode
@@ -37,9 +43,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		visible = not visible
 		if visible:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			_set_player_enabled(false)
 		else:
 			call_deferred("_recapture_mouse")
-		_set_player_enabled(not visible)
+			_reenable_controller = true
 		_set_crosshair_visible(not visible)
 		get_viewport().set_input_as_handled()
 
@@ -81,7 +88,7 @@ func _refresh_grid(slot_nodes: Array, slot_offset: int) -> void:
 		var slot_data = Inventory.slots[slot_offset + i]
 		var slot_node = slot_nodes[i]
 		var icon = slot_node.get_node("Icon")
-		var count = slot_node.get_node("Count")
+		var count = slot_node.get_node("Overlay/Count")
 		var has_item = slot_data["item_id"] != ""
 		icon.visible = has_item
 		count.visible = has_item and slot_data["amount"] > 1

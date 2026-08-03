@@ -21,16 +21,20 @@ layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Count" type="Label" parent="." unique_id=111111002]
+[node name="Overlay" type="Control" parent="." unique_id=111111003]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Count" type="Label" parent="Overlay" unique_id=111111002]
 visible = false
 layout_mode = 1
-anchors_preset = 4
+anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -22.0
-offset_top = -18.0
+offset_left = -24.0
+offset_top = -20.0
 offset_right = -2.0
 offset_bottom = -2.0
 grow_horizontal = 0

@@ -17,6 +17,14 @@ const ROW_SCENE    := preload("res://ui/item_row.tscn")
 @onready var tab_materials = $Panel/VBox/TabBar/TabRow/TabMaterials
 
 var _active_tab: String = "all"
+var _reenable_controller: bool = false
+
+func _process(_delta: float) -> void:
+	if _reenable_controller and not Input.is_key_pressed(KEY_ESCAPE):
+		_reenable_controller = false
+		var controller = get_tree().get_first_node_in_group("proto_controller")
+		if controller:
+			controller.process_mode = Node.PROCESS_MODE_INHERIT
 
 func _ready() -> void:
 	visible = false
@@ -56,9 +64,7 @@ func close_shop() -> void:
 
 func _finish_close() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	var controller = get_tree().get_first_node_in_group("proto_controller")
-	if controller:
-		controller.process_mode = Node.PROCESS_MODE_INHERIT
+	_reenable_controller = true
 
 func _set_panel_position(shop_mode: bool) -> void:
 	var panel = $Panel
