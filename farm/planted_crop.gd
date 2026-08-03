@@ -15,8 +15,10 @@ func _process(delta: float) -> void:
 		return
 	if stage >= crop_def.growth_stages.size() - 1:
 		return
+	var stages_to_grow: int = crop_def.growth_stages.size() - 1
+	var time_per_stage: float = crop_def.base_grow_speed / max(stages_to_grow, 1)
 	_timer += delta
-	if _timer >= crop_def.base_grow_speed:
+	if _timer >= time_per_stage:
 		_timer = 0.0
 		_set_stage(stage + 1)
 
