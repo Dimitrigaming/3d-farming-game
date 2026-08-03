@@ -3,6 +3,8 @@ extends CanvasLayer
 @onready var grid = $Panel/VBox/GridBg/Grid
 @onready var hotbar = $Panel/VBox/HotbarBg/Hotbar
 
+var _hovered_slot: int = -1
+
 func _ready() -> void:
 	Inventory.inventory_changed.connect(_refresh)
 	_assign_indices()
@@ -11,12 +13,26 @@ func _ready() -> void:
 func _assign_indices() -> void:
 	var grid_slots = grid.get_children()
 	for i in grid_slots.size():
-		grid_slots[i].slot_index = i
+		var slot = grid_slots[i]
+		slot.slot_index = i
+		slot.mouse_entered.connect(func(): _hovered_slot = slot.slot_index)
+		slot.mouse_exited.connect(func(): if _hovered_slot == slot.slot_index: _hovered_slot = -1)
 	var hotbar_slots = hotbar.get_children()
 	for i in hotbar_slots.size():
-		hotbar_slots[i].slot_index = Inventory.HOTBAR_START + i
+		var slot = hotbar_slots[i]
+		slot.slot_index = Inventory.HOTBAR_START + i
+		slot.mouse_entered.connect(func(): _hovered_slot = slot.slot_index)
+		slot.mouse_exited.connect(func(): if _hovered_slot == slot.slot_index: _hovered_slot = -1)
 
 func _unhandled_input(event: InputEvent) -> void:
+	if visible and event is InputEventKey and event.pressed and not event.echo:
+		var key = event.keycode
+		if key >= KEY_1 and key <= KEY_9:
+			var hotbar_index = Inventory.HOTBAR_START + (key - KEY_1)
+			if _hovered_slot >= 0 and _hovered_slot != hotbar_index:
+				Inventory.swap_slots(_hovered_slot, hotbar_index)
+			get_viewport().set_input_as_handled()
+			return
 	if event.is_action_pressed("inventory"):
 		visible = not visible
 		if visible:

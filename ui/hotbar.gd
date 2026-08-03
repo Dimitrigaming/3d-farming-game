@@ -17,6 +17,8 @@ func _ready() -> void:
 	call_deferred("_cache_inventory_ui")
 
 func _unhandled_input(event: InputEvent) -> void:
+	if _inventory_ui and _inventory_ui.visible:
+		return
 	if event is InputEventKey and event.pressed and not event.echo:
 		var key = event.keycode
 		if key >= KEY_1 and key <= KEY_9:
