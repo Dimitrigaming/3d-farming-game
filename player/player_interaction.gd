@@ -7,6 +7,7 @@ var _hovered_farm = null
 var _current_interactable = null
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	target_position = Vector3(0, 0, -10.0)
 	collision_mask = 0xFFFFFFFF
 	enabled = true
