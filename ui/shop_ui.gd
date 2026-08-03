@@ -7,7 +7,7 @@ const COLOR_DIM    := Color(0.541, 0.529, 0.600, 1.0)
 const COLOR_TEXT   := Color(0.929, 0.910, 0.875, 1.0)
 const ROW_SCENE    := preload("res://ui/item_row.tscn")
 
-@onready var item_list   = $Panel/VBox/ScrollContainer/ItemList
+@onready var item_list   = $Panel/VBox/ScrollWrap/ScrollContainer/ItemList
 @onready var money_label = $Panel/VBox/Header/HeaderRow/MoneyBadge/MoneyRow/MoneyLabel
 @onready var close_btn   = $Panel/VBox/Header/HeaderRow/CloseButton
 @onready var count_label = $Panel/VBox/Footer/FooterRow/CountLabel
