@@ -65,12 +65,12 @@ func hide_for_shop() -> void:
 	panel.offset_top = -268.5
 	panel.offset_right = 288.0
 
-func _set_crosshair_visible(show: bool) -> void:
+func _set_crosshair_visible(crosshair_visible: bool) -> void:
 	var controller = get_tree().get_first_node_in_group("proto_controller")
 	if controller:
 		var crosshair = controller.get_node_or_null("HUD/Crosshair")
 		if crosshair:
-			crosshair.visible = show
+			crosshair.visible = crosshair_visible
 
 func _refresh() -> void:
 	_refresh_grid(grid.get_children(), 0)

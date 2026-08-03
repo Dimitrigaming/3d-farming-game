@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://m0emot1r0dx1"]
 
-[ext_resource type="Script" uid="uid://cqjkmsb31rfok" path="res://autoloads/crop_definition.gd" id="1_def"]
+[ext_resource type="Script" path="res://autoloads/crop_definition.gd" id="1_def"]
 [ext_resource type="PackedScene" uid="uid://bv1w38nq8636n" path="res://models/crops/SM_Wheat_Seed.tscn" id="2_s0"]
 [ext_resource type="PackedScene" uid="uid://d1lmkuvnc3fvn" path="res://models/crops/SM_Wheat_Stage1.tscn" id="3_s1"]
 [ext_resource type="PackedScene" uid="uid://pathtdxb5lih" path="res://models/crops/SM_Wheat_Stage2.tscn" id="4_s2"]

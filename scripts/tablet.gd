@@ -154,7 +154,7 @@ func _refresh_shop() -> void:
 	for item in SHOP_ITEMS:
 		_shop_container.add_child(_make_shop_row(item))
 
-func _on_money_changed(new_amount: float) -> void:
+func _on_money_changed(_new_amount: float) -> void:
 	if visible and _current_tab == TAB_STORE:
 		_refresh_store()
 	if visible and _current_tab == TAB_SHOP:
@@ -417,14 +417,14 @@ func _on_upgrade_production_floor() -> void:
 	_apply_production_floor_tier(GameState.production_floor_tier)
 	_refresh_store()
 
-func _get_floor_node(name: String) -> Node3D:
+func _get_floor_node(floor_name: String) -> Node3D:
 	var interior = get_tree().get_first_node_in_group("interior_manager")
 	if interior == null:
 		print("[Tablet] interior_manager group not found")
 		return null
-	var node = interior.get_node_or_null(name)
+	var node = interior.get_node_or_null(floor_name)
 	if node == null:
-		print("[Tablet] %s not found under Interior" % name)
+		print("[Tablet] %s not found under Interior" % floor_name)
 	return node
 
 func _apply_shop_floor_tier(tier: int) -> void:

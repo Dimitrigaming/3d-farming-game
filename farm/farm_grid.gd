@@ -12,7 +12,9 @@ var _plots: Dictionary = {}
 
 @onready var grid_map: GridMap = $GridMap
 
+@warning_ignore("unused_private_class_variable")
 @export_tool_button("1. Build Mesh Library") var _build_btn = _build_and_save_library
+@warning_ignore("unused_private_class_variable")
 @export_tool_button("2. Fill Grass Chunk") var _fill_btn = _fill_grass
 
 func _build_and_save_library() -> void:

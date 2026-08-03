@@ -74,12 +74,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		close_shop()
 		get_viewport().set_input_as_handled()
 
-func _set_crosshair_visible(show: bool) -> void:
+func _set_crosshair_visible(crosshair_visible: bool) -> void:
 	var controller = get_tree().get_first_node_in_group("proto_controller")
 	if controller:
 		var crosshair = controller.get_node_or_null("HUD/Crosshair")
 		if crosshair:
-			crosshair.visible = show
+			crosshair.visible = crosshair_visible
 
 func _on_money_changed(amount: float) -> void:
 	money_label.text = "$%.2f" % amount

@@ -155,9 +155,9 @@ func _spawn_item(index: int) -> void:
 	item_nodes.append(item)
 
 func _grid_position(index: int) -> Vector3:
-	var layer = index / ITEMS_PER_LAYER
+	var layer = index / ITEMS_PER_LAYER as int
 	var pos_in_layer = index % ITEMS_PER_LAYER
-	var row = pos_in_layer / ITEMS_PER_ROW
+	var row = pos_in_layer / ITEMS_PER_ROW as int
 	var col = pos_in_layer % ITEMS_PER_ROW
 	var x = float(col - 1) * (ITEM_SIZE.x + ITEM_GAP)
 	var y = INTERIOR_BOTTOM + ITEM_SIZE.y * 0.5 + float(layer) * (ITEM_SIZE.y + ITEM_GAP)
