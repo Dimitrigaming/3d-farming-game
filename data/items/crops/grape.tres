@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://item_grape001"]
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://4lnxwpq868hx"]
 
 [ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://bfvd4k6rm6sd4" path="res://models/crops/SM_Grape.tscn" id="2_equip"]
+[ext_resource type="Texture2D" uid="uid://bckw4bb2o8yfg" path="res://icons/crops/grape.png" id="3_icon"]
 
 [resource]
 script = ExtResource("1_def")
 id = "grape"
 name = "Grape"
-type = 1
+icon = ExtResource("3_icon")
 sell_price = 20
-buy_price = 0
 description = "A bunch of ripe grapes."
+equip_scene = ExtResource("2_equip")

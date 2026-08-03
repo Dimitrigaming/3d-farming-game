@@ -1,12 +1,16 @@
 [gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://item_pumseed1"]
 
 [ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://d0i88h2073ldh" path="res://models/crops/SM_Pumpkin_Seed.tscn" id="2_equip"]
+[ext_resource type="Texture2D" uid="uid://dqud5yv4q42sl" path="res://icons/crops/pumpkin_seeds.png" id="3_icon"]
 
 [resource]
 script = ExtResource("1_def")
 id = "pumpkin_seed"
 name = "Pumpkin Seed"
+icon = ExtResource("3_icon")
 type = 0
 sell_price = 0
 buy_price = 35
 description = "Plant in a tilled soil plot to grow a pumpkin."
+equip_scene = ExtResource("2_equip")

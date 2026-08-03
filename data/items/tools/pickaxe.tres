@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
 [ext_resource type="PackedScene" uid="uid://bguq7qdxa1nhq" path="res://models/tools/PickAxeV1.tscn" id="2_equip"]
-[ext_resource type="Texture2D" uid="uid://iadde30k7t2j" path="res://icons/pickaxe.png" id="2_yvugo"]
+[ext_resource type="Texture2D" uid="uid://2e8mqln8v50f" path="res://icons/tools/pickaxe.png" id="2_yvugo"]
 
 [resource]
 script = ExtResource("1_def")

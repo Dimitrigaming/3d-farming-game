@@ -1,12 +1,16 @@
 [gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://item_pineapp1"]
 
 [ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://ckvgeiewbbd3s" path="res://models/crops/SM_Pineapple.tscn" id="2_equip"]
+[ext_resource type="Texture2D" uid="uid://cbj6q6fiyrusx" path="res://icons/crops/pineapple.png" id="3_icon"]
 
 [resource]
 script = ExtResource("1_def")
 id = "pineapple"
 name = "Pineapple"
+icon = ExtResource("3_icon")
 type = 1
 sell_price = 30
 buy_price = 0
 description = "A golden pineapple, worth the wait."
+equip_scene = ExtResource("2_equip")

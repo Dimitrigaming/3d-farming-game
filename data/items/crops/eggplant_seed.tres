@@ -1,12 +1,15 @@
-[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://item_eggseed1"]
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://c2l22g7cle400"]
 
 [ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://cx8hjcxfdbb1g" path="res://models/crops/SM_Eggplant_Seed.tscn" id="2_equip"]
+[ext_resource type="Texture2D" uid="uid://cgo34e6p05og0" path="res://icons/crops/eggplant_seeds.png" id="3_icon"]
 
 [resource]
 script = ExtResource("1_def")
 id = "eggplant_seed"
 name = "Eggplant Seed"
+icon = ExtResource("3_icon")
 type = 0
-sell_price = 0
 buy_price = 25
 description = "Plant in a tilled soil plot to grow eggplants."
+equip_scene = ExtResource("2_equip")

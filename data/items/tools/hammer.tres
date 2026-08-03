@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
 [ext_resource type="PackedScene" uid="uid://cmhp363rj3aa4" path="res://models/tools/HammerV1.tscn" id="2_equip"]
-[ext_resource type="Texture2D" uid="uid://bt5g53yexto7c" path="res://icons/hammer.png" id="2_rp0i6"]
+[ext_resource type="Texture2D" uid="uid://bi5m1ltitqyj2" path="res://icons/tools/hammer.png" id="2_rp0i6"]
 
 [resource]
 script = ExtResource("1_def")

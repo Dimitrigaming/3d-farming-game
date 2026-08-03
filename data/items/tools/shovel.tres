@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://jxqi4pcu7mji"]
 
 [ext_resource type="PackedScene" uid="uid://cse5lcu5q4dbp" path="res://models/tools/ShovelV1.tscn" id="1_st2u4"]
-[ext_resource type="Texture2D" uid="uid://b0tu6ldj7a6ff" path="res://icons/shovel.png" id="2_8y8o6"]
+[ext_resource type="Texture2D" uid="uid://cv6glaoy2h5nl" path="res://icons/tools/shovel.png" id="2_st2u4"]
 [ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="3_hpewc"]
 
 [resource]
 script = ExtResource("3_hpewc")
 id = "shovel"
 name = "Shovel"
-icon = ExtResource("2_8y8o6")
+icon = ExtResource("2_st2u4")
 type = 5
 max_stack = 1
 buy_price = 50

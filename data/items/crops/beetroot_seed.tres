@@ -1,12 +1,16 @@
 [gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dvfy805vxb7d7"]
 
+[ext_resource type="PackedScene" uid="uid://dgnl6hnfcu5l4" path="res://models/crops/SM_Beetroot_Seed.tscn" id="1_gspmo"]
 [ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="2_b3qon"]
+[ext_resource type="Texture2D" uid="uid://owg3r0nmh10v" path="res://icons/crops/beetroot_seeds.png" id="2_icbgd"]
 
 [resource]
 script = ExtResource("2_b3qon")
 id = "beetroot_seed"
 name = "Beetroot Seed"
+icon = ExtResource("2_icbgd")
 type = 0
 sell_price = 5
 buy_price = 20
 description = "Plant in a tilled soil plot to grow wheat."
+equip_scene = ExtResource("1_gspmo")

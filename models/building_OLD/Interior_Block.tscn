@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://bemdl8aipocdb"]
+
+[ext_resource type="Material" uid="uid://budxptsfqe8j8" path="res://addons/city_megakit/materials/MI_InteriorWall.tres" id="1_5ocwo"]
+[ext_resource type="Script" uid="uid://bers5rqsvecao" path="res://scripts/interior_block.gd" id="2_block"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3xd07"]
+material = ExtResource("1_5ocwo")
+size = Vector2(4, 4)
+orientation = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xu1wp"]
+material = ExtResource("1_5ocwo")
+flip_faces = true
+size = Vector2(4, 4)
+orientation = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ixm3e"]
+material = ExtResource("1_5ocwo")
+size = Vector2(4, 4)
+orientation = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4yf7h"]
+material = ExtResource("1_5ocwo")
+flip_faces = true
+size = Vector2(4, 4)
+orientation = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5ocwo"]
+size = Vector3(4, 4, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_blocker"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0.6, 0, 0, 0.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xu1wp"]
+size = Vector3(4, 2, 0.1)
+
+[node name="InteriorBlock" type="Node3D" unique_id=1561421072 groups=["interior_block", "npc_playerbuilding"]]
+
+[node name="Panel" type="MeshInstance3D" parent="." unique_id=1271584810]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 0)
+mesh = SubResource("PlaneMesh_3xd07")
+
+[node name="Panel2" type="MeshInstance3D" parent="." unique_id=1639999615]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9999999, 2, 0)
+mesh = SubResource("PlaneMesh_xu1wp")
+
+[node name="Panel3" type="MeshInstance3D" parent="." unique_id=400651643]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2)
+mesh = SubResource("PlaneMesh_ixm3e")
+
+[node name="Panel4" type="MeshInstance3D" parent="." unique_id=161517807]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2)
+mesh = SubResource("PlaneMesh_4yf7h")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=288478236]
+collision_layer = 17
+script = ExtResource("2_block")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=513857578]
+transform = Transform3D(0.999, 0, 0, 0, 0.999, 0, 0, 0, 0.999, 0, 2, 2.9802322e-08)
+shape = SubResource("BoxShape3D_5ocwo")
+
+[node name="Blocker" type="CSGBox3D" parent="." unique_id=1439597169]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1.949)
+size = Vector3(4, 2, 0.1)
+material = SubResource("StandardMaterial3D_blocker")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Blocker" unique_id=1547782167]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocker/StaticBody3D" unique_id=1842895861]
+shape = SubResource("BoxShape3D_xu1wp")
+
+[node name="Blocker2" type="CSGBox3D" parent="." unique_id=163555156]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1.949)
+size = Vector3(4, 2, 0.1)
+material = SubResource("StandardMaterial3D_blocker")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Blocker2" unique_id=1992512333]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocker2/StaticBody3D" unique_id=247404076]
+shape = SubResource("BoxShape3D_xu1wp")
+
+[node name="Blocker3" type="CSGBox3D" parent="." unique_id=145861742]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.949, 1, 0)
+size = Vector3(4, 2, 0.1)
+material = SubResource("StandardMaterial3D_blocker")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Blocker3" unique_id=917951676]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocker3/StaticBody3D" unique_id=68102218]
+shape = SubResource("BoxShape3D_xu1wp")
+
+[node name="Blocker4" type="CSGBox3D" parent="." unique_id=1919270760]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.949, 1, 0)
+size = Vector3(4, 2, 0.1)
+material = SubResource("StandardMaterial3D_blocker")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Blocker4" unique_id=335183665]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocker4/StaticBody3D" unique_id=182801948]
+shape = SubResource("BoxShape3D_xu1wp")

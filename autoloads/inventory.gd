@@ -46,5 +46,11 @@ func has_item(item_id: String, amount: int = 1) -> bool:
 			total += slot["amount"]
 	return total >= amount
 
+func swap_slots(a: int, b: int) -> void:
+	var tmp = slots[a]
+	slots[a] = slots[b]
+	slots[b] = tmp
+	inventory_changed.emit()
+
 func _empty_slot() -> Dictionary:
 	return {"item_id": "", "amount": 0}

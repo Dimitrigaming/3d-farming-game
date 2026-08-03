@@ -1,12 +1,15 @@
 [gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://c3sqs35e0fchi"]
 
+[ext_resource type="PackedScene" uid="uid://cyv5newb08skg" path="res://models/crops/SM_Carrot.tscn" id="1_ai1fd"]
 [ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="2_ai1fd"]
+[ext_resource type="Texture2D" uid="uid://bgpta1i0iktib" path="res://icons/crops/carrot.png" id="2_turtd"]
 
 [resource]
 script = ExtResource("2_ai1fd")
 id = "carrot"
 name = "Carrot"
-type = 0
+icon = ExtResource("2_turtd")
 sell_price = 5
 buy_price = 20
 description = "Plant in a tilled soil plot to grow wheat."
+equip_scene = ExtResource("1_ai1fd")

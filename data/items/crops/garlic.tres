@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://item_garlic01"]
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dsn6qfddb4qrd"]
 
 [ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://ccqvre3g8iw63" path="res://models/crops/SM_Garlic.tscn" id="2_equip"]
+[ext_resource type="Texture2D" uid="uid://bmycn8euvkrj4" path="res://icons/crops/garlic.png" id="3_icon"]
 
 [resource]
 script = ExtResource("1_def")
 id = "garlic"
 name = "Garlic"
-type = 1
+icon = ExtResource("3_icon")
 sell_price = 10
-buy_price = 0
 description = "A bulb of garlic, freshly harvested."
+equip_scene = ExtResource("2_equip")

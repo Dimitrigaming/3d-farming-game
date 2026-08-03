@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://item_eggplnt1"]
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://cwcmd2u3e26mi"]
 
 [ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://c48hdnfthtcos" path="res://models/crops/SM_Eggplant.tscn" id="2_equip"]
+[ext_resource type="Texture2D" uid="uid://b6rwfqjghyuug" path="res://icons/crops/eggplant.png" id="3_icon"]
 
 [resource]
 script = ExtResource("1_def")
 id = "eggplant"
 name = "Eggplant"
-type = 1
+icon = ExtResource("3_icon")
 sell_price = 15
-buy_price = 0
 description = "A ripe eggplant, ready to sell or use."
+equip_scene = ExtResource("2_equip")
