@@ -98,7 +98,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_w1hhp")
 
 [node name="ScytheV1" type="Node3D" unique_id=2105055376]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
+transform = Transform3D(-0.34202012, 0, 0.9396926, 0, 1, 0, -0.9396926, 0, -0.34202012, 0, -0.3, 0)
 
 [node name="ScytheV1" type="MeshInstance3D" parent="." unique_id=640359662]
 mesh = SubResource("ArrayMesh_dr568")
