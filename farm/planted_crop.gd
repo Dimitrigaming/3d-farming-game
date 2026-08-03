@@ -39,7 +39,7 @@ func is_ready_to_harvest() -> bool:
 		return false
 	return stage >= crop_def.growth_stages.size() - 1
 
-func harvest() -> String:
+func harvest() -> Dictionary:
 	if crop_def == null:
-		return ""
-	return crop_def.yield_item_id
+		return {}
+	return {"item_id": crop_def.yield_item_id, "amount": crop_def.yield_amount}

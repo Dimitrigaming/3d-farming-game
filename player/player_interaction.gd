@@ -153,9 +153,9 @@ func _do_left_action(item_id: String) -> void:
 			_last_acted_cell = _hovered_cell
 		"scythe":
 			if _hovered_is_harvestable:
-				var yield_id = _hovered_farm.harvest_crop(_hovered_cell.x, _hovered_cell.z)
-				if yield_id != "":
-					Inventory.add_item(yield_id)
+				var result = _hovered_farm.harvest_crop(_hovered_cell.x, _hovered_cell.z)
+				if not result.is_empty():
+					Inventory.add_item(result["item_id"], result["amount"])
 				_last_acted_cell = _hovered_cell
 
 func _do_right_action(item_id: String) -> void:
