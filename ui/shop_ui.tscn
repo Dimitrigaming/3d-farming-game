@@ -6,13 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://chydajej3k1e6" path="res://icons/tools/axe.png" id="4_nm3p2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBox_Grid"]
+content_margin_top = 6.0
+content_margin_bottom = 6.0
 texture = ExtResource("2_nm3p2")
 texture_margin_left = 8.0
 texture_margin_top = 8.0
 texture_margin_right = 8.0
 texture_margin_bottom = 8.0
-content_margin_top = 6.0
-content_margin_bottom = 6.0
 
 [sub_resource type="StyleBoxFlat" id="Style_MoneyBadge"]
 content_margin_left = 12.0
@@ -88,6 +88,18 @@ content_margin_top = 10.0
 content_margin_right = 16.0
 content_margin_bottom = 10.0
 bg_color = Color(1, 1, 1, 0.04)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nm3p2"]
+load_path = "res://.godot/imported/inventory_1x1_black.png-2a62e8eb68281c24971c29e934ba6e20.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rc43a"]
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+texture = SubResource("CompressedTexture2D_nm3p2")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
 
 [node name="ShopUI" type="CanvasLayer" unique_id=1343921064]
 layer = 10
@@ -206,30 +218,30 @@ theme_override_styles/hover = SubResource("Style_TabHover4")
 theme_override_styles/focus = SubResource("Style_TabNormal")
 text = "MATERIALS"
 
-[node name="ScrollWrap" type="MarginContainer" parent="Panel/VBox" unique_id=2026208960]
-custom_minimum_size = Vector2(0, 380)
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBox" unique_id=2026208965]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBox_Grid")
+theme_override_styles/panel = SubResource("StyleBoxTexture_rc43a")
+
+[node name="ScrollWrap" type="MarginContainer" parent="Panel/VBox/ScrollContainer" unique_id=2026208960]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_bottom = 6
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_right = 0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBox/ScrollWrap" unique_id=2026208965]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="ItemList" type="VBoxContainer" parent="Panel/VBox/ScrollWrap/ScrollContainer" unique_id=676955540]
+[node name="ItemList" type="VBoxContainer" parent="Panel/VBox/ScrollContainer/ScrollWrap" unique_id=676955540]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 4
 
-[node name="ItemRow" parent="Panel/VBox/ScrollWrap/ScrollContainer/ItemList" unique_id=1854494158 instance=ExtResource("2_ddy65")]
+[node name="ItemRow" parent="Panel/VBox/ScrollContainer/ScrollWrap/ItemList" unique_id=1854494158 instance=ExtResource("2_ddy65")]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBox_Grid")
 
-[node name="Icon" parent="Panel/VBox/ScrollWrap/ScrollContainer/ItemList/ItemRow/HBox" parent_id_path=PackedInt32Array(1854494158, 637075315) index="0" unique_id=1464844269]
+[node name="Icon" parent="Panel/VBox/ScrollContainer/ScrollWrap/ItemList/ItemRow/HBox" parent_id_path=PackedInt32Array(1854494158, 637075315) index="0" unique_id=1464844269]
 texture = ExtResource("4_nm3p2")
 
 [node name="Footer" type="PanelContainer" parent="Panel/VBox" unique_id=219021315]
@@ -252,4 +264,4 @@ theme_override_colors/font_color = Color(0.541, 0.529, 0.6, 1)
 theme_override_font_sizes/font_size = 11
 text = "Press E or Esc to close"
 
-[editable path="Panel/VBox/ScrollWrap/ScrollContainer/ItemList/ItemRow"]
+[editable path="Panel/VBox/ScrollContainer/ScrollWrap/ItemList/ItemRow"]
