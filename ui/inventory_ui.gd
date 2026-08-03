@@ -33,19 +33,27 @@ func _unhandled_input(event: InputEvent) -> void:
 				Inventory.swap_slots(_hovered_slot, hotbar_index)
 			get_viewport().set_input_as_handled()
 			return
-	if event.is_action_pressed("inventory"):
+	if event.is_action_pressed("inventory") or (visible and event.is_action_pressed("ui_cancel")):
 		visible = not visible
 		if visible:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		_set_player_enabled(not visible)
+		_set_crosshair_visible(not visible)
 		get_viewport().set_input_as_handled()
 
 func _set_player_enabled(enabled: bool) -> void:
 	var controller = get_tree().get_first_node_in_group("proto_controller")
 	if controller:
 		controller.process_mode = Node.PROCESS_MODE_DISABLED if not enabled else Node.PROCESS_MODE_INHERIT
+
+func _set_crosshair_visible(visible: bool) -> void:
+	var controller = get_tree().get_first_node_in_group("proto_controller")
+	if controller:
+		var crosshair = controller.get_node_or_null("HUD/Crosshair")
+		if crosshair:
+			crosshair.visible = visible
 
 func _refresh() -> void:
 	_refresh_grid(grid.get_children(), 0)

@@ -32,6 +32,7 @@ func open_shop() -> void:
 	_on_money_changed(GameState.money)
 	visible = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	_set_crosshair_visible(false)
 	var controller = get_tree().get_first_node_in_group("proto_controller")
 	if controller:
 		controller.process_mode = Node.PROCESS_MODE_DISABLED
@@ -39,15 +40,23 @@ func open_shop() -> void:
 func close_shop() -> void:
 	visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	_set_crosshair_visible(true)
 	var controller = get_tree().get_first_node_in_group("proto_controller")
 	if controller:
 		controller.process_mode = Node.PROCESS_MODE_INHERIT
 	closed.emit()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if visible and (event.is_action_pressed("inventory") or event.is_action_pressed("interact")):
+	if visible and (event.is_action_pressed("inventory") or event.is_action_pressed("interact") or event.is_action_pressed("ui_cancel")):
 		close_shop()
 		get_viewport().set_input_as_handled()
+
+func _set_crosshair_visible(show: bool) -> void:
+	var controller = get_tree().get_first_node_in_group("proto_controller")
+	if controller:
+		var crosshair = controller.get_node_or_null("HUD/Crosshair")
+		if crosshair:
+			crosshair.visible = show
 
 func _on_money_changed(amount: float) -> void:
 	money_label.text = "$%.2f" % amount
