@@ -29,7 +29,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		var key = event.keycode
 		if key >= KEY_1 and key <= KEY_9:
 			var hotbar_index = Inventory.HOTBAR_START + (key - KEY_1)
-			if _hovered_slot >= 0 and _hovered_slot != hotbar_index:
+			if _hovered_slot >= 0 and _hovered_slot != hotbar_index and Inventory.slots[_hovered_slot]["item_id"] != "":
 				Inventory.swap_slots(_hovered_slot, hotbar_index)
 			get_viewport().set_input_as_handled()
 			return
