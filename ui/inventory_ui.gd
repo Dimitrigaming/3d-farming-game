@@ -57,7 +57,6 @@ func show_for_shop() -> void:
 	panel.offset_left = -600.0
 	panel.offset_top = -260.0
 	panel.offset_right = -12.0
-	panel.offset_bottom = 260.0
 
 func hide_for_shop() -> void:
 	visible = false
@@ -65,7 +64,6 @@ func hide_for_shop() -> void:
 	panel.offset_left = -304.0
 	panel.offset_top = -268.5
 	panel.offset_right = 288.0
-	panel.offset_bottom = 108.5
 
 func _set_crosshair_visible(visible: bool) -> void:
 	var controller = get_tree().get_first_node_in_group("proto_controller")
