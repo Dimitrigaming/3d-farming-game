@@ -39,6 +39,7 @@ func open_shop() -> void:
 	var inv = _get_inventory_ui()
 	if inv:
 		inv.show_for_shop()
+	_set_panel_position(true)
 	var controller = get_tree().get_first_node_in_group("proto_controller")
 	if controller:
 		controller.process_mode = Node.PROCESS_MODE_DISABLED
@@ -50,10 +51,20 @@ func close_shop() -> void:
 	var inv = _get_inventory_ui()
 	if inv:
 		inv.hide_for_shop()
+	_set_panel_position(false)
 	var controller = get_tree().get_first_node_in_group("proto_controller")
 	if controller:
 		controller.process_mode = Node.PROCESS_MODE_INHERIT
 	closed.emit()
+
+func _set_panel_position(shop_mode: bool) -> void:
+	var panel = $Panel
+	if shop_mode:
+		panel.offset_left = 12.0
+		panel.offset_right = 572.0
+	else:
+		panel.offset_left = -280.0
+		panel.offset_right = 280.0
 
 func _recapture_mouse() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
