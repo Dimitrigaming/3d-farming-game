@@ -5,7 +5,16 @@ extends CanvasLayer
 
 func _ready() -> void:
 	Inventory.inventory_changed.connect(_refresh)
+	_assign_indices()
 	call_deferred("_refresh")
+
+func _assign_indices() -> void:
+	var grid_slots = grid.get_children()
+	for i in grid_slots.size():
+		grid_slots[i].slot_index = i
+	var hotbar_slots = hotbar.get_children()
+	for i in hotbar_slots.size():
+		hotbar_slots[i].slot_index = Inventory.HOTBAR_START + i
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):

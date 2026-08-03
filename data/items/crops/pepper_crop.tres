@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://crop_pepper01"]
+
+[ext_resource type="Script" path="res://autoloads/crop_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://c0dcp8wt2muq2" path="res://models/crops/SM_Pepper_Seed.tscn" id="2_s0"]
+[ext_resource type="PackedScene" uid="uid://dcdb53h7anpm1" path="res://models/crops/SM_Pepper_Stage1.tscn" id="3_s1"]
+[ext_resource type="PackedScene" uid="uid://c4atpo40gix43" path="res://models/crops/SM_Pepper_Stage2.tscn" id="4_s2"]
+[ext_resource type="PackedScene" uid="uid://ch6g72wgfhl8" path="res://models/crops/SM_Pepper_Stage3.tscn" id="5_s3"]
+[ext_resource type="PackedScene" uid="uid://bxe0w6ylvkq2c" path="res://models/crops/SM_Pepper_Stage4.tscn" id="6_s4"]
+
+[resource]
+script = ExtResource("1_def")
+id = "pepper"
+name = "Pepper"
+seed_item_id = "pepper_seed"
+yield_item_id = "pepper"
+yield_amount = 3
+base_grow_speed = 140.0
+water_speed_multiplier = 1.5
+can_regrow = true
+regrow_stages = 2
+growth_stages = [ExtResource("2_s0"), ExtResource("3_s1"), ExtResource("4_s2"), ExtResource("5_s3"), ExtResource("6_s4")]

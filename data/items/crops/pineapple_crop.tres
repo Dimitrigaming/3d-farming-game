@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://crop_pinapp01"]
+
+[ext_resource type="Script" path="res://autoloads/crop_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://3i2w55qntgyk" path="res://models/crops/SM_Pineapple_Seed.tscn" id="2_s0"]
+[ext_resource type="PackedScene" uid="uid://bgtfp2vi0r1lc" path="res://models/crops/SM_Pineapple_Stage1.tscn" id="3_s1"]
+[ext_resource type="PackedScene" uid="uid://d0wonytt0hpcw" path="res://models/crops/SM_Pineapple_Stage2.tscn" id="4_s2"]
+[ext_resource type="PackedScene" uid="uid://b2sbywt2rldou" path="res://models/crops/SM_Pineapple_Stage3.tscn" id="5_s3"]
+[ext_resource type="PackedScene" uid="uid://dft6fbo5vepg2" path="res://models/crops/SM_Pineapple_Stage4.tscn" id="6_s4"]
+
+[resource]
+script = ExtResource("1_def")
+id = "pineapple"
+name = "Pineapple"
+seed_item_id = "pineapple_seed"
+yield_item_id = "pineapple"
+yield_amount = 1
+base_grow_speed = 240.0
+water_speed_multiplier = 1.5
+can_regrow = false
+regrow_stages = 0
+growth_stages = [ExtResource("2_s0"), ExtResource("3_s1"), ExtResource("4_s2"), ExtResource("5_s3"), ExtResource("6_s4")]

@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dmoi5hnboeqtx"]
 
+[ext_resource type="Script" path="res://ui/inventory_slot.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://bxle760hh7psa" path="res://icons/inventory/inventory_1x1_black.png" id="1_d1f1n"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_normal"]
@@ -10,6 +11,7 @@ texture_margin_right = 8.0
 texture_margin_bottom = 8.0
 
 [node name="InventorySlot" type="PanelContainer" unique_id=1195094592]
+script = ExtResource("1_script")
 custom_minimum_size = Vector2(64, 64)
 theme_override_styles/panel = SubResource("StyleBoxTexture_normal")
 

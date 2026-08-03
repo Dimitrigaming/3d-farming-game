@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://crop_grape001"]
+
+[ext_resource type="Script" path="res://autoloads/crop_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://6cddamvr0y1j" path="res://models/crops/SM_Grape_Seed.tscn" id="2_s0"]
+[ext_resource type="PackedScene" uid="uid://cktevb2vudckg" path="res://models/crops/SM_Grape_Stage1.tscn" id="3_s1"]
+[ext_resource type="PackedScene" uid="uid://dgv40ijurmyqg" path="res://models/crops/SM_Grape_Stage2.tscn" id="4_s2"]
+[ext_resource type="PackedScene" uid="uid://dknpwkptbsd7" path="res://models/crops/SM_Grape_Stage3.tscn" id="5_s3"]
+[ext_resource type="PackedScene" uid="uid://cpxspqv5yqaol" path="res://models/crops/SM_Grape_Stage4.tscn" id="6_s4"]
+
+[resource]
+script = ExtResource("1_def")
+id = "grape"
+name = "Grape"
+seed_item_id = "grape_seed"
+yield_item_id = "grape"
+yield_amount = 4
+base_grow_speed = 160.0
+water_speed_multiplier = 1.5
+can_regrow = true
+regrow_stages = 2
+growth_stages = [ExtResource("2_s0"), ExtResource("3_s1"), ExtResource("4_s2"), ExtResource("5_s3"), ExtResource("6_s4")]

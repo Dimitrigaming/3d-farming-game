@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dpe1k2uummjiw"]
+
+[ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+
+[resource]
+script = ExtResource("1_def")
+sell_price = 40
+unlock_level = 0

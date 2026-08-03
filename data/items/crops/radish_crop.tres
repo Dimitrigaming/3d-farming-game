@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://crop_radish01"]
+
+[ext_resource type="Script" path="res://autoloads/crop_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://c536kirsw2qkf" path="res://models/crops/SM_Radish_Seed.tscn" id="2_s0"]
+[ext_resource type="PackedScene" uid="uid://rus6gkq1bitf" path="res://models/crops/SM_Radish_Stage1.tscn" id="3_s1"]
+[ext_resource type="PackedScene" uid="uid://bguiackp5k8bc" path="res://models/crops/SM_Radish_Stage2.tscn" id="4_s2"]
+[ext_resource type="PackedScene" uid="uid://6ryps8tckime" path="res://models/crops/SM_Radish_Stage3.tscn" id="5_s3"]
+[ext_resource type="PackedScene" uid="uid://dhn1rlffp8n2r" path="res://models/crops/SM_Radish_Stage4.tscn" id="6_s4"]
+
+[resource]
+script = ExtResource("1_def")
+id = "radish"
+name = "Radish"
+seed_item_id = "radish_seed"
+yield_item_id = "radish"
+yield_amount = 2
+base_grow_speed = 60.0
+water_speed_multiplier = 1.5
+can_regrow = false
+regrow_stages = 0
+growth_stages = [ExtResource("2_s0"), ExtResource("3_s1"), ExtResource("4_s2"), ExtResource("5_s3"), ExtResource("6_s4")]

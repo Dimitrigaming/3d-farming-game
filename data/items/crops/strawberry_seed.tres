@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://item_strseed1"]
+
+[ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+
+[resource]
+script = ExtResource("1_def")
+id = "strawberry_seed"
+name = "Strawberry Seed"
+type = 0
+sell_price = 0
+buy_price = 30
+description = "Plant in a tilled soil plot to grow strawberries."

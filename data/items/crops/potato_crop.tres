@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://crop_potato01"]
+
+[ext_resource type="Script" path="res://autoloads/crop_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://c21mb1ckt6pko" path="res://models/crops/SM_Potato_Seed.tscn" id="2_s0"]
+[ext_resource type="PackedScene" uid="uid://dbydfe66xgjvm" path="res://models/crops/SM_Potato_Stage1.tscn" id="3_s1"]
+[ext_resource type="PackedScene" uid="uid://d4hdjlk85mrh5" path="res://models/crops/SM_Potato_Stage2.tscn" id="4_s2"]
+[ext_resource type="PackedScene" uid="uid://b41qstokuen4x" path="res://models/crops/SM_Potato_Stage3.tscn" id="5_s3"]
+[ext_resource type="PackedScene" uid="uid://18g1ht2kvdxs" path="res://models/crops/SM_Potato_Stage4.tscn" id="6_s4"]
+
+[resource]
+script = ExtResource("1_def")
+id = "potato"
+name = "Potato"
+seed_item_id = "potato_seed"
+yield_item_id = "potato"
+yield_amount = 3
+base_grow_speed = 130.0
+water_speed_multiplier = 1.5
+can_regrow = false
+regrow_stages = 0
+growth_stages = [ExtResource("2_s0"), ExtResource("3_s1"), ExtResource("4_s2"), ExtResource("5_s3"), ExtResource("6_s4")]

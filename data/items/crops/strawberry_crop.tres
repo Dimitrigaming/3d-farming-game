@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://crop_strawb01"]
+
+[ext_resource type="Script" path="res://autoloads/crop_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://bng53g5anvvxs" path="res://models/crops/SM_Strawberry_Seed.tscn" id="2_s0"]
+[ext_resource type="PackedScene" uid="uid://cysja8badqnv6" path="res://models/crops/SM_Strawberry_Stage1.tscn" id="3_s1"]
+[ext_resource type="PackedScene" uid="uid://cjve6t0tgjkd4" path="res://models/crops/SM_Strawberry_Stage2.tscn" id="4_s2"]
+[ext_resource type="PackedScene" uid="uid://ce3pgyd6qptyi" path="res://models/crops/SM_Strawberry_Stage3.tscn" id="5_s3"]
+[ext_resource type="PackedScene" uid="uid://dm87lpkjw6axd" path="res://models/crops/SM_Strawberry_Stage4.tscn" id="6_s4"]
+
+[resource]
+script = ExtResource("1_def")
+id = "strawberry"
+name = "Strawberry"
+seed_item_id = "strawberry_seed"
+yield_item_id = "strawberry"
+yield_amount = 3
+base_grow_speed = 120.0
+water_speed_multiplier = 1.5
+can_regrow = true
+regrow_stages = 2
+growth_stages = [ExtResource("2_s0"), ExtResource("3_s1"), ExtResource("4_s2"), ExtResource("5_s3"), ExtResource("6_s4")]

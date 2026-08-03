@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://crop_carrot001"]
+
+[ext_resource type="Script" path="res://autoloads/crop_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://bijigv2fgiti4" path="res://models/crops/SM_Carrot_Seed.tscn" id="2_s0"]
+[ext_resource type="PackedScene" uid="uid://dqdidr60whpvt" path="res://models/crops/SM_Carrot_Stage1.tscn" id="3_s1"]
+[ext_resource type="PackedScene" uid="uid://cauvbk5dojdxs" path="res://models/crops/SM_Carrot_Stage2.tscn" id="4_s2"]
+[ext_resource type="PackedScene" uid="uid://bv07mo18yfra4" path="res://models/crops/SM_Carrot_Stage3.tscn" id="5_s3"]
+[ext_resource type="PackedScene" uid="uid://30esc7vh8erv" path="res://models/crops/SM_Carrot_Stage4.tscn" id="6_s4"]
+
+[resource]
+script = ExtResource("1_def")
+id = "carrot"
+name = "Carrot"
+seed_item_id = "carrot_seed"
+yield_item_id = "carrot"
+yield_amount = 2
+base_grow_speed = 90.0
+water_speed_multiplier = 1.5
+can_regrow = false
+regrow_stages = 0
+growth_stages = [ExtResource("2_s0"), ExtResource("3_s1"), ExtResource("4_s2"), ExtResource("5_s3"), ExtResource("6_s4")]

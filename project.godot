@@ -22,6 +22,7 @@ GameState="*res://scripts/game_state.gd"
 DebugConsole="*res://models/DebugConsole.tscn"
 Inventory="*uid://5h0114cq3f1h"
 ItemDB="*uid://5eshl5piammb"
+CropDB="*res://autoloads/crop_db.gd"
 GameManager="*uid://dr8508lgwdy53"
 
 [display]

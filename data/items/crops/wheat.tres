@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://cgjykwtb6qjln"]
+
+[ext_resource type="Texture2D" uid="uid://djoe6nwpb78t7" path="res://icons/crops/wheat.png" id="1_5hqkh"]
+[ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+
+[resource]
+script = ExtResource("1_def")
+id = "wheat"
+name = "Wheat"
+icon = ExtResource("1_5hqkh")
+sell_price = 25
+description = "Harvested wheat. Sell it or mill it into flour."

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://crop_tomato01"]
+
+[ext_resource type="Script" path="res://autoloads/crop_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://c5yol4p2fousm" path="res://models/crops/SM_Tomato_Seed.tscn" id="2_s0"]
+[ext_resource type="PackedScene" uid="uid://deol8m8kjsrva" path="res://models/crops/SM_Tomato_Stage1.tscn" id="3_s1"]
+[ext_resource type="PackedScene" uid="uid://cokhe8554471u" path="res://models/crops/SM_Tomato_Stage2.tscn" id="4_s2"]
+[ext_resource type="PackedScene" uid="uid://cdm5nsn31r3yu" path="res://models/crops/SM_Tomato_Stage3.tscn" id="5_s3"]
+[ext_resource type="PackedScene" uid="uid://jgyt65v0e1bk" path="res://models/crops/SM_Tomato_Stage4.tscn" id="6_s4"]
+
+[resource]
+script = ExtResource("1_def")
+id = "tomato"
+name = "Tomato"
+seed_item_id = "tomato_seed"
+yield_item_id = "tomato"
+yield_amount = 3
+base_grow_speed = 150.0
+water_speed_multiplier = 1.5
+can_regrow = true
+regrow_stages = 2
+growth_stages = [ExtResource("2_s0"), ExtResource("3_s1"), ExtResource("4_s2"), ExtResource("5_s3"), ExtResource("6_s4")]

@@ -8,6 +8,9 @@ var selected_slot: int = 0
 
 func _ready() -> void:
 	Inventory.inventory_changed.connect(_refresh)
+	var slots = grid.get_children()
+	for i in slots.size():
+		slots[i].slot_index = Inventory.HOTBAR_START + i
 	_refresh()
 	_update_highlight()
 	call_deferred("_notify_equipper")

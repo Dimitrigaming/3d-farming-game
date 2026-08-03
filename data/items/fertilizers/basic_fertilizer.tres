@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FertilizerDefinition" format=3 uid="uid://fert_basic001"]
+
+[ext_resource type="Script" path="res://autoloads/fertilizer_definition.gd" id="1_def"]
+
+[resource]
+script = ExtResource("1_def")
+id = "basic_fertilizer"
+name = "Basic Fertilizer"
+speed_multiplier = 1.25
+yield_multiplier = 1.0
+duration_cycles = 1
