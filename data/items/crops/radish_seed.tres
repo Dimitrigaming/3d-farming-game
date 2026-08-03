@@ -1,12 +1,16 @@
 [gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://item_radseed1"]
 
 [ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://c536kirsw2qkf" path="res://models/crops/SM_Radish_Seed.tscn" id="2_equip"]
+[ext_resource type="Texture2D" uid="uid://1tlfvctngojf" path="res://icons/crops/radish_seeds.png" id="3_icon"]
 
 [resource]
 script = ExtResource("1_def")
 id = "radish_seed"
 name = "Radish Seed"
+icon = ExtResource("3_icon")
 type = 0
 sell_price = 0
-buy_price = 10
+buy_price = 8
 description = "Plant in a tilled soil plot to grow radishes."
+equip_scene = ExtResource("2_equip")

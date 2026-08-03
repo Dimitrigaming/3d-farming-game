@@ -1,12 +1,16 @@
 [gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://item_radish01"]
 
 [ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://cks2sikbrqbi3" path="res://models/crops/SM_Radish.tscn" id="2_equip"]
+[ext_resource type="Texture2D" uid="uid://coa1o7vjwsok8" path="res://icons/crops/radish.png" id="3_icon"]
 
 [resource]
 script = ExtResource("1_def")
 id = "radish"
 name = "Radish"
+icon = ExtResource("3_icon")
 type = 1
 sell_price = 8
 buy_price = 0
 description = "A crisp radish, one of the quickest crops to grow."
+equip_scene = ExtResource("2_equip")
