@@ -1,0 +1,12 @@
+﻿[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://pear000000001i"]
+
+[ext_resource type="Texture2D" uid="uid://cwpnq75c7pfvg" path="res://icons/crops/pear.png" id="2_ico"]
+[ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="3_scr"]
+
+[resource]
+script = ExtResource("3_scr")
+id = "pear"
+name = "Pear"
+icon = ExtResource("2_ico")
+type = 1
+sell_price = 15

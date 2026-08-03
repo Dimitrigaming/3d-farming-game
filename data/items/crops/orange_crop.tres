@@ -1,0 +1,20 @@
+﻿[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://orange0000001c"]
+
+[ext_resource type="Script" uid="uid://cqjkmsb31rfok" path="res://autoloads/crop_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://d3yrmgrhw5fqu" path="res://models/crops/SM_Orange_Seed.tscn" id="2_s0"]
+[ext_resource type="PackedScene" uid="uid://cbecxabslm2ar" path="res://models/crops/SM_Orange_Stage1.tscn" id="3_s1"]
+[ext_resource type="PackedScene" uid="uid://c7uimru7abt3k" path="res://models/crops/SM_Orange_Stage2.tscn" id="4_s2"]
+[ext_resource type="PackedScene" uid="uid://dadtgy50v5nnh" path="res://models/crops/SM_Orange_Stage3.tscn" id="5_s3"]
+[ext_resource type="PackedScene" uid="uid://cap3lduwvhfue" path="res://models/crops/SM_Orange_Stage4.tscn" id="6_s4"]
+[ext_resource type="PackedScene" uid="uid://be2dxur84caq" path="res://models/crops/SM_Orange_Stage5.tscn" id="7_s5"]
+
+[resource]
+script = ExtResource("1_def")
+id = "orange"
+name = "Orange"
+seed_item_id = "orange_seed"
+yield_item_id = "orange"
+yield_amount = 4
+base_grow_speed = 200.0
+regrow_stages = 0
+growth_stages = Array[PackedScene]([ExtResource("2_s0"), ExtResource("3_s1"), ExtResource("4_s2"), ExtResource("5_s3"), ExtResource("6_s4"), ExtResource("7_s5")])

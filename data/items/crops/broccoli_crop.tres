@@ -1,0 +1,19 @@
+﻿[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://broccoli0001c"]
+
+[ext_resource type="Script" uid="uid://cqjkmsb31rfok" path="res://autoloads/crop_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://n712i0utrfbp" path="res://models/crops/SM_Broccoli_Seed.tscn" id="2_s0"]
+[ext_resource type="PackedScene" uid="uid://b7vqncks8oa53" path="res://models/crops/SM_Broccoli_Stage1.tscn" id="3_s1"]
+[ext_resource type="PackedScene" uid="uid://dm8sg8bkwe4qa" path="res://models/crops/SM_Broccoli_Stage2.tscn" id="4_s2"]
+[ext_resource type="PackedScene" uid="uid://qj8ql653mmr3" path="res://models/crops/SM_Broccoli_Stage3.tscn" id="5_s3"]
+[ext_resource type="PackedScene" uid="uid://j7snmk5obgta" path="res://models/crops/SM_Broccoli_Stage4.tscn" id="6_s4"]
+
+[resource]
+script = ExtResource("1_def")
+id = "broccoli"
+name = "Broccoli"
+seed_item_id = "broccoli_seed"
+yield_item_id = "broccoli"
+yield_amount = 2
+base_grow_speed = 80.0
+regrow_stages = 0
+growth_stages = Array[PackedScene]([ExtResource("2_s0"), ExtResource("3_s1"), ExtResource("4_s2"), ExtResource("5_s3"), ExtResource("6_s4")])

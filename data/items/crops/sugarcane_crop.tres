@@ -1,0 +1,19 @@
+﻿[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://sugarcane001c"]
+
+[ext_resource type="Script" uid="uid://cqjkmsb31rfok" path="res://autoloads/crop_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://cu8acx7j4paef" path="res://models/crops/SM_SugarCane_Seed.tscn" id="2_s0"]
+[ext_resource type="PackedScene" uid="uid://chaabtqmrr226" path="res://models/crops/SM_SugarCane_Stage1.tscn" id="3_s1"]
+[ext_resource type="PackedScene" uid="uid://30vwfyj26qj4" path="res://models/crops/SM_SugarCane_Stage2.tscn" id="4_s2"]
+[ext_resource type="PackedScene" uid="uid://jahvp7ffycq2" path="res://models/crops/SM_SugarCane_Stage3.tscn" id="5_s3"]
+[ext_resource type="PackedScene" uid="uid://bm6j5h6ctwfdk" path="res://models/crops/SM_SugarCane_Stage4.tscn" id="6_s4"]
+
+[resource]
+script = ExtResource("1_def")
+id = "sugarcane"
+name = "Sugar Cane"
+seed_item_id = "sugarcane_seed"
+yield_item_id = "sugarcane"
+yield_amount = 3
+base_grow_speed = 70.0
+regrow_stages = 0
+growth_stages = Array[PackedScene]([ExtResource("2_s0"), ExtResource("3_s1"), ExtResource("4_s2"), ExtResource("5_s3"), ExtResource("6_s4")])

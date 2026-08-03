@@ -1,0 +1,20 @@
+﻿[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://banana0000001c"]
+
+[ext_resource type="Script" uid="uid://cqjkmsb31rfok" path="res://autoloads/crop_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://c42k1iq6brfes" path="res://models/crops/SM_Banana_Seed.tscn" id="2_s0"]
+[ext_resource type="PackedScene" uid="uid://bawcl6y37yvad" path="res://models/crops/SM_Banana_Stage1.tscn" id="3_s1"]
+[ext_resource type="PackedScene" uid="uid://nyr8j1th6tlc" path="res://models/crops/SM_Banana_Stage2.tscn" id="4_s2"]
+[ext_resource type="PackedScene" uid="uid://d4ky4kqeqf82s" path="res://models/crops/SM_Banana_Stage3.tscn" id="5_s3"]
+[ext_resource type="PackedScene" uid="uid://dc826wwruoe6x" path="res://models/crops/SM_Banana_Stage4.tscn" id="6_s4"]
+[ext_resource type="PackedScene" uid="uid://bnbly8cd6monr" path="res://models/crops/SM_Banana_Stage5.tscn" id="7_s5"]
+
+[resource]
+script = ExtResource("1_def")
+id = "banana"
+name = "Banana"
+seed_item_id = "banana_seed"
+yield_item_id = "banana"
+yield_amount = 4
+base_grow_speed = 200.0
+regrow_stages = 0
+growth_stages = Array[PackedScene]([ExtResource("2_s0"), ExtResource("3_s1"), ExtResource("4_s2"), ExtResource("5_s3"), ExtResource("6_s4"), ExtResource("7_s5")])

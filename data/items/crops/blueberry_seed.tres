@@ -1,0 +1,14 @@
+﻿[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://blueberry0001s"]
+
+[ext_resource type="PackedScene" uid="uid://c0gldmp7p0ob4" path="res://models/crops/SM_BlueBerry_Seed.tscn" id="1_smdl"]
+[ext_resource type="Texture2D" uid="uid://djtiqi41xj51c" path="res://icons/crops/blueberry_seeds.png" id="2_sico"]
+[ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="3_scr"]
+
+[resource]
+script = ExtResource("3_scr")
+id = "blueberry_seed"
+name = "Blueberry Seed"
+icon = ExtResource("2_sico")
+type = 0
+buy_price = 15
+equip_scene = ExtResource("1_smdl")

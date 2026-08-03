@@ -1,0 +1,14 @@
+﻿[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://apple00000001i"]
+
+[ext_resource type="PackedScene" uid="uid://cji3nrmvvl27u" path="res://models/crops/SM_Apple.tscn" id="1_mdl"]
+[ext_resource type="Texture2D" uid="uid://v27ihxybu1ch" path="res://icons/crops/apple.png" id="2_ico"]
+[ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="3_scr"]
+
+[resource]
+script = ExtResource("3_scr")
+id = "apple"
+name = "Apple"
+icon = ExtResource("2_ico")
+type = 1
+sell_price = 18
+equip_scene = ExtResource("1_mdl")

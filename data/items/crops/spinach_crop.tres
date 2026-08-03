@@ -1,0 +1,19 @@
+﻿[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://spinach0001c"]
+
+[ext_resource type="Script" uid="uid://cqjkmsb31rfok" path="res://autoloads/crop_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://d0ioj74ia4a2x" path="res://models/crops/SM_Spinach_Seed.tscn" id="2_s0"]
+[ext_resource type="PackedScene" uid="uid://bd1i10sqcbhxm" path="res://models/crops/SM_Spinach_Stage1.tscn" id="3_s1"]
+[ext_resource type="PackedScene" uid="uid://dad0ybe5lnx8p" path="res://models/crops/SM_Spinach_Stage2.tscn" id="4_s2"]
+[ext_resource type="PackedScene" uid="uid://h03y4easp0qb" path="res://models/crops/SM_Spinach_Stage3.tscn" id="5_s3"]
+[ext_resource type="PackedScene" uid="uid://5uglj2k0pux2" path="res://models/crops/SM_Spinach_Stage4.tscn" id="6_s4"]
+
+[resource]
+script = ExtResource("1_def")
+id = "spinach"
+name = "Spinach"
+seed_item_id = "spinach_seed"
+yield_item_id = "spinach"
+yield_amount = 2
+base_grow_speed = 60.0
+regrow_stages = 0
+growth_stages = Array[PackedScene]([ExtResource("2_s0"), ExtResource("3_s1"), ExtResource("4_s2"), ExtResource("5_s3"), ExtResource("6_s4")])

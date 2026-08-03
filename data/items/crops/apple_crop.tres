@@ -1,0 +1,20 @@
+﻿[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://apple00000001c"]
+
+[ext_resource type="Script" uid="uid://cqjkmsb31rfok" path="res://autoloads/crop_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://4mpvtjvaeg2d" path="res://models/crops/SM_Apple_Seed.tscn" id="2_s0"]
+[ext_resource type="PackedScene" uid="uid://b1mnuve6t143h" path="res://models/crops/SM_Apple_Stage1.tscn" id="3_s1"]
+[ext_resource type="PackedScene" uid="uid://bfne4s0i7ygwq" path="res://models/crops/SM_Apple_Stage2.tscn" id="4_s2"]
+[ext_resource type="PackedScene" uid="uid://bsq06j7hevwde" path="res://models/crops/SM_Apple_Stage3.tscn" id="5_s3"]
+[ext_resource type="PackedScene" uid="uid://b8hhgjp8msdlo" path="res://models/crops/SM_Apple_Stage4.tscn" id="6_s4"]
+[ext_resource type="PackedScene" uid="uid://r7eswdq7e03v" path="res://models/crops/SM_Apple_Stage5.tscn" id="7_s5"]
+
+[resource]
+script = ExtResource("1_def")
+id = "apple"
+name = "Apple"
+seed_item_id = "apple_seed"
+yield_item_id = "apple"
+yield_amount = 4
+base_grow_speed = 240.0
+regrow_stages = 0
+growth_stages = Array[PackedScene]([ExtResource("2_s0"), ExtResource("3_s1"), ExtResource("4_s2"), ExtResource("5_s3"), ExtResource("6_s4"), ExtResource("7_s5")])
