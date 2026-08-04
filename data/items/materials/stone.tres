@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://material_stone1"]
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://mu3vmhfapa2r"]
 
 [ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
 
@@ -7,8 +7,7 @@ script = ExtResource("1_def")
 id = "stone"
 name = "Stone"
 type = 4
-subcategory = 3
-max_stack = 99
 sell_price = 2
 buy_price = 5
+subcategory = 3
 description = "Common rock mined from the ground."
