@@ -3,6 +3,9 @@
 var active: bool = false
 var grid_snap: bool = false
 
+func _ready() -> void:
+	add_to_group("build_mode")
+
 func _get_room_at(world_pos: Vector3) -> String:
 	var space_state = get_world_3d().direct_space_state
 	var query = PhysicsPointQueryParameters3D.new()
@@ -28,16 +31,18 @@ var _blocked: bool = false
 var _ghost_arrow_nodes: Array[Node] = []
 var _passengers: Array[Node3D] = []
 var _hidden_passengers: Array[Node3D] = []
+var _deploy_item_id: String = ""
 
 const GRID_SIZE: float = 0.5
-const ROTATE_STEP: float = PI / 12.0
+const ROTATE_STEP: float = PI / 36.0
 
-func enter(furniture: Node3D) -> void:
+func enter(furniture: Node3D, deploy_item_id: String = "") -> void:
 	active = true
 	_blocked = false
 	_furniture = furniture
-	_ghost_y_rotation = furniture.rotation.y
+	_deploy_item_id = deploy_item_id
 	_camera = get_viewport().get_camera_3d()
+	_ghost_y_rotation = _facing_player_rotation(furniture.global_position)
 	_ground_clearance = _get_ground_clearance(furniture)
 	_furniture_body = furniture.get_node_or_null("StaticBody3D")
 	if _furniture_body:
@@ -90,14 +95,20 @@ func enter(furniture: Node3D) -> void:
 
 func exit(confirm: bool) -> void:
 	if _furniture:
-		_furniture.visible = true
-		if _furniture_body:
-			_furniture_body.process_mode = Node.PROCESS_MODE_INHERIT
-		if confirm and _ghost and not _blocked:
-			var old_transform = _furniture.global_transform
-			_furniture.global_position = _ghost.global_position
-			_furniture.rotation.y = _ghost_y_rotation
-			_move_passengers(old_transform)
+		if not confirm and _deploy_item_id != "":
+			# New deployment cancelled — refund the item and remove the node
+			Inventory.add_item(_deploy_item_id)
+			_furniture.queue_free()
+			_furniture = null
+		else:
+			_furniture.visible = true
+			if _furniture_body:
+				_furniture_body.process_mode = Node.PROCESS_MODE_INHERIT
+			if confirm and _ghost and not _blocked:
+				var old_transform = _furniture.global_transform
+				_furniture.global_position = _ghost.global_position
+				_furniture.rotation.y = _ghost_y_rotation
+				_move_passengers(old_transform)
 	for passenger in _passengers:
 		if is_instance_valid(passenger):
 			passenger.visible = true
@@ -118,6 +129,7 @@ func exit(confirm: bool) -> void:
 	_furniture = null
 	_furniture_body = null
 	_camera = null
+	_deploy_item_id = ""
 	_ghost_arrow_nodes.clear()
 
 func _move_passengers(old_transform: Transform3D) -> void:
@@ -222,13 +234,13 @@ func _is_blocked(ray_result: Dictionary) -> bool:
 			if hit.is_in_group("interactable") or (hit.get_parent() and hit.get_parent().is_in_group("interactable")):
 				return true
 
-	# Room restriction: placement must be inside ShopFloor or ProductionFloor
+	# Room restriction: only applied when placement_room is non-zero
 	if _ghost != null and _furniture != null:
-		var room = _get_room_at(_ghost.global_position)
-		if room == "":
-			return true
-		if "placement_room" in _furniture:
-			var pr: int = _furniture.placement_room
+		var pr: int = _furniture.get("placement_room") if "placement_room" in _furniture else 0
+		if pr != 0:
+			var room = _get_room_at(_ghost.global_position)
+			if room == "":
+				return true
 			if pr == 1 and room != "shop":
 				return true
 			if pr == 2 and room != "production":
@@ -302,31 +314,22 @@ func _ghost_material(blocked: bool) -> StandardMaterial3D:
 	mat.cull_mode = BaseMaterial3D.CULL_DISABLED
 	return mat
 
+func _facing_player_rotation(from_pos: Vector3) -> float:
+	if _camera == null:
+		return 0.0
+	var dir = _camera.global_position - from_pos
+	dir.y = 0.0
+	if dir.length_squared() < 0.001:
+		return 0.0
+	dir = dir.normalized()
+	# atan2(-x, -z) gives the Y rotation needed so -Z (forward) points toward camera
+	var deg = round(rad_to_deg(atan2(-dir.x, -dir.z)) / 5.0) * 5.0
+	return deg_to_rad(deg)
+
+const ARROW_SCENE = preload("res://tools/arrow_ghost_image.tscn")
+
 func _add_forward_arrow(ghost: Node3D) -> void:
-	var mat = StandardMaterial3D.new()
-	mat.albedo_color = Color(1, 0, 0, 1)
-
-	var shaft = MeshInstance3D.new()
-	var shaft_mesh = CylinderMesh.new()
-	shaft_mesh.top_radius = 0.025
-	shaft_mesh.bottom_radius = 0.025
-	shaft_mesh.height = 0.4
-	shaft.mesh = shaft_mesh
-	shaft.material_override = mat
-	shaft.rotation_degrees = Vector3(90, 0, 0)
-	shaft.position = Vector3(0, 0.15, 0.2)
-	ghost.add_child(shaft)
-
-	var head = MeshInstance3D.new()
-	var head_mesh = CylinderMesh.new()
-	head_mesh.top_radius = 0.0
-	head_mesh.bottom_radius = 0.08
-	head_mesh.height = 0.2
-	head.mesh = head_mesh
-	head.material_override = mat
-	head.rotation_degrees = Vector3(90, 0, 0)
-	head.position = Vector3(0, 0.15, 0.5)
-	ghost.add_child(head)
-
-	_ghost_arrow_nodes.append(shaft)
-	_ghost_arrow_nodes.append(head)
+	var arrow = ARROW_SCENE.instantiate()
+	arrow.position = Vector3(0, 0.15, 0)
+	ghost.add_child(arrow)
+	_ghost_arrow_nodes.append(arrow)

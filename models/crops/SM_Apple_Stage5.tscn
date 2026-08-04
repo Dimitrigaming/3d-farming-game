@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://r7eswdq7e03v"]
 
 [ext_resource type="Script" uid="uid://di3wuimuop686" path="res://farm/fruit_pickable.gd" id="2_y0k6v"]
+[ext_resource type="PackedScene" uid="uid://dvc1ya74rl751" path="res://models/crops/SM_Apple_Unripe.tscn" id="3_1buad"]
 [ext_resource type="Texture2D" uid="uid://ojofi48ii1ko" path="res://models/textures/T_Gradient_FarmCrops02.png" id="tex_fc02"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3w20i"]
@@ -246,65 +247,100 @@ size = Vector3(0.8, 0.2, 1.1)
 [node name="SM_Apple_Stage5" type="MeshInstance3D" parent="." unique_id=479208142]
 mesh = SubResource("ArrayMesh_aopim")
 
-[node name="SM_Apple_001" type="MeshInstance3D" parent="SM_Apple_Stage5" unique_id=701470187]
+[node name="Apple1" type="Node3D" parent="SM_Apple_Stage5" unique_id=1666699559]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.92142534, 1.549428, -0.67512804)
+
+[node name="SM_Apple_001" type="MeshInstance3D" parent="SM_Apple_Stage5/Apple1" unique_id=701470187]
 mesh = SubResource("ArrayMesh_8kx0y")
 
-[node name="Area3D" type="Area3D" parent="SM_Apple_Stage5/SM_Apple_001" unique_id=668822235]
+[node name="Area3D" type="Area3D" parent="SM_Apple_Stage5/Apple1/SM_Apple_001" unique_id=668822235]
 script = ExtResource("2_y0k6v")
 crop_id = "apple"
+regrow_time = 10.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Apple_Stage5/SM_Apple_001/Area3D" unique_id=849436315]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Apple_Stage5/Apple1/SM_Apple_001/Area3D" unique_id=849436315]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07333809, 0.16712256, 0.01951778)
 shape = SubResource("SphereShape3D_3xd07")
 
-[node name="SM_Apple_002" type="MeshInstance3D" parent="SM_Apple_Stage5" unique_id=699001168]
+[node name="SM_Apple_Unripe" parent="SM_Apple_Stage5/Apple1" unique_id=1492246298 instance=ExtResource("3_1buad")]
+transform = Transform3D(0.86008376, -0.5101528, 0, 0.5101528, 0.86008376, 0, 0, 0, 1, 0, 0.10960066, 0.036471248)
+visible = false
+
+[node name="Apple2" type="Node3D" parent="SM_Apple_Stage5" unique_id=1254762806]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2635989, 1.202529, -0.63708395)
+
+[node name="SM_Apple_002" type="MeshInstance3D" parent="SM_Apple_Stage5/Apple2" unique_id=699001168]
 mesh = SubResource("ArrayMesh_uy0v1")
 
-[node name="Area3D" type="Area3D" parent="SM_Apple_Stage5/SM_Apple_002" unique_id=1489577674]
+[node name="Area3D" type="Area3D" parent="SM_Apple_Stage5/Apple2/SM_Apple_002" unique_id=1489577674]
 script = ExtResource("2_y0k6v")
 crop_id = "apple"
+regrow_time = 10.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Apple_Stage5/SM_Apple_002/Area3D" unique_id=1164115240]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Apple_Stage5/Apple2/SM_Apple_002/Area3D" unique_id=1164115240]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.024219573, 0.13662978, 0.071831405)
 shape = SubResource("SphereShape3D_y05ay")
 
-[node name="SM_Apple_003" type="MeshInstance3D" parent="SM_Apple_Stage5" unique_id=224125222]
+[node name="SM_Apple_Unripe" parent="SM_Apple_Stage5/Apple2" unique_id=532626051 instance=ExtResource("3_1buad")]
+transform = Transform3D(-0.71736974, 0.17059208, 0.6754843, 0.3989904, 0.8954118, 0.19759668, -0.57112813, 0.41126165, -0.71040595, 0.041177545, 0.09311814, 0.03900159)
+visible = false
+
+[node name="Apple3" type="Node3D" parent="SM_Apple_Stage5" unique_id=1689819104]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9934046, 1.8326974, 0.5936508)
+
+[node name="SM_Apple_003" type="MeshInstance3D" parent="SM_Apple_Stage5/Apple3" unique_id=224125222]
 mesh = SubResource("ArrayMesh_61o8b")
 
-[node name="Area3D" type="Area3D" parent="SM_Apple_Stage5/SM_Apple_003" unique_id=57289705]
+[node name="Area3D" type="Area3D" parent="SM_Apple_Stage5/Apple3/SM_Apple_003" unique_id=57289705]
 script = ExtResource("2_y0k6v")
 crop_id = "apple"
+regrow_time = 10.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Apple_Stage5/SM_Apple_003/Area3D" unique_id=1502861271]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Apple_Stage5/Apple3/SM_Apple_003/Area3D" unique_id=1502861271]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021567523, 0.16712256, -0.03229618)
 shape = SubResource("SphereShape3D_y0k6v")
 
-[node name="SM_Apple_004" type="MeshInstance3D" parent="SM_Apple_Stage5" unique_id=1845228460]
+[node name="SM_Apple_Unripe" parent="SM_Apple_Stage5/Apple3" unique_id=42236836 instance=ExtResource("3_1buad")]
+transform = Transform3D(0.69483554, 0.1806131, 0.6961196, -0.25157624, 0.96783745, 1.4901161e-08, -0.67373055, -0.17512716, 0.71792585, 0.011280995, 0.08736645, -0.034163345)
+visible = false
+
+[node name="Apple4" type="Node3D" parent="SM_Apple_Stage5" unique_id=62889569]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0036139488, 1.5462323, -1.3333266)
+
+[node name="SM_Apple_004" type="MeshInstance3D" parent="SM_Apple_Stage5/Apple4" unique_id=1845228460]
 mesh = SubResource("ArrayMesh_4krpj")
 
-[node name="Area3D" type="Area3D" parent="SM_Apple_Stage5/SM_Apple_004" unique_id=1016402591]
+[node name="Area3D" type="Area3D" parent="SM_Apple_Stage5/Apple4/SM_Apple_004" unique_id=1016402591]
 script = ExtResource("2_y0k6v")
 crop_id = "apple"
+regrow_time = 10.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Apple_Stage5/SM_Apple_004/Area3D" unique_id=190044140]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Apple_Stage5/Apple4/SM_Apple_004/Area3D" unique_id=190044140]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03563334, 0.16712256, 0.01951778)
 shape = SubResource("SphereShape3D_1buad")
 
-[node name="SM_Apple_005" type="MeshInstance3D" parent="SM_Apple_Stage5" unique_id=1686592650]
+[node name="SM_Apple_Unripe" parent="SM_Apple_Stage5/Apple4" unique_id=117379193 instance=ExtResource("3_1buad")]
+transform = Transform3D(0.9595274, 0.25557888, 0.11826533, -0.23964974, 0.96160525, -0.13372886, -0.14790288, 0.09997423, 0.98393595, 0.017671043, 0.107243, 0.014171084)
+visible = false
+
+[node name="Apple5" type="Node3D" parent="SM_Apple_Stage5" unique_id=322319788]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3202715, 1.4010148, 0.28030235)
+
+[node name="SM_Apple_005" type="MeshInstance3D" parent="SM_Apple_Stage5/Apple5" unique_id=1686592650]
 mesh = SubResource("ArrayMesh_su8hm")
 
-[node name="Area3D" type="Area3D" parent="SM_Apple_Stage5/SM_Apple_005" unique_id=38389963]
+[node name="Area3D" type="Area3D" parent="SM_Apple_Stage5/Apple5/SM_Apple_005" unique_id=38389963]
 script = ExtResource("2_y0k6v")
 crop_id = "apple"
+regrow_time = 10.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Apple_Stage5/SM_Apple_005/Area3D" unique_id=1500109970]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Apple_Stage5/Apple5/SM_Apple_005/Area3D" unique_id=1500109970]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0632084, 0.16712256, -0.0002501309)
 shape = SubResource("SphereShape3D_c56c7")
+
+[node name="SM_Apple_Unripe" parent="SM_Apple_Stage5/Apple5" unique_id=949341612 instance=ExtResource("3_1buad")]
+transform = Transform3D(0.8430978, 0.4029855, 0.35607412, -0.37123454, 0.9152064, -0.15678729, -0.38906434, 0, 0.9212106, 0.047879774, 0.08503575, 0.0002416852)
+visible = false
 
 [node name="TreeStaticBody" type="StaticBody3D" parent="." unique_id=566434976]
 

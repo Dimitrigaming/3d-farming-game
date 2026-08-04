@@ -1,0 +1,199 @@
+[gd_scene format=3 uid="uid://0epfrsn3q7l"]
+
+[ext_resource type="Script" uid="uid://bv3a4vsmojnt1" path="res://ui/inventory_ui.gd" id="1_igq3s"]
+[ext_resource type="Texture2D" uid="uid://bxle760hh7psa" path="res://icons/inventory/inventory_1x1_black.png" id="2_5eqbr"]
+[ext_resource type="PackedScene" uid="uid://dmoi5hnboeqtx" path="res://ui/inventory_slot.tscn" id="3_tg8ek"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBox_Grid"]
+texture = ExtResource("2_5eqbr")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBox_Hotbar"]
+texture_margin_top = 15.0
+modulate_color = Color(1, 1, 1, 0.5882353)
+
+[node name="InventoryUI" type="CanvasLayer" unique_id=919419101]
+visible = false
+script = ExtResource("1_igq3s")
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=200000001]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -304.0
+offset_top = -268.5
+offset_right = 288.0
+offset_bottom = 108.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBox_Grid")
+
+[node name="VBox" type="VBoxContainer" parent="Panel" unique_id=200000002]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 0
+
+[node name="Title" type="Label" parent="Panel/VBox" unique_id=200000003]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Inventory"
+horizontal_alignment = 1
+
+[node name="GridBg" type="PanelContainer" parent="Panel/VBox" unique_id=200000007]
+layout_mode = 2
+
+[node name="Grid" type="GridContainer" parent="Panel/VBox/GridBg" unique_id=200000004]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 9
+
+[node name="InventorySlot" parent="Panel/VBox/GridBg/Grid" unique_id=1195094592 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="Panel/VBox/GridBg/Grid" unique_id=233587602 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="Panel/VBox/GridBg/Grid" unique_id=1356705045 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="Panel/VBox/GridBg/Grid" unique_id=2039869208 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="Panel/VBox/GridBg/Grid" unique_id=1312910080 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="Panel/VBox/GridBg/Grid" unique_id=977973418 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot7" parent="Panel/VBox/GridBg/Grid" unique_id=1828854402 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot8" parent="Panel/VBox/GridBg/Grid" unique_id=202059886 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot9" parent="Panel/VBox/GridBg/Grid" unique_id=324951345 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot10" parent="Panel/VBox/GridBg/Grid" unique_id=1349511299 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot11" parent="Panel/VBox/GridBg/Grid" unique_id=816287993 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot12" parent="Panel/VBox/GridBg/Grid" unique_id=483728600 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot13" parent="Panel/VBox/GridBg/Grid" unique_id=1568975410 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot14" parent="Panel/VBox/GridBg/Grid" unique_id=933772949 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot15" parent="Panel/VBox/GridBg/Grid" unique_id=411327370 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot16" parent="Panel/VBox/GridBg/Grid" unique_id=1692973937 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot17" parent="Panel/VBox/GridBg/Grid" unique_id=410205984 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot18" parent="Panel/VBox/GridBg/Grid" unique_id=1927435688 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot19" parent="Panel/VBox/GridBg/Grid" unique_id=1624570989 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot20" parent="Panel/VBox/GridBg/Grid" unique_id=1604813644 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot21" parent="Panel/VBox/GridBg/Grid" unique_id=251951107 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot22" parent="Panel/VBox/GridBg/Grid" unique_id=487004104 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot23" parent="Panel/VBox/GridBg/Grid" unique_id=1764211271 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot24" parent="Panel/VBox/GridBg/Grid" unique_id=2132150581 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot25" parent="Panel/VBox/GridBg/Grid" unique_id=915663518 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot26" parent="Panel/VBox/GridBg/Grid" unique_id=293815573 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot27" parent="Panel/VBox/GridBg/Grid" unique_id=2112976798 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot28" parent="Panel/VBox/GridBg/Grid" unique_id=1797655136 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot29" parent="Panel/VBox/GridBg/Grid" unique_id=83436040 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot30" parent="Panel/VBox/GridBg/Grid" unique_id=1283588319 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot31" parent="Panel/VBox/GridBg/Grid" unique_id=36827590 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot32" parent="Panel/VBox/GridBg/Grid" unique_id=639704493 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot33" parent="Panel/VBox/GridBg/Grid" unique_id=1488955340 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot34" parent="Panel/VBox/GridBg/Grid" unique_id=1477587621 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot35" parent="Panel/VBox/GridBg/Grid" unique_id=863344280 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot36" parent="Panel/VBox/GridBg/Grid" unique_id=712570447 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="HotbarBg" type="PanelContainer" parent="Panel/VBox" unique_id=200000008]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBox_Hotbar")
+
+[node name="Hotbar" type="GridContainer" parent="Panel/VBox/HotbarBg" unique_id=200000006]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 9
+
+[node name="InventorySlot37" parent="Panel/VBox/HotbarBg/Hotbar" unique_id=1745408333 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot38" parent="Panel/VBox/HotbarBg/Hotbar" unique_id=1795787115 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot39" parent="Panel/VBox/HotbarBg/Hotbar" unique_id=1082978290 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot40" parent="Panel/VBox/HotbarBg/Hotbar" unique_id=21551177 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot41" parent="Panel/VBox/HotbarBg/Hotbar" unique_id=1364149049 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot42" parent="Panel/VBox/HotbarBg/Hotbar" unique_id=707700438 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot43" parent="Panel/VBox/HotbarBg/Hotbar" unique_id=568220604 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot44" parent="Panel/VBox/HotbarBg/Hotbar" unique_id=1095014341 instance=ExtResource("3_tg8ek")]
+layout_mode = 2
+
+[node name="InventorySlot45" parent="Panel/VBox/HotbarBg/Hotbar" unique_id=242011474 instance=ExtResource("3_tg8ek")]
+layout_mode = 2

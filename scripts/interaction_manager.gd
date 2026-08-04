@@ -250,6 +250,8 @@ func _unhandled_input(event: InputEvent) -> void:
 					current_target.retrieve_print(player_inventory)
 					_shelf_rmb_active = true
 					_shelf_rmb_timer = 0.0
+				elif _try_deploy_furniture():
+					get_viewport().set_input_as_handled()
 			else:
 				_shelf_rmb_active = false
 
@@ -270,3 +272,32 @@ func _unhandled_input(event: InputEvent) -> void:
 				build_mode.rotate_ghost(-build_mode.ROTATE_STEP)
 			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 				build_mode.rotate_ghost(build_mode.ROTATE_STEP)
+
+func _try_deploy_furniture() -> bool:
+	if player_inventory.held_item != null:
+		return false
+	var equipper = get_tree().get_first_node_in_group("tool_equipper")
+	if equipper == null:
+		return false
+	var item_id = equipper.current_item_id
+	if item_id == "":
+		return false
+	var def = ItemDB.get_item(item_id)
+	if def == null or def.type != ItemDefinition.ItemType.FURNITURE or def.place_scene == null:
+		return false
+	if not Inventory.has_item(item_id):
+		return false
+	Inventory.remove_item(item_id)
+	var player_nodes = get_tree().get_nodes_in_group("player")
+	if player_nodes.is_empty():
+		return false
+	var player = player_nodes[0].get_parent()
+	var forward = -player.global_transform.basis.z
+	var spawn_pos = player.global_position + forward * 1.2
+	spawn_pos.y = player.global_position.y
+	var item = def.place_scene.instantiate()
+	get_tree().current_scene.add_child(item)
+	item.global_position = spawn_pos
+	item.rotation.y = player.rotation.y
+	build_mode.enter(item, item_id)
+	return true

@@ -39,15 +39,18 @@ func is_ready_to_harvest() -> bool:
 		return false
 	return stage >= crop_def.growth_stages.size() - 1
 
-func harvest() -> Dictionary:
+func harvest(tool_id: String = "") -> Dictionary:
 	if crop_def == null:
 		return {}
+	var bonus: int = 0
+	if crop_def.harvest_tools.size() > 0 and tool_id == crop_def.harvest_tools[0]:
+		bonus = crop_def.primary_yield_bonus
 	if crop_def.can_regrow and crop_def.regrow_stages > 0:
 		_set_stage(max(0, stage - crop_def.regrow_stages))
 		_timer = 0.0
-	return {"item_id": crop_def.yield_item_id, "amount": crop_def.yield_amount}
+	return {"item_id": crop_def.yield_item_id, "amount": crop_def.yield_amount + bonus}
 
 func chop() -> Dictionary:
 	if crop_def == null:
 		return {}
-	return {"item_id": "wood", "amount": crop_def.chop_wood_yield}
+	return {"item_id": crop_def.chop_yield_item_id, "amount": crop_def.chop_wood_yield}

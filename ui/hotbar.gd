@@ -30,6 +30,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event is InputEventMouseButton and event.pressed:
 		if _inventory_ui and _inventory_ui.visible:
 			return
+		var build_mode = get_tree().get_first_node_in_group("build_mode")
+		if build_mode and build_mode.active:
+			return
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			selected_slot = (selected_slot - 1 + 9) % 9
 			_update_highlight()

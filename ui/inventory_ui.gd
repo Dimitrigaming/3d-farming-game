@@ -30,7 +30,11 @@ func _process(_delta: float) -> void:
 		_reenable_controller = false
 		_set_player_enabled(true)
 
+var _chest_mode: bool = false
+
 func _unhandled_input(event: InputEvent) -> void:
+	if _chest_mode:
+		return
 	if visible and event is InputEventKey and event.pressed and not event.echo:
 		var key = event.keycode
 		if key >= KEY_1 and key <= KEY_9:
@@ -71,6 +75,24 @@ func hide_for_shop() -> void:
 	panel.offset_left = -304.0
 	panel.offset_top = -268.5
 	panel.offset_right = 288.0
+
+func show_for_chest() -> void:
+	_chest_mode = true
+	visible = true
+	var panel = $Panel
+	panel.offset_left = -304.0
+	panel.offset_top = -88.0
+	panel.offset_right = 288.0
+	panel.offset_bottom = 289.0
+
+func hide_for_chest() -> void:
+	_chest_mode = false
+	visible = false
+	var panel = $Panel
+	panel.offset_left = -304.0
+	panel.offset_top = -268.5
+	panel.offset_right = 288.0
+	panel.offset_bottom = 108.5
 
 func _set_crosshair_visible(crosshair_visible: bool) -> void:
 	var controller = get_tree().get_first_node_in_group("proto_controller")

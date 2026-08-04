@@ -18,4 +18,5 @@ base_grow_speed = 160.0
 water_speed_multiplier = 1.5
 can_regrow = true
 regrow_stages = 2
+harvest_tools = ["scythe", "hand"]
 growth_stages = [ExtResource("2_s0"), ExtResource("3_s1"), ExtResource("4_s2"), ExtResource("5_s3"), ExtResource("6_s4")]

@@ -128,26 +128,27 @@ func _process(_delta: float) -> void:
 				highlight_color = Color(0.2, 1.0, 0.4, 0.5)
 				valid = true
 
-	# Harvestable crop — show when scythe equipped
-	if not valid and item_id == "scythe" and state == farm.TILLED:
+	# Crop interaction — driven by the crop's own harvest_tools list
+	if not valid and state == farm.TILLED:
 		var crop = farm.get_crop(cell.x, cell.z)
-		if crop and crop.is_ready_to_harvest():
-			highlight_color = Color(1.0, 0.9, 0.1, 0.6)
-			valid = true
-			_hovered_is_harvestable = true
-			if _prompt_label:
-				_prompt_label.text = "[LMB] Harvest"
-				_prompt_label.visible = true
-
-	# Tree — chop with axe
-	if not valid and item_id == "axe" and state == farm.TILLED:
-		var crop = farm.get_crop(cell.x, cell.z)
-		if crop and crop.crop_def and crop.crop_def.is_tree:
-			highlight_color = Color(0.6, 0.35, 0.1, 0.6)
-			valid = true
-			if _prompt_label:
-				_prompt_label.text = "[LMB] Chop"
-				_prompt_label.visible = true
+		if crop and crop.crop_def:
+			var effective_id = item_id if item_id != "" else "hand"
+			if effective_id in crop.crop_def.harvest_tools:
+				if crop.crop_def.is_tree:
+					# Tree: axe chops and destroys
+					highlight_color = Color(0.6, 0.35, 0.1, 0.6)
+					valid = true
+					if _prompt_label:
+						_prompt_label.text = "[LMB] Chop"
+						_prompt_label.visible = true
+				elif crop.is_ready_to_harvest():
+					highlight_color = Color(1.0, 0.9, 0.1, 0.6)
+					valid = true
+					_hovered_is_harvestable = true
+					var is_primary = crop.crop_def.harvest_tools.size() > 0 and effective_id == crop.crop_def.harvest_tools[0]
+					if _prompt_label:
+						_prompt_label.text = "[LMB] Harvest" + (" +" + str(crop.crop_def.primary_yield_bonus) if is_primary and crop.crop_def.primary_yield_bonus > 0 else "")
+						_prompt_label.visible = true
 
 	if valid:
 		(_highlight.material_override as StandardMaterial3D).albedo_color = highlight_color
@@ -165,22 +166,29 @@ func _process(_delta: float) -> void:
 			_do_right_action(held_item_id)
 
 func _do_left_action(item_id: String) -> void:
-	match item_id:
+	var effective_id = item_id if item_id != "" else "hand"
+	match effective_id:
 		"hoe":
 			_hovered_farm.till_cell(_hovered_cell.x, _hovered_cell.z)
 			_last_acted_cell = _hovered_cell
 		"shovel":
 			_hovered_farm.untill_cell(_hovered_cell.x, _hovered_cell.z)
 			_last_acted_cell = _hovered_cell
-		"scythe":
-			if _hovered_is_harvestable:
-				var result = _hovered_farm.harvest_crop(_hovered_cell.x, _hovered_cell.z)
-				if not result.is_empty():
-					Inventory.add_item(result["item_id"], result["amount"])
+		_:
+			if effective_id.ends_with("_seed"):
+				return
+			# Check if the hovered crop accepts this tool
+			var crop = _hovered_farm.get_crop(_hovered_cell.x, _hovered_cell.z)
+			if crop and crop.crop_def and effective_id in crop.crop_def.harvest_tools:
+				if crop.crop_def.is_tree:
+					var result = _hovered_farm.chop_tree(_hovered_cell.x, _hovered_cell.z)
+					if not result.is_empty():
+						Inventory.add_item(result["item_id"], result["amount"])
+				elif _hovered_is_harvestable:
+					var result = _hovered_farm.harvest_crop(_hovered_cell.x, _hovered_cell.z, effective_id)
+					if not result.is_empty():
+						Inventory.add_item(result["item_id"], result["amount"])
 				_last_acted_cell = _hovered_cell
-		"axe":
-			_hovered_farm.chop_tree(_hovered_cell.x, _hovered_cell.z)
-			_last_acted_cell = _hovered_cell
 
 func _do_right_action(item_id: String) -> void:
 	if item_id.ends_with("_seed") and Inventory.has_item(item_id):

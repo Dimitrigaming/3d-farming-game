@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://ck15dhkqtd08p"]
+
+[ext_resource type="Script" uid="uid://uwlb14a1v4kq" path="res://ui/chest_ui.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bxle760hh7psa" path="res://icons/inventory/inventory_1x1_black.png" id="2_tex"]
+[ext_resource type="PackedScene" path="res://ui/chest_slot.tscn" id="3_67pvq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBox_Panel"]
+texture = ExtResource("2_tex")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[node name="ChestUI" type="CanvasLayer" unique_id=822117885]
+script = ExtResource("1_script")
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=435363905]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -304.0
+offset_top = -330.0
+offset_right = 288.0
+offset_bottom = -92.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBox_Panel")
+
+[node name="VBox" type="VBoxContainer" parent="Panel" unique_id=1225933211]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="ChestTitle" type="Label" parent="Panel/VBox" unique_id=407274460]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Chest"
+horizontal_alignment = 1
+
+[node name="ChestSection" type="PanelContainer" parent="Panel/VBox" unique_id=139835993]
+layout_mode = 2
+
+[node name="ChestGrid" type="GridContainer" parent="Panel/VBox/ChestSection" unique_id=1618924813]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 9
+
+[node name="ChestSlot" parent="Panel/VBox/ChestSection/ChestGrid" unique_id=506118240 instance=ExtResource("3_67pvq")]
+layout_mode = 2
+
+[node name="ChestSlot2" parent="Panel/VBox/ChestSection/ChestGrid" unique_id=199260025 instance=ExtResource("3_67pvq")]
+layout_mode = 2
+
+[node name="ChestSlot3" parent="Panel/VBox/ChestSection/ChestGrid" unique_id=666947978 instance=ExtResource("3_67pvq")]
+layout_mode = 2
+
+[node name="ChestSlot4" parent="Panel/VBox/ChestSection/ChestGrid" unique_id=1382946281 instance=ExtResource("3_67pvq")]
+layout_mode = 2
+
+[node name="ChestSlot5" parent="Panel/VBox/ChestSection/ChestGrid" unique_id=1413794475 instance=ExtResource("3_67pvq")]
+layout_mode = 2
+
+[node name="ChestSlot6" parent="Panel/VBox/ChestSection/ChestGrid" unique_id=640839902 instance=ExtResource("3_67pvq")]
+layout_mode = 2
+
+[node name="ChestSlot7" parent="Panel/VBox/ChestSection/ChestGrid" unique_id=2064516982 instance=ExtResource("3_67pvq")]
+layout_mode = 2
+
+[node name="ChestSlot8" parent="Panel/VBox/ChestSection/ChestGrid" unique_id=164844471 instance=ExtResource("3_67pvq")]
+layout_mode = 2
+
+[node name="ChestSlot9" parent="Panel/VBox/ChestSection/ChestGrid" unique_id=239216224 instance=ExtResource("3_67pvq")]
+layout_mode = 2
+
+[node name="ChestSlot10" parent="Panel/VBox/ChestSection/ChestGrid" unique_id=1816540496 instance=ExtResource("3_67pvq")]
+layout_mode = 2
+
+[node name="ChestSlot11" parent="Panel/VBox/ChestSection/ChestGrid" unique_id=1053684238 instance=ExtResource("3_67pvq")]
+layout_mode = 2
+
+[node name="ChestSlot12" parent="Panel/VBox/ChestSection/ChestGrid" unique_id=105648094 instance=ExtResource("3_67pvq")]
+layout_mode = 2
+
+[node name="ChestSlot13" parent="Panel/VBox/ChestSection/ChestGrid" unique_id=1637327011 instance=ExtResource("3_67pvq")]
+layout_mode = 2
+
+[node name="ChestSlot14" parent="Panel/VBox/ChestSection/ChestGrid" unique_id=2076914922 instance=ExtResource("3_67pvq")]
+layout_mode = 2
+
+[node name="ChestSlot15" parent="Panel/VBox/ChestSection/ChestGrid" unique_id=1573491162 instance=ExtResource("3_67pvq")]
+layout_mode = 2
+
+[node name="ChestSlot16" parent="Panel/VBox/ChestSection/ChestGrid" unique_id=411992994 instance=ExtResource("3_67pvq")]
+layout_mode = 2
+
+[node name="ChestSlot17" parent="Panel/VBox/ChestSection/ChestGrid" unique_id=767131802 instance=ExtResource("3_67pvq")]
+layout_mode = 2
+
+[node name="ChestSlot18" parent="Panel/VBox/ChestSection/ChestGrid" unique_id=2018259090 instance=ExtResource("3_67pvq")]
+layout_mode = 2
+
+[node name="ChestSlot19" parent="Panel/VBox/ChestSection/ChestGrid" unique_id=1617736236 instance=ExtResource("3_67pvq")]
+layout_mode = 2
+
+[node name="ChestSlot20" parent="Panel/VBox/ChestSection/ChestGrid" unique_id=1598619578 instance=ExtResource("3_67pvq")]
+layout_mode = 2
+
+[node name="ChestSlot21" parent="Panel/VBox/ChestSection/ChestGrid" unique_id=1091081983 instance=ExtResource("3_67pvq")]
+layout_mode = 2
+
+[node name="ChestSlot22" parent="Panel/VBox/ChestSection/ChestGrid" unique_id=833365868 instance=ExtResource("3_67pvq")]
+layout_mode = 2
+
+[node name="ChestSlot23" parent="Panel/VBox/ChestSection/ChestGrid" unique_id=852206356 instance=ExtResource("3_67pvq")]
+layout_mode = 2
+
+[node name="ChestSlot24" parent="Panel/VBox/ChestSection/ChestGrid" unique_id=1900154606 instance=ExtResource("3_67pvq")]
+layout_mode = 2
+
+[node name="ChestSlot25" parent="Panel/VBox/ChestSection/ChestGrid" unique_id=222661982 instance=ExtResource("3_67pvq")]
+layout_mode = 2
+
+[node name="ChestSlot26" parent="Panel/VBox/ChestSection/ChestGrid" unique_id=1791503655 instance=ExtResource("3_67pvq")]
+layout_mode = 2
+
+[node name="ChestSlot27" parent="Panel/VBox/ChestSection/ChestGrid" unique_id=1336214201 instance=ExtResource("3_67pvq")]
+layout_mode = 2

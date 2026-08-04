@@ -20,4 +20,5 @@ can_regrow = true
 regrow_stages = 2
 is_tree = true
 chop_wood_yield = 4
+harvest_tools = ["axe"]
 growth_stages = Array[PackedScene]([ExtResource("2_s0"), ExtResource("3_s1"), ExtResource("4_s2"), ExtResource("5_s3"), ExtResource("6_s4"), ExtResource("7_s5")])

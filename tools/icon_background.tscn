@@ -6,6 +6,6 @@
 
 [node name="Label3D" type="Label3D" parent="CSGBox3D" unique_id=100000001]
 transform = Transform3D(-1.9670125e-08, 0, 0.45, 0, 0.45, 0, -0.45, 0, -1.9670125e-08, 0.501, 0, 0)
-text = "Sweet Potato"
+text = "Storage Crate"
 font_size = 64
 outline_size = 0

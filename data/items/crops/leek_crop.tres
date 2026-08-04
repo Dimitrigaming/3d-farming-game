@@ -16,4 +16,5 @@ yield_item_id = "leek"
 yield_amount = 2
 base_grow_speed = 75.0
 regrow_stages = 0
+harvest_tools = ["scythe", "hand"]
 growth_stages = Array[PackedScene]([ExtResource("2_s0"), ExtResource("3_s1"), ExtResource("4_s2"), ExtResource("5_s3"), ExtResource("6_s4")])

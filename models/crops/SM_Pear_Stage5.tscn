@@ -1,14 +1,16 @@
-﻿[gd_scene format=4 uid="uid://bvust64nk4nrs"]
+[gd_scene format=4 uid="uid://bvust64nk4nrs"]
 
+[ext_resource type="Script" uid="uid://di3wuimuop686" path="res://farm/fruit_pickable.gd" id="2_eaakj"]
+[ext_resource type="PackedScene" uid="uid://remdyk76n85t" path="res://models/crops/SM_Pear_Unripe.tscn" id="3_uue8h"]
 [ext_resource type="Texture2D" uid="uid://ojofi48ii1ko" path="res://models/textures/T_Gradient_FarmCrops02.png" id="tex_fc02"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bnt72"]
 resource_name = "M_Gradient_FarmCrops02"
 vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("tex_fc02")
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 0.0
-albedo_texture = ExtResource("tex_fc02")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_co8kg"]
 _surfaces = [{
@@ -77,6 +79,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_u3ais")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3xd07"]
+radius = 0.16861561
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_gyrou"]
 _surfaces = [{
@@ -214,27 +219,119 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_omn2c")
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3xd07"]
+height = 1.6196289
+radius = 0.328125
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3xd07"]
+size = Vector3(1, 0.099121094, 1.1196289)
+
 [node name="SM_Pear_Stage5" type="Node3D" unique_id=1591286028]
 
 [node name="SM_Pear_Stage5" type="MeshInstance3D" parent="." unique_id=1572895997]
 mesh = SubResource("ArrayMesh_l7bps")
 
-[node name="SM_Pear_001" type="MeshInstance3D" parent="SM_Pear_Stage5" unique_id=215688523]
+[node name="Pear1" type="Node3D" parent="SM_Pear_Stage5" unique_id=59657835]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.669302, 1.4352942, 1.2570939)
+
+[node name="SM_Pear_001" type="MeshInstance3D" parent="SM_Pear_Stage5/Pear1" unique_id=215688523]
 mesh = SubResource("ArrayMesh_fnavv")
 
-[node name="SM_Pear_002" type="MeshInstance3D" parent="SM_Pear_Stage5" unique_id=1189422679]
+[node name="Area3D" type="Area3D" parent="SM_Pear_Stage5/Pear1/SM_Pear_001" unique_id=612864466]
+script = ExtResource("2_eaakj")
+crop_id = "pear"
+unripe_node_name = "SM_Pear_Unripe"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Pear_Stage5/Pear1/SM_Pear_001/Area3D" unique_id=1779033670]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15918708, 0)
+shape = SubResource("SphereShape3D_3xd07")
+
+[node name="SM_Pear_Unripe" parent="SM_Pear_Stage5/Pear1" unique_id=504874191 instance=ExtResource("3_uue8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04642576, 0.11732972, 0)
+visible = false
+
+[node name="Pear2" type="Node3D" parent="SM_Pear_Stage5" unique_id=288745270]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8760166, 1.5361106, 0.79367274)
+
+[node name="SM_Pear_002" type="MeshInstance3D" parent="SM_Pear_Stage5/Pear2" unique_id=1189422679]
 mesh = SubResource("ArrayMesh_2vj8e")
 
-[node name="SM_Pear_003" type="MeshInstance3D" parent="SM_Pear_Stage5" unique_id=946835494]
+[node name="Area3D" type="Area3D" parent="SM_Pear_Stage5/Pear2/SM_Pear_002" unique_id=1978712695]
+script = ExtResource("2_eaakj")
+crop_id = "pear"
+unripe_node_name = "SM_Pear_Unripe"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Pear_Stage5/Pear2/SM_Pear_002/Area3D" unique_id=1229526146]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15918708, 0)
+shape = SubResource("SphereShape3D_3xd07")
+
+[node name="SM_Pear_Unripe" parent="SM_Pear_Stage5/Pear2" unique_id=964295098 instance=ExtResource("3_uue8h")]
+transform = Transform3D(-0.83966947, 0, -0.5430978, 0, 1, 0, 0.5430978, 0, -0.83966947, 0.005832552, 0.12012124, -0.011243521)
+visible = false
+
+[node name="Pear3" type="Node3D" parent="SM_Pear_Stage5" unique_id=376172793]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8582206, 1.693159, -0.62850356)
+
+[node name="SM_Pear_003" type="MeshInstance3D" parent="SM_Pear_Stage5/Pear3" unique_id=946835494]
 mesh = SubResource("ArrayMesh_f4djm")
 
-[node name="SM_Pear_004" type="MeshInstance3D" parent="SM_Pear_Stage5" unique_id=872819284]
+[node name="Area3D" type="Area3D" parent="SM_Pear_Stage5/Pear3/SM_Pear_003" unique_id=1202189458]
+script = ExtResource("2_eaakj")
+crop_id = "pear"
+unripe_node_name = "SM_Pear_Unripe"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Pear_Stage5/Pear3/SM_Pear_003/Area3D" unique_id=1679102480]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03389418, 0.15918708, -0.008570015)
+shape = SubResource("SphereShape3D_3xd07")
+
+[node name="SM_Pear_Unripe" parent="SM_Pear_Stage5/Pear3" unique_id=1727347297 instance=ExtResource("3_uue8h")]
+transform = Transform3D(-0.37195662, -0.21887387, 0.90207696, 3.7252903e-09, 0.97180355, 0.23579194, -0.9282502, 0.087704346, -0.36146876, -0.006592719, 0.10361876, -0.022945816)
+visible = false
+
+[node name="Pear4" type="Node3D" parent="SM_Pear_Stage5" unique_id=1641599533]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65200335, 1.5522511, -0.6107652)
+
+[node name="SM_Pear_004" type="MeshInstance3D" parent="SM_Pear_Stage5/Pear4" unique_id=872819284]
 mesh = SubResource("ArrayMesh_kwoi7")
 
-[node name="SM_Pear_005" type="MeshInstance3D" parent="SM_Pear_Stage5" unique_id=1077022025]
+[node name="Area3D" type="Area3D" parent="SM_Pear_Stage5/Pear4/SM_Pear_004" unique_id=24032402]
+script = ExtResource("2_eaakj")
+crop_id = "pear"
+unripe_node_name = "SM_Pear_Unripe"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Pear_Stage5/Pear4/SM_Pear_004/Area3D" unique_id=1363045842]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15918708, 0)
+shape = SubResource("SphereShape3D_3xd07")
+
+[node name="SM_Pear_Unripe" parent="SM_Pear_Stage5/Pear4" unique_id=2097488551 instance=ExtResource("3_uue8h")]
+transform = Transform3D(-0.84843594, 0, -0.52929807, 0, 1, 0, 0.52929807, 0, -0.84843594, 0.0031775837, 0.1248374, -0.012971282)
+visible = false
+
+[node name="Pear5" type="Node3D" parent="SM_Pear_Stage5" unique_id=1979412058]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.88176537, 1.4098907, 0.20383903)
+
+[node name="SM_Pear_005" type="MeshInstance3D" parent="SM_Pear_Stage5/Pear5" unique_id=1077022025]
 mesh = SubResource("ArrayMesh_ovjji")
+
+[node name="Area3D" type="Area3D" parent="SM_Pear_Stage5/Pear5/SM_Pear_005" unique_id=1653824016]
+script = ExtResource("2_eaakj")
+crop_id = "pear"
+unripe_node_name = "SM_Pear_Unripe"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Pear_Stage5/Pear5/SM_Pear_005/Area3D" unique_id=429032273]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15918708, 0)
+shape = SubResource("SphereShape3D_3xd07")
+
+[node name="SM_Pear_Unripe" parent="SM_Pear_Stage5/Pear5" unique_id=1559293639 instance=ExtResource("3_uue8h")]
+transform = Transform3D(-0.897284, 0, -0.44145387, 0, 1, 0, 0.44145387, 0, -0.897284, 0.015158594, 0.12744927, -0.009905636)
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=597701812]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1508244247]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04989378, 0.81241703, 0.14410657)
+shape = SubResource("CylinderShape3D_3xd07")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=825669149]
+transform = Transform3D(0.52690977, 0, -0.8499212, 0, 1, 0, 0.8499212, 0, 0.52690977, 0.050837573, 0.043701172, -0.03151682)
+shape = SubResource("BoxShape3D_3xd07")

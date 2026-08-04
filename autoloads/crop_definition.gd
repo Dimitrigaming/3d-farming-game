@@ -11,5 +11,10 @@ extends Resource
 @export var can_regrow: bool = false
 @export var regrow_stages: int = 1
 @export var is_tree: bool = false
+@export var chop_yield_item_id: String = "wood"
 @export var chop_wood_yield: int = 3
+## All tools that can harvest this crop. First entry is the primary (best) tool.
+@export var harvest_tools: Array[String] = ["scythe"]
+## Extra yield granted when harvesting with the primary tool vs a fallback.
+@export var primary_yield_bonus: int = 0
 @export var growth_stages: Array[PackedScene] = []

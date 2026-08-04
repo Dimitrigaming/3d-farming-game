@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://c0nhho8fe5koj"]
+
+[ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="Texture2D" uid="uid://ddimwpu3xp7xs" path="res://icons/furniture/storage_crate.png" id="1_gk5qo"]
+[ext_resource type="PackedScene" uid="uid://bgd1gij1yjp1o" path="res://models/storage/storage_crate.tscn" id="2_scene"]
+
+[resource]
+script = ExtResource("1_def")
+id = "storage_crate"
+name = "Storage Crate"
+icon = ExtResource("1_gk5qo")
+type = 7
+max_stack = 10
+buy_price = 200
+description = "A wooden crate for storage. Open the lid with [F]."
+place_scene = ExtResource("2_scene")

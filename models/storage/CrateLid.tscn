@@ -1,0 +1,45 @@
+[gd_scene format=4 uid="uid://b7won7ry8lcm4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e1lrc"]
+resource_name = "Main"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 1)
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_2pesa"]
+_surfaces = [{
+"aabb": AABB(-0.004, -0.004, 0, 0.008, 0.008, 0.0004000005),
+"format": 34359742465,
+"index_count": 108,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgAEAAAAAAAEAAUAAAAFAAYAAAAGAAMABgAFAAcABQAEAAcACAAGAAcABgAIAAMAAwAIAAcAAwAHAAkABAAJAAcACQAKAAMAAwAKAAEACwAJAAQACQAMAAoACQALAAwADQALAAQABAACAA0ACwANAA4ACwAOAAwADQAPAA4AAgAPAA0ADgAPAAwADwACAAwADAAQAAoADAACABEAEAAMABEAEQACAAEAEAASAAoAEAARABIACgASAAEAEQATABIAEgATAAEAEQABABMA"),
+"name": "Main",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("bxKDu28SgzsK16MvbxKDO28SgzsAAAAAgfKwOm8SgztISR05bxKDu28Sg7sK16Mvd/Kwum8SgztcSR05oZvEum8Sgzspt9E5bxKDu28Sgzspt9E5pJvEumwSg7spt9E5bxKDu28Sg7spt9E5evKwumwSg7tcSR05bxKDO2YSg7sK16MvT0mdumwSg7spt9E5f/KwOmkSg7tcSR05TEmdum8Sgzspt9E5VEmdOmkSg7spt9E5VkmdOm8Sgzsft9E5qZvEOmkSg7spt9E5rJvEOm8Sgzsft9E5bxKDO2YSg7spt9E5bxKDO28Sgzsft9E5")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tittc"]
+resource_name = "Cube_001"
+_surfaces = [{
+"aabb": AABB(-0.004, -0.004, 0, 0.008, 0.008, 0.0004000005),
+"attribute_data": PackedByteArray("USw1PxgGAz5RLDU/ZLlYPizEND8AVjw+mhY0P1zxPT6aFjQ/ZLlYPpoWND8gzh0+mhY0PxgGAz4sxDQ/gGkfPpoWND/YBCE+LMQ0PwBWPD4sxDQ/gGkfPlEsNT8YBgM+LMQ0PwBWPD6aFjQ/pLo6PpoWND/YBCE+mhY0P1zxPT4sxDQ/AFY8PlEsNT9kuVg+VJQtPxwGAz5UlC0/ZLlYPqDMJj8cBgM+EmwMPxgGAz5iaAs/GAYDPhJsDD9ASzU9YmgLP0BLNT0SbAw/UEs1PcJvDT9QSzU9EmwMPxgGAz7rBCA/ZLlYPusEID8YBgM+oMwmP2S5WD6fzCY/GAYDPlSULT9kuVg+VJQtPxwGAz6aFjQ/ZLlYPjOgVT9A8vw8fYJXP0Dy/DwzoFU/3BhvPum9Uz/cGG8+6b1TPyDy/DwzoFU/3BhvPn6CVz/cGG8+foJXP0Dy/DzIZFk/3BhvPp7bUT8g8vw86b1TPyDy/Dyd21E/3BhvPlEsNT8YBgM+LMQ0P4BpHz6aFjQ/IM4dPj4ACz9oRc09PgALP2hskz1iaAs/QEs1PaxSCj+wNZA9rFIKP0BLNT1iaAs/QEs1PaxSCj+wDso9rFIKPyCjlj0+AAs/aGyTPT4ACz9obJM9rFIKP7A1kD1iaAs/QEs1PWJoCz8YBgM+q1IKPxgGAz6sUgo/KHzQPT4ACz9oRc09rFIKP7AOyj0+AAs/aGyTPWJoCz8YBgM+rFIKPyh80D0+AAs/aEXNPT4ACz9oRc09YmgLP0BLNT1iaAs/GAYDPqtSCj9kuVg+q1IKPxgGAz7rBCA/ZLlYPlSULT9kuVg+oMwmP2S5WD6gzCY/HAYDPsJvDT9QSzU9wm8NPxgGAz4SbAw/GAYDPlSULT8cBgM+mhY0PxgGAz6aFjQ/ZLlYPn2CVz9A8vw8foJXP9wYbz4zoFU/3BhvPum9Uz8g8vw8M6BVPyDy/DwzoFU/3BhvPn6CVz9A8vw8yGRZP0Dy/DzIZFk/3BhvPum9Uz8g8vw8571TP9wYbz6d21E/3BhvPqtSCj8YBgM+6wQgPxwGAz7rBCA/ZLlYPg=="),
+"format": 34359742487,
+"index_count": 108,
+"index_data": PackedByteArray("AAABAAIAAwABAAQAAAAFAAYABwACAAgACQAKAAsADAANAA4ADwAQABEAEgATABQAFQAWABcAFgAYABcAGQAaABsAHAAdAB4AHQAfAB4AIAAhACIAIwAkACUAJgAnACgAKQAqACsALAAtAC4ALwAwADEAMgAzADQANQA2ADcAOAA5ADoAOwA8AD0APgA/AEAAQQBCAEMARABFAEYARwBIAEkASgBLAEwATQBOAE8AUABRAFIAUwBUAFUAVgBXAFgAWQBaAFsAXABdAF4AXwBgAGEAYgBjAGQA"),
+"material": SubResource("StandardMaterial3D_e1lrc"),
+"name": "Main",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 101,
+"vertex_data": PackedByteArray("bxKDu28SgzsK16MvbxKDO28SgzsAAAAAgfKwOm8SgztISR05rJvEOm8Sgzsft9E5bxKDO28Sgzsft9E5oZvEum8Sgzspt9E5bxKDu28Sgzspt9E5d/Kwum8SgztcSR05TEmdum8Sgzspt9E5gfKwOm8SgztISR05d/Kwum8SgztcSR05bxKDu28SgzsK16MvgfKwOm8SgztISR05VkmdOm8Sgzsft9E5TEmdum8Sgzspt9E5rJvEOm8Sgzsft9E5gfKwOm8SgztISR05bxKDO28SgzsAAAAAqZvEOmkSg7spt9E5rJvEOm8Sgzsft9E5bxKDO2YSg7spt9E5bxKDu28SgzsK16MvbxKDu28Sgzspt9E5bxKDu28Sg7sK16MvbxKDu28Sg7spt9E5bxKDO2YSg7sK16MvbxKDO2YSg7spt9E5bxKDO28SgzsAAAAAbxKDu28Sg7spt9E5bxKDu28Sgzspt9E5pJvEumwSg7spt9E5oZvEum8Sgzspt9E5T0mdumwSg7spt9E5TEmdum8Sgzspt9E5VEmdOmkSg7spt9E5oZvEum8Sgzspt9E5d/Kwum8SgztcSR05pJvEumwSg7spt9E5TEmdum8Sgzspt9E5T0mdumwSg7spt9E5d/Kwum8SgztcSR05VEmdOmkSg7spt9E5VkmdOm8Sgzsft9E5f/KwOmkSg7tcSR05qZvEOmkSg7spt9E5f/KwOmkSg7tcSR05rJvEOm8Sgzsft9E5bxKDu28SgzsK16Mvd/Kwum8SgztcSR05oZvEum8Sgzspt9E5evKwumwSg7tcSR05f/KwOmkSg7tcSR05bxKDO2YSg7sK16MvqZvEOmkSg7spt9E5bxKDO2YSg7spt9E5bxKDO2YSg7sK16MvT0mdumwSg7spt9E5VEmdOmkSg7spt9E5f/KwOmkSg7tcSR05f/KwOmkSg7tcSR05qZvEOmkSg7spt9E5bxKDO2YSg7sK16MvbxKDu28Sg7sK16MvbxKDu28Sg7spt9E5pJvEumwSg7spt9E5evKwumwSg7tcSR05T0mdumwSg7spt9E5f/KwOmkSg7tcSR05bxKDu28Sg7sK16MvpJvEumwSg7spt9E5evKwumwSg7tcSR05evKwumwSg7tcSR05bxKDO2YSg7sK16MvbxKDu28Sg7sK16MvbxKDu28SgzsK16MvbxKDu28Sg7sK16MvbxKDO28SgzsAAAAArJvEOm8Sgzsft9E5bxKDO28Sgzsft9E5bxKDO2YSg7spt9E5bxKDO2YSg7spt9E5bxKDO28Sgzsft9E5bxKDO28SgzsAAAAATEmdum8Sgzspt9E5VkmdOm8Sgzsft9E5VEmdOmkSg7spt9E5d/Kwum8SgztcSR05evKwumwSg7tcSR05pJvEumwSg7spt9E5T0mdumwSg7spt9E5evKwumwSg7tcSR05d/Kwum8SgztcSR05VkmdOm8Sgzsft9E5gfKwOm8SgztISR05f/KwOmkSg7tcSR05f/KwOmkSg7tcSR05gfKwOm8SgztISR05rJvEOm8Sgzsft9E5bxKDu28Sg7sK16MvbxKDO2YSg7sK16MvbxKDO28SgzsAAAAA/3//////////f/////////9///8AAP7//3//////////f/////////9//////////3//////////f///AAD+//9///8AAP7//3////7/AID/f////v8AgP9////+/wCA/3////7/AID/f////v8AgP9////+/wCA/3/+/wAA/v//f/7/AAD+//9//v8AAP7//3//fwAA/7//f/9/AAD/v/9//38AAP+/AAD/f/////8AAP9//////wAA/3//////AAD/f/////////9//3//v////3//f/+/////f/9//7//f/9//v//v/9//3/+//+//3//f/7//7//f/9/////v/9//3/+//+//3//f/7//7//f/9//v//v//P/3/////n/8//f////+f/z/9/////5/8v/38AAP+X/y//fwAA/5f/L/9/AAD/l//P/3/////n/8//f////+f/z/9/////5/8v/38AAP/n/y//fwAA/+f/L/9/AAD/5/9//v8AAP7//3/+/wAA/v//f/7/AAD+//9/AAAAAACA/38AAAAAAID/fwAAAAAAgP9/AAD//////38AAP//////fwAA//////9/AAD///7//38AAP///v//fwAA///+//9/AAAAAP7//38AAAAA/v//fwAAAAD+//9/AAD//////38AAP//////fwAA//////9/AAAAAACA/38AAAAAAID/fwAAAAAAgP9/AAAAAACA/38AAAAAAID/fwAAAAAAgP9/AAD///7//38AAP///v//fwAA///+/wAA//////+/AAD//////78AAP//////v/9//38AAP+//3//fwAA/7//f/9/AAD/v////3//f/+/////f/9//7////9//3//v/9//3/+//+//3//f/7//7//f/9//v//v//P/3////+X/8//f////5f/z/9/////l/8v/38AAP/n/y//fwAA/+f/L/9/AAD/5//P/3/////n/8//f////+f/z/9/////5/8v/38AAP+X/y//fwAA/5f/L/9/AAD/l///AAD+//+///8AAP7//7///wAA/v//vw==")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_2pesa")
+
+[node name="CrateLid" type="Node3D" unique_id=1352084515]
+
+[node name="Crate_003" type="MeshInstance3D" parent="." unique_id=101676699]
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, -4.4703484e-08, 0, 0)
+mesh = SubResource("ArrayMesh_tittc")

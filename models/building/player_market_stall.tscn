@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cbm8fe13375xt" path="res://materials/stall_accent.png" id="2_r5nwo"]
 [ext_resource type="Texture2D" uid="uid://b0acbvgynpdjw" path="res://materials/stall_tarp_red.png" id="3_u4x0v"]
 [ext_resource type="Texture2D" uid="uid://bmrweww1xolia" path="res://materials/stall_tarp_white.png" id="4_3xlfh"]
+[ext_resource type="PackedScene" uid="uid://b5tbbyodq03mj" path="res://models/storage/delivery_crate.tscn" id="5_r5nwo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ujsg0"]
 resource_name = "Material.001"
@@ -3014,3 +3015,6 @@ shape = SubResource("BoxShape3D_jo36y")
 [node name="CollisionShape3D15" type="CollisionShape3D" parent="StaticBody3D" unique_id=760034549]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.019432, 2.4319692, -1.7015966)
 shape = SubResource("BoxShape3D_jo36y")
+
+[node name="DeliveryCrate" parent="." unique_id=1210690060 instance=ExtResource("5_r5nwo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.4667556)

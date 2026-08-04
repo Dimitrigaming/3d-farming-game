@@ -96,12 +96,12 @@ func plant_crop(x: int, z: int, seed_item_id: String) -> void:
 	crop.setup(crop_def)
 	_crops[key] = crop
 
-func harvest_crop(x: int, z: int) -> Dictionary:
+func harvest_crop(x: int, z: int, tool_id: String = "") -> Dictionary:
 	var key = Vector3i(x, 0, z)
 	var crop = _crops.get(key) as PlantedCrop
 	if crop == null or not crop.is_ready_to_harvest():
 		return {}
-	var result = crop.harvest()
+	var result = crop.harvest(tool_id)
 	if not (crop.crop_def and crop.crop_def.can_regrow):
 		crop.queue_free()
 		_crops.erase(key)

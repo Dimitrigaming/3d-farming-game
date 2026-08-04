@@ -1,7 +1,7 @@
 class_name ItemDefinition
 extends Resource
 
-enum ItemType { SEED, CROP, ANIMAL_PRODUCT, PROCESSED, MATERIAL, TOOL, TREE }
+enum ItemType { SEED, CROP, ANIMAL_PRODUCT, PROCESSED, MATERIAL, TOOL, TREE, FURNITURE }
 
 @export var id: String = ""
 @export var name: String = ""
@@ -13,3 +13,4 @@ enum ItemType { SEED, CROP, ANIMAL_PRODUCT, PROCESSED, MATERIAL, TOOL, TREE }
 @export var unlock_level: int = 1
 @export var description: String = ""
 @export var equip_scene: PackedScene
+@export var place_scene: PackedScene

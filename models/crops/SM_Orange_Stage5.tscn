@@ -1,14 +1,16 @@
-﻿[gd_scene format=4 uid="uid://be2dxur84caq"]
+[gd_scene format=4 uid="uid://be2dxur84caq"]
 
+[ext_resource type="Script" uid="uid://di3wuimuop686" path="res://farm/fruit_pickable.gd" id="2_ipods"]
+[ext_resource type="PackedScene" uid="uid://by6f7outbit5p" path="res://models/crops/SM_Orange_Unripe.tscn" id="3_hyqdl"]
 [ext_resource type="Texture2D" uid="uid://ojofi48ii1ko" path="res://models/textures/T_Gradient_FarmCrops02.png" id="tex_fc02"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ampwm"]
 resource_name = "M_Gradient_FarmCrops02"
 vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("tex_fc02")
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 0.0
-albedo_texture = ExtResource("tex_fc02")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_67jg0"]
 _surfaces = [{
@@ -77,6 +79,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ge45g")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3xd07"]
+radius = 0.2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_4fkj5"]
 _surfaces = [{
@@ -214,27 +219,112 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ax8td")
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3xd07"]
+height = 1.5825195
+radius = 0.30322266
+
 [node name="SM_Orange_Stage5" type="Node3D" unique_id=184047262]
 
 [node name="SM_Orange_Stage5" type="MeshInstance3D" parent="." unique_id=245934980]
 mesh = SubResource("ArrayMesh_smnqq")
 
-[node name="SM_Orange_001" type="MeshInstance3D" parent="SM_Orange_Stage5" unique_id=1909008525]
+[node name="Orange1" type="Node3D" parent="SM_Orange_Stage5" unique_id=930654795]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.87978625, 1.4202825, -0.2019037)
+
+[node name="SM_Orange_001" type="MeshInstance3D" parent="SM_Orange_Stage5/Orange1" unique_id=1909008525]
 mesh = SubResource("ArrayMesh_2a8uf")
 
-[node name="SM_Orange_002" type="MeshInstance3D" parent="SM_Orange_Stage5" unique_id=1156581376]
+[node name="Area3D" type="Area3D" parent="SM_Orange_Stage5/Orange1/SM_Orange_001" unique_id=2131296051]
+script = ExtResource("2_ipods")
+crop_id = "orange"
+unripe_node_name = "SM_Orange_Unripe"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Orange_Stage5/Orange1/SM_Orange_001/Area3D" unique_id=1538845958]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09388965, 0.1799155, 0)
+shape = SubResource("SphereShape3D_3xd07")
+
+[node name="SM_Orange_Unripe" parent="SM_Orange_Stage5/Orange1" unique_id=147871303 instance=ExtResource("3_hyqdl")]
+transform = Transform3D(0.9638693, -0.26637575, 0, 0.26637575, 0.9638693, 0, 0, 0, 1, -0.11800964, 0.113627076, -0.004079044)
+visible = false
+
+[node name="Orange2" type="Node3D" parent="SM_Orange_Stage5" unique_id=1793766836]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1517353, 1.4394358, 1.0847012)
+
+[node name="SM_Orange_002" type="MeshInstance3D" parent="SM_Orange_Stage5/Orange2" unique_id=1156581376]
 mesh = SubResource("ArrayMesh_xyllq")
 
-[node name="SM_Orange_003" type="MeshInstance3D" parent="SM_Orange_Stage5" unique_id=1985298805]
+[node name="Area3D" type="Area3D" parent="SM_Orange_Stage5/Orange2/SM_Orange_002" unique_id=1100380534]
+script = ExtResource("2_ipods")
+crop_id = "orange"
+unripe_node_name = "SM_Orange_Unripe"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Orange_Stage5/Orange2/SM_Orange_002/Area3D" unique_id=1325479868]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0038328916, 0.19543429, 0)
+shape = SubResource("SphereShape3D_3xd07")
+
+[node name="SM_Orange_Unripe" parent="SM_Orange_Stage5/Orange2" unique_id=71733066 instance=ExtResource("3_hyqdl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12475169, 0)
+visible = false
+
+[node name="Orange3" type="Node3D" parent="SM_Orange_Stage5" unique_id=1299167350]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9580011, 1.4575276, -1.0890232)
+
+[node name="SM_Orange_003" type="MeshInstance3D" parent="SM_Orange_Stage5/Orange3" unique_id=1985298805]
 mesh = SubResource("ArrayMesh_efhpw")
 
-[node name="SM_Orange_004" type="MeshInstance3D" parent="SM_Orange_Stage5" unique_id=2145980264]
+[node name="Area3D" type="Area3D" parent="SM_Orange_Stage5/Orange3/SM_Orange_003" unique_id=60526991]
+script = ExtResource("2_ipods")
+crop_id = "orange"
+unripe_node_name = "SM_Orange_Unripe"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Orange_Stage5/Orange3/SM_Orange_003/Area3D" unique_id=1522174019]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03701079, 0.19172819, 0)
+shape = SubResource("SphereShape3D_3xd07")
+
+[node name="SM_Orange_Unripe" parent="SM_Orange_Stage5/Orange3" unique_id=134887513 instance=ExtResource("3_hyqdl")]
+transform = Transform3D(-0.9996184, 0, 0.027626097, 0, 1, 0, -0.027626097, 0, -0.9996184, 0.07312155, 0.11482561, -0.00094437413)
+visible = false
+
+[node name="Orange4" type="Node3D" parent="SM_Orange_Stage5" unique_id=1094640840]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23484945, 1.6705711, -1.0873339)
+
+[node name="SM_Orange_004" type="MeshInstance3D" parent="SM_Orange_Stage5/Orange4" unique_id=2145980264]
 mesh = SubResource("ArrayMesh_w85ok")
 
-[node name="SM_Orange_005" type="MeshInstance3D" parent="SM_Orange_Stage5" unique_id=711546940]
+[node name="Area3D" type="Area3D" parent="SM_Orange_Stage5/Orange4/SM_Orange_004" unique_id=1923710228]
+script = ExtResource("2_ipods")
+crop_id = "orange"
+unripe_node_name = "SM_Orange_Unripe"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Orange_Stage5/Orange4/SM_Orange_004/Area3D" unique_id=924960906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.036354072, 0.18950279, 0)
+shape = SubResource("SphereShape3D_3xd07")
+
+[node name="SM_Orange_Unripe" parent="SM_Orange_Stage5/Orange4" unique_id=1919992562 instance=ExtResource("3_hyqdl")]
+transform = Transform3D(0.60757005, 0, -0.79426605, 0, 1, 0, 0.79426605, 0, 0.60757005, 0.06612975, 0.108533144, -0.002241848)
+visible = false
+
+[node name="Orange5" type="Node3D" parent="SM_Orange_Stage5" unique_id=997796278]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8200002, 1.6416894, 0.19734678)
+
+[node name="SM_Orange_005" type="MeshInstance3D" parent="SM_Orange_Stage5/Orange5" unique_id=711546940]
 mesh = SubResource("ArrayMesh_w0rva")
+
+[node name="Area3D" type="Area3D" parent="SM_Orange_Stage5/Orange5/SM_Orange_005" unique_id=1207829776]
+script = ExtResource("2_ipods")
+crop_id = "orange"
+unripe_node_name = "SM_Orange_Unripe"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Orange_Stage5/Orange5/SM_Orange_005/Area3D" unique_id=876074650]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.048452377, 0.18595023, 0.016065538)
+shape = SubResource("SphereShape3D_3xd07")
+
+[node name="SM_Orange_Unripe" parent="SM_Orange_Stage5/Orange5" unique_id=1661528509 instance=ExtResource("3_hyqdl")]
+transform = Transform3D(0.9991046, 0, -0.04230728, 0, 1, 0, 0.04230728, 0, 0.9991046, -0.101783335, 0.12840188, 0.02866827)
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1978133119]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=89369908]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7583643, 0)
+shape = SubResource("CylinderShape3D_3xd07")
