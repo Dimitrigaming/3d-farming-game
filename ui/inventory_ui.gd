@@ -7,6 +7,7 @@ var _hovered_slot: int = -1
 var _reenable_controller: bool = false
 
 func _ready() -> void:
+	add_to_group("inventory_ui")
 	Inventory.inventory_changed.connect(_refresh)
 	_assign_indices()
 	call_deferred("_refresh")
@@ -44,6 +45,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 			return
 	if event.is_action_pressed("inventory") or (visible and event.is_action_pressed("ui_cancel")):
+		var tablet = get_tree().get_first_node_in_group("tablet")
+		if tablet and tablet.visible:
+			tablet._toggle()
+			get_viewport().set_input_as_handled()
+			return
 		visible = not visible
 		if visible:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

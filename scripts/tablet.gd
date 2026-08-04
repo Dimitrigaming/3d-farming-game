@@ -34,6 +34,10 @@ func _process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("tablet"):
+		var inv = get_tree().get_first_node_in_group("inventory_ui")
+		if inv and inv.visible:
+			inv.visible = false
+			inv._set_crosshair_visible(true)
 		_toggle()
 		get_viewport().set_input_as_handled()
 
