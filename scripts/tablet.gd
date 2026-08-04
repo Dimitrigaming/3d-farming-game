@@ -28,8 +28,11 @@ func _process(delta: float) -> void:
 			_order_refresh_timer = 0.0
 			_refresh_orders()
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("tablet"):
+		_toggle()
+		get_viewport().set_input_as_handled()
+	elif event.is_action_pressed("ui_cancel") and visible:
 		_toggle()
 		get_viewport().set_input_as_handled()
 
@@ -50,12 +53,15 @@ func _on_open() -> void:
 		controller.mouse_captured = false
 
 func _on_close() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	call_deferred("_recapture_mouse")
 	var controller = _get_controller()
 	if controller:
 		controller.can_move = true
 		controller.can_jump = true
 		controller.mouse_captured = true
+
+func _recapture_mouse() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _get_controller() -> CharacterBody3D:
 	var players = get_tree().get_nodes_in_group("player")
@@ -143,6 +149,7 @@ func _build_ui() -> void:
 		var btn = Button.new()
 		btn.text = tab_name
 		btn.toggle_mode = true
+		btn.focus_mode = Control.FOCUS_NONE
 		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		btn.pressed.connect(_show_tab.bind(_tab_btns.size()))
 		tab_bar.add_child(btn)
@@ -156,6 +163,8 @@ func _build_ui() -> void:
 
 	_panels.append(_build_orders_panel(content))
 	_panels.append(_build_products_panel(content))
+
+	_disable_focus_recursive(_root)
 
 	var hint = Label.new()
 	hint.text = "Press Tab to close"
@@ -233,6 +242,7 @@ func _make_order_row(order: Dictionary) -> Control:
 
 	var fulfill_btn = Button.new()
 	fulfill_btn.text = "Fulfill"
+	fulfill_btn.focus_mode = Control.FOCUS_NONE
 	fulfill_btn.custom_minimum_size = Vector2(80, 0)
 	fulfill_btn.pressed.connect(_on_fulfill_order.bind(order))
 	hbox.add_child(fulfill_btn)
@@ -246,6 +256,7 @@ func _make_product_row(item: ItemDefinition) -> Control:
 	var enabled = item.id in DeliveryManager.enabled_products
 	var check = CheckButton.new()
 	check.button_pressed = enabled
+	check.focus_mode = Control.FOCUS_NONE
 	check.toggled.connect(func(on): DeliveryManager.set_product_enabled(item.id, on))
 	row.add_child(check)
 
@@ -269,6 +280,12 @@ func _make_product_row(item: ItemDefinition) -> Control:
 func _on_fulfill_order(order: Dictionary) -> void:
 	DeliveryManager.try_fulfill_order(order)
 	_refresh_orders()
+
+func _disable_focus_recursive(node: Node) -> void:
+	if node is Control:
+		node.focus_mode = Control.FOCUS_NONE
+	for child in node.get_children():
+		_disable_focus_recursive(child)
 
 func _section_label(text: String) -> Label:
 	var lbl = Label.new()
