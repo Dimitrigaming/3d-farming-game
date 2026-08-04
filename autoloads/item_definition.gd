@@ -11,6 +11,7 @@ enum ItemType { SEED, CROP, ANIMAL_PRODUCT, PROCESSED, MATERIAL, TOOL, TREE, FUR
 @export var sell_price: int = 0
 @export var buy_price: int = 0
 @export var unlock_level: int = 1
+@export var subcategory: String = ""
 @export var description: String = ""
 @export var equip_scene: PackedScene
 @export var place_scene: PackedScene
