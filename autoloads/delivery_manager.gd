@@ -17,7 +17,7 @@ var active_orders: Array[Dictionary] = []
 var _next_order_timer: float = 0.0
 
 func _ready() -> void:
-	_next_order_timer = randf_range(MIN_ORDER_INTERVAL, MAX_ORDER_INTERVAL)
+	_next_order_timer = 30.0
 
 func _process(delta: float) -> void:
 	var changed = false
@@ -35,13 +35,14 @@ func _process(delta: float) -> void:
 	if active_orders.size() != before:
 		changed = true
 
-	# Generate new order
-	if active_orders.size() < MAX_ORDERS and not enabled_products.is_empty():
+	# Always count down; only generate if products are enabled
+	if active_orders.size() < MAX_ORDERS:
 		_next_order_timer -= delta
 		if _next_order_timer <= 0.0:
-			_generate_order()
+			if not enabled_products.is_empty():
+				_generate_order()
+				changed = true
 			_next_order_timer = randf_range(MIN_ORDER_INTERVAL, MAX_ORDER_INTERVAL)
-			changed = true
 
 	if changed:
 		orders_changed.emit()
