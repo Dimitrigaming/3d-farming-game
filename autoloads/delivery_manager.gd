@@ -3,9 +3,9 @@ extends Node
 signal orders_changed
 signal products_changed
 
-const MAX_ORDERS: int = 3
-const MIN_ORDER_INTERVAL: float = 120.0
-const MAX_ORDER_INTERVAL: float = 300.0
+const MAX_ORDERS: int = 10
+const MIN_ORDER_INTERVAL: float = 10.0
+const MAX_ORDER_INTERVAL: float = 10.0
 const MIN_DEADLINE: float = 300.0
 const MAX_DEADLINE: float = 600.0
 const MIN_AMOUNT: int = 3
@@ -17,7 +17,7 @@ var active_orders: Array[Dictionary] = []
 var _next_order_timer: float = 0.0
 
 func _ready() -> void:
-	_next_order_timer = 30.0
+	_next_order_timer = 5.0
 
 func _process(delta: float) -> void:
 	var changed = false
