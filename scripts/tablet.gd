@@ -28,11 +28,13 @@ func _process(delta: float) -> void:
 			_order_refresh_timer = 0.0
 			_refresh_orders()
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("tablet"):
 		_toggle()
 		get_viewport().set_input_as_handled()
-	elif event.is_action_pressed("ui_cancel") and visible:
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel") and visible:
 		_toggle()
 		get_viewport().set_input_as_handled()
 

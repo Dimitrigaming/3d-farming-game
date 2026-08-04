@@ -78,22 +78,22 @@ func try_fulfill_order(order: Dictionary) -> bool:
 	var amount: int = order["amount"]
 	var total_found: int = 0
 	# Count available in crate
-	for slot in crate.crate_slots:
+	for slot in crate.chest_slots:
 		if slot["item_id"] == needed:
 			total_found += slot["amount"]
 	if total_found < amount:
 		return false
 	# Remove items from crate
 	var to_remove: int = amount
-	for i in crate.crate_slots.size():
+	for i in crate.chest_slots.size():
 		if to_remove <= 0:
 			break
-		if crate.crate_slots[i]["item_id"] == needed:
-			var take = min(crate.crate_slots[i]["amount"], to_remove)
-			crate.crate_slots[i]["amount"] -= take
+		if crate.chest_slots[i]["item_id"] == needed:
+			var take = min(crate.chest_slots[i]["amount"], to_remove)
+			crate.chest_slots[i]["amount"] -= take
 			to_remove -= take
-			if crate.crate_slots[i]["amount"] <= 0:
-				crate.crate_slots[i] = {"item_id": "", "amount": 0}
+			if crate.chest_slots[i]["amount"] <= 0:
+				crate.chest_slots[i] = {"item_id": "", "amount": 0}
 	crate.refresh_ui()
 	# Pay reward
 	GameState.add_money(order["reward"])

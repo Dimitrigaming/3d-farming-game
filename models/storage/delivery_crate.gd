@@ -6,7 +6,7 @@ const CRATE_SLOT_COUNT = 27
 
 @export var open_angle: float = 40.0
 
-var crate_slots: Array[Dictionary] = []
+var chest_slots: Array[Dictionary] = []
 var _open: bool = false
 var _tween: Tween = null
 var _chest_ui = null
@@ -16,9 +16,9 @@ var _chest_ui = null
 func _ready() -> void:
 	add_to_group("interactable")
 	add_to_group("delivery_crate")
-	crate_slots.resize(CRATE_SLOT_COUNT)
+	chest_slots.resize(CRATE_SLOT_COUNT)
 	for i in CRATE_SLOT_COUNT:
-		crate_slots[i] = {"item_id": "", "amount": 0}
+		chest_slots[i] = {"item_id": "", "amount": 0}
 
 func get_interact_hint() -> String:
 	return "Open Delivery Crate"
@@ -40,7 +40,7 @@ func refresh_ui() -> void:
 	var chest_ui = get_tree().get_first_node_in_group("chest_ui")
 	if chest_ui and chest_ui._current_crate == self:
 		chest_ui.chest_slots = []
-		for s in crate_slots:
+		for s in chest_slots:
 			chest_ui.chest_slots.append(s.duplicate())
 		chest_ui.refresh_chest()
 
