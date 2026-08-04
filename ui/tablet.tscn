@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://2hwx1pmgm2t"]
+
+[ext_resource type="Script" uid="uid://cpslgiwgdhmku" path="res://scripts/tablet.gd" id="1_lcbqf"]
+
+[node name="Tablet" type="CanvasLayer"]
+layer = 20
+script = ExtResource("1_lcbqf")
