@@ -9,4 +9,4 @@ func _ready() -> void:
 func pick() -> void:
 	if crop_id != "":
 		Inventory.add_item(crop_id, 1)
-	queue_free()
+	get_parent().queue_free()
