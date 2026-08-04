@@ -7,6 +7,7 @@ const HOTBAR_SIZE = 9
 var slots: Array[Dictionary] = []
 
 signal inventory_changed
+signal item_acquired(item_id: String, amount: int)
 
 func _ready() -> void:
 	slots.resize(SLOT_COUNT)
@@ -19,6 +20,7 @@ func add_item(item_id: String, amount: int = 1) -> bool:
 		if slot["item_id"] == item_id:
 			slot["amount"] += amount
 			inventory_changed.emit()
+			item_acquired.emit(item_id, amount)
 			return true
 	# Find empty slot
 	for slot in slots:
@@ -26,6 +28,7 @@ func add_item(item_id: String, amount: int = 1) -> bool:
 			slot["item_id"] = item_id
 			slot["amount"] = amount
 			inventory_changed.emit()
+			item_acquired.emit(item_id, amount)
 			return true
 	return false  # inventory full
 

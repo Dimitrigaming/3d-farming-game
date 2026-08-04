@@ -84,6 +84,9 @@ func _update_slot(slot: Control, data: Dictionary) -> void:
 		count.text = str(data["amount"])
 		var def = ItemDB.get_item(data["item_id"])
 		icon.texture = def.icon if def else null
+		slot.tooltip_text = def.name if def else data["item_id"]
+	else:
+		slot.tooltip_text = ""
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not _is_open:

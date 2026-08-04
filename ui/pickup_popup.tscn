@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://pickup_popup001"]
+
+[ext_resource type="Script" uid="uid://pkpopup0001" path="res://ui/pickup_popup.gd" id="1_script"]
+
+[node name="PickupPopup" type="CanvasLayer"]
+layer = 12
+script = ExtResource("1_script")
+
+[node name="List" type="VBoxContainer" parent="."]
+layout_mode = 3
+anchors_preset = 4
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -220.0
+offset_top = -300.0
+offset_right = -20.0
+offset_bottom = -80.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 4

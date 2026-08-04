@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://c61ggstqpho4u" path="res://scripts/build_mode.gd" id="5_buildmode"]
 [ext_resource type="PackedScene" uid="uid://2hwx1pmgm2t" path="res://ui/tablet.tscn" id="6_h60nn"]
 [ext_resource type="PackedScene" uid="uid://delivery_hud001" path="res://ui/delivery_hud.tscn" id="7_delhud"]
+[ext_resource type="PackedScene" uid="uid://pickup_popup001" path="res://ui/pickup_popup.tscn" id="8_pkpopup"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iof21"]
 albedo_color = Color(0.91806, 0.575202, 0.222449, 1)
@@ -109,3 +110,5 @@ horizontal_alignment = 1
 [node name="Tablet" parent="." unique_id=1052269368 instance=ExtResource("6_h60nn")]
 
 [node name="DeliveryHUD" parent="." unique_id=1052269369 instance=ExtResource("7_delhud")]
+
+[node name="PickupPopup" parent="." unique_id=1052269370 instance=ExtResource("8_pkpopup")]
