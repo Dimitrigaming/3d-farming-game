@@ -11,6 +11,7 @@ var _refresh_timer: float = 0.0
 @onready var _btn_collapse: Button = %BtnCollapse
 @onready var _btn_lock: Button = %BtnLock
 @onready var _header: Control = $Panel/VBox/Header
+@onready var _separator: HSeparator = $Panel/VBox/HSep
 
 func _ready() -> void:
 	_btn_lock.toggled.connect(_on_btn_lock_toggled)
@@ -70,6 +71,7 @@ func _on_btn_lock_toggled(pressed: bool) -> void:
 func _on_btn_collapse_pressed() -> void:
 	_collapsed = not _collapsed
 	_orders_list.visible = not _collapsed
+	_separator.visible = not _collapsed
 	_btn_collapse.text = "▲" if _collapsed else "▼"
 
 func _on_header_gui_input(event: InputEvent) -> void:
