@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://apple00000001c"]
+[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://d4dr8uaacfeq1"]
 
 [ext_resource type="Script" uid="uid://cqjkmsb31rfok" path="res://autoloads/crop_definition.gd" id="1_def"]
 [ext_resource type="PackedScene" uid="uid://4mpvtjvaeg2d" path="res://models/crops/SM_Apple_Seed.tscn" id="2_s0"]
@@ -15,7 +15,7 @@ name = "Apple"
 seed_item_id = "apple_seed"
 yield_item_id = "apple"
 yield_amount = 4
-base_grow_speed = 240.0
+base_grow_speed = 20.0
 can_regrow = true
 regrow_stages = 2
 is_tree = true

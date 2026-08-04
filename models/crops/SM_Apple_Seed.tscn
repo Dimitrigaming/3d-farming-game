@@ -1,11 +1,11 @@
-[gd_scene format=4 uid="uid://543ur3dijpev"]
+[gd_scene format=4 uid="uid://4mpvtjvaeg2d"]
 
-[ext_resource type="Texture2D" uid="uid://ojofi48ii1ko" path="res://models/textures/T_Gradient_FarmCrops02.png" id="1_ugdnq"]
+[ext_resource type="Texture2D" uid="uid://dqlce6as0vtpe" path="res://models/textures/apple_seeds.png" id="1_r8pe7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_41640"]
 resource_name = "M_Gradient_FarmCrops02"
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_ugdnq")
+albedo_texture = ExtResource("1_r8pe7")
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 0.0
@@ -44,7 +44,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_0gimj")
 
-[node name="SM_Pear_Seed" type="Node3D" unique_id=304717009]
+[node name="SM_Apple_Seed" type="Node3D" unique_id=304717009]
 
-[node name="SM_Pear_Seed" type="MeshInstance3D" parent="." unique_id=1728368601]
+[node name="SM_Apple_Seed" type="MeshInstance3D" parent="." unique_id=1728368601]
 mesh = SubResource("ArrayMesh_8qe3v")

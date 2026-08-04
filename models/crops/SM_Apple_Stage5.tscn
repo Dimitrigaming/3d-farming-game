@@ -1,14 +1,15 @@
-﻿[gd_scene format=4 uid="uid://r7eswdq7e03v"]
+[gd_scene format=4 uid="uid://r7eswdq7e03v"]
 
+[ext_resource type="Script" uid="uid://di3wuimuop686" path="res://farm/fruit_pickable.gd" id="2_y0k6v"]
 [ext_resource type="Texture2D" uid="uid://ojofi48ii1ko" path="res://models/textures/T_Gradient_FarmCrops02.png" id="tex_fc02"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3w20i"]
 resource_name = "M_Gradient_FarmCrops02"
 vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("tex_fc02")
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 0.0
-albedo_texture = ExtResource("tex_fc02")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_lspwd"]
 _surfaces = [{
@@ -78,6 +79,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_e1csc")
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_3xd07"]
+radius = 0.22688562
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_sin7b"]
 _surfaces = [{
 "aabb": AABB(-0.18123789, -0.042747997, -0.14563358, 0.4353075, 0.46490642, 0.44020557),
@@ -111,6 +115,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_sin7b")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_y05ay"]
+radius = 0.22688562
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_iki4w"]
 _surfaces = [{
@@ -146,6 +153,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_iki4w")
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_y0k6v"]
+radius = 0.22688562
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_0h0gn"]
 _surfaces = [{
 "aabb": AABB(-0.18044172, -0.015172606, -0.18969174, 0.43914664, 0.49277666, 0.41993698),
@@ -179,6 +189,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_0h0gn")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1buad"]
+radius = 0.22688562
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_u6fvx"]
 _surfaces = [{
@@ -214,6 +227,20 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_u6fvx")
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_c56c7"]
+radius = 0.22688562
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jq8tk"]
+height = 1.0
+radius = 0.27
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ller6"]
+height = 1.0
+radius = 0.25
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6fhyq"]
+size = Vector3(0.8, 0.2, 1.1)
+
 [node name="SM_Apple_Stage5" type="Node3D" unique_id=1370917877]
 
 [node name="SM_Apple_Stage5" type="MeshInstance3D" parent="." unique_id=479208142]
@@ -223,18 +250,72 @@ mesh = SubResource("ArrayMesh_aopim")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.92142534, 1.549428, -0.67512804)
 mesh = SubResource("ArrayMesh_8kx0y")
 
+[node name="Area3D" type="Area3D" parent="SM_Apple_Stage5/SM_Apple_001" unique_id=668822235]
+script = ExtResource("2_y0k6v")
+crop_id = "apple"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Apple_Stage5/SM_Apple_001/Area3D" unique_id=849436315]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07333809, 0.16712256, 0.01951778)
+shape = SubResource("SphereShape3D_3xd07")
+
 [node name="SM_Apple_002" type="MeshInstance3D" parent="SM_Apple_Stage5" unique_id=699001168]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2635989, 1.202529, -0.63708395)
 mesh = SubResource("ArrayMesh_uy0v1")
+
+[node name="Area3D" type="Area3D" parent="SM_Apple_Stage5/SM_Apple_002" unique_id=1489577674]
+script = ExtResource("2_y0k6v")
+crop_id = "apple"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Apple_Stage5/SM_Apple_002/Area3D" unique_id=1164115240]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.024219573, 0.13662978, 0.071831405)
+shape = SubResource("SphereShape3D_y05ay")
 
 [node name="SM_Apple_003" type="MeshInstance3D" parent="SM_Apple_Stage5" unique_id=224125222]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9934046, 1.8326974, 0.5936508)
 mesh = SubResource("ArrayMesh_61o8b")
 
+[node name="Area3D" type="Area3D" parent="SM_Apple_Stage5/SM_Apple_003" unique_id=57289705]
+script = ExtResource("2_y0k6v")
+crop_id = "apple"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Apple_Stage5/SM_Apple_003/Area3D" unique_id=1502861271]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021567523, 0.16712256, -0.03229618)
+shape = SubResource("SphereShape3D_y0k6v")
+
 [node name="SM_Apple_004" type="MeshInstance3D" parent="SM_Apple_Stage5" unique_id=1845228460]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0036139488, 1.5462323, -1.3333266)
 mesh = SubResource("ArrayMesh_4krpj")
 
+[node name="Area3D" type="Area3D" parent="SM_Apple_Stage5/SM_Apple_004" unique_id=1016402591]
+script = ExtResource("2_y0k6v")
+crop_id = "apple"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Apple_Stage5/SM_Apple_004/Area3D" unique_id=190044140]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03563334, 0.16712256, 0.01951778)
+shape = SubResource("SphereShape3D_1buad")
+
 [node name="SM_Apple_005" type="MeshInstance3D" parent="SM_Apple_Stage5" unique_id=1686592650]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3202715, 1.4010148, 0.28030235)
 mesh = SubResource("ArrayMesh_su8hm")
+
+[node name="Area3D" type="Area3D" parent="SM_Apple_Stage5/SM_Apple_005" unique_id=38389963]
+script = ExtResource("2_y0k6v")
+crop_id = "apple"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Apple_Stage5/SM_Apple_005/Area3D" unique_id=1500109970]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0632084, 0.16712256, -0.0002501309)
+shape = SubResource("SphereShape3D_c56c7")
+
+[node name="TreeStaticBody" type="StaticBody3D" parent="." unique_id=566434976]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TreeStaticBody" unique_id=1739957665]
+transform = Transform3D(0.9848077, -0.17364818, 0, 0.17364818, 0.9848077, 0, 0, 0, 1, -0.1, 0.5, -0.3)
+shape = SubResource("CylinderShape3D_jq8tk")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="TreeStaticBody" unique_id=120685899]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -0.18682408, 1.2924038, -0.3)
+shape = SubResource("CylinderShape3D_ller6")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="TreeStaticBody" unique_id=176528668]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -1.4901161e-08, 0.100000024, -0.049999952)
+shape = SubResource("BoxShape3D_6fhyq")
