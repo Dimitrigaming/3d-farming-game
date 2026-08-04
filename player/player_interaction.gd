@@ -128,6 +128,16 @@ func _process(_delta: float) -> void:
 				_prompt_label.text = "[LMB] Harvest"
 				_prompt_label.visible = true
 
+	# Tree — chop with axe
+	if not valid and item_id == "axe" and state == farm.TILLED:
+		var crop = farm.get_crop(cell.x, cell.z)
+		if crop and crop.crop_def and crop.crop_def.is_tree:
+			highlight_color = Color(0.6, 0.35, 0.1, 0.6)
+			valid = true
+			if _prompt_label:
+				_prompt_label.text = "[LMB] Chop"
+				_prompt_label.visible = true
+
 	if valid:
 		(_highlight.material_override as StandardMaterial3D).albedo_color = highlight_color
 		_highlight.global_position = _cell_to_world(farm, cell)
@@ -157,6 +167,11 @@ func _do_left_action(item_id: String) -> void:
 				if not result.is_empty():
 					Inventory.add_item(result["item_id"], result["amount"])
 				_last_acted_cell = _hovered_cell
+		"axe":
+			var result = _hovered_farm.chop_tree(_hovered_cell.x, _hovered_cell.z)
+			if not result.is_empty():
+				Inventory.add_item(result["item_id"], result["amount"])
+			_last_acted_cell = _hovered_cell
 
 func _do_right_action(item_id: String) -> void:
 	if item_id.ends_with("_seed") and Inventory.has_item(item_id):

@@ -42,4 +42,12 @@ func is_ready_to_harvest() -> bool:
 func harvest() -> Dictionary:
 	if crop_def == null:
 		return {}
+	if crop_def.can_regrow and crop_def.regrow_stages > 0:
+		_set_stage(max(0, stage - crop_def.regrow_stages))
+		_timer = 0.0
 	return {"item_id": crop_def.yield_item_id, "amount": crop_def.yield_amount}
+
+func chop() -> Dictionary:
+	if crop_def == null:
+		return {}
+	return {"item_id": "wood", "amount": crop_def.chop_wood_yield}

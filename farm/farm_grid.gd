@@ -102,6 +102,17 @@ func harvest_crop(x: int, z: int) -> Dictionary:
 	if crop == null or not crop.is_ready_to_harvest():
 		return {}
 	var result = crop.harvest()
+	if not (crop.crop_def and crop.crop_def.can_regrow):
+		crop.queue_free()
+		_crops.erase(key)
+	return result
+
+func chop_tree(x: int, z: int) -> Dictionary:
+	var key = Vector3i(x, 0, z)
+	var crop = _crops.get(key) as PlantedCrop
+	if crop == null or crop.crop_def == null or not crop.crop_def.is_tree:
+		return {}
+	var result = crop.chop()
 	crop.queue_free()
 	_crops.erase(key)
 	return result

@@ -10,4 +10,6 @@ extends Resource
 @export var water_speed_multiplier: float = 1.5
 @export var can_regrow: bool = false
 @export var regrow_stages: int = 1
+@export var is_tree: bool = false
+@export var chop_wood_yield: int = 3
 @export var growth_stages: Array[PackedScene] = []
