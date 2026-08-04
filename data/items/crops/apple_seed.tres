@@ -1,4 +1,4 @@
-﻿[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://apple00000001s"]
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://apple00000001s"]
 
 [ext_resource type="PackedScene" uid="uid://4mpvtjvaeg2d" path="res://models/crops/SM_Apple_Seed.tscn" id="1_smdl"]
 [ext_resource type="Texture2D" uid="uid://bhwvxnmtysdwh" path="res://icons/crops/apple_seeds.png" id="2_sico"]

@@ -1,4 +1,4 @@
-﻿[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://sweetpot001i"]
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://sweetpot001i"]
 
 [ext_resource type="PackedScene" uid="uid://bg2f266ywbuet" path="res://models/crops/SM_SweetPotato.tscn" id="1_mdl"]
 [ext_resource type="Texture2D" uid="uid://bnqg7hjh3o1ug" path="res://icons/crops/sweetpotato.png" id="2_ico"]

@@ -1,4 +1,4 @@
-﻿[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://banana0000001s"]
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://banana0000001s"]
 
 [ext_resource type="PackedScene" uid="uid://c42k1iq6brfes" path="res://models/crops/SM_Banana_Seed.tscn" id="1_smdl"]
 [ext_resource type="Texture2D" uid="uid://cyxglldifkcwm" path="res://icons/crops/banana_seeds.png" id="2_sico"]

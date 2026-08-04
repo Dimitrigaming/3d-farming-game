@@ -1,4 +1,4 @@
-﻿[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://spinach0001i"]
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://spinach0001i"]
 
 [ext_resource type="PackedScene" uid="uid://njdbrt2c3t2f" path="res://models/crops/SM_Spinach.tscn" id="1_mdl"]
 [ext_resource type="Texture2D" uid="uid://dsmvcsyib1tg" path="res://icons/crops/spinach.png" id="2_ico"]

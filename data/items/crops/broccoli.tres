@@ -1,4 +1,4 @@
-﻿[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://broccoli0001i"]
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://broccoli0001i"]
 
 [ext_resource type="PackedScene" uid="uid://bv65ykmsgds3l" path="res://models/crops/SM_Broccoli.tscn" id="1_mdl"]
 [ext_resource type="Texture2D" uid="uid://41aml8yjskdw" path="res://icons/crops/broccoli.png" id="2_ico"]

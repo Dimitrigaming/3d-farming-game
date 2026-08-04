@@ -1,4 +1,4 @@
-﻿[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://pear000000001c"]
+[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://pear000000001c"]
 
 [ext_resource type="Script" uid="uid://cqjkmsb31rfok" path="res://autoloads/crop_definition.gd" id="1_def"]
 [ext_resource type="PackedScene" uid="uid://543ur3dijpev" path="res://models/crops/SM_Pear_Seed.tscn" id="2_s0"]
