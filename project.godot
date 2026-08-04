@@ -24,6 +24,7 @@ Inventory="*uid://5h0114cq3f1h"
 ItemDB="*uid://5eshl5piammb"
 GameManager="*uid://dr8508lgwdy53"
 CropDB="*res://autoloads/crop_db.gd"
+DeliveryManager="*res://autoloads/delivery_manager.gd"
 
 [display]
 
