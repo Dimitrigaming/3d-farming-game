@@ -15,6 +15,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	target_position = Vector3(0, 0, -10.0)
 	collision_mask = 0xFFFFFFFF
+	collide_with_areas = true
 	enabled = true
 	_setup_highlight()
 	_setup_prompt()
