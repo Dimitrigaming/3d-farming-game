@@ -4,20 +4,23 @@ const TAB_ORDERS   = 0
 const TAB_PRODUCTS = 1
 
 var _current_tab: int = TAB_ORDERS
-
-var _root: Control
-var _tab_btns: Array[Button] = []
-var _panels: Array[Control] = []
-
-var _orders_container: VBoxContainer
-var _products_container: VBoxContainer
-
 var _order_refresh_timer: float = 0.0
 
+@onready var _panels: Array[Control] = [
+	$Control/Panel/MarginContainer/VBox/Content/OrdersPanel,
+	$Control/Panel/MarginContainer/VBox/Content/ProductsPanel,
+]
+@onready var _tab_btns: Array[Button] = [
+	%BtnOrders,
+	%BtnProducts,
+]
+@onready var _orders_container: VBoxContainer = %OrdersContainer
+@onready var _products_container: VBoxContainer = %ProductsContainer
+
 func _ready() -> void:
-	layer = 20
 	visible = false
-	_build_ui()
+	%BtnOrders.pressed.connect(_show_tab.bind(TAB_ORDERS))
+	%BtnProducts.pressed.connect(_show_tab.bind(TAB_PRODUCTS))
 	DeliveryManager.orders_changed.connect(_on_orders_changed)
 	DeliveryManager.products_changed.connect(_on_products_changed)
 
@@ -108,108 +111,6 @@ func _on_products_changed() -> void:
 	if visible and _current_tab == TAB_PRODUCTS:
 		_refresh_products()
 
-func _build_ui() -> void:
-	_root = Control.new()
-	_root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	add_child(_root)
-
-	var bg = ColorRect.new()
-	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	bg.color = Color(0, 0, 0, 0.55)
-	_root.add_child(bg)
-
-	var panel = Panel.new()
-	panel.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	var style = StyleBoxFlat.new()
-	style.bg_color = Color(0.1, 0.12, 0.15)
-	style.border_color = Color(0.25, 0.28, 0.35)
-	for side in [SIDE_LEFT, SIDE_TOP, SIDE_RIGHT, SIDE_BOTTOM]:
-		style.set_border_width(side, 2)
-	panel.add_theme_stylebox_override("panel", style)
-	_root.add_child(panel)
-
-	var margin = MarginContainer.new()
-	margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	for side in ["left", "top", "right", "bottom"]:
-		margin.add_theme_constant_override("margin_" + side, 20)
-	panel.add_child(margin)
-
-	var vbox = VBoxContainer.new()
-	margin.add_child(vbox)
-
-	var title = Label.new()
-	title.text = "Delivery Tablet"
-	title.add_theme_font_size_override("font_size", 24)
-	title.add_theme_color_override("font_color", Color(0.85, 0.9, 1.0))
-	vbox.add_child(title)
-
-	var tab_bar = HBoxContainer.new()
-	tab_bar.add_theme_constant_override("separation", 4)
-	vbox.add_child(tab_bar)
-
-	for tab_name in ["Delivery Orders", "Products"]:
-		var btn = Button.new()
-		btn.text = tab_name
-		btn.toggle_mode = true
-		btn.focus_mode = Control.FOCUS_NONE
-		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		btn.pressed.connect(_show_tab.bind(_tab_btns.size()))
-		tab_bar.add_child(btn)
-		_tab_btns.append(btn)
-
-	vbox.add_child(HSeparator.new())
-
-	var content = Control.new()
-	content.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	vbox.add_child(content)
-
-	_panels.append(_build_orders_panel(content))
-	_panels.append(_build_products_panel(content))
-
-	_disable_focus_recursive(_root)
-
-	var hint = Label.new()
-	hint.text = "Press Tab to close"
-	hint.add_theme_color_override("font_color", Color(0.4, 0.4, 0.5))
-	hint.add_theme_font_size_override("font_size", 13)
-	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	vbox.add_child(hint)
-
-func _build_orders_panel(parent: Control) -> Control:
-	var p = VBoxContainer.new()
-	p.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	parent.add_child(p)
-
-	p.add_child(_section_label("Active Orders"))
-	var scroll = ScrollContainer.new()
-	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	p.add_child(scroll)
-
-	_orders_container = VBoxContainer.new()
-	_orders_container.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	_orders_container.add_theme_constant_override("separation", 8)
-	scroll.add_child(_orders_container)
-
-	return p
-
-func _build_products_panel(parent: Control) -> Control:
-	var p = VBoxContainer.new()
-	p.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	p.visible = false
-	parent.add_child(p)
-
-	p.add_child(_section_label("Products Available for Orders"))
-	var scroll = ScrollContainer.new()
-	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	p.add_child(scroll)
-
-	_products_container = VBoxContainer.new()
-	_products_container.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	_products_container.add_theme_constant_override("separation", 4)
-	scroll.add_child(_products_container)
-
-	return p
-
 func _make_order_row(order: Dictionary) -> Control:
 	var row = PanelContainer.new()
 	var style = StyleBoxFlat.new()
@@ -255,9 +156,8 @@ func _make_product_row(item: ItemDefinition) -> Control:
 	var row = HBoxContainer.new()
 	row.add_theme_constant_override("separation", 8)
 
-	var enabled = item.id in DeliveryManager.enabled_products
 	var check = CheckButton.new()
-	check.button_pressed = enabled
+	check.button_pressed = item.id in DeliveryManager.enabled_products
 	check.focus_mode = Control.FOCUS_NONE
 	check.toggled.connect(func(on): DeliveryManager.set_product_enabled(item.id, on))
 	row.add_child(check)
@@ -282,19 +182,6 @@ func _make_product_row(item: ItemDefinition) -> Control:
 func _on_fulfill_order(order: Dictionary) -> void:
 	DeliveryManager.try_fulfill_order(order)
 	_refresh_orders()
-
-func _disable_focus_recursive(node: Node) -> void:
-	if node is Control:
-		node.focus_mode = Control.FOCUS_NONE
-	for child in node.get_children():
-		_disable_focus_recursive(child)
-
-func _section_label(text: String) -> Label:
-	var lbl = Label.new()
-	lbl.text = text
-	lbl.add_theme_font_size_override("font_size", 15)
-	lbl.add_theme_color_override("font_color", Color(0.5, 0.75, 1.0))
-	return lbl
 
 func _make_label(text: String, color: Color) -> Label:
 	var lbl = Label.new()
