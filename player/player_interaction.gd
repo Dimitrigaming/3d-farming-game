@@ -9,6 +9,7 @@ var _current_interactable = null
 var _left_held: bool = false
 var _right_held: bool = false
 var _last_acted_cell: Vector3i = Vector3i(-1, -1, -1)
+var _hovered_fruit: FruitPickable = null
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -73,16 +74,25 @@ func _process(_delta: float) -> void:
 
 	if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
 		_current_interactable = null
+		_hovered_fruit = null
 		_left_held = false
 		_right_held = false
 		return
 
 	var hit = get_collider()
 
+	_hovered_fruit = null
 	_current_interactable = _find_interactable(hit)
 	if _current_interactable != null:
 		if _prompt_label and _current_interactable.has_method("get_interact_hint"):
 			_prompt_label.text = "[E] %s" % _current_interactable.get_interact_hint()
+			_prompt_label.visible = true
+		return
+
+	if hit is FruitPickable:
+		_hovered_fruit = hit
+		if _prompt_label:
+			_prompt_label.text = "[LMB] Pick"
 			_prompt_label.visible = true
 		return
 
@@ -191,6 +201,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			_left_held = event.pressed
 		elif event.button_index == MOUSE_BUTTON_RIGHT:
 			_right_held = event.pressed
+		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT and _hovered_fruit != null:
+			_hovered_fruit.pick()
+			_hovered_fruit = null
+			get_viewport().set_input_as_handled()
+			return
 		if event.pressed:
 			if _hovered_farm == null or _hovered_cell == Vector3i(-1, -1, -1):
 				return
