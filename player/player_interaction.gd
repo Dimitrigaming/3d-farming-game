@@ -168,9 +168,7 @@ func _do_left_action(item_id: String) -> void:
 					Inventory.add_item(result["item_id"], result["amount"])
 				_last_acted_cell = _hovered_cell
 		"axe":
-			var result = _hovered_farm.chop_tree(_hovered_cell.x, _hovered_cell.z)
-			if not result.is_empty():
-				Inventory.add_item(result["item_id"], result["amount"])
+			_hovered_farm.chop_tree(_hovered_cell.x, _hovered_cell.z)
 			_last_acted_cell = _hovered_cell
 
 func _do_right_action(item_id: String) -> void:
