@@ -1,27 +1,20 @@
 [gd_scene format=3 uid="uid://2hwx1pmgm2t"]
 
 [ext_resource type="Script" uid="uid://cpslgiwgdhmku" path="res://scripts/tablet.gd" id="1_lcbqf"]
+[ext_resource type="Texture2D" uid="uid://bxle760hh7psa" path="res://icons/inventory/inventory_1x1_black.png" id="2_b3a3k"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
-bg_color = Color(0.1, 0.12, 0.15, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.25, 0.28, 0.35, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBox_Grid"]
+texture = ExtResource("2_b3a3k")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_order"]
-bg_color = Color(0.12, 0.15, 0.18, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-
-[node name="Tablet" type="CanvasLayer"]
+[node name="Tablet" type="CanvasLayer" unique_id=205007076]
 layer = 20
 script = ExtResource("1_lcbqf")
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=232401629]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,7 +22,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Background" type="ColorRect" parent="Control"]
+[node name="Background" type="ColorRect" parent="Control" unique_id=598849992]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -38,16 +31,21 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.55)
 
-[node name="Panel" type="Panel" parent="Control"]
+[node name="Panel" type="Panel" parent="Control" unique_id=718043644]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -300.0
+offset_right = 450.0
+offset_bottom = 300.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
+theme_override_styles/panel = SubResource("StyleBox_Grid")
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel" unique_id=1269400179]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -59,20 +57,20 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBox" type="VBoxContainer" parent="Control/Panel/MarginContainer"]
+[node name="VBox" type="VBoxContainer" parent="Control/Panel/MarginContainer" unique_id=374836112]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Control/Panel/MarginContainer/VBox"]
+[node name="Title" type="Label" parent="Control/Panel/MarginContainer/VBox" unique_id=230419711]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.85, 0.9, 1, 1)
 theme_override_font_sizes/font_size = 24
 text = "Delivery Tablet"
 
-[node name="TabBar" type="HBoxContainer" parent="Control/Panel/MarginContainer/VBox"]
+[node name="TabBar" type="HBoxContainer" parent="Control/Panel/MarginContainer/VBox" unique_id=437052221]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="BtnOrders" type="Button" parent="Control/Panel/MarginContainer/VBox/TabBar"]
+[node name="BtnOrders" type="Button" parent="Control/Panel/MarginContainer/VBox/TabBar" unique_id=763755902]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -81,7 +79,7 @@ toggle_mode = true
 button_pressed = true
 text = "Delivery Orders"
 
-[node name="BtnProducts" type="Button" parent="Control/Panel/MarginContainer/VBox/TabBar"]
+[node name="BtnProducts" type="Button" parent="Control/Panel/MarginContainer/VBox/TabBar" unique_id=2052621625]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -89,14 +87,14 @@ focus_mode = 0
 toggle_mode = true
 text = "Products"
 
-[node name="HSeparator" type="HSeparator" parent="Control/Panel/MarginContainer/VBox"]
+[node name="HSeparator" type="HSeparator" parent="Control/Panel/MarginContainer/VBox" unique_id=736125161]
 layout_mode = 2
 
-[node name="Content" type="Control" parent="Control/Panel/MarginContainer/VBox"]
+[node name="Content" type="Control" parent="Control/Panel/MarginContainer/VBox" unique_id=1276969973]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="OrdersPanel" type="VBoxContainer" parent="Control/Panel/MarginContainer/VBox/Content"]
+[node name="OrdersPanel" type="VBoxContainer" parent="Control/Panel/MarginContainer/VBox/Content" unique_id=1171901055]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -104,23 +102,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SectionLabel" type="Label" parent="Control/Panel/MarginContainer/VBox/Content/OrdersPanel"]
+[node name="SectionLabel" type="Label" parent="Control/Panel/MarginContainer/VBox/Content/OrdersPanel" unique_id=1823741497]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.5, 0.75, 1, 1)
 theme_override_font_sizes/font_size = 15
 text = "Active Orders"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Control/Panel/MarginContainer/VBox/Content/OrdersPanel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/Panel/MarginContainer/VBox/Content/OrdersPanel" unique_id=117384120]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="OrdersContainer" type="VBoxContainer" parent="Control/Panel/MarginContainer/VBox/Content/OrdersPanel/ScrollContainer"]
+[node name="OrdersContainer" type="VBoxContainer" parent="Control/Panel/MarginContainer/VBox/Content/OrdersPanel/ScrollContainer" unique_id=1574242469]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 8
 
-[node name="ProductsPanel" type="VBoxContainer" parent="Control/Panel/MarginContainer/VBox/Content"]
+[node name="ProductsPanel" type="VBoxContainer" parent="Control/Panel/MarginContainer/VBox/Content" unique_id=387539056]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -129,25 +127,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SectionLabel" type="Label" parent="Control/Panel/MarginContainer/VBox/Content/ProductsPanel"]
+[node name="SectionLabel" type="Label" parent="Control/Panel/MarginContainer/VBox/Content/ProductsPanel" unique_id=197826103]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.5, 0.75, 1, 1)
 theme_override_font_sizes/font_size = 15
 text = "Products Available for Orders"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Control/Panel/MarginContainer/VBox/Content/ProductsPanel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/Panel/MarginContainer/VBox/Content/ProductsPanel" unique_id=5283236]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ProductsContainer" type="VBoxContainer" parent="Control/Panel/MarginContainer/VBox/Content/ProductsPanel/ScrollContainer"]
+[node name="ProductsContainer" type="VBoxContainer" parent="Control/Panel/MarginContainer/VBox/Content/ProductsPanel/ScrollContainer" unique_id=1043350158]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 4
 
-[node name="CloseHint" type="Label" parent="Control/Panel/MarginContainer/VBox"]
+[node name="CloseHint" type="Label" parent="Control/Panel/MarginContainer/VBox" unique_id=1965296964]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.4, 0.4, 0.5, 1)
 theme_override_font_sizes/font_size = 13
-text = "Press Tab or Esc to close"
+text = "Press I or Esc to close"
 horizontal_alignment = 2
