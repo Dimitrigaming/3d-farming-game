@@ -33,6 +33,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		var build_mode = get_tree().get_first_node_in_group("build_mode")
 		if build_mode and build_mode.active:
 			return
+		var tablet = get_tree().get_first_node_in_group("tablet")
+		if tablet and tablet.visible:
+			return
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			selected_slot = (selected_slot - 1 + 9) % 9
 			_update_highlight()

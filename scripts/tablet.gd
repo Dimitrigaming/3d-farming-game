@@ -19,6 +19,7 @@ var _order_refresh_timer: float = 0.0
 
 func _ready() -> void:
 	visible = false
+	add_to_group("tablet")
 	%BtnOrders.pressed.connect(_show_tab.bind(TAB_ORDERS))
 	%BtnProducts.pressed.connect(_show_tab.bind(TAB_PRODUCTS))
 	DeliveryManager.orders_changed.connect(_on_orders_changed)
