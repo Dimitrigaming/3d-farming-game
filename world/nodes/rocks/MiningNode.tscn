@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://mining_node_01"]
+
+[ext_resource type="Script" path="res://world/nodes/rocks/mining_node.gd" id="1_script"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_col"]
+radius = 0.8
+
+[node name="MiningNode" type="StaticBody3D"]
+script = ExtResource("1_script")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_col")
+
+[node name="Visual" type="Node3D" parent="."]
