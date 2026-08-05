@@ -1,4 +1,12 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://rugdpg7s2o01"]
+
+[ext_resource type="Texture2D" uid="uid://vcj266ymkryk" path="res://models/textures/PolyClem_texture.png" id="1_j6dhk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_j6dhk")
+emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_8gagk"]
 _surfaces = [{
@@ -14,12 +22,6 @@ _surfaces = [{
 "vertex_data": PackedByteArray("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")
 }]
 blend_shape_mode = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
-resource_name = "PolyClem_texture"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_4vqqg")
-emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_rchb0"]
 resource_name = "SM_Research_Prop_Book_Closed_01_Mesh"
@@ -40,8 +42,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_8gagk")
 
-[node name="SM_Research_Prop_Book_Closed_01" type="Node3D"]
+[node name="SM_Research_Prop_Book_Closed_01" type="Node3D" unique_id=1510995637]
 
-[node name="SM_Research_Prop_Book_Closed_01" type="MeshInstance3D" parent="."]
+[node name="SM_Research_Prop_Book_Closed_01" type="MeshInstance3D" parent="." unique_id=1392656723]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_rchb0")

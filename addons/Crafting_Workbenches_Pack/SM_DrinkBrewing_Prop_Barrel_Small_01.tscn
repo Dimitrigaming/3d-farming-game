@@ -1,4 +1,12 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://d0575bydh0nbi"]
+
+[ext_resource type="Texture2D" uid="uid://vcj266ymkryk" path="res://models/textures/PolyClem_texture.png" id="1_jvfi2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_jvfi2")
+emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ouhje"]
 _surfaces = [{
@@ -13,12 +21,6 @@ _surfaces = [{
 "vertex_data": PackedByteArray("SqIYOu7EtbrF07k7jrW2ulX5FDrF07k7krcUOiSXtjrF07k7/SAZunjHtTrF07k7HDYVuqqUtrrF07k70eW1uiLfGLrF07k7WpoVuoMPt7r2kMI7LWC2uvRFGbr2kMI7VjC3uotdFTr2kMI7yocZusZBtjr2kMI7Vt7gusNeNzr2kMI7rd7fuhYsPLr2kMI7l5s3uni94Lr2kMI73208ulbA3zr2kMI7VO87OtK937r2kMI7biJcumzBBrv3uKE7ljgGu9eoYbr4uKE72dEGu6XlWzr3uKE7XqMUuyzpebpNH6M7QAkZOkM/trr2kMI7I00Vu9+GczpMH6M7G/G2OoFYFbr2kMI7G5/gOr1ZN7r2kMI7IWxhOiIoBrv3uKE7PLIGO53gW7r3uKE7Tna2Ok30FLrF07k7lqa1OiHkGDrF07k7bZ/fOhwxPDr2kMI73SC2OghLGTr2kMI7zxsVOvwRtzr2kMI7Fx03OvK/4Dr2kMI7+KNbOqzCBjv4uKE7+RgGO+WtYTr3uKE7rOphumYpBjv4uKE76Sp6ujKUFDtNH6M7vIMUOzjueTpNH6M7LEVzOvM9FTtNH6M7YecZu2wJezqkPJU7psd6OjfYGTulPJU7gy0VO+OBc7pNH6M7c6x5Ou6SFLtNH6M7wccZO2gEe7qlPJU707CAOvYnGbulPJU7ocNzurI8FbtNH6M7yxgZO6zRgDqlPJU7+a0KOxFjaTpP1pM7T0Z7uvPWGbulPJU7aDgZuybPgLqkPJU7mc0KuwFeabpP1pM786RjurFbC7tP1pM7QCFpOii9CrtP1pM7mc0KuwFeabqf6ro6g0wLOzhjY7pP1pM786RjurFbC7uf6ro6QCFpOii9Cruf6ro6g0wLOzhjY7qf6ro607CAOvYnGbtJUbU6wccZO2gEe7pJUbU6+a0KOxFjaTqf6ro6yxgZO6zRgDpJUbU6cyZjOvBcCzuk6ro6psd6OjfYGTtOUbU6cyZjOvBcCztP1pM7tp9pumy+CjtP1pM7vIMUOzjueTpSjXs6DvCAujopGTukPJU7IWwLuz1oYzpP1pM7tp9pumy+Cjuf6ro6IWwLuz1oYzqf6ro6DvCAujopGTtKUbU6YecZu2wJezpKUbU6aDgZuybPgLpJUbU66Sp6ujKUFDtSjXs6LEVzOvM9FTtcjXs6T0Z7uvPWGbtJUbU6XqMUuyzpebpSjXs6I00Vu9+GczpXjXs6ocNzurI8FbtSjXs6biJcumzBBrv9X4M6ljgGu9eoYbr9X4M62dEGu6XlWzr9X4M6rOphumYpBjv9X4M6Vt7gusNeNzoAAAAA3208ulbA3zoAAAAArd7fuhYsPLoAAAAA+KNbOqzCBjsDYIM6l5s3uni94LoAAAAAVO87OtK937oAAAAAFx03OvK/4DoAAAAAbZ/fOhwxPDoAAAAA+RgGO+WtYTr9X4M6PLIGO53gW7r9X4M6G5/gOr1ZN7oAAAAAIWxhOiIoBrv9X4M6gy0VO+OBc7pSjXs6c6x5Ou6SFLtSjXs6rSHTOLb7hTqqkrU74nUQuTSucTqqkrU7ZetROSgocjqqkrU7VOQkuHHihTqqkrU7DFWDuHImjTo2qMM7SdhKuX2idzo2qMM7HmIBOQNIjTo2qMM73AWGOYBEeDo2qMM7nUUduHgsMzqqkrU79LVSOZN1TTqqkrU7GYyGOVKBRzo2qMM7HuoDOQzXJDo2qMM7CfHWOARfMzqqkrU7H6wPuar7TDqqkrU7u4p8uOyTJDo2qMM7zstJuU/fRjo2qMM7")
 }]
 blend_shape_mode = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
-resource_name = "PolyClem_texture"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_4vqqg")
-emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_b58fl"]
 resource_name = "SM_DrinkBrewing_Prop_Barrel_Small_01_Mesh"
@@ -38,8 +40,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ouhje")
 
-[node name="SM_DrinkBrewing_Prop_Barrel_Small_01" type="Node3D"]
+[node name="SM_DrinkBrewing_Prop_Barrel_Small_01" type="Node3D" unique_id=735585924]
 
-[node name="SM_DrinkBrewing_Prop_Barrel_Small_01" type="MeshInstance3D" parent="."]
+[node name="SM_DrinkBrewing_Prop_Barrel_Small_01" type="MeshInstance3D" parent="." unique_id=967790373]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_b58fl")

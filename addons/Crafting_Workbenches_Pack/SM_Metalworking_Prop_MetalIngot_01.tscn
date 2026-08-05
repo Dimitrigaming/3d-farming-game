@@ -1,4 +1,12 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://dckswpwktcsq1"]
+
+[ext_resource type="Texture2D" uid="uid://vcj266ymkryk" path="res://models/textures/PolyClem_texture.png" id="1_xfskf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_xfskf")
+emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_cjiqp"]
 _surfaces = [{
@@ -13,12 +21,6 @@ _surfaces = [{
 "vertex_data": PackedByteArray("GjYDOlz5ozoAAAAAGjYDulz5ozoAAAAAGjYDulz5o7oAAAAAv/G8uZ+TkzptSh06GjYDOlz5o7oAAAAAv/G8uZ+Tk7ptSh06v/G8OZ+Tk7ptSh06v/G8OZ+TkzptSh06")
 }]
 blend_shape_mode = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
-resource_name = "PolyClem_texture"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_4vqqg")
-emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ibpud"]
 resource_name = "SM_Metalworking_Prop_MetalIngot_01_Mesh"
@@ -38,8 +40,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_cjiqp")
 
-[node name="SM_Metalworking_Prop_MetalIngot_01" type="Node3D"]
+[node name="SM_Metalworking_Prop_MetalIngot_01" type="Node3D" unique_id=2120437785]
 
-[node name="SM_Metalworking_Prop_MetalIngot_01" type="MeshInstance3D" parent="."]
+[node name="SM_Metalworking_Prop_MetalIngot_01" type="MeshInstance3D" parent="." unique_id=893018922]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ibpud")

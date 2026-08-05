@@ -1,4 +1,26 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://cgf50wftaie6i"]
+
+[ext_resource type="Texture2D" uid="uid://vcj266ymkryk" path="res://models/textures/PolyClem_texture.png" id="1_pg0l5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_pg0l5")
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_re1es"]
+_surfaces = [{
+"aabb": AABB(-0.002501701, -2.604723e-07, -1.5299964e-10, 0.005003402, 0.007000969, 0.00020000002),
+"format": 34359742465,
+"index_count": 180,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMAAwAAAAQAAgAEAAAABAAFAAMAAwAGAAEABgADAAUABwAFAAQABQAHAAYABAACAAcACAABAAYAAgABAAgACQAGAAcABgAJAAgACgAHAAIABwAKAAkAAgALAAoACAALAAIACQAKAAwADAAKAAsADQALAAgACwANAAwACAAOAA0ADgAIAAkADwAMAA0AEAANAA4ADQAQAA8ADgARABAACQASAA4AEQAOABIADAASAAkAEAARABMAEwAPABAAEgATABEADAAPABMAEwASAAwAFAAVABYAFwAVABQAFgAVABcAFgAYABQAFwAZABYAGgAYABYAFgAZABoAGQAXABsAFAAbABcAGwAaABkAGwAUABgAGAAaABsAHAAdAB4AHgAdAB8AHwAdABwAHgAgABwAHAAhAB8AIQAcACAAHwAiAB4AIgAfACEAIAAeACIAIQAjACIAIgAjACAAIAAjACEA"),
+"name": "PolyClem_texture",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("hsMTO4VdgTmKYAk5hsMTO4VdgTmSOSivhsMTOyxO3TuSOSivhsMTu4VdgTmKYAk5hsMTOyxO3TuKYAk5hsMTuyxO3TuKYAk5hsMTu4VdgTmSOSivhsMTuyxO3TuSOSivTHUYO5qeNzmSOSivTHUYu5qeNzmSOSivTHUYuw+n3zuSOSivTHUYOw+n3zuSOSivlPMjuzNm5TuSOSivlPMjOzNm5TuSOSivlPMjOwrXi7SSOSivlPMjuzNm5TsOt1E5lPMjOzNm5TsOt1E5lPMjOwrXi7QOt1E5lPMjuwrXi7SSOSivlPMjuwrXi7QOt1E5hsMTO9vBaTtf2wc5hsMTu9vBaTtf2wc5hsMTu9vBaTt+7RU4hsMTuy0GYTu32gc5hsMTO9vBaTt+7RU4hsMTuy0GYTvh6hU4hsMTOy0GYTvh6hU4hsMTOy0GYTu32gc5JrrMOM1GTjmbvB45RbrMOM3x3jvEvB45RbrMOM3x3jugoGk3JrrMuM3x3jvOux45JrrMOM1GTjkMnmk3RbrMuM1GTjmlux45JrrMuM3x3jtTkWk3RbrMuM1GTjm/jmk3")
+}]
+blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_1kqgh"]
 resource_name = "SM_Art_Prop_Canvas_01_Mesh"
@@ -18,28 +40,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_re1es")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_re1es"]
-_surfaces = [{
-"aabb": AABB(-0.002501701, -2.604723e-07, -1.5299964e-10, 0.005003402, 0.007000969, 0.00020000002),
-"format": 34359742465,
-"index_count": 180,
-"index_data": PackedByteArray("AAABAAIAAQAAAAMAAwAAAAQAAgAEAAAABAAFAAMAAwAGAAEABgADAAUABwAFAAQABQAHAAYABAACAAcACAABAAYAAgABAAgACQAGAAcABgAJAAgACgAHAAIABwAKAAkAAgALAAoACAALAAIACQAKAAwADAAKAAsADQALAAgACwANAAwACAAOAA0ADgAIAAkADwAMAA0AEAANAA4ADQAQAA8ADgARABAACQASAA4AEQAOABIADAASAAkAEAARABMAEwAPABAAEgATABEADAAPABMAEwASAAwAFAAVABYAFwAVABQAFgAVABcAFgAYABQAFwAZABYAGgAYABYAFgAZABoAGQAXABsAFAAbABcAGwAaABkAGwAUABgAGAAaABsAHAAdAB4AHgAdAB8AHwAdABwAHgAgABwAHAAhAB8AIQAcACAAHwAiAB4AIgAfACEAIAAeACIAIQAjACIAIgAjACAAIAAjACEA"),
-"name": "PolyClem_texture",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 36,
-"vertex_data": PackedByteArray("hsMTO4VdgTmKYAk5hsMTO4VdgTmSOSivhsMTOyxO3TuSOSivhsMTu4VdgTmKYAk5hsMTOyxO3TuKYAk5hsMTuyxO3TuKYAk5hsMTu4VdgTmSOSivhsMTuyxO3TuSOSivTHUYO5qeNzmSOSivTHUYu5qeNzmSOSivTHUYuw+n3zuSOSivTHUYOw+n3zuSOSivlPMjuzNm5TuSOSivlPMjOzNm5TuSOSivlPMjOwrXi7SSOSivlPMjuzNm5TsOt1E5lPMjOzNm5TsOt1E5lPMjOwrXi7QOt1E5lPMjuwrXi7SSOSivlPMjuwrXi7QOt1E5hsMTO9vBaTtf2wc5hsMTu9vBaTtf2wc5hsMTu9vBaTt+7RU4hsMTuy0GYTu32gc5hsMTO9vBaTt+7RU4hsMTuy0GYTvh6hU4hsMTOy0GYTvh6hU4hsMTOy0GYTu32gc5JrrMOM1GTjmbvB45RbrMOM3x3jvEvB45RbrMOM3x3jugoGk3JrrMuM3x3jvOux45JrrMOM1GTjkMnmk3RbrMuM1GTjmlux45JrrMuM3x3jtTkWk3RbrMuM1GTjm/jmk3")
-}]
-blend_shape_mode = 0
+[node name="SM_Art_Prop_Canvas_01" type="Node3D" unique_id=836649767]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
-resource_name = "PolyClem_texture"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_4vqqg")
-emission_enabled = true
-
-[node name="SM_Art_Prop_Canvas_01" type="Node3D"]
-
-[node name="SM_Art_Prop_Canvas_01" type="MeshInstance3D" parent="."]
+[node name="SM_Art_Prop_Canvas_01" type="MeshInstance3D" parent="." unique_id=917546717]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_1kqgh")

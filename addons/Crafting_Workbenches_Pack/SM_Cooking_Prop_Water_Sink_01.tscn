@@ -1,4 +1,27 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://j6jbx88wsgkp"]
+
+[ext_resource type="Texture2D" uid="uid://vcj266ymkryk" path="res://models/textures/PolyClem_texture.png" id="1_k47hp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_k47hp")
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1we65"]
+_surfaces = [{
+"aabb": AABB(-0.001955562, -0.0023364394, 1.9070274e-06, 0.0039111245, 0.0046728794, 0.00018649758),
+"format": 34359742465,
+"index_count": 60,
+"index_data": PackedByteArray("CwABAAIAAQALAAAAAgAMAAsAAgAEAAwADAAEAAMAAwANAAwACwAMAA0ADQADAAUAAAALAA4ADQAOAAsADgAGAAAABQAPAA0ADgANAA8ADwAFAAoADwAKAAkADwAHAA4ABgAOAAcACQAHAA8ABwAIAAYACAAHAAkA"),
+"lods": [0.00059926294, PackedByteArray("AAABAAIAAgADAAAAAgAEAAMAAAADAAUABQAGAAAABgAFAAcABwAIAAYACAAHAAkACQAHAAUABQAKAAkA")],
+"name": "PolyClem_texture",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("5CgAOwrXI64kKjU35CgAO6mBzrokKjU3iJWcOvMeGbskKjU34ygAu6mBzrokKjU3jJWcuvMeGbskKjU34ygAuwrXI64kKjU35CgAO6aBzjokKjU3zmasOcgS3jp6jkU5iJWcOvQeGTskKjU3jJWcuvQeGTskKjU34ygAu6aBzjokKjU389WOOj9WKLqNyeA32GasucUS3rp6jkU5u9U2uopNE7r29P81w9U2OohNEzr29P819NWOuj9WKDqNyeA3")
+}]
+blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_xvg8t"]
 resource_name = "SM_Cooking_Prop_Water_Sink_01_Mesh"
@@ -19,29 +42,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1we65")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_1we65"]
-_surfaces = [{
-"aabb": AABB(-0.001955562, -0.0023364394, 1.9070274e-06, 0.0039111245, 0.0046728794, 0.00018649758),
-"format": 34359742465,
-"index_count": 60,
-"index_data": PackedByteArray("CwABAAIAAQALAAAAAgAMAAsAAgAEAAwADAAEAAMAAwANAAwACwAMAA0ADQADAAUAAAALAA4ADQAOAAsADgAGAAAABQAPAA0ADgANAA8ADwAFAAoADwAKAAkADwAHAA4ABgAOAAcACQAHAA8ABwAIAAYACAAHAAkA"),
-"lods": [0.00059926294, PackedByteArray("AAABAAIAAgADAAAAAgAEAAMAAAADAAUABQAGAAAABgAFAAcABwAIAAYACAAHAAkACQAHAAUABQAKAAkA")],
-"name": "PolyClem_texture",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 16,
-"vertex_data": PackedByteArray("5CgAOwrXI64kKjU35CgAO6mBzrokKjU3iJWcOvMeGbskKjU34ygAu6mBzrokKjU3jJWcuvMeGbskKjU34ygAuwrXI64kKjU35CgAO6aBzjokKjU3zmasOcgS3jp6jkU5iJWcOvQeGTskKjU3jJWcuvQeGTskKjU34ygAu6aBzjokKjU389WOOj9WKLqNyeA32GasucUS3rp6jkU5u9U2uopNE7r29P81w9U2OohNEzr29P819NWOuj9WKDqNyeA3")
-}]
-blend_shape_mode = 0
+[node name="SM_Cooking_Prop_Water_Sink_01" type="Node3D" unique_id=1265891833]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
-resource_name = "PolyClem_texture"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_4vqqg")
-emission_enabled = true
-
-[node name="SM_Cooking_Prop_Water_Sink_01" type="Node3D"]
-
-[node name="SM_Cooking_Prop_Water_Sink_01" type="MeshInstance3D" parent="."]
+[node name="SM_Cooking_Prop_Water_Sink_01" type="MeshInstance3D" parent="." unique_id=120714380]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_xvg8t")

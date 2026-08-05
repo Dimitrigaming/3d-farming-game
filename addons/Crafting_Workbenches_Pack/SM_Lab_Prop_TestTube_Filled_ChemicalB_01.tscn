@@ -1,4 +1,12 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://cytwkig741n8"]
+
+[ext_resource type="Texture2D" uid="uid://vcj266ymkryk" path="res://models/textures/PolyClem_texture.png" id="1_7hotf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_7hotf")
+emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_mubyt"]
 _surfaces = [{
@@ -13,12 +21,6 @@ _surfaces = [{
 "vertex_data": PackedByteArray("xAX1OMbi+Dg5iKE6KvbROABc1Tj43qQ6UvgtsdS9Fjn43qQ6UwVLsc7cLzk6iKE67wj1uMbi+Dg5iKE6UwVLsc7cLzlf3Zs6xAX1OMbi+Dhe3Zs6JEItOfYonDQ5iKE6ruoXseSrAzn63qQ64fjRuABc1Tj43qQ67wj1uMbi+Dhe3Zs6UvgtsdS9FjmU85c6ukMtufYonDRe3Zs6ukMtufYonDQ5iKE6sVu3uLJkujj63qQ64fjRuABc1TiU85c6v3gUufYonDSU85c64fjRuK4j1LiU85c6vngUufYonDQoTR864fjRuABc1TgoTR86vXgUufYonDRcMms4UvgtsdS9FjknTR864fjRuK4j1LgoTR867wj1uHSq97he3Zs6UvgtsashFrkoTR86UvgtsashFrmU85c67wj1uHSq97g5iKE6UvgtsashFrlcMms44fjRuK4j1LhcMms4KvbROK4j1LhcMms4M5WcMf2KybiFqwg14hCNuEpVjriFqwg1UoDHuPYonDSFqwg19iicMfYonDSFqwg1xhWNOEpVjriFqwg1KvbROK4j1LgoTR864hCNuJOOjziFqwg14fjRuABc1ThcMms4M5WcMUbEyjiFqwg1UvgtsdS9FjlcMms4KvbROABc1ThcMms4KvbROABc1TgoTR86xhWNOJOOjziFqwg1PYXHOPYonDSFqwg1YXcUOfYonDRcMms4YncUOfYonDQoTR86KvbROABc1TiU85c6Y3cUOfYonDSU85c6JEItOfYonDRe3Zs6KvbROK4j1LiU85c6xAX1OHSq97he3Zs6xAX1OHSq97g5iKE6UwVLsaVAL7le3Zs6UwVLsaVAL7k5iKE6UvgtsashFrn43qQ6KvbROK4j1Lj43qQ6Y3cUOfYonDT43qQ64fjRuK4j1Lj43qQ6ruoXsbwPA7n63qQ6Vlm3OGQsubj63qQ6Vlm3OLZkujj63qQ6haYBOfYonDT63qQ66nQJsW8d7biqb6M66nQJscFV7jiqb6M67+SlOKl8p7iqb6M67+SlOPu0qDiqb6M6lJzqOPYonDSqb6M6lJzqOPYonDT5xh467+SlOPu0qDj5xh466nQJscFV7jj5xh46ZmYKsfYonDT4xh467+SlOKl8p7j5xh466nQJsW8d7bj5xh46FOeluPu0qDj5xh46FOeluPu0qDiqb6M6u57quPYonDT5xh46FOeluKl8p7j5xh46FOeluKl8p7iqb6M6u57quPYonDSqb6M6sqcBufYonDT63qQ6sVu3uGAsubj63qQ6v3gUufYonDT43qQ6")
 }]
 blend_shape_mode = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
-resource_name = "PolyClem_texture"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_4vqqg")
-emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_gb1jg"]
 resource_name = "SM_Lab_Prop_TestTube_Filled_ChemicalB_01_Mesh"
@@ -38,8 +40,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_mubyt")
 
-[node name="SM_Lab_Prop_TestTube_Filled_ChemicalB_01" type="Node3D"]
+[node name="SM_Lab_Prop_TestTube_Filled_ChemicalB_01" type="Node3D" unique_id=1242430026]
 
-[node name="SM_Lab_Prop_TestTube_Filled_ChemicalB_01" type="MeshInstance3D" parent="."]
+[node name="SM_Lab_Prop_TestTube_Filled_ChemicalB_01" type="MeshInstance3D" parent="." unique_id=1575225392]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_gb1jg")

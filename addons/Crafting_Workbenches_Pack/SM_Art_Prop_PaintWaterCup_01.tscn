@@ -1,4 +1,12 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://t8dghp8xdhpg"]
+
+[ext_resource type="Texture2D" uid="uid://vcj266ymkryk" path="res://models/textures/PolyClem_texture.png" id="1_ermux"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_ermux")
+emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_y7jfl"]
 _surfaces = [{
@@ -13,12 +21,6 @@ _surfaces = [{
 "vertex_data": PackedByteArray("0mtUsQqXszkM/2s6QYibubSWMzkM/2s6lv+wuZdgTDkM/2s65AWauYnZMTkmTTo6jySxMLrZsTkmTTo65AWauVPaMbkmTTo6QYibuQ6YM7kM/2s6lv+wucZhTLkM/2s60mtUsbiXs7kM/2s6jySxMCDasbkmTTo6Dk9zsHthzLkM/2s6b4ebOQ6YM7kM/2s6PwaaOVPaMbkmTTo6PwaaOYnZMTkmTTo6b4ebObSWMzkM/2s6W/+wOcZhTLkM/2s6Dk9zsONgzDkM/2s6W/+wOZdgTDkM/2s6rR5TsINXsbkK5x04zpSZOcVXMbkK5x04zpSZOb1WMTkL5x04ApWZucVXMbkK5x04ApWZub1WMTkL5x04rR5TsABXsTkL5x04vcuEuUVWGTkAAAAAmplRsIZWmTkAAAAAvcuEuUpXGbkAAAAA7FFQsAlXmbkAAAAAisuEOUVWGTkAAAAAisuEOUpXGbkAAAAA")
 }]
 blend_shape_mode = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
-resource_name = "PolyClem_texture"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_4vqqg")
-emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_1u8xg"]
 resource_name = "SM_Art_Prop_PaintWaterCup_01_Mesh"
@@ -38,8 +40,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_y7jfl")
 
-[node name="SM_Art_Prop_PaintWaterCup_01" type="Node3D"]
+[node name="SM_Art_Prop_PaintWaterCup_01" type="Node3D" unique_id=1708220810]
 
-[node name="SM_Art_Prop_PaintWaterCup_01" type="MeshInstance3D" parent="."]
+[node name="SM_Art_Prop_PaintWaterCup_01" type="MeshInstance3D" parent="." unique_id=1562955027]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_1u8xg")

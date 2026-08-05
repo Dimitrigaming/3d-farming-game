@@ -1,4 +1,12 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://b2nlkmhpjs4p8"]
+
+[ext_resource type="Texture2D" uid="uid://vcj266ymkryk" path="res://models/textures/PolyClem_texture.png" id="1_e32h5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_e32h5")
+emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_k53o2"]
 _surfaces = [{
@@ -14,12 +22,6 @@ _surfaces = [{
 "vertex_data": PackedByteArray("1iCjuLwgozh/V/861iCjuLwgozh7TuY4AAAAAKiy5jh7TuY4ttMJufG2d69r1Bw7AAAAAKiy5jh/V/86serCuOXb4Ddr1Bw71iCjOLwgozh/V/861iCjOLwgozh7TuY4serCOOXb4Ddr1Bw7JfLgOA3y4DgWdhs4ttMJOfG2d69r1Bw7wbLmONPwaq97TuY4jw8fOVsKX68Wdhs4AAAAAIMPHzkWdhs48f4auRSuh6+OAyQ78f4aORSuh6+OAyQ7serCOI7c4Ldr1Bw7serCuI7c4Ldr1Bw71iCjOAEho7h/V/861iCjOAEho7h7TuY4AAAAAOqy5rh7TuY4AAAAAOqy5rh/V/861iCjuAEho7h/V/86wbLmuNPwaq97TuY41iCjuAEho7h7TuY4jw8fuVsKX68Wdhs4JPLguFPy4LgWdhs4AAAAAKQPH7kWdhs4JPLgOFPy4LgWdhs4AAAAAGLiErlj9iI3rbnPONq5z7hk9iI3TeISOQRbYq9k9iI3rLnPOJO5zzhk9iI3AAAAAEHiEjlj9iI3rLnPuNq5z7hk9iI3TeISuQRbYq9k9iI3rLnPuJO5zzhk9iI3JPLguA3y4DgWdhs4wbLmuNPwaq9/V/86AACAqeXZ4Ddr1Bw7/xrLqbgeha+OAyQ7AACAqYra4Ldr1Bw7wbLmONPwaq9/V/86AAAAAKiy5jgAAAAA1iCjOLwgozgAAAAAwbLmONPwaq8AAAAA1iCjOAEho7gAAAAAAAAAABSuR68AAAAA1iCjuLwgozgAAAAAwbLmuNPwaq8AAAAAAAAAAOqy5rgAAAAA1iCjuAEho7gAAAAA")
 }]
 blend_shape_mode = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
-resource_name = "PolyClem_texture"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_4vqqg")
-emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_us3xh"]
 resource_name = "SM_StoneCutting_Prop_Chisel_01_Mesh"
@@ -40,8 +42,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_k53o2")
 
-[node name="SM_StoneCutting_Prop_Chisel_01" type="Node3D"]
+[node name="SM_StoneCutting_Prop_Chisel_01" type="Node3D" unique_id=409089656]
 
-[node name="SM_StoneCutting_Prop_Chisel_01" type="MeshInstance3D" parent="."]
+[node name="SM_StoneCutting_Prop_Chisel_01" type="MeshInstance3D" parent="." unique_id=1479446440]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_us3xh")

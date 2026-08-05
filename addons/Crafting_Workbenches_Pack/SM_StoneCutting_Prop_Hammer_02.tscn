@@ -1,4 +1,12 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://dwb64o3x31a8r"]
+
+[ext_resource type="Texture2D" uid="uid://vcj266ymkryk" path="res://models/textures/PolyClem_texture.png" id="1_j4rpp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_j4rpp")
+emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_nq6wk"]
 _surfaces = [{
@@ -14,12 +22,6 @@ _surfaces = [{
 "vertex_data": PackedByteArray("1G0UucptFDl8zlA7AAAAAATpUTl8zlA7AAAAAHYnPzm941E71G0UOcptFDl8zlA7nioHuZQqBzm941E7gCc/uV0YV6+941E7nioHOZQqBzm941E7ZhIDMU/rPDmJth44j5YFOQOWBTmJth44iZUFuQOWBTmJth44jRADMRHrJzlKgXQ3DulRucAZV698zlA7gCc/OV0YV6+941E7nSoHubgqB7m941E7DulROcAZV698zlA71uo8uS2XQa+Jth443Os8OS2XQa+Jth44nSoHObgqB7m941E7AAAAAJgnP7m941E71G0Uue5tFLl8zlA71G0UOe5tFLl8zlA7j5YFOSOWBbmJth44AAAAACjpUbl8zlA7ZhIDMXHrPLmJth44iZUFuSOWBbmJth44ISMDMTLrJ7lMgXQ39nntOBx57bhKgXQ36nftuBx57bhKgXQ3n+snOR9kQq9KgXQ393ntONx47ThMgXQ3mOonuRQiRK9KgXQ37HftuNx47ThMgXQ3iU83uj9YdLlSNi07qvsvukdAnblSNi07qvsvuj9YdLnN0yg7qvsvuj9YdDnN0yg7iU83uj9YdDlSNi07DWp0uT9YdDnN0yg7qvsvukdAnTlSNi07iU83uj9YdLltw0s7qvsvukdAnTltw0s7DWp0uUdAnTlSNi07iU83uj9YdDltw0s7qvsvuj9YdDnyJVA7qvsvuj9YdLnyJVA7qvsvukdAnbltw0s7DWp0uUdAnTltw0s7DWp0uT9YdDnyJVA7Cmp0uT9YdLnyJVA7Cmp0uUdAnbltw0s7Cmp0uUdAnblSNi07DWp0OT9YdLnyJVA7Cmp0uT9YdLnN0yg7DWp0OUdAnbltw0s7DWp0OUdAnblSNi07Cmp0OT9YdDnN0yg7DWp0OT9YdLnN0yg7Cmp0OUdAnTlSNi07gfsvOj9YdDnN0yg7Cmp0OUdAnTltw0s7gfsvOkdAnTlSNi07Cmp0OT9YdDnyJVA7gfsvOkdAnTltw0s7gfsvOj9YdDnyJVA7gfsvOj9YdLnyJVA7iU83Oj9YdDltw0s7iU83Oj9YdLltw0s7gfsvOkdAnbltw0s7iU83Oj9YdDlSNi07iU83Oj9YdLlSNi07gfsvOj9YdLnN0yg7gfsvOkdAnblSNi07j5YFOSOWBbktnhs7ZhIDMXHrPLktnhs7iZUFuSOWBbktnhs71uo8uS2XQa8tnhs7AAAAAD0KV6+941E7iZUFuQOWBTktnhs7ZhIDMU/rPDktnhs7j5YFOQOWBTktnhs73Os8OS2XQa8tnhs7KVwDMdejkK8AAAAA")
 }]
 blend_shape_mode = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
-resource_name = "PolyClem_texture"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_4vqqg")
-emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_chq40"]
 resource_name = "SM_StoneCutting_Prop_Hammer_02_Mesh"
@@ -40,8 +42,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_nq6wk")
 
-[node name="SM_StoneCutting_Prop_Hammer_02" type="Node3D"]
+[node name="SM_StoneCutting_Prop_Hammer_02" type="Node3D" unique_id=1916491161]
 
-[node name="SM_StoneCutting_Prop_Hammer_02" type="MeshInstance3D" parent="."]
+[node name="SM_StoneCutting_Prop_Hammer_02" type="MeshInstance3D" parent="." unique_id=1631919240]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_chq40")

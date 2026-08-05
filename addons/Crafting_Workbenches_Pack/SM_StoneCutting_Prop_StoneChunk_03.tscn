@@ -1,4 +1,12 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://52qmv0qbvxn5"]
+
+[ext_resource type="Texture2D" uid="uid://vcj266ymkryk" path="res://models/textures/PolyClem_texture.png" id="1_aubcj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_aubcj")
+emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_vnfta"]
 _surfaces = [{
@@ -14,12 +22,6 @@ _surfaces = [{
 "vertex_data": PackedByteArray("P+f+OnDEmzqxFI46l+kCO+UDmzo/r4Y6zhUDO2+Ylzpcs5M6F711OkZPozrDFX84scoCO1eKmjqnxZg6TA8EO9zKnTqFEnk4PWQDO4G2oDnh+aI4RM7tOem6lzof9ys7UyQBO7YsmDp2kyk7+IUBO0yqrrryuSg7xaFAuVH5nzpm5qO2TRoDO9LOxLozDbo6jUIEO5u7wbpmTjo3ND4DO6n1v7qPUKM6BycDO1h8xLp2zZQ64bf3OlFIxbpf5Z46OlW9uompw7q8kZy4nGnpOreayLr3gSg7Bd0BO7xXx7ov7Bs7mNbLugN4x7o8DyQ7HE3Gukbjw7q1rQC38S3Guuk1u7r/rZW4pkbPuhBulTr9BiY7Ze0xuixrizrok+C3aJg1uizqnzpPH/k44O4cuhBfnzpu1h23MkjIur8LkjrRFo+3BHnIugZGmzr3m2g4sq2+ugynmzrpI4i3sl5DuluhnjrPOT63TUhDOr98Wbp46yY7s8p5Otr5ybqpYyg7n+0wuRN8zbq4IyQ7hvrbueSzA7qIJSQ7ahkvuo9GlDpYyCc7zQNBOlugwLqF0w+4OANhOsdvlTeavWk4mvaYuWrtWLlxldO3N+rJuewrxLqar864mkvGutPoDbpmMky4r3XJuo0zTrnvJyU7")
 }]
 blend_shape_mode = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
-resource_name = "PolyClem_texture"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_4vqqg")
-emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ga342"]
 resource_name = "SM_StoneCutting_Prop_StoneChunk_03_Mesh"
@@ -40,8 +42,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_vnfta")
 
-[node name="SM_StoneCutting_Prop_StoneChunk_03" type="Node3D"]
+[node name="SM_StoneCutting_Prop_StoneChunk_03" type="Node3D" unique_id=1044428193]
 
-[node name="SM_StoneCutting_Prop_StoneChunk_03" type="MeshInstance3D" parent="."]
+[node name="SM_StoneCutting_Prop_StoneChunk_03" type="MeshInstance3D" parent="." unique_id=1472603784]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ga342")

@@ -1,4 +1,12 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://dd32ky7tvckmg"]
+
+[ext_resource type="Texture2D" uid="uid://vcj266ymkryk" path="res://models/textures/PolyClem_texture.png" id="1_joxiq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_joxiq")
+emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_wlxu2"]
 _surfaces = [{
@@ -14,12 +22,6 @@ _surfaces = [{
 "vertex_data": PackedByteArray("aTvoOSEDqzrSrzM2gIFgOpwJqzrchjQ2wWqUOqm3ZTpBPDQ2BGKUOu8Nqzo4FjU2Ue5JuiRZAjppqzA2poGCuTuJZTra1TE2+MtJusg0ETqctTA2+N9hut1VAjqgiTA2uop3ugh+zzmtWjA2dXKUOmSdAjoPfDM2A2B4ukITnTiDKjA2hnSUOgQT0DmESDM2D3uUOoSNnzhvpTI2ZX2UOlkzIbg3azI2/4WUOtN98bmXlDE274OUOg5WvLkhyDE2+PVLukTwvLkUETA2Iax4upcoJrhTGTA2aYF5ukn+vLkq6S82zcR5uiQm8rny2S82ioyUOrvWTLqB8TA2oP1NurWkn7rAdi82FJp6uq0vTbrJqS82M+Z6uqA0a7qYmC82fLt7up2on7pvaC824P57upPyrLo3WS82346UOqHbarpJtzA2apWUOrp5n7ozFDA2epeUOqrDrLqp4C82L5+UOs1Q3rp2IC82feFfOmBX3rp2IC82V6zjOT1h3rp2IC82DSSLua5x3rp2IC82LCBPugN+3rp2IC82OPp8uh2C3rp2IC82qQHnOZOEAjoBdjI2yozlOe618bkMATE2vytKunGKzzkqmTA2QjGFua3mnTgm/jA2Ku5Kuh1InThtXzA2ZjNMuh0Y8rnW/i820fVMukMoTboYxS82hOPkOUz5arq6VzA2cXSIufQWa7op+C82xWbkOVuJn7ry2i82o2pgOl+uZTpgwTM2rJTnOXKgZToOCTM2e1ZgOneTAjo9EzM2E1FgOib/zzmK5DI2f8aDucFrAjrzbzE2PdrmOVrhzzmTTjI2+D9gOvM4nzjIUDI2mx2EubGvzzmgVDE2f13mORi6njjM0TE23zlgOpTcIbgIHDI29zDmOW7aIrhBpTE2pZOFuYGBJLhK3zA2jjNLutS+JbjRSjA2xChgOnxsvLlFiDE2N7TlOSGOvLl6KDE2TqeGuTTGvLnSiDA2WyNgOkSU8bmSWTE2av6GuQnu8bl/bTA2QBJgOpjiTLrPxTA2DBDlOWD0TLpEhDA2DxKIuQYSTboFFzA2JgxgOn/naroPkTA2NDtNujYta7p8sC82DPtfOvl/n7pN/S82GIiJufuYn7qxoS82pfVfOuzJrLqazi82Wj/kOU7TrLqEsy82NN+JufHirLpdhi82DjtOuqzurLqBZC82")
 }]
 blend_shape_mode = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
-resource_name = "PolyClem_texture"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_4vqqg")
-emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_1b557"]
 resource_name = "SM_Research_Prop_Paper_01_Mesh"
@@ -40,8 +42,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_wlxu2")
 
-[node name="SM_Research_Prop_Paper_01" type="Node3D"]
+[node name="SM_Research_Prop_Paper_01" type="Node3D" unique_id=524151557]
 
-[node name="SM_Research_Prop_Paper_01" type="MeshInstance3D" parent="."]
+[node name="SM_Research_Prop_Paper_01" type="MeshInstance3D" parent="." unique_id=1975132057]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_1b557")

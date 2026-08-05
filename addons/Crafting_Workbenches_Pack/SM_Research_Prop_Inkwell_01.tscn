@@ -1,4 +1,12 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://dlr7gwdsej2ce"]
+
+[ext_resource type="Texture2D" uid="uid://vcj266ymkryk" path="res://models/textures/PolyClem_texture.png" id="1_ueqrk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_ueqrk")
+emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_kvjlg"]
 _surfaces = [{
@@ -13,12 +21,6 @@ _surfaces = [{
 "vertex_data": PackedByteArray("xcTROcOn0TkAAAAAAAAAAMOn0TkAAAAAAAAAAAAAAAAAAAAAxcTROQAAAAAAAAAAP2BzObxAczlvEgM6xcTRuQAAAAAAAAAAnJUJsrxAczlvEgM6xcTRucOn0bkAAAAAAAAAAMOn0bkAAAAAimRzubxAc7lvEgM6xcTRucOn0TkAAAAAxcTROcOn0bkAAAAAimRzubxAczlvEgM6imRzuQAAAABvEgM6P2BzObxAc7lvEgM6nJUJsrxAc7lvEgM6Pe32uBrI9rhvEgM6Pe32uBrI9jhvEgM6P2BzOQAAAABvEgM6ROf2OBrI9rhvEgM6ROf2OBrI9jhvEgM6jR6/sX4SIzlvEgM6Pe32uBrI9jgtn0s6kScjOQAAAABvEgM6jR6/sX4SIzktn0s6ROf2OBrI9jgtn0s6kScjOQAAAAAtn0s6ROf2OBrI9rgtn0s6AGoGsN9NYDktn0s6yGxgOQAAAAAtn0s6ZdApOQq5KTktn0s6AGoGsN9NYDm9YWE6ZdApOQq5KTm9YWE6yGxgOQAAAAC9YWE6KQi+OAXuvTi9YWE6qdApuQq5KTm9YWE6qdApuQq5KTktn0s6dAi+uAXuvTi9YWE6CW1guQAAAAC9YWE6CW1guQAAAAAtn0s6jCojuQAAAAAtn0s6qdApuQq5Kbm9YWE6jCojuQAAAABvEgM6Pe32uBrI9rgtn0s6qdApuQq5Kbktn0s6dAi+uAXuvbi9YWE6AGoGsN9NYLm9YWE6AGoGsN9NYLktn0s6jR6/sX4SI7ktn0s6jR6/sX4SI7lvEgM6ZdApOQq5Kbktn0s6ZdApOQq5Kbm9YWE6KQi+OAXuvbi9YWE6CCX7OAAAAAC9YWE6z2qWr3EC+7i9YWE6KQi+OAXuvbhIFvA5z2qWr3EC+7hIFvA5CCX7OAAAAABIFvA5KQi+OAXuvThIFvA52oBZOQAAAABIFvA5uLZnMiVfWblIFvA5dAi+uAXuvbhIFvA5jZQkOSx6JLlIFvA5nE0yMvMsqbkUHI04jZQkOSx6JDlIFvA5wUWpOQAAAAAUHI04ahWAOU4CgLkUHI04ahWAOU4CgDkUHI04uB4zMgrXoywUHI04nE0yMvMsqTkUHI04uLZnMiVfWTlIFvA5oRKAuU4CgDkUHI04z2qWr3EC+zhIFvA5T40kuSx6JDlIFvA5dAi+uAXuvThIFvA5z2qWr3EC+zi9YWE69kKpuQAAAAAUHI04mnlZuQAAAABIFvA5oRKAuU4CgLkUHI04T40kuSx6JLlIFvA5USX7uAAAAABIFvA5USX7uAAAAAC9YWE6")
 }]
 blend_shape_mode = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
-resource_name = "PolyClem_texture"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_4vqqg")
-emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ngc3o"]
 resource_name = "SM_Research_Prop_Inkwell_01_Mesh"
@@ -38,8 +40,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_kvjlg")
 
-[node name="SM_Research_Prop_Inkwell_01" type="Node3D"]
+[node name="SM_Research_Prop_Inkwell_01" type="Node3D" unique_id=1979543687]
 
-[node name="SM_Research_Prop_Inkwell_01" type="MeshInstance3D" parent="."]
+[node name="SM_Research_Prop_Inkwell_01" type="MeshInstance3D" parent="." unique_id=866389986]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ngc3o")

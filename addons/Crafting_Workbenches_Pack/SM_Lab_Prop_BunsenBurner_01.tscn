@@ -1,9 +1,11 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://bmuedble34yav"]
+
+[ext_resource type="Texture2D" uid="uid://vcj266ymkryk" path="res://models/textures/PolyClem_texture.png" id="1_5qkfy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
 resource_name = "PolyClem_texture"
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_4vqqg")
+albedo_texture = ExtResource("1_5qkfy")
 emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_04nog"]
@@ -38,8 +40,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_04nog")
 
-[node name="SM_Lab_Prop_BunsenBurner_01" type="Node3D"]
+[node name="SM_Lab_Prop_BunsenBurner_01" type="Node3D" unique_id=1378378673]
 
-[node name="SM_Lab_Prop_BunsenBurner_01" type="MeshInstance3D" parent="."]
+[node name="SM_Lab_Prop_BunsenBurner_01" type="MeshInstance3D" parent="." unique_id=1446801864]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ke6c3")

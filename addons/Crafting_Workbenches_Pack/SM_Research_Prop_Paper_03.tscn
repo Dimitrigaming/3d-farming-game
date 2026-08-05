@@ -1,4 +1,12 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://blnc4dcva0ak6"]
+
+[ext_resource type="Texture2D" uid="uid://vcj266ymkryk" path="res://models/textures/PolyClem_texture.png" id="1_7127x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_7127x")
+emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_pga8y"]
 _surfaces = [{
@@ -14,12 +22,6 @@ _surfaces = [{
 "vertex_data": PackedByteArray("9O84unmdHbnyTUo2Cdc5uipQ2zkRE0s2CHg5OoD32DmO9kg2L2c5uo4DFjmls0o2SgqJuVNdlDpb40o2Q5gQuraElDpvsUs2RE46uliQOjrFeEs2vPk6utaVlDoJC0w2V6mOOfE1lDpGFUo2L605OnhjOTqO9kg2G9UTOo8OlDoyR0k2ofk5OiX/kzqO9kg2ARE5OrVLIrmO9kg2KkY5OiVTETmO9kg2JN84Oslz4bmO9kg24Ag4utR2PLrTiEk2G4A4uiEd37mG7kk2CEyEuQHBlbqO9kg2zZMNugaalbqO9kg2aV03uhOJlbqO9kg2VH2POfznlbqO9kg2/Kk4OpyhPbqO9kg2scESOvYOlrqO9kg2il04OjcelrqO9kg2eEsJupOClzijOko2hQgKupj/Jzrb0Eo2k5l9Oeyu/jllDUo2yR5+Oc28rbg3rUk2mLOKuWY1Arqtjkk28q4LuiliKrpjgUk2HuWEuXs5ljig/Uk2in+FuUEB/zl8V0o2bWZ9ORytJzrKIEo2pet9OWHwlDicwEk2BKITOj2COTo8OEk28xGGuVrWJzrTeEo2fn4TOu802TnWLUk2Kl0TOuvNETkTJEk2ozkTOirRIbmtGUk2tlKEuU10rLhJ3Ek2qDqPORia4Lm6UEk2TxgTOo824bnqD0k2V+4Ius0rq7hbC0o2yPQSOg2DPbqEBUk2AVaPOfY0Pbq9K0k2MyGKuR2LKrpWbUk2FAwMul0MArqqsEk2Y6sJupdT/zmToUo2")
 }]
 blend_shape_mode = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
-resource_name = "PolyClem_texture"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_4vqqg")
-emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_exa4b"]
 resource_name = "SM_Research_Prop_Paper_03_Mesh"
@@ -40,8 +42,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_pga8y")
 
-[node name="SM_Research_Prop_Paper_03" type="Node3D"]
+[node name="SM_Research_Prop_Paper_03" type="Node3D" unique_id=1724269424]
 
-[node name="SM_Research_Prop_Paper_03" type="MeshInstance3D" parent="."]
+[node name="SM_Research_Prop_Paper_03" type="MeshInstance3D" parent="." unique_id=637641239]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_exa4b")

@@ -1,4 +1,12 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://3px7mkafec1j"]
+
+[ext_resource type="Texture2D" uid="uid://vcj266ymkryk" path="res://models/textures/PolyClem_texture.png" id="1_eqpgl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_eqpgl")
+emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_crcwd"]
 _surfaces = [{
@@ -13,12 +21,6 @@ _surfaces = [{
 "vertex_data": PackedByteArray("V6jFt9EJJDg4t9g0EgdAuA/W5LQxB3A0+gO+t0NpJbgP2qc0P90SuEl+gLgvZZc35LOUuK1XRrXwO5Y3S80YuMo3fjjtlJg3sfuUuAmpTbXbVCo43UUUOJ+OfbiY55o3fG0TuBeOgLi/6io4D2O+N68xI7jPSRw1JWM8OEpaKDU9hUw1Jry2N/w+JjhcCTU1LlUOONvRgDiBGpw3LnCSOJggcDXnQ503RLYTOPirfbjEqiw4ayeSOBjKaDXX2C040V4ZuFoafjhcgSs4OMYNOC7DgDgkRC04n1vUtx/vNrgcWH44QM/ct261NDiRxH444ERVuCL0FLXl7X04BGtcuB3Ac7V/UbY50RbHN64lNzgXAoA4j6BOOBMyIzWcNoA4WoXPN1SANLjzmX84ZKvit+FpOLjUXrY5rXhHOM7qhzScobY56DfBN3L7NbgAh7Y5/43FNtYzeLebmsU56aQ2tyh2e7dMjcU50alsN9dLNbTao8U5FBmjt4WRFbXdiMU5RT26No5Cbzcmn8U5E8e4NyypNTiMlLY54VI8tzIAbDfTkcU5AR/rt5o6MzhkbLY5")
 }]
 blend_shape_mode = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
-resource_name = "PolyClem_texture"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_4vqqg")
-emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_y3821"]
 resource_name = "SM_ElectronicsCrafting_Prop_Screw_01_Mesh"
@@ -38,8 +40,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_crcwd")
 
-[node name="SM_ElectronicsCrafting_Prop_Screw_01" type="Node3D"]
+[node name="SM_ElectronicsCrafting_Prop_Screw_01" type="Node3D" unique_id=308302212]
 
-[node name="SM_ElectronicsCrafting_Prop_Screw_01" type="MeshInstance3D" parent="."]
+[node name="SM_ElectronicsCrafting_Prop_Screw_01" type="MeshInstance3D" parent="." unique_id=853844332]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_y3821")

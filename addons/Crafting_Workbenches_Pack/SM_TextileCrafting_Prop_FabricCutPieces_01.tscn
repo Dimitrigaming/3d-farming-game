@@ -1,4 +1,12 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://dy6ng2sksfaca"]
+
+[ext_resource type="Texture2D" uid="uid://vcj266ymkryk" path="res://models/textures/PolyClem_texture.png" id="1_rlsdl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_rlsdl")
+emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_oa0jo"]
 _surfaces = [{
@@ -14,12 +22,6 @@ _surfaces = [{
 "vertex_data": PackedByteArray("gO8Mux9JYzp2FiU57OGkuHERPzpPv6w5GhoMu+z5XzourTQ58bATu7iqRrouVSA5lMISuyncQ7p2FjA5M0O4uD0GPTrA5LI5mhFHubjOZrrU5LI5pAA+uZrJaLr9wKw51wtRudfnYLrACog53CMUuz1CRrrjRao4imINu8OxYzrjlbM4hRvWuOxxOjrACog5+/YKu0jZYjr2Ehs3TbgRu48aR7oKK6E2e6ScuK7XPzpXYTo5SNE6uQobarqAYTo5ZjgWOmaIiTq4cvs2lHE2OymqiDrDgM84zIIaOimuhzo9JdE4zIIaOimuhzoFQXE5hTcYOrguGroFPXE5ZjgWOmaIiTqNN7A54VIUOqO8H7qNN7A5JD8zO1yViDqNN7A5vcUyO42iIbqNN7A54fc1Oxx5IbpsN3I5lHE2OymqiDpDE3I54fc1Oxx5IbpxOM84JD8zO1yViDq4cvs2vcUyO42iIbq4cvs24VIUOqO8H7q4cvs2hS+jObhQrrphXCc5CnOdOQorrLqfLjQ5rePVOdd/WTou8Sc5Cl2wunEJpLrmQyc54b+uuuwHorqfLjQ5Mk/ROddTVzqfLjQ518ihujyaazqfLjQ5uKOiulEQbjqK9Cc5Cl2wunGnprrXvrk4hS+jOYXvsLrXvrk4bxnLOfbEUzrXvrk4Uueeuh1VaDrXvrk4E6bXOQpvWjpSDLI2hS+jOTPdrbpSDLI2Cl2wuh+Vo7pSDLI2cT+jujL/bjpSDLI2pIuuugrLYrpusL85H+SuunvEZLrKd7k5uECfulH8YzoxSME5H4CfulF0Zjr98Lo5M06huq2zYTpkBYg57N+cuvQIZzq9Iz05FGOsuo9GZrqK6Dk5zQGwuo8CXbr9koY5w1rYOkh3kzq4cvs2j2raOrickTo91dA4KS/YOkYVMLq4cvs2cTcYOrguGro9LdE4jw3aOjKHKrpmgdE4jw3aOjKHKrrxEnE5j2raOrickToFaXE5KS/YOkYVMLqNN7A5w1rYOkh3kzqNN7A5hU/lOTMbg7ku1Sc5w5HgOY8CgbmfLjQ5XOKvuq7nMLmfLjQ5heiwutfjM7kPECg5wyqtujPzSbnXvrk47IKxusNVMLlSDLI2H4naOT0ajrnXvrk47BXnOYRLgblSDLI2")
 }]
 blend_shape_mode = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
-resource_name = "PolyClem_texture"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_4vqqg")
-emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_h6lsk"]
 resource_name = "SM_TextileCrafting_Prop_FabricCutPieces_01_Mesh"
@@ -40,8 +42,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_oa0jo")
 
-[node name="SM_TextileCrafting_Prop_FabricCutPieces_01" type="Node3D"]
+[node name="SM_TextileCrafting_Prop_FabricCutPieces_01" type="Node3D" unique_id=1068819915]
 
-[node name="SM_TextileCrafting_Prop_FabricCutPieces_01" type="MeshInstance3D" parent="."]
+[node name="SM_TextileCrafting_Prop_FabricCutPieces_01" type="MeshInstance3D" parent="." unique_id=150744659]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_h6lsk")

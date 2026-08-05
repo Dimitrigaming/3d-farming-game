@@ -1,4 +1,27 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://cah3b8gnl3xm7"]
+
+[ext_resource type="Texture2D" uid="uid://vcj266ymkryk" path="res://models/textures/PolyClem_texture.png" id="1_p3wj1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_p3wj1")
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_yj5bo"]
+_surfaces = [{
+"aabb": AABB(-0.0006870982, -0.002733367, -9.394363e-06, 0.0013517282, 0.0054762578, 0.0013087457),
+"format": 34359742465,
+"index_count": 168,
+"index_data": PackedByteArray("FQAWABcABQAXABYAFQAXAAMAAwAXAAUABQAJAAMAFQADAAwAAwAJAAoACgAMAAMAFQAMABgAGAAMAAoAFQAYABkAFQAaABYAFQAZABoADQAZABgAGgAZAA0AGAAOAA0ACgAOABgADQABABoAFgAaAAEADwANAA4AAQANAA8AEAAOAAoADgAQAA8AAQAAABYAFgAAAAUADwACAAEAAAABAAIABQAAAAQAAgAEAAAABAAGAAUAAgAPABEAEQAPABAAGwAEAAIABgAEABsAEQASAAIAAgASABsAEAAUABEAEgARABMAEQAUABMAGwASABMAGwAHAAYABwAbABMAHAAUABAAFAAcABMAHQAHABMABgAHAB0AHAAdABMAEAALABwAHQAcAAsACgALABAAHQAIAAYACwAIAB0ACAALAAoABQAGAAgACgAJAAgACAAJAAUA"),
+"lods": [0.00046307401, PackedByteArray("AAABAAIAAQAAAAMAAgAEAAAABQAAAAQAAwAAAAUABAAGAAUABgAEAAcABwAEAAIABQAGAAgABwAIAAYACAAJAAUABQAJAAMACgAJAAgAAwAJAAoACAALAAoACwAIAAcACgAMAAMAAwAMAA0ADQABAAMACgAOAAwADAAOAA0AAQANAA8ADwANAA4ADwACAAEAEAAOAAoADgAQAA8ACgALABAAAgAPABEAEQAPABAAEQASAAIAAgASAAcAEgARABMABwASABMAEAAUABEAEAALABQAEQAUABMABwAUAAsAFAAHABMA")],
+"name": "PolyClem_texture",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 30,
+"vertex_data": PackedByteArray("Cv6/t6WRMTvahqk6+BkKOpwTMjtor4c67AEHOmSyMbttFoQ6y9MTungaMjsWxvo5AG6BNvqwMbv/Tqo6bukFukX8MTuM3YM6KscJuvO1MrvzRYc6z4n3uenNMrt/e4E6YR40uu4JMrvpL/U5fe8luuQaMjuUifE50+CLubwnMTvs1jQ4/IWdubp5MruamWY0thx3uQgnMTtXIdo438oqOrEWMztDjuY5IuOYORPCMzt7nB23kTouOsXXMLuI4uo5TsibOaULM7sfhWM28+sbOrYHMbts4/I56nbxORLkMbtAKH06wBihtrsUM7uJYSE66A+MOUoiM7t7CYw4w7dQt9rRMTskQyQ6keyjt+iRMTsWHqA6r3fuuab4MTszCn06Lh+KOXqjMzvXeG84teEYOu7xMjvNFu85GgL3OXMHMjsA6YE6mrkJNuXXMbsM3KA63euNufOLMrvND4Y4drAhusAiMrsA5fw5")
+}]
+blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_cv0lj"]
 resource_name = "SM_Cooking_Prop_Firewood_03_Mesh"
@@ -19,29 +42,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_yj5bo")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_yj5bo"]
-_surfaces = [{
-"aabb": AABB(-0.0006870982, -0.002733367, -9.394363e-06, 0.0013517282, 0.0054762578, 0.0013087457),
-"format": 34359742465,
-"index_count": 168,
-"index_data": PackedByteArray("FQAWABcABQAXABYAFQAXAAMAAwAXAAUABQAJAAMAFQADAAwAAwAJAAoACgAMAAMAFQAMABgAGAAMAAoAFQAYABkAFQAaABYAFQAZABoADQAZABgAGgAZAA0AGAAOAA0ACgAOABgADQABABoAFgAaAAEADwANAA4AAQANAA8AEAAOAAoADgAQAA8AAQAAABYAFgAAAAUADwACAAEAAAABAAIABQAAAAQAAgAEAAAABAAGAAUAAgAPABEAEQAPABAAGwAEAAIABgAEABsAEQASAAIAAgASABsAEAAUABEAEgARABMAEQAUABMAGwASABMAGwAHAAYABwAbABMAHAAUABAAFAAcABMAHQAHABMABgAHAB0AHAAdABMAEAALABwAHQAcAAsACgALABAAHQAIAAYACwAIAB0ACAALAAoABQAGAAgACgAJAAgACAAJAAUA"),
-"lods": [0.00046307401, PackedByteArray("AAABAAIAAQAAAAMAAgAEAAAABQAAAAQAAwAAAAUABAAGAAUABgAEAAcABwAEAAIABQAGAAgABwAIAAYACAAJAAUABQAJAAMACgAJAAgAAwAJAAoACAALAAoACwAIAAcACgAMAAMAAwAMAA0ADQABAAMACgAOAAwADAAOAA0AAQANAA8ADwANAA4ADwACAAEAEAAOAAoADgAQAA8ACgALABAAAgAPABEAEQAPABAAEQASAAIAAgASAAcAEgARABMABwASABMAEAAUABEAEAALABQAEQAUABMABwAUAAsAFAAHABMA")],
-"name": "PolyClem_texture",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 30,
-"vertex_data": PackedByteArray("Cv6/t6WRMTvahqk6+BkKOpwTMjtor4c67AEHOmSyMbttFoQ6y9MTungaMjsWxvo5AG6BNvqwMbv/Tqo6bukFukX8MTuM3YM6KscJuvO1MrvzRYc6z4n3uenNMrt/e4E6YR40uu4JMrvpL/U5fe8luuQaMjuUifE50+CLubwnMTvs1jQ4/IWdubp5MruamWY0thx3uQgnMTtXIdo438oqOrEWMztDjuY5IuOYORPCMzt7nB23kTouOsXXMLuI4uo5TsibOaULM7sfhWM28+sbOrYHMbts4/I56nbxORLkMbtAKH06wBihtrsUM7uJYSE66A+MOUoiM7t7CYw4w7dQt9rRMTskQyQ6keyjt+iRMTsWHqA6r3fuuab4MTszCn06Lh+KOXqjMzvXeG84teEYOu7xMjvNFu85GgL3OXMHMjsA6YE6mrkJNuXXMbsM3KA63euNufOLMrvND4Y4drAhusAiMrsA5fw5")
-}]
-blend_shape_mode = 0
+[node name="SM_Cooking_Prop_Firewood_03" type="Node3D" unique_id=1417230032]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
-resource_name = "PolyClem_texture"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_4vqqg")
-emission_enabled = true
-
-[node name="SM_Cooking_Prop_Firewood_03" type="Node3D"]
-
-[node name="SM_Cooking_Prop_Firewood_03" type="MeshInstance3D" parent="."]
+[node name="SM_Cooking_Prop_Firewood_03" type="MeshInstance3D" parent="." unique_id=1553611713]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_cv0lj")

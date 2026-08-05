@@ -1,4 +1,12 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://dthup4v060va3"]
+
+[ext_resource type="Texture2D" uid="uid://vcj266ymkryk" path="res://models/textures/PolyClem_texture.png" id="1_oek73"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_oek73")
+emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_8ysff"]
 _surfaces = [{
@@ -13,12 +21,6 @@ _surfaces = [{
 "vertex_data": PackedByteArray("A3GxuM2AIDeUB4E6n283uL1CSTcxG2I60p00uHp7fbeAY2I61xe+uCg3brgP1n8637QyuJsGvrg94346StW0t9g58Ld0t2E6KbtauAioNrnRNoo696xvN5PsY7iE0oA6jgaBNlv7ZrcP/WE64E8euXsRy7h9Y4w6l87kt0AbOjjzWYI6bn8PudtDRjhlC486Q5OKuU3bAzl8H5s6gXS2t+is3DdFnmE6WoFkNvHwZjchEmI6+sm2N70gXzdybYI67D6Dt/a1+zgMN5E6wQyZOD2KxrhRKY06iNa/OINfWzgyz5A6qO3HNb9YlTmkuZ86btxPOS1gQrnBK5c6H/t4OfgoDzna7Z46fP+POQY2ITk5aKA6zCWgtpjwrDlc3J86jE2tuXQDCzkYdZg6zOpzOW2VcblyWpc6JkeguIGvvLlWx5A6y/uZuSbgRrlEnJU6aZS+udSZf7llZpI6uMC+uP8G5bnkhI86H4vtufqLiLn6e2Q61sEat4KyCLraR2U6cqnwOQ2Tb7ltUXg6prYAOI3nE7pmJRU611v4uX2RkrnY7RY6tgv6uaycfTmWXlk6pjg0t6a2CTq4gGQ68o3tOaTSnDnhCX86gOkDuiTXmjmv4Qk6anDJuchyfLlzdiM5GngWOgkufbm7aSQ6GjgROldjujlsqSc6ZcQvN4PtIToDzgw6Y17QuepUnDnDUA05UdkNOuXjrTms+g45Py4QOsgUYrkzNQg5IDE3OOrjBbpcwts4VwHEuQ64drmXv7M3+1NpOA4NBrqKULs2kv0POu/CZbmPAfo2A1cPOn3vrznp0Qc3vRfGuXNopjmUgaY3V2NlOG2nHDrmWbE2qGoqOM+IGDoAa884")
 }]
 blend_shape_mode = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
-resource_name = "PolyClem_texture"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_4vqqg")
-emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_unhh8"]
 resource_name = "SM_Art_Prop_ClayVase_Chunk_01_Mesh"
@@ -38,8 +40,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_8ysff")
 
-[node name="SM_Art_Prop_ClayVase_Chunk_01" type="Node3D"]
+[node name="SM_Art_Prop_ClayVase_Chunk_01" type="Node3D" unique_id=1301399888]
 
-[node name="SM_Art_Prop_ClayVase_Chunk_01" type="MeshInstance3D" parent="."]
+[node name="SM_Art_Prop_ClayVase_Chunk_01" type="MeshInstance3D" parent="." unique_id=552327598]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_unhh8")

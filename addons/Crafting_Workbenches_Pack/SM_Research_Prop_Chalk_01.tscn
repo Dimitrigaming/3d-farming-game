@@ -1,4 +1,12 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://ck3acbp0yye3"]
+
+[ext_resource type="Texture2D" uid="uid://vcj266ymkryk" path="res://models/textures/PolyClem_texture.png" id="1_6bidb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_6bidb")
+emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_td4v8"]
 _surfaces = [{
@@ -13,12 +21,6 @@ _surfaces = [{
 "vertex_data": PackedByteArray("e2uHN6QqRDmWycw4igqbtw08RDnTc8w4OIEVuL9SRDlOaI04wKQfuG9yJzmsIwo5dsKJN9xFRDlfFh44zaqYt6lVRDlKaB04O1eeuIWjJzlYv4o4pAsduC2pJznsoXw1ZhSguF+WmbnTM4k45N0MOHEvRDm0Fo44uygdODRNJzlGgQo5diAjuPeumbmYXQk5KYYguEqTmbnskVk0TawZOLjBmblauwk59nw3N70aqbmqB4w4PaKcOJK8mbmgsIo4vTwcOEqkmbn2eBQ1ZrkfOAOIJzm4Rq01TV+eOC1XJzl3PIw4")
 }]
 blend_shape_mode = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
-resource_name = "PolyClem_texture"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_4vqqg")
-emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_q1ehe"]
 resource_name = "SM_Research_Prop_Chalk_01_Mesh"
@@ -38,8 +40,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_td4v8")
 
-[node name="SM_Research_Prop_Chalk_01" type="Node3D"]
+[node name="SM_Research_Prop_Chalk_01" type="Node3D" unique_id=905580265]
 
-[node name="SM_Research_Prop_Chalk_01" type="MeshInstance3D" parent="."]
+[node name="SM_Research_Prop_Chalk_01" type="MeshInstance3D" parent="." unique_id=1805790431]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_q1ehe")

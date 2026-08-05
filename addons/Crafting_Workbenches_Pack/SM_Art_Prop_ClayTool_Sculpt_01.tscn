@@ -1,4 +1,12 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://8rg3ptfdix5r"]
+
+[ext_resource type="Texture2D" uid="uid://vcj266ymkryk" path="res://models/textures/PolyClem_texture.png" id="1_ba4gj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_ba4gj")
+emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_0ebs1"]
 _surfaces = [{
@@ -14,12 +22,6 @@ _surfaces = [{
 "vertex_data": PackedByteArray("TAWLOPYILDZoIOE6rZJaOCmsyDbEpeQ6BCmKOCmcAzdtxdo6KD53OMN1yzbgo+Q6VX6LOMNVJjZRoeQ6o8h2OLgeYbTKHeU6M2WMONfDLbayH+E6Ot6MOAp3M7aboOQ6N+p9OB/11bYWouQ6UTlhOBS+2LYJpOQ6LYqLOEjR8Lapw9o6hGYjOIWbtrZEJ+E6L6hGOFK4h7VgpuQ6DOhDOEjhnjS/puQ61oMCtgrXeLVYM+E6HakutnsUzDSgM+E6oyxjN5r9hrep0do6634RuFwPC7bI4No6z7YVONdtkbd6A8E6fhCIOB+N27Zp/MA65vmCuHE7nDccnMM6jUCmuMP1+LVoCtI6t6GnuK5HAzb0CtI60s2+uIVrybUFosM6uC3AuM0MGzaWosM6Va+GOBQ+Djcu/sA6drIeuDPDPDdzN7Q6KCERtxQM3zfjMLQ6b/Z2OCk10DelrEE6P+0buNdnKbfvNLQ6H7l5OO3DlLcAo0E6E/bstppL0bfbKrQ60ThCt9F8TbhpxEE696L+N4WdSrjdrEE6gbthOD1w4DfkQhE51krxN4pJZDj3w0E6R+CYtx+HaTiP/hE5uoBkOOGIhLdpHBE5CdrGN3FmbDhIoBE5HS/qNwDMmTcAbJU4HS3UN5qAQrjFQxE5RoHsNxQe/rbhopQ4wcQvuNejSTbDHZc3Ogg4uNejULPs+ag3BIjQtxTWX7cUbmI4OI2Lt0hfRbgNohE53elDuGZmCLSuv8I3HXBMuLj+PDaPUtU38vIvuDMT8zYfpZc32KBMuKTA7DZI2dU3Fnw4uOHqKjd7PKo32FpEuOyZKTfD/cM35vaWtx8d/DcADp04M7wLuIVrTjekWoE4lPEKuB+FT7Zx6YA4844CuK434bakyq844+0DuHE5gjeuXbA481APuHGtWrdcQfg4bxVEuHtkkrcNABI5874RuGaesTdS+vg4INhGuNeV0jekJhI5o9Z6N6Ss7LfNTLE4zAUqt65hDLj2jt44QlaRt7i+rLdcm5s4aPwNOGa1KLhOUaQ6jjc9t2bkMjg9j+A4Ct0uuJKforfq20E6795ct5ppYTiJ20E6M4UHtzNTK7jqWqQ6up8xuBJcwjeP5UE6iiIguD1chbffoKQ6k+UiuEiVkTfEpKQ6PTMit4VJNDibZqQ6iTLPt80Gk7dooMI6bw3St66/jLeO/dA6hGZNOFLwWrcI5M06I0QUuGZm6TVm4do6zNtUuLhCmTd7BNI6OogSOHEhnDd66806/+POtilwlzft2to6I/reNwCAyzYBLOE6MAMWOB95mTcbz9o6xLsXOD1KzjZYKeE6RstrOM2MhLaOIuE6rxJqOIX7Orc6xto6+c2JOFwv5rYK4M06iGuIOB/tCDfM4c060Q8POADKnjfcB8E6BFOGOLh6G7d0GLQ6HvOEOMOtSjfsGrQ63pQLOMPv4TcRJbQ6Yz4SOB9pzrcJH7Q6ozmEOM0Idbd0hKQ6yk8HOGboNjijWKQ6ptiCONdrnDcciKQ64LNtN6RQIThIfbM4ehQVtlJk7jeaTXw4E4LzNuEidTdcH1I4W5fjtYXvmLfsVXk4EyT6NmZmhrZc/1A4W9xwt4/aUbekQDU4jgzUt5q1wDcAmGQ4ZTp3t3FBvjcKbzc4XPQAt0jpUDfDiRc44Mb8tq4nAbbXpxY48monuAAANzf2hEg46GsOuHGhpTcf7S44VuDWtxR2pjfNmAk4QZylt+w5PjekqN03LdomuOyRyLVmxkc4nTFCuLg+GjcAZBM4Vh8xuMP9gTe49gA4I5kYuPZYgzcfvcw3zxINuEjZJ7fsHS04RM1BuArX7DRm2hI4akLUtx/1IbcfyQc41jEwuKQQvbbhWv834f8GuDPDIDdxXaY3EZ4GuCncXjVISaU3R6sXuNejt7YfJco324Skt3E9YLUzK9w3")
 }]
 blend_shape_mode = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
-resource_name = "PolyClem_texture"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_4vqqg")
-emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_47ydb"]
 resource_name = "SM_Art_Prop_ClayTool_Sculpt_01_Mesh"
@@ -40,8 +42,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_0ebs1")
 
-[node name="SM_Art_Prop_ClayTool_Sculpt_01" type="Node3D"]
+[node name="SM_Art_Prop_ClayTool_Sculpt_01" type="Node3D" unique_id=1495175616]
 
-[node name="SM_Art_Prop_ClayTool_Sculpt_01" type="MeshInstance3D" parent="."]
+[node name="SM_Art_Prop_ClayTool_Sculpt_01" type="MeshInstance3D" parent="." unique_id=781010008]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_47ydb")

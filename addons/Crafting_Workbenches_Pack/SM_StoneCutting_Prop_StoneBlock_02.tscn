@@ -1,4 +1,12 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://duyil0dd751qs"]
+
+[ext_resource type="Texture2D" uid="uid://vcj266ymkryk" path="res://models/textures/PolyClem_texture.png" id="1_a1nxt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_a1nxt")
+emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_scnfx"]
 _surfaces = [{
@@ -14,12 +22,6 @@ _surfaces = [{
 "vertex_data": PackedByteArray("2gXDujZBBTq3Sl46dATYOrPxzDnIdF86N3FPOh+c1Tn9vMw6DVy9uoOdvDnmRs06O73DurbqArrfpPA6QS3AunLG1LpPkXo6N5jCuruiu7pKReI6YG7MOqHbt7rSIcA6ktDWOtJfoDkpJ8s65D7Aur3P1TkpDE+4SLbIOqYduLpkfwc6k3TaOsgV0zkUvp63ctPROvGau7pIUf231utROjsnwLqFOWQ4DdHBusxvwbpmcg24pKS+N+kwMjrzNFs6au/FOo1kD7o7c2A64ZnQOjNUYLqDgbg6VOvxOawRvbp9DcM6TFzWOsisjbmFr5u3rkfDNK7E4Lqu+1Q67OGkONIz0Dm47D64BYkNOWIuDrqFw3q3sdPJuf0B2TlIUwK4bPDCup/+C7q4cpO4+7e/utcfL7mPJje4WFnTun1qDboIiFs6to89uil6vbopheI6GtkJumrIELp2Me86")
 }]
 blend_shape_mode = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
-resource_name = "PolyClem_texture"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_4vqqg")
-emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_trisj"]
 resource_name = "SM_StoneCutting_Prop_StoneBlock_02_Mesh"
@@ -40,8 +42,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_scnfx")
 
-[node name="SM_StoneCutting_Prop_StoneBlock_02" type="Node3D"]
+[node name="SM_StoneCutting_Prop_StoneBlock_02" type="Node3D" unique_id=1218724782]
 
-[node name="SM_StoneCutting_Prop_StoneBlock_02" type="MeshInstance3D" parent="."]
+[node name="SM_StoneCutting_Prop_StoneBlock_02" type="MeshInstance3D" parent="." unique_id=1045482169]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_trisj")

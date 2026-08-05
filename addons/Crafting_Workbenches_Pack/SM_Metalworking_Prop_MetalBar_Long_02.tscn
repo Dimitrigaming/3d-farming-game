@@ -1,4 +1,12 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://bruyhtnbgao38"]
+
+[ext_resource type="Texture2D" uid="uid://vcj266ymkryk" path="res://models/textures/PolyClem_texture.png" id="1_yr0c0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_yr0c0")
+emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_twdx0"]
 _surfaces = [{
@@ -13,12 +21,6 @@ _surfaces = [{
 "vertex_data": PackedByteArray("ybgcO3HJ0TkAAAAAI3zYu3HJ0TkAAAAAI3zYu3HJ0bkAAAAAI3zYu3HJ0TkTNJ05ybgcO3HJ0bkAAAAAI3zYu3HJ0bkTNJ05ybgcO3HJ0bkTNJ05ybgcO3HJ0TkTNJ05")
 }]
 blend_shape_mode = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
-resource_name = "PolyClem_texture"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_4vqqg")
-emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_16bbn"]
 resource_name = "SM_Metalworking_Prop_MetalBar_Long_02_Mesh"
@@ -38,8 +40,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_twdx0")
 
-[node name="SM_Metalworking_Prop_MetalBar_Long_02" type="Node3D"]
+[node name="SM_Metalworking_Prop_MetalBar_Long_02" type="Node3D" unique_id=237014827]
 
-[node name="SM_Metalworking_Prop_MetalBar_Long_02" type="MeshInstance3D" parent="."]
+[node name="SM_Metalworking_Prop_MetalBar_Long_02" type="MeshInstance3D" parent="." unique_id=1220176790]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_16bbn")

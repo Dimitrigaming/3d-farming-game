@@ -1,9 +1,11 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://c3s87jdxdl3o1"]
+
+[ext_resource type="Texture2D" uid="uid://vcj266ymkryk" path="res://models/textures/PolyClem_texture.png" id="1_v2r4k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
 resource_name = "PolyClem_texture"
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_4vqqg")
+albedo_texture = ExtResource("1_v2r4k")
 emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_8e15d"]
@@ -40,8 +42,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_8e15d")
 
-[node name="SM_StoneCutting_Prop_WoodStump_01" type="Node3D"]
+[node name="SM_StoneCutting_Prop_WoodStump_01" type="Node3D" unique_id=594432714]
 
-[node name="SM_StoneCutting_Prop_WoodStump_01" type="MeshInstance3D" parent="."]
+[node name="SM_StoneCutting_Prop_WoodStump_01" type="MeshInstance3D" parent="." unique_id=507868679]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_tt65x")

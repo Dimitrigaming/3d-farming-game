@@ -1,4 +1,12 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://c5i2ijvr5tbc0"]
+
+[ext_resource type="Texture2D" uid="uid://vcj266ymkryk" path="res://models/textures/PolyClem_texture.png" id="1_2nscx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_2nscx")
+emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_hkco1"]
 _surfaces = [{
@@ -14,12 +22,6 @@ _surfaces = [{
 "vertex_data": PackedByteArray("SfEUO2D91DoAwLE3mLgXu1v91DoAwLE3JLh+unTX1Trh1g46KJgXu3TX1TqFj/s6bzgTuzM4ADsAwLE3CRgTuz+lADuFWf868Tx3uj+lADs9MiE6s29zOnrX1To9/A06unIQOzM4ADsAwLE3swNsOkKlADspXiA6uhEVO3rX1Tqkh/o6KpMQOz+lADuPWf46KpMQOzmqALuPWf46xHIQO/z1AbsAwLE3swNsOjmqALspXiA6uhEVO2jh1bqkh/o6s29zOmjh1bo9/A06SfEUO+142LoAwLE3JLh+um3h1brN1g468Tx3ujyqALspMiE6mLgXu/J42LoAwLE3ZTgTuwH2AbsAwLE3KJgXu23h1bqFj/s6/xcTuzyqALuFWf865jl/ulv91DoAwLE3s753ujM4ADsAwLE38e1yOmD91DoAwLE3GoJrOjU4ADsAwLE3ir53ugH2AbsAwLE35jl/uvJ42LoAwLE3Gu5yOu142LoAwLE3GoJrOvz1AbsAwLE3")
 }]
 blend_shape_mode = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
-resource_name = "PolyClem_texture"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_4vqqg")
-emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_btx4m"]
 resource_name = "SM_DrinkBrewing_Prop_Cradle_SingleA_01_Mesh"
@@ -40,8 +42,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hkco1")
 
-[node name="SM_DrinkBrewing_Prop_Cradle_SingleA_01" type="Node3D"]
+[node name="SM_DrinkBrewing_Prop_Cradle_SingleA_01" type="Node3D" unique_id=238397485]
 
-[node name="SM_DrinkBrewing_Prop_Cradle_SingleA_01" type="MeshInstance3D" parent="."]
+[node name="SM_DrinkBrewing_Prop_Cradle_SingleA_01" type="MeshInstance3D" parent="." unique_id=102244687]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_btx4m")

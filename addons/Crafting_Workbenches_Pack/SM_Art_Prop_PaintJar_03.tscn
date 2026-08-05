@@ -1,4 +1,12 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://bcm65c5byw2mg"]
+
+[ext_resource type="Texture2D" uid="uid://vcj266ymkryk" path="res://models/textures/PolyClem_texture.png" id="1_rt8fo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_rt8fo")
+emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_5u212"]
 _surfaces = [{
@@ -14,12 +22,6 @@ _surfaces = [{
 "vertex_data": PackedByteArray("MUM4OdzE1DhYHxw6MUM4OeHE1LhYHxw6prJBObOp37iWAh06CtcjLrapX7mWAh06H4VrsN/EVLlYHxw6CtcjLtrhXbm/aDc6obJBubOp37iWAh063ydAOdfh3bi/aDc6prJBOb2p3ziWAh063ydAOebh3Ti/aDc6CtcjLt/hXTm/aDc6CtcjLrupXzmWAh062idAudfh3bi/aDc62idAuebh3Ti/aDc6obJBub2p3ziWAh06H4VrsN/EVDlYHxw6pkM4udzE1DhYHxw6pkM4ueHE1LhYHxw6u+5+uXMvE7k02Q86CtcjLnQvk7k02Q86u+5+uXgvEzk02Q86wO5+OXMvE7k02Q86CtcjLlBJnbmJNwc6wO5+OXgvEzk02Q86CtcjLncvkzk02Q86yTaIuVRJHTmJNwc6yTaIuU9JHbmJNwc6zDaIOU9JHbmJNwc6CtcjLlBJnbmRsns4zDaIOVRJHTmJNwc6CtcjLlNJnTmJNwc6yTaIuU9JHbmRsns4yTaIuVRJHTmRsns4CtcjLlNJnTmRsns4G4uAud9tFDlDGc83G4uAudptFLlDGc83CtcjLt1tlDlBGc83CtcjLtptlLlBGc83DTNnuax7BTkAAAAADTNnuaZ7BbkAAAAACtcjLqp7hTkAAAAACtcjLql7hbkAAAAAHYuAOdptFLlDGc83EjNnOaZ7BbkAAAAAEjNnOax7BTkAAAAAHYuAOd9tFDlDGc83zDaIOU9JHbmRsns4zDaIOVRJHTmRsns4CtcjLjGoXrkcPBs6mtNAOTOo3rgcPBs6mtNAOSSo3jgcPBs6l9NAuTOo3rgcPBs6l9NAuSSo3jgcPBs6CtcjLiaoXjkcPBs6zDaIOU9JHbkkQ+c5CtcjLlBJnbkkQ+c5zDaIOVRJHTkkQ+c5CtcjLlNJnTkkQ+c5yTaIuU9JHbkkQ+c5CtcjLlBJnbmARA05zDaIOU9JHbmARA05zDaIOVRJHTmARA05CtcjLlNJnTmARA05yTaIuVRJHTkkQ+c5yTaIuVRJHTmARA05yTaIuU9JHbmARA05")
 }]
 blend_shape_mode = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
-resource_name = "PolyClem_texture"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_4vqqg")
-emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_qx4o7"]
 resource_name = "SM_Art_Prop_PaintJar_03_Mesh"
@@ -40,8 +42,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_5u212")
 
-[node name="SM_Art_Prop_PaintJar_03" type="Node3D"]
+[node name="SM_Art_Prop_PaintJar_03" type="Node3D" unique_id=1510592674]
 
-[node name="SM_Art_Prop_PaintJar_03" type="MeshInstance3D" parent="."]
+[node name="SM_Art_Prop_PaintJar_03" type="MeshInstance3D" parent="." unique_id=884764079]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_qx4o7")

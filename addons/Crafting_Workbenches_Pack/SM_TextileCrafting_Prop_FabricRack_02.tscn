@@ -1,4 +1,12 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://ck5n6qb1bpmvh"]
+
+[ext_resource type="Texture2D" uid="uid://vcj266ymkryk" path="res://models/textures/PolyClem_texture.png" id="1_4nlqt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_4nlqt")
+emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_1xbr6"]
 _surfaces = [{
@@ -14,12 +22,6 @@ _surfaces = [{
 "vertex_data": PackedByteArray("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")
 }]
 blend_shape_mode = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
-resource_name = "PolyClem_texture"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_4vqqg")
-emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3hnd6"]
 resource_name = "SM_TextileCrafting_Prop_FabricRack_02_Mesh"
@@ -40,8 +42,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1xbr6")
 
-[node name="SM_TextileCrafting_Prop_FabricRack_02" type="Node3D"]
+[node name="SM_TextileCrafting_Prop_FabricRack_02" type="Node3D" unique_id=2041997440]
 
-[node name="SM_TextileCrafting_Prop_FabricRack_02" type="MeshInstance3D" parent="."]
+[node name="SM_TextileCrafting_Prop_FabricRack_02" type="MeshInstance3D" parent="." unique_id=1631891648]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_3hnd6")

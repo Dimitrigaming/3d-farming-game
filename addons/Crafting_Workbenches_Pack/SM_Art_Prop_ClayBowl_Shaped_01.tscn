@@ -1,4 +1,12 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://bdf7x2ep1s8hn"]
+
+[ext_resource type="Texture2D" uid="uid://vcj266ymkryk" path="res://models/textures/PolyClem_texture.png" id="1_qh2u3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_qh2u3")
+emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_bb4sj"]
 _surfaces = [{
@@ -13,12 +21,6 @@ _surfaces = [{
 "vertex_data": PackedByteArray("exQusoWTtTnhokI2exQusik1sLnhokI2XOuaOQCGLbnhokI2j8L1MOYvA7rUjP44Ke6auQCGLbnhokI2Ke6aubhCODnhokI2AIzluUjYgbmBmxc5AIzlubg2hzmBmxc5XOuaObhCODnhokI2j8L1MBzfBTqBmxc5FIzlOUjYgbnPjP44FIzlObg2hzmBmxc5uB5guDMWAjpuONg5FAUEOsPtmjluONg59kzUOc/Hn7kfD9U5rkfhMfIsDbofD9U5KQTsuYAVjDluONg5mkvUuc/Hn7kfD9U5cd/SOc30nrn0Vg86zczMMe5ZDLr0Vg86FN7Suc30nrn0Vg86ZiEDulLnmTlknhc6KVyPMRypGDrUEwo6yCEDOlLnmTkEuR468Y6kOVT8VTkkaCg66raVtw1hyjnICB06eGCmuXi1WTkbnCY6bS3et66bmTmdBPA5vAxvORQSQ7nGNA46KR3NMTOhqrlzGw46SqdtuVoNRrkOLhM6ihqLudIYNTm/1+g56lFzucBXQ7n2Hdw5FDMTNCRrrLntIts5JrmnOcDVTjlKEuY5GnF1OaXbP7lTmNk5vCLBNVLJpLkzOGU5CL6LubsbJrmuC245yHuMudY4KzmXx2o5Vt+OOS9HKDlmEnE5ypyUtc3dpjnJ0285gVoFsr0DhTl6qkg56Spiubs2ALkTnUk5F79hueGyBzklqkg5BiwvNs/Pg7ksh0w5Q8JkOUxwBjnqnUk5bBqPOU8lJbkBj2E5EZNnOY+BA7mqh0w5")
 }]
 blend_shape_mode = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
-resource_name = "PolyClem_texture"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_4vqqg")
-emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_feivy"]
 resource_name = "SM_Art_Prop_ClayBowl_Shaped_01_Mesh"
@@ -38,8 +40,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_bb4sj")
 
-[node name="SM_Art_Prop_ClayBowl_Shaped_01" type="Node3D"]
+[node name="SM_Art_Prop_ClayBowl_Shaped_01" type="Node3D" unique_id=1213527665]
 
-[node name="SM_Art_Prop_ClayBowl_Shaped_01" type="MeshInstance3D" parent="."]
+[node name="SM_Art_Prop_ClayBowl_Shaped_01" type="MeshInstance3D" parent="." unique_id=1705503620]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_feivy")

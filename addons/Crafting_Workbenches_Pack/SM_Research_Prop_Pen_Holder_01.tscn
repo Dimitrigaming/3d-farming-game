@@ -1,4 +1,12 @@
-[gd_scene format=3]
+[gd_scene format=4 uid="uid://2kw0d6s5whkg"]
+
+[ext_resource type="Texture2D" uid="uid://vcj266ymkryk" path="res://models/textures/PolyClem_texture.png" id="1_b1w02"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_b1w02")
+emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_r1w83"]
 _surfaces = [{
@@ -13,12 +21,6 @@ _surfaces = [{
 "vertex_data": PackedByteArray("j8J1MJrxv7nDp684s7mHOZq5hznDp684yPG/OQAAAADDp684yPG/OQAAAADMJ446s7mHOZq5h7nDp684s7mHOZq5h7nMJ446j8J1MJrxv7nMJ446OF3KOQAAAADoj5A61xePOdcXj7noj5A6s7mHOZq5hznMJ446j8J1MJrxvznDp684cbmHuZq5h7nMJ446CtcjMB9dyrnoj5A6cbmHuZq5h7nDp684j/G/uQAAAADMJ446j/G/uQAAAADDp684cbmHuZq5hznDp684j8J1MJrxvznMJ446cbmHuZq5hznMJ4461xePOdcXjznoj5A6CtcjMB9dyjnoj5A6uBePudcXjznoj5A6cYLhOQAAAADoj5A6j3WfOZp1nznoj5A6CtcjsI+C4Tnoj5A6j3WfOZp1n7noj5A63O3rOQAAAADMJ446s9OmOdfTpjnMJ446rnWfuZp1nznoj5A6j8J1sOzt6znMJ446FF3KuQAAAADoj5A69tOmudfTpjnMJ446uBePudcXj7noj5A6j4LhuQAAAADoj5A6rnWfuZp1n7noj5A6CtcjsI+C4bnoj5A6s9OmOdfTprnMJ446j8J1sOzt67nMJ4469tOmudfTprnMJ446H+7ruQAAAADMJ446j8J1sOzt67kf3Zw3s9OmOdfTprkf3Zw33O3rOQAAAAAf3Zw39tOmudfTprkf3Zw3H+7ruQAAAAAf3Zw3H3+guQp/oLlcD0Q29tOmudfTpjkf3Zw37PniuQAAAABcD0Q2j8J1sOzt6zkf3Zw3H3+guQp/oDlcD0Q2j8J1sMP54rlcD0Q2j8J1sMP54jlcD0Q24X6gOQp/oLlcD0Q2qfniOQAAAABcD0Q24X6gOQp/oDlcD0Q2s9OmOdfTpjkf3Zw3")
 }]
 blend_shape_mode = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
-resource_name = "PolyClem_texture"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_4vqqg")
-emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ei6o0"]
 resource_name = "SM_Research_Prop_Pen_Holder_01_Mesh"
@@ -38,8 +40,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_r1w83")
 
-[node name="SM_Research_Prop_Pen_Holder_01" type="Node3D"]
+[node name="SM_Research_Prop_Pen_Holder_01" type="Node3D" unique_id=517741597]
 
-[node name="SM_Research_Prop_Pen_Holder_01" type="MeshInstance3D" parent="."]
+[node name="SM_Research_Prop_Pen_Holder_01" type="MeshInstance3D" parent="." unique_id=763227358]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ei6o0")
