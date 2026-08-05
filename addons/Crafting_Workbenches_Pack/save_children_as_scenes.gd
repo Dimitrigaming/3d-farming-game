@@ -28,7 +28,14 @@ func _run() -> void:
 			print("SKIP (file exists): ", out_path)
 			continue
 
-		packed.pack(child)
+		# Wrap in a Node3D so the saved scene has the right root type
+		var wrapper = Node3D.new()
+		wrapper.name = child.name
+		var clone = child.duplicate()
+		wrapper.add_child(clone)
+		clone.owner = wrapper
+		packed.pack(wrapper)
+		wrapper.free()
 		var err = ResourceSaver.save(packed, out_path)
 		if err != OK:
 			push_error("Failed to save: " + out_path + " (err " + str(err) + ")")
