@@ -14,3 +14,6 @@ max_stack = 1
 buy_price = 60
 description = "Used to gather the crops."
 equip_scene = ExtResource("1_ep4cc")
+
+tool_category = "scythe"
+mining_damage = 0

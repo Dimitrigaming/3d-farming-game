@@ -1,14 +1,36 @@
-[gd_scene format=3 uid="uid://mining_node_01"]
+[gd_scene format=3 uid="uid://b5tlx5ppf888v"]
 
-[ext_resource type="Script" path="res://world/nodes/rocks/mining_node.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://byetfvpul5tub" path="res://world/nodes/rocks/mining_node.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://btqc3c8n7jeq1" path="res://ui/health_bar.tscn" id="2_bla7l"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_col"]
 radius = 0.8
 
-[node name="MiningNode" type="StaticBody3D"]
-script = ExtResource("1_script")
+[sub_resource type="ViewportTexture" id="ViewportTexture_3xd07"]
+viewport_path = NodePath("SubViewport")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="MiningNode" type="StaticBody3D" unique_id=989707604]
+script = ExtResource("1_script")
+drops_min = 1
+drops_max = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=537974005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59469444, 0)
 shape = SubResource("SphereShape3D_col")
 
-[node name="Visual" type="Node3D" parent="."]
+[node name="Visual" type="Node3D" parent="." unique_id=978152548]
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=111111004]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(305, 32)
+size_2d_override = Vector2i(305, 32)
+render_target_update_mode = 4
+
+[node name="HealthBar" parent="SubViewport" unique_id=310438462 instance=ExtResource("2_bla7l")]
+visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=935891383]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7544887, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_3xd07")

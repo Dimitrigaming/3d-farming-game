@@ -16,3 +16,7 @@ enum Subcategory { NONE, LOG, PLANK, STONE, ORE, INGOT, GRAIN, VEGETABLE, FRUIT,
 @export var description: String = ""
 @export var equip_scene: PackedScene
 @export var place_scene: PackedScene
+
+# Tool stats — leave at defaults for non-tool items
+@export var tool_category: String = ""  # "pickaxe", "axe", "hoe", etc.
+@export var mining_damage: int = 0      # damage dealt per swing to a mining node
