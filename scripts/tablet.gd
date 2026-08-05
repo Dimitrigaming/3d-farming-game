@@ -17,6 +17,8 @@ var _order_refresh_timer: float = 0.0
 ]
 @onready var _orders_container: VBoxContainer = %OrdersContainer
 @onready var _products_container: GridContainer = %ProductsContainer
+@onready var _search_bar: LineEdit = %SearchBar
+@onready var _btn_toggle_all: Button = %BtnToggleAll
 
 func _ready() -> void:
 	visible = false
@@ -25,6 +27,8 @@ func _ready() -> void:
 	%BtnProducts.pressed.connect(_show_tab.bind(TAB_PRODUCTS))
 	DeliveryManager.orders_changed.connect(_on_orders_changed)
 	DeliveryManager.products_changed.connect(_on_products_changed)
+	_search_bar.text_changed.connect(func(_t): _refresh_products())
+	_btn_toggle_all.pressed.connect(_on_toggle_all)
 
 func _process(delta: float) -> void:
 	if visible and _current_tab == TAB_ORDERS:
@@ -102,12 +106,28 @@ func _refresh_orders() -> void:
 func _refresh_products() -> void:
 	for child in _products_container.get_children():
 		child.queue_free()
+	var filter = _search_bar.text.strip_edges().to_lower()
 	var items = DeliveryManager.get_sellable_items()
+	if filter != "":
+		items = items.filter(func(i): return i.name.to_lower().contains(filter))
 	if items.is_empty():
-		_products_container.add_child(_make_label("No sellable products found.", Color(0.6, 0.6, 0.6)))
+		_products_container.add_child(_make_label("No products found.", Color(0.6, 0.6, 0.6)))
 		return
 	for item in items:
 		_products_container.add_child(_make_product_row(item))
+	_update_toggle_all_btn()
+
+func _update_toggle_all_btn() -> void:
+	var items = DeliveryManager.get_sellable_items()
+	var all_on = items.all(func(i): return DeliveryManager.is_product_enabled(i.id))
+	_btn_toggle_all.text = "Disable All" if all_on else "Enable All"
+
+func _on_toggle_all() -> void:
+	var items = DeliveryManager.get_sellable_items()
+	var all_on = items.all(func(i): return DeliveryManager.is_product_enabled(i.id))
+	for item in items:
+		DeliveryManager.set_product_enabled(item.id, not all_on)
+	_refresh_products()
 
 func _on_orders_changed() -> void:
 	if visible and _current_tab == TAB_ORDERS:

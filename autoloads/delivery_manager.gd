@@ -74,7 +74,7 @@ func set_product_enabled(item_id: String, enabled: bool) -> void:
 
 func set_product_price(item_id: String, price: float) -> void:
 	_ensure_settings(item_id)
-	product_settings[item_id]["price"] = max(1.0, price)
+	product_settings[item_id]["price"] = maxf(0.01, snappedf(price, 0.01))
 	products_changed.emit()
 
 func get_demand_percent(item_id: String) -> float:

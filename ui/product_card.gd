@@ -3,7 +3,7 @@ extends PanelContainer
 @onready var _icon: TextureRect = %ProductIcon
 @onready var _name_lbl: Label = %ProductName
 @onready var _market_lbl: Label = %MarketPrice
-@onready var _price_lbl: Label = %PriceValue
+@onready var _price_lbl: LineEdit = %PriceValue
 @onready var _demand_lbl: Label = %DemandLabel
 @onready var _active_btn: Button = %ActiveBtn
 @onready var _btn_minus: Button = %BtnMinus
@@ -26,11 +26,13 @@ func _ready() -> void:
 	_btn_minus.pressed.connect(_on_minus)
 	_btn_plus.pressed.connect(_on_plus)
 	_active_btn.pressed.connect(_on_active_toggle)
+	_price_lbl.text_submitted.connect(_on_price_submitted)
+	_price_lbl.focus_exited.connect(_on_price_focus_exited)
 	_refresh()
 
 func _refresh() -> void:
 	var price = DeliveryManager.get_product_price(_item_id)
-	_price_lbl.text = "$%d" % int(price)
+	_price_lbl.text = "$%.2f" % price
 
 	var demand = DeliveryManager.get_demand_percent(_item_id)
 	_demand_lbl.text = "%.0f%% demand" % demand
@@ -57,6 +59,20 @@ func _on_minus() -> void:
 
 func _on_plus() -> void:
 	DeliveryManager.set_product_price(_item_id, DeliveryManager.get_product_price(_item_id) + 1.0)
+	_refresh()
+
+func _on_price_submitted(_text: String) -> void:
+	_apply_typed_price()
+	_price_lbl.release_focus()
+
+func _on_price_focus_exited() -> void:
+	_apply_typed_price()
+
+func _apply_typed_price() -> void:
+	var raw = _price_lbl.text.strip_edges().trim_prefix("$")
+	var val = raw.to_float()
+	if val > 0.0:
+		DeliveryManager.set_product_price(_item_id, snappedf(val, 0.01))
 	_refresh()
 
 func _on_active_toggle() -> void:

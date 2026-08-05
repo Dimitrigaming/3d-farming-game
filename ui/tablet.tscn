@@ -134,6 +134,22 @@ theme_override_colors/font_color = Color(0.5, 0.75, 1, 1)
 theme_override_font_sizes/font_size = 15
 text = "Products Available for Orders"
 
+[node name="FilterRow" type="HBoxContainer" parent="Control/Panel/MarginContainer/VBox/Content/ProductsPanel" unique_id=197826200]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BtnToggleAll" type="Button" parent="Control/Panel/MarginContainer/VBox/Content/ProductsPanel/FilterRow" unique_id=197826201]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Enable All"
+
+[node name="SearchBar" type="LineEdit" parent="Control/Panel/MarginContainer/VBox/Content/ProductsPanel/FilterRow" unique_id=197826202]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Search products..."
+
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/Panel/MarginContainer/VBox/Content/ProductsPanel" unique_id=5283236]
 layout_mode = 2
 size_flags_vertical = 3
