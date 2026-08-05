@@ -158,31 +158,138 @@ func _make_order_row(order: Dictionary) -> Control:
 	return row
 
 func _make_product_row(item: ItemDefinition) -> Control:
-	var row = HBoxContainer.new()
-	row.add_theme_constant_override("separation", 8)
+	var card = PanelContainer.new()
+	var card_style = StyleBoxFlat.new()
+	card_style.bg_color = Color(0.1, 0.13, 0.18)
+	card_style.set_corner_radius_all(6)
+	card.add_theme_stylebox_override("panel", card_style)
+	card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 
-	var check = CheckButton.new()
-	check.button_pressed = item.id in DeliveryManager.enabled_products
-	check.focus_mode = Control.FOCUS_NONE
-	check.toggled.connect(func(on): DeliveryManager.set_product_enabled(item.id, on))
-	row.add_child(check)
+	var outer = HBoxContainer.new()
+	outer.add_theme_constant_override("separation", 0)
+	card.add_child(outer)
+
+	# --- Left: icon + name + market price ---
+	var left = VBoxContainer.new()
+	left.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	left.add_theme_constant_override("separation", 4)
+	var left_margin = MarginContainer.new()
+	left_margin.add_theme_constant_override("margin_left", 10)
+	left_margin.add_theme_constant_override("margin_top", 10)
+	left_margin.add_theme_constant_override("margin_right", 8)
+	left_margin.add_theme_constant_override("margin_bottom", 10)
+	left_margin.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	left_margin.add_child(left)
+	outer.add_child(left_margin)
+
+	var name_row = HBoxContainer.new()
+	name_row.add_theme_constant_override("separation", 8)
+	left.add_child(name_row)
 
 	if item.icon:
 		var icon = TextureRect.new()
 		icon.texture = item.icon
-		icon.custom_minimum_size = Vector2(24, 24)
+		icon.custom_minimum_size = Vector2(40, 40)
 		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		row.add_child(icon)
+		name_row.add_child(icon)
 
 	var name_lbl = _make_label(item.name, Color.WHITE)
-	name_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	row.add_child(name_lbl)
+	name_lbl.add_theme_font_size_override("font_size", 15)
+	name_lbl.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	name_row.add_child(name_lbl)
 
-	var price_lbl = _make_label("$%d ea." % item.sell_price, Color(0.6, 0.6, 0.6))
-	price_lbl.add_theme_font_size_override("font_size", 12)
-	row.add_child(price_lbl)
+	var market_lbl = _make_label("Market Price: $%d" % item.sell_price, Color(0.55, 0.65, 0.75))
+	market_lbl.add_theme_font_size_override("font_size", 12)
+	left.add_child(market_lbl)
 
-	return row
+	# --- Divider ---
+	var vsep = VSeparator.new()
+	vsep.custom_minimum_size = Vector2(2, 0)
+	outer.add_child(vsep)
+
+	# --- Right: price control + demand + active button ---
+	var right_margin = MarginContainer.new()
+	right_margin.add_theme_constant_override("margin_left", 10)
+	right_margin.add_theme_constant_override("margin_top", 10)
+	right_margin.add_theme_constant_override("margin_right", 10)
+	right_margin.add_theme_constant_override("margin_bottom", 10)
+	right_margin.custom_minimum_size = Vector2(150, 0)
+	outer.add_child(right_margin)
+
+	var right = VBoxContainer.new()
+	right.add_theme_constant_override("separation", 6)
+	right_margin.add_child(right)
+
+	# Price row
+	var price_row = HBoxContainer.new()
+	price_row.add_theme_constant_override("separation", 4)
+	right.add_child(price_row)
+
+	var price_title = _make_label("Price:", Color(0.7, 0.7, 0.8))
+	price_title.add_theme_font_size_override("font_size", 12)
+	price_title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	price_row.add_child(price_title)
+
+	var btn_minus = Button.new()
+	btn_minus.text = "-"
+	btn_minus.focus_mode = Control.FOCUS_NONE
+	btn_minus.custom_minimum_size = Vector2(24, 24)
+	price_row.add_child(btn_minus)
+
+	var price_val_lbl = _make_label("$%d" % int(DeliveryManager.get_product_price(item.id)), Color.WHITE)
+	price_val_lbl.add_theme_font_size_override("font_size", 13)
+	price_val_lbl.custom_minimum_size = Vector2(40, 0)
+	price_val_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	price_row.add_child(price_val_lbl)
+
+	var btn_plus = Button.new()
+	btn_plus.text = "+"
+	btn_plus.focus_mode = Control.FOCUS_NONE
+	btn_plus.custom_minimum_size = Vector2(24, 24)
+	price_row.add_child(btn_plus)
+
+	# Demand label
+	var demand_pct = DeliveryManager.get_demand_percent(item.id)
+	var demand_color = Color(0.3, 1.0, 0.4) if demand_pct >= 75.0 else \
+					   Color(1.0, 0.85, 0.2) if demand_pct >= 40.0 else Color(1.0, 0.4, 0.4)
+	var demand_lbl = _make_label("%.0f%% demand" % demand_pct, demand_color)
+	demand_lbl.add_theme_font_size_override("font_size", 12)
+	demand_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	right.add_child(demand_lbl)
+
+	# Active toggle button
+	var is_enabled = DeliveryManager.is_product_enabled(item.id)
+	var active_btn = Button.new()
+	active_btn.text = "Active" if is_enabled else "Inactive"
+	active_btn.focus_mode = Control.FOCUS_NONE
+	active_btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_style_active_btn(active_btn, is_enabled)
+	right.add_child(active_btn)
+
+	# Wire up buttons
+	btn_minus.pressed.connect(func():
+		DeliveryManager.set_product_price(item.id, DeliveryManager.get_product_price(item.id) - 1.0)
+		_refresh_products()
+	)
+	btn_plus.pressed.connect(func():
+		DeliveryManager.set_product_price(item.id, DeliveryManager.get_product_price(item.id) + 1.0)
+		_refresh_products()
+	)
+	active_btn.pressed.connect(func():
+		DeliveryManager.set_product_enabled(item.id, not DeliveryManager.is_product_enabled(item.id))
+		_refresh_products()
+	)
+
+	return card
+
+func _style_active_btn(btn: Button, enabled: bool) -> void:
+	var style = StyleBoxFlat.new()
+	style.bg_color = Color(0.15, 0.6, 0.2) if enabled else Color(0.55, 0.15, 0.15)
+	style.set_corner_radius_all(4)
+	btn.add_theme_stylebox_override("normal", style)
+	var style_hover = style.duplicate()
+	style_hover.bg_color = Color(0.2, 0.75, 0.25) if enabled else Color(0.7, 0.18, 0.18)
+	btn.add_theme_stylebox_override("hover", style_hover)
 
 func _on_fulfill_order(order: Dictionary) -> void:
 	DeliveryManager.try_fulfill_order(order)

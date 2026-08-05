@@ -138,11 +138,13 @@ text = "Products Available for Orders"
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ProductsContainer" type="VBoxContainer" parent="Control/Panel/MarginContainer/VBox/Content/ProductsPanel/ScrollContainer" unique_id=1043350158]
+[node name="ProductsContainer" type="GridContainer" parent="Control/Panel/MarginContainer/VBox/Content/ProductsPanel/ScrollContainer" unique_id=1043350158]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 4
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 2
 
 [node name="CloseHint" type="Label" parent="Control/Panel/MarginContainer/VBox" unique_id=1965296964]
 layout_mode = 2
