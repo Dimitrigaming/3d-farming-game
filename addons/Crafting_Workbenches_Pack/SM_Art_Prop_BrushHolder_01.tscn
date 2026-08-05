@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8hs5y"]
+resource_name = "SM_Art_Prop_BrushHolder_01_Mesh"
+_surfaces = [{
+"aabb": AABB(-0.0003031184, -0.00035, 0, 0.00060621777, 0.0007, 0.0014019497),
+"attribute_data": PackedByteArray("rqpTPUzkpD6uqlM9TOSkPq6qUz1M5KQ+rqpTPUzkpD6uqlM9TOSkPq6qUz1M5KQ+rqpTPUzkpD6uqlM9TOSkPq6qUz1M5KQ+rqpTPUzkpD6uqlM9TOSkPq6qUz1M5KQ+rqpTPUzkpD6uqlM9TOSkPq6qUz1M5KQ+rqpTPUzkpD6uqlM9TOSkPq6qUz1M5KQ+rqpTPUzkpD6uqlM9TOSkPq6qUz1M5KQ+rqpTPUzkpD6uqlM9TOSkPq6qUz1M5KQ+rqpTPUzkpD6uqlM9TOSkPq6qUz1M5KQ+rqpTPUzkpD6uqlM9TOSkPq6qUz1M5KQ+rqpTPUzkpD6uqlM9TOSkPq6qUz1M5KQ+rqpTPUzkpD6uqlM9TOSkPq6qUz1M5KQ+rqpTPUzkpD6uqlM9TOSkPq6qUz1M5KQ+rqpTPUzkpD6uqlM9TOSkPq6qUz1M5KQ+rqpTPUzkpD6uqlM9TOSkPq6qUz1M5KQ+rqpTPUzkpD6uqlM9TOSkPq6qUz1M5KQ+rqpTPUzkpD6uqlM9TOSkPq6qUz1M5KQ+rqpTPUzkpD6uqlM9TOSkPq6qUz1M5KQ+rqpTPUzkpD6uqlM9TOSkPq6qUz1M5KQ+rqpTPUzkpD6uqlM9TOSkPq6qUz1M5KQ+rqpTPUzkpD6uqlM9TOSkPq6qUz1M5KQ+rqpTPUzkpD6uqlM9TOSkPq6qUz1M5KQ+rqpTPUzkpD6uqlM9TOSkPq6qUz1M5KQ+rqpTPUzkpD6uqlM9TOSkPq6qUz1M5KQ+rqpTPUzkpD6uqlM9TOSkPq6qUz1M5KQ+rqpTPUzkpD6uqlM9TOSkPq6qUz1M5KQ+rqpTPUzkpD6uqlM9TOSkPg=="),
+"format": 34359742487,
+"index_count": 132,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIABAACAAUABgAHAAgACAAJAAYACgALAAwADAANAAoADgAPABAAEAARAA4AEgATABQAFAAVABIAFgAXABgAGAAZABYAGgAbABwAHAAdABoAHgAfACAAIAAhAB4AIgAjACQAJAAlACIAJgAlACQAJAAnACYAKAApACoAKgArACgALAAtAC4ALgAvACwAMAAxADIAMgAzADAAMQAwADQANAA1ADEANgA3ADgAOAA5ADYAOgA7ADwAPAA9ADoAPgA8ADsAOwA/AD4AQABBAEIAQgBDAEAARABFAEYARgBHAEQASABJAEoASgBLAEgATABNAE4ATgBPAEwA"),
+"material": SubResource("StandardMaterial3D_16m7f"),
+"name": "PolyClem_texture",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 80,
+"vertex_data": PackedByteArray("TumeOTSANzkAAAAA3eueuTSANzkAAAAA3eueuTSAN7kAAAAACtcjsjSAtzkAAAAATumeOTSAN7kAAAAACtcjsjSAt7kAAAAAFo+NufpzI7mgwbc6sfARsvpzo7mgwbc6CtcjsjSAt7mgwbc63eueuTSAN7mgwbc63eueuTSANzmgwbc63eueuTSANzkAAAAACtcjsjSAtzkAAAAACtcjsjSAtzmgwbc6CtcjsjSAtzmgwbc6CtcjsjSAtzkAAAAATumeOTSANzkAAAAATumeOTSANzmgwbc6TumeOTSAN7mgwbc6TumeOTSAN7kAAAAACtcjsjSAt7kAAAAACtcjsjSAt7mgwbc63eueuTSAN7mgwbc63eueuTSAN7kAAAAA3eueuTSANzkAAAAA3eueuTSANzmgwbc6TumeOTSANzmgwbc6TumeOTSANzkAAAAATumeOTSAN7kAAAAATumeOTSAN7mgwbc6CtcjsjSAt7mgwbc6CtcjsjSAt7kAAAAA3eueuTSAN7kAAAAA3eueuTSAN7mgwbc6zoyNOfpzIzmgwbc6TumeOTSANzmgwbc6TumeOTSAN7mgwbc6zoyNOfpzI7mgwbc6sfARsvpzo7mgwbc6CtcjsjSAt7mgwbc6sfARsvpzo7nDBZo3sfARsvpzo7mgwbc6Fo+NufpzI7mgwbc6Fo+NufpzI7nDBZo3zoyNOfpzIznDBZo3zoyNOfpzIzmgwbc6zoyNOfpzI7mgwbc6zoyNOfpzI7nDBZo3Fo+NufpzIzmgwbc63eueuTSANzmgwbc6CtcjsjSAtzmgwbc6sfARsvpzozmgwbc6Fo+NufpzI7mgwbc63eueuTSAN7mgwbc6sfARsvpzozmgwbc6CtcjsjSAtzmgwbc6TumeOTSANzmgwbc6zoyNOfpzIzmgwbc6zoyNOfpzI7nDBZo3sfARsvpzo7nDBZo3sfARsvpzoznDBZo3zoyNOfpzIznDBZo3Fo+NufpzIznDBZo3Fo+NufpzI7nDBZo3Fo+NufpzIznDBZo3Fo+NufpzIzmgwbc6sfARsvpzozmgwbc6sfARsvpzoznDBZo3sfARsvpzoznDBZo3sfARsvpzozmgwbc6zoyNOfpzIzmgwbc6zoyNOfpzIznDBZo3zoyNOfpzI7nDBZo3zoyNOfpzI7mgwbc6sfARsvpzo7mgwbc6sfARsvpzo7nDBZo3Fo+NufpzI7nDBZo3Fo+NufpzI7mgwbc6Fo+NufpzIzmgwbc6Fo+NufpzIznDBZo3/////////7//////////v/////////+//////////7//////////v/////////+//3//f////z//f/9/////P/9//3////8//3//f////z8lUSXR////vyVRJdH///+/JVEl0f///78lUSXR////v9muJdH///+/2a4l0f///7/ZriXR////v9muJdH///+/2a7ZLv///7/Zrtku////v9mu2S7///+/2a7ZLv///78AAP9/////vwAA/3////+/AAD/f////78AAP9/////v////3////+/////f////7////9/////v////3////+/JVHZLv///78lUdku////vyVR2S7///+/JVHZLv///7//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3////8//3//f////z/ZriXR////v9muJdH///+/2a4l0f///7/ZriXR////vwAA/3////+/AAD/f////78AAP9/////vwAA/3////+//3//f////z//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3////8//3//f////z/Zrtku////v9mu2S7///+/2a7ZLv///7/Zrtku////vyVR2S7///+/JVHZLv///78lUdku////vyVR2S7///+/JVEl0f///78lUSXR////vyVRJdH///+/JVEl0f///7////9/////v////3////+/////f////7////9/////vw==")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_xbavc")
+
+[node name="SM_Art_Prop_BrushHolder_01" type="Node3D"]
+
+[node name="SM_Art_Prop_BrushHolder_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
+mesh = SubResource("ArrayMesh_8hs5y")

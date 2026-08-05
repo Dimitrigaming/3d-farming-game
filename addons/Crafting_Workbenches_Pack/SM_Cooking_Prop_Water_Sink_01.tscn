@@ -1,0 +1,26 @@
+[gd_scene format=3]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_xvg8t"]
+resource_name = "SM_Cooking_Prop_Water_Sink_01_Mesh"
+_surfaces = [{
+"aabb": AABB(-0.001955562, -0.0023364394, 1.9070274e-06, 0.0039111245, 0.0046728794, 0.00018649758),
+"attribute_data": PackedByteArray("oufxO3Ci3z2i5/E7cKLfPaLn8Ttwot89oufxO3Ci3z2i5/E7cKLfPaLn8Ttwot89oufxO3Ci3z2i5/E7cKLfPaLn8Ttwot89oufxO3Ci3z2i5/E7cKLfPaLn8Ttwot89oufxO3Ci3z2i5/E7cKLfPaLn8Ttwot89oufxO3Ci3z2i5/E7cKLfPaLn8Ttwot89oufxO3Ci3z2i5/E7cKLfPaLn8Ttwot89oufxO3Ci3z2i5/E7cKLfPaLn8Ttwot89oufxO3Ci3z2i5/E7cKLfPaLn8Ttwot89oufxO3Ci3z2i5/E7cKLfPaLn8Ttwot89oufxO3Ci3z2i5/E7cKLfPaLn8Ttwot89oufxO3Ci3z2i5/E7cKLfPaLn8Ttwot89oufxO3Ci3z2i5/E7cKLfPaLn8Ttwot89oufxO3Ci3z2i5/E7cKLfPaLn8Ttwot89oufxO3Ci3z2i5/E7cKLfPQ=="),
+"format": 34359742487,
+"index_count": 60,
+"index_data": PackedByteArray("DAABAAIAAgANAAwADgAPABAAEAARAA4AEgATABQAFAAHABIACQAVABYAFgALAAkAFwAFABgACAAKABkAGgAbAAAAHAAEAB0AHgADAB8AHwAgAB4ABgAhACIAIgAjAAYAJAAlACYAJgAnACQAKAApACoAKgArACgA"),
+"lods": [0.00059926294, PackedByteArray("AAABAAIAAgADAAAAAgAEAAMAAAADAAUABQAGAAAABgAFAAcABwAIAAYACQAHAAUACAAKAAkABQALAAkA")],
+"material": SubResource("StandardMaterial3D_16m7f"),
+"name": "PolyClem_texture",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 44,
+"vertex_data": PackedByteArray("5CgAOwrXI64kKjU35CgAO6mBzrokKjU3iJWcOvMeGbskKjU34ygAu6mBzrokKjU3jJWcuvMeGbskKjU34ygAuwrXI64kKjU35CgAO6aBzjokKjU3zmasOcgS3jp6jkU5iJWcOvQeGTskKjU3jJWcuvQeGTskKjU3zmasOcgS3jp6jkU54ygAu6aBzjokKjU389WOOj9WKLqNyeA32GasucUS3rp6jkU589WOOj9WKLqNyeA32GasucUS3rp6jkU5u9U2uopNE7r29P81w9U2OohNEzr29P81w9U2OohNEzr29P81u9U2uopNE7r29P819NWOuj9WKDqNyeA3zmasOcgS3jp6jkU59NWOuj9WKDqNyeA39NWOuj9WKDqNyeA34ygAu6aBzjokKjU3jJWcuvQeGTskKjU35CgAO6mBzrokKjU389WOOj9WKLqNyeA3iJWcOvMeGbskKjU32GasucUS3rp6jkU5u9U2uopNE7r29P814ygAuwrXI64kKjU39NWOuj9WKDqNyeA3w9U2OohNEzr29P81zmasOcgS3jp6jkU5iJWcOvQeGTskKjU32GasucUS3rp6jkU5jJWcuvMeGbskKjU34ygAu6mBzrokKjU3u9U2uopNE7r29P815CgAOwrXI64kKjU389WOOj9WKLqNyeA3w9U2OohNEzr29P815CgAO6aBzjokKjU3UYL/f////z83iXN/////PzeJc3////8/aYDsfv///z//f0Rk////P619/3////8/9IsWfP///z8qgdJ1////P/9/upv///8/x3aLgP///z//f7qb////P8d2i4D///8/N4lzf////z83iXN/////P9R+LIr///8/1H4siv///z/UfiyK////P9R+LIr///8/KoHSdf///z8qgdJ1////PyqB0nX///8/x3aLgP///z/HdouA////P619/3////8/rX3/f////z//f7qb////P1GC/3////8/UYL/f////z//f0Rk////P/9/RGT///8/aYDsfv///z9pgOx+////P2mA7H7///8/9IsWfP///z/0ixZ8////P/SLFnz///8/CnTog////z8KdOiD////Pwp06IP///8/CnTog////z+VfxKB////P5V/EoH///8/lX8Sgf///z+VfxKB////Pw==")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_1we65")
+
+[node name="SM_Cooking_Prop_Water_Sink_01" type="Node3D"]
+
+[node name="SM_Cooking_Prop_Water_Sink_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
+mesh = SubResource("ArrayMesh_xvg8t")

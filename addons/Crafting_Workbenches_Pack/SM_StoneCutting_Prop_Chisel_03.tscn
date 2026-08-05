@@ -1,0 +1,26 @@
+[gd_scene format=3]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_gq301"]
+resource_name = "SM_StoneCutting_Prop_Chisel_03_Mesh"
+_surfaces = [{
+"aabb": AABB(-0.0001705131, -0.00029971785, 0, 0.0003410262, 0.0005994167, 0.0014999424),
+"attribute_data": PackedByteArray("VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+VJcFPlJloz5UlwU+UmWjPlSXBT5SZaM+"),
+"format": 34359742487,
+"index_count": 132,
+"index_data": PackedByteArray("GgAqACsAHAAsABsALQAYABkAHQAuAC8AHgAwADEAMgAfACAAMwAkACEANAAiACMANQA2ADcANwA4ADUABgAHADkAOQA6AAYAOwA8AD0APQA+ADsABAAFAD8APwBAAAQAQQBCAEMAQwBEAEEARQAVABYAFgBGAEUARwBIAEkASQBKAEcASwAXABQAFABMAEsAAwBNACUAJQACAAMADAANAE4ATgAnAAwADwApACgAKAAOAA8AAAABAE8ATwAmAAAAUABRAFIAUgBTAFAAVABVAFYAVgBXAFQACAAJAAoACgALAAgAWABZAFoAWgBbAFgAEAARABIAEgATABAAXABdAF4AXgBfAFwA"),
+"lods": [3.7013408e-05, PackedByteArray("GAAZABoAGwAcAB0AHgAfACAAIQAiACMAIwAkACEAJQACAAMAJQADACYAJgABACUAAQAmAAAADQAnAAwAJwANACgAKAApACcADwApACgAKAAOAA8ABAAFAAYABgAHAAQACAAJAAoACgALAAgAEAARABIAEgATABAAFAAVABYAFgAXABQA"), 5.5520108e-05, PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA")],
+"material": SubResource("StandardMaterial3D_16m7f"),
+"name": "PolyClem_texture",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 96,
+"vertex_data": PackedByteArray("7MAguXMjnbkxBsM6eZIVuHMjnbnhwkk3epIVuOUgnTkzw0k37MAgueUgnTkxBsM6epIVOOUgnTnhwkk3epIVuOUgnTkzw0k3eZIVuHMjnbnhwkk3epIVOHMjnbkzw0k37MAguXMjnbkxBsM67MAgOXMjnbkxBsM6epIVOHMjnbkzw0k3eZIVuHMjnbnhwkk37MAgOeUgnTkxBsM6epIVOOUgnTnhwkk3epIVOHMjnbkzw0k37MAgOXMjnbkxBsM67MAgOeUgnTkxBsM67MAgueUgnTkxBsM6epIVuOUgnTkzw0k3epIVOOUgnTnhwkk37MAgOeUgnTkxBsM67MAgOXMjnbkxBsM67MAguXMjnbkxBsM67MAgueUgnTkxBsM6epIVuOUgnTkzw0k3ocdFuNMagzlmpkc3eZIVuHMjnbnhwkk3epIVOHMjnbkzw0k3ocdFOGAdg7lmpkc3epIVOOUgnTnhwkk37MAgueUgnTkxBsM67MAguXMjnbkxBsM6wcsyuWAdg7lsCsM67MAgOXMjnbkxBsM67MAgOeUgnTkxBsM6wcsyOdMagzlsCsM6w8syOWAdg7lsCsM6ocdFuNMagzlmpkc3wcsyuWAdg7lsCsM6wcsyOdMagzlsCsM6ocdFOGAdg7lmpkc3w8syOWAdg7lsCsM6ygERuGAdg7kAAAAAocdFuGAdg7lmpkc3yQEROGAdg7kAAAAAygERuNMagzkAAAAAyQERONMagzkAAAAAocdFONMagzlmpkc30aMiudMagzm3mcQ6w8syudMagzlsCsM60aMiuWAdg7m3mcQ60aMiOWAdg7m3mcQ60aMiOdMagzm3mcQ6ocdFuGAdg7lmpkc3ygERuGAdg7kAAAAAygERuNMagzkAAAAAocdFuNMagzlmpkc3yQEROGAdg7kAAAAAygERuGAdg7kAAAAAocdFONMagzlmpkc3yQERONMagzkAAAAAyQEROGAdg7kAAAAAocdFOGAdg7lmpkc3ygERuNMagzkAAAAAyQERONMagzkAAAAA0aMiudMagzm3mcQ60aMiuWAdg7m3mcQ6wcsyuWAdg7lsCsM6w8syudMagzlsCsM60aMiOWAdg7m3mcQ60aMiuWAdg7m3mcQ60aMiOWAdg7m3mcQ60aMiOdMagzm3mcQ6wcsyOdMagzlsCsM6w8syOWAdg7lsCsM60aMiudMagzm3mcQ60aMiOdMagzm3mcQ6w8syudMagzlsCsM6ocdFONMagzlmpkc3ocdFuGAdg7lmpkc3wcsyuWAdg7lsCsM6ocdFuGAdg7lmpkc3ocdFuNMagzlmpkc3w8syudMagzlsCsM6yQERONMagzkAAAAAygERuNMagzkAAAAAygERuGAdg7kAAAAAyQEROGAdg7kAAAAAwcsyOdMagzlsCsM6ocdFONMagzlmpkc3ocdFOGAdg7lmpkc3w8syOWAdg7lsCsM60aMiOdMagzm3mcQ60aMiOWAdg7m3mcQ60aMiuWAdg7m3mcQ60aMiudMagzm3mcQ6/hpgXf///7/+GmBd////v/8anqL///+//xqeov///7/2GP7/////v/YY/v////+/COcAAP///78I5wAA////v/9/AAD///+//38AAP///7//fwAA////v/9/AAD///+/AOWeov///78A5Z6i////v//kYF3///+//+RgXf///7//f///////v/9///////+//3///////7//f///////v/9/9pj///8//38IZ////z//fwhn////P/9/9pj///8/FQ0jyP///78VDSPI////vxUN2zf///+/6fLbN////7/p8ts3////v+nyI8j///+/mU/vkP///z+ZTw9v////P5lPD2////8/ZbAPb////z9lsO+Q////P2Ww75D///8/ZbAPb////z//Gp6i////v/4aYF3///+/AOWeov///7//5GBd////v//kYF3///+/FQ3bN////78VDds3////v+ny2zf///+/FQ0jyP///7/p8iPI////v+nyI8j///+/mU/vkP///z+ZT++Q////P5lPD2////8/ZbAPb////z9lsO+Q////PwAAx8H///+/AADHwf///78AAMfB////vwAAx8H///+/COcAAP///78I5wAA////v///x8H///+////Hwf///7///8fB////v///x8H///+/9hj+/////7/2GP7/////vzhI/3////8/OEj/f////z84SP9/////PzhI/3////8//38IZ////z//fwhn////P8a3/3////8/xrf/f////z/Gt/9/////P8a3/3////8//3/2mP///z//f/aY////P/8anqL///+/AOWeov///7/+GmBd////vwAAIHb///+/AAAgdv///78AACB2////vwAAIHb///+//////////7//////////v/////////+//////////7///96J////v///3on///+////eif///7///96J////v/9//3////8//3//f////z//f/9/////P/9//3////8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_oarob")
+
+[node name="SM_StoneCutting_Prop_Chisel_03" type="Node3D"]
+
+[node name="SM_StoneCutting_Prop_Chisel_03" type="MeshInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
+mesh = SubResource("ArrayMesh_gq301")
