@@ -21,12 +21,20 @@ extends StaticBody3D
 
 var _stage: int = 0
 var _hp: int = 0
+var _bar_hide_timer: float = 0.0
+const BAR_HIDE_DELAY: float = 3.0
 
 func _ready() -> void:
 	add_to_group("interactable")
 	_hp = stage_hp
 	_apply_stage()
 	_sprite_3d.visible = false
+
+func _process(delta: float) -> void:
+	if _sprite_3d.visible:
+		_bar_hide_timer -= delta
+		if _bar_hide_timer <= 0.0:
+			_sprite_3d.visible = false
 
 func _apply_stage() -> void:
 	for child in _visual.get_children():
@@ -93,3 +101,4 @@ func _update_hp_bar() -> void:
 	_sprite_3d.visible = true
 	_progress_bar.visible = true
 	_progress_bar.value = clampf(float(_hp) / float(stage_hp), 0.0, 1.0) * 100.0
+	_bar_hide_timer = BAR_HIDE_DELAY
