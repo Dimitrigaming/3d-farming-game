@@ -1,5 +1,26 @@
 [gd_scene format=3]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_4vqqg")
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_xtovq"]
+_surfaces = [{
+"aabb": AABB(-0.0038959833, -0.0028520608, -4.606172e-05, 0.0077919783, 0.005704105, 0.00016571667),
+"format": 34359742465,
+"index_count": 72,
+"index_data": PackedByteArray("AAABAAIACAACAAEAAgAEAAAACQACAAgABAACAAkAAAAEAAoACQAKAAQACwABAAAAAQAMAAgACwAMAAEABgAIAAwACQAIAAYAAwAMAAsADAADAAYAAAANAAsACgANAAAACwAFAAMABgADAAUACwANAAUABgAHAAkACQAHAAoABQAHAAYADQAKAAcABwAFAA0A"),
+"lods": [0.00024010769, PackedByteArray("AAABAAIAAQADAAIAAgAEAAAABQABAAAABQADAAEABAAFAAAABgACAAMABgADAAUAAgAHAAQABgAHAAIABQAEAAcABQAHAAYA")],
+"name": "PolyClem_texture",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 14,
+"vertex_data": PackedByteArray("wxp/u/seE7s0A7Q4wVN/uzJVE7uJVZo3Mx1kOyGzOjsFwlC3A1Zku6TpOrtGBZw3JFZkO13pOjskq2Y4Ax1ku22zOrskb7Q45Rp/O7QeEzuKYk2381N/O+ZUEzsBg2c40X5xO63OJjtlMkG4V7hxO0oEJzuAUrM30vBxOxo7JztzQro4U7hxu10EJ7vgAls4N/Fxu706J7t7XH+3Jn9xu1fOJrtD7/o4")
+}]
+blend_shape_mode = 0
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_gw7be"]
 resource_name = "SM_Metalworking_Prop_MetalBar_Long_01_Mesh"
 _surfaces = [{
@@ -18,27 +39,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_xtovq")
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_xtovq"]
-_surfaces = [{
-"aabb": AABB(-0.0038959833, -0.0028520608, -4.606172e-05, 0.0077919783, 0.005704105, 0.00016571667),
-"format": 34359742465,
-"index_count": 72,
-"index_data": PackedByteArray("AAABAAIACAACAAEAAgAEAAAACQACAAgABAACAAkAAAAEAAoACQAKAAQACwABAAAAAQAMAAgACwAMAAEABgAIAAwACQAIAAYAAwAMAAsADAADAAYAAAANAAsACgANAAAACwAFAAMABgADAAUACwANAAUABgAHAAkACQAHAAoABQAHAAYADQAKAAcABwAFAA0A"),
-"lods": [0.00024010769, PackedByteArray("AAABAAIAAQADAAIAAgAEAAAABQABAAAABQADAAEABAAFAAAABgACAAMABgADAAUAAgAHAAQABgAHAAIABQAEAAcABQAHAAYA")],
-"name": "PolyClem_texture",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 14,
-"vertex_data": PackedByteArray("wxp/u/seE7s0A7Q4wVN/uzJVE7uJVZo3Mx1kOyGzOjsFwlC3A1Zku6TpOrtGBZw3JFZkO13pOjskq2Y4Ax1ku22zOrskb7Q45Rp/O7QeEzuKYk2381N/O+ZUEzsBg2c40X5xO63OJjtlMkG4V7hxO0oEJzuAUrM30vBxOxo7JztzQro4U7hxu10EJ7vgAls4N/Fxu706J7t7XH+3Jn9xu1fOJrtD7/o4")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
-resource_name = "PolyClem_texture"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_4vqqg")
-emission_enabled = true
 
 [node name="SM_Metalworking_Prop_MetalBar_Long_01" type="Node3D"]
 

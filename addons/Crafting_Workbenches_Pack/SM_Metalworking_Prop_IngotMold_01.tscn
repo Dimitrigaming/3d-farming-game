@@ -1,23 +1,5 @@
 [gd_scene format=3]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_o51ua"]
-resource_name = "SM_Metalworking_Prop_IngotMold_01_Mesh"
-_surfaces = [{
-"aabb": AABB(-0.0010470315, -0.0017970218, 8.419454e-06, 0.0017879892, 0.003507539, 0.00070724846),
-"attribute_data": PackedByteArray("QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz4="),
-"format": 34359742487,
-"index_count": 84,
-"index_data": PackedByteArray("AAABAAIAAwAAAAIAAgAEAAMABQAGAAcABwAIAAUACQAKAAsADAANAA4ADgAPAAwAEAARABIAEwAUABUAFQAWABMAFwAYABkAGQAaABcAGwAcAB0AHQAeABsAHwAgACEAIQAiAB8AIwAkACUAJQAmACMAJwAoACkAKQAqACcAKwAsAC0ALgAvADAAMAAxAC4AMgAzADQANAA1ADIANgA3ADgAOAA5ADYA"),
-"material": SubResource("StandardMaterial3D_16m7f"),
-"name": "PolyClem_texture",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 58,
-"vertex_data": PackedByteArray("/Z7cOSHWrLqpmzs6VtzZOVvenzqpmzs61DxCOmTj6rqpmzs6nGwnukZQrbqpmzs6o1GIugyK67qpmzs61DxCOmTj6rpIQQ03A2dAOm4z4DpIQQ03jDyJusaM3zpIQQ03o1GIugyK67pIQQ03jDyJusaM3zqpmzs6+s0oukBknzqpmzs6o1GIugyK67qpmzs6jDyJusaM3zqpmzs6o1GIugyK67qpmzs6o1GIugyK67pIQQ03jDyJusaM3zpIQQ03VtzZOVvenzqpmzs6A2dAOm4z4Dqpmzs61DxCOmTj6rqpmzs6A2dAOm4z4Dqpmzs6jDyJusaM3zqpmzs6jDyJusaM3zpIQQ03A2dAOm4z4DpIQQ03o1GIugyK67qpmzs61DxCOmTj6rqpmzs61DxCOmTj6rpIQQ03o1GIugyK67pIQQ03n+QMurzHjjopmPk47ckLuoqnnLopmPk4nGwnukZQrbqpmzs6+s0oukBknzqpmzs6n+QMurzHjjopmPk4/ZaiOaE1jzopmPk4UcykOZw5nLopmPk47ckLuoqnnLopmPk4nGwnukZQrbqpmzs67ckLuoqnnLopmPk4UcykOZw5nLopmPk4/Z7cOSHWrLqpmzs61DxCOmTj6rqpmzs6A2dAOm4z4Dqpmzs6A2dAOm4z4DpIQQ031DxCOmTj6rpIQQ03+s0oukBknzqpmzs6nGwnukZQrbqpmzs6o1GIugyK67qpmzs6UcykOZw5nLopmPk4/ZaiOaE1jzopmPk4VtzZOVvenzqpmzs6/Z7cOSHWrLqpmzs6A2dAOm4z4Dqpmzs6VtzZOVvenzqpmzs6+s0oukBknzqpmzs6jDyJusaM3zqpmzs6n+QMurzHjjopmPk4+s0oukBknzqpmzs6VtzZOVvenzqpmzs6/ZaiOaE1jzopmPk4/3//f////z//f/9/////P/9//3////8//3//f////z//f/9/////P/////////+//////////7//////////v/////////+//3//f////z//f/9/////P/9//3////8/QQC+f////79BAL5/////v0EAvn////+/QQC+f////7//f/9/////P/9//3////8//3//f////z+kf6P/////v6R/o/////+/pH+j/////7+kf6P/////v1qAWwD///+/WoBbAP///79agFsA////v1qAWwD///+/g+w2gP///z+D7DaA////P4PsNoD///8/g+w2gP///z//f/9/////P/9//3////8//3//f////z//f/9/////P51/Oun///8/nX866f///z+dfzrp////P51/Oun///8/vf9AgP///7+9/0CA////v73/QID///+/vf9AgP///7//f/9/////P/9//3////8//3//f////z97E8h/////P3sTyH////8/exPIf////z97E8h/////P/9//3////8//3//f////z//f/9/////P/9//3////8/YYDEFv///z9hgMQW////P2GAxBb///8/YYDEFv///z8=")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_3e7nj")
-
 [sub_resource type="ArrayMesh" id="ArrayMesh_3e7nj"]
 _surfaces = [{
 "aabb": AABB(-0.0010470315, -0.0017970218, 8.419454e-06, 0.0017879892, 0.003507539, 0.00070724846),
@@ -37,6 +19,24 @@ resource_name = "PolyClem_texture"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_4vqqg")
 emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_o51ua"]
+resource_name = "SM_Metalworking_Prop_IngotMold_01_Mesh"
+_surfaces = [{
+"aabb": AABB(-0.0010470315, -0.0017970218, 8.419454e-06, 0.0017879892, 0.003507539, 0.00070724846),
+"attribute_data": PackedByteArray("QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz5Cqpk+AA0bPkKqmT4ADRs+QqqZPgANGz4="),
+"format": 34359742487,
+"index_count": 84,
+"index_data": PackedByteArray("AAABAAIAAwAAAAIAAgAEAAMABQAGAAcABwAIAAUACQAKAAsADAANAA4ADgAPAAwAEAARABIAEwAUABUAFQAWABMAFwAYABkAGQAaABcAGwAcAB0AHQAeABsAHwAgACEAIQAiAB8AIwAkACUAJQAmACMAJwAoACkAKQAqACcAKwAsAC0ALgAvADAAMAAxAC4AMgAzADQANAA1ADIANgA3ADgAOAA5ADYA"),
+"material": SubResource("StandardMaterial3D_16m7f"),
+"name": "PolyClem_texture",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 58,
+"vertex_data": PackedByteArray("/Z7cOSHWrLqpmzs6VtzZOVvenzqpmzs61DxCOmTj6rqpmzs6nGwnukZQrbqpmzs6o1GIugyK67qpmzs61DxCOmTj6rpIQQ03A2dAOm4z4DpIQQ03jDyJusaM3zpIQQ03o1GIugyK67pIQQ03jDyJusaM3zqpmzs6+s0oukBknzqpmzs6o1GIugyK67qpmzs6jDyJusaM3zqpmzs6o1GIugyK67qpmzs6o1GIugyK67pIQQ03jDyJusaM3zpIQQ03VtzZOVvenzqpmzs6A2dAOm4z4Dqpmzs61DxCOmTj6rqpmzs6A2dAOm4z4Dqpmzs6jDyJusaM3zqpmzs6jDyJusaM3zpIQQ03A2dAOm4z4DpIQQ03o1GIugyK67qpmzs61DxCOmTj6rqpmzs61DxCOmTj6rpIQQ03o1GIugyK67pIQQ03n+QMurzHjjopmPk47ckLuoqnnLopmPk4nGwnukZQrbqpmzs6+s0oukBknzqpmzs6n+QMurzHjjopmPk4/ZaiOaE1jzopmPk4UcykOZw5nLopmPk47ckLuoqnnLopmPk4nGwnukZQrbqpmzs67ckLuoqnnLopmPk4UcykOZw5nLopmPk4/Z7cOSHWrLqpmzs61DxCOmTj6rqpmzs6A2dAOm4z4Dqpmzs6A2dAOm4z4DpIQQ031DxCOmTj6rpIQQ03+s0oukBknzqpmzs6nGwnukZQrbqpmzs6o1GIugyK67qpmzs6UcykOZw5nLopmPk4/ZaiOaE1jzopmPk4VtzZOVvenzqpmzs6/Z7cOSHWrLqpmzs6A2dAOm4z4Dqpmzs6VtzZOVvenzqpmzs6+s0oukBknzqpmzs6jDyJusaM3zqpmzs6n+QMurzHjjopmPk4+s0oukBknzqpmzs6VtzZOVvenzqpmzs6/ZaiOaE1jzopmPk4/3//f////z//f/9/////P/9//3////8//3//f////z//f/9/////P/////////+//////////7//////////v/////////+//3//f////z//f/9/////P/9//3////8/QQC+f////79BAL5/////v0EAvn////+/QQC+f////7//f/9/////P/9//3////8//3//f////z+kf6P/////v6R/o/////+/pH+j/////7+kf6P/////v1qAWwD///+/WoBbAP///79agFsA////v1qAWwD///+/g+w2gP///z+D7DaA////P4PsNoD///8/g+w2gP///z//f/9/////P/9//3////8//3//f////z//f/9/////P51/Oun///8/nX866f///z+dfzrp////P51/Oun///8/vf9AgP///7+9/0CA////v73/QID///+/vf9AgP///7//f/9/////P/9//3////8//3//f////z97E8h/////P3sTyH////8/exPIf////z97E8h/////P/9//3////8//3//f////z//f/9/////P/9//3////8/YYDEFv///z9hgMQW////P2GAxBb///8/YYDEFv///z8=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_3e7nj")
 
 [node name="SM_Metalworking_Prop_IngotMold_01" type="Node3D"]
 

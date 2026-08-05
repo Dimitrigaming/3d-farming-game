@@ -1,5 +1,26 @@
 [gd_scene format=3]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_4vqqg")
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_oarob"]
+_surfaces = [{
+"aabb": AABB(-0.0001705131, -0.00029971785, 0, 0.0003410262, 0.0005994167, 0.0014999424),
+"format": 34359742465,
+"index_count": 132,
+"index_data": PackedByteArray("AQANAA4ADwANAAEAAAABAA4AAQAEAA8ABAABAAAADQAPABAADgANABEAEAARAA0AEgAQAA8AEQAQAAMAAwAQABIADAAPAAQADwAMABIADAAEAAcAAAAHAAQABwALAAwAEwAHAAAAEwALAAcADAALAAoACgALABMACgASAAwABQADABIAEgAKAAUAEwAUAAoAFAAFAAoAAAAVABMAFAATABUAFQAAAAkAFQAWABQABQAUABYAFgAVAAkADgAJAAAACQAXABYACQAOAAgACAAXAAkAEQAIAA4ABgAWABcAFgAGAAUABgAXAAgAEQACAAgACAACAAYABQAGAAIAAwACABEAAgADAAUA"),
+"lods": [3.7013408e-05, PackedByteArray("AgAIAAEACQABAAgACAACAAYACAAGAAkAAQAJAAAABgAAAAkAAAAGAAUABQAGAAIAAwACAAEAAgADAAUAAQAEAAMABAABAAAABQAHAAAAAAAHAAQABwAFAAoAAwAKAAUACgALAAcABAAMAAMACgADAAwADAAEAAcADAALAAoABwALAAwA"), 5.5520108e-05, PackedByteArray("AAABAAIAAwACAAEAAQAEAAMABAABAAAAAgADAAUABQADAAQABQAGAAIAAgAGAAAAAAAGAAUABQAHAAAAAAAHAAQABAAHAAUA")],
+"name": "PolyClem_texture",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("7MAguXMjnbkxBsM6eZIVuHMjnbnhwkk3epIVuOUgnTkzw0k3epIVOOUgnTnhwkk3epIVOHMjnbkzw0k37MAgOeUgnTkxBsM67MAgueUgnTkxBsM67MAgOXMjnbkxBsM6ocdFuNMagzlmpkc3wcsyuWAdg7lsCsM6wcsyOdMagzlsCsM6w8syOWAdg7lsCsM6ocdFOGAdg7lmpkc3ygERuGAdg7kAAAAAocdFuGAdg7lmpkc3yQEROGAdg7kAAAAAyQERONMagzkAAAAAygERuNMagzkAAAAAocdFONMagzlmpkc30aMiOWAdg7m3mcQ60aMiOdMagzm3mcQ60aMiuWAdg7m3mcQ60aMiudMagzm3mcQ6w8syudMagzlsCsM6")
+}]
+blend_shape_mode = 0
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_gq301"]
 resource_name = "SM_StoneCutting_Prop_Chisel_03_Mesh"
 _surfaces = [{
@@ -18,27 +39,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_oarob")
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_oarob"]
-_surfaces = [{
-"aabb": AABB(-0.0001705131, -0.00029971785, 0, 0.0003410262, 0.0005994167, 0.0014999424),
-"format": 34359742465,
-"index_count": 132,
-"index_data": PackedByteArray("AQANAA4ADwANAAEAAAABAA4AAQAEAA8ABAABAAAADQAPABAADgANABEAEAARAA0AEgAQAA8AEQAQAAMAAwAQABIADAAPAAQADwAMABIADAAEAAcAAAAHAAQABwALAAwAEwAHAAAAEwALAAcADAALAAoACgALABMACgASAAwABQADABIAEgAKAAUAEwAUAAoAFAAFAAoAAAAVABMAFAATABUAFQAAAAkAFQAWABQABQAUABYAFgAVAAkADgAJAAAACQAXABYACQAOAAgACAAXAAkAEQAIAA4ABgAWABcAFgAGAAUABgAXAAgAEQACAAgACAACAAYABQAGAAIAAwACABEAAgADAAUA"),
-"lods": [3.7013408e-05, PackedByteArray("AgAIAAEACQABAAgACAACAAYACAAGAAkAAQAJAAAABgAAAAkAAAAGAAUABQAGAAIAAwACAAEAAgADAAUAAQAEAAMABAABAAAABQAHAAAAAAAHAAQABwAFAAoAAwAKAAUACgALAAcABAAMAAMACgADAAwADAAEAAcADAALAAoABwALAAwA"), 5.5520108e-05, PackedByteArray("AAABAAIAAwACAAEAAQAEAAMABAABAAAAAgADAAUABQADAAQABQAGAAIAAgAGAAAAAAAGAAUABQAHAAAAAAAHAAQABAAHAAUA")],
-"name": "PolyClem_texture",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 24,
-"vertex_data": PackedByteArray("7MAguXMjnbkxBsM6eZIVuHMjnbnhwkk3epIVuOUgnTkzw0k3epIVOOUgnTnhwkk3epIVOHMjnbkzw0k37MAgOeUgnTkxBsM67MAgueUgnTkxBsM67MAgOXMjnbkxBsM6ocdFuNMagzlmpkc3wcsyuWAdg7lsCsM6wcsyOdMagzlsCsM6w8syOWAdg7lsCsM6ocdFOGAdg7lmpkc3ygERuGAdg7kAAAAAocdFuGAdg7lmpkc3yQEROGAdg7kAAAAAyQERONMagzkAAAAAygERuNMagzkAAAAAocdFONMagzlmpkc30aMiOWAdg7m3mcQ60aMiOdMagzm3mcQ60aMiuWAdg7m3mcQ60aMiudMagzm3mcQ6w8syudMagzlsCsM6")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
-resource_name = "PolyClem_texture"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_4vqqg")
-emission_enabled = true
 
 [node name="SM_StoneCutting_Prop_Chisel_03" type="Node3D"]
 

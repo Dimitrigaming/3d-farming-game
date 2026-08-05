@@ -1,3 +1,5 @@
+# HOW TO RUN: Open this file in Godot's Script editor, then click File > Run (or the ▶ Run button).
+# Do NOT attach this script to a node — it extends EditorScript, not Node.
 @tool
 extends EditorScript
 
@@ -14,21 +16,18 @@ func _run() -> void:
 
 	var packed = PackedScene.new()
 	var fs = EditorInterface.get_resource_filesystem()
+	var saved := 0
 
 	for child in root.get_children():
-		# Already an instanced scene — skip
 		if child.scene_file_path != "":
 			print("SKIP (already scene): ", child.name)
 			continue
 
 		var out_path = save_dir.path_join(child.name + ".tscn")
-
-		# Already saved on disk — skip
 		if ResourceLoader.exists(out_path):
-			print("SKIP (file exists): ", out_path)
+			print("SKIP (file exists): ", child.name)
 			continue
 
-		# Wrap in a Node3D so the saved scene has the right root type
 		var wrapper = Node3D.new()
 		wrapper.name = child.name
 		var clone = child.duplicate()
@@ -36,11 +35,13 @@ func _run() -> void:
 		clone.owner = wrapper
 		packed.pack(wrapper)
 		wrapper.free()
+
 		var err = ResourceSaver.save(packed, out_path)
 		if err != OK:
-			push_error("Failed to save: " + out_path + " (err " + str(err) + ")")
+			push_error("Failed to save: " + out_path + " (err %d)" % err)
 		else:
 			print("Saved: ", out_path)
+			saved += 1
 
 	fs.scan()
-	print("Done.")
+	print("Done — saved %d scenes." % saved)

@@ -1,23 +1,5 @@
 [gd_scene format=3]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_16bbn"]
-resource_name = "SM_Metalworking_Prop_MetalBar_Long_02_Mesh"
-_surfaces = [{
-"aabb": AABB(-0.006606595, -0.00040013672, 0, 0.0089979805, 0.00080027344, 0.00029984172),
-"attribute_data": PackedByteArray("0+kHPZiUrz7T6Qc9mJSvPtPpBz2YlK8+0+kHPZiUrz7T6Qc9mJSvPtPpBz2YlK8+0+kHPZiUrz7T6Qc9mJSvPtPpBz2YlK8+0+kHPZiUrz7T6Qc9mJSvPtPpBz2YlK8+0+kHPZiUrz7T6Qc9mJSvPtPpBz2YlK8+0+kHPZiUrz7T6Qc9mJSvPtPpBz2YlK8+0+kHPZiUrz7T6Qc9mJSvPtPpBz2YlK8+0+kHPZiUrz7T6Qc9mJSvPtPpBz2YlK8+"),
-"format": 34359742487,
-"index_count": 36,
-"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
-"material": SubResource("StandardMaterial3D_16m7f"),
-"name": "PolyClem_texture",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 24,
-"vertex_data": PackedByteArray("ybgcO3HJ0TkAAAAAI3zYu3HJ0TkAAAAAI3zYu3HJ0bkAAAAAybgcO3HJ0bkAAAAAybgcO3HJ0TkTNJ05ybgcO3HJ0bkTNJ05I3zYu3HJ0bkTNJ05I3zYu3HJ0TkTNJ05I3zYu3HJ0TkTNJ05I3zYu3HJ0TkAAAAAybgcO3HJ0TkAAAAAybgcO3HJ0TkTNJ05ybgcO3HJ0bkTNJ05ybgcO3HJ0bkAAAAAI3zYu3HJ0bkAAAAAI3zYu3HJ0bkTNJ05ybgcO3HJ0TkTNJ05ybgcO3HJ0TkAAAAAybgcO3HJ0bkAAAAAybgcO3HJ0bkTNJ05I3zYu3HJ0bkTNJ05I3zYu3HJ0bkAAAAAI3zYu3HJ0TkAAAAAI3zYu3HJ0TkTNJ05/////////7//////////v/////////+//////////7//f/9/////P/9//3////8//3//f////z//f/9/////P/9///////+//3///////7//f///////v/9///////+//38AAP///7//fwAA////v/9/AAD///+//38AAP///7////9/////v////3////+/////f////7////9/////vwAA/3////+/AAD/f////78AAP9/////vwAA/3////+/")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_twdx0")
-
 [sub_resource type="ArrayMesh" id="ArrayMesh_twdx0"]
 _surfaces = [{
 "aabb": AABB(-0.006606595, -0.00040013672, 0, 0.0089979805, 0.00080027344, 0.00029984172),
@@ -37,6 +19,24 @@ resource_name = "PolyClem_texture"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_4vqqg")
 emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_16bbn"]
+resource_name = "SM_Metalworking_Prop_MetalBar_Long_02_Mesh"
+_surfaces = [{
+"aabb": AABB(-0.006606595, -0.00040013672, 0, 0.0089979805, 0.00080027344, 0.00029984172),
+"attribute_data": PackedByteArray("0+kHPZiUrz7T6Qc9mJSvPtPpBz2YlK8+0+kHPZiUrz7T6Qc9mJSvPtPpBz2YlK8+0+kHPZiUrz7T6Qc9mJSvPtPpBz2YlK8+0+kHPZiUrz7T6Qc9mJSvPtPpBz2YlK8+0+kHPZiUrz7T6Qc9mJSvPtPpBz2YlK8+0+kHPZiUrz7T6Qc9mJSvPtPpBz2YlK8+0+kHPZiUrz7T6Qc9mJSvPtPpBz2YlK8+0+kHPZiUrz7T6Qc9mJSvPtPpBz2YlK8+"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"material": SubResource("StandardMaterial3D_16m7f"),
+"name": "PolyClem_texture",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("ybgcO3HJ0TkAAAAAI3zYu3HJ0TkAAAAAI3zYu3HJ0bkAAAAAybgcO3HJ0bkAAAAAybgcO3HJ0TkTNJ05ybgcO3HJ0bkTNJ05I3zYu3HJ0bkTNJ05I3zYu3HJ0TkTNJ05I3zYu3HJ0TkTNJ05I3zYu3HJ0TkAAAAAybgcO3HJ0TkAAAAAybgcO3HJ0TkTNJ05ybgcO3HJ0bkTNJ05ybgcO3HJ0bkAAAAAI3zYu3HJ0bkAAAAAI3zYu3HJ0bkTNJ05ybgcO3HJ0TkTNJ05ybgcO3HJ0TkAAAAAybgcO3HJ0bkAAAAAybgcO3HJ0bkTNJ05I3zYu3HJ0bkTNJ05I3zYu3HJ0bkAAAAAI3zYu3HJ0TkAAAAAI3zYu3HJ0TkTNJ05/////////7//////////v/////////+//////////7//f/9/////P/9//3////8//3//f////z//f/9/////P/9///////+//3///////7//f///////v/9///////+//38AAP///7//fwAA////v/9/AAD///+//38AAP///7////9/////v////3////+/////f////7////9/////vwAA/3////+/AAD/f////78AAP9/////vwAA/3////+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_twdx0")
 
 [node name="SM_Metalworking_Prop_MetalBar_Long_02" type="Node3D"]
 

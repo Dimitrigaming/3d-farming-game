@@ -1,23 +1,5 @@
 [gd_scene format=3]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_xqrf4"]
-resource_name = "SM_StoneCutting_Prop_DebrisSmall_01_Mesh"
-_surfaces = [{
-"aabb": AABB(-0.00028007512, -0.0003248548, -9.096992e-06, 0.0006862952, 0.00071247, 0.00050911854),
-"attribute_data": PackedByteArray("yuG/PVgsrz7K4b89WCyvPsrhvz1YLK8+yuG/PVgsrz7K4b89WCyvPsrhvz1YLK8+yuG/PVgsrz7K4b89WCyvPsrhvz1YLK8+yuG/PVgsrz7K4b89WCyvPsrhvz1cLK8+yuG/PVgsrz7K4b89WCyvPsrhvz1YLK8+yuG/PVgsrz7K4b89WCyvPsrhvz1YLK8+yuG/PVgsrz7K4b89WCyvPsrhvz1YLK8+yuG/PVgsrz7K4b89WCyvPsrhvz1YLK8+"),
-"format": 34359742487,
-"index_count": 36,
-"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
-"material": SubResource("StandardMaterial3D_16m7f"),
-"name": "PolyClem_texture",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 24,
-"vertex_data": PackedByteArray("aN7euJ24JTnmyKY5PPqCualIVrmU49c5DNeSuQw7a7nDGbW2H1QKudtiEDlInxi3AzMJOUZRqrmPiic2Zbqit2bOhbnhEwM67wKEOf2aqjmb9r057/nUOdQ4yzlx9ai2Zbqit2bOhbnhEwM6AzMJOUZRqrmPiic2DNeSuQw7a7nDGbW2PPqCualIVrmU49c5H1QKudtiEDlInxi37/nUOdQ4yzlx9ai27wKEOf2aqjmb9r05aN7euJ24JTnmyKY5AzMJOUZRqrmPiic27/nUOdQ4yzlx9ai2H1QKudtiEDlInxi3DNeSuQw7a7nDGbW2aN7euJ24JTnmyKY57wKEOf2aqjmb9r05Zbqit2bOhbnhEwM6PPqCualIVrmU49c5fSjbo////z99KNuj////P30o26P///8/fSjbo////z+hydBj////P6HJ0GP///8/ocnQY////z+hydBj////PwBoaB7///8/AGhoHv///z8AaGge////PwBoaB7///8/51Ue2P///7/nVR7Y////v+dVHtj///+/51Ue2P///7/0/eIB////v/T94gH///+/9P3iAf///7/0/eIB////vx5pyZz///8/HmnJnP///z8eacmc////Px5pyZz///8/")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_l0ph3")
-
 [sub_resource type="ArrayMesh" id="ArrayMesh_l0ph3"]
 _surfaces = [{
 "aabb": AABB(-0.00028007512, -0.0003248548, -9.096992e-06, 0.0006862952, 0.00071247, 0.00050911854),
@@ -37,6 +19,24 @@ resource_name = "PolyClem_texture"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_4vqqg")
 emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_xqrf4"]
+resource_name = "SM_StoneCutting_Prop_DebrisSmall_01_Mesh"
+_surfaces = [{
+"aabb": AABB(-0.00028007512, -0.0003248548, -9.096992e-06, 0.0006862952, 0.00071247, 0.00050911854),
+"attribute_data": PackedByteArray("yuG/PVgsrz7K4b89WCyvPsrhvz1YLK8+yuG/PVgsrz7K4b89WCyvPsrhvz1YLK8+yuG/PVgsrz7K4b89WCyvPsrhvz1YLK8+yuG/PVgsrz7K4b89WCyvPsrhvz1cLK8+yuG/PVgsrz7K4b89WCyvPsrhvz1YLK8+yuG/PVgsrz7K4b89WCyvPsrhvz1YLK8+yuG/PVgsrz7K4b89WCyvPsrhvz1YLK8+yuG/PVgsrz7K4b89WCyvPsrhvz1YLK8+"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"material": SubResource("StandardMaterial3D_16m7f"),
+"name": "PolyClem_texture",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("aN7euJ24JTnmyKY5PPqCualIVrmU49c5DNeSuQw7a7nDGbW2H1QKudtiEDlInxi3AzMJOUZRqrmPiic2Zbqit2bOhbnhEwM67wKEOf2aqjmb9r057/nUOdQ4yzlx9ai2Zbqit2bOhbnhEwM6AzMJOUZRqrmPiic2DNeSuQw7a7nDGbW2PPqCualIVrmU49c5H1QKudtiEDlInxi37/nUOdQ4yzlx9ai27wKEOf2aqjmb9r05aN7euJ24JTnmyKY5AzMJOUZRqrmPiic27/nUOdQ4yzlx9ai2H1QKudtiEDlInxi3DNeSuQw7a7nDGbW2aN7euJ24JTnmyKY57wKEOf2aqjmb9r05Zbqit2bOhbnhEwM6PPqCualIVrmU49c5fSjbo////z99KNuj////P30o26P///8/fSjbo////z+hydBj////P6HJ0GP///8/ocnQY////z+hydBj////PwBoaB7///8/AGhoHv///z8AaGge////PwBoaB7///8/51Ue2P///7/nVR7Y////v+dVHtj///+/51Ue2P///7/0/eIB////v/T94gH///+/9P3iAf///7/0/eIB////vx5pyZz///8/HmnJnP///z8eacmc////Px5pyZz///8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_l0ph3")
 
 [node name="SM_StoneCutting_Prop_DebrisSmall_01" type="Node3D"]
 
