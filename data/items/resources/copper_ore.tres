@@ -1,11 +1,13 @@
 [gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://5xlwvye48447"]
 
 [ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="Texture2D" uid="uid://btc3fmc657ydn" path="res://icons/resources/copper_ore.png" id="1_lcusu"]
 
 [resource]
 script = ExtResource("1_def")
 id = "copper_ore"
 name = "Copper Ore"
+icon = ExtResource("1_lcusu")
 type = 4
 sell_price = 4
 buy_price = 10

@@ -1,13 +1,17 @@
 [gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://mu3vmhfapa2r"]
 
+[ext_resource type="PackedScene" uid="uid://l4etkj5ab2ob" path="res://models/materials/stone.tscn" id="1_0crnb"]
 [ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="Texture2D" uid="uid://b2lfdx33uyiqp" path="res://icons/resources/stone.png" id="1_sgcau"]
 
 [resource]
 script = ExtResource("1_def")
 id = "stone"
 name = "Stone"
+icon = ExtResource("1_sgcau")
 type = 4
 sell_price = 2
 buy_price = 5
 subcategory = 3
 description = "Common rock mined from the ground."
+equip_scene = ExtResource("1_0crnb")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0tu6ldj7a6ff"
-path="res://.godot/imported/shovel.png-53b6a426001e17008a236a523c7343a8.ctex"
+uid="uid://bp4vflsijywle"
+path="res://.godot/imported/stone_block.png-66c5df460067b09623193e8398d572fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icons/shovel.png"
-dest_files=["res://.godot/imported/shovel.png-53b6a426001e17008a236a523c7343a8.ctex"]
+source_file="res://icons/materials/stone_block.png"
+dest_files=["res://.godot/imported/stone_block.png-66c5df460067b09623193e8398d572fe.ctex"]
 
 [params]
 

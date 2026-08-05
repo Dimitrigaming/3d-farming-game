@@ -1,14 +1,17 @@
-[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://material_wood01"]
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dx8okx4ccda2j"]
 
+[ext_resource type="PackedScene" uid="uid://hhbgtqgf7hg6" path="res://models/materials/wood.tscn" id="1_bp4dv"]
 [ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="Texture2D" uid="uid://cexoik803j2q8" path="res://icons/resources/wood.png" id="2_epemu"]
 
 [resource]
 script = ExtResource("1_def")
 id = "wood"
 name = "Wood"
+icon = ExtResource("2_epemu")
 type = 4
-subcategory = 1
-max_stack = 99
 sell_price = 2
 buy_price = 5
+subcategory = 1
 description = "Raw lumber gathered from trees."
+equip_scene = ExtResource("1_bp4dv")

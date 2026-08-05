@@ -1,13 +1,17 @@
 [gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://1oae07605w8h"]
 
 [ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="Texture2D" uid="uid://b455x2ra3w105" path="res://icons/resources/iron_ore.png" id="1_rn8lb"]
+[ext_resource type="PackedScene" uid="uid://yc5cn7uencvy" path="res://models/resources/iron_ore.tscn" id="1_uh3yx"]
 
 [resource]
 script = ExtResource("1_def")
 id = "iron_ore"
 name = "Iron Ore"
+icon = ExtResource("1_rn8lb")
 type = 4
 sell_price = 6
 buy_price = 15
 subcategory = 4
 description = "Raw iron ore dug from the earth. Smelt it into ingots."
+equip_scene = ExtResource("1_uh3yx")
