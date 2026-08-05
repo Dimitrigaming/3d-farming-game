@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://product_card01"]
+
+[ext_resource type="Script" uid="uid://prodcard0001" path="res://ui/product_card.gd" id="1_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
+bg_color = Color(0.1, 0.13, 0.18, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_active"]
+bg_color = Color(0.15, 0.6, 0.2, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="ProductCard" type="PanelContainer"]
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+script = ExtResource("1_script")
+
+[node name="Outer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="LeftMargin" type="MarginContainer" parent="Outer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 10
+
+[node name="Left" type="VBoxContainer" parent="Outer/LeftMargin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="NameRow" type="HBoxContainer" parent="Outer/LeftMargin/Left"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ProductIcon" type="TextureRect" parent="Outer/LeftMargin/Left/NameRow"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(40, 40)
+stretch_mode = 5
+
+[node name="ProductName" type="Label" parent="Outer/LeftMargin/Left/NameRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 15
+text = "Item Name"
+
+[node name="MarketPrice" type="Label" parent="Outer/LeftMargin/Left"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.65, 0.75, 1)
+theme_override_font_sizes/font_size = 12
+text = "Market Price: $0"
+
+[node name="VSep" type="VSeparator" parent="Outer"]
+layout_mode = 2
+custom_minimum_size = Vector2(2, 0)
+
+[node name="RightMargin" type="MarginContainer" parent="Outer"]
+layout_mode = 2
+custom_minimum_size = Vector2(150, 0)
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Right" type="VBoxContainer" parent="Outer/RightMargin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="PriceRow" type="HBoxContainer" parent="Outer/RightMargin/Right"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="PriceLabel" type="Label" parent="Outer/RightMargin/Right/PriceRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.7, 0.7, 0.8, 1)
+theme_override_font_sizes/font_size = 12
+text = "Price:"
+
+[node name="BtnMinus" type="Button" parent="Outer/RightMargin/Right/PriceRow"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(24, 24)
+focus_mode = 0
+text = "-"
+
+[node name="PriceValue" type="Label" parent="Outer/RightMargin/Right/PriceRow"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(40, 0)
+theme_override_font_sizes/font_size = 13
+text = "$0"
+horizontal_alignment = 1
+
+[node name="BtnPlus" type="Button" parent="Outer/RightMargin/Right/PriceRow"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(24, 24)
+focus_mode = 0
+text = "+"
+
+[node name="DemandLabel" type="Label" parent="Outer/RightMargin/Right"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "100% demand"
+horizontal_alignment = 1
+
+[node name="ActiveBtn" type="Button" parent="Outer/RightMargin/Right"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_active")
+text = "Inactive"
