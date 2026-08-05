@@ -10,10 +10,14 @@ const LMB_HOLD_THRESHOLD: float = 0.6
 const MMB_MAX_CHARGE: float = 1.5
 const MMB_MIN_SPEED: float = 3.0
 const SHELF_HOLD_INTERVAL: float = 0.18
+const TOOL_HIT_INTERVAL: float = 1.0
 
 var _lmb_held: bool = false
 var _lmb_hold_time: float = 0.0
 var _lmb_confirmed_build: bool = false
+var _tool_hold_active: bool = false
+var _tool_hold_timer: float = 0.0
+var _tool_interacted: bool = false
 var _mmb_held: bool = false
 var _mmb_hold_time: float = 0.0
 var _shelf_lmb_active: bool = false
@@ -81,6 +85,13 @@ func _process(delta: float) -> void:
 			_shelf_rmb_timer = 0.0
 			if current_target and _is_product_shelf(current_target):
 				current_target.retrieve_print(player_inventory)
+
+	if _tool_hold_active:
+		_tool_hold_timer += delta
+		if _tool_hold_timer >= TOOL_HIT_INTERVAL:
+			_tool_hold_timer = 0.0
+			if current_target and current_target.has_method("interact"):
+				current_target.interact()
 
 	_update_hud()
 
@@ -167,7 +178,7 @@ func _update_hud() -> void:
 		if current_target.has_method("get_click_hint"):
 			var click_text: String = current_target.get_click_hint(player_inventory)
 			if click_text != "":
-				var prefix = "[LMB/Hold]" if _is_product_shelf(current_target) else "[Click]"
+				var prefix = "[LMB/Hold]" if (_is_product_shelf(current_target) or current_target.has_method("interact")) else "[Click]"
 				hints.append("%s %s" % [prefix, click_text])
 		if current_target.has_method("get_pack_hint"):
 			var pack_text: String = current_target.get_pack_hint(player_inventory)
@@ -224,9 +235,25 @@ func _unhandled_input(event: InputEvent) -> void:
 					_shelf_lmb_active = true
 					_shelf_lmb_was_active = true
 					_shelf_lmb_timer = 0.0
+				elif not build_mode.active and current_target and current_target.has_method("interact"):
+					if current_target.has_method("try_trash"):
+						current_target.try_trash(player_inventory)
+					elif current_target.has_method("collect_all_prints"):
+						current_target.collect_all_prints(player_inventory)
+					elif current_target.has_method("get_collectable_item_type"):
+						var item_type: String = current_target.get_collectable_item_type()
+						if item_type != "" and player_inventory.collect_item(item_type, current_target.global_position):
+							current_target.clear_print()
+					else:
+						current_target.interact()
+					_tool_hold_active = true
+					_tool_hold_timer = 0.0
+					_tool_interacted = true
 			else:
 				_shelf_lmb_active = false
-				if not build_mode.active and _lmb_hold_time < LMB_HOLD_THRESHOLD and not _shelf_lmb_was_active and not _lmb_confirmed_build:
+				_tool_hold_active = false
+				_tool_hold_timer = 0.0
+				if not build_mode.active and not _shelf_lmb_was_active and not _lmb_confirmed_build and not _tool_interacted:
 					if current_target and current_target.has_method("try_trash"):
 						current_target.try_trash(player_inventory)
 					elif current_target and current_target.has_method("collect_all_prints"):
@@ -239,6 +266,7 @@ func _unhandled_input(event: InputEvent) -> void:
 						current_target.interact()
 				_shelf_lmb_was_active = false
 				_lmb_confirmed_build = false
+				_tool_interacted = false
 				_lmb_held = false
 				_lmb_hold_time = 0.0
 
