@@ -18,6 +18,26 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_xbavc")
 
+[sub_resource type="ArrayMesh" id="ArrayMesh_xbavc"]
+_surfaces = [{
+"aabb": AABB(-0.0003031184, -0.00035, 0, 0.00060621777, 0.0007, 0.0014019497),
+"format": 34359742465,
+"index_count": 132,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAABAAMABQADAAAAAwAFAAQAAQAEAAYABgACAAEABwAGAAQAAgAGAAgACAAGAAcACAAJAAIACgAAAAIACgACAAkACQAIAAsACwAKAAkADAAAAAoACgALAAwAAAAMAAUACwAIAA0ABwANAAgADgAMAAsADwAFAAwADAAOAA8AEAAEAAUABAAQAAcABQAPABAAEQAHABAACwASAA4ADQASAAsAEwAOABIAFAANAAcABwARABQAFQASAA0AEgAVABMADQAUABUADgATABYAFgATABUAFQAUABYAFgAPAA4AFAARABcAFwAWABQADwAWABcAEAAXABEAFwAQAA8A"),
+"name": "PolyClem_texture",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("TumeOTSANzkAAAAA3eueuTSANzkAAAAA3eueuTSAN7kAAAAACtcjsjSAtzkAAAAA3eueuTSANzmgwbc6CtcjsjSAtzmgwbc63eueuTSAN7mgwbc6Fo+NufpzI7mgwbc6CtcjsjSAt7mgwbc6CtcjsjSAt7kAAAAATumeOTSAN7kAAAAATumeOTSAN7mgwbc6TumeOTSANzmgwbc6sfARsvpzo7mgwbc6zoyNOfpzIzmgwbc6sfARsvpzozmgwbc6Fo+NufpzIzmgwbc6Fo+NufpzI7nDBZo3zoyNOfpzI7mgwbc6zoyNOfpzIznDBZo3sfARsvpzo7nDBZo3zoyNOfpzI7nDBZo3sfARsvpzoznDBZo3Fo+NufpzIznDBZo3")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_4vqqg")
+emission_enabled = true
+
 [node name="SM_Art_Prop_BrushHolder_01" type="Node3D"]
 
 [node name="SM_Art_Prop_BrushHolder_01" type="MeshInstance3D" parent="."]

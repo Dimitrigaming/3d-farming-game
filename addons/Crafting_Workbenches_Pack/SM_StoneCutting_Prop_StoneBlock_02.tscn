@@ -19,6 +19,27 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_scnfx")
 
+[sub_resource type="ArrayMesh" id="ArrayMesh_scnfx"]
+_surfaces = [{
+"aabb": AABB(-0.0016124649, -0.0017148459, -7.030874e-05, 0.0032791472, 0.0023945908, 0.0019062769),
+"format": 34359742465,
+"index_count": 162,
+"index_data": PackedByteArray("DwABAAIAAQAIAAIACAABABAACAARAAIAEAARAAgAAgARABIABwARABAAEQAHABIACgAHABAAEgAHAAoADAAKABAAEwAQAAEAEAATAAwADAANAAoADQAMABMACgAUABIADQAUAAoAAQALABMAFQALAAEAEwALABUAAQAPABUAEwAWAA0AFQAWABMADQAOABQADgANABYAFgAVABcADwAXABUAFgAYAA4AGAAWABcAFwAZABgADgAYABoAGgAYABkAGQAXAAkAGQAJABoAAAAJABcAFwAPAAAACQAAABoAAAAPAAMAGgAAAAMADwACAAMAGgAFAA4ADgAFABQABgAFABoAFAAFABsABQAGABsAGwASABQAGgAEAAYAGwAGAAQAAwAEABoAEgAbABwABAAcABsAHAAEAAMAEgAcAAIAAgAcAAMA"),
+"lods": [0.0005068116, PackedByteArray("AAABAAIAAAACAAMAAgAEAAMABQAAAAMAAwAEAAUABAACAAYABQAEAAYABwAGAAIABgAHAAUACAAHAAIAAQAIAAIAAQAHAAgAAQAAAAkACQAAAAUACgAHAAEACgAFAAcACQALAAEADAAKAAEAAQALAAwADAANAAoADQAMAAsADQAFAAoACwAJAA0ADgAJAAUADgANAAkADQAOAAUA")],
+"name": "PolyClem_texture",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 29,
+"vertex_data": PackedByteArray("2gXDujZBBTq3Sl46dATYOrPxzDnIdF86N3FPOh+c1Tn9vMw6DVy9uoOdvDnmRs06O73DurbqArrfpPA6QS3AunLG1LpPkXo6N5jCuruiu7pKReI6YG7MOqHbt7rSIcA6ktDWOtJfoDkpJ8s65D7Aur3P1TkpDE+4SLbIOqYduLpkfwc6k3TaOsgV0zkUvp63ctPROvGau7pIUf231utROjsnwLqFOWQ4DdHBusxvwbpmcg24pKS+N+kwMjrzNFs6au/FOo1kD7o7c2A64ZnQOjNUYLqDgbg6VOvxOawRvbp9DcM6TFzWOsisjbmFr5u3rkfDNK7E4Lqu+1Q67OGkONIz0Dm47D64BYkNOWIuDrqFw3q3sdPJuf0B2TlIUwK4bPDCup/+C7q4cpO4+7e/utcfL7mPJje4WFnTun1qDboIiFs6to89uil6vbopheI6GtkJumrIELp2Me86")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_4vqqg")
+emission_enabled = true
+
 [node name="SM_StoneCutting_Prop_StoneBlock_02" type="Node3D"]
 
 [node name="SM_StoneCutting_Prop_StoneBlock_02" type="MeshInstance3D" parent="."]

@@ -18,6 +18,26 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_3e7nj")
 
+[sub_resource type="ArrayMesh" id="ArrayMesh_3e7nj"]
+_surfaces = [{
+"aabb": AABB(-0.0010470315, -0.0017970218, 8.419454e-06, 0.0017879892, 0.003507539, 0.00070724846),
+"format": 34359742465,
+"index_count": 84,
+"index_data": PackedByteArray("AAABAAIAAwAAAAIAAQAAAAQABAAAAAMABAAFAAEABgAFAAQAAQAFAAYABAAHAAYAAwAHAAQABgAHAAMABgAIAAEAAwAIAAYACQABAAgAAQAJAAIACAADAAoAAgAKAAMACAALAAkACwAIAAoAAgAJAAwACwAKAA0ACgACAA4ADAAOAAIADgANAAoADwAMAAkADgAMAA8ACQALAA8ADwANAA4ADQAPAAsA"),
+"name": "PolyClem_texture",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("/Z7cOSHWrLqpmzs6VtzZOVvenzqpmzs61DxCOmTj6rqpmzs6nGwnukZQrbqpmzs6UcykOZw5nLopmPk4/ZaiOaE1jzopmPk4n+QMurzHjjopmPk47ckLuoqnnLopmPk4+s0oukBknzqpmzs6A2dAOm4z4Dqpmzs6o1GIugyK67qpmzs6jDyJusaM3zqpmzs6A2dAOm4z4DpIQQ03o1GIugyK67pIQQ031DxCOmTj6rpIQQ03jDyJusaM3zpIQQ03")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_4vqqg")
+emission_enabled = true
+
 [node name="SM_Metalworking_Prop_IngotMold_01" type="Node3D"]
 
 [node name="SM_Metalworking_Prop_IngotMold_01" type="MeshInstance3D" parent="."]

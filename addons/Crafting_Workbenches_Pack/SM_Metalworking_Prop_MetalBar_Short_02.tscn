@@ -18,6 +18,26 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_v7rat")
 
+[sub_resource type="ArrayMesh" id="ArrayMesh_v7rat"]
+_surfaces = [{
+"aabb": AABB(-0.0012515705, -0.00040013672, 0, 0.00250314, 0.00080027344, 0.00029984172),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwABAAAAAgAEAAAAAQADAAUABQACAAEABgAEAAIAAgAFAAYABwAAAAQAAAAHAAMABAAGAAcABQADAAcABwAGAAUA"),
+"name": "PolyClem_texture",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("swukOnHJ0TkAAAAAvQukunHJ0TkAAAAAvQukunHJ0bkAAAAAvQukunHJ0TkTNJ05swukOnHJ0bkAAAAAvQukunHJ0bkTNJ05swukOnHJ0bkTNJ05swukOnHJ0TkTNJ05")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_4vqqg")
+emission_enabled = true
+
 [node name="SM_Metalworking_Prop_MetalBar_Short_02" type="Node3D"]
 
 [node name="SM_Metalworking_Prop_MetalBar_Short_02" type="MeshInstance3D" parent="."]

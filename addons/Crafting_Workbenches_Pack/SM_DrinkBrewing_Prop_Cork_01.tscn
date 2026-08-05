@@ -18,6 +18,26 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_n77j1")
 
+[sub_resource type="ArrayMesh" id="ArrayMesh_n77j1"]
+_surfaces = [{
+"aabb": AABB(-0.0002788496, -0.00027884127, 2.9785335e-05, 0.00055770157, 0.00055770157, 0.00064153137),
+"format": 34359742465,
+"index_count": 84,
+"index_data": PackedByteArray("AAABAAIAAQADAAIAAwABAAQABAABAAAAAgADAAUABAAFAAMABQAGAAIABgAFAAQABwACAAYAAAAIAAQAAgAHAAkAAgAJAAAABgAKAAcACQAHAAoACwAKAAYACgALAAkACwAGAAQACAAAAAwACQAMAAAABAAIAA0ADAANAAgABAANAAsACQAOAAwADgAJAAsADwANAAwADAAOAA8ADQAPAAsACwAPAA4A"),
+"name": "PolyClem_texture",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("XOeRue5h87hN+y86jzKSuVyX8DhN+y86MpPwOAA0kjlN+y86ZWbzuArpkTlN+y869LhduTZytjiF2/k36pG4uIxKXTmF2/k3E262OE68XTmF2/k3/+eROSls8zhN+y86CUdduc2NuLiF2/k34TKSOc+M8LhN+y869EhdOfiXuDiF2/k3PLpdOQpotriF2/k3o5DwuHExkrlN+y86hGu2uGG3XbmF2/k3rWfzOGfmkblN+y86MpO4OHZFXbmF2/k3")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_4vqqg")
+emission_enabled = true
+
 [node name="SM_DrinkBrewing_Prop_Cork_01" type="Node3D"]
 
 [node name="SM_DrinkBrewing_Prop_Cork_01" type="MeshInstance3D" parent="."]

@@ -18,6 +18,26 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_cgb7u")
 
+[sub_resource type="ArrayMesh" id="ArrayMesh_cgb7u"]
+_surfaces = [{
+"aabb": AABB(-0.0005300197, -0.00047398568, -1.4529713e-05, 0.0010600382, 0.00094796834, 0.0015359281),
+"format": 34359742465,
+"index_count": 228,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMAAgAEAAAAAAAEAAUABQADAAAABAACAAYABQAEAAcABgAHAAQAAwAFAAgABwAJAAUACAAFAAkACQAHAAoABwAGAAsACwAKAAcADAAGAAIACwAGAAwAAgANAAwADQACAAEADAAOAAsACgALAA4ADwAMAA0ADgAMAA8AAQAQAA0AAwAQAAEAEQANABAADQARAA8AEAADABIACAASAAMAEAATABEAEgATABAAEgAIABQAEwASABUAFAAVABIAEQATABYAFQAWABMAFgAXABEADwARABcAGAAWABUAFwAWABgAFQAZABgAGQAVABQAGAAaABcAGgAYABkAFwAbAA8AGwAXABoAFAAcABkAGgAZABwAHQAaABwAGgAdABsAHgAcABQAHAAeAB0AFAAfAB4AHwAUAAgAHgAgAB0AGwAdACAAIQAeAB8AHgAhACAACAAiAB8ACQAiAAgAHwAjACEAIwAfACIAJAAgACEAIQAjACQAIAAkABsAIgAlACMAJAAjACUAIgAJACYAJgAlACIACgAmAAkADgAmAAoAJwAlACYAJgAOACcAJQAnACQAGwAkACcADwAnAA4AJwAPABsA"),
+"name": "PolyClem_texture",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 40,
+"vertex_data": PackedByteArray("17i0OT2GBrmkxHO3Uvm0OddvBTmkxHO34WwWOdedoTmkxHO3CkjeOex1Jbm/1YQ6KTYVOa7XobmkxHO3zYY3OXEPx7m/1YQ69jYVuXHXoTmkxHO3120WuRSeobmkxHO34RxlOUiB+LmVO506CgU5uXvIxrm/1YQ6zfm0uVJwBbmkxHO3Urm0ucOFBjmkxHO3zYY3ufYOxzm/1YQ64QQ5OT3Ixjm/1YQ6XEjeuR91JTm/1YQ6Ch1lueGA+DmVO506j5feOVwfJDm/1YQ6APpmOY8o+DmVO506OL8KOjOPTrmVO5068fAKOq7jTDmVO5064RxlOUiB+LncKLM6OL8KOjOPTrncKLM68fAKOq7jTDncKLM6APpmOY8o+DncKLM6hXCmOaRw9Tipacc6ADWmOUhx97ipacc6PVgKOeGilDmpacc6Ch1lueGA+DncKLM6pDoJOSnYlLmpacc6zToJucPXlDmpacc6j1gKuQqjlLmpacc6Kfpmuc0o+LncKLM6ezWmua5v9zipacc6w3CmuZpx9bipacc6Kfpmuc0o+LmVO506BfEKulLkTLncKLM6dr8Kuo+OTjncKLM6BfEKulLkTLmVO506j5feudcfJLm/1YQ6dr8Kuo+OTjmVO506")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_4vqqg")
+emission_enabled = true
+
 [node name="SM_DrinkBrewing_Prop_Cork_02" type="Node3D"]
 
 [node name="SM_DrinkBrewing_Prop_Cork_02" type="MeshInstance3D" parent="."]

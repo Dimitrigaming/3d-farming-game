@@ -19,6 +19,27 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_2a40x")
 
+[sub_resource type="ArrayMesh" id="ArrayMesh_2a40x"]
+_surfaces = [{
+"aabb": AABB(-0.0028187972, -0.0018689759, -3.4567864e-05, 0.0046912218, 0.0037192972, 0.0030046715),
+"format": 34359742465,
+"index_count": 162,
+"index_data": PackedByteArray("EwABABQAAwABABMAAQACABQAAQADABUAAgABABYAFQAWAAEAFgAFAAIAAgAFABQABAAFABYAFAAFAAYABQAEAAYABwAEABYABgAEAAcABwAWABUABgAXABQAFAAXAAkAEwAUAAkABgAYABcAFwAIAAkACAAXABgAGAAGABkABwAZAAYAGAAKAAgACwAKABgACAAKAAsAGQALABgAAAAJAAgAAAATAAkACwAMAAgACAAMAAAADgALABkADAALAA4AGgAOABkAGgAZAAcADQAaAAcAFQANAAcAGgANABUAEAAAAAwAEwAAABAAEgAQAAwAEAAPABMAEgAPABAADAARABIADwASABEADgARAAwADgAaABsAGwARAA4AFQAbABoAEQAbAA8AHAAbABUAGwAcAA8AEwAPABwAFQADABwAEwAcAAMA"),
+"lods": [0.00059844507, PackedByteArray("AAABAAIAAwABAAAAAgABAAQAAwAEAAEABAAFAAIABQAEAAYAAgAFAAYABwAEAAMABgAEAAcABgAIAAIAAAACAAkAAgAIAAkAAAAJAAgABgAKAAgACgAGAAsACAAKAAsABwALAAYACAAMAAAACwAMAAgADQALAAcAAwANAAcADQAOAAsADAALAA4AAwAPAA0AAAAPAAMADgANAA8AEAAAAAwAEAAPAAAADgARAAwADwARAA4AEgAQAAwAEgAPABAADAARABIADwASABEA")],
+"name": "PolyClem_texture",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 29,
+"vertex_data": PackedByteArray("CjMhu05JxjoK6+o6zy7UOo1cyDouDv06jfPoOsPYnzob0DE7iH3VOn1DwzpN3oo5Uf7aOsBosbp4Jxc7Hb/VOp8tt7n/LjI7ZqcqOaVDwrqMYTE7wWrGOj2rzLr8lZ46Ulgou4/iAbezIEE7jPoBuwPTsTpsZDU7WsAlu+DcvLoSpkI7u44cu6Q91bpSGf46krs4uz0uMDktob86f/DjOooKs7qkaMw3AToDu8pV0boIK4Y5d9WaujG7wDo9nLA4ab8luypqszqhNms6A/cfuykKNLn2/BC4s4Elu9yTRDpxBBI5QDQUunqG8jrXnc46bJ//Od9vszqpsjM7zXvdOpq2VTkKBek4JWz1OgDGabnoGAc7r7Giuj1wP7h2iEI7oNbQukpkybrNBUI7X4wCum349LpMrrM6DzfTOeXm07rDTCk5r2eSuURkOjmuJ0i3PSMduYi9xzrDNXQ2")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_4vqqg")
+emission_enabled = true
+
 [node name="SM_StoneCutting_Prop_StoneChunk_02" type="Node3D"]
 
 [node name="SM_StoneCutting_Prop_StoneChunk_02" type="MeshInstance3D" parent="."]

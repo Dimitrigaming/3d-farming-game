@@ -18,6 +18,26 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_mkyhf")
 
+[sub_resource type="ArrayMesh" id="ArrayMesh_mkyhf"]
+_surfaces = [{
+"aabb": AABB(-0.0003086138, -0.0002980532, 1.6441792e-05, 0.0006166385, 0.001201612, 0.0006811989),
+"format": 34359742465,
+"index_count": 204,
+"index_data": PackedByteArray("AAABAAIAAwAAAAIAAQAAAAQAAgAFAAMABQACAAYABwAAAAMACAAEAAAABwAIAAAAAQAJAAIAAgAJAAYACQABAAoABgALAAUACwAGAAQABQALAAwADAADAAUABAAMAAsADQADAAwADQAHAAMADgAMAAQADgANAAwACAAOAAQADwAEAAYADwABAAQAEAAPAAYACQAQAAYAAQAPABEAEQAKAAEADwAQABIAEgARAA8AEAAJABMAEwASABAACgATAAkAEQASABMAEwAKABEAFAAOAAgABwAVAAgAFgAUAAgAFQAWAAgAFwAVAAcAGAAWABUADQAXAAcAFQAZABgAGgAZABUAGAAZABoAFQAXABoAFgAYABsAGgAbABgAGwAaABcAGwAUABYAFwAUABsAHAAXAA0AFAAXABwAFAAdAA4AHAAdABQAHQAeAA4ADgAeAA0AHwAdABwAHgAgAA0AIAAcAA0AIQAeAB0AHgAhACAAHQAfACEAHAAgACIAIQAiACAAIwAfABwAIQAfACMAIgAjABwAIwAiACEA"),
+"name": "PolyClem_texture",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("YX6hORH8b7ng4TY6dh6FOf2GLrng4TY6n/agOc7cbDrg4TY6YX6hORH8b7l77Ik3SEWhubyKcLng4TY6n/agOc7cbDp77Ik3cc2huTq5bDrg4TY6Q42LOSpkgLnvvCo610+LuY+hgLnvvCo6V6WEOT95XDrg4TY6dh6FOf2GLrlmEKI4cc2huS+5bDp77Ik3cUWhuaGKcLl77Ik33IyLORBkgLlIo4M4KVCLubahgLlIo4M4UvSEuUr8Lrng4TY6H22Fud1bXDrg4TY6UvSEuUr8LrlmEKI4H22Fud1bXDpmEKI4V6WEOT95XDpmEKI4j6oiue2UgLkI58k5miQjOedwgLn/eRE6j6oiubeUgLn/eRE6miQjOedwgLkI58k5w50iuQZEnLnsEw06ZjEjOQ8gnLnsEw06FDEjOSkgnLn2Y905w50iuQZEnLn2Y9057C/5ODZ1gLmXWp05KTz4uJeQgLmXWp05j5oDuVmRgLl76ho5w4XeuK8weLkKwJg5SBQEOUV0gLl76ho57PHruGgyeLmPHyQ5rt3sODP+d7mPHyQ5M3HfOLf/d7kKwJg5")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_4vqqg")
+emission_enabled = true
+
 [node name="SM_ElectronicsCrafting_Prop_PartsBin_01" type="Node3D"]
 
 [node name="SM_ElectronicsCrafting_Prop_PartsBin_01" type="MeshInstance3D" parent="."]

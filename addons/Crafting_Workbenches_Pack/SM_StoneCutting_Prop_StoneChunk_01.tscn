@@ -18,6 +18,26 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_udsb3")
 
+[sub_resource type="ArrayMesh" id="ArrayMesh_udsb3"]
+_surfaces = [{
+"aabb": AABB(-0.00308833, -0.0022514078, 8.277074e-06, 0.0055243135, 0.0045889104, 0.0031962765),
+"format": 34359742465,
+"index_count": 144,
+"index_data": PackedByteArray("AAABAAIAAwABAAAABAADAAAABQAEAAAABQAAAAIABgADAAQABwAEAAUABwAGAAQABwAFAAgABgAJAAMACQABAAMACgAGAAcACgALAAYACwAJAAYADAAKAAcADAAHAAgADQALAAoADQAKAAwACQALAA0ACAAFAA4ADAAIAA4ADgAFAAIADQAMAA8ADwAMAA4ADQAQAAkADQAPABAAEQABAAkACQAQABEAEQASAAEAEAASABEAEgATAAEAEwACAAEADwAUABAAEwAVAAIAFAAPABYADwAOABYAEAAUABcAFAAWABcAEAAXABIAEgAYABMAGAAVABMAFwAYABIAGAAZABUAFwAZABgAFwAWABkAGQACABUADgAZABYAGQAOAAIA"),
+"name": "PolyClem_texture",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 26,
+"vertex_data": PackedByteArray("dTwFu0oPWLofROU5hkJ+uluME7sWXFY6lwdKuvN2b7rf8pY4hO8Mu9ah4Lrqzto6ZhRFu8F8WLmhfKQ62lgCuxF1XTqILrg5lGVKu5r3krlUwig7rbExu6EJvjoJZsg69savuhdi+zopdCo6xwGdubugYLoNRUw7OjEKuwBXDzt9A1I7qbP9umyIh7lGpUo7eaWPuskwGTvjZ9A64TtMukr92DoIbk47Unjfua4vuTpcpbs394quOoMABTsDqrI6BqUfO3LIbzpPzi07ZihXOt3oybqSngw7084MO1waf7rFSs465qZKOQVRDbvthwc6CfYYO6ljljraIds6b8cgOrq2QLrD3Qo3k1j3OmCXnDra3ww6aWcfO4idELdUJ4A6dG74OnvYp7q8NL05KX/6Oj2Nbjj2/sc3")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_4vqqg")
+emission_enabled = true
+
 [node name="SM_StoneCutting_Prop_StoneChunk_01" type="Node3D"]
 
 [node name="SM_StoneCutting_Prop_StoneChunk_01" type="MeshInstance3D" parent="."]

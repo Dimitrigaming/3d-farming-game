@@ -18,6 +18,26 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_tv13x")
 
+[sub_resource type="ArrayMesh" id="ArrayMesh_tv13x"]
+_surfaces = [{
+"aabb": AABB(-0.00033970067, -0.00029352494, -1.7942479e-05, 0.00079986383, 0.00054835423, 0.0002677384),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAwABAAAAAgAEAAAAAAAFAAMABQAAAAQAAwAGAAIABgADAAUABAACAAYABQAHAAYABgAHAAQABAAHAAUA"),
+"name": "PolyClem_texture",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("syetuY2WIzmh7QI42hmyubZDSTku3Ss5k+gmuYY+GLkK94I52DHPODEZhDmKKPA4ifMbuUDkmblxsxG3Y/liOZ2ahTm4Xke3lEFUOVb/Grlp9F85DkLxOfuXjLkug5a3")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_4vqqg")
+emission_enabled = true
+
 [node name="SM_StoneCutting_Prop_DebrisSmall_02" type="Node3D"]
 
 [node name="SM_StoneCutting_Prop_DebrisSmall_02" type="MeshInstance3D" parent="."]

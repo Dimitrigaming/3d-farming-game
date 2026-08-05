@@ -19,6 +19,27 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_01j0q")
 
+[sub_resource type="ArrayMesh" id="ArrayMesh_01j0q"]
+_surfaces = [{
+"aabb": AABB(-7.9493744e-05, -0.00030814466, 1.5504797e-06, 0.00016013868, 0.0006221018, 0.0001546073),
+"format": 34359742465,
+"index_count": 180,
+"index_data": PackedByteArray("DAAOABEADgAMAAkACQAQAA4ADgAQABIAEgARAA4AEAAJABMAEwASABAACQAMAAcAEQAUAAwABwAMABQAFQARABIACwAUABEAEQAVAAsAEgAWABUAFgASABMAEwAJAAQABwAEAAkAEwAXABYABAAYABMAFwATABgAFQAWAA8ADwAWABcADwANABUACwAVAA0AFwAIAA8ADQAPAAgACAAKAA0ADQAKAAsAAAAKAAgACwAKAAAAAQAIABcACAABAAAAFwAZAAEAGAAZABcAAAABAAIAAgABABkAGgAZABgAGQAaAAIAAwACABoAAgADAAAAAAAbAAsAGwAAAAMACwAbABwAHAAUAAsAFAAcAAcAGgAdAAMAAwAdABsAHgAcABsAGwAdAB4ABwAcAB4AHQAaAB8AHwAeAB0AGAAfABoAHgAGAAcABgAeAB8ABQAfABgAHwAFAAYABwAGAAUAGAAEAAUABQAEAAcA"),
+"lods": [1.5511465e-05, PackedByteArray("AAABAAIAAgADAAAAAgABAAQAAwACAAUABAAFAAIABQAGAAMAAAADAAYABwAGAAUABQAEAAcABgAHAAAABAABAAgACAABAAAABwAEAAkACAAJAAQAAAAKAAgACwAAAAcACwAKAAAABwAMAAsACQAMAAcADQAKAAsACAAKAA0ACwAMAA4ADgAMAAkADgANAAsACQAIAA8ADQAPAAgACQAQAA4ADQAOABAADwAQAAkAEAAPAA0A")],
+"name": "PolyClem_texture",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 32,
+"vertex_data": PackedByteArray("CuLatxdjpDlxBqE3g5jPt5NfpDlGpBI5KGeEuB1HpDmySdo4AF98uGpLpDmk0zo4zbjkt5hvobm/BSM5uJmfuHqOoblhouY4e6+XuGiJobljhw849hTztwprobkUUgQ2kTa3NwF+pDkchRE5SD0GOKNIoblrmCE5OKO3NySDpDkNLaI3SJnwN2oZiTnXNT42ZoIGOGxCobma/Q82T/R7OJ+apDlUYXY47B+pOLckobnSSls48QppOAmVpDkmnO449hadOH4robllPgA5PTioOLkbjbmEhlk4jzCcOIAijbmkmv84e3AEOKQ/jblXJyE5CrMEOIM5jblIhec1CgWiOCA3iTkNLV44FPyVOFgwiTkd9wA57AnwNzMTiTkiUSI5hVfot+xmjbnOlCI5KZIAuALsiDlJviM54bWmuF3NiDmAE+g4PcAHuKPwiDlcfzI2j672twxijbkUGtA1pMueuFvSiDmXaRI44ZWYuHyAjbnIwQ04ZoGguJCFjbk4wOU4")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_4vqqg")
+emission_enabled = true
+
 [node name="SM_TextileCrafting_Prop_TailorChalk_01" type="Node3D"]
 
 [node name="SM_TextileCrafting_Prop_TailorChalk_01" type="MeshInstance3D" parent="."]

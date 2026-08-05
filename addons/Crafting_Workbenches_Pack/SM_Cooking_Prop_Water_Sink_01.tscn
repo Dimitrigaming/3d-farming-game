@@ -19,6 +19,27 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1we65")
 
+[sub_resource type="ArrayMesh" id="ArrayMesh_1we65"]
+_surfaces = [{
+"aabb": AABB(-0.001955562, -0.0023364394, 1.9070274e-06, 0.0039111245, 0.0046728794, 0.00018649758),
+"format": 34359742465,
+"index_count": 60,
+"index_data": PackedByteArray("CwABAAIAAQALAAAAAgAMAAsAAgAEAAwADAAEAAMAAwANAAwACwAMAA0ADQADAAUAAAALAA4ADQAOAAsADgAGAAAABQAPAA0ADgANAA8ADwAFAAoADwAKAAkADwAHAA4ABgAOAAcACQAHAA8ABwAIAAYACAAHAAkA"),
+"lods": [0.00059926294, PackedByteArray("AAABAAIAAgADAAAAAgAEAAMAAAADAAUABQAGAAAABgAFAAcABwAIAAYACAAHAAkACQAHAAUABQAKAAkA")],
+"name": "PolyClem_texture",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("5CgAOwrXI64kKjU35CgAO6mBzrokKjU3iJWcOvMeGbskKjU34ygAu6mBzrokKjU3jJWcuvMeGbskKjU34ygAuwrXI64kKjU35CgAO6aBzjokKjU3zmasOcgS3jp6jkU5iJWcOvQeGTskKjU3jJWcuvQeGTskKjU34ygAu6aBzjokKjU389WOOj9WKLqNyeA32GasucUS3rp6jkU5u9U2uopNE7r29P81w9U2OohNEzr29P819NWOuj9WKDqNyeA3")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_4vqqg")
+emission_enabled = true
+
 [node name="SM_Cooking_Prop_Water_Sink_01" type="Node3D"]
 
 [node name="SM_Cooking_Prop_Water_Sink_01" type="MeshInstance3D" parent="."]

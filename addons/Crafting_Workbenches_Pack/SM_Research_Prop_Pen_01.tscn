@@ -18,6 +18,26 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_61ldn")
 
+[sub_resource type="ArrayMesh" id="ArrayMesh_61ldn"]
+_surfaces = [{
+"aabb": AABB(-3.4640987e-05, -3.999997e-05, -2.332858e-06, 6.9281974e-05, 7.999994e-05, 0.0015023332),
+"format": 34359742465,
+"index_count": 246,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAQAAAAQAAgAFAAAABgADAAEAAwAHAAIAAQAIAAYABAAIAAEAAwAGAAkACQAKAAMABwADAAoACwACAAcABQACAAsADAAJAAYADQAGAAgABgANAAwADgAJAAwACgAJAA4ADwAMAA0ADgAQAAoACgAQABEAEQAQAA4AEQASAAoACgASAAcADgATABEAEgARABMADAAUAA4AFAAMAA8AEwAOABQAFAAVABMADwAVABQAEwAVAA8AEwAWABIADwAWABMAFwAHABIAEgAWABcABwAXAAsAFgAPABgAGAAXABYADQAYAA8AGQALABcAFwAYABkAGAANABoAGgAZABgACAAaAA0AGwAaAAgAGQAaABsACAAEABsACwAZABwAGwAcABkAHAAdAAsACwAdAAUAHAAbAB4AHgAbAAQAHQAcAB8AHgAfABwAIAAFAB0ABAAhAB4AIQAEAAAAIgAAAAUAAAAiACEABQAgACIAHwAjAB0AHQAjACAAHwAeACQAJAAeACEAIwAfACUAJAAlAB8AJQAmACMAIQAnACQAJwAhACIAJQAkACgAKAAkACcAKAAmACUAIgApACcAJwApACgAKQAiACAAKgAmACgAKAApACoAIwAmACoAIAAqACkAKgAgACMA"),
+"name": "PolyClem_texture",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 43,
+"vertex_data": PackedByteArray("pPwJsuE+wjeNO1A4AAAAAKTFJzjDHcY4eksRuKTFpzfDHcY4AAAAAKTFJzgsl7w6fSeoN+E+QjeNO1A4/Umot+E+QjeNO1A4eksROKTFpzcsl7w6eksRuKTFpzcsl7w6eksROKTFpzfDHcY4eksROKTFpzejV8E6AAAAAKTFJzijV8E6eksRuKTFp7fDHcY4eksROKTFp7ejV8E6eksROKTFp7csl7w6CXTkN8flgzepm8Q6AAAAAKTFJ7ijV8E6AAAAAMflAzipm8Q6CXTkt8flgzepm8Q6eksRuKTFpzejV8E6CXTkt8flg7epm8Q6CXTkN8flg7epm8Q6AAAAAMflA7ipm8Q6eksRuKTFp7ejV8E6eksRuKTFp7csl7w6AAAAAKTFJ7gsl7w6AAAAAKTFJ7jDHcY4eksROKTFp7fDHcY4fSeoN+E+QreNO1A4pPwJsuE+wreNO1A4/Umot+E+QreNO1A4gIiYNpfFMLZGM9s16kKOspfFsLZGM9s1BaWZtpfFMDZGM9s1gIiYNpfFMDZGM9s16kKOspfFsDZGM9s1BaWZtpfFMLZGM9s1UqRiNrGEA7YpTzi1F8mTsrGEg7YpTzi1dvNktrGEA7YpTzi1UqRiNrGEAzYpTzi1CtejsgAAAAAyjhy2F8mTsrGEgzYpTzi1dvNktrGEAzYpTzi1")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16m7f"]
+resource_name = "PolyClem_texture"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_4vqqg")
+emission_enabled = true
+
 [node name="SM_Research_Prop_Pen_01" type="Node3D"]
 
 [node name="SM_Research_Prop_Pen_01" type="MeshInstance3D" parent="."]
