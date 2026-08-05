@@ -27,10 +27,21 @@ func add_item(item_id: String, amount: int = 1) -> bool:
 		if slot["item_id"] == "":
 			slot["item_id"] = item_id
 			slot["amount"] = amount
+			var def = ItemDB.get_item(item_id)
+			slot["durability"] = def.max_durability if def and def.max_durability > 0 else -1
 			inventory_changed.emit()
 			item_acquired.emit(item_id, amount)
 			return true
 	return false  # inventory full
+
+func damage_tool(slot_index: int) -> void:
+	var slot = slots[slot_index]
+	if slot["item_id"] == "" or slot["durability"] == -1:
+		return
+	slot["durability"] -= 1
+	if slot["durability"] <= 0:
+		slots[slot_index] = _empty_slot()
+	inventory_changed.emit()
 
 func remove_item(item_id: String, amount: int = 1) -> bool:
 	for i in slots.size():
@@ -56,4 +67,4 @@ func swap_slots(a: int, b: int) -> void:
 	inventory_changed.emit()
 
 func _empty_slot() -> Dictionary:
-	return {"item_id": "", "amount": 0}
+	return {"item_id": "", "amount": 0, "durability": -1}

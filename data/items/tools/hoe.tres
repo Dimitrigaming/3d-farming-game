@@ -17,3 +17,4 @@ equip_scene = ExtResource("2_equip")
 
 tool_category = "hoe"
 mining_damage = 0
+max_durability = 80

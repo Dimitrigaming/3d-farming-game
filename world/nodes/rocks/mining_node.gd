@@ -54,6 +54,8 @@ func interact() -> void:
 				damage = max(1, int(def.mining_damage * wrong_tool_percent))
 
 	_hp -= damage
+	if equipper.current_slot_index >= 0:
+		Inventory.damage_tool(equipper.current_slot_index)
 	_update_hp_bar()
 
 	if _hp > 0:

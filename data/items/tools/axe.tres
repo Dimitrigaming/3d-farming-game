@@ -17,3 +17,4 @@ equip_scene = ExtResource("2_equip")
 
 tool_category = "axe"
 mining_damage = 3
+max_durability = 100

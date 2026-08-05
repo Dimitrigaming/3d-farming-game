@@ -78,8 +78,9 @@ func _notify_equipper() -> void:
 	var equipper = get_tree().get_first_node_in_group("tool_equipper")
 	if not equipper:
 		return
-	var slot_data = Inventory.slots[Inventory.HOTBAR_START + selected_slot]
-	equipper.equip(slot_data["item_id"])
+	var slot_index = Inventory.HOTBAR_START + selected_slot
+	equipper.current_slot_index = slot_index
+	equipper.equip(Inventory.slots[slot_index]["item_id"])
 
 func _refresh() -> void:
 	var slot_nodes = grid.get_children()

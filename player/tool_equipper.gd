@@ -1,6 +1,7 @@
 extends Node3D
 
 var current_item_id: String = ""
+var current_slot_index: int = -1
 var _equipped: Node3D = null
 var _hand: Node3D = null
 

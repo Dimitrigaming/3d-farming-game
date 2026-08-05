@@ -17,3 +17,4 @@ equip_scene = ExtResource("1_st2u4")
 
 tool_category = "shovel"
 mining_damage = 0
+max_durability = 80
