@@ -22,7 +22,7 @@ extends StaticBody3D
 var _stage: int = 0
 var _hp: int = 0
 var _bar_hide_timer: float = 0.0
-const BAR_HIDE_DELAY: float = 3.0
+const BAR_HIDE_DELAY: float = 10.0
 
 func _ready() -> void:
 	add_to_group("interactable")
