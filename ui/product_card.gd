@@ -10,13 +10,19 @@ extends PanelContainer
 @onready var _btn_plus: Button = %BtnPlus
 
 var _item_id: String = ""
+var _item: ItemDefinition = null
 
 func setup(item: ItemDefinition) -> void:
+	_item = item
 	_item_id = item.id
-	_icon.texture = item.icon
-	_icon.visible = item.icon != null
-	_name_lbl.text = item.name
-	_market_lbl.text = "Market Price: $%d" % item.sell_price
+
+func _ready() -> void:
+	if _item == null:
+		return
+	_icon.texture = _item.icon
+	_icon.visible = _item.icon != null
+	_name_lbl.text = _item.name
+	_market_lbl.text = "Market Price: $%d" % _item.sell_price
 	_btn_minus.pressed.connect(_on_minus)
 	_btn_plus.pressed.connect(_on_plus)
 	_active_btn.pressed.connect(_on_active_toggle)
