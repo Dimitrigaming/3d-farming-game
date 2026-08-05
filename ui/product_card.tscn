@@ -28,10 +28,10 @@ theme_override_constants/separation = 0
 [node name="LeftMargin" type="MarginContainer" parent="Outer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 8
 
 [node name="Left" type="VBoxContainer" parent="Outer/LeftMargin"]
 layout_mode = 2
@@ -61,17 +61,13 @@ theme_override_colors/font_color = Color(0.55, 0.65, 0.75, 1)
 theme_override_font_sizes/font_size = 12
 text = "Market Price: $0"
 
-[node name="VSep" type="VSeparator" parent="Outer"]
-layout_mode = 2
-custom_minimum_size = Vector2(2, 0)
-
 [node name="RightMargin" type="MarginContainer" parent="Outer"]
 layout_mode = 2
-custom_minimum_size = Vector2(150, 0)
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+custom_minimum_size = Vector2(130, 0)
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="Right" type="VBoxContainer" parent="Outer/RightMargin"]
 layout_mode = 2
