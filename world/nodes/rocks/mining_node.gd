@@ -11,10 +11,13 @@ extends StaticBody3D
 @export var required_tool_category: String = "pickaxe"
 ## Scenes for each stage, index 0 = largest/full, last = nearly depleted
 @export var stage_scenes: Array[PackedScene] = []
+## Seconds before the node respawns after being fully mined
+@export var respawn_time: float = 20.0
 
 @onready var _visual: Node3D = $Visual
 @onready var _progress_bar: ProgressBar = $SubViewport/HealthBar
 @onready var _sprite_3d: Sprite3D = $Sprite3D
+@onready var _collision: CollisionShape3D = $CollisionShape3D
 
 var _stage: int = 0
 var _hp: int = 0
@@ -24,8 +27,6 @@ func _ready() -> void:
 	_hp = stage_hp
 	_apply_stage()
 	_sprite_3d.visible = false
-	# Use a plain white image to confirm Sprite3D is visible at all
-
 
 func _apply_stage() -> void:
 	for child in _visual.get_children():
@@ -64,10 +65,27 @@ func interact() -> void:
 	Inventory.add_item(ore_type, randi_range(drops_min, drops_max))
 	_stage += 1
 	if _stage >= stage_scenes.size():
-		queue_free()
+		_despawn()
 	else:
 		_hp = stage_hp
 		_apply_stage()
+
+func _despawn() -> void:
+	_visual.visible = false
+	_sprite_3d.visible = false
+	_collision.disabled = true
+	remove_from_group("interactable")
+	await get_tree().create_timer(respawn_time).timeout
+	_respawn()
+
+func _respawn() -> void:
+	_stage = 0
+	_hp = stage_hp
+	_visual.visible = true
+	_collision.disabled = false
+	_sprite_3d.visible = false
+	add_to_group("interactable")
+	_apply_stage()
 
 func _update_hp_bar() -> void:
 	if _progress_bar == null or _sprite_3d == null:

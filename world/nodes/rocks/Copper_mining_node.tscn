@@ -1,19 +1,18 @@
-[gd_scene format=3 uid="uid://copper_mining_node"]
+[gd_scene format=3 uid="uid://rt8yd0sov1ag"]
 
 [ext_resource type="PackedScene" uid="uid://b5tlx5ppf888v" path="res://world/nodes/rocks/MiningNode.tscn" id="1_base"]
 [ext_resource type="PackedScene" uid="uid://bgx7fsgaks2ia" path="res://addons/MiningPack/SM_Copper_Node_01.tscn" id="2_s1"]
 [ext_resource type="PackedScene" uid="uid://cfln0rh7p3k16" path="res://addons/MiningPack/SM_Copper_Node_02.tscn" id="3_s2"]
 [ext_resource type="PackedScene" uid="uid://dffkxa64s3e50" path="res://addons/MiningPack/SM_Copper_Node_03.tscn" id="4_s3"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_copper"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_1f341"]
 viewport_path = NodePath("SubViewport")
 
 [node name="CopperMiningNode" unique_id=100000001 instance=ExtResource("1_base")]
 ore_type = "copper_ore"
-stage_hp = 30
-drops_min = 1
 drops_max = 2
+stage_hp = 30
 stage_scenes = Array[PackedScene]([ExtResource("2_s1"), ExtResource("3_s2"), ExtResource("4_s3")])
 
 [node name="Sprite3D" parent="." index="3" unique_id=935891383]
-texture = SubResource("ViewportTexture_copper")
+texture = SubResource("ViewportTexture_1f341")
