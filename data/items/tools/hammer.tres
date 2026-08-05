@@ -7,14 +7,13 @@
 [resource]
 script = ExtResource("1_def")
 id = "hammer"
-name = "Hammer"
+name = "Iron Hammer"
 icon = ExtResource("2_rp0i6")
 type = 5
 max_stack = 1
-buy_price = 40
-description = "Build and repair structures."
+buy_price = 80
+description = "Iron hammer. Used for building and construction."
 equip_scene = ExtResource("2_equip")
-
 tool_category = "hammer"
-mining_damage = 2
-max_durability = 80
+mining_damage = 5
+max_durability = 100
