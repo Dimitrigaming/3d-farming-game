@@ -99,4 +99,5 @@ shadow_mesh = SubResource("ArrayMesh_bxqlc")
 transform = Transform3D(0.34202012, 0, -0.9396926, 0, 1, 0, 0.9396926, 0, 0.34202012, 0, 0, 0)
 
 [node name="PickAxeV1" type="MeshInstance3D" parent="." unique_id=528046792]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0.2, 0)
 mesh = SubResource("ArrayMesh_8ex0g")

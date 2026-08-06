@@ -1,5 +1,8 @@
 extends Node3D
 
+## Emitted the instant the swing reaches its peak (tool visually connects).
+signal swing_hit
+
 const SWING_DURATION: float = 0.18
 const SWING_ROTATION := Vector3(deg_to_rad(-20), 0, deg_to_rad(70))
 const WINDUP_ROTATION := Vector3(deg_to_rad(5), 0, deg_to_rad(-15))
@@ -20,6 +23,11 @@ const CURVED_SWINGS := {
 		"windup": Vector3(10, 0, 5),
 		"swing": Vector3(85, 0, -95),
 		"duration_mult": 1.2,
+	},
+	"pickaxe": {
+		"windup": Vector3(5, 0, -15),
+		"swing": Vector3(-15, 0, 65),
+		"duration_mult": 1.15,
 	},
 }
 
@@ -92,7 +100,8 @@ func play_swing() -> void:
 		_swing_tween.tween_property(_equipped, "rotation", _rest_rotation + mid, SWING_DURATION * 0.25 * duration_mult).set_ease(Tween.EASE_OUT)
 		_swing_tween.tween_property(_equipped, "rotation", _rest_rotation + swing, SWING_DURATION * 0.35 * duration_mult).set_ease(Tween.EASE_IN_OUT)
 	else:
-		_swing_tween.tween_property(_equipped, "rotation", _rest_rotation + swing, SWING_DURATION * 0.4).set_ease(Tween.EASE_OUT)
+		_swing_tween.tween_property(_equipped, "rotation", _rest_rotation + swing, SWING_DURATION * 0.4 * duration_mult).set_ease(Tween.EASE_OUT)
+	_swing_tween.tween_callback(func(): swing_hit.emit())
 	_swing_tween.tween_property(_equipped, "rotation", _rest_rotation, SWING_DURATION * 0.6 * duration_mult).set_ease(Tween.EASE_IN)
 	_swing_tween.finished.connect(func(): _is_swinging = false)
 

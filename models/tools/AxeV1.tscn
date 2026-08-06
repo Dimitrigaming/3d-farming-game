@@ -101,4 +101,5 @@ shadow_mesh = SubResource("ArrayMesh_u6lat")
 transform = Transform3D(-0.34202015, 0, 0.9396926, 0, 1, 0, -0.9396926, 0, -0.34202015, 0, 0, 0)
 
 [node name="AxeV1" type="MeshInstance3D" parent="." unique_id=975220205]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06379349, 0)
 mesh = SubResource("ArrayMesh_piasf")

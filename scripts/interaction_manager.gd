@@ -90,22 +90,27 @@ func _process(delta: float) -> void:
 		_tool_hold_timer += delta
 		if _tool_hold_timer >= TOOL_HIT_INTERVAL:
 			_tool_hold_timer = 0.0
-			if _swing_equipped_tool():
-				if current_target and current_target.has_method("interact"):
-					current_target.interact()
+			_swing_and_hit(current_target)
 
 	_update_hud()
 
 func _is_product_shelf(target) -> bool:
 	return target != null and target.has_method("get_retrieve_hint")
 
-func _swing_equipped_tool() -> bool:
+## Starts the swing animation and, if a target is given, defers the actual
+## interact() call until the swing visually reaches its peak (swing_hit).
+func _swing_and_hit(target) -> bool:
 	var equipper = get_tree().get_first_node_in_group("tool_equipper")
-	if equipper and equipper.has_method("play_swing"):
-		if equipper.has_method("can_swing") and not equipper.can_swing():
-			return false
-		equipper.play_swing()
+	if equipper == null or not equipper.has_method("play_swing"):
 		return true
+	if equipper.has_method("can_swing") and not equipper.can_swing():
+		return false
+	equipper.play_swing()
+	if target and target.has_method("interact") and equipper.has_signal("swing_hit"):
+		equipper.swing_hit.connect(func():
+			if is_instance_valid(target) and target.has_method("interact"):
+				target.interact()
+		, CONNECT_ONE_SHOT)
 	return true
 
 func _cast_placement_zone_ray():
@@ -255,13 +260,12 @@ func _unhandled_input(event: InputEvent) -> void:
 						if item_type != "" and player_inventory.collect_item(item_type, current_target.global_position):
 							current_target.clear_print()
 					else:
-						if _swing_equipped_tool():
-							current_target.interact()
+						_swing_and_hit(current_target)
 					_tool_hold_active = true
 					_tool_hold_timer = 0.0
 					_tool_interacted = true
 				else:
-					_swing_equipped_tool()
+					_swing_and_hit(null)
 					_tool_hold_active = true
 					_tool_hold_timer = 0.0
 					_tool_interacted = true
@@ -279,8 +283,7 @@ func _unhandled_input(event: InputEvent) -> void:
 						if item_type != "" and player_inventory.collect_item(item_type, current_target.global_position):
 							current_target.clear_print()
 					elif current_target and current_target.has_method("interact"):
-						if _swing_equipped_tool():
-							current_target.interact()
+						_swing_and_hit(current_target)
 				_shelf_lmb_was_active = false
 				_lmb_confirmed_build = false
 				_tool_interacted = false
