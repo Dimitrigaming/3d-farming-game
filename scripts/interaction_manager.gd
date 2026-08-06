@@ -10,7 +10,7 @@ const LMB_HOLD_THRESHOLD: float = 0.6
 const MMB_MAX_CHARGE: float = 1.5
 const MMB_MIN_SPEED: float = 3.0
 const SHELF_HOLD_INTERVAL: float = 0.18
-const TOOL_HIT_INTERVAL: float = 1.0
+const TOOL_HIT_INTERVAL: float = 0.5
 
 var _lmb_held: bool = false
 var _lmb_hold_time: float = 0.0
@@ -90,13 +90,23 @@ func _process(delta: float) -> void:
 		_tool_hold_timer += delta
 		if _tool_hold_timer >= TOOL_HIT_INTERVAL:
 			_tool_hold_timer = 0.0
-			if current_target and current_target.has_method("interact"):
-				current_target.interact()
+			if _swing_equipped_tool():
+				if current_target and current_target.has_method("interact"):
+					current_target.interact()
 
 	_update_hud()
 
 func _is_product_shelf(target) -> bool:
 	return target != null and target.has_method("get_retrieve_hint")
+
+func _swing_equipped_tool() -> bool:
+	var equipper = get_tree().get_first_node_in_group("tool_equipper")
+	if equipper and equipper.has_method("play_swing"):
+		if equipper.has_method("can_swing") and not equipper.can_swing():
+			return false
+		equipper.play_swing()
+		return true
+	return true
 
 func _cast_placement_zone_ray():
 	var space = get_world_3d().direct_space_state
@@ -245,7 +255,13 @@ func _unhandled_input(event: InputEvent) -> void:
 						if item_type != "" and player_inventory.collect_item(item_type, current_target.global_position):
 							current_target.clear_print()
 					else:
-						current_target.interact()
+						if _swing_equipped_tool():
+							current_target.interact()
+					_tool_hold_active = true
+					_tool_hold_timer = 0.0
+					_tool_interacted = true
+				else:
+					_swing_equipped_tool()
 					_tool_hold_active = true
 					_tool_hold_timer = 0.0
 					_tool_interacted = true
@@ -263,7 +279,8 @@ func _unhandled_input(event: InputEvent) -> void:
 						if item_type != "" and player_inventory.collect_item(item_type, current_target.global_position):
 							current_target.clear_print()
 					elif current_target and current_target.has_method("interact"):
-						current_target.interact()
+						if _swing_equipped_tool():
+							current_target.interact()
 				_shelf_lmb_was_active = false
 				_lmb_confirmed_build = false
 				_tool_interacted = false

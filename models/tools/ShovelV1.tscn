@@ -70,6 +70,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_qdii3")
 
 [node name="SpadeV1" type="Node3D" unique_id=246169901]
+transform = Transform3D(0.49999997, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, 0.49999997, 0, 0, 0)
 
 [node name="SpadeV1" type="MeshInstance3D" parent="." unique_id=1660655249]
 mesh = SubResource("ArrayMesh_p8mwj")

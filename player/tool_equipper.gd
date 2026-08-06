@@ -1,9 +1,35 @@
 extends Node3D
 
+const SWING_DURATION: float = 0.18
+const SWING_ROTATION := Vector3(deg_to_rad(-20), 0, deg_to_rad(70))
+const WINDUP_ROTATION := Vector3(deg_to_rad(5), 0, deg_to_rad(-15))
+const WINDUP_DURATION: float = 0.1
+const FLIPPED_SWING_CATEGORIES := ["hammer"]
+const ROTATED_SWING_CATEGORIES := ["hoe"]
+
+## Curved (windup -> [mid ->] swing -> rest) motions, keyed by tool_category.
+## "mid" is optional -- omit it for a single blended diagonal swing.
+const CURVED_SWINGS := {
+	"scythe": {
+		"windup": Vector3(-10, -15, 5),
+		"mid": Vector3(60, 10, -10),
+		"swing": Vector3(50, 90, -20),
+		"duration_mult": 1.6,
+	},
+	"axe": {
+		"windup": Vector3(10, 0, 5),
+		"swing": Vector3(85, 0, -95),
+		"duration_mult": 1.2,
+	},
+}
+
 var current_item_id: String = ""
 var current_slot_index: int = -1
 var _equipped: Node3D = null
 var _hand: Node3D = null
+var _rest_rotation: Vector3 = Vector3.ZERO
+var _swing_tween: Tween = null
+var _is_swinging: bool = false
 
 func _ready() -> void:
 	add_to_group("tool_equipper")
@@ -28,6 +54,50 @@ func equip(item_id: String) -> void:
 		return
 	_equipped = def.equip_scene.instantiate()
 	_hand.add_child(_equipped)
+	_rest_rotation = _equipped.rotation
+
+func can_swing() -> bool:
+	return not _is_swinging
+
+func play_swing() -> void:
+	if _equipped == null or _is_swinging:
+		return
+	_is_swinging = true
+	_equipped.rotation = _rest_rotation
+
+	var windup := WINDUP_ROTATION
+	var swing := SWING_ROTATION
+	var mid: Variant = null
+	var duration_mult: float = 1.0
+	var def = ItemDB.get_item(current_item_id)
+	if def:
+		if def.tool_category in FLIPPED_SWING_CATEGORIES:
+			windup *= -1.0
+			swing *= -1.0
+		elif def.tool_category in ROTATED_SWING_CATEGORIES:
+			windup = Vector3(windup.z, deg_to_rad(3), 0)
+			swing = Vector3(swing.z, deg_to_rad(10), 0)
+		elif def.tool_category in CURVED_SWINGS:
+			var data: Dictionary = CURVED_SWINGS[def.tool_category]
+			windup = _deg(data["windup"])
+			if data.has("mid"):
+				mid = _deg(data["mid"])
+			swing = _deg(data["swing"])
+			duration_mult = data["duration_mult"]
+
+	_swing_tween = create_tween()
+	_swing_tween.set_trans(Tween.TRANS_CUBIC)
+	_swing_tween.tween_property(_equipped, "rotation", _rest_rotation + windup, WINDUP_DURATION * duration_mult).set_ease(Tween.EASE_OUT)
+	if mid != null:
+		_swing_tween.tween_property(_equipped, "rotation", _rest_rotation + mid, SWING_DURATION * 0.25 * duration_mult).set_ease(Tween.EASE_OUT)
+		_swing_tween.tween_property(_equipped, "rotation", _rest_rotation + swing, SWING_DURATION * 0.35 * duration_mult).set_ease(Tween.EASE_IN_OUT)
+	else:
+		_swing_tween.tween_property(_equipped, "rotation", _rest_rotation + swing, SWING_DURATION * 0.4).set_ease(Tween.EASE_OUT)
+	_swing_tween.tween_property(_equipped, "rotation", _rest_rotation, SWING_DURATION * 0.6 * duration_mult).set_ease(Tween.EASE_IN)
+	_swing_tween.finished.connect(func(): _is_swinging = false)
+
+func _deg(v: Vector3) -> Vector3:
+	return Vector3(deg_to_rad(v.x), deg_to_rad(v.y), deg_to_rad(v.z))
 
 func _find_camera(node: Node) -> Camera3D:
 	if node is Camera3D:
