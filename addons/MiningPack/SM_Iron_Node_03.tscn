@@ -1,0 +1,58 @@
+[gd_scene format=4 uid="uid://074mquitk2xb"]
+
+[ext_resource type="PackedScene" uid="uid://dm4vdjghd07d6" path="res://addons/MiningPack/SM_Rock_Ore_Base_03.tscn" id="1_ldebn"]
+[ext_resource type="PackedScene" uid="uid://rka8dyydedcp" path="res://addons/MiningPack/SM_Iron_Overlay_03.tscn" id="2_p58cq"]
+[ext_resource type="Texture2D" uid="uid://dp7ak83qkntt0" path="res://models/textures/iron.png" id="3_p58cq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wjkyy"]
+resource_name = "M_Gradient_Mining01"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_p58cq")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_67ov5"]
+_surfaces = [{
+"aabb": AABB(-0.0042797793, -0.0037468097, 0.0016582438, 0.0069616186, 0.0070740334, 0.002991595),
+"format": 34359742465,
+"index_count": 78,
+"index_data": PackedByteArray("AAABAAIAAQADAAIAAwABAAQAAQAFAAQABgAEAAUABgAFAAcABwAIAAYACQAGAAgABwAKAAgABwALAAoACQAIAAwACwANAAoADQAOAAoADgANAA8AEAAOAA8ADwARABAACQAMABIAEgATAAkAEgAMABQADAAVABQAFgAUABUAFQAXABYAGAAWABcAGAAXABkAGQAaABgAGgAbABgA"),
+"name": "M_Gradient_Mining01",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 28,
+"vertex_data": PackedByteArray("ZD2MuyO7ELtuWdk6AKdTu6QkjrrX6DE7FApkuyS5Ervo8gw7hTo0u02C37rFVTc7Cv0YuxQ0k7o0P0Q7TWwau8E5n7may0k7caPHuggZNLoPaHw79gHrur3JNDmaQ3I7UgSmutISKrnIuYg7H9KDuuMngbpTbYc7zXuyulJm1jqESo07ZqfsuuGV9jq2+X87hSOzuc57T7qtXZg7pFTCujjaHjvajH87Hyc/uuNeKTsBcY47KYZOuqO2RjtNJno7w2G9ubhiPjsaEI07mn+uOo0NWjsM/GU7mh2JuW7DuroQmpQ7AJqHuuE+z7oqf4E7KaYSOuxL4rq7ZZM7pEqiOpJprroWTJY77N16OnlwFbvhDno7e2rZOsiwGrvqEWI7hT/lOpqJP7ubVCw7zcEvO6WCNrt3/Cg7pLDoOojcZrsuJfg67NVOOgmNdbv/PPc6")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ay2fe"]
+resource_name = "SM_Copper_Node_03_Crack_001"
+_surfaces = [{
+"aabb": AABB(-0.0042797793, -0.0037468097, 0.0016582438, 0.0069616186, 0.0070740334, 0.002991595),
+"attribute_data": PackedByteArray("FUhzP7AAHT5tD3M/MKoMPhkscz+0YxU++QhzP1BjCz5j/3I/7FYIPuL8cj/IBgc+KdByP8At9j1G23I/oPT6PXu/cj+QPuw9Y79yP2h67T2PvHI/kOvnPS/Ucj+QePQ9r6JyP1B+3T311XI/sKr0PQq9cj+Y0+Y9UtxyP3g19z1JwHI/wB/oPa7tcj+MXAA+aqdyPwgN4T3xx3I/cBTzPXGocj/wMOI9Y6RyP5Bz3z0+zXI/yE33PXDhcj+4TwE+1RJzP5hfDz4iEHM/5H8OPvcycz9Eixg+1zVzP4x8GT4="),
+"format": 34359742487,
+"index_count": 78,
+"index_data": PackedByteArray("AAABAAIAAQADAAIAAwABAAQAAQAFAAQABgAEAAUABgAFAAcABwAIAAYACQAGAAgABwAKAAgABwALAAoACQAIAAwACwANAAoADQAOAAoADgANAA8AEAAOAA8ADwARABAACQAMABIAEgATAAkAEgAMABQADAAVABQAFgAUABUAFQAXABYAGAAWABcAGAAXABkAGQAaABgAGgAbABgA"),
+"material": SubResource("StandardMaterial3D_wjkyy"),
+"name": "M_Gradient_Mining01",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 28,
+"vertex_data": PackedByteArray("ZD2MuyO7ELtuWdk6AKdTu6QkjrrX6DE7FApkuyS5Ervo8gw7hTo0u02C37rFVTc7Cv0YuxQ0k7o0P0Q7TWwau8E5n7may0k7caPHuggZNLoPaHw79gHrur3JNDmaQ3I7UgSmutISKrnIuYg7H9KDuuMngbpTbYc7zXuyulJm1jqESo07ZqfsuuGV9jq2+X87hSOzuc57T7qtXZg7pFTCujjaHjvajH87Hyc/uuNeKTsBcY47KYZOuqO2RjtNJno7w2G9ubhiPjsaEI07mn+uOo0NWjsM/GU7mh2JuW7DuroQmpQ7AJqHuuE+z7oqf4E7KaYSOuxL4rq7ZZM7pEqiOpJprroWTJY77N16OnlwFbvhDno7e2rZOsiwGrvqEWI7hT/lOpqJP7ubVCw7zcEvO6WCNrt3/Cg7pLDoOojcZrsuJfg67NVOOgmNdbv/PPc6X1c7af1R/Ra+W81tIFjLFF9XO2n9Uf0Wr1u9bY5X7RTRVfB2AGMgDQBNjXcTa8gJqUaPdupoIgpTRCd4EHFyBxtKNXQPaLILh1J1blBc0xE4RmaE9455Co1EOIInkKENsmaFbSJDEB0sWPGggbm1G0BZdqVWv8YgW2pexVvfJCkVcV7PfegSLO93j9mRCra6dl3zbegx4B6HUnVuUFzTERSNgljpFnU+Z4/VVQAXCUAClUdJbNzD0cKS00WP5ubPro1YP8HyQcxrjF0+p/VxyxSN70Ct8afL3Y1iQfPuIMw=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_67ov5")
+
+[node name="SM_Iron_Node_03" type="Node3D" unique_id=174905138]
+
+[node name="SM_Rock_Ore_Base_03" parent="." unique_id=829174465 instance=ExtResource("1_ldebn")]
+
+[node name="SM_Iron_Overlay_03" parent="SM_Rock_Ore_Base_03" unique_id=1469745583 instance=ExtResource("2_p58cq")]
+
+[node name="SM_Cracks_Node_03" type="Node3D" parent="SM_Rock_Ore_Base_03" unique_id=1239655819]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0, 0)
+
+[node name="SM_Cracks_Node_03" type="MeshInstance3D" parent="SM_Rock_Ore_Base_03/SM_Cracks_Node_03" unique_id=327133996]
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
+mesh = SubResource("ArrayMesh_ay2fe")

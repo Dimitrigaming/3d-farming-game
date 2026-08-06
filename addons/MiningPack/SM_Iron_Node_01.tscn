@@ -1,0 +1,94 @@
+[gd_scene format=4 uid="uid://dibeh7210qkbi"]
+
+[ext_resource type="PackedScene" uid="uid://b4m3retrto8im" path="res://addons/MiningPack/SM_Rock_Ore_Base_01.tscn" id="1_l0agq"]
+[ext_resource type="PackedScene" uid="uid://cgfbyfn46x2f3" path="res://addons/MiningPack/SM_Iron_Overlay_01.tscn" id="2_ao28u"]
+[ext_resource type="Texture2D" uid="uid://dp7ak83qkntt0" path="res://models/textures/iron.png" id="3_ao28u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vmsxp"]
+resource_name = "M_Gradient_Mining01"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_ao28u")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_47fkn"]
+_surfaces = [{
+"aabb": AABB(-0.004698019, 0.0035446614, 0.0038591248, 0.0074658357, 0.0011792479, 0.0076199723),
+"format": 34359742465,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAAAAMAAwAFAAQABQADAAYABgAHAAUA"),
+"name": "M_Gradient_Mining01",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("4U4iupIPlTssdiQ8Q2Q1OwbLmjsyQi08qS8DO4FbkDvTEjw8CjdLuxpiiDuUhCI8uEi9um7umDub4wo8mjFTu+QbkTsItAs8qVSRu41NaDtONdA71/GZuybrbjtf6Xw7")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_dj0c1"]
+resource_name = "SM_Copper_Node_01_Crack_001"
+_surfaces = [{
+"aabb": AABB(-0.004698019, 0.0035446614, 0.0038591248, 0.0074658357, 0.0011792479, 0.0076199723),
+"attribute_data": PackedByteArray("katyPxA9/T0R1XI/YBv6PcbCcj8oHPU9yIpyPzgB/j3lrXI/UPoCPpGrcj8QPf09yIpyPzgB/j00lXI/tOACPo2Xcj9Q8gg+oqlyPwjkDz40lXI/tOACPsiKcj84Af49"),
+"format": 34359742487,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgA"),
+"material": SubResource("StandardMaterial3D_vmsxp"),
+"name": "M_Gradient_Mining01",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("4U4iupIPlTssdiQ8Q2Q1OwbLmjsyQi08qS8DO4FbkDvTEjw8CjdLuxpiiDuUhCI8uEi9um7umDub4wo84U4iupIPlTssdiQ8CjdLuxpiiDuUhCI8mjFTu+QbkTsItAs8qVSRu41NaDtONdA71/GZuybrbjtf6Xw7mjFTu+QbkTsItAs8CjdLuxpiiDuUhCI8YXSg1oHwSTdhdKDWk/CJOGF0oNbC8Hc4YXSg1nHwGTeQcWPgTe81N5BxY+BM7xk3kHFj4E7vRzeQcWPgUO9tNxdDy7cyvZgeF0PLtya9oh4XQ8u3s71BHhdDy7fCvTce")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_47fkn")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_xxn3q"]
+_surfaces = [{
+"aabb": AABB(0.00014166116, -0.006333815, 0.0025406622, 0.0025922786, 0.0005973163, 0.008490096),
+"format": 34359742465,
+"index_count": 21,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEABQACAAEABQAGAAIABgAHAAIABwAIAAIA"),
+"name": "M_Gradient_Mining01",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 9,
+"vertex_data": PackedByteArray("SGUJOy8Pv7umwQg8gM0vOz35u7vMcBE818oKOyOcw7vxCac7CvMmOjY3wLtKeCA84YoUOWm4vbtaujQ8HyYXO9FDv7s8ebk75iszO2aOwrtDG6c7pHATO5Ejybvhtkk7Ck+ZOuSLz7s9gSY7")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_cex5s"]
+resource_name = "SM_Copper_Node_01_Vein_01_Crack_001"
+_surfaces = [{
+"aabb": AABB(0.00014166116, -0.006333815, 0.0025406622, 0.0025922786, 0.0005973163, 0.008490096),
+"attribute_data": PackedByteArray("SN9yP5RDAz6p4nI/9MYBPsn7cj/QTAw+zr5yPziK/j1PrXI/CK/3PWvzcj94Bwc+yftyP9BMDD6p4nI/9MYBPiwEcz/8Rww+IQ9zPxDqET4RBXM/gG4TPg=="),
+"format": 34359742487,
+"index_count": 21,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEABQAGAAcABQAIAAYACAAJAAYACQAKAAYA"),
+"material": SubResource("StandardMaterial3D_vmsxp"),
+"name": "M_Gradient_Mining01",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 11,
+"vertex_data": PackedByteArray("SGUJOy8Pv7umwQg8gM0vOz35u7vMcBE818oKOyOcw7vxCac7CvMmOjY3wLtKeCA84YoUOWm4vbtaujQ8HyYXO9FDv7s8ebk718oKOyOcw7vxCac7gM0vOz35u7vMcBE85iszO2aOwrtDG6c7pHATO5Ejybvhtkk7Ck+ZOuSLz7s9gSY74Yv3E3Xztcbhi/cTd/O5xuGL9xNy86vG4Yv3E3bztsbhi/cTdfO0xhWSthp5/GyNFZK2Gl/uwswVkrYajArtghWSthr37FPKFZK2GubsNMoVkrYa4Owqyg==")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_xxn3q")
+
+[node name="SM_Iron_Node_01" type="Node3D" unique_id=593664858]
+
+[node name="SM_Rock_Ore_Base_01" parent="." unique_id=221100727 instance=ExtResource("1_l0agq")]
+
+[node name="SM_Iron_Overlay_01" parent="SM_Rock_Ore_Base_01" unique_id=382649426 instance=ExtResource("2_ao28u")]
+
+[node name="SM_Cracks_Node_01" type="Node3D" parent="SM_Rock_Ore_Base_01" unique_id=822752947]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0, 0)
+
+[node name="SM_Cracks_Node_01" type="MeshInstance3D" parent="SM_Rock_Ore_Base_01/SM_Cracks_Node_01" unique_id=925681989]
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
+mesh = SubResource("ArrayMesh_dj0c1")
+
+[node name="SM_Cracks_Node_02" type="MeshInstance3D" parent="SM_Rock_Ore_Base_01/SM_Cracks_Node_01" unique_id=1192978838]
+transform = Transform3D(100.000015, 0, 0, 0, -1.1920929e-05, 100.00001, 0, -100.00001, -1.1920929e-05, 0, 0, 0)
+mesh = SubResource("ArrayMesh_cex5s")

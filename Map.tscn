@@ -1,13 +1,16 @@
 [gd_scene format=3 uid="uid://dgbvboec6ldb0"]
 
-[ext_resource type="PackedScene" uid="uid://cdo545rbdmn5t" path="res://ui/inventory_ui.tscn" id="1_8qak7"]
+[ext_resource type="PackedScene" uid="uid://b7e8cpcxfhqyt" path="res://ui/inventory_ui.tscn" id="1_8qak7"]
 [ext_resource type="PackedScene" uid="uid://bxcs8ap2f1klk" path="res://City.tscn" id="1_gfjgm"]
 [ext_resource type="PackedScene" uid="uid://hotbar001" path="res://ui/hotbar.tscn" id="2_0f2yp"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="2_ctrl"]
 [ext_resource type="PackedScene" uid="uid://cxr7ot8wukig6" path="res://models/building/store_market_stall.tscn" id="9_6f7pb"]
+[ext_resource type="PackedScene" uid="uid://bjfpjgnnff8aa" path="res://world/nodes/rocks/iron_mining_node.tscn" id="9_bhm4d"]
 [ext_resource type="Script" uid="uid://dotpf7hw6an7l" path="res://farm/farm_grid.gd" id="9_farmgrid"]
 [ext_resource type="MeshLibrary" uid="uid://cqybby57028pa" path="res://farm/farm_mesh_library.tres" id="9_ud676"]
+[ext_resource type="PackedScene" path="res://world/nodes/rocks/Copper_mining_node.tscn" id="10_bhm4d"]
 [ext_resource type="Script" uid="uid://bjfa4yp4qp2wg" path="res://player/tool_equipper.gd" id="10_toolequip"]
+[ext_resource type="PackedScene" uid="uid://7xs3c52kdiqc" path="res://world/nodes/rocks/Diamond_mining_node.tscn" id="11_fhlij"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -86,3 +89,17 @@ data = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.7, 0, -6.1)
 
 [node name="Terrain" type="Node3D" parent="." unique_id=2080873853]
+
+[node name="Resources" type="Node3D" parent="." unique_id=402118015]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -152.70001, 0, 0)
+
+[node name="IronMiningNode" parent="Resources" unique_id=989707604 instance=ExtResource("9_bhm4d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.700001, 0, -2.9)
+drops_min = 2
+drops_max = 4
+
+[node name="CopperMiningNode" parent="Resources" unique_id=100000001 instance=ExtResource("10_bhm4d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.400001, 0, -5.5)
+
+[node name="DiamondMiningNode" parent="Resources" unique_id=100000002 instance=ExtResource("11_fhlij")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6000001, 0, -5.2000003)

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dhfdwme3bt66m"
-path="res://.godot/imported/female_character_model.glb-946f15c69879327b2fb6cdb60f36f6f9.scn"
+uid="uid://cuf0q0a38f7bw"
+path="res://.godot/imported/male_character_model.fbx-7c537ad9fafe283f144570dea3a846cc.scn"
 
 [deps]
 
-source_file="res://tools/female_character_model.glb"
-dest_files=["res://.godot/imported/female_character_model.glb-946f15c69879327b2fb6cdb60f36f6f9.scn"]
+source_file="res://tools/male_character_model.fbx"
+dest_files=["res://.godot/imported/male_character_model.fbx-7c537ad9fafe283f144570dea3a846cc.scn"]
 
 [params]
 
@@ -32,14 +32,21 @@ meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
-animation/trimming=false
+animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
-gltf/naming_version=2
-gltf/embedded_image_handling=1
-gltf/texture_map_mode=1
+_subresources={
+"nodes": {
+"PATH:TCP_Male_Character_01/TCP_Male_Armature/Skeleton3D": {
+"retarget/bone_map": Resource("uid://bejql2voltnab", "res://retarget/toon_bonemap.tres")
+}
+}
+}
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1
+fbx/naming_version=2

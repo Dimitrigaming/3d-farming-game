@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://cyxat7v6gegnh"]
+
+[ext_resource type="PackedScene" uid="uid://cmlu5nqdcrglf" path="res://addons/Crafting_Workbenches_Pack/TextileCrafting/SM_TextileCrafting_Prop_Table_01.tscn" id="1_d7jws"]
+[ext_resource type="PackedScene" uid="uid://bn68b1l5wkgos" path="res://addons/Crafting_Workbenches_Pack/Research/SM_Research_Prop_Book_Open_04.tscn" id="2_v20va"]
+[ext_resource type="PackedScene" uid="uid://bmsvwmwsdv8vw" path="res://addons/Crafting_Workbenches_Pack/TextileCrafting/SM_TextileCrafting_Prop_CuttingMat_01.tscn" id="3_ckkxq"]
+[ext_resource type="PackedScene" uid="uid://be1hpxbmm77kg" path="res://addons/Crafting_Workbenches_Pack/StoneCutting/SM_StoneCutting_Prop_Hammer_01.tscn" id="4_uly1t"]
+[ext_resource type="PackedScene" uid="uid://dv16es3m8tu14" path="res://addons/Crafting_Workbenches_Pack/Electronics/SM_ElectronicsCrafting_Prop_Wrench_01.tscn" id="5_o3imv"]
+[ext_resource type="PackedScene" uid="uid://btofwg2sokw6c" path="res://addons/Crafting_Workbenches_Pack/Electronics/SM_ElectronicsCrafting_Prop_Toolbox_Open_01.tscn" id="6_e0k37"]
+[ext_resource type="PackedScene" uid="uid://hnalc625qwne" path="res://addons/Crafting_Workbenches_Pack/Electronics/SM_ElectronicsCrafting_Prop_ComponentDrawer_01.tscn" id="7_wd4v2"]
+[ext_resource type="PackedScene" uid="uid://b56fb2twvsofv" path="res://addons/Crafting_Workbenches_Pack/Electronics/SM_ElectronicsCrafting_Prop_Screwdriver_01.tscn" id="8_jwvm0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3xd07"]
+size = Vector3(1.7993469, 0.82214355, 0.7632446)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rtb4q"]
+size = Vector3(0.42337227, 0.2815857, 0.16371155)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mxu1j"]
+size = Vector3(0.37721348, 0.17936707, 0.39191437)
+
+[node name="Crafting_Workbench" type="Node3D" unique_id=487837323]
+
+[node name="SM_TextileCrafting_Prop_Table_01" parent="." unique_id=2144588813 instance=ExtResource("1_d7jws")]
+
+[node name="SM_Research_Prop_Book_Open_04" parent="." unique_id=1540586563 instance=ExtResource("2_v20va")]
+transform = Transform3D(0.71922225, 0, 0.6947801, 0, 1, 0, -0.6947801, 0, 0.71922225, -0.64409715, 0.8022636, -0.106478125)
+
+[node name="SM_TextileCrafting_Prop_CuttingMat_01" parent="." unique_id=875257836 instance=ExtResource("3_ckkxq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8024466, 0.083389476)
+
+[node name="SM_StoneCutting_Prop_Hammer_01" parent="." unique_id=1375167712 instance=ExtResource("4_uly1t")]
+transform = Transform3D(0.76604444, 0.6427876, 2.8097137e-08, 0, -4.371139e-08, 1, 0.6427876, -0.76604444, -3.3484866e-08, -0.2551821, 0.8221328, 0.29239255)
+
+[node name="SM_ElectronicsCrafting_Prop_Wrench_01" parent="." unique_id=827719612 instance=ExtResource("5_o3imv")]
+transform = Transform3D(0.8490866, 0.52825373, -2.3090704e-08, 0, -4.371139e-08, -1, -0.52825373, 0.8490866, -3.7114752e-08, 0.16685204, 0.8152948, 0.13184555)
+
+[node name="SM_ElectronicsCrafting_Prop_Toolbox_Open_01" parent="." unique_id=2082475625 instance=ExtResource("6_e0k37")]
+transform = Transform3D(0.5219643, 0, -0.8529673, 0, 1, 0, 0.8529673, 0, 0.5219643, 0.5782372, 0.8061559, -0.09044483)
+
+[node name="SM_ElectronicsCrafting_Prop_ComponentDrawer_01" parent="." unique_id=793031225 instance=ExtResource("7_wd4v2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7970333, -0.24154)
+
+[node name="SM_ElectronicsCrafting_Prop_Screwdriver_01" parent="." unique_id=1387204286 instance=ExtResource("8_jwvm0")]
+transform = Transform3D(-0.938729, 0.34465617, -1.50654e-08, 0, -4.371139e-08, -1, -0.34465617, -0.938729, 4.1033143e-08, 0.17168261, 0.82287025, 0.3336503)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2044305032]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1995848733]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00019836426, 0.41351318, -0.00064086914)
+shape = SubResource("BoxShape3D_3xd07")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=139995125]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0075159073, 0.96264076, -0.25876617)
+shape = SubResource("BoxShape3D_rtb4q")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" unique_id=1105720173]
+transform = Transform3D(0.8481494, 0, 0.529757, 0, 1, 0, -0.529757, 0, 0.8481494, 0.6336309, 0.91153145, -0.04859042)
+shape = SubResource("BoxShape3D_mxu1j")

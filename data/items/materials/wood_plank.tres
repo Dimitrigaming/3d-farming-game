@@ -1,14 +1,15 @@
-[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://material_plnk01"]
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://bxp7t6xdvshl1"]
 
+[ext_resource type="Texture2D" uid="uid://wna2g0mq7jq6" path="res://icons/materials/wood_plank.png" id="1_7fxti"]
 [ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
 
 [resource]
 script = ExtResource("1_def")
 id = "wood_plank"
 name = "Wood Plank"
+icon = ExtResource("1_7fxti")
 type = 4
-subcategory = 2
-max_stack = 99
 sell_price = 4
 buy_price = 10
+subcategory = 2
 description = "Processed lumber ready for crafting furniture."

@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://doynubvsfv7n3"]
 
 [ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://ci1rdkshdp17m" path="res://models/resources/diamond_ore.tscn" id="1_fr2li"]
 [ext_resource type="Texture2D" uid="uid://dur7pqyc8s5st" path="res://icons/resources/diamond_ore.png" id="1_vetpp"]
 
 [resource]
@@ -13,3 +14,4 @@ sell_price = 80
 buy_price = 200
 subcategory = 4
 description = "Raw diamond ore. Incredibly rare and valuable."
+equip_scene = ExtResource("1_fr2li")

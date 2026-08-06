@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
 [ext_resource type="Texture2D" uid="uid://btc3fmc657ydn" path="res://icons/resources/copper_ore.png" id="1_lcusu"]
+[ext_resource type="PackedScene" uid="uid://cv6vkorjlrr3f" path="res://models/resources/copper_ore.tscn" id="1_t574o"]
 
 [resource]
 script = ExtResource("1_def")
@@ -13,3 +14,4 @@ sell_price = 4
 buy_price = 10
 subcategory = 4
 description = "Raw copper ore dug from the earth. Smelt it into ingots."
+equip_scene = ExtResource("1_t574o")

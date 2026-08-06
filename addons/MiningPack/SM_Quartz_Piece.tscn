@@ -1,0 +1,49 @@
+[gd_scene format=4 uid="uid://dtxwcm3r7xkov"]
+
+[ext_resource type="Texture2D" uid="uid://o0o6367no7ut" path="res://models/textures/T_Gradient_MiningPack01.png" id="1_2romq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_731sg"]
+resource_name = "M_Gradient_Mining01"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_2romq")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_df6sj"]
+_surfaces = [{
+"aabb": AABB(-0.001869011, -0.0020807865, -2.0861626e-09, 0.0037380792, 0.004161573, 0.0058220346),
+"format": 34359742465,
+"index_count": 54,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAACAAEAAQAFAAQAAwACAAYAAgAEAAYAAAADAAcABwADAAYABwAIAAAACQAIAAcACgAEAAUABAAKAAYABQALAAoADAAHAAYABwAMAAkABgAKAAwACwAJAAwADAAKAAsA"),
+"name": "M_Gradient_Mining01",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 13,
+"vertex_data": PackedByteArray("M0uVOgB0vLhIIb02j5qHOiGXhrqamTE3zXznOsnRnLqMAok7hfv0OlelGDrXxog7Zoa3uc5dCLvgIIU7heuBN/+WwbpmBgM3AAAFOaQ8PDjAxr47pIBJOs5dCDuzxnI714PWObtgmDrD9UA2zTwyupSWYzoUrps1mvn0uvjrZrq9Pno7w4WDuu5uVropXA+xAKjCurYlsTqzzHM7")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_72nc7"]
+resource_name = "NewLuaStudios_Mining_390"
+_surfaces = [{
+"aabb": AABB(-0.001869011, -0.0020807865, -2.0861626e-09, 0.0037380792, 0.004161573, 0.0058220346),
+"attribute_data": PackedByteArray("ZxziPvCZDT33ROI+0HEvPU9P5D5QLh4+iPDjPpCABT6I8OM+kIAFPk9P5D5QLh4+D3DlPvjRLz73ROI+0HEvPaun4z4QDmo9BxTmPuSNJT5PT+Q+UC4ePk9P5D5QLh4+BxTmPuSNJT6MGuY+CH8zPtBF5j4I2t09s2DkPlBszz0hceU+UOMFPrNg5D5QbM89iPDjPpCABT4jf+U+PEQePgcU5j7kjSU+8P3mPkhfDz4a1+Y+SMwnPhrX5j5IzCc+8P3mPkhfDz7QReY+CNrdPaQM5D5AX848Ir3iPoAAgTyzYOQ+UGzPPdBF5j4I2t09l97kPlC1dT2kDOQ+QF/OPNBF5j4I2t098P3mPkhfDz6rp+M+EA5qPZfe5D5QtXU98P3mPkhfDz4HFOY+5I0lPmcc4j7wmQ09iPDjPpCABT6zYOQ+UGzPPSK94j6AAIE8"),
+"format": 34359742487,
+"index_count": 54,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABwAIAAkACQAKAAcACwAMAA0ADgAPABAAEQASABMAFAAVABYAFwAYABkAGgAbABwAHAAdABoAHgAfACAAIAAhAB4AIgAjACQAJAAlACIAJgAnACgAKAApACYA"),
+"material": SubResource("StandardMaterial3D_731sg"),
+"name": "M_Gradient_Mining01",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 42,
+"vertex_data": PackedByteArray("M0uVOgB0vLhIIb02j5qHOiGXhrqamTE3zXznOsnRnLqMAok7hfv0OlelGDrXxog7hfv0OlelGDrXxog7zXznOsnRnLqMAok7AAAFOaQ8PDjAxr47j5qHOiGXhrqamTE3heuBN/+WwbpmBgM3Zoa3uc5dCLvgIIU7zXznOsnRnLqMAok7zXznOsnRnLqMAok7Zoa3uc5dCLvgIIU7AAAFOaQ8PDjAxr47AKjCurYlsTqzzHM7pIBJOs5dCDuzxnI7AAAFOaQ8PDjAxr47pIBJOs5dCDuzxnI7hfv0OlelGDrXxog7AAAFOaQ8PDjAxr47Zoa3uc5dCLvgIIU7mvn0uvjrZrq9Pno7AAAFOaQ8PDjAxr47AAAFOaQ8PDjAxr47mvn0uvjrZrq9Pno7AKjCurYlsTqzzHM7zTwyupSWYzoUrps114PWObtgmDrD9UA2pIBJOs5dCDuzxnI7AKjCurYlsTqzzHM7w4WDuu5uVropXA+xzTwyupSWYzoUrps1AKjCurYlsTqzzHM7mvn0uvjrZrq9Pno7heuBN/+WwbpmBgM3w4WDuu5uVropXA+xmvn0uvjrZrq9Pno7Zoa3uc5dCLvgIIU7M0uVOgB0vLhIIb02hfv0OlelGDrXxog7pIBJOs5dCDuzxnI714PWObtgmDrD9UA2FfiVZqSMWRoV+JVmMFfYhRX4lWakjFkaFfiVZqSMWRokvbZ87VzbIyS9tnztXNsjJL22fO1c2yMNraojuRolow2tqiMlGAqhDa2qI1kf7KYNraoj+yBBqHKSH0xiL++bcpIfTGIv75tykh9MYi/vm2Bto7r0Co9QYG2juvQKj1BgbaO69AqPUD+j1qluNjE2P6PWqW42MTY/o9apbjYxNolamFubiWfhiVqYW5uJZ+GJWphbm4ln4VVD1IzpMI9qVUPUjOkwj2pVQ9SM6TCPaoVUCuZmHCdZhVQK5gwcRluFVArm6hwDVoVUCuYlHZ9U6A/4pPN/YuToD/ik7X7V4ugP+KQtgZLl6A/4pP6BWOYLQ8wvkzV22gtDzC9iMvrdC0PML7Y93NULQ8wvKkB51N3VDLyXYTwg3dUMvGpfVB/d1Qy8C2CXH93VDLx+Ypwg")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_df6sj")
+
+[node name="SM_Quartz_Piece" type="Node3D" unique_id=1810815327]
+
+[node name="SM_Quartz_Piece" type="MeshInstance3D" parent="." unique_id=2116870067]
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
+mesh = SubResource("ArrayMesh_72nc7")

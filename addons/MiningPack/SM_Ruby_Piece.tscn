@@ -1,0 +1,49 @@
+[gd_scene format=4 uid="uid://006ewv5b32wm"]
+
+[ext_resource type="Texture2D" uid="uid://o0o6367no7ut" path="res://models/textures/T_Gradient_MiningPack01.png" id="1_g8xwu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_731sg"]
+resource_name = "M_Gradient_Mining01"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_g8xwu")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_jhelj"]
+_surfaces = [{
+"aabb": AABB(-0.0020347298, -0.002438166, -8.34465e-09, 0.004048323, 0.004413287, 0.006359441),
+"format": 34359742465,
+"index_count": 84,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMAAwAEAAEABQABAAQAAgABAAUABAAGAAUABQAHAAIACAAFAAYABwAFAAgABgAJAAgACAAJAAoACAALAAcAAgAHAAsACgAMAAgACwAIAAwADAAKAA0ACwAOAAIAAgAOAAAACwAMAA8ADgALAA8ADQAQAAwAEAANAAMAAwAAABAADAAQABEAEQAPAAwAEQAQAAAADwARAA4AAAAOABEA"),
+"name": "M_Gradient_Mining01",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 18,
+"vertex_data": PackedByteArray("Zv96OQpxATv74J47fPYDO1vxiTrNm5478inQOrhmETcPBL87L+kYOjhSXTqPIjQ4atq2OndBvzl7JKk4PXYAOwQRw7qS4o873eO1OiRqRLozk3k4hV7NOk5/errDnbs7mh1wOKPJH7t7BH87HWTBOUmYuLopXA+ysNaHupsr3bkpXBQ3nMSNudy4t7rSTso7GlkFu21HhboKdXs7SfxgumByNTrs0bc3IHzFuVyZBzrKYtA7HwLNuvvTSLo9Sqo7RNLluk050zrILYg7twPAutMJDjq4ALM7")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_cnpvv"]
+resource_name = "NewLuaStudios_Mining_347"
+_surfaces = [{
+"aabb": AABB(-0.0020347298, -0.002438166, -8.34465e-09, 0.004048323, 0.004413287, 0.006359441),
+"attribute_data": PackedByteArray("7yCvPiApUT2sqq4+IBfpPC1brT7Axn88rUitPiCTAD0rcLE+JD0RPmc+sT5scwk+rKquPiAX6TzvIK8+IClRPap7rD7AXbQ8/YmsPkCjSTwtW60+wMZ/PKyqrj4gF+k8Zz6xPmxzCT4ti68+UO33Pap7rD7AXbQ8rKquPiAX6TwrcLE+JD0RPu8grz4gKVE9C5muPsD9nz31qrA+JPsiPvWqsD4k+yI+C5muPsD9nz1rQKw+wNeSPUcPrz40FBo+7yCvPiApUT2tSK0+IJMAPd5ZrT6QVVo9C5muPsD9nz1rQKw+wNeSPQuZrj7A/Z893lmtPpBVWj3fNKw+gPtPPa1IrT4gkwA9oaKrPmD2ujzfNKw+gPtPPd5ZrT6QVVo9oaKrPmD2ujxrQKw+wNeSPd80rD6A+089LVutPsDGfzz9iaw+QKNJPKGiqz5g9ro8rUitPiCTAD39iaw+QKNJPKp7rD7AXbQ8bl+rPqCQLj2hoqs+YPa6PKGiqz5g9ro8bl+rPqCQLj1rQKw+wNeSPUcPrz40FBo+a0CsPsDXkj1uX6s+oJAuPawNrj5QkPI9LYuvPlDt9z2sDa4+UJDyPW5fqz6gkC49qnusPsBdtDw="),
+"format": 34359742487,
+"index_count": 84,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQAGAAZABoAGgAbABgAHAAdAB4AHgAfABwAIAAhACIAIgAjACAAJAAlACYAJwAoACkAKQAqACcAKwAsAC0ALQAuACsALwAwADEAMgAzADQANAA1ADIANgA3ADgAOAA5ADYA"),
+"material": SubResource("StandardMaterial3D_731sg"),
+"name": "M_Gradient_Mining01",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 58,
+"vertex_data": PackedByteArray("Zv96OQpxATv74J47fPYDO1vxiTrNm5478inQOrhmETcPBL87IHzFuVyZBzrKYtA7L+kYOjhSXTqPIjQ4atq2OndBvzl7JKk4fPYDO1vxiTrNm547Zv96OQpxATv74J47PXYAOwQRw7qS4o87hV7NOk5/errDnbs78inQOrhmETcPBL87fPYDO1vxiTrNm547atq2OndBvzl7JKk43eO1OiRqRLozk3k4PXYAOwQRw7qS4o87fPYDO1vxiTrNm547L+kYOjhSXTqPIjQ4Zv96OQpxATv74J47RNLluk050zrILYg7SfxgumByNTrs0bc3SfxgumByNTrs0bc3RNLluk050zrILYg7GlkFu21HhboKdXs7sNaHupsr3bkpXBQ3Zv96OQpxATv74J47IHzFuVyZBzrKYtA7twPAutMJDjq4ALM7RNLluk050zrILYg7GlkFu21HhboKdXs7RNLluk050zrILYg7twPAutMJDjq4ALM7HwLNuvvTSLo9Sqo7IHzFuVyZBzrKYtA7nMSNudy4t7rSTso7HwLNuvvTSLo9Sqo7twPAutMJDjq4ALM7nMSNudy4t7rSTso7GlkFu21HhboKdXs7HwLNuvvTSLo9Sqo78inQOrhmETcPBL87hV7NOk5/errDnbs7nMSNudy4t7rSTso7IHzFuVyZBzrKYtA7hV7NOk5/errDnbs7PXYAOwQRw7qS4o87mh1wOKPJH7t7BH87nMSNudy4t7rSTso7nMSNudy4t7rSTso7mh1wOKPJH7t7BH87GlkFu21HhboKdXs7sNaHupsr3bkpXBQ3GlkFu21HhboKdXs7mh1wOKPJH7t7BH87HWTBOUmYuLopXA+y3eO1OiRqRLozk3k4HWTBOUmYuLopXA+ymh1wOKPJH7t7BH87PXYAOwQRw7qS4o87N5uBrBHtth/pmB6t5+kFH8yX0K5A6+wf1Js3rpfvKyBIt9nXXtqnZCu3DNjhQOzT4LWv2a3bMWRzuHLYp9niZLPaeXmyeOno8dzSeQF5kuis3dR6fnju6ETZSHfUeqLps/9pjyyFUukv/6JuO4cR5pD/UY+wg9LuKv9nbtqE9O/dX5f2u/4PVcpcbPTw/PYtpmLL+ov8j1KxXrP2HP0AVycOhaQ3husSIAsopYyFUg43Dhin8IfDEFYMU6Pign8TWmJXtB/NDRuvYW63VM9mG/xjj7m30dkbQ2RitMzNLxvAJBiImo9NFFYeiIDQiAYSWRr+f1uH4RE1IxyIQY/TFJNJcnS2jBsUMUgeeGmPzxNpTM52nI/VE4pO23THjhIUfk9ASZNd7iaeUv5JQV5oJvBQPkdTXNUnj5eQdKKv8RaOl/V4oK+DFUeZ73lNst4V6ZmHdLCxLBe1lw06Y/u4ocWYgztk+12hDZozPW/8yaH3mls8hv4rolpU6T+zWVArmFTMQn5b+ykJVxhBn1qjKgw/ZiuL6WecVEE9KbTiJKAzPogsjuOGnZRAUyzV7COab7t8KszMM9c5u0YrSMgy1Y275Sm60XDcGrp4KbvTwd0=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_jhelj")
+
+[node name="SM_Ruby_Piece" type="Node3D" unique_id=1347941826]
+
+[node name="SM_Ruby_Piece" type="MeshInstance3D" parent="." unique_id=2096393363]
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
+mesh = SubResource("ArrayMesh_cnpvv")

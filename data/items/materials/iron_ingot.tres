@@ -1,14 +1,17 @@
-[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://material_iring1"]
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://0am0ujpnnjr0"]
 
+[ext_resource type="PackedScene" uid="uid://3ui5ilfp2qi3" path="res://addons/MiningPack/SM_Iron_Ingot.tscn" id="1_ccf67"]
 [ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="Texture2D" uid="uid://cbco6errfbfof" path="res://icons/materials/iron_ingot.png" id="1_ojbb8"]
 
 [resource]
 script = ExtResource("1_def")
 id = "iron_ingot"
 name = "Iron Ingot"
+icon = ExtResource("1_ojbb8")
 type = 4
-subcategory = 5
-max_stack = 99
 sell_price = 15
 buy_price = 40
+subcategory = 5
 description = "Smelted iron ready for crafting."
+equip_scene = ExtResource("1_ccf67")

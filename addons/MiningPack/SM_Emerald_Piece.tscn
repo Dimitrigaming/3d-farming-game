@@ -1,0 +1,49 @@
+[gd_scene format=4 uid="uid://dr4qmu6cwh8g2"]
+
+[ext_resource type="Texture2D" uid="uid://o0o6367no7ut" path="res://models/textures/T_Gradient_MiningPack01.png" id="1_x1toq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_731sg"]
+resource_name = "M_Gradient_Mining01"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_x1toq")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_o7jic"]
+_surfaces = [{
+"aabb": AABB(-0.002110662, -0.0015087451, -9.536743e-09, 0.0043891296, 0.0030462374, 0.0052607595),
+"format": 34359742465,
+"index_count": 54,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAwABAAAAAgAEAAAABAACAAUAAwAFAAIABgAAAAQAAAAGAAMAAwAGAAcABAAIAAYABwAGAAgABQAIAAQABwAJAAMABQADAAkACAAKAAcACgAIAAUABQALAAoACQALAAUA"),
+"name": "M_Gradient_Mining01",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("HDvTOoXniTpfYqw7K5gGO5r0RLpWk6I7E/bIulsMsbqJx5A7V1IVOx/rc7pSmI87ug31uiAMNDrDeZo7DSLfuhbBxbqP4Ho77T7bOq6FyTqPUZ47H4uNOuT4Ojp7lJY4CFMKu/uOkDqP44c71GSyOo4/v7nDdVQ4Admauq0S6jm4Hls3hZ6Lus8hMboK1yOy")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_nxbjy"]
+resource_name = "NewLuaStudios_Mining_350"
+_surfaces = [{
+"aabb": AABB(-0.002110662, -0.0015087451, -9.536743e-09, 0.0043891296, 0.0030462374, 0.0052607595),
+"attribute_data": PackedByteArray("wX0lPxAmFj1AOyU/AML/PL4vJT+APKI9CnwlP6CcrD09OiU/4F0SPUA7JT8Awv88wX0lPxAmFj2IlSU/YJkuPUkBJj+Eph8+NLolP7g0ET49OiU/4F0SPYiVJT9gmS49NOklPwj+Oj6nkiU/gDzEPZAwJT+gJ7Y9+KUlP1h1MT6QMCU/oCe2PaeSJT+APMQ9CnwlP6CcrD2+LyU/gDyiPb4vJT+APKI9QDslPwDC/zw9OiU/4F0SPZAwJT+gJ7Y9SQEmP4SmHz6IlSU/YJkuPaeSJT+APMQ9NOklPwj+Oj40uiU/uDQRPvilJT9YdTE+kDAlP6Antj09OiU/4F0SPYiVJT9gmS49wX0lPxAmFj0KfCU/oJysPaeSJT+APMQ9"),
+"format": 34359742487,
+"index_count": 54,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQAGAAZABoAGgAbABgAHAAdAB4AHgAfABwAIAAhACIAIgAjACAA"),
+"material": SubResource("StandardMaterial3D_731sg"),
+"name": "M_Gradient_Mining01",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("HDvTOoXniTpfYqw7K5gGO5r0RLpWk6I7E/bIulsMsbqJx5A7ug31uiAMNDrDeZo7V1IVOx/rc7pSmI87K5gGO5r0RLpWk6I7HDvTOoXniTpfYqw77T7bOq6FyTqPUZ47H4uNOuT4Ojp7lJY41GSyOo4/v7nDdVQ4V1IVOx/rc7pSmI877T7bOq6FyTqPUZ47Admauq0S6jm4Hls3CFMKu/uOkDqP44c7DSLfuhbBxbqP4Ho7hZ6Lus8hMboK1yOyDSLfuhbBxbqP4Ho7CFMKu/uOkDqP44c7ug31uiAMNDrDeZo7E/bIulsMsbqJx5A7E/bIulsMsbqJx5A7K5gGO5r0RLpWk6I7V1IVOx/rc7pSmI87DSLfuhbBxbqP4Ho7H4uNOuT4Ojp7lJY47T7bOq6FyTqPUZ47CFMKu/uOkDqP44c7Admauq0S6jm4Hls31GSyOo4/v7nDdVQ4hZ6Lus8hMboK1yOyDSLfuhbBxbqP4Ho7V1IVOx/rc7pSmI877T7bOq6FyTqPUZ47HDvTOoXniTpfYqw7ug31uiAMNDrDeZo7CFMKu/uOkDqP44c7v5olfO56igXxl/5+FXnWBMNRlWxUesEPXFWlakh6uRCS07qPRWeT4svUepCzZ7HiF9RNkQhnfOJU1dKN2mjs4rPn66e4cQHmuOg3qO90s+SY59anBW406cToWagrbrzq+gqKYbtwbBZRDUNcB26SEz8KcV/RcLwTzQyjX9pu5Bi4KeVxp3h3EGIuk2sycuYTXyyBas9wmhRmKJJxG3jWEDpfTDoZ2oyX+qUGRgz/rZxXpiRHIf/1nO1l0zN+37uZ56ZO6jXopFtgpUrss+mNWlhRauVI8TIlPE504oPvnSPPytI44sc56qlNvxvD9U+iLVAhGbL286OOye83ScgL6cuLwLW911MWjYo1t6jXLBbNVjOu2cOQFLJXiqlVvz4U")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_o7jic")
+
+[node name="SM_Emerald_Piece" type="Node3D" unique_id=1869558127]
+
+[node name="SM_Emerald_Piece" type="MeshInstance3D" parent="." unique_id=2038176723]
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
+mesh = SubResource("ArrayMesh_nxbjy")

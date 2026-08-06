@@ -1,14 +1,17 @@
-[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://material_cuing1"]
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://cyprgt6ig5j4q"]
 
+[ext_resource type="PackedScene" uid="uid://djouhgnd6nsmq" path="res://models/materials/copper_ingot.tscn" id="1_0wgcj"]
 [ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="Texture2D" uid="uid://cvc8dj5cpvu51" path="res://icons/materials/copper_ingot.png" id="1_jnjoi"]
 
 [resource]
 script = ExtResource("1_def")
 id = "copper_ingot"
 name = "Copper Ingot"
+icon = ExtResource("1_jnjoi")
 type = 4
-subcategory = 5
-max_stack = 99
 sell_price = 10
 buy_price = 25
+subcategory = 5
 description = "Smelted copper ready for crafting."
+equip_scene = ExtResource("1_0wgcj")
