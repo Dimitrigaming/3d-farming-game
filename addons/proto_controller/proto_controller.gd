@@ -52,11 +52,28 @@ var freeflying : bool = false
 ## IMPORTANT REFERENCES
 @onready var head: Node3D = $Head
 @onready var collider: CollisionShape3D = $Collider
+@onready var camera: Camera3D = $Head/Camera3D
+@onready var player_skin: Node3D = $PlayerSkin
+
+## Render layer used to hide the player's own skin from their own camera
+## while keeping it visible to any other camera (e.g. other players).
+const SELF_SKIN_LAYER := 20
 
 func _ready() -> void:
 	check_input_mappings()
 	look_rotation.y = rotation.y
 	look_rotation.x = head.rotation.x
+	_hide_skin_from_own_camera()
+
+func _hide_skin_from_own_camera() -> void:
+	camera.cull_mask &= ~(1 << (SELF_SKIN_LAYER - 1))
+	_set_layer_recursive(player_skin, SELF_SKIN_LAYER)
+
+func _set_layer_recursive(node: Node, layer: int) -> void:
+	if node is VisualInstance3D:
+		node.layers = 1 << (layer - 1)
+	for child in node.get_children():
+		_set_layer_recursive(child, layer)
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Mouse capturing

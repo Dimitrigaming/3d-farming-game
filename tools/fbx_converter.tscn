@@ -4,3 +4,4 @@
 
 [node name="FBXConverter" type="Node" unique_id=335732809]
 script = ExtResource("1_script")
+folder = "res://addons/Toon/Toon City People/Models/fbx_rigged/"

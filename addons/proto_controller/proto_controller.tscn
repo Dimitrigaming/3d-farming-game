@@ -7,8 +7,9 @@
 [ext_resource type="Script" uid="uid://cbii3ky2ad6q1" path="res://scripts/interaction_hud.gd" id="4_hud"]
 [ext_resource type="Script" uid="uid://c61ggstqpho4u" path="res://scripts/build_mode.gd" id="5_buildmode"]
 [ext_resource type="PackedScene" uid="uid://2hwx1pmgm2t" path="res://ui/tablet.tscn" id="6_h60nn"]
-[ext_resource type="PackedScene" uid="uid://delivery_hud001" path="res://ui/delivery_hud.tscn" id="7_delhud"]
-[ext_resource type="PackedScene" uid="uid://pickup_popup001" path="res://ui/pickup_popup.tscn" id="8_pkpopup"]
+[ext_resource type="PackedScene" uid="uid://ghapslnqfdvm" path="res://ui/delivery_hud.tscn" id="7_delhud"]
+[ext_resource type="PackedScene" path="res://ui/pickup_popup.tscn" id="8_pkpopup"]
+[ext_resource type="PackedScene" uid="uid://dhoachck487ic" path="res://addons/Toon/Toon City People/Models/TCP_Male_Character_01.tscn" id="9_playerskin"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iof21"]
 albedo_color = Color(0.91806, 0.575202, 0.222449, 1)
@@ -26,16 +27,20 @@ script = ExtResource("1_ucva2")
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=1700171988]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+visible = false
 material_override = SubResource("StandardMaterial3D_iof21")
 cast_shadow = 0
 mesh = SubResource("CapsuleMesh_ucva2")
+
+[node name="PlayerSkin" parent="." unique_id=1175861304 instance=ExtResource("9_playerskin")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0.15)
 
 [node name="Collider" type="CollisionShape3D" parent="." unique_id=1550631761]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_iof21")
 
 [node name="Head" type="Node3D" parent="." unique_id=28016313]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=809935066]
 
