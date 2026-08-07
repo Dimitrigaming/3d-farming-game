@@ -6,7 +6,7 @@ func _ready() -> void:
 func _give_starter_tools() -> void:
 	var tools = ["hoe", "shovel", "axe", "pickaxe", "hammer", "scythe"]
 	for i in tools.size():
-		var slot = Inventory.slots[Inventory.HOTBAR_START + i]
+		var slot = Inventory.hotbar_slots[i]
 		slot["item_id"] = tools[i]
 		slot["amount"] = 1
 	Inventory.inventory_changed.emit()

@@ -3,7 +3,6 @@
 [ext_resource type="Material" path="res://materials/mat_GIRed.tres" id="1_jifyx"]
 
 [node name="Arrow_GhostImage" type="Node3D" unique_id=1641702726]
-rotation = Vector3(0, 3.14159, 0)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=728149547]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0.25180024)

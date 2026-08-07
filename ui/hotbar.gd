@@ -10,7 +10,7 @@ func _ready() -> void:
 	Inventory.inventory_changed.connect(_refresh)
 	var slots = grid.get_children()
 	for i in slots.size():
-		slots[i].slot_index = Inventory.HOTBAR_START + i
+		slots[i].slot_index = i
 	_refresh()
 	_update_highlight()
 	call_deferred("_notify_equipper")
@@ -78,14 +78,13 @@ func _notify_equipper() -> void:
 	var equipper = get_tree().get_first_node_in_group("tool_equipper")
 	if not equipper:
 		return
-	var slot_index = Inventory.HOTBAR_START + selected_slot
-	equipper.current_slot_index = slot_index
-	equipper.equip(Inventory.slots[slot_index]["item_id"])
+	equipper.current_slot_index = selected_slot
+	equipper.equip(Inventory.hotbar_slots[selected_slot]["item_id"])
 
 func _refresh() -> void:
 	var slot_nodes = grid.get_children()
 	for i in slot_nodes.size():
-		var slot_data = Inventory.slots[Inventory.HOTBAR_START + i]
+		var slot_data = Inventory.hotbar_slots[i]
 		var slot_node = slot_nodes[i]
 		var icon = slot_node.get_node("Icon")
 		var count = slot_node.get_node("Overlay/Count")

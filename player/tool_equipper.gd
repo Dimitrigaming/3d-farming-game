@@ -62,6 +62,8 @@ func equip(item_id: String) -> void:
 		return
 	_equipped = def.equip_scene.instantiate()
 	_hand.add_child(_equipped)
+	_equipped.scale = Vector3.ONE * def.equip_scale
+	_disable_collisions(_equipped)
 	_rest_rotation = _equipped.rotation
 
 func can_swing() -> bool:
@@ -104,6 +106,18 @@ func play_swing() -> void:
 	_swing_tween.tween_callback(func(): swing_hit.emit())
 	_swing_tween.tween_property(_equipped, "rotation", _rest_rotation, SWING_DURATION * 0.6 * duration_mult).set_ease(Tween.EASE_IN)
 	_swing_tween.finished.connect(func(): _is_swinging = false)
+
+## Recursively disables every collision shape under a held item -- items
+## like furniture reuse place_scene (which has real world colliders) as
+## equip_scene, and those must not collide with anything while held.
+func _disable_collisions(node: Node) -> void:
+	if node is CollisionShape3D:
+		node.disabled = true
+	if node is CollisionObject3D:
+		node.collision_layer = 0
+		node.collision_mask = 0
+	for child in node.get_children():
+		_disable_collisions(child)
 
 func _deg(v: Vector3) -> Vector3:
 	return Vector3(deg_to_rad(v.x), deg_to_rad(v.y), deg_to_rad(v.z))

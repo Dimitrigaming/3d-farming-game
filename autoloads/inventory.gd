@@ -1,10 +1,10 @@
 extends Node
 
-const SLOT_COUNT = 45
-const HOTBAR_START = 36
+const SLOT_COUNT = 36
 const HOTBAR_SIZE = 9
 
 var slots: Array[Dictionary] = []
+var hotbar_slots: Array[Dictionary] = []
 
 signal inventory_changed
 signal item_acquired(item_id: String, amount: int)
@@ -13,6 +13,9 @@ func _ready() -> void:
 	slots.resize(SLOT_COUNT)
 	for i in SLOT_COUNT:
 		slots[i] = _empty_slot()
+	hotbar_slots.resize(HOTBAR_SIZE)
+	for i in HOTBAR_SIZE:
+		hotbar_slots[i] = _empty_slot()
 
 func add_item(item_id: String, amount: int = 1) -> bool:
 	# Try to stack onto existing slot first
@@ -43,6 +46,15 @@ func damage_tool(slot_index: int) -> void:
 		slots[slot_index] = _empty_slot()
 	inventory_changed.emit()
 
+func damage_hotbar_tool(slot_index: int) -> void:
+	var slot = hotbar_slots[slot_index]
+	if slot["item_id"] == "" or slot["durability"] == -1:
+		return
+	slot["durability"] -= 1
+	if slot["durability"] <= 0:
+		hotbar_slots[slot_index] = _empty_slot()
+	inventory_changed.emit()
+
 func remove_item(item_id: String, amount: int = 1) -> bool:
 	for i in slots.size():
 		if slots[i]["item_id"] == item_id:
@@ -51,11 +63,21 @@ func remove_item(item_id: String, amount: int = 1) -> bool:
 				slots[i] = _empty_slot()
 			inventory_changed.emit()
 			return true
+	for i in hotbar_slots.size():
+		if hotbar_slots[i]["item_id"] == item_id:
+			hotbar_slots[i]["amount"] -= amount
+			if hotbar_slots[i]["amount"] <= 0:
+				hotbar_slots[i] = _empty_slot()
+			inventory_changed.emit()
+			return true
 	return false
 
 func has_item(item_id: String, amount: int = 1) -> bool:
 	var total := 0
 	for slot in slots:
+		if slot["item_id"] == item_id:
+			total += slot["amount"]
+	for slot in hotbar_slots:
 		if slot["item_id"] == item_id:
 			total += slot["amount"]
 	return total >= amount

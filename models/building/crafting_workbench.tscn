@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cyxat7v6gegnh"]
 
+[ext_resource type="Script" path="res://models/building/crafting_workbench.gd" id="0_script"]
 [ext_resource type="PackedScene" uid="uid://cmlu5nqdcrglf" path="res://addons/Crafting_Workbenches_Pack/TextileCrafting/SM_TextileCrafting_Prop_Table_01.tscn" id="1_d7jws"]
 [ext_resource type="PackedScene" uid="uid://bn68b1l5wkgos" path="res://addons/Crafting_Workbenches_Pack/Research/SM_Research_Prop_Book_Open_04.tscn" id="2_v20va"]
 [ext_resource type="PackedScene" uid="uid://bmsvwmwsdv8vw" path="res://addons/Crafting_Workbenches_Pack/TextileCrafting/SM_TextileCrafting_Prop_CuttingMat_01.tscn" id="3_ckkxq"]
@@ -19,6 +20,8 @@ size = Vector3(0.42337227, 0.2815857, 0.16371155)
 size = Vector3(0.37721348, 0.17936707, 0.39191437)
 
 [node name="Crafting_Workbench" type="Node3D" unique_id=487837323]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+script = ExtResource("0_script")
 
 [node name="SM_TextileCrafting_Prop_Table_01" parent="." unique_id=2144588813 instance=ExtResource("1_d7jws")]
 

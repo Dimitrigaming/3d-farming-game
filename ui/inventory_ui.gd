@@ -1,7 +1,11 @@
 extends CanvasLayer
 
 @onready var grid = $Panel/VBox/GridBg/Grid
-@onready var hotbar = $Panel/VBox/HotbarBg/Hotbar
+
+const IDLE_TOP := -318.0
+const IDLE_BOTTOM := -20.0
+const IDLE_RIGHT := 288.0
+const IDLE_LEFT := -304.0
 
 var _hovered_slot: int = -1
 var _reenable_controller: bool = false
@@ -19,12 +23,6 @@ func _assign_indices() -> void:
 		slot.slot_index = i
 		slot.mouse_entered.connect(func(): _hovered_slot = slot.slot_index)
 		slot.mouse_exited.connect(func(): if _hovered_slot == slot.slot_index: _hovered_slot = -1)
-	var hotbar_slots = hotbar.get_children()
-	for i in hotbar_slots.size():
-		var slot = hotbar_slots[i]
-		slot.slot_index = Inventory.HOTBAR_START + i
-		slot.mouse_entered.connect(func(): _hovered_slot = slot.slot_index)
-		slot.mouse_exited.connect(func(): if _hovered_slot == slot.slot_index: _hovered_slot = -1)
 
 func _process(_delta: float) -> void:
 	if _reenable_controller and not Input.is_key_pressed(KEY_ESCAPE):
@@ -39,9 +37,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	if visible and event is InputEventKey and event.pressed and not event.echo:
 		var key = event.keycode
 		if key >= KEY_1 and key <= KEY_9:
-			var hotbar_index = Inventory.HOTBAR_START + (key - KEY_1)
-			if _hovered_slot >= 0 and _hovered_slot != hotbar_index and Inventory.slots[_hovered_slot]["item_id"] != "":
-				Inventory.swap_slots(_hovered_slot, hotbar_index)
+			var hotbar_index = key - KEY_1
+			if _hovered_slot >= 0 and Inventory.slots[_hovered_slot]["item_id"] != "":
+				var inv_data = Inventory.slots[_hovered_slot].duplicate()
+				var hotbar_data = Inventory.hotbar_slots[hotbar_index].duplicate()
+				Inventory.slots[_hovered_slot] = hotbar_data
+				Inventory.hotbar_slots[hotbar_index] = inv_data
+				Inventory.inventory_changed.emit()
 			get_viewport().set_input_as_handled()
 			return
 	if event.is_action_pressed("inventory") or (visible and event.is_action_pressed("ui_cancel")):
@@ -62,6 +64,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _recapture_mouse() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	var controller = get_tree().get_first_node_in_group("proto_controller")
+	if controller:
+		controller.mouse_captured = true
 
 func _set_player_enabled(enabled: bool) -> void:
 	var controller = get_tree().get_first_node_in_group("proto_controller")
@@ -78,27 +83,27 @@ func show_for_shop() -> void:
 func hide_for_shop() -> void:
 	visible = false
 	var panel = $Panel
-	panel.offset_left = -304.0
-	panel.offset_top = -268.5
-	panel.offset_right = 288.0
+	panel.offset_left = IDLE_LEFT
+	panel.offset_top = IDLE_TOP
+	panel.offset_right = IDLE_RIGHT
 
 func show_for_chest() -> void:
 	_chest_mode = true
 	visible = true
 	var panel = $Panel
-	panel.offset_left = -304.0
+	panel.offset_left = IDLE_LEFT
 	panel.offset_top = -88.0
-	panel.offset_right = 288.0
+	panel.offset_right = IDLE_RIGHT
 	panel.offset_bottom = 289.0
 
 func hide_for_chest() -> void:
 	_chest_mode = false
 	visible = false
 	var panel = $Panel
-	panel.offset_left = -304.0
-	panel.offset_top = -268.5
-	panel.offset_right = 288.0
-	panel.offset_bottom = 108.5
+	panel.offset_left = IDLE_LEFT
+	panel.offset_top = IDLE_TOP
+	panel.offset_right = IDLE_RIGHT
+	panel.offset_bottom = IDLE_BOTTOM
 
 func _set_crosshair_visible(crosshair_visible: bool) -> void:
 	var controller = get_tree().get_first_node_in_group("proto_controller")
@@ -109,7 +114,6 @@ func _set_crosshair_visible(crosshair_visible: bool) -> void:
 
 func _refresh() -> void:
 	_refresh_grid(grid.get_children(), 0)
-	_refresh_grid(hotbar.get_children(), Inventory.HOTBAR_START)
 
 func _refresh_grid(slot_nodes: Array, slot_offset: int) -> void:
 	for i in slot_nodes.size():

@@ -14,3 +14,4 @@ max_stack = 10
 buy_price = 200
 description = "A wooden crate for storage. Open the lid with [F]."
 place_scene = ExtResource("2_scene")
+place_rotation_offset = 180.0

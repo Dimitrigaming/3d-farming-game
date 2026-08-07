@@ -64,6 +64,9 @@ func close_shop() -> void:
 
 func _finish_close() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	var controller = get_tree().get_first_node_in_group("proto_controller")
+	if controller:
+		controller.mouse_captured = true
 	_reenable_controller = true
 
 func _set_panel_position(shop_mode: bool) -> void:

@@ -15,7 +15,14 @@ enum Subcategory { NONE, LOG, PLANK, STONE, ORE, INGOT, GRAIN, VEGETABLE, FRUIT,
 @export var subcategory: Subcategory = Subcategory.NONE
 @export var description: String = ""
 @export var equip_scene: PackedScene
+## Uniform scale applied to equip_scene when held in hand. Lets place_scene
+## be reused directly as equip_scene without a separate scaled-down duplicate.
+@export var equip_scale: float = 1.0
 @export var place_scene: PackedScene
+## Degrees added on top of the player's facing when freshly deployed, to
+## compensate for place_scene's model being authored with its front along
+## +Z instead of the usual -Z forward convention.
+@export var place_rotation_offset: float = 0.0
 
 # Tool stats — leave at defaults for non-tool items
 @export var tool_category: String = ""  # "pickaxe", "axe", "hoe", etc.

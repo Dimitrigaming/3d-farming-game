@@ -346,6 +346,6 @@ func _try_deploy_furniture() -> bool:
 	var item = def.place_scene.instantiate()
 	get_tree().current_scene.add_child(item)
 	item.global_position = spawn_pos
-	item.rotation.y = player.rotation.y
+	item.rotation.y = player.rotation.y + deg_to_rad(def.place_rotation_offset)
 	build_mode.enter(item, item_id)
 	return true

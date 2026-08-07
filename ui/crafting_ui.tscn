@@ -1,0 +1,413 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://ui/crafting_ui.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bxle760hh7psa" path="res://icons/inventory/inventory_1x1_black.png" id="2_tex"]
+[ext_resource type="PackedScene" uid="uid://dmoi5hnboeqtx" path="res://ui/inventory_slot.tscn" id="3_slot"]
+[ext_resource type="PackedScene" path="res://ui/craft_output_slot.tscn" id="4_output_slot"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBox_Grid"]
+texture = ExtResource("2_tex")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[node name="CraftingUI" type="CanvasLayer"]
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="InventoryGridBg" type="PanelContainer" parent="."]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 4
+
+[node name="InventoryGrid" type="GridContainer" parent="InventoryGridBg"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 9
+
+[node name="InventorySlot1" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot7" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot8" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot9" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot10" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot11" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot12" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot13" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot14" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot15" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot16" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot17" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot18" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot19" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot20" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot21" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot22" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot23" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot24" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot25" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot26" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot27" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot28" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot29" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot30" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot31" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot32" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot33" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot34" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot35" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="InventorySlot36" parent="InventoryGridBg/InventoryGrid" instance=ExtResource("3_slot")]
+layout_mode = 2
+
+[node name="WorkbenchLayout" type="VBoxContainer" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -290.0
+offset_right = 320.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="TopRow" type="HBoxContainer" parent="WorkbenchLayout"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ItemsPanel" type="PanelContainer" parent="WorkbenchLayout/TopRow"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBox_Grid")
+
+[node name="VBox" type="VBoxContainer" parent="WorkbenchLayout/TopRow/ItemsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Title" type="Label" parent="WorkbenchLayout/TopRow/ItemsPanel/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Items to Craft"
+horizontal_alignment = 1
+
+[node name="RecipeGridBg" type="PanelContainer" parent="WorkbenchLayout/TopRow/ItemsPanel/VBox"]
+custom_minimum_size = Vector2(320, 256)
+layout_mode = 2
+
+[node name="RecipeGrid" type="GridContainer" parent="WorkbenchLayout/TopRow/ItemsPanel/VBox/RecipeGridBg"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 5
+
+[node name="DetailPanel" type="PanelContainer" parent="WorkbenchLayout/TopRow"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBox_Grid")
+
+[node name="DetailVBox" type="VBoxContainer" parent="WorkbenchLayout/TopRow/DetailPanel"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Header" type="HBoxContainer" parent="WorkbenchLayout/TopRow/DetailPanel/DetailVBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Icon" type="TextureRect" parent="WorkbenchLayout/TopRow/DetailPanel/DetailVBox/Header"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="WorkbenchLayout/TopRow/DetailPanel/DetailVBox/Header"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.929, 0.91, 0.875, 1)
+theme_override_font_sizes/font_size = 16
+text = "Recipe Name"
+autowrap_mode = 2
+
+[node name="Description" type="Label" parent="WorkbenchLayout/TopRow/DetailPanel/DetailVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.68, 0.65, 1)
+theme_override_font_sizes/font_size = 11
+autowrap_mode = 2
+text = ""
+
+[node name="IngredientsLabel" type="Label" parent="WorkbenchLayout/TopRow/DetailPanel/DetailVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Ingredients"
+
+[node name="Ingredients" type="VBoxContainer" parent="WorkbenchLayout/TopRow/DetailPanel/DetailVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="InventoryPanel" type="PanelContainer" parent="WorkbenchLayout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBox_Grid")
+
+[node name="InventoryVBox" type="VBoxContainer" parent="WorkbenchLayout/InventoryPanel"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Title" type="Label" parent="WorkbenchLayout/InventoryPanel/InventoryVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Inventory"
+horizontal_alignment = 1
+
+[node name="GridAnchor" type="Control" parent="WorkbenchLayout/InventoryPanel/InventoryVBox"]
+layout_mode = 2
+
+[node name="ForgeLayout" type="HBoxContainer" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -290.0
+offset_right = 350.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="LeftPanel" type="PanelContainer" parent="ForgeLayout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBox_Grid")
+
+[node name="LeftVBox" type="VBoxContainer" parent="ForgeLayout/LeftPanel"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Title" type="Label" parent="ForgeLayout/LeftPanel/LeftVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Inventory"
+horizontal_alignment = 1
+
+[node name="GridAnchor" type="Control" parent="ForgeLayout/LeftPanel/LeftVBox"]
+layout_mode = 2
+
+[node name="OutputLabel" type="Label" parent="ForgeLayout/LeftPanel/LeftVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Output"
+horizontal_alignment = 1
+
+[node name="OutputGridBg" type="PanelContainer" parent="ForgeLayout/LeftPanel/LeftVBox"]
+layout_mode = 2
+
+[node name="OutputGrid" type="GridContainer" parent="ForgeLayout/LeftPanel/LeftVBox/OutputGridBg"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 9
+
+[node name="CraftOutputSlot1" parent="ForgeLayout/LeftPanel/LeftVBox/OutputGridBg/OutputGrid" instance=ExtResource("4_output_slot")]
+layout_mode = 2
+
+[node name="CraftOutputSlot2" parent="ForgeLayout/LeftPanel/LeftVBox/OutputGridBg/OutputGrid" instance=ExtResource("4_output_slot")]
+layout_mode = 2
+
+[node name="CraftOutputSlot3" parent="ForgeLayout/LeftPanel/LeftVBox/OutputGridBg/OutputGrid" instance=ExtResource("4_output_slot")]
+layout_mode = 2
+
+[node name="CraftOutputSlot4" parent="ForgeLayout/LeftPanel/LeftVBox/OutputGridBg/OutputGrid" instance=ExtResource("4_output_slot")]
+layout_mode = 2
+
+[node name="CraftOutputSlot5" parent="ForgeLayout/LeftPanel/LeftVBox/OutputGridBg/OutputGrid" instance=ExtResource("4_output_slot")]
+layout_mode = 2
+
+[node name="CraftOutputSlot6" parent="ForgeLayout/LeftPanel/LeftVBox/OutputGridBg/OutputGrid" instance=ExtResource("4_output_slot")]
+layout_mode = 2
+
+[node name="CraftOutputSlot7" parent="ForgeLayout/LeftPanel/LeftVBox/OutputGridBg/OutputGrid" instance=ExtResource("4_output_slot")]
+layout_mode = 2
+
+[node name="CraftOutputSlot8" parent="ForgeLayout/LeftPanel/LeftVBox/OutputGridBg/OutputGrid" instance=ExtResource("4_output_slot")]
+layout_mode = 2
+
+[node name="CraftOutputSlot9" parent="ForgeLayout/LeftPanel/LeftVBox/OutputGridBg/OutputGrid" instance=ExtResource("4_output_slot")]
+layout_mode = 2
+
+[node name="CraftOutputSlot10" parent="ForgeLayout/LeftPanel/LeftVBox/OutputGridBg/OutputGrid" instance=ExtResource("4_output_slot")]
+layout_mode = 2
+
+[node name="CraftOutputSlot11" parent="ForgeLayout/LeftPanel/LeftVBox/OutputGridBg/OutputGrid" instance=ExtResource("4_output_slot")]
+layout_mode = 2
+
+[node name="CraftOutputSlot12" parent="ForgeLayout/LeftPanel/LeftVBox/OutputGridBg/OutputGrid" instance=ExtResource("4_output_slot")]
+layout_mode = 2
+
+[node name="CraftOutputSlot13" parent="ForgeLayout/LeftPanel/LeftVBox/OutputGridBg/OutputGrid" instance=ExtResource("4_output_slot")]
+layout_mode = 2
+
+[node name="CraftOutputSlot14" parent="ForgeLayout/LeftPanel/LeftVBox/OutputGridBg/OutputGrid" instance=ExtResource("4_output_slot")]
+layout_mode = 2
+
+[node name="CraftOutputSlot15" parent="ForgeLayout/LeftPanel/LeftVBox/OutputGridBg/OutputGrid" instance=ExtResource("4_output_slot")]
+layout_mode = 2
+
+[node name="CraftOutputSlot16" parent="ForgeLayout/LeftPanel/LeftVBox/OutputGridBg/OutputGrid" instance=ExtResource("4_output_slot")]
+layout_mode = 2
+
+[node name="CraftOutputSlot17" parent="ForgeLayout/LeftPanel/LeftVBox/OutputGridBg/OutputGrid" instance=ExtResource("4_output_slot")]
+layout_mode = 2
+
+[node name="CraftOutputSlot18" parent="ForgeLayout/LeftPanel/LeftVBox/OutputGridBg/OutputGrid" instance=ExtResource("4_output_slot")]
+layout_mode = 2
+
+[node name="RightPanel" type="PanelContainer" parent="ForgeLayout"]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBox_Grid")
+
+[node name="RightVBox" type="VBoxContainer" parent="ForgeLayout/RightPanel"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="RecipesLabel" type="Label" parent="ForgeLayout/RightPanel/RightVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Recipes"
+horizontal_alignment = 1
+
+[node name="RecipeGridBg" type="PanelContainer" parent="ForgeLayout/RightPanel/RightVBox"]
+custom_minimum_size = Vector2(320, 192)
+layout_mode = 2
+
+[node name="RecipeGrid" type="GridContainer" parent="ForgeLayout/RightPanel/RightVBox/RecipeGridBg"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 5
+
+[node name="DetailVBox" type="VBoxContainer" parent="ForgeLayout/RightPanel/RightVBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Header" type="HBoxContainer" parent="ForgeLayout/RightPanel/RightVBox/DetailVBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Icon" type="TextureRect" parent="ForgeLayout/RightPanel/RightVBox/DetailVBox/Header"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="ForgeLayout/RightPanel/RightVBox/DetailVBox/Header"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.929, 0.91, 0.875, 1)
+theme_override_font_sizes/font_size = 16
+text = "Recipe Name"
+autowrap_mode = 2
+
+[node name="Description" type="Label" parent="ForgeLayout/RightPanel/RightVBox/DetailVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.68, 0.65, 1)
+theme_override_font_sizes/font_size = 11
+autowrap_mode = 2
+text = ""
+
+[node name="IngredientsLabel" type="Label" parent="ForgeLayout/RightPanel/RightVBox/DetailVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Ingredients"
+
+[node name="Ingredients" type="VBoxContainer" parent="ForgeLayout/RightPanel/RightVBox/DetailVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 4

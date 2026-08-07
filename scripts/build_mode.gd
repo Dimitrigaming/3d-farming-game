@@ -42,7 +42,12 @@ func enter(furniture: Node3D, deploy_item_id: String = "") -> void:
 	_furniture = furniture
 	_deploy_item_id = deploy_item_id
 	_camera = get_viewport().get_camera_3d()
-	_ghost_y_rotation = _facing_player_rotation(furniture.global_position)
+	if deploy_item_id != "":
+		# Fresh deployment: keep the caller's facing (e.g. matching the player's
+		# forward direction) instead of rotating to face the player.
+		_ghost_y_rotation = furniture.rotation.y
+	else:
+		_ghost_y_rotation = _facing_player_rotation(furniture.global_position)
 	_ground_clearance = _get_ground_clearance(furniture)
 	_furniture_body = furniture.get_node_or_null("StaticBody3D")
 	if _furniture_body:

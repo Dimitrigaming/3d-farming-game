@@ -79,7 +79,7 @@ func interact() -> void:
 
 	_hp -= damage
 	if equipper.current_slot_index >= 0:
-		Inventory.damage_tool(equipper.current_slot_index)
+		Inventory.damage_hotbar_tool(equipper.current_slot_index)
 	_update_hp_bar()
 
 	if _hp > 0:

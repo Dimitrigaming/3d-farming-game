@@ -40,27 +40,36 @@ columns = 9
 
 [node name="InventorySlot37" parent="Panel/Grid" unique_id=1195094592 instance=ExtResource("2_slot")]
 layout_mode = 2
+is_hotbar_slot = true
 
 [node name="InventorySlot38" parent="Panel/Grid" unique_id=1124616364 instance=ExtResource("2_slot")]
 layout_mode = 2
+is_hotbar_slot = true
 
 [node name="InventorySlot39" parent="Panel/Grid" unique_id=594039918 instance=ExtResource("2_slot")]
 layout_mode = 2
+is_hotbar_slot = true
 
 [node name="InventorySlot40" parent="Panel/Grid" unique_id=735335205 instance=ExtResource("2_slot")]
 layout_mode = 2
+is_hotbar_slot = true
 
 [node name="InventorySlot41" parent="Panel/Grid" unique_id=489666561 instance=ExtResource("2_slot")]
 layout_mode = 2
+is_hotbar_slot = true
 
 [node name="InventorySlot42" parent="Panel/Grid" unique_id=1910381283 instance=ExtResource("2_slot")]
 layout_mode = 2
+is_hotbar_slot = true
 
 [node name="InventorySlot43" parent="Panel/Grid" unique_id=1683629899 instance=ExtResource("2_slot")]
 layout_mode = 2
+is_hotbar_slot = true
 
 [node name="InventorySlot44" parent="Panel/Grid" unique_id=1652925352 instance=ExtResource("2_slot")]
 layout_mode = 2
+is_hotbar_slot = true
 
 [node name="InventorySlot45" parent="Panel/Grid" unique_id=1631977659 instance=ExtResource("2_slot")]
 layout_mode = 2
+is_hotbar_slot = true

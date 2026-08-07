@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://autoloads/recipe_definition.gd" id="1_def"]
+[ext_resource type="Script" path="res://autoloads/recipe_ingredient.gd" id="2_ing"]
+
+[sub_resource type="Resource" id="Resource_ing1"]
+script = ExtResource("2_ing")
+item_id = "wood"
+amount = 2
+
+[resource]
+script = ExtResource("1_def")
+id = "wood_plank"
+name = "Wood Plank"
+description = "Sawn planks, ready for building."
+output_item_id = "wood_plank"
+output_amount = 1
+ingredients = Array[ExtResource("2_ing")]([SubResource("Resource_ing1")])
+station_type = "workbench"
+craft_time = 0.0
