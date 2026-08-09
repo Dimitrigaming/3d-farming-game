@@ -59,11 +59,13 @@ func _unhandled_input(event: InputEvent) -> void:
 			tablet._toggle()
 			get_viewport().set_input_as_handled()
 			return
-		var crafting_ui = get_tree().get_first_node_in_group("crafting_ui")
-		if crafting_ui and crafting_ui._is_open:
-			# Let the crafting UI close itself on this same key instead of
-			# also opening the plain inventory behind it.
-			return
+		# CraftingUI isn't a singleton -- every station spawns its own
+		# instance, so check all of them for one that's actually open.
+		for crafting_ui in get_tree().get_nodes_in_group("crafting_ui"):
+			if crafting_ui._is_open:
+				# Let the crafting UI close itself on this same key instead
+				# of also opening the plain inventory behind it.
+				return
 		visible = not visible
 		if visible:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

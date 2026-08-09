@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://pbwvrel0t2x8"]
+
+[ext_resource type="Texture2D" uid="uid://bp4vflsijywle" path="res://icons/materials/stone_block.png" id="1_icon"]
+[ext_resource type="Script" uid="uid://bb7sngdeqfm5n" path="res://autoloads/recipe_ingredient.gd" id="2_f8h2l"]
+[ext_resource type="Script" uid="uid://f8xfjkh8d3q3" path="res://autoloads/recipe_definition.gd" id="3_jamn1"]
+
+[sub_resource type="Resource" id="Resource_ing1"]
+script = ExtResource("2_f8h2l")
+item_id = "stone"
+amount = 2
+
+[resource]
+script = ExtResource("3_jamn1")
+id = "stone_block"
+name = "Stone Block"
+icon = ExtResource("1_icon")
+description = "Refined stone cut into a uniform block for crafting and building."
+output_item_id = "stone_block"
+ingredients = Array[ExtResource("2_f8h2l")]([SubResource("Resource_ing1")])

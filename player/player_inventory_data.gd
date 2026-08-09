@@ -25,12 +25,16 @@ func _ready() -> void:
 	_give_starter_tools()
 
 func _give_starter_tools() -> void:
-	var tools = ["hoe", "shovel", "axe", "pickaxe", "hammer", "scythe", "crafting_workbench"]
+	var tools = ["hoe", "shovel", "axe", "pickaxe", "hammer", "scythe", "crafting_workbench", "forge"]
 	for i in tools.size():
 		var slot = hotbar_slots[i]
 		slot["item_id"] = tools[i]
 		slot["amount"] = 1
 	add_item("wood", 99)
+	add_item("stone", 99)
+	add_item("copper_ore", 99)
+	add_item("iron_ore", 99)
+	add_item("coal_ore", 99)
 	inventory_changed.emit()
 
 func add_item(item_id: String, amount: int = 1) -> bool:

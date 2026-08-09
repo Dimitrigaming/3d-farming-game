@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://61lwcrgp0plc"]
+
+[ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://ydq0l8t1n45g" path="res://models/materials/leather.tscn" id="1_stnvu"]
+[ext_resource type="Texture2D" uid="uid://bys6kt34g1vei" path="res://icons/materials/leather.png" id="2_icon"]
+
+[resource]
+script = ExtResource("1_def")
+id = "leather"
+name = "Leather"
+icon = ExtResource("2_icon")
+type = 4
+sell_price = 10
+buy_price = 22
+description = "Tanned hide, ready for crafting."
+equip_scene = ExtResource("1_stnvu")

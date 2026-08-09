@@ -3,7 +3,12 @@ extends PanelContainer
 var slot_index: int = -1
 
 func _get_crafting_ui():
-	return get_tree().get_first_node_in_group("crafting_ui")
+	# CraftingUI isn't a singleton -- every station spawns its own instance,
+	# so pick whichever one is actually open rather than the first found.
+	for c in get_tree().get_nodes_in_group("crafting_ui"):
+		if c.visible:
+			return c
+	return null
 
 func _ready() -> void:
 	mouse_entered.connect(_on_mouse_entered)

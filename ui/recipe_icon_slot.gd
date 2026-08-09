@@ -7,6 +7,8 @@ var recipe: RecipeDefinition = null
 
 @onready var icon: TextureRect = $Icon
 @onready var count_label: Label = $Overlay/Count
+@onready var cooldown_overlay: ColorRect = $Overlay/CooldownOverlay
+@onready var timer_label: Label = $Overlay/TimerLabel
 
 func setup(r: RecipeDefinition) -> void:
 	recipe = r
@@ -16,6 +18,15 @@ func setup(r: RecipeDefinition) -> void:
 func set_queue_count(count: int) -> void:
 	count_label.visible = count > 0
 	count_label.text = str(count)
+
+## While actively crafting, darkens the icon and wipes the darkness away
+## top-to-bottom as progress (0..1) advances, with a countdown label.
+func set_progress(active: bool, progress: float = 0.0, seconds_remaining: float = 0.0) -> void:
+	cooldown_overlay.visible = active
+	timer_label.visible = active
+	if active:
+		cooldown_overlay.anchor_top = clamp(progress, 0.0, 1.0)
+		timer_label.text = "%.1fs" % max(seconds_remaining, 0.0)
 
 func set_highlighted(is_highlighted: bool) -> void:
 	if is_highlighted:

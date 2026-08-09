@@ -226,9 +226,17 @@ func _update_queue_badges() -> void:
 	var counts := {}
 	for entry in current_station.queue:
 		counts[entry["recipe_id"]] = entry["count"]
+	var active_recipe_id = current_station.queue[0]["recipe_id"] if not current_station.queue.is_empty() else ""
+	var progress = current_station.get_craft_progress()
 	for slot in _recipe_slots:
-		if slot.recipe:
-			slot.set_queue_count(counts.get(slot.recipe.id, 0))
+		if not slot.recipe:
+			continue
+		slot.set_queue_count(counts.get(slot.recipe.id, 0))
+		if active_recipe_id != "" and slot.recipe.id == active_recipe_id:
+			var remaining = max(slot.recipe.craft_time * (1.0 - progress), 0.0)
+			slot.set_progress(true, progress, remaining)
+		else:
+			slot.set_progress(false)
 
 func _refresh_output() -> void:
 	if current_station == null:

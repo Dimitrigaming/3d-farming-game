@@ -1,20 +1,25 @@
-[gd_resource type="Resource" script_class="RecipeDefinition" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://b2c6axhlaygfx"]
 
-[ext_resource type="Script" path="res://autoloads/recipe_definition.gd" id="1_def"]
-[ext_resource type="Script" path="res://autoloads/recipe_ingredient.gd" id="2_ing"]
+[ext_resource type="Script" uid="uid://f8xfjkh8d3q3" path="res://autoloads/recipe_definition.gd" id="1_def"]
+[ext_resource type="Script" uid="uid://bb7sngdeqfm5n" path="res://autoloads/recipe_ingredient.gd" id="2_ing"]
+[ext_resource type="Texture2D" uid="uid://cvc8dj5cpvu51" path="res://icons/materials/copper_ingot.png" id="3_icon"]
 
 [sub_resource type="Resource" id="Resource_ing1"]
 script = ExtResource("2_ing")
 item_id = "copper_ore"
 amount = 2
 
+[sub_resource type="Resource" id="Resource_qfecb"]
+script = ExtResource("2_ing")
+item_id = "coal_ore"
+
 [resource]
 script = ExtResource("1_def")
 id = "copper_ingot"
 name = "Copper Ingot"
+icon = ExtResource("3_icon")
 description = "Smelted copper ore, ready for crafting."
 output_item_id = "copper_ingot"
-output_amount = 1
-ingredients = Array[ExtResource("2_ing")]([SubResource("Resource_ing1")])
+ingredients = Array[ExtResource("2_ing")]([SubResource("Resource_ing1"), SubResource("Resource_qfecb")])
 station_type = "forge"
 craft_time = 3.0

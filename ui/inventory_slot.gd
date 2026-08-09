@@ -10,6 +10,14 @@ func _ready() -> void:
 func _get_array() -> Array:
 	return player_inventory.hotbar_slots if is_hotbar_slot else player_inventory.slots
 
+func _get_crafting_ui():
+	# CraftingUI isn't a singleton -- every station spawns its own instance,
+	# so pick whichever one is actually open rather than the first found.
+	for c in get_tree().get_nodes_in_group("crafting_ui"):
+		if c.visible:
+			return c
+	return null
+
 func _on_mouse_entered() -> void:
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and Input.is_key_pressed(KEY_SHIFT):
 		_shift_click()
@@ -82,7 +90,7 @@ func _drop_data(_pos: Vector2, data: Variant) -> void:
 		chest_ui.refresh_chest()
 	elif source == "craft_output":
 		# Craft output → inventory/hotbar (one-way: only pull crafted goods out)
-		var crafting_ui = get_tree().get_first_node_in_group("crafting_ui")
+		var crafting_ui = _get_crafting_ui()
 		if crafting_ui == null or crafting_ui.current_station == null:
 			return
 		if array[slot_index]["item_id"] != "":

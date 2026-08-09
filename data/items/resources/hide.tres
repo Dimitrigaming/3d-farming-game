@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://j82u7e3l4j3p"]
+
+[ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://dfxnyt0y6g31m" path="res://models/resources/hide.tscn" id="1_j70qy"]
+[ext_resource type="Texture2D" uid="uid://oec0ca6k60uu" path="res://icons/resources/hide.png" id="2_icon"]
+
+[resource]
+script = ExtResource("1_def")
+id = "hide"
+name = "Hide"
+icon = ExtResource("2_icon")
+type = 4
+sell_price = 5
+buy_price = 12
+description = "A raw animal hide. Tan it into leather."
+equip_scene = ExtResource("1_j70qy")
