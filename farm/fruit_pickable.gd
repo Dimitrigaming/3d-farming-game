@@ -34,7 +34,9 @@ func pick() -> void:
 	if _regrowing:
 		return
 	if crop_id != "":
-		Inventory.add_item(crop_id, 1)
+		var inventory = get_tree().get_first_node_in_group("player_inventory_data")
+		if inventory:
+			inventory.add_item(crop_id, 1)
 	_start_regrow()
 
 func _get_unripe() -> Node3D:

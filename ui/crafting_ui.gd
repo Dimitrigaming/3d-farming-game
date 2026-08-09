@@ -43,13 +43,16 @@ func _ready() -> void:
 	for i in output_nodes.size():
 		output_nodes[i].slot_index = i
 
+func _get_inventory() -> PlayerInventoryData:
+	return get_tree().get_first_node_in_group("player_inventory_data")
+
 func _process(_delta: float) -> void:
 	if _reenable_controller and not Input.is_key_pressed(KEY_ESCAPE):
 		_reenable_controller = false
 		_set_player_enabled(true)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if _is_open and (event.is_action_pressed("interact") or event.is_action_pressed("ui_cancel")):
+	if _is_open and (event.is_action_pressed("interact") or event.is_action_pressed("ui_cancel") or event.is_action_pressed("inventory")):
 		close_crafting()
 		get_viewport().set_input_as_handled()
 
@@ -88,14 +91,18 @@ func open_crafting(station) -> void:
 		_detail_ingredients = wb_ingredients
 		_place_inventory_grid(wb_inventory_anchor)
 
+	var inventory = _get_inventory()
+	for slot_node in inventory_slots:
+		slot_node.player_inventory = inventory
+
 	_refresh_inventory()
 	_populate_recipes()
 	_is_open = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	_set_crosshair_visible(false)
 	_set_player_enabled(false)
-	if not Inventory.inventory_changed.is_connected(_refresh_inventory):
-		Inventory.inventory_changed.connect(_refresh_inventory)
+	if inventory and not inventory.inventory_changed.is_connected(_refresh_inventory):
+		inventory.inventory_changed.connect(_refresh_inventory)
 
 func close_crafting() -> void:
 	_is_open = false
@@ -103,8 +110,9 @@ func close_crafting() -> void:
 	background.visible = false
 	workbench_layout.visible = false
 	forge_layout.visible = false
-	if Inventory.inventory_changed.is_connected(_refresh_inventory):
-		Inventory.inventory_changed.disconnect(_refresh_inventory)
+	var inventory = _get_inventory()
+	if inventory and inventory.inventory_changed.is_connected(_refresh_inventory):
+		inventory.inventory_changed.disconnect(_refresh_inventory)
 	_set_crosshair_visible(true)
 	call_deferred("_recapture_mouse")
 	_reenable_controller = true
@@ -123,8 +131,11 @@ func _place_inventory_grid(anchor: Control) -> void:
 	target_parent.move_child(inventory_grid_bg, anchor.get_index())
 
 func _refresh_inventory() -> void:
+	var inventory = _get_inventory()
+	if inventory == null:
+		return
 	for i in inventory_slots.size():
-		var slot_data = Inventory.slots[i]
+		var slot_data = inventory.slots[i]
 		var slot_node = inventory_slots[i]
 		var icon = slot_node.get_node("Icon")
 		var count = slot_node.get_node("Overlay/Count")
@@ -188,11 +199,14 @@ func _show_recipe_detail(recipe: RecipeDefinition) -> void:
 		_detail_ingredients.add_child(row)
 
 func _count_item(item_id: String) -> int:
+	var inventory = _get_inventory()
+	if inventory == null:
+		return 0
 	var total := 0
-	for slot in Inventory.slots:
+	for slot in inventory.slots:
 		if slot["item_id"] == item_id:
 			total += slot["amount"]
-	for slot in Inventory.hotbar_slots:
+	for slot in inventory.hotbar_slots:
 		if slot["item_id"] == item_id:
 			total += slot["amount"]
 	return total

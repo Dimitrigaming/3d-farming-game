@@ -1,6 +1,7 @@
 extends RayCast3D
 
 @onready var player_inventory: Node = get_node("../../../PlayerInventory")
+@onready var inventory: PlayerInventoryData = get_node("../../../PlayerInventoryData")
 @onready var hud = get_node("../../../HUD")
 @onready var build_mode = get_node("../../../BuildMode")
 
@@ -333,9 +334,10 @@ func _try_deploy_furniture() -> bool:
 	var def = ItemDB.get_item(item_id)
 	if def == null or def.type != ItemDefinition.ItemType.FURNITURE or def.place_scene == null:
 		return false
-	if not Inventory.has_item(item_id):
+	if not inventory.has_item(item_id):
 		return false
-	Inventory.remove_item(item_id)
+	var source_slot_index = equipper.current_slot_index
+	inventory.remove_item(item_id)
 	var player_nodes = get_tree().get_nodes_in_group("player")
 	if player_nodes.is_empty():
 		return false
@@ -347,5 +349,5 @@ func _try_deploy_furniture() -> bool:
 	get_tree().current_scene.add_child(item)
 	item.global_position = spawn_pos
 	item.rotation.y = player.rotation.y + deg_to_rad(def.place_rotation_offset)
-	build_mode.enter(item, item_id)
+	build_mode.enter(item, item_id, source_slot_index)
 	return true

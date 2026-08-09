@@ -1,5 +1,7 @@
 extends RayCast3D
 
+@onready var inventory: PlayerInventoryData = get_node("../../../PlayerInventoryData")
+
 var _highlight: MeshInstance3D = null
 var _prompt_label: Label = null
 var _hovered_cell: Vector3i = Vector3i(-1, -1, -1)
@@ -167,33 +169,56 @@ func _process(_delta: float) -> void:
 
 func _do_left_action(item_id: String) -> void:
 	var effective_id = item_id if item_id != "" else "hand"
+	var equipper = get_tree().get_first_node_in_group("tool_equipper")
+
+	# Gate on the same swing-in-progress check every other tool uses, so
+	# sweeping your look across cells while holding LMB can't bypass the
+	# swing animation's timing and till/harvest instantly.
+	if equipper and equipper.has_method("can_swing") and not equipper.can_swing():
+		return
+
+	var farm = _hovered_farm
+	var cell = _hovered_cell
+	var action: Callable
+
 	match effective_id:
 		"hoe":
-			_hovered_farm.till_cell(_hovered_cell.x, _hovered_cell.z)
-			_last_acted_cell = _hovered_cell
+			action = func(): farm.till_cell(cell.x, cell.z)
 		"shovel":
-			_hovered_farm.untill_cell(_hovered_cell.x, _hovered_cell.z)
-			_last_acted_cell = _hovered_cell
+			action = func(): farm.untill_cell(cell.x, cell.z)
 		_:
 			if effective_id.ends_with("_seed"):
 				return
 			# Check if the hovered crop accepts this tool
-			var crop = _hovered_farm.get_crop(_hovered_cell.x, _hovered_cell.z)
-			if crop and crop.crop_def and effective_id in crop.crop_def.harvest_tools:
-				if crop.crop_def.is_tree:
-					var result = _hovered_farm.chop_tree(_hovered_cell.x, _hovered_cell.z)
+			var crop = farm.get_crop(cell.x, cell.z)
+			if crop == null or crop.crop_def == null or effective_id not in crop.crop_def.harvest_tools:
+				return
+			if crop.crop_def.is_tree:
+				action = func():
+					var result = farm.chop_tree(cell.x, cell.z)
 					if not result.is_empty():
-						Inventory.add_item(result["item_id"], result["amount"])
-				elif _hovered_is_harvestable:
-					var result = _hovered_farm.harvest_crop(_hovered_cell.x, _hovered_cell.z, effective_id)
+						inventory.add_item(result["item_id"], result["amount"])
+			elif _hovered_is_harvestable:
+				action = func():
+					var result = farm.harvest_crop(cell.x, cell.z, effective_id)
 					if not result.is_empty():
-						Inventory.add_item(result["item_id"], result["amount"])
-				_last_acted_cell = _hovered_cell
+						inventory.add_item(result["item_id"], result["amount"])
+			else:
+				return
+
+	_last_acted_cell = cell
+	# play_swing() no-ops (and never emits swing_hit) when nothing's equipped,
+	# so only defer through the signal when there's an actual tool to animate.
+	if equipper and effective_id != "hand" and equipper.has_method("play_swing") and equipper.has_signal("swing_hit"):
+		equipper.play_swing()
+		equipper.swing_hit.connect(action, CONNECT_ONE_SHOT)
+	else:
+		action.call()
 
 func _do_right_action(item_id: String) -> void:
-	if item_id.ends_with("_seed") and Inventory.has_item(item_id):
+	if item_id.ends_with("_seed") and inventory.has_item(item_id):
 		_hovered_farm.plant_crop(_hovered_cell.x, _hovered_cell.z, item_id)
-		Inventory.remove_item(item_id)
+		inventory.remove_item(item_id)
 		_last_acted_cell = _hovered_cell
 
 func _unhandled_input(event: InputEvent) -> void:

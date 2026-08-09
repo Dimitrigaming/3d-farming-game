@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="FertilizerDefinition" format=3 uid="uid://fert_basic001"]
+[gd_resource type="Resource" script_class="FertilizerDefinition" format=3 uid="uid://dfo51gk5f8j5d"]
 
-[ext_resource type="Script" path="res://autoloads/fertilizer_definition.gd" id="1_def"]
+[ext_resource type="Script" uid="uid://cvibegyb6my5q" path="res://autoloads/fertilizer_definition.gd" id="1_def"]
+[ext_resource type="Texture2D" uid="uid://b6pygmvb6df6n" path="res://icons/fertilizers/basic_fertilizer.png" id="1_lm27m"]
 
 [resource]
 script = ExtResource("1_def")
 id = "basic_fertilizer"
 name = "Basic Fertilizer"
+icon = ExtResource("1_lm27m")
 speed_multiplier = 1.25
-yield_multiplier = 1.0
-duration_cycles = 1

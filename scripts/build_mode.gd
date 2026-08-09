@@ -1,5 +1,7 @@
 ﻿extends Node3D
 
+@onready var inventory: PlayerInventoryData = get_node("../PlayerInventoryData")
+
 var active: bool = false
 var grid_snap: bool = false
 
@@ -32,15 +34,17 @@ var _ghost_arrow_nodes: Array[Node] = []
 var _passengers: Array[Node3D] = []
 var _hidden_passengers: Array[Node3D] = []
 var _deploy_item_id: String = ""
+var _deploy_source_slot: int = -1
 
 const GRID_SIZE: float = 0.5
 const ROTATE_STEP: float = PI / 36.0
 
-func enter(furniture: Node3D, deploy_item_id: String = "") -> void:
+func enter(furniture: Node3D, deploy_item_id: String = "", deploy_source_slot: int = -1) -> void:
 	active = true
 	_blocked = false
 	_furniture = furniture
 	_deploy_item_id = deploy_item_id
+	_deploy_source_slot = deploy_source_slot
 	_camera = get_viewport().get_camera_3d()
 	if deploy_item_id != "":
 		# Fresh deployment: keep the caller's facing (e.g. matching the player's
@@ -101,8 +105,9 @@ func enter(furniture: Node3D, deploy_item_id: String = "") -> void:
 func exit(confirm: bool) -> void:
 	if _furniture:
 		if not confirm and _deploy_item_id != "":
-			# New deployment cancelled — refund the item and remove the node
-			Inventory.add_item(_deploy_item_id)
+			# New deployment cancelled — refund the item to the hotbar slot it
+			# came from rather than dumping it into the main inventory.
+			_refund_deploy_item()
 			_furniture.queue_free()
 			_furniture = null
 		else:
@@ -135,7 +140,21 @@ func exit(confirm: bool) -> void:
 	_furniture_body = null
 	_camera = null
 	_deploy_item_id = ""
+	_deploy_source_slot = -1
 	_ghost_arrow_nodes.clear()
+
+func _refund_deploy_item() -> void:
+	if _deploy_source_slot >= 0 and _deploy_source_slot < inventory.hotbar_slots.size() \
+			and inventory.hotbar_slots[_deploy_source_slot]["item_id"] == "":
+		var def = ItemDB.get_item(_deploy_item_id)
+		inventory.hotbar_slots[_deploy_source_slot] = {
+			"item_id": _deploy_item_id,
+			"amount": 1,
+			"durability": def.max_durability if def and def.max_durability > 0 else -1,
+		}
+		inventory.inventory_changed.emit()
+	else:
+		inventory.add_item(_deploy_item_id)
 
 func _move_passengers(old_transform: Transform3D) -> void:
 	if _passengers.is_empty() and _hidden_passengers.is_empty():
@@ -149,6 +168,13 @@ func _move_passengers(old_transform: Transform3D) -> void:
 		var local_pos = old_inv * passenger.global_position
 		passenger.global_position = new_transform * local_pos
 		passenger.rotation.y += delta_rot_y
+
+func _get_player_rid() -> RID:
+	var player_inv = get_tree().get_first_node_in_group("player")
+	if player_inv == null:
+		return RID()
+	var body = player_inv.get_parent()
+	return body.get_rid() if body is CollisionObject3D else RID()
 
 func _cast_placement_zone_ray() -> Node3D:
 	if _camera == null:
@@ -217,6 +243,7 @@ func _process(_delta: float) -> void:
 	var from = _camera.global_position
 	var dir = -_camera.global_transform.basis.z
 	var ray = PhysicsRayQueryParameters3D.create(from, from + dir * 8.0)
+	ray.exclude = [_get_player_rid()]
 	var result = space_state.intersect_ray(ray)
 	if result:
 		var pos = result.position

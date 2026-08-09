@@ -10,6 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://ghapslnqfdvm" path="res://ui/delivery_hud.tscn" id="7_delhud"]
 [ext_resource type="PackedScene" path="res://ui/pickup_popup.tscn" id="8_pkpopup"]
 [ext_resource type="PackedScene" uid="uid://dhoachck487ic" path="res://addons/Toon/Toon City People/Models/TCP_Male_Character_01.tscn" id="9_playerskin"]
+[ext_resource type="Script" uid="uid://dbggbheojko5w" path="res://player/player_inventory_data.gd" id="10_invdata"]
+[ext_resource type="PackedScene" uid="uid://b7e8cpcxfhqyt" path="res://ui/inventory_ui.tscn" id="11_invui"]
+[ext_resource type="PackedScene" uid="uid://hotbar001" path="res://ui/hotbar.tscn" id="12_hotbar"]
+[ext_resource type="Script" uid="uid://bjfa4yp4qp2wg" path="res://player/tool_equipper.gd" id="13_toolequip"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iof21"]
 albedo_color = Color(0.91806, 0.575202, 0.222449, 1)
@@ -58,6 +62,12 @@ script = ExtResource("3_ujot4")
 
 [node name="PlayerInventory" type="Node3D" parent="." unique_id=1383110303]
 script = ExtResource("3_inventory")
+
+[node name="PlayerInventoryData" type="Node" parent="." unique_id=1383110304]
+script = ExtResource("10_invdata")
+
+[node name="ToolEquipper" type="Node3D" parent="." unique_id=-2072745074]
+script = ExtResource("13_toolequip")
 
 [node name="BuildMode" type="Node3D" parent="." unique_id=946990163]
 script = ExtResource("5_buildmode")
@@ -117,3 +127,7 @@ horizontal_alignment = 1
 [node name="DeliveryHUD" parent="." unique_id=1052269369 instance=ExtResource("7_delhud")]
 
 [node name="PickupPopup" parent="." unique_id=1052269370 instance=ExtResource("8_pkpopup")]
+
+[node name="InventoryUI" parent="." unique_id=919419101 instance=ExtResource("11_invui")]
+
+[node name="Hotbar" parent="." unique_id=300000001 instance=ExtResource("12_hotbar")]

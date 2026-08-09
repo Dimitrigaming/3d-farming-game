@@ -2,6 +2,9 @@ extends PanelContainer
 
 var slot_index: int = -1
 
+func _get_inventory() -> PlayerInventoryData:
+	return get_tree().get_first_node_in_group("player_inventory_data")
+
 func _ready() -> void:
 	mouse_entered.connect(_on_mouse_entered)
 
@@ -16,19 +19,20 @@ func _gui_input(event: InputEvent) -> void:
 
 func _shift_click() -> void:
 	var chest_ui = get_tree().get_first_node_in_group("chest_ui")
-	if chest_ui == null or slot_index < 0:
+	var inventory = _get_inventory()
+	if chest_ui == null or inventory == null or slot_index < 0:
 		return
 	var data = chest_ui.chest_slots[slot_index]
 	if data["item_id"] == "":
 		return
 	# Shift-click moves to first empty inventory slot
-	for i in Inventory.slots.size():
-		if Inventory.slots[i]["item_id"] == "":
-			var inv_data = Inventory.slots[i].duplicate()
+	for i in inventory.slots.size():
+		if inventory.slots[i]["item_id"] == "":
+			var inv_data = inventory.slots[i].duplicate()
 			var chest_data = chest_ui.chest_slots[slot_index].duplicate()
-			Inventory.slots[i] = chest_data
+			inventory.slots[i] = chest_data
 			chest_ui.chest_slots[slot_index] = inv_data
-			Inventory.inventory_changed.emit()
+			inventory.inventory_changed.emit()
 			chest_ui.refresh_chest()
 			return
 
@@ -41,12 +45,7 @@ func _get_drag_data(_pos: Vector2) -> Variant:
 	var data = chest_ui.chest_slots[slot_index]
 	if data["item_id"] == "":
 		return null
-	var preview = TextureRect.new()
-	preview.texture = get_node("Icon").texture
-	preview.custom_minimum_size = Vector2(40, 40)
-	preview.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	set_drag_preview(preview)
-	return {"from_slot": slot_index, "source": "chest"}
+	return {"from_slot": slot_index, "source": "chest", "icon": get_node("Icon").texture}
 
 func _can_drop_data(_pos: Vector2, data: Variant) -> bool:
 	return data is Dictionary and data.has("from_slot") and data.has("source")
@@ -65,9 +64,12 @@ func _drop_data(_pos: Vector2, data: Variant) -> void:
 			chest_ui.refresh_chest()
 	else:
 		# Inventory → chest
-		var inv_data = Inventory.slots[from].duplicate()
+		var inventory = _get_inventory()
+		if inventory == null:
+			return
+		var inv_data = inventory.slots[from].duplicate()
 		var chest_data = chest_ui.chest_slots[slot_index].duplicate()
-		Inventory.slots[from] = chest_data
+		inventory.slots[from] = chest_data
 		chest_ui.chest_slots[slot_index] = inv_data
-		Inventory.inventory_changed.emit()
+		inventory.inventory_changed.emit()
 		chest_ui.refresh_chest()

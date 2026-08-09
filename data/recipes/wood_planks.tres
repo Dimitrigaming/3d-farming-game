@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://dawmn1ifsa20k"]
+
+[ext_resource type="Texture2D" uid="uid://cj3pa7x3k2jqd" path="res://icons/materials/wood_planks.png" id="1_glkhk"]
+[ext_resource type="Script" uid="uid://bb7sngdeqfm5n" path="res://autoloads/recipe_ingredient.gd" id="2_f8h2l"]
+[ext_resource type="Script" uid="uid://f8xfjkh8d3q3" path="res://autoloads/recipe_definition.gd" id="3_jamn1"]
+
+[sub_resource type="Resource" id="Resource_ing1"]
+script = ExtResource("2_f8h2l")
+item_id = "wood"
+amount = 2
+
+[resource]
+script = ExtResource("3_jamn1")
+id = "wood_planks"
+name = "Wood Planks"
+icon = ExtResource("1_glkhk")
+description = "Sawn planks, ready for building."
+output_item_id = "wood_planks"
+ingredients = Array[ExtResource("2_f8h2l")]([SubResource("Resource_ing1")])

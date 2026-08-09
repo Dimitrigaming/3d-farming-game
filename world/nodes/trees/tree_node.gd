@@ -66,6 +66,9 @@ func interact() -> void:
 	var equipper = get_tree().get_first_node_in_group("tool_equipper")
 	if equipper == null:
 		return
+	var inventory = get_tree().get_first_node_in_group("player_inventory_data")
+	if inventory == null:
+		return
 
 	var damage = 1
 	if equipper.current_item_id != "":
@@ -78,13 +81,13 @@ func interact() -> void:
 
 	_hp -= damage
 	if equipper.current_slot_index >= 0:
-		Inventory.damage_hotbar_tool(equipper.current_slot_index)
+		inventory.damage_hotbar_tool(equipper.current_slot_index)
 	_update_hp_bar()
 
 	if _hp > 0:
 		return
 
-	Inventory.add_item(wood_type, randi_range(drops_min, drops_max))
+	inventory.add_item(wood_type, randi_range(drops_min, drops_max))
 	_despawn()
 
 func _despawn() -> void:

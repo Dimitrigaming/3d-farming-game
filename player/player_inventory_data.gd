@@ -1,4 +1,9 @@
+class_name PlayerInventoryData
 extends Node
+
+## Per-player inventory/hotbar state. Was previously a global `Inventory`
+## autoload; moved onto the player so each player owns their own inventory
+## (multiplayer foundation — see plan "Per-Player Refactor").
 
 const SLOT_COUNT = 36
 const HOTBAR_SIZE = 9
@@ -10,12 +15,23 @@ signal inventory_changed
 signal item_acquired(item_id: String, amount: int)
 
 func _ready() -> void:
+	add_to_group("player_inventory_data")
 	slots.resize(SLOT_COUNT)
 	for i in SLOT_COUNT:
 		slots[i] = _empty_slot()
 	hotbar_slots.resize(HOTBAR_SIZE)
 	for i in HOTBAR_SIZE:
 		hotbar_slots[i] = _empty_slot()
+	_give_starter_tools()
+
+func _give_starter_tools() -> void:
+	var tools = ["hoe", "shovel", "axe", "pickaxe", "hammer", "scythe", "crafting_workbench"]
+	for i in tools.size():
+		var slot = hotbar_slots[i]
+		slot["item_id"] = tools[i]
+		slot["amount"] = 1
+	add_item("wood", 99)
+	inventory_changed.emit()
 
 func add_item(item_id: String, amount: int = 1) -> bool:
 	# Try to stack onto existing slot first

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bj807h4gcsnrq"
-path.s3tc="res://.godot/imported/HumanAnimations_ColorPalette.png-cb04fcb73f2e05f74cf73a901c23ef56.s3tc.ctex"
+uid="uid://b6pygmvb6df6n"
+path.s3tc="res://.godot/imported/basic_fertilizer.png-a11619cd5b836a618ebe49bad51958cc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://addons/HumanCraftingAnimations/Textures/HumanAnimations_ColorPalette.png"
-dest_files=["res://.godot/imported/HumanAnimations_ColorPalette.png-cb04fcb73f2e05f74cf73a901c23ef56.s3tc.ctex"]
+source_file="res://icons/fertilizers/basic_fertilizer.png"
+dest_files=["res://.godot/imported/basic_fertilizer.png-a11619cd5b836a618ebe49bad51958cc.s3tc.ctex"]
 
 [params]
 

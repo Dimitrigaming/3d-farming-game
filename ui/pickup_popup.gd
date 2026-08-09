@@ -4,12 +4,13 @@ const DISPLAY_TIME: float = 2.5
 const FADE_TIME: float = 0.5
 
 @onready var _list: VBoxContainer = $List
+@onready var _inventory: PlayerInventoryData = get_node("../PlayerInventoryData")
 
 # Tracks active notifications: item_id -> {label, timer, amount}
 var _active: Dictionary = {}
 
 func _ready() -> void:
-	Inventory.item_acquired.connect(_on_item_acquired)
+	_inventory.item_acquired.connect(_on_item_acquired)
 
 func _on_item_acquired(item_id: String, amount: int) -> void:
 	if item_id in _active:

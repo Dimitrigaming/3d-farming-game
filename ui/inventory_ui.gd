@@ -1,6 +1,8 @@
 extends CanvasLayer
 
 @onready var grid = $Panel/VBox/GridBg/Grid
+@onready var inventory: PlayerInventoryData = get_node("../PlayerInventoryData")
+@onready var controller: Node = get_parent()
 
 const IDLE_TOP := -318.0
 const IDLE_BOTTOM := -20.0
@@ -11,8 +13,12 @@ var _hovered_slot: int = -1
 var _reenable_controller: bool = false
 
 func _ready() -> void:
+	# Exempt from the parent ProtoController's process_mode so this UI's own
+	# input (close key, shift-click, drag/drop) keeps working while it's
+	# disabling player movement.
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	add_to_group("inventory_ui")
-	Inventory.inventory_changed.connect(_refresh)
+	inventory.inventory_changed.connect(_refresh)
 	_assign_indices()
 	call_deferred("_refresh")
 
@@ -21,6 +27,7 @@ func _assign_indices() -> void:
 	for i in grid_slots.size():
 		var slot = grid_slots[i]
 		slot.slot_index = i
+		slot.player_inventory = inventory
 		slot.mouse_entered.connect(func(): _hovered_slot = slot.slot_index)
 		slot.mouse_exited.connect(func(): if _hovered_slot == slot.slot_index: _hovered_slot = -1)
 
@@ -38,12 +45,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		var key = event.keycode
 		if key >= KEY_1 and key <= KEY_9:
 			var hotbar_index = key - KEY_1
-			if _hovered_slot >= 0 and Inventory.slots[_hovered_slot]["item_id"] != "":
-				var inv_data = Inventory.slots[_hovered_slot].duplicate()
-				var hotbar_data = Inventory.hotbar_slots[hotbar_index].duplicate()
-				Inventory.slots[_hovered_slot] = hotbar_data
-				Inventory.hotbar_slots[hotbar_index] = inv_data
-				Inventory.inventory_changed.emit()
+			if _hovered_slot >= 0 and inventory.slots[_hovered_slot]["item_id"] != "":
+				var inv_data = inventory.slots[_hovered_slot].duplicate()
+				var hotbar_data = inventory.hotbar_slots[hotbar_index].duplicate()
+				inventory.slots[_hovered_slot] = hotbar_data
+				inventory.hotbar_slots[hotbar_index] = inv_data
+				inventory.inventory_changed.emit()
 			get_viewport().set_input_as_handled()
 			return
 	if event.is_action_pressed("inventory") or (visible and event.is_action_pressed("ui_cancel")):
@@ -51,6 +58,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		if tablet and tablet.visible:
 			tablet._toggle()
 			get_viewport().set_input_as_handled()
+			return
+		var crafting_ui = get_tree().get_first_node_in_group("crafting_ui")
+		if crafting_ui and crafting_ui._is_open:
+			# Let the crafting UI close itself on this same key instead of
+			# also opening the plain inventory behind it.
 			return
 		visible = not visible
 		if visible:
@@ -64,12 +76,10 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _recapture_mouse() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	var controller = get_tree().get_first_node_in_group("proto_controller")
 	if controller:
 		controller.mouse_captured = true
 
 func _set_player_enabled(enabled: bool) -> void:
-	var controller = get_tree().get_first_node_in_group("proto_controller")
 	if controller:
 		controller.process_mode = Node.PROCESS_MODE_DISABLED if not enabled else Node.PROCESS_MODE_INHERIT
 
@@ -106,7 +116,6 @@ func hide_for_chest() -> void:
 	panel.offset_bottom = IDLE_BOTTOM
 
 func _set_crosshair_visible(crosshair_visible: bool) -> void:
-	var controller = get_tree().get_first_node_in_group("proto_controller")
 	if controller:
 		var crosshair = controller.get_node_or_null("HUD/Crosshair")
 		if crosshair:
@@ -117,7 +126,7 @@ func _refresh() -> void:
 
 func _refresh_grid(slot_nodes: Array, slot_offset: int) -> void:
 	for i in slot_nodes.size():
-		var slot_data = Inventory.slots[slot_offset + i]
+		var slot_data = inventory.slots[slot_offset + i]
 		var slot_node = slot_nodes[i]
 		var icon = slot_node.get_node("Icon")
 		var count = slot_node.get_node("Overlay/Count")

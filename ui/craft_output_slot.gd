@@ -21,15 +21,18 @@ func _shift_click() -> void:
 	var crafting_ui = _get_crafting_ui()
 	if crafting_ui == null or crafting_ui.current_station == null or slot_index < 0:
 		return
+	var inventory = get_tree().get_first_node_in_group("player_inventory_data")
+	if inventory == null:
+		return
 	var output_slots = crafting_ui.current_station.output_slots
 	var data = output_slots[slot_index]
 	if data["item_id"] == "":
 		return
-	for i in Inventory.slots.size():
-		if Inventory.slots[i]["item_id"] == "":
-			Inventory.slots[i] = data.duplicate()
+	for i in inventory.slots.size():
+		if inventory.slots[i]["item_id"] == "":
+			inventory.slots[i] = data.duplicate()
 			output_slots[slot_index] = {"item_id": "", "amount": 0}
-			Inventory.inventory_changed.emit()
+			inventory.inventory_changed.emit()
 			crafting_ui.refresh_output()
 			return
 
@@ -42,12 +45,7 @@ func _get_drag_data(_pos: Vector2) -> Variant:
 	var data = crafting_ui.current_station.output_slots[slot_index]
 	if data["item_id"] == "":
 		return null
-	var preview = TextureRect.new()
-	preview.texture = get_node("Icon").texture
-	preview.custom_minimum_size = Vector2(40, 40)
-	preview.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	set_drag_preview(preview)
-	return {"from_slot": slot_index, "source": "craft_output"}
+	return {"from_slot": slot_index, "source": "craft_output", "icon": get_node("Icon").texture}
 
 func _can_drop_data(_pos: Vector2, data: Variant) -> bool:
 	return data is Dictionary and data.has("from_slot") and data.has("source")

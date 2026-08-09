@@ -47,13 +47,17 @@ func craft(recipe_id: String, qty: int = 1) -> bool:
 	if recipe == null or recipe.station_type != station_type:
 		return false
 
+	var inventory = get_tree().get_first_node_in_group("player_inventory_data")
+	if inventory == null:
+		return false
+
 	for ingredient in recipe.ingredients:
-		if not Inventory.has_item(ingredient.item_id, ingredient.amount * qty):
+		if not inventory.has_item(ingredient.item_id, ingredient.amount * qty):
 			return false
 
 	for ingredient in recipe.ingredients:
 		for i in ingredient.amount * qty:
-			Inventory.remove_item(ingredient.item_id, 1)
+			inventory.remove_item(ingredient.item_id, 1)
 
 	for entry in queue:
 		if entry["recipe_id"] == recipe_id:
@@ -97,7 +101,9 @@ func _on_craft_complete(recipe: RecipeDefinition) -> void:
 		_add_to_output(recipe.output_item_id, recipe.output_amount)
 	else:
 		# Instant recipes skip the output buffer entirely.
-		Inventory.add_item(recipe.output_item_id, recipe.output_amount)
+		var inventory = get_tree().get_first_node_in_group("player_inventory_data")
+		if inventory:
+			inventory.add_item(recipe.output_item_id, recipe.output_amount)
 	output_changed.emit()
 
 	if not queue.is_empty():

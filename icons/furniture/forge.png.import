@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wna2g0mq7jq6"
-path="res://.godot/imported/wood_plank.png-c135f0e115a175485baae893900ff4fb.ctex"
+uid="uid://cfsjdoui5g3vs"
+path="res://.godot/imported/forge.png-01db05fd993a01667fc7eef441c0756d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icons/materials/wood_plank.png"
-dest_files=["res://.godot/imported/wood_plank.png-c135f0e115a175485baae893900ff4fb.ctex"]
+source_file="res://icons/furniture/forge.png"
+dest_files=["res://.godot/imported/forge.png-01db05fd993a01667fc7eef441c0756d.ctex"]
 
 [params]
 

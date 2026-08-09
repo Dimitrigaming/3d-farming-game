@@ -153,5 +153,8 @@ func _on_buy(item: ItemDefinition, qty_box: SpinBox) -> void:
 	var total = item.buy_price * qty
 	if not GameState.spend_money(total):
 		return
+	var inventory = get_tree().get_first_node_in_group("player_inventory_data")
+	if inventory == null:
+		return
 	for i in qty:
-		Inventory.add_item(item.id)
+		inventory.add_item(item.id)

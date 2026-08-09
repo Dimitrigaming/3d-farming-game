@@ -2,12 +2,13 @@ extends PanelContainer
 
 @export var is_hotbar_slot: bool = false
 var slot_index: int = -1
+var player_inventory: PlayerInventoryData = null
 
 func _ready() -> void:
 	mouse_entered.connect(_on_mouse_entered)
 
 func _get_array() -> Array:
-	return Inventory.hotbar_slots if is_hotbar_slot else Inventory.slots
+	return player_inventory.hotbar_slots if is_hotbar_slot else player_inventory.slots
 
 func _on_mouse_entered() -> void:
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and Input.is_key_pressed(KEY_SHIFT):
@@ -32,24 +33,24 @@ func _shift_click() -> void:
 			if chest_ui.chest_slots[i]["item_id"] == "":
 				chest_ui.chest_slots[i] = data.duplicate()
 				array[slot_index] = {"item_id": "", "amount": 0}
-				Inventory.inventory_changed.emit()
+				player_inventory.inventory_changed.emit()
 				chest_ui.refresh_chest()
 				return
 		return
 	# Default: move between hotbar and main inventory
 	if is_hotbar_slot:
-		for i in Inventory.slots.size():
-			if Inventory.slots[i]["item_id"] == "":
-				Inventory.slots[i] = data.duplicate()
-				Inventory.hotbar_slots[slot_index] = {"item_id": "", "amount": 0}
-				Inventory.inventory_changed.emit()
+		for i in player_inventory.slots.size():
+			if player_inventory.slots[i]["item_id"] == "":
+				player_inventory.slots[i] = data.duplicate()
+				player_inventory.hotbar_slots[slot_index] = {"item_id": "", "amount": 0}
+				player_inventory.inventory_changed.emit()
 				return
 	else:
-		for i in Inventory.hotbar_slots.size():
-			if Inventory.hotbar_slots[i]["item_id"] == "":
-				Inventory.hotbar_slots[i] = data.duplicate()
-				Inventory.slots[slot_index] = {"item_id": "", "amount": 0}
-				Inventory.inventory_changed.emit()
+		for i in player_inventory.hotbar_slots.size():
+			if player_inventory.hotbar_slots[i]["item_id"] == "":
+				player_inventory.hotbar_slots[i] = data.duplicate()
+				player_inventory.slots[slot_index] = {"item_id": "", "amount": 0}
+				player_inventory.inventory_changed.emit()
 				return
 
 func _get_drag_data(_pos: Vector2) -> Variant:
@@ -59,14 +60,7 @@ func _get_drag_data(_pos: Vector2) -> Variant:
 	if data["item_id"] == "":
 		return null
 
-	# Ghost preview
-	var preview = TextureRect.new()
-	preview.texture = get_node("Icon").texture
-	preview.custom_minimum_size = Vector2(40, 40)
-	preview.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	set_drag_preview(preview)
-
-	return {"from_slot": slot_index, "source": "hotbar" if is_hotbar_slot else "inventory"}
+	return {"from_slot": slot_index, "source": "hotbar" if is_hotbar_slot else "inventory", "icon": get_node("Icon").texture}
 
 func _can_drop_data(_pos: Vector2, data: Variant) -> bool:
 	return data is Dictionary and data.has("from_slot")
@@ -84,7 +78,7 @@ func _drop_data(_pos: Vector2, data: Variant) -> void:
 		var local_data = array[slot_index].duplicate()
 		chest_ui.chest_slots[from] = local_data
 		array[slot_index] = chest_data
-		Inventory.inventory_changed.emit()
+		player_inventory.inventory_changed.emit()
 		chest_ui.refresh_chest()
 	elif source == "craft_output":
 		# Craft output → inventory/hotbar (one-way: only pull crafted goods out)
@@ -96,24 +90,24 @@ func _drop_data(_pos: Vector2, data: Variant) -> void:
 		var output_slots = crafting_ui.current_station.output_slots
 		array[slot_index] = output_slots[from].duplicate()
 		output_slots[from] = {"item_id": "", "amount": 0}
-		Inventory.inventory_changed.emit()
+		player_inventory.inventory_changed.emit()
 		crafting_ui.refresh_output()
 	elif source == "hotbar" and not is_hotbar_slot:
 		# Hotbar → main inventory cross-swap
-		var hotbar_data = Inventory.hotbar_slots[from].duplicate()
-		var inv_data = Inventory.slots[slot_index].duplicate()
-		Inventory.hotbar_slots[from] = inv_data
-		Inventory.slots[slot_index] = hotbar_data
-		Inventory.inventory_changed.emit()
+		var hotbar_data = player_inventory.hotbar_slots[from].duplicate()
+		var inv_data = player_inventory.slots[slot_index].duplicate()
+		player_inventory.hotbar_slots[from] = inv_data
+		player_inventory.slots[slot_index] = hotbar_data
+		player_inventory.inventory_changed.emit()
 	elif source == "inventory" and is_hotbar_slot:
 		# Main inventory → hotbar cross-swap
-		var inv_data = Inventory.slots[from].duplicate()
-		var hotbar_data = Inventory.hotbar_slots[slot_index].duplicate()
-		Inventory.slots[from] = hotbar_data
-		Inventory.hotbar_slots[slot_index] = inv_data
-		Inventory.inventory_changed.emit()
+		var inv_data = player_inventory.slots[from].duplicate()
+		var hotbar_data = player_inventory.hotbar_slots[slot_index].duplicate()
+		player_inventory.slots[from] = hotbar_data
+		player_inventory.hotbar_slots[slot_index] = inv_data
+		player_inventory.inventory_changed.emit()
 	elif from != slot_index:
 		var tmp = array[from].duplicate()
 		array[from] = array[slot_index]
 		array[slot_index] = tmp
-		Inventory.inventory_changed.emit()
+		player_inventory.inventory_changed.emit()
