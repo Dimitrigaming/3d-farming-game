@@ -8,6 +8,7 @@ const RECIPE_ICON_SLOT_SCENE = preload("res://ui/recipe_icon_slot.tscn")
 
 @onready var workbench_layout: VBoxContainer = $WorkbenchLayout
 @onready var wb_recipe_grid: GridContainer = $WorkbenchLayout/TopRow/ItemsPanel/VBox/RecipeGridBg/RecipeGrid
+@onready var wb_recipes_label: Label = $WorkbenchLayout/TopRow/ItemsPanel/VBox/Title
 @onready var wb_inventory_anchor: Control = $WorkbenchLayout/InventoryPanel/InventoryVBox/GridAnchor
 @onready var wb_icon: TextureRect = $WorkbenchLayout/TopRow/DetailPanel/DetailVBox/Header/Icon
 @onready var wb_name: Label = $WorkbenchLayout/TopRow/DetailPanel/DetailVBox/Header/Name
@@ -16,6 +17,7 @@ const RECIPE_ICON_SLOT_SCENE = preload("res://ui/recipe_icon_slot.tscn")
 
 @onready var forge_layout: HBoxContainer = $ForgeLayout
 @onready var forge_recipe_grid: GridContainer = $ForgeLayout/RightPanel/RightVBox/RecipeGridBg/RecipeGrid
+@onready var forge_recipes_label: Label = $ForgeLayout/RightPanel/RightVBox/RecipesLabel
 @onready var forge_inventory_anchor: Control = $ForgeLayout/LeftPanel/LeftVBox/GridAnchor
 @onready var forge_output_grid: GridContainer = $ForgeLayout/LeftPanel/LeftVBox/OutputGridBg/OutputGrid
 @onready var forge_icon: TextureRect = $ForgeLayout/RightPanel/RightVBox/DetailVBox/Header/Icon
@@ -28,6 +30,7 @@ var _is_open: bool = false
 var _uses_output_buffer: bool = false
 var _recipe_slots: Array = []
 var _active_recipe_grid: GridContainer = null
+var _active_recipes_label: Label = null
 var _detail_icon: TextureRect = null
 var _detail_name: Label = null
 var _detail_desc: Label = null
@@ -75,6 +78,7 @@ func open_crafting(station) -> void:
 		workbench_layout.visible = false
 		forge_layout.visible = true
 		_active_recipe_grid = forge_recipe_grid
+		_active_recipes_label = forge_recipes_label
 		_detail_icon = forge_icon
 		_detail_name = forge_name
 		_detail_desc = forge_desc
@@ -85,6 +89,7 @@ func open_crafting(station) -> void:
 		forge_layout.visible = false
 		workbench_layout.visible = true
 		_active_recipe_grid = wb_recipe_grid
+		_active_recipes_label = wb_recipes_label
 		_detail_icon = wb_icon
 		_detail_name = wb_name
 		_detail_desc = wb_desc
@@ -156,14 +161,18 @@ func _populate_recipes() -> void:
 	_recipe_slots.clear()
 	var recipes = RecipeDB.recipes_for_station(current_station.station_type)
 	recipes.sort_custom(func(a, b): return a.name < b.name)
+	var station_levels = get_tree().get_first_node_in_group("player_station_levels")
 	for r in recipes:
 		var slot = RECIPE_ICON_SLOT_SCENE.instantiate()
 		_active_recipe_grid.add_child(slot)
 		slot.setup(r)
+		var locked = station_levels != null and not station_levels.meets_requirement(current_station.station_type, r.required_level)
+		slot.set_locked(locked, r.required_level)
 		slot.hovered.connect(_show_recipe_detail)
 		slot.clicked.connect(_on_recipe_clicked)
 		_recipe_slots.append(slot)
 	_update_queue_badges()
+	_update_level_label()
 	if recipes.size() > 0:
 		_show_recipe_detail(recipes[0])
 	else:
@@ -181,7 +190,11 @@ func _show_recipe_detail(recipe: RecipeDefinition) -> void:
 		return
 	_detail_icon.texture = recipe.icon
 	_detail_name.text = recipe.name
-	_detail_desc.text = recipe.description
+	var station_levels = get_tree().get_first_node_in_group("player_station_levels")
+	if station_levels != null and not station_levels.meets_requirement(current_station.station_type, recipe.required_level):
+		_detail_desc.text = "Requires %s level %d." % [current_station.station_type.capitalize(), recipe.required_level]
+	else:
+		_detail_desc.text = recipe.description
 	for ing in recipe.ingredients:
 		var have = _count_item(ing.item_id)
 		var def = ItemDB.get_item(ing.item_id)
@@ -217,6 +230,13 @@ func _on_recipe_clicked(recipe: RecipeDefinition) -> void:
 	current_station.craft(recipe.id, 1)
 	_show_recipe_detail(recipe)
 
+func _update_level_label() -> void:
+	if _active_recipes_label == null or current_station == null:
+		return
+	var station_levels = get_tree().get_first_node_in_group("player_station_levels")
+	var level = station_levels.get_level(current_station.station_type) if station_levels else 1
+	_active_recipes_label.text = "%s (Lv %d)" % [_active_recipes_label.text.get_slice(" (Lv", 0), level]
+
 func _on_queue_changed() -> void:
 	_update_queue_badges()
 
@@ -228,15 +248,19 @@ func _update_queue_badges() -> void:
 		counts[entry["recipe_id"]] = entry["count"]
 	var active_recipe_id = current_station.queue[0]["recipe_id"] if not current_station.queue.is_empty() else ""
 	var progress = current_station.get_craft_progress()
+	var station_levels = get_tree().get_first_node_in_group("player_station_levels")
 	for slot in _recipe_slots:
 		if not slot.recipe:
 			continue
 		slot.set_queue_count(counts.get(slot.recipe.id, 0))
+		var locked = station_levels != null and not station_levels.meets_requirement(current_station.station_type, slot.recipe.required_level)
+		slot.set_locked(locked, slot.recipe.required_level)
 		if active_recipe_id != "" and slot.recipe.id == active_recipe_id:
 			var remaining = max(slot.recipe.craft_time * (1.0 - progress), 0.0)
 			slot.set_progress(true, progress, remaining)
 		else:
 			slot.set_progress(false)
+	_update_level_label()
 
 func _refresh_output() -> void:
 	if current_station == null:

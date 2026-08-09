@@ -51,6 +51,10 @@ func craft(recipe_id: String, qty: int = 1) -> bool:
 	if inventory == null:
 		return false
 
+	var levels = get_tree().get_first_node_in_group("player_station_levels")
+	if levels and not levels.meets_requirement(station_type, recipe.required_level):
+		return false
+
 	for ingredient in recipe.ingredients:
 		if not inventory.has_item(ingredient.item_id, ingredient.amount * qty):
 			return false
@@ -105,6 +109,12 @@ func _on_craft_complete(recipe: RecipeDefinition) -> void:
 		if inventory:
 			inventory.add_item(recipe.output_item_id, recipe.output_amount)
 	output_changed.emit()
+
+	var levels = get_tree().get_first_node_in_group("player_station_levels")
+	if levels:
+		var output_def = ItemDB.get_item(recipe.output_item_id)
+		var value = output_def.sell_price if output_def else 1
+		levels.add_xp(station_type, max(1, value) * recipe.output_amount)
 
 	if not queue.is_empty():
 		queue[0]["count"] -= 1

@@ -15,3 +15,5 @@ extends Resource
 @export var station_type: String = "workbench"
 ## Seconds to craft. 0 = instant.
 @export var craft_time: float = 0.0
+## Station level (per-player, via PlayerStationLevels) required to craft this.
+@export var required_level: int = 1
