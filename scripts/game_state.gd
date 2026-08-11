@@ -6,6 +6,7 @@ signal print_job_added(job: Dictionary)
 signal print_job_completed(job: Dictionary)
 signal shop_xp_gained(amount: int, new_xp: int)
 signal shop_level_up(new_level: int)
+signal farm_parcel_unlocked(new_count: int)
 
 var money: float = 100000.0      # 500.0
 var blocks_unlocked: int = 0
@@ -52,6 +53,27 @@ func upgrade_production_floor() -> bool:
 		return false
 	production_floor_tier += 1
 	get_node_or_null("/root/GameLogger").info("GameState", "production floor upgraded to tier %d" % production_floor_tier)
+	return true
+
+## Shared farm land expansion -- parcel 0 (the starter plot) is unlocked by
+## default; the rest cost money and require the shared shop level to be high
+## enough, same shape as shop_floor_tier/production_floor_tier above.
+var farm_parcels_unlocked: int = 1
+const FARM_PARCEL_COSTS: Array[float] = [500.0, 1500.0, 3000.0]
+const FARM_PARCEL_LEVEL_REQ: Array[int] = [2, 4, 6]
+
+func can_unlock_farm_parcel() -> bool:
+	var idx = farm_parcels_unlocked - 1
+	return idx < FARM_PARCEL_COSTS.size() and shop_level >= FARM_PARCEL_LEVEL_REQ[idx]
+
+func unlock_farm_parcel() -> bool:
+	if not can_unlock_farm_parcel():
+		return false
+	if not spend_money(FARM_PARCEL_COSTS[farm_parcels_unlocked - 1]):
+		return false
+	farm_parcels_unlocked += 1
+	get_node_or_null("/root/GameLogger").info("GameState", "farm parcel unlocked -> total=%d" % farm_parcels_unlocked)
+	farm_parcel_unlocked.emit(farm_parcels_unlocked)
 	return true
 
 func get_next_unlock_price() -> int:

@@ -7,9 +7,16 @@ const TILLED = 2
 const GRID_SIZE = 20
 const LIB_PATH = "res://farm/farm_mesh_library.tres"
 
+## The painted farm area is split into a 2x2 layout of parcels (see
+## _compute_bounds/_parcel_index below). Parcel 0 (bottom-left of the
+## bounding box) starts unlocked; the rest require
+## GameState.unlock_farm_parcel() (money + shop level gate).
+const PARCEL_COUNT = 4
+
 var cell_state: Dictionary = {}
 var _plots: Dictionary = {}
 var _crops: Dictionary = {}
+var _parcel_markers: Dictionary = {}
 
 @onready var grid_map: GridMap = $GridMap
 
@@ -58,15 +65,86 @@ func _fill_grass() -> void:
 		for z in GRID_SIZE:
 			grid_map.set_cell_item(Vector3i(x, 0, z), GRASS)
 
+## Bounding box of the actually-painted farm area, computed at runtime --
+## the GridMap's real cell coordinates are whatever was hand-painted in the
+## editor (can be offset/negative), not necessarily 0..GRID_SIZE-1, so the
+## parcel split below is relative to this bounding box instead of assuming
+## fixed absolute coordinates.
+var _bounds_min: Vector3i = Vector3i.ZERO
+var _bounds_max: Vector3i = Vector3i.ZERO
+
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	add_to_group("farm_grid")
-	for cell in grid_map.get_used_cells():
+	var used_cells = grid_map.get_used_cells()
+	for cell in used_cells:
 		cell_state[cell] = grid_map.get_cell_item(cell)
+	_compute_bounds(used_cells)
+	# Parcel locking is temporarily disabled -- the bounding-box split doesn't
+	# reliably line up with the real painted farm shape, and this blocked
+	# tilling entirely last time it was tried. Re-enable _spawn_parcel_marker
+	# below (and the _is_parcel_unlocked() short-circuit) once the real DIRT
+	# cell coordinates have been verified in the editor.
+	# for parcel_index in range(1, PARCEL_COUNT):
+	# 	_spawn_parcel_marker(parcel_index)
+	GameState.farm_parcel_unlocked.connect(_on_farm_parcel_unlocked)
+
+func _compute_bounds(used_cells: Array) -> void:
+	if used_cells.is_empty():
+		return
+	_bounds_min = used_cells[0]
+	_bounds_max = used_cells[0]
+	for cell in used_cells:
+		_bounds_min.x = min(_bounds_min.x, cell.x)
+		_bounds_min.z = min(_bounds_min.z, cell.z)
+		_bounds_max.x = max(_bounds_max.x, cell.x)
+		_bounds_max.z = max(_bounds_max.z, cell.z)
+
+func _parcel_index(x: int, z: int) -> int:
+	var width = max(1, _bounds_max.x - _bounds_min.x + 1)
+	var depth = max(1, _bounds_max.z - _bounds_min.z + 1)
+	var px = 0 if (x - _bounds_min.x) < width / 2.0 else 1
+	var pz = 0 if (z - _bounds_min.z) < depth / 2.0 else 1
+	return px + pz * 2
+
+func _is_parcel_unlocked(_x: int, _z: int) -> bool:
+	# Temporarily disabled -- see the note in _ready(). Always unlocked until
+	# the parcel split is verified against the real farm layout.
+	return true
+
+func _parcel_center_cell(parcel_index: int) -> Vector3i:
+	var width = max(1, _bounds_max.x - _bounds_min.x + 1)
+	var depth = max(1, _bounds_max.z - _bounds_min.z + 1)
+	var px = parcel_index % 2
+	var pz = parcel_index / 2
+	var cx = _bounds_min.x + int(px * width / 2.0 + width / 4.0)
+	var cz = _bounds_min.z + int(pz * depth / 2.0 + depth / 4.0)
+	return Vector3i(cx, 0, cz)
+
+func _spawn_parcel_marker(parcel_index: int) -> void:
+	var marker_scene = load("res://farm/farm_parcel_marker.gd")
+	if marker_scene == null:
+		return
+	var marker = StaticBody3D.new()
+	marker.set_script(marker_scene)
+	marker.parcel_index = parcel_index
+	add_child(marker)
+	var cell = _parcel_center_cell(parcel_index)
+	var local_pos = grid_map.map_to_local(cell)
+	marker.position = Vector3(local_pos.x, 0.0, local_pos.z)
+	_parcel_markers[parcel_index] = marker
+
+func _on_farm_parcel_unlocked(new_count: int) -> void:
+	var unlocked_index = new_count - 1
+	if _parcel_markers.has(unlocked_index):
+		_parcel_markers[unlocked_index].queue_free()
+		_parcel_markers.erase(unlocked_index)
 
 func till_cell(x: int, z: int) -> void:
 	var key = Vector3i(x, 0, z)
+	if not _is_parcel_unlocked(x, z):
+		return
 	if cell_state.get(key, -1) != DIRT:
 		return
 	var plot_scene = load("res://models/farm/SM_Plot_1x1.tscn") as PackedScene
@@ -82,6 +160,8 @@ func till_cell(x: int, z: int) -> void:
 
 func plant_crop(x: int, z: int, seed_item_id: String) -> void:
 	var key = Vector3i(x, 0, z)
+	if not _is_parcel_unlocked(x, z):
+		return
 	if cell_state.get(key, -1) != TILLED:
 		return
 	if _crops.has(key):

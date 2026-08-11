@@ -209,9 +209,15 @@ func _do_left_action(item_id: String) -> void:
 	_last_acted_cell = cell
 	# play_swing() no-ops (and never emits swing_hit) when nothing's equipped,
 	# so only defer through the signal when there's an actual tool to animate.
+	# Hoe/shovel till/untill at the top of the windup (the visual "peak")
+	# instead of swing_hit, which fires later at the end of the outward
+	# swing motion -- that read as extra delay after the peak for tilling.
 	if equipper and effective_id != "hand" and equipper.has_method("play_swing") and equipper.has_signal("swing_hit"):
 		equipper.play_swing()
-		equipper.swing_hit.connect(action, CONNECT_ONE_SHOT)
+		if effective_id == "hoe" or effective_id == "shovel":
+			get_tree().create_timer(equipper.WINDUP_DURATION).timeout.connect(action, CONNECT_ONE_SHOT)
+		else:
+			equipper.swing_hit.connect(action, CONNECT_ONE_SHOT)
 	else:
 		action.call()
 

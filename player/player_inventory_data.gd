@@ -38,29 +38,47 @@ func _give_starter_tools() -> void:
 	inventory_changed.emit()
 
 func add_item(item_id: String, amount: int = 1, extra_data: Dictionary = {}) -> bool:
+	var def = ItemDB.get_item(item_id)
+	var max_stack = def.max_stack if def and def.max_stack > 0 else 99
+	var remaining = amount
+	var placed_any = false
+
 	# Per-instance data (e.g. rolled crystal tier/stat) forces its own slot --
 	# never stacks onto an existing slot even if the item_id matches.
 	if extra_data.is_empty():
-		# Try to stack onto existing slot first
+		# Top up any existing slots that still have room, capped at max_stack.
 		for slot in slots:
-			if slot["item_id"] == item_id:
-				slot["amount"] += amount
-				inventory_changed.emit()
-				item_acquired.emit(item_id, amount)
-				return true
-	# Find empty slot
-	for slot in slots:
-		if slot["item_id"] == "":
-			slot["item_id"] = item_id
-			slot["amount"] = amount
-			var def = ItemDB.get_item(item_id)
-			slot["durability"] = def.max_durability if def and def.max_durability > 0 else -1
-			for key in extra_data:
-				slot[key] = extra_data[key]
-			inventory_changed.emit()
-			item_acquired.emit(item_id, amount)
-			return true
-	return false  # inventory full
+			if remaining <= 0:
+				break
+			if slot["item_id"] == item_id and slot["amount"] < max_stack:
+				var space = max_stack - slot["amount"]
+				var take = min(space, remaining)
+				slot["amount"] += take
+				remaining -= take
+				placed_any = true
+
+	# Spill any leftover into empty slots, capped at max_stack per slot.
+	while remaining > 0:
+		var free_slot = null
+		for slot in slots:
+			if slot["item_id"] == "":
+				free_slot = slot
+				break
+		if free_slot == null:
+			break  # inventory full
+		var take = min(max_stack, remaining)
+		free_slot["item_id"] = item_id
+		free_slot["amount"] = take
+		free_slot["durability"] = def.max_durability if def and def.max_durability > 0 else -1
+		for key in extra_data:
+			free_slot[key] = extra_data[key]
+		remaining -= take
+		placed_any = true
+
+	if placed_any:
+		inventory_changed.emit()
+		item_acquired.emit(item_id, amount - remaining)
+	return placed_any
 
 func damage_tool(slot_index: int) -> void:
 	var slot = slots[slot_index]
