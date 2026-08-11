@@ -37,14 +37,17 @@ func _give_starter_tools() -> void:
 	add_item("coal_ore", 99)
 	inventory_changed.emit()
 
-func add_item(item_id: String, amount: int = 1) -> bool:
-	# Try to stack onto existing slot first
-	for slot in slots:
-		if slot["item_id"] == item_id:
-			slot["amount"] += amount
-			inventory_changed.emit()
-			item_acquired.emit(item_id, amount)
-			return true
+func add_item(item_id: String, amount: int = 1, extra_data: Dictionary = {}) -> bool:
+	# Per-instance data (e.g. rolled crystal tier/stat) forces its own slot --
+	# never stacks onto an existing slot even if the item_id matches.
+	if extra_data.is_empty():
+		# Try to stack onto existing slot first
+		for slot in slots:
+			if slot["item_id"] == item_id:
+				slot["amount"] += amount
+				inventory_changed.emit()
+				item_acquired.emit(item_id, amount)
+				return true
 	# Find empty slot
 	for slot in slots:
 		if slot["item_id"] == "":
@@ -52,6 +55,8 @@ func add_item(item_id: String, amount: int = 1) -> bool:
 			slot["amount"] = amount
 			var def = ItemDB.get_item(item_id)
 			slot["durability"] = def.max_durability if def and def.max_durability > 0 else -1
+			for key in extra_data:
+				slot[key] = extra_data[key]
 			inventory_changed.emit()
 			item_acquired.emit(item_id, amount)
 			return true
@@ -109,4 +114,4 @@ func swap_slots(a: int, b: int) -> void:
 	inventory_changed.emit()
 
 func _empty_slot() -> Dictionary:
-	return {"item_id": "", "amount": 0, "durability": -1}
+	return {"item_id": "", "amount": 0, "durability": -1, "sockets": []}

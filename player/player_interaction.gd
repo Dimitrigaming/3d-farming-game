@@ -197,12 +197,12 @@ func _do_left_action(item_id: String) -> void:
 				action = func():
 					var result = farm.chop_tree(cell.x, cell.z)
 					if not result.is_empty():
-						inventory.add_item(result["item_id"], result["amount"])
+						_grant_gather_result(result)
 			elif _hovered_is_harvestable:
 				action = func():
 					var result = farm.harvest_crop(cell.x, cell.z, effective_id)
 					if not result.is_empty():
-						inventory.add_item(result["item_id"], result["amount"])
+						_grant_gather_result(result)
 			else:
 				return
 
@@ -214,6 +214,14 @@ func _do_left_action(item_id: String) -> void:
 		equipper.swing_hit.connect(action, CONNECT_ONE_SHOT)
 	else:
 		action.call()
+
+func _grant_gather_result(result: Dictionary) -> void:
+	var equipper = get_tree().get_first_node_in_group("tool_equipper")
+	var perks = get_tree().get_first_node_in_group("player_gathering_perks")
+	var amount = GatherBonuses.apply_yield(result["amount"], inventory, equipper, perks)
+	inventory.add_item(result["item_id"], amount)
+	GatherBonuses.grant_gather_xp(result["item_id"], amount)
+	GatherBonuses.roll_and_grant_crystal(inventory, perks)
 
 func _do_right_action(item_id: String) -> void:
 	if item_id.ends_with("_seed") and inventory.has_item(item_id):

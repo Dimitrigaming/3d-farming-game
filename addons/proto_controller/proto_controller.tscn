@@ -13,8 +13,11 @@
 [ext_resource type="Script" uid="uid://dbggbheojko5w" path="res://player/player_inventory_data.gd" id="10_invdata"]
 [ext_resource type="PackedScene" uid="uid://b7e8cpcxfhqyt" path="res://ui/inventory_ui.tscn" id="11_invui"]
 [ext_resource type="PackedScene" uid="uid://hotbar001" path="res://ui/hotbar.tscn" id="12_hotbar"]
+[ext_resource type="PackedScene" uid="uid://cuqt0xxanvvib" path="res://ui/exp_bar.tscn" id="15_expbar"]
+[ext_resource type="PackedScene" path="res://ui/character_screen.tscn" id="16_charscreen"]
 [ext_resource type="Script" uid="uid://bjfa4yp4qp2wg" path="res://player/tool_equipper.gd" id="13_toolequip"]
 [ext_resource type="Script" path="res://player/player_station_levels.gd" id="14_stationlvl"]
+[ext_resource type="Script" path="res://player/player_gathering_perks.gd" id="17_gatherperks"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iof21"]
 albedo_color = Color(0.91806, 0.575202, 0.222449, 1)
@@ -69,6 +72,9 @@ script = ExtResource("10_invdata")
 
 [node name="PlayerStationLevels" type="Node" parent="."]
 script = ExtResource("14_stationlvl")
+
+[node name="PlayerGatheringPerks" type="Node" parent="."]
+script = ExtResource("17_gatherperks")
 
 [node name="ToolEquipper" type="Node3D" parent="." unique_id=-2072745074]
 script = ExtResource("13_toolequip")
@@ -135,3 +141,7 @@ horizontal_alignment = 1
 [node name="InventoryUI" parent="." unique_id=919419101 instance=ExtResource("11_invui")]
 
 [node name="Hotbar" parent="." unique_id=300000001 instance=ExtResource("12_hotbar")]
+
+[node name="ExpBar" parent="." instance=ExtResource("15_expbar")]
+
+[node name="CharacterScreen" parent="." instance=ExtResource("16_charscreen")]

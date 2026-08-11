@@ -28,3 +28,4 @@ enum Subcategory { NONE, LOG, PLANK, STONE, ORE, INGOT, GRAIN, VEGETABLE, FRUIT,
 @export var tool_category: String = ""  # "pickaxe", "axe", "hoe", etc.
 @export var mining_damage: int = 0      # damage dealt per swing to a mining node
 @export var max_durability: int = 0     # 0 = unbreakable
+@export var socket_count: int = 1       # enhancement crystal sockets, tools only

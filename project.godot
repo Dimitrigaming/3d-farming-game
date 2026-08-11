@@ -23,6 +23,8 @@ DebugConsole="*res://models/DebugConsole.tscn"
 Inventory="*uid://5h0114cq3f1h"
 ItemDB="*uid://5eshl5piammb"
 RecipeDB="*res://autoloads/recipe_db.gd"
+GatherPerkDB="*res://autoloads/gather_perk_db.gd"
+GatherBonuses="*res://autoloads/gather_bonuses.gd"
 GameManager="*uid://dr8508lgwdy53"
 CropDB="*res://autoloads/crop_db.gd"
 DeliveryManager="*res://autoloads/delivery_manager.gd"
@@ -143,6 +145,11 @@ console={
 inventory={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194306,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+character={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":67,"key_label":0,"unicode":99,"location":0,"echo":false,"script":null)
 ]
 }
 Hotbar_1={

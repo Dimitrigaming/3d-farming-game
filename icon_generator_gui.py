@@ -29,6 +29,8 @@ WINDOWS_BOLD_FONT_CANDIDATES = [
     r"C:\Windows\Fonts\arialbd.ttf",    # Arial Bold
 ]
 
+SETTINGS_PATH = Path(__file__).resolve().parent / "icon_generator_settings.json"
+
 _font_cache = {}
 
 
@@ -127,6 +129,27 @@ def render_icon(text, bg_color, text_color, font_path,
     return img.resize((icon_size, icon_size), Image.LANCZOS)
 
 
+def load_settings():
+    try:
+        return json.loads(SETTINGS_PATH.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
+def save_settings(bg_color, text_color, font_path):
+    try:
+        SETTINGS_PATH.write_text(
+            json.dumps({
+                "bg_color": bg_color,
+                "text_color": text_color,
+                "font_path": font_path,
+            }, indent=2),
+            encoding="utf-8",
+        )
+    except Exception:
+        pass  # non-critical; don't block the app on a settings-save failure
+
+
 # ---------------------------------------------------------------------------
 # GUI
 # ---------------------------------------------------------------------------
@@ -140,8 +163,12 @@ class IconGeneratorApp:
 
         self.font_path = resolve_default_font_path()  # None -> built-in fallback
         self.filename_dirty = False  # tracks whether user hand-edited the filename field
+        self._saved_settings = load_settings()
+        if self._saved_settings.get("font_path"):
+            self.font_path = self._saved_settings["font_path"]
 
         self._build_widgets()
+        root.protocol("WM_DELETE_WINDOW", self._on_close)
 
     # -- layout -------------------------------------------------------
 
@@ -153,7 +180,7 @@ class IconGeneratorApp:
 
         # BG color
         ttk.Label(top, text="BG color").grid(row=0, column=0, sticky="w")
-        self.bg_var = tk.StringVar(value="#4a4a4a")
+        self.bg_var = tk.StringVar(value=self._saved_settings.get("bg_color", "#4a4a4a"))
         bg_entry = ttk.Entry(top, textvariable=self.bg_var, width=12)
         bg_entry.grid(row=0, column=1, sticky="w", padx=(4, 4))
         self.bg_swatch = tk.Canvas(top, width=22, height=22, highlightthickness=1,
@@ -164,7 +191,7 @@ class IconGeneratorApp:
 
         # Font color
         ttk.Label(top, text="Font color").grid(row=1, column=0, sticky="w")
-        self.fg_var = tk.StringVar(value="#ffffff")
+        self.fg_var = tk.StringVar(value=self._saved_settings.get("text_color", "#ffffff"))
         fg_entry = ttk.Entry(top, textvariable=self.fg_var, width=12)
         fg_entry.grid(row=1, column=1, sticky="w", padx=(4, 4))
         self.fg_swatch = tk.Canvas(top, width=22, height=22, highlightthickness=1,
@@ -383,6 +410,10 @@ class IconGeneratorApp:
         self._update_count()
         self.status_var.set(f"Loaded {added} item(s) from {Path(path).name}")
 
+    def _on_close(self):
+        save_settings(self.bg_var.get().strip(), self.fg_var.get().strip(), self.font_path)
+        self.root.destroy()
+
     def _generate(self):
         rows = self.tree.get_children()
         if not rows:
@@ -413,6 +444,7 @@ class IconGeneratorApp:
         if failed:
             msg += "\n\nFailed:\n" + "\n".join(failed)
         self.status_var.set(f"Done — {ok} icon(s) saved to {out_dir}")
+        save_settings(bg_color, text_color, self.font_path)
         messagebox.showinfo("Generate Icons", msg)
 
 

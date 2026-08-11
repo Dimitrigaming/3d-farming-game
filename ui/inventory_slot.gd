@@ -68,12 +68,41 @@ func _get_drag_data(_pos: Vector2) -> Variant:
 	if data["item_id"] == "":
 		return null
 
-	return {"from_slot": slot_index, "source": "hotbar" if is_hotbar_slot else "inventory", "icon": get_node("Icon").texture}
+	return {"from_slot": slot_index, "source": "hotbar" if is_hotbar_slot else "inventory", "icon": get_node("Icon").texture, "item_id": data["item_id"]}
 
 func _can_drop_data(_pos: Vector2, data: Variant) -> bool:
 	return data is Dictionary and data.has("from_slot")
 
+## Dragging an enhancement crystal onto a tool slot with an open socket
+## consumes the crystal and permanently attaches it, instead of swapping.
+func _try_socket_crystal(data: Dictionary) -> bool:
+	if data.get("item_id", "") != "enhancement_crystal":
+		return false
+	var source = data.get("source", "inventory")
+	var source_array: Array
+	if source == "hotbar":
+		source_array = player_inventory.hotbar_slots
+	elif source == "inventory":
+		source_array = player_inventory.slots
+	else:
+		return false  # chest/craft_output crystals aren't supported yet
+
+	var target = _get_array()[slot_index]
+	var target_def = ItemDB.get_item(target["item_id"])
+	if target_def == null or target_def.type != ItemDefinition.ItemType.TOOL:
+		return false
+	if target["sockets"].size() >= target_def.socket_count:
+		return false
+
+	var crystal = source_array[data["from_slot"]]
+	target["sockets"].append({"tier": crystal["crystal_tier"], "stat": crystal["crystal_stat"], "value": crystal["crystal_value"]})
+	source_array[data["from_slot"]] = player_inventory._empty_slot()
+	player_inventory.inventory_changed.emit()
+	return true
+
 func _drop_data(_pos: Vector2, data: Variant) -> void:
+	if _try_socket_crystal(data):
+		return
 	var from = data["from_slot"]
 	var source = data.get("source", "inventory")
 	var array = _get_array()

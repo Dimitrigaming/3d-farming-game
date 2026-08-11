@@ -17,3 +17,4 @@ icon = ExtResource("1_icon")
 description = "Refined stone cut into a uniform block for crafting and building."
 output_item_id = "stone_block"
 ingredients = Array[ExtResource("2_f8h2l")]([SubResource("Resource_ing1")])
+required_level = 1

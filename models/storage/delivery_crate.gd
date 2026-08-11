@@ -16,12 +16,16 @@ var _chest_ui = null
 func _ready() -> void:
 	add_to_group("interactable")
 	add_to_group("delivery_crate")
+	add_to_group("chest")
 	chest_slots.resize(CRATE_SLOT_COUNT)
 	for i in CRATE_SLOT_COUNT:
 		chest_slots[i] = {"item_id": "", "amount": 0}
 
 func get_interact_hint() -> String:
 	return "Open Delivery Crate"
+
+func get_chest_title() -> String:
+	return "Delivery Chest"
 
 func interact() -> void:
 	var chest_ui = get_tree().get_first_node_in_group("chest_ui")
@@ -43,9 +47,6 @@ func refresh_ui() -> void:
 		for s in chest_slots:
 			chest_ui.chest_slots.append(s.duplicate())
 		chest_ui.refresh_chest()
-
-func get_move_hint() -> String:
-	return "Move"
 
 func get_lid_hint() -> String:
 	return "Close" if _open else "Open"

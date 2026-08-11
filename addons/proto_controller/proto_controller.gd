@@ -49,6 +49,16 @@ var look_rotation : Vector2
 var move_speed : float = 0.0
 var freeflying : bool = false
 
+## When false, movement/look/jump input is ignored but physics (gravity,
+## momentum) keeps running -- used while a UI menu is open so the player
+## doesn't freeze mid-air, unlike the old process_mode-disable approach.
+var input_enabled : bool = true
+
+func set_input_enabled(enabled: bool) -> void:
+	input_enabled = enabled
+	if not enabled:
+		mouse_captured = false
+
 ## IMPORTANT REFERENCES
 @onready var head: Node3D = $Head
 @onready var collider: CollisionShape3D = $Collider
@@ -76,6 +86,9 @@ func _set_layer_recursive(node: Node, layer: int) -> void:
 		_set_layer_recursive(child, layer)
 
 func _unhandled_input(event: InputEvent) -> void:
+	if not input_enabled:
+		return
+
 	# Mouse capturing
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		capture_mouse()
@@ -108,18 +121,20 @@ func _physics_process(delta: float) -> void:
 			velocity += get_gravity() * delta
 
 	# Apply jumping
-	if can_jump:
+	if can_jump and input_enabled:
 		if Input.is_action_just_pressed(input_jump) and is_on_floor():
 			velocity.y = jump_velocity
 
 	# Modify speed based on sprinting
-	if can_sprint and Input.is_action_pressed(input_sprint):
+	if can_sprint and input_enabled and Input.is_action_pressed(input_sprint):
 			move_speed = sprint_speed
 	else:
 		move_speed = base_speed
 
-	# Apply desired movement to velocity
-	if can_move:
+	# Apply desired movement to velocity. Note: velocity.y is left untouched
+	# here (even when input is disabled) so gravity keeps applying normally
+	# instead of freezing the player mid-air while a menu is open.
+	if can_move and input_enabled:
 		var input_dir := Input.get_vector(input_left, input_right, input_forward, input_back)
 		var move_dir := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		if move_dir:
@@ -129,8 +144,8 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, 0, move_speed)
 			velocity.z = move_toward(velocity.z, 0, move_speed)
 	else:
-		velocity.x = 0
-		velocity.y = 0
+		velocity.x = move_toward(velocity.x, 0, move_speed)
+		velocity.z = move_toward(velocity.z, 0, move_speed)
 	
 	# Use velocity to actually move
 	move_and_slide()

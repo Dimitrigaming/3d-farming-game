@@ -9,6 +9,7 @@ var _panel: Control = null
 var _is_open: bool = false
 
 var chest_grid: GridContainer = null
+var _title_label: Label = null
 
 func _ready() -> void:
 	add_to_group("chest_ui")
@@ -16,6 +17,7 @@ func _ready() -> void:
 	# Grab references before reparenting
 	_panel = $Panel
 	chest_grid = $Panel/VBox/ChestSection/ChestGrid
+	_title_label = $Panel/VBox/ChestTitle
 
 	# Move panel into inventory_ui's CanvasLayer so both panels share one
 	# render context — drag previews then always land on top of both panels
@@ -36,6 +38,7 @@ func _get_inventory_ui() -> CanvasLayer:
 
 func open(crate) -> void:
 	_current_crate = crate
+	_title_label.text = crate.get_chest_title() if crate.has_method("get_chest_title") else "Chest"
 	chest_slots.clear()
 	chest_slots.resize(CHEST_SLOT_COUNT)
 	for i in CHEST_SLOT_COUNT:
@@ -109,7 +112,7 @@ func _recapture_mouse() -> void:
 func _set_player_enabled(enabled: bool) -> void:
 	var controller = get_tree().get_first_node_in_group("proto_controller")
 	if controller:
-		controller.process_mode = Node.PROCESS_MODE_DISABLED if not enabled else Node.PROCESS_MODE_INHERIT
+		controller.set_input_enabled(enabled)
 
 func _set_crosshair_visible(show: bool) -> void:
 	var controller = get_tree().get_first_node_in_group("proto_controller")

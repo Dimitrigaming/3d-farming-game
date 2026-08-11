@@ -24,7 +24,7 @@ func _process(_delta: float) -> void:
 		_reenable_controller = false
 		var controller = get_tree().get_first_node_in_group("proto_controller")
 		if controller:
-			controller.process_mode = Node.PROCESS_MODE_INHERIT
+			controller.set_input_enabled(true)
 
 func _ready() -> void:
 	visible = false
@@ -50,7 +50,7 @@ func open_shop() -> void:
 	_set_panel_position(true)
 	var controller = get_tree().get_first_node_in_group("proto_controller")
 	if controller:
-		controller.process_mode = Node.PROCESS_MODE_DISABLED
+		controller.set_input_enabled(false)
 
 func close_shop() -> void:
 	visible = false

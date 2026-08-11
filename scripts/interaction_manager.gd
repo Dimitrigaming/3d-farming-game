@@ -89,7 +89,7 @@ func _process(delta: float) -> void:
 
 	if _tool_hold_active:
 		_tool_hold_timer += delta
-		if _tool_hold_timer >= TOOL_HIT_INTERVAL:
+		if _tool_hold_timer >= _current_tool_hit_interval():
 			_tool_hold_timer = 0.0
 			_swing_and_hit(current_target)
 
@@ -97,6 +97,14 @@ func _process(delta: float) -> void:
 
 func _is_product_shelf(target) -> bool:
 	return target != null and target.has_method("get_retrieve_hint")
+
+func _is_chest(target) -> bool:
+	return target != null and target.is_in_group("chest")
+
+func _current_tool_hit_interval() -> float:
+	var equipper = get_tree().get_first_node_in_group("tool_equipper")
+	var perks = get_tree().get_first_node_in_group("player_gathering_perks")
+	return GatherBonuses.apply_speed_interval(TOOL_HIT_INTERVAL, inventory, equipper, perks)
 
 ## Starts the swing animation and, if a target is given, defers the actual
 ## interact() call until the swing visually reaches its peak (swing_hit).
@@ -251,6 +259,9 @@ func _unhandled_input(event: InputEvent) -> void:
 					_shelf_lmb_active = true
 					_shelf_lmb_was_active = true
 					_shelf_lmb_timer = 0.0
+				elif not build_mode.active and _is_chest(current_target):
+					# Chests only open via [E] Interact, not left click.
+					_tool_interacted = true
 				elif not build_mode.active and current_target and current_target.has_method("interact"):
 					if current_target.has_method("try_trash"):
 						current_target.try_trash(player_inventory)

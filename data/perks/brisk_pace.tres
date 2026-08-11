@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GatherPerkDefinition" format=3]
+
+[ext_resource type="Script" path="res://autoloads/gather_perk_definition.gd" id="1_def"]
+
+[resource]
+script = ExtResource("1_def")
+id = "brisk_pace"
+name = "Brisk Pace"
+stat = "speed"
+value_per_point = 0.02
+description = "Each point speeds up harvest cadence against trees and rocks by 2%."

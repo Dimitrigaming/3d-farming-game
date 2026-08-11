@@ -4,9 +4,30 @@ signal money_changed(new_amount: float)
 signal license_unlocked(license_id: String)
 signal print_job_added(job: Dictionary)
 signal print_job_completed(job: Dictionary)
+signal shop_xp_gained(amount: int, new_xp: int)
+signal shop_level_up(new_level: int)
 
 var money: float = 100000.0      # 500.0
 var blocks_unlocked: int = 0
+
+## Shared shop level -- every player contributes to and sees the same
+## progress, earned from selling goods (register checkout, delivery orders).
+const SHOP_XP_PER_LEVEL: int = 100
+var shop_xp: int = 0
+var shop_level: int = 1
+
+func shop_xp_to_next_level() -> int:
+	return shop_level * SHOP_XP_PER_LEVEL
+
+func add_shop_xp(amount: int) -> void:
+	if amount <= 0:
+		return
+	shop_xp += amount
+	shop_xp_gained.emit(amount, shop_xp)
+	while shop_xp >= shop_level * SHOP_XP_PER_LEVEL:
+		shop_xp -= shop_level * SHOP_XP_PER_LEVEL
+		shop_level += 1
+		shop_level_up.emit(shop_level)
 
 var shop_floor_tier: int = 0
 var production_floor_tier: int = 0
@@ -58,6 +79,7 @@ func add_money(amount: float) -> void:
 	money += amount
 	get_node_or_null("/root/GameLogger").debug("GameState", "+$%.2f -> total $%.2f" % [amount, money])
 	money_changed.emit(money)
+	add_shop_xp(int(amount))
 
 func spend_money(amount: float) -> bool:
 	if money < amount:

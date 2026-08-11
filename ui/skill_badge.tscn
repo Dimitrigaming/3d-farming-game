@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://clmsp5kucgde4"]
+
+[ext_resource type="Script" uid="uid://ldt5uyga0tsc" path="res://ui/skill_badge.gd" id="1_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+bg_color = Color(0.16, 0.15, 0.14, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.38, 0.34, 0.6)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hover"]
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+bg_color = Color(0.22, 0.2, 0.18, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.784, 0.573, 0.165, 0.8)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_track"]
+bg_color = Color(0.08, 0.08, 0.08, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fill"]
+bg_color = Color(0.85, 0.55, 0.15, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="SkillBadge" type="Button" unique_id=1794576839]
+custom_minimum_size = Vector2(240, 64)
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_bg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hover")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+script = ExtResource("1_script")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1797946681]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 3
+
+[node name="VBox" type="VBoxContainer" parent="MarginContainer" unique_id=1779606416]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = -1
+
+[node name="TopRow" type="HBoxContainer" parent="MarginContainer/VBox" unique_id=1669242171]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/VBox/TopRow" unique_id=1073741825]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+stretch_mode = 4
+
+[node name="NameLabel" type="Label" parent="MarginContainer/VBox/TopRow" unique_id=917193321]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9, 0.88, 0.83, 1)
+theme_override_font_sizes/font_size = 14
+text = "Skill"
+
+[node name="LevelLabel" type="Label" parent="MarginContainer/VBox/TopRow" unique_id=1231531629]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.929, 0.784, 0.165, 1)
+theme_override_font_sizes/font_size = 14
+text = "Lv 1"
+horizontal_alignment = 2
+
+[node name="XPLabel" type="Label" parent="MarginContainer/VBox" unique_id=1073741826]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.63, 0.6, 1)
+theme_override_font_sizes/font_size = 11
+text = "0 / 100 XP"
+horizontal_alignment = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBox" unique_id=1966768123]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_track")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fill")
+show_percentage = false

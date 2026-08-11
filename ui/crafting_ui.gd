@@ -298,7 +298,7 @@ func _set_crosshair_visible(v: bool) -> void:
 func _set_player_enabled(enabled: bool) -> void:
 	var controller = get_tree().get_first_node_in_group("proto_controller")
 	if controller:
-		controller.process_mode = Node.PROCESS_MODE_INHERIT if enabled else Node.PROCESS_MODE_DISABLED
+		controller.set_input_enabled(enabled)
 
 func _recapture_mouse() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

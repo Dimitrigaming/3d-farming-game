@@ -69,6 +69,7 @@ func interact() -> void:
 	var inventory = get_tree().get_first_node_in_group("player_inventory_data")
 	if inventory == null:
 		return
+	var perks = get_tree().get_first_node_in_group("player_gathering_perks")
 
 	var damage = 1
 	if equipper.current_item_id != "":
@@ -78,16 +79,20 @@ func interact() -> void:
 				damage = def.mining_damage
 			else:
 				damage = max(1, int(def.mining_damage * wrong_tool_percent))
+	damage = GatherBonuses.apply_damage(damage, inventory, equipper, perks)
 
 	_hp -= damage
-	if equipper.current_slot_index >= 0:
+	if equipper.current_slot_index >= 0 and not GatherBonuses.should_spare_durability(inventory, equipper, perks):
 		inventory.damage_hotbar_tool(equipper.current_slot_index)
 	_update_hp_bar()
 
 	if _hp > 0:
 		return
 
-	inventory.add_item(wood_type, randi_range(drops_min, drops_max))
+	var amount = GatherBonuses.apply_yield(randi_range(drops_min, drops_max), inventory, equipper, perks)
+	inventory.add_item(wood_type, amount)
+	GatherBonuses.grant_gather_xp(wood_type, amount)
+	GatherBonuses.roll_and_grant_crystal(inventory, perks)
 	_despawn()
 
 func _despawn() -> void:

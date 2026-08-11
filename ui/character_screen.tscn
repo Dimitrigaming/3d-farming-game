@@ -1,0 +1,240 @@
+[gd_scene format=3 uid="uid://ctglc08fjecnp"]
+
+[ext_resource type="Script" uid="uid://brcoviahs6mx3" path="res://ui/character_screen.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bxle760hh7psa" path="res://icons/inventory/inventory_1x1_black.png" id="2_tex"]
+[ext_resource type="PackedScene" uid="uid://clmsp5kucgde4" path="res://ui/skill_badge.tscn" id="3_badge"]
+[ext_resource type="Texture2D" uid="uid://1dnfhcivtsus" path="res://icons/furniture/crafting_workbench.png" id="4_workbench_icon"]
+[ext_resource type="Texture2D" uid="uid://cfsjdoui5g3vs" path="res://icons/furniture/forge.png" id="5_forge_icon"]
+[ext_resource type="Texture2D" uid="uid://2e8mqln8v50f" path="res://icons/tools/pickaxe.png" id="6_gathering_icon"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBox_Panel"]
+texture = ExtResource("2_tex")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[node name="CharacterScreen" type="CanvasLayer" unique_id=1144004009]
+visible = false
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="." unique_id=337531476]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="TabRow" type="HBoxContainer" parent="." unique_id=1016655958]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -420.0
+offset_top = -312.0
+offset_right = 420.0
+offset_bottom = -284.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+
+[node name="InventoryTabButton" type="Button" parent="TabRow" unique_id=1823863380]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+tooltip_text = "Inventory (I)"
+text = "Inventory"
+
+[node name="SkillsTabButton" type="Button" parent="TabRow" unique_id=1445191847]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "Skills"
+
+[node name="MainPanel" type="PanelContainer" parent="." unique_id=829913466]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -420.0
+offset_top = -280.0
+offset_right = 420.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBox_Panel")
+
+[node name="MainVBox" type="VBoxContainer" parent="MainPanel" unique_id=2060967637]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="MainPanel/MainVBox" unique_id=1043925282]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Trade Skills"
+horizontal_alignment = 1
+
+[node name="ShopLevelLabel" type="Label" parent="MainPanel/MainVBox" unique_id=1103746577]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.929, 0.784, 0.165, 1)
+theme_override_font_sizes/font_size = 14
+text = "Shop Level: 1  (0 / 100 XP)"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MainPanel/MainVBox" unique_id=103495955]
+layout_mode = 2
+
+[node name="Scroll" type="ScrollContainer" parent="MainPanel/MainVBox" unique_id=605696135]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SectionsVBox" type="VBoxContainer" parent="MainPanel/MainVBox/Scroll" unique_id=291299475]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="CraftingStationsLabel" type="Label" parent="MainPanel/MainVBox/Scroll/SectionsVBox" unique_id=619462997]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.929, 0.784, 0.165, 1)
+theme_override_font_sizes/font_size = 14
+text = "CRAFTING STATIONS"
+
+[node name="CraftingStationsGrid" type="GridContainer" parent="MainPanel/MainVBox/Scroll/SectionsVBox" unique_id=1016655955]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="WorkbenchBadge" parent="MainPanel/MainVBox/Scroll/SectionsVBox/CraftingStationsGrid" unique_id=1998359676 instance=ExtResource("3_badge")]
+layout_mode = 2
+station_type = "workbench"
+display_name = "Workbench"
+station_icon = ExtResource("4_workbench_icon")
+
+[node name="ForgeBadge" parent="MainPanel/MainVBox/Scroll/SectionsVBox/CraftingStationsGrid" unique_id=1638332881 instance=ExtResource("3_badge")]
+layout_mode = 2
+station_type = "forge"
+display_name = "Forge"
+station_icon = ExtResource("5_forge_icon")
+
+[node name="GatheringLabel" type="Label" parent="MainPanel/MainVBox/Scroll/SectionsVBox" unique_id=1016655956]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.929, 0.784, 0.165, 1)
+theme_override_font_sizes/font_size = 14
+text = "GATHERING"
+
+[node name="GatheringGrid" type="GridContainer" parent="MainPanel/MainVBox/Scroll/SectionsVBox" unique_id=1016655957]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="GatheringBadge" parent="MainPanel/MainVBox/Scroll/SectionsVBox/GatheringGrid" unique_id=1998359677 instance=ExtResource("3_badge")]
+layout_mode = 2
+station_type = "gathering"
+display_name = "Gathering"
+station_icon = ExtResource("6_gathering_icon")
+
+[node name="ListPanel" type="PanelContainer" parent="." unique_id=128596849]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -420.0
+offset_top = -280.0
+offset_right = 420.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBox_Panel")
+
+[node name="ListVBox" type="VBoxContainer" parent="ListPanel" unique_id=2128747954]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HeaderRow" type="HBoxContainer" parent="ListPanel/ListVBox" unique_id=904860114]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BackButton" type="Button" parent="ListPanel/ListVBox/HeaderRow" unique_id=2092462984]
+layout_mode = 2
+focus_mode = 0
+text = "< Back"
+
+[node name="ListTitle" type="Label" parent="ListPanel/ListVBox/HeaderRow" unique_id=1014888247]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Forge"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="ListPanel/ListVBox" unique_id=895355093]
+layout_mode = 2
+
+[node name="Scroll" type="ScrollContainer" parent="ListPanel/ListVBox" unique_id=421664606]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RecipeList" type="VBoxContainer" parent="ListPanel/ListVBox/Scroll" unique_id=1709681602]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="PerkPanel" type="PanelContainer" parent="." unique_id=128596850]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -420.0
+offset_top = -280.0
+offset_right = 420.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBox_Panel")
+
+[node name="PerkVBox" type="VBoxContainer" parent="PerkPanel" unique_id=2128747955]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HeaderRow" type="HBoxContainer" parent="PerkPanel/PerkVBox" unique_id=904860115]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PerkBackButton" type="Button" parent="PerkPanel/PerkVBox/HeaderRow" unique_id=2092462985]
+layout_mode = 2
+focus_mode = 0
+text = "< Back"
+
+[node name="PerkTitle" type="Label" parent="PerkPanel/PerkVBox/HeaderRow" unique_id=1014888248]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Gathering"
+horizontal_alignment = 1
+
+[node name="PointsLabel" type="Label" parent="PerkPanel/PerkVBox" unique_id=1103746578]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.929, 0.784, 0.165, 1)
+theme_override_font_sizes/font_size = 14
+text = "Available Points: 0"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PerkPanel/PerkVBox" unique_id=895355094]
+layout_mode = 2
+
+[node name="Scroll" type="ScrollContainer" parent="PerkPanel/PerkVBox" unique_id=421664607]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PerkList" type="VBoxContainer" parent="PerkPanel/PerkVBox/Scroll" unique_id=1709681603]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6

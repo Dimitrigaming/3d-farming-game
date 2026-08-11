@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cxr7ot8wukig6" path="res://models/building/store_market_stall.tscn" id="9_6f7pb"]
 [ext_resource type="PackedScene" uid="uid://bjfpjgnnff8aa" path="res://world/nodes/rocks/iron_mining_node.tscn" id="9_bhm4d"]
 [ext_resource type="Script" uid="uid://dotpf7hw6an7l" path="res://farm/farm_grid.gd" id="9_farmgrid"]
+[ext_resource type="PackedScene" uid="uid://uhv0h7cpuhwh" path="res://world/nodes/rocks/CoalMiningNode.tscn" id="9_fhlij"]
 [ext_resource type="MeshLibrary" uid="uid://cqybby57028pa" path="res://farm/farm_mesh_library.tres" id="9_ud676"]
 [ext_resource type="PackedScene" uid="uid://rt8yd0sov1ag" path="res://world/nodes/rocks/Copper_mining_node.tscn" id="10_bhm4d"]
 [ext_resource type="PackedScene" uid="uid://7xs3c52kdiqc" path="res://world/nodes/rocks/Diamond_mining_node.tscn" id="11_fhlij"]
@@ -89,9 +90,14 @@ drops_max = 4
 
 [node name="CopperMiningNode" parent="Resources" unique_id=100000001 instance=ExtResource("10_bhm4d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.400001, 0, -5.5)
+stage_hp = 45
 
 [node name="DiamondMiningNode" parent="Resources" unique_id=100000002 instance=ExtResource("11_fhlij")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6000001, 0, -5.2000003)
+
+[node name="CoalMiningNode" parent="Resources" unique_id=579830693 instance=ExtResource("9_fhlij")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.699997, 0, -8.6)
+stage_hp = 30
 
 [node name="TreeNode" parent="Resources" unique_id=989707605 instance=ExtResource("12_fhlij")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.700001, 0, 9.400001)

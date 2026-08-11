@@ -21,6 +21,23 @@ func _ready() -> void:
 	inventory.inventory_changed.connect(_refresh)
 	_assign_indices()
 	call_deferred("_refresh")
+	$TabRow/InventoryTabButton.pressed.connect(_on_inventory_tab_pressed)
+	$TabRow/SkillsTabButton.pressed.connect(_on_skills_tab_pressed)
+
+func _on_inventory_tab_pressed() -> void:
+	var character_screen = get_node_or_null("../CharacterScreen")
+	if character_screen and character_screen.visible:
+		character_screen.close(false)
+	if not visible:
+		open()
+
+func _on_skills_tab_pressed() -> void:
+	var character_screen = get_node_or_null("../CharacterScreen")
+	if character_screen == null:
+		return
+	if visible:
+		close(false)
+	character_screen.open()
 
 func _assign_indices() -> void:
 	var grid_slots = grid.get_children()
@@ -66,15 +83,27 @@ func _unhandled_input(event: InputEvent) -> void:
 				# Let the crafting UI close itself on this same key instead
 				# of also opening the plain inventory behind it.
 				return
-		visible = not visible
 		if visible:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			_set_player_enabled(false)
+			close()
 		else:
-			call_deferred("_recapture_mouse")
-			_reenable_controller = true
-		_set_crosshair_visible(not visible)
+			open()
 		get_viewport().set_input_as_handled()
+
+## recapture: false when switching straight into another menu (e.g. the
+## Skills tab) so the deferred mouse-recapture from closing doesn't race
+## against the panel that's opening right after and steal the mouse back.
+func close(recapture: bool = true) -> void:
+	visible = false
+	if recapture:
+		call_deferred("_recapture_mouse")
+		_reenable_controller = true
+	_set_crosshair_visible(true)
+
+func open() -> void:
+	visible = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	_set_player_enabled(false)
+	_set_crosshair_visible(false)
 
 func _recapture_mouse() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -83,25 +112,34 @@ func _recapture_mouse() -> void:
 
 func _set_player_enabled(enabled: bool) -> void:
 	if controller:
-		controller.process_mode = Node.PROCESS_MODE_DISABLED if not enabled else Node.PROCESS_MODE_INHERIT
+		controller.set_input_enabled(enabled)
 
 func show_for_shop() -> void:
 	visible = true
+	$TabRow.visible = false
 	var panel = $Panel
 	panel.offset_left = -600.0
 	panel.offset_top = -260.0
 	panel.offset_right = -12.0
+	# Shrink-wrap to the panel's own natural content height instead of
+	# stretching to match the shop panel -- top stays pinned to -260 (same
+	# as the shop panel's own offset_top) so the two line up regardless of
+	# how tall either one's content ends up being.
+	panel.offset_bottom = panel.offset_top + panel.get_combined_minimum_size().y
 
 func hide_for_shop() -> void:
 	visible = false
+	$TabRow.visible = true
 	var panel = $Panel
 	panel.offset_left = IDLE_LEFT
 	panel.offset_top = IDLE_TOP
 	panel.offset_right = IDLE_RIGHT
+	panel.offset_bottom = IDLE_BOTTOM
 
 func show_for_chest() -> void:
 	_chest_mode = true
 	visible = true
+	$TabRow.visible = false
 	var panel = $Panel
 	panel.offset_left = IDLE_LEFT
 	panel.offset_top = -88.0
@@ -111,6 +149,7 @@ func show_for_chest() -> void:
 func hide_for_chest() -> void:
 	_chest_mode = false
 	visible = false
+	$TabRow.visible = true
 	var panel = $Panel
 	panel.offset_left = IDLE_LEFT
 	panel.offset_top = IDLE_TOP

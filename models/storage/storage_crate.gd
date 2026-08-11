@@ -15,6 +15,7 @@ var _tween: Tween = null
 
 func _ready() -> void:
 	add_to_group("interactable")
+	add_to_group("chest")
 	chest_slots.resize(CHEST_SLOT_COUNT)
 	for i in CHEST_SLOT_COUNT:
 		chest_slots[i] = {"item_id": "", "amount": 0}
