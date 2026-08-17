@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b23qou8l0tade"]
+
+[ext_resource type="Script" uid="uid://0flesgotelnf" path="res://farm/farm_expansion_area.gd" id="1_script"]
+
+[node name="FarmExpansionArea" type="Node3D" unique_id=1798601876]
+script = ExtResource("1_script")

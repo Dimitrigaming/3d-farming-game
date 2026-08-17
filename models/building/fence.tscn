@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bq4hqj80owff5"]
+
+[ext_resource type="Texture2D" uid="uid://dv5b5tp80w2qc" path="res://models/textures/wood_grain_toon.png" id="1_uhpms"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_phjg2"]
+albedo_texture = ExtResource("1_uhpms")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3xd07"]
+size = Vector3(2.2, 1.4, 0.2)
+
+[node name="Fence" type="Node3D" unique_id=349965074]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=426280098]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+size = Vector3(0.2, 1.4, 0.2)
+material = SubResource("StandardMaterial3D_phjg2")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=105743468]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.7, 0)
+size = Vector3(0.2, 1.4, 0.2)
+material = SubResource("StandardMaterial3D_phjg2")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=588268580]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.2, 0)
+size = Vector3(1.9, 0.2, 0.05)
+material = SubResource("StandardMaterial3D_phjg2")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=35439808]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.70000005, 0)
+size = Vector3(1.9, 0.2, 0.05)
+material = SubResource("StandardMaterial3D_phjg2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=945745929]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=265471412]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.7, 2.9802322e-08)
+shape = SubResource("BoxShape3D_3xd07")

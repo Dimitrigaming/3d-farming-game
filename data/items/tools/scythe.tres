@@ -7,14 +7,13 @@
 [resource]
 script = ExtResource("3_3i3qt")
 id = "scythe"
-name = "Iron Scythe"
+name = "Rusty Scythe"
 icon = ExtResource("2_rsorx")
 type = 5
 max_stack = 1
 buy_price = 100
-description = "Iron scythe. Harvests crops efficiently."
+description = "A worn starter scythe. Harvests a narrow strip of crops at once."
 equip_scene = ExtResource("1_ep4cc")
-
 tool_category = "scythe"
-mining_damage = 0
 max_durability = 100
+harvest_sweep_width = 3.0

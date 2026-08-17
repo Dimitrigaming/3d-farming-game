@@ -2,11 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://tcebtxcbhcvr" path="res://materials/grass.png" id="1_ua13n"]
 [ext_resource type="Texture2D" uid="uid://c8pf8iv305mby" path="res://materials/dirt.png" id="2_lgodx"]
+[ext_resource type="Texture2D" uid="uid://bwht6xw7vmbvq" path="res://materials/dark_grass.png" id="3_lgodx"]
+[ext_resource type="Texture2D" uid="uid://cwnlaiunjru8l" path="res://models/textures/grass_2.png" id="4_bxbdk"]
+[ext_resource type="Texture2D" uid="uid://c4a70bc1poa40" path="res://models/textures/grass_leaves.png" id="5_m3nel"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2dadc"]
 albedo_texture = ExtResource("1_ua13n")
 
-[sub_resource type="BoxMesh" id="BoxMesh_bxbdk"]
+[sub_resource type="BoxMesh" id="BoxMesh_ua13n"]
 material = SubResource("StandardMaterial3D_2dadc")
 size = Vector3(1, 0.05, 1)
 
@@ -17,9 +20,30 @@ albedo_texture = ExtResource("2_lgodx")
 material = SubResource("StandardMaterial3D_m3nel")
 size = Vector3(1, 0.05, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bxbdk"]
+albedo_texture = ExtResource("3_lgodx")
+
+[sub_resource type="BoxMesh" id="BoxMesh_m3nel"]
+material = SubResource("StandardMaterial3D_bxbdk")
+size = Vector3(1, 0.05, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efvjd"]
+albedo_texture = ExtResource("4_bxbdk")
+
+[sub_resource type="BoxMesh" id="BoxMesh_aj6q1"]
+material = SubResource("StandardMaterial3D_efvjd")
+size = Vector3(1, 0.05, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_48p10"]
+albedo_texture = ExtResource("5_m3nel")
+
+[sub_resource type="BoxMesh" id="BoxMesh_t5qew"]
+material = SubResource("StandardMaterial3D_48p10")
+size = Vector3(1, 0.05, 1)
+
 [resource]
 item/0/name = "grass"
-item/0/mesh = SubResource("BoxMesh_bxbdk")
+item/0/mesh = SubResource("BoxMesh_ua13n")
 item/0/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/0/mesh_cast_shadow = 1
 item/0/shapes = []
@@ -32,3 +56,24 @@ item/1/mesh_cast_shadow = 1
 item/1/shapes = []
 item/1/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/1/navigation_layers = 1
+item/2/name = "dark_grass"
+item/2/mesh = SubResource("BoxMesh_m3nel")
+item/2/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/2/mesh_cast_shadow = 1
+item/2/shapes = []
+item/2/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/2/navigation_layers = 1
+item/3/name = "grass2"
+item/3/mesh = SubResource("BoxMesh_aj6q1")
+item/3/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/3/mesh_cast_shadow = 1
+item/3/shapes = []
+item/3/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/3/navigation_layers = 1
+item/4/name = "grass_leaves"
+item/4/mesh = SubResource("BoxMesh_t5qew")
+item/4/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/4/mesh_cast_shadow = 1
+item/4/shapes = []
+item/4/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/4/navigation_layers = 1

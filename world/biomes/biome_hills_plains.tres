@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="TerrainBiome" format=3]
+
+[ext_resource type="Script" path="res://world/terrain_biome.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+biome_name = "Hills Plains"
+base_height = 2.0
+amplitude_multiplier = 0.4
+grass_texture_id = 5
+rock_texture_id = 4
+rock_height_threshold = 20.0
+rock_slope_threshold = 0.55

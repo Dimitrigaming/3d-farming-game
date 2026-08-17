@@ -25,7 +25,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_aopim"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_b7d8i"]
 resource_name = "NewLuaStudios_Plants_039"
 _surfaces = [{
 "aabb": AABB(-2.0527253, -0.00011116383, -2.161018, 3.8395514, 3.5567057, 3.0924165),
@@ -44,33 +44,25 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_lspwd")
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_jq8tk"]
-height = 1.0
-radius = 0.27
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_ller6"]
-height = 1.0
-radius = 0.25
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_6fhyq"]
-size = Vector3(0.8, 0.2, 1.1)
+size = Vector3(1.3727906, 0.089257814, 1.1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3xd07"]
+height = 1.9869385
+radius = 0.36621094
 
 [node name="Tree" type="Node3D" unique_id=1370917877]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
-[node name="Tree" type="MeshInstance3D" parent="." unique_id=479208142]
-mesh = SubResource("ArrayMesh_aopim")
+[node name="SM_Apple_Stage5" type="MeshInstance3D" parent="." unique_id=2115868680]
+mesh = SubResource("ArrayMesh_b7d8i")
 
 [node name="TreeStaticBody" type="StaticBody3D" parent="." unique_id=566434976]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TreeStaticBody" unique_id=1739957665]
-transform = Transform3D(0.9848077, -0.17364818, 0, 0.17364818, 0.9848077, 0, 0, 0, 1, -0.1, 0.5, -0.3)
-shape = SubResource("CylinderShape3D_jq8tk")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="TreeStaticBody" unique_id=120685899]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -0.18682408, 1.2924038, -0.3)
-shape = SubResource("CylinderShape3D_ller6")
-
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="TreeStaticBody" unique_id=176528668]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -1.4901161e-08, 0.100000024, -0.049999952)
+transform = Transform3D(0.59905905, 0, 0.8007048, 0, 0.99999994, 0, -0.8007047, 0, 0.5990591, 0.09255463, 0.044628933, 0.06718938)
 shape = SubResource("BoxShape3D_6fhyq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TreeStaticBody" unique_id=2132638816]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.059650242, 1.003626, -0.20695719)
+shape = SubResource("CylinderShape3D_3xd07")

@@ -1,0 +1,7 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://c3s5tr8kajm4p" path="res://world/nodes/trees/TreeNode.tscn" id="1_base"]
+[ext_resource type="PackedScene" uid="uid://cick3hcgr23xa" path="res://world/props/tree2.tscn" id="2_tree"]
+
+[node name="Tree2Node" instance=ExtResource("1_base")]
+tree_scene = ExtResource("2_tree")

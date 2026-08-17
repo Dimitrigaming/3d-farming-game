@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://l2le6fri1kvt"]
+
+[ext_resource type="Script" uid="uid://btgn76pocojbu" path="res://farm/farm_fence_post.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dv5b5tp80w2qc" path="res://models/textures/wood_grain_toon.png" id="2_8dmnb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_post"]
+size = Vector3(0.15, 1.2, 0.15)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_post"]
+transparency = 1
+albedo_color = Color(0.8509804, 0.54901963, 0.14901961, 1)
+albedo_texture = ExtResource("2_8dmnb")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_post"]
+size = Vector3(0.9, 1.2, 0.9)
+
+[node name="FarmFencePost" type="StaticBody3D" unique_id=393362915]
+script = ExtResource("1_script")
+
+[node name="Post" type="MeshInstance3D" parent="." unique_id=1747473580]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+mesh = SubResource("BoxMesh_post")
+surface_material_override/0 = SubResource("StandardMaterial3D_post")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1488385260]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+shape = SubResource("BoxShape3D_post")

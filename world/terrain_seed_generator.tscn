@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/terrain_seed_generator.gd" id="1_script"]
+
+[node name="TerrainSeedGenerator" type="Node3D"]
+script = ExtResource("1_script")

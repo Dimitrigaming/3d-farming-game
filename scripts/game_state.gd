@@ -56,20 +56,29 @@ func upgrade_production_floor() -> bool:
 	return true
 
 ## Shared farm land expansion -- parcel 0 (the starter plot) is unlocked by
-## default; the rest cost money and require the shared shop level to be high
-## enough, same shape as shop_floor_tier/production_floor_tier above.
+## default; every parcel after that is purely a money sink (no level gate),
+## with cost climbing geometrically so later expansions require real profit,
+## not just grinding levels. Unbounded -- place as many
+## farm/farm_expansion_area.tscn instances as you want, each with its own
+## sequential parcel_index.
 var farm_parcels_unlocked: int = 1
-const FARM_PARCEL_COSTS: Array[float] = [500.0, 1500.0, 3000.0]
-const FARM_PARCEL_LEVEL_REQ: Array[int] = [2, 4, 6]
+const FARM_PARCEL_BASE_COST: float = 1000.0
+const FARM_PARCEL_COST_MULTIPLIER: float = 3.0
+
+func get_farm_parcel_cost(parcel_index: int) -> float:
+	return FARM_PARCEL_BASE_COST * pow(FARM_PARCEL_COST_MULTIPLIER, parcel_index - 1)
 
 func can_unlock_farm_parcel() -> bool:
-	var idx = farm_parcels_unlocked - 1
-	return idx < FARM_PARCEL_COSTS.size() and shop_level >= FARM_PARCEL_LEVEL_REQ[idx]
+	return money >= get_farm_parcel_cost(farm_parcels_unlocked)
 
 func unlock_farm_parcel() -> bool:
-	if not can_unlock_farm_parcel():
-		return false
-	if not spend_money(FARM_PARCEL_COSTS[farm_parcels_unlocked - 1]):
+	return unlock_farm_parcel_with_cost(get_farm_parcel_cost(farm_parcels_unlocked))
+
+## Same as unlock_farm_parcel(), but for a sign that overrides the default
+## geometric cost with its own hand-set price (see farm_parcel_marker.gd's
+## price_override).
+func unlock_farm_parcel_with_cost(cost: float) -> bool:
+	if not spend_money(cost):
 		return false
 	farm_parcels_unlocked += 1
 	get_node_or_null("/root/GameLogger").info("GameState", "farm parcel unlocked -> total=%d" % farm_parcels_unlocked)

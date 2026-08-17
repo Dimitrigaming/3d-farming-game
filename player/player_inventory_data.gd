@@ -98,22 +98,33 @@ func damage_hotbar_tool(slot_index: int) -> void:
 		hotbar_slots[slot_index] = _empty_slot()
 	inventory_changed.emit()
 
+## Removes up to `amount` total across every matching stack (inventory then
+## hotbar), not just the first one -- previously this only touched the first
+## matching slot, which could under-remove (or silently "succeed" without
+## actually removing everything) whenever a stack was split across slots.
 func remove_item(item_id: String, amount: int = 1) -> bool:
+	var remaining = amount
 	for i in slots.size():
+		if remaining <= 0:
+			break
 		if slots[i]["item_id"] == item_id:
-			slots[i]["amount"] -= amount
+			var take = min(slots[i]["amount"], remaining)
+			slots[i]["amount"] -= take
+			remaining -= take
 			if slots[i]["amount"] <= 0:
 				slots[i] = _empty_slot()
-			inventory_changed.emit()
-			return true
 	for i in hotbar_slots.size():
+		if remaining <= 0:
+			break
 		if hotbar_slots[i]["item_id"] == item_id:
-			hotbar_slots[i]["amount"] -= amount
+			var take = min(hotbar_slots[i]["amount"], remaining)
+			hotbar_slots[i]["amount"] -= take
+			remaining -= take
 			if hotbar_slots[i]["amount"] <= 0:
 				hotbar_slots[i] = _empty_slot()
-			inventory_changed.emit()
-			return true
-	return false
+	if remaining < amount:
+		inventory_changed.emit()
+	return remaining == 0
 
 func has_item(item_id: String, amount: int = 1) -> bool:
 	var total := 0

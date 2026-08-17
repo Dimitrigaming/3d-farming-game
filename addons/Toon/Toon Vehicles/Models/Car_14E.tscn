@@ -1,8 +1,11 @@
 [gd_scene format=4 uid="uid://bln8lewy5vllt"]
 
+[ext_resource type="Texture2D" uid="uid://qfh73l7yrgyu" path="res://addons/Toon/Toon Vehicles/Textures/Car_14E_D.png" id="1_ipx3b"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1gm43"]
 resource_name = "Car_14E_D"
 vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_ipx3b")
 emission_enabled = true
 emission = Color(0.9063318, 0.9063318, 0.9063318, 1)
 emission_energy_multiplier = 0.0

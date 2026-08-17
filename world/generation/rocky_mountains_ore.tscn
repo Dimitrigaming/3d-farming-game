@@ -1,0 +1,49 @@
+﻿[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://bjmv86b8p7fwm" path="res://world/nodes/node_painter.tscn" id="1_base"]
+[ext_resource type="Script" uid="uid://ct2wai5dsctpk" path="res://world/nodes/weighted_scene.gd" id="2_ws"]
+[ext_resource type="PackedScene" uid="uid://bbch4qcy3131l" path="res://world/nodes/ores/Stone_mining_node.tscn" id="3_r"]
+[ext_resource type="PackedScene" uid="uid://rt8yd0sov1ag" path="res://world/nodes/ores/Copper_mining_node.tscn" id="4_r"]
+[ext_resource type="PackedScene" uid="uid://bjfpjgnnff8aa" path="res://world/nodes/ores/Iron_mining_node.tscn" id="5_r"]
+[ext_resource type="PackedScene" uid="uid://uhv0h7cpuhwh" path="res://world/nodes/ores/Coal_Mining_Node.tscn" id="6_r"]
+[ext_resource type="PackedScene" uid="uid://7xs3c52kdiqc" path="res://world/nodes/ores/Diamond_mining_node.tscn" id="7_r"]
+
+[sub_resource type="Resource" id="WS_1"]
+script = ExtResource("2_ws")
+scene = ExtResource("3_r")
+weight = 25
+
+[sub_resource type="Resource" id="WS_2"]
+script = ExtResource("2_ws")
+scene = ExtResource("4_r")
+weight = 25
+
+[sub_resource type="Resource" id="WS_3"]
+script = ExtResource("2_ws")
+scene = ExtResource("5_r")
+weight = 25
+
+[sub_resource type="Resource" id="WS_4"]
+script = ExtResource("2_ws")
+scene = ExtResource("6_r")
+weight = 15
+
+[sub_resource type="Resource" id="WS_5"]
+script = ExtResource("2_ws")
+scene = ExtResource("7_r")
+weight = 10
+
+[node name="RockyMountainsOre" instance=ExtResource("1_base")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -600, 20, -600)
+size = Vector3(800, 60, 800)
+scenes = Array[ExtResource("2_ws")]([SubResource("WS_1"), SubResource("WS_2"), SubResource("WS_3"), SubResource("WS_4"), SubResource("WS_5")])
+min_spacing = 4
+fill_attempts = 220
+noise_scale = 0.05
+density_threshold = -0.1
+cluster_chance = 0.25
+cluster_size_min = 3
+cluster_size_max = 6
+cluster_radius = 4
+noise_seed = 201
+placement_seed = 201

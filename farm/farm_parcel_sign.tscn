@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c164xgfwfuxca"]
+
+[ext_resource type="Script" uid="uid://cl64w7aainmv2" path="res://farm/farm_parcel_marker.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dv5b5tp80w2qc" path="res://models/textures/wood_grain_toon.png" id="2_4cswm"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_post"]
+size = Vector3(0.3, 2, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_post"]
+transparency = 1
+albedo_texture = ExtResource("2_4cswm")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_post"]
+size = Vector3(0.3, 2, 0.3)
+
+[node name="FarmParcelSign" type="StaticBody3D" unique_id=1792449697]
+script = ExtResource("1_script")
+
+[node name="Post" type="MeshInstance3D" parent="." unique_id=311625815]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_post")
+surface_material_override/0 = SubResource("StandardMaterial3D_post")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=689859344]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_post")
+
+[node name="PriceLabel" type="Label3D" parent="." unique_id=1362661949]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 0)
+billboard = 1
+no_depth_test = true
+modulate = Color(1, 0.85, 0.4, 1)
+text = "Unlock Parcel"

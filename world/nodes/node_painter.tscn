@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bjmv86b8p7fwm"]
+
+[ext_resource type="Script" uid="uid://8ycindd2jctw" path="res://world/nodes/node_painter.gd" id="1_script"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dwbtc"]
+transparency = 1
+albedo_color = Color(0.43529412, 1, 1, 0.23529412)
+
+[node name="NodePainter" type="CSGBox3D" unique_id=412429347]
+material = SubResource("StandardMaterial3D_dwbtc")
+script = ExtResource("1_script")

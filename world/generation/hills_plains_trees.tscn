@@ -1,0 +1,37 @@
+﻿[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://bjmv86b8p7fwm" path="res://world/nodes/node_painter.tscn" id="1_base"]
+[ext_resource type="Script" uid="uid://ct2wai5dsctpk" path="res://world/nodes/weighted_scene.gd" id="2_ws"]
+[ext_resource type="PackedScene" uid="uid://c3s5tr8kajm4p" path="res://world/nodes/trees/TreeNode.tscn" id="3_r"]
+[ext_resource type="PackedScene" path="res://world/nodes/trees/Tree2Node.tscn" id="4_r"]
+[ext_resource type="PackedScene" path="res://world/nodes/trees/Tree3Node.tscn" id="5_r"]
+
+[sub_resource type="Resource" id="WS_1"]
+script = ExtResource("2_ws")
+scene = ExtResource("3_r")
+weight = 33
+
+[sub_resource type="Resource" id="WS_2"]
+script = ExtResource("2_ws")
+scene = ExtResource("4_r")
+weight = 33
+
+[sub_resource type="Resource" id="WS_3"]
+script = ExtResource("2_ws")
+scene = ExtResource("5_r")
+weight = 34
+
+[node name="HillsPlainsTrees" instance=ExtResource("1_base")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -600, 20, 600)
+size = Vector3(800, 60, 800)
+scenes = Array[ExtResource("2_ws")]([SubResource("WS_1"), SubResource("WS_2"), SubResource("WS_3")])
+min_spacing = 5
+fill_attempts = 150
+noise_scale = 0.05
+density_threshold = 0
+cluster_chance = 0.1
+cluster_size_min = 2
+cluster_size_max = 3
+cluster_radius = 4
+noise_seed = 401
+placement_seed = 401

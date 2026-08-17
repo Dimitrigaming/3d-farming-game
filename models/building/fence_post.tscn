@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dra10m83mcmiu"]
+
+[ext_resource type="Texture2D" uid="uid://dv5b5tp80w2qc" path="res://models/textures/wood_grain_toon.png" id="1_3k81n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_phjg2"]
+albedo_texture = ExtResource("1_3k81n")
+
+[node name="FencePost" type="Node3D" unique_id=349965074]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=426280098]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+size = Vector3(0.2, 1.4, 0.2)
+material = SubResource("StandardMaterial3D_phjg2")

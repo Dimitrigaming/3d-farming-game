@@ -102,29 +102,41 @@ func _generate_order() -> void:
 		"reward": reward,
 	})
 
+## Fulfills an order from the shared delivery crate first, falling back to
+## the player's own inventory for whatever the crate is short on.
 func try_fulfill_order(order: Dictionary) -> bool:
 	var crate = get_tree().get_first_node_in_group("delivery_crate")
-	if crate == null:
-		return false
+	var inventory = get_tree().get_first_node_in_group("player_inventory_data")
 	var needed: String = order["item_id"]
 	var amount: int = order["amount"]
-	var total_found: int = 0
-	for slot in crate.chest_slots:
-		if slot["item_id"] == needed:
-			total_found += slot["amount"]
-	if total_found < amount:
-		return false
-	var to_remove: int = amount
-	for i in crate.chest_slots.size():
-		if to_remove <= 0:
-			break
-		if crate.chest_slots[i]["item_id"] == needed:
-			var take = min(crate.chest_slots[i]["amount"], to_remove)
-			crate.chest_slots[i]["amount"] -= take
-			to_remove -= take
-			if crate.chest_slots[i]["amount"] <= 0:
-				crate.chest_slots[i] = {"item_id": "", "amount": 0}
-	crate.refresh_ui()
+
+	var crate_found: int = 0
+	if crate:
+		for slot in crate.chest_slots:
+			if slot["item_id"] == needed:
+				crate_found += slot["amount"]
+	var from_crate: int = min(crate_found, amount)
+	var from_inventory: int = amount - from_crate
+
+	if from_inventory > 0 and (inventory == null or not inventory.has_item(needed, from_inventory)):
+		return false  # crate + inventory together still can't cover it
+
+	if from_crate > 0:
+		var to_remove: int = from_crate
+		for i in crate.chest_slots.size():
+			if to_remove <= 0:
+				break
+			if crate.chest_slots[i]["item_id"] == needed:
+				var take = min(crate.chest_slots[i]["amount"], to_remove)
+				crate.chest_slots[i]["amount"] -= take
+				to_remove -= take
+				if crate.chest_slots[i]["amount"] <= 0:
+					crate.chest_slots[i] = {"item_id": "", "amount": 0}
+		crate.refresh_ui()
+
+	if from_inventory > 0:
+		inventory.remove_item(needed, from_inventory)
+
 	GameState.add_money(order["reward"])
 	active_orders.erase(order)
 	_next_order_timer = randf_range(MIN_ORDER_INTERVAL, MAX_ORDER_INTERVAL)

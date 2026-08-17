@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TerrainBiome" format=3 uid="uid://twag0fcs4skr"]
+
+[ext_resource type="Script" uid="uid://c0lv0bnmmft3b" path="res://world/terrain_biome.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+biome_name = "Rocky Mountains"
+base_height = 25.0
+amplitude_multiplier = 1.7
+rock_height_threshold = 5.0
+rock_slope_threshold = 0.2

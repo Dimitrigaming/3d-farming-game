@@ -39,7 +39,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot-inspector-lock-main/plugin.cfg", "res://addons/sidewalk_editor/plugin.cfg", "res://addons/terrain_3d/plugin.cfg", "res://addons/tiled_plane/plugin.cfg")
+enabled=PackedStringArray("res://addons/farm_expansion_editor/plugin.cfg", "res://addons/godot-inspector-lock-main/plugin.cfg", "res://addons/sidewalk_editor/plugin.cfg", "res://addons/terrain_3d/plugin.cfg", "res://addons/tiled_plane/plugin.cfg")
 
 [filesystem]
 

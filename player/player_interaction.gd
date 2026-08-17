@@ -12,6 +12,7 @@ var _left_held: bool = false
 var _right_held: bool = false
 var _last_acted_cell: Vector3i = Vector3i(-1, -1, -1)
 var _hovered_fruit: FruitPickable = null
+var _hovered_grass: CuttableGrass = null
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -78,6 +79,7 @@ func _process(_delta: float) -> void:
 	if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
 		_current_interactable = null
 		_hovered_fruit = null
+		_hovered_grass = null
 		_left_held = false
 		_right_held = false
 		return
@@ -85,6 +87,7 @@ func _process(_delta: float) -> void:
 	var hit = get_collider()
 
 	_hovered_fruit = null
+	_hovered_grass = null
 	_current_interactable = _find_interactable(hit)
 	if _current_interactable != null:
 		if _prompt_label and _current_interactable.has_method("get_interact_hint"):
@@ -97,6 +100,22 @@ func _process(_delta: float) -> void:
 		if _prompt_label:
 			_prompt_label.text = "[LMB] Pick"
 			_prompt_label.visible = true
+		return
+
+	if hit is CuttableGrass:
+		var equipper_tool = get_tree().get_first_node_in_group("tool_equipper")
+		if equipper_tool and _tool_category(equipper_tool.current_item_id) == "scythe":
+			_hovered_grass = hit
+			if _prompt_label:
+				_prompt_label.text = "[LMB] Cut"
+				_prompt_label.visible = true
+		return
+
+	# Crop interaction -- crops carry their own Area3D collider now (see
+	# planted_crop.gd), so you have to actually be looking at the plant,
+	# not just at whichever farm tile the raycast happens to land on.
+	if hit is PlantedCrop:
+		_hover_crop(hit)
 		return
 
 	if hit == null:
@@ -129,28 +148,6 @@ func _process(_delta: float) -> void:
 			if item_id.ends_with("_seed") and state == farm.TILLED and farm.get_crop(cell.x, cell.z) == null:
 				highlight_color = Color(0.2, 1.0, 0.4, 0.5)
 				valid = true
-
-	# Crop interaction — driven by the crop's own harvest_tools list
-	if not valid and state == farm.TILLED:
-		var crop = farm.get_crop(cell.x, cell.z)
-		if crop and crop.crop_def:
-			var effective_id = item_id if item_id != "" else "hand"
-			if effective_id in crop.crop_def.harvest_tools:
-				if crop.crop_def.is_tree:
-					# Tree: axe chops and destroys
-					highlight_color = Color(0.6, 0.35, 0.1, 0.6)
-					valid = true
-					if _prompt_label:
-						_prompt_label.text = "[LMB] Chop"
-						_prompt_label.visible = true
-				elif crop.is_ready_to_harvest():
-					highlight_color = Color(1.0, 0.9, 0.1, 0.6)
-					valid = true
-					_hovered_is_harvestable = true
-					var is_primary = crop.crop_def.harvest_tools.size() > 0 and effective_id == crop.crop_def.harvest_tools[0]
-					if _prompt_label:
-						_prompt_label.text = "[LMB] Harvest" + (" +" + str(crop.crop_def.primary_yield_bonus) if is_primary and crop.crop_def.primary_yield_bonus > 0 else "")
-						_prompt_label.visible = true
 
 	if valid:
 		(_highlight.material_override as StandardMaterial3D).albedo_color = highlight_color
@@ -191,13 +188,15 @@ func _do_left_action(item_id: String) -> void:
 				return
 			# Check if the hovered crop accepts this tool
 			var crop = farm.get_crop(cell.x, cell.z)
-			if crop == null or crop.crop_def == null or effective_id not in crop.crop_def.harvest_tools:
+			if crop == null or crop.crop_def == null or not _tool_can_harvest(crop.crop_def, effective_id):
 				return
 			if crop.crop_def.is_tree:
 				action = func():
 					var result = farm.chop_tree(cell.x, cell.z)
 					if not result.is_empty():
 						_grant_gather_result(result)
+			elif _hovered_is_harvestable and _tool_category(effective_id) == "scythe":
+				action = func(): _harvest_scythe_area(farm, cell, effective_id)
 			elif _hovered_is_harvestable:
 				action = func():
 					var result = farm.harvest_crop(cell.x, cell.z, effective_id)
@@ -220,6 +219,55 @@ func _do_left_action(item_id: String) -> void:
 			equipper.swing_hit.connect(action, CONNECT_ONE_SHOT)
 	else:
 		action.call()
+
+## True if tool_id can harvest crop_def -- either it's listed by exact item
+## id (existing per-crop data), or its tool_category matches an entry,
+## which is what lets scythe_rusty/scythe_copper/scythe_iron etc. all
+## satisfy a crop's harvest_tools = ["scythe", "hand"] without editing
+## every crop resource for each new tier.
+func _tool_can_harvest(crop_def: CropDefinition, tool_id: String) -> bool:
+	for entry in crop_def.harvest_tools:
+		if tool_id == entry or _tool_category(tool_id) == entry:
+			return true
+	return false
+
+func _tool_category(tool_id: String) -> String:
+	var def = ItemDB.get_item(tool_id)
+	return def.tool_category if def else ""
+
+## Scythe harvests the hovered crop plus any other ready, scythe-harvestable
+## crop inside a width x depth rectangle centered on the hovered crop and
+## oriented to the camera's look direction (width = side-to-side, depth =
+## toward/away from the player). Dimensions come from the equipped scythe
+## tier's own ItemDefinition (harvest_sweep_width/depth) -- everything else
+## (axe, hand, other tools) stays single-target via harvest_crop() directly.
+func _harvest_scythe_area(farm, center: Vector3i, tool_id: String) -> void:
+	var item_def = ItemDB.get_item(tool_id)
+	var width: float = item_def.harvest_sweep_width if item_def else 1.0
+	var depth: float = item_def.harvest_sweep_depth if item_def else 1.0
+
+	var center_world: Vector3 = farm.grid_map.map_to_local(center)
+	var cam_basis := global_transform.basis
+	var right := Vector3(cam_basis.x.x, 0.0, cam_basis.x.z).normalized()
+	var forward := Vector3(-cam_basis.z.x, 0.0, -cam_basis.z.z).normalized()
+
+	var reach := int(ceil(maxf(width, depth) / 2.0)) + 1
+	for dx in range(-reach, reach + 1):
+		for dz in range(-reach, reach + 1):
+			var cell = center + Vector3i(dx, 0, dz)
+			var crop = farm.get_crop(cell.x, cell.z)
+			if crop == null or crop.crop_def == null or not _tool_can_harvest(crop.crop_def, tool_id):
+				continue
+			if crop.crop_def.is_tree or not crop.is_ready_to_harvest():
+				continue
+			var offset: Vector3 = farm.grid_map.map_to_local(cell) - center_world
+			if absf(offset.dot(right)) > width / 2.0 + 0.01:
+				continue
+			if absf(offset.dot(forward)) > depth / 2.0 + 0.01:
+				continue
+			var result = farm.harvest_crop(cell.x, cell.z, tool_id)
+			if not result.is_empty():
+				_grant_gather_result(result)
 
 func _grant_gather_result(result: Dictionary) -> void:
 	var equipper = get_tree().get_first_node_in_group("tool_equipper")
@@ -254,6 +302,16 @@ func _unhandled_input(event: InputEvent) -> void:
 			_hovered_fruit = null
 			get_viewport().set_input_as_handled()
 			return
+		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT and _hovered_grass != null:
+			var grass = _hovered_grass
+			var equipper = get_tree().get_first_node_in_group("tool_equipper")
+			if equipper and equipper.has_method("play_swing") and equipper.has_signal("swing_hit"):
+				equipper.play_swing()
+				equipper.swing_hit.connect(func(): grass.cut(), CONNECT_ONE_SHOT)
+			else:
+				grass.cut()
+			get_viewport().set_input_as_handled()
+			return
 		if event.pressed:
 			if _hovered_farm == null or _hovered_cell == Vector3i(-1, -1, -1):
 				return
@@ -265,6 +323,44 @@ func _unhandled_input(event: InputEvent) -> void:
 				_do_left_action(item_id)
 			elif event.button_index == MOUSE_BUTTON_RIGHT:
 				_do_right_action(item_id)
+
+## Resolves hover state for a crop hit directly via its own collider
+## (see planted_crop.gd) -- driven by the crop's own harvest_tools list,
+## same rules the old tile-scan crop branch used.
+func _hover_crop(crop: PlantedCrop) -> void:
+	var farm = get_tree().get_first_node_in_group("farm_grid")
+	if farm == null or crop.crop_def == null:
+		return
+	var equipper = get_tree().get_first_node_in_group("tool_equipper")
+	var item_id = equipper.current_item_id if equipper else ""
+	var effective_id = item_id if item_id != "" else "hand"
+	if not _tool_can_harvest(crop.crop_def, effective_id):
+		return
+
+	var highlight_color: Color
+	var valid := false
+
+	if crop.crop_def.is_tree:
+		highlight_color = Color(0.6, 0.35, 0.1, 0.6)
+		valid = true
+		if _prompt_label:
+			_prompt_label.text = "[LMB] Chop"
+			_prompt_label.visible = true
+	elif crop.is_ready_to_harvest():
+		highlight_color = Color(1.0, 0.9, 0.1, 0.6)
+		valid = true
+		_hovered_is_harvestable = true
+		var is_primary = crop.crop_def.harvest_tools.size() > 0 and (effective_id == crop.crop_def.harvest_tools[0] or _tool_category(effective_id) == crop.crop_def.harvest_tools[0])
+		if _prompt_label:
+			_prompt_label.text = "[LMB] Harvest" + (" +" + str(crop.crop_def.primary_yield_bonus) if is_primary and crop.crop_def.primary_yield_bonus > 0 else "")
+			_prompt_label.visible = true
+
+	if valid:
+		(_highlight.material_override as StandardMaterial3D).albedo_color = highlight_color
+		_highlight.global_position = _cell_to_world(farm, crop.cell)
+		_highlight.visible = true
+		_hovered_cell = crop.cell
+		_hovered_farm = farm
 
 func _world_to_cell(farm: Node3D, world_pos: Vector3) -> Vector3i:
 	var local = farm.grid_map.to_local(world_pos)

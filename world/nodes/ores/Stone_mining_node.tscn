@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bbch4qcy3131l"]
+
+[ext_resource type="PackedScene" uid="uid://b5tlx5ppf888v" path="res://world/nodes/ores/MiningNode.tscn" id="1_base"]
+[ext_resource type="PackedScene" uid="uid://b4m3retrto8im" path="res://addons/MiningPack/SM_Rock_Ore_Base_01.tscn" id="2_qmnas"]
+[ext_resource type="PackedScene" uid="uid://grmxw6gfmc5y" path="res://addons/MiningPack/SM_Rock_Ore_Base_02.tscn" id="3_ut8kn"]
+[ext_resource type="PackedScene" uid="uid://dm4vdjghd07d6" path="res://addons/MiningPack/SM_Rock_Ore_Base_03.tscn" id="4_874tn"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_qmnas"]
+viewport_path = NodePath("SubViewport")
+
+[node name="StoneMiningNode" unique_id=100000002 instance=ExtResource("1_base")]
+stage_hp = 20
+stage_scenes = Array[PackedScene]([ExtResource("2_qmnas"), ExtResource("3_ut8kn"), ExtResource("4_874tn")])
+
+[node name="Sprite3D" parent="." index="3" unique_id=935891383]
+texture = SubResource("ViewportTexture_qmnas")

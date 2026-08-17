@@ -29,3 +29,9 @@ enum Subcategory { NONE, LOG, PLANK, STONE, ORE, INGOT, GRAIN, VEGETABLE, FRUIT,
 @export var mining_damage: int = 0      # damage dealt per swing to a mining node
 @export var max_durability: int = 0     # 0 = unbreakable
 @export var socket_count: int = 1       # enhancement crystal sockets, tools only
+
+## Scythe-tier AoE harvest footprint, in meters, centered on the crop you
+## click and oriented to your look direction (width = side-to-side, depth =
+## toward/away from you). 1x1 = single-target, same as every other tool.
+@export var harvest_sweep_width: float = 1.0
+@export var harvest_sweep_depth: float = 1.0

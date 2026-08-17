@@ -1,0 +1,145 @@
+﻿[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://bjmv86b8p7fwm" path="res://world/nodes/node_painter.tscn" id="1_base"]
+[ext_resource type="Script" uid="uid://ct2wai5dsctpk" path="res://world/nodes/weighted_scene.gd" id="2_ws"]
+[ext_resource type="PackedScene" uid="uid://7u78evcxbioa" path="res://world/nodes/rocks/Rock_Boulder_1A.tscn" id="3_r"]
+[ext_resource type="PackedScene" uid="uid://hda4mpt3rq0w" path="res://world/nodes/rocks/Rock_Boulder_1B.tscn" id="4_r"]
+[ext_resource type="PackedScene" uid="uid://hcbeyk04p3i3" path="res://world/nodes/rocks/Rock_Boulder_2A.tscn" id="5_r"]
+[ext_resource type="PackedScene" uid="uid://batu14d0eg17e" path="res://world/nodes/rocks/Rock_Boulder_2B.tscn" id="6_r"]
+[ext_resource type="PackedScene" uid="uid://d3mwf5hqcv42i" path="res://world/nodes/rocks/Rock_Large_1A.tscn" id="7_r"]
+[ext_resource type="PackedScene" uid="uid://csct5fpxoqx5m" path="res://world/nodes/rocks/Rock_Large_1B.tscn" id="8_r"]
+[ext_resource type="PackedScene" uid="uid://c3nburpsusjlg" path="res://world/nodes/rocks/Rock_Large_2A.tscn" id="9_r"]
+[ext_resource type="PackedScene" uid="uid://btw8brfxsve4j" path="res://world/nodes/rocks/Rock_Large_2B.tscn" id="10_r"]
+[ext_resource type="PackedScene" uid="uid://d1rhfd2erc6gr" path="res://world/nodes/rocks/Rock_Large_3A.tscn" id="11_r"]
+[ext_resource type="PackedScene" uid="uid://chx6r71k8bof2" path="res://world/nodes/rocks/Rock_Large_3B.tscn" id="12_r"]
+[ext_resource type="PackedScene" uid="uid://ddow75lfenbah" path="res://world/nodes/rocks/Rock_Large_4A.tscn" id="13_r"]
+[ext_resource type="PackedScene" uid="uid://dq68jktdpy4t2" path="res://world/nodes/rocks/Rock_Large_4B.tscn" id="14_r"]
+[ext_resource type="PackedScene" uid="uid://2n3klteoxrdq" path="res://world/nodes/rocks/Rock_Large_5A.tscn" id="15_r"]
+[ext_resource type="PackedScene" uid="uid://dagk6ckre6kt1" path="res://world/nodes/rocks/Rock_Large_5B.tscn" id="16_r"]
+[ext_resource type="PackedScene" uid="uid://lkk3jirbrusv" path="res://world/nodes/rocks/Rock_Cluster_2A.tscn" id="17_r"]
+[ext_resource type="PackedScene" uid="uid://cwaaw08pn1xfy" path="res://world/nodes/rocks/Rock_Cluster_2B.tscn" id="18_r"]
+[ext_resource type="PackedScene" uid="uid://bnleoodytdr2u" path="res://world/nodes/rocks/Rock_Cluster_2C.tscn" id="19_r"]
+[ext_resource type="PackedScene" uid="uid://bl2epw4bk52sj" path="res://world/nodes/rocks/Rock_Cluster_3A.tscn" id="20_r"]
+[ext_resource type="PackedScene" uid="uid://hmsghaljb2v4" path="res://world/nodes/rocks/Rock_Cluster_3B.tscn" id="21_r"]
+[ext_resource type="PackedScene" uid="uid://kk5d6jjaqd3x" path="res://world/nodes/rocks/Rock_Cluster_3C.tscn" id="22_r"]
+[ext_resource type="PackedScene" uid="uid://edfmv6elt23q" path="res://world/nodes/rocks/Rock_Cluster_3D.tscn" id="23_r"]
+
+[sub_resource type="Resource" id="WS_1"]
+script = ExtResource("2_ws")
+scene = ExtResource("3_r")
+weight = 3
+
+[sub_resource type="Resource" id="WS_2"]
+script = ExtResource("2_ws")
+scene = ExtResource("4_r")
+weight = 3
+
+[sub_resource type="Resource" id="WS_3"]
+script = ExtResource("2_ws")
+scene = ExtResource("5_r")
+weight = 3
+
+[sub_resource type="Resource" id="WS_4"]
+script = ExtResource("2_ws")
+scene = ExtResource("6_r")
+weight = 3
+
+[sub_resource type="Resource" id="WS_5"]
+script = ExtResource("2_ws")
+scene = ExtResource("7_r")
+weight = 8
+
+[sub_resource type="Resource" id="WS_6"]
+script = ExtResource("2_ws")
+scene = ExtResource("8_r")
+weight = 8
+
+[sub_resource type="Resource" id="WS_7"]
+script = ExtResource("2_ws")
+scene = ExtResource("9_r")
+weight = 8
+
+[sub_resource type="Resource" id="WS_8"]
+script = ExtResource("2_ws")
+scene = ExtResource("10_r")
+weight = 8
+
+[sub_resource type="Resource" id="WS_9"]
+script = ExtResource("2_ws")
+scene = ExtResource("11_r")
+weight = 8
+
+[sub_resource type="Resource" id="WS_10"]
+script = ExtResource("2_ws")
+scene = ExtResource("12_r")
+weight = 8
+
+[sub_resource type="Resource" id="WS_11"]
+script = ExtResource("2_ws")
+scene = ExtResource("13_r")
+weight = 8
+
+[sub_resource type="Resource" id="WS_12"]
+script = ExtResource("2_ws")
+scene = ExtResource("14_r")
+weight = 8
+
+[sub_resource type="Resource" id="WS_13"]
+script = ExtResource("2_ws")
+scene = ExtResource("15_r")
+weight = 8
+
+[sub_resource type="Resource" id="WS_14"]
+script = ExtResource("2_ws")
+scene = ExtResource("16_r")
+weight = 8
+
+[sub_resource type="Resource" id="WS_15"]
+script = ExtResource("2_ws")
+scene = ExtResource("17_r")
+weight = 15
+
+[sub_resource type="Resource" id="WS_16"]
+script = ExtResource("2_ws")
+scene = ExtResource("18_r")
+weight = 15
+
+[sub_resource type="Resource" id="WS_17"]
+script = ExtResource("2_ws")
+scene = ExtResource("19_r")
+weight = 15
+
+[sub_resource type="Resource" id="WS_18"]
+script = ExtResource("2_ws")
+scene = ExtResource("20_r")
+weight = 15
+
+[sub_resource type="Resource" id="WS_19"]
+script = ExtResource("2_ws")
+scene = ExtResource("21_r")
+weight = 15
+
+[sub_resource type="Resource" id="WS_20"]
+script = ExtResource("2_ws")
+scene = ExtResource("22_r")
+weight = 15
+
+[sub_resource type="Resource" id="WS_21"]
+script = ExtResource("2_ws")
+scene = ExtResource("23_r")
+weight = 15
+
+[node name="RockyMountainsRocks" instance=ExtResource("1_base")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -600, 20, -600)
+size = Vector3(800, 60, 800)
+scenes = Array[ExtResource("2_ws")]([SubResource("WS_1"), SubResource("WS_2"), SubResource("WS_3"), SubResource("WS_4"), SubResource("WS_5"), SubResource("WS_6"), SubResource("WS_7"), SubResource("WS_8"), SubResource("WS_9"), SubResource("WS_10"), SubResource("WS_11"), SubResource("WS_12"), SubResource("WS_13"), SubResource("WS_14"), SubResource("WS_15"), SubResource("WS_16"), SubResource("WS_17"), SubResource("WS_18"), SubResource("WS_19"), SubResource("WS_20"), SubResource("WS_21")])
+min_spacing = 6
+fill_attempts = 130
+noise_scale = 0.05
+density_threshold = 0
+cluster_chance = 0.1
+cluster_size_min = 2
+cluster_size_max = 3
+cluster_radius = 5
+noise_seed = 202
+placement_seed = 202

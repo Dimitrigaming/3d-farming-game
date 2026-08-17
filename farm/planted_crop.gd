@@ -1,10 +1,28 @@
 class_name PlantedCrop
-extends Node3D
+extends Area3D
+
+## Aim-at-the-plant hitbox, not a tile lookup -- the player's raycast has
+## to actually land on the crop's own collider (collide_with_areas is on)
+## instead of resolving whichever crop sits on the ground tile it hit.
+const HITBOX_SIZE := Vector3(0.8, 1.2, 0.8)
+const HITBOX_CENTER_Y := 0.6
 
 var crop_def: CropDefinition = null
 var stage: int = 0
+## Farm grid cell this crop is planted in -- set by farm_grid.gd right
+## after instantiation, used to route harvest/chop back through the grid.
+var cell: Vector3i = Vector3i.ZERO
 var _timer: float = 0.0
 var _model: Node3D = null
+
+func _ready() -> void:
+	add_to_group("planted_crop")
+	var shape := CollisionShape3D.new()
+	var box := BoxShape3D.new()
+	box.size = HITBOX_SIZE
+	shape.shape = box
+	shape.position = Vector3(0.0, HITBOX_CENTER_Y, 0.0)
+	add_child(shape)
 
 func setup(def: CropDefinition) -> void:
 	crop_def = def
