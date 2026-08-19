@@ -47,5 +47,5 @@ shadow_mesh = SubResource("ArrayMesh_yt7y1")
 [node name="SM_Rock_Crystal_Base_02" type="Node3D" unique_id=1503009753]
 
 [node name="SM_Rock_Crystal_Base_02" type="MeshInstance3D" parent="." unique_id=1842005630]
-transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0.03699693, 0, -0.020974249)
 mesh = SubResource("ArrayMesh_w8vrv")

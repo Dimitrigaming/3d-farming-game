@@ -1,0 +1,19 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://b5tlx5ppf888v" path="res://world/nodes/ores/MiningNode.tscn" id="1_base"]
+[ext_resource type="PackedScene" uid="uid://lkk3jirbrusv" path="res://world/nodes/rocks/Rock_Cluster_2A.tscn" id="2_rock"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1"]
+size = Vector3(1.76, 0.46, 1.22)
+
+[node name="ClusterStoneNode2A" instance=ExtResource("1_base")]
+ore_type = "stone"
+drops_min = 2
+drops_max = 4
+stage_hp = 22
+stage_scenes = Array[PackedScene]([ExtResource("2_rock")])
+
+[node name="CollisionShape3D" parent="PhysicsBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23, 0.18, 0.16)
+shape = SubResource("BoxShape3D_1")
+

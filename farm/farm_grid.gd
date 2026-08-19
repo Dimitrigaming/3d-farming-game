@@ -7,6 +7,14 @@ const TILLED = 2
 const GRID_SIZE = 20
 const LIB_PATH = "res://farm/farm_mesh_library.tres"
 
+## Terrain3D texture asset index for "dirt" (models/textures/dirt.png) --
+## painted onto the ground surface under a cell the moment it becomes
+## farmable, so the terrain itself reads as tilled dirt, not just the
+## GridMap tile mesh sitting on top of it (matters most where the ground
+## isn't flat, e.g. a FarmExpansionArea dropped onto biome-generated
+## terrain).
+const DIRT_TERRAIN_TEXTURE_ID = 7
+
 ## The painted farm area is split into a 2x2 layout of parcels (see
 ## _compute_bounds/_parcel_index below). Parcel 0 (bottom-left of the
 ## bounding box) starts unlocked; the rest require
@@ -235,6 +243,66 @@ func set_cell(x: int, z: int, state: int) -> void:
 	grid_map.set_cell_item(key, state)
 	if state == DIRT or state == TILLED:
 		_farm_dirt_registry[key] = true
+		_paint_terrain_dirt(key)
+
+## Writes the dirt texture directly onto Terrain3D's ground at this cell.
+## Uses the granular set_control_base_id/overlay_id/blend setters rather
+## than hand bit-packing a float for set_control() directly -- the raw
+## set_control() write was confirmed (via readback) to silently not
+## stick, while these paired get/set_control_* accessors are Terrain3D's
+## own scripting-friendly API for exactly this (matching getters exist
+## for each), so they're far more likely to handle whatever region/dirty
+## bookkeeping the raw path needs and I was missing.
+## Sample points per cell (NxN grid) and how far past the cell's own 1m
+## edges they spread -- painting only the center left thin grass strips
+## between/around tiles, since the control map's texel resolution doesn't
+## guarantee one point fills the whole 1m cell. 0.75 = each cell's paint
+## spans 1.5m (centered), overlapping into its neighbors' margins so
+## adjacent tilled cells blend into one continuous dirt patch.
+const DIRT_PAINT_SAMPLES = 3
+const DIRT_PAINT_HALF_EXTENT = 0.75
+
+func _paint_terrain_dirt(key: Vector3i) -> void:
+	var terrain = _find_terrain()
+	if terrain == null or terrain.data == null:
+		print("FarmGrid: _paint_terrain_dirt(%s) -- terrain=%s terrain.data=%s, aborting" % [key, terrain, (terrain.data if terrain else "n/a")])
+		return
+	var center: Vector3 = grid_map.to_global(grid_map.map_to_local(key))
+	for ix in DIRT_PAINT_SAMPLES:
+		for iz in DIRT_PAINT_SAMPLES:
+			var fx := (float(ix) / (DIRT_PAINT_SAMPLES - 1) - 0.5) * 2.0 * DIRT_PAINT_HALF_EXTENT
+			var fz := (float(iz) / (DIRT_PAINT_SAMPLES - 1) - 0.5) * 2.0 * DIRT_PAINT_HALF_EXTENT
+			var sample_pos := center + Vector3(fx, 0.0, fz)
+			terrain.data.set_control_base_id(sample_pos, DIRT_TERRAIN_TEXTURE_ID)
+			terrain.data.set_control_overlay_id(sample_pos, DIRT_TERRAIN_TEXTURE_ID)
+			terrain.data.set_control_blend(sample_pos, 0.0)
+	# GPU-side control texture needs an explicit refresh after scripted
+	# per-point edits, same as Terrain3D's own importer.gd does after
+	# import_images().
+	terrain.data.update_maps(Terrain3DRegion.TYPE_CONTROL, true, false)
+
+## Same lookup as world/nodes/node_painter.gd's _find_terrain().
+func _find_terrain() -> Node:
+	var root = get_tree().edited_scene_root if Engine.is_editor_hint() else get_tree().root
+	if root == null:
+		return null
+	var found: Array = root.find_children("", "Terrain3D", true, false)
+	return found[0] if found.size() > 0 else null
+
+## Same bit-packing as world/terrain_seed_generator.gd's _encode_control()
+## -- base id bits 27-31, overlay id bits 22-26, blend bits 14-21, packed
+## into a float whose raw bits (not numeric value) Terrain3D's shader
+## reads back via floatBitsToUint.
+func _encode_control(base_id: int, over_id: int, blend: float) -> float:
+	var blend_u8 := int(clampf(blend, 0.0, 1.0) * 255.0)
+	var value := 0
+	value |= (base_id & 0x1F) << 27
+	value |= (over_id & 0x1F) << 22
+	value |= (blend_u8 & 0xFF) << 14
+	var bytes := PackedByteArray()
+	bytes.resize(4)
+	bytes.encode_u32(0, value)
+	return bytes.decode_float(0)
 
 func get_cell(x: int, z: int) -> int:
 	return cell_state.get(Vector3i(x, 0, z), -1)

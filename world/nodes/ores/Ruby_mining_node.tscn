@@ -1,0 +1,15 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://b5tlx5ppf888v" path="res://world/nodes/ores/MiningNode.tscn" id="1_base"]
+[ext_resource type="PackedScene" uid="uid://fg2tda2ibxsh" path="res://addons/MiningPack/SM_Ruby_Node_01.tscn" id="2_s1"]
+[ext_resource type="PackedScene" uid="uid://cebaidvq58m20" path="res://addons/MiningPack/SM_Ruby_Node_02.tscn" id="3_s2"]
+[ext_resource type="PackedScene" uid="uid://cvuplft8j23d3" path="res://addons/MiningPack/SM_Ruby_Node_03.tscn" id="4_s3"]
+[ext_resource type="PackedScene" uid="uid://mog6hyypvuo8" path="res://addons/MiningPack/SM_Ruby_Node_04.tscn" id="5_s4"]
+
+[node name="RubyMiningNode" unique_id=100000013 instance=ExtResource("1_base")]
+ore_type = "ruby"
+drops_min = 1
+drops_max = 2
+stage_hp = 230
+stage_scenes = Array[PackedScene]([ExtResource("2_s1"), ExtResource("3_s2"), ExtResource("4_s3"), ExtResource("5_s4")])
+

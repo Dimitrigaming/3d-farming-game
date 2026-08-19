@@ -1,0 +1,49 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://bjmv86b8p7fwm" path="res://world/nodes/node_painter.tscn" id="1_base"]
+[ext_resource type="Script" uid="uid://ct2wai5dsctpk" path="res://world/nodes/weighted_scene.gd" id="2_ws"]
+[ext_resource type="PackedScene" path="res://world/nodes/ores/rocks/SmallStoneNode_1A.tscn" id="3_r1"]
+[ext_resource type="PackedScene" path="res://world/nodes/ores/rocks/SmallStoneNode_1C.tscn" id="4_r2"]
+[ext_resource type="PackedScene" path="res://world/nodes/ores/rocks/SmallStoneNode_1E.tscn" id="5_r3"]
+[ext_resource type="PackedScene" path="res://world/nodes/ores/rocks/ClusterStoneNode_2A.tscn" id="6_r4"]
+[ext_resource type="PackedScene" path="res://world/nodes/ores/rocks/ClusterStoneNode_3B.tscn" id="7_r5"]
+
+[sub_resource type="Resource" id="WS_1"]
+script = ExtResource("2_ws")
+scene = ExtResource("3_r1")
+weight = 25
+
+[sub_resource type="Resource" id="WS_2"]
+script = ExtResource("2_ws")
+scene = ExtResource("4_r2")
+weight = 25
+
+[sub_resource type="Resource" id="WS_3"]
+script = ExtResource("2_ws")
+scene = ExtResource("5_r3")
+weight = 20
+
+[sub_resource type="Resource" id="WS_4"]
+script = ExtResource("2_ws")
+scene = ExtResource("6_r4")
+weight = 15
+
+[sub_resource type="Resource" id="WS_5"]
+script = ExtResource("2_ws")
+scene = ExtResource("7_r5")
+weight = 15
+
+[node name="FarmRocks" instance=ExtResource("1_base")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
+size = Vector3(240, 60, 240)
+scenes = Array[ExtResource("2_ws")]([SubResource("WS_1"), SubResource("WS_2"), SubResource("WS_3"), SubResource("WS_4"), SubResource("WS_5")])
+min_spacing = 3.0
+fill_attempts = 60
+noise_scale = 0.06
+density_threshold = 0.3
+cluster_chance = 0.05
+cluster_size_min = 2
+cluster_size_max = 2
+cluster_radius = 2
+noise_seed = 502
+placement_seed = 502

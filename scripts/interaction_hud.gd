@@ -3,16 +3,39 @@ extends CanvasLayer
 @onready var hints_container: VBoxContainer = $Hints
 @onready var money_label: Label = $MoneyLabel
 @onready var noclip_label: Label = $NoclipLabel
+@onready var node_hp_bar: VBoxContainer = $NodeHpBar
+@onready var node_hp_name_label: Label = $NodeHpBar/NameLabel
+@onready var node_hp_progress: ProgressBar = $NodeHpBar/Bar
+
+const NODE_HP_HIDE_DELAY: float = 2.0
+var _node_hp_hide_timer: float = 0.0
 
 func _ready() -> void:
 	add_to_group("hud")
 	money_label.text = "$%.2f" % GameState.money
 	GameState.money_changed.connect(_on_money_changed)
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	var controller = get_parent()
 	if controller and "freeflying" in controller:
 		noclip_label.visible = controller.freeflying
+	if node_hp_bar.visible:
+		_node_hp_hide_timer -= delta
+		if _node_hp_hide_timer <= 0.0:
+			node_hp_bar.visible = false
+
+## Shows the shared top-center HP bar for whatever node the player just hit.
+## `node_name` is display text (e.g. "Stone", "Oak Tree"); `current`/`max_hp`
+## drive the fill percentage. Replaces per-node SubViewport HP bars so we're
+## not paying a live render target per scattered mining/tree node.
+func show_node_hp(node_name: String, current: int, max_hp: int) -> void:
+	if current <= 0:
+		node_hp_bar.visible = false
+		return
+	node_hp_name_label.text = node_name
+	node_hp_progress.value = clampf(float(current) / float(max_hp), 0.0, 1.0) * 100.0
+	node_hp_bar.visible = true
+	_node_hp_hide_timer = NODE_HP_HIDE_DELAY
 
 func _on_money_changed(new_amount: float) -> void:
 	money_label.text = "$%.2f" % new_amount

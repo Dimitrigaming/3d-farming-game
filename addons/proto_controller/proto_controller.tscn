@@ -30,6 +30,25 @@ height = 1.8
 radius = 0.4
 height = 1.8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hpbarbg"]
+bg_color = Color(0.5019608, 0.5019608, 0.5019608, 0.78431374)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5019608, 0.5019608, 0.5019608, 0.5411765)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hpbarfill"]
+bg_color = Color(0.85, 0.15, 0.1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
 [node name="ProtoController" type="CharacterBody3D" unique_id=1965895804]
 script = ExtResource("1_ucva2")
 
@@ -52,9 +71,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=809935066]
 
-[node name="InteractionRay" type="RayCast3D" parent="Head/Camera3D" unique_id=1141915841]
-target_position = Vector3(0, 0, -3)
-collide_with_areas = true
+[node name="InteractionAnchor" type="Node3D" parent="Head/Camera3D" unique_id=760982805]
 script = ExtResource("2_interact")
 
 [node name="HoldPoint" type="Marker3D" parent="Head/Camera3D" unique_id=1587450460]
@@ -62,6 +79,7 @@ transform = Transform3D(1, 0, 0, 0, 0.9397, -0.342, 0, 0.342, 0.9397, 0, -0.65, 
 
 [node name="PlayerInteraction" type="RayCast3D" parent="Head/Camera3D" unique_id=1165692050]
 target_position = Vector3(0, 0, -3)
+hit_from_inside = true
 script = ExtResource("3_ujot4")
 
 [node name="PlayerInventory" type="Node3D" parent="." unique_id=1383110303]
@@ -131,6 +149,37 @@ offset_bottom = 50.0
 grow_horizontal = 0
 text = "$500.00"
 horizontal_alignment = 1
+
+[node name="NodeHpBar" type="VBoxContainer" parent="HUD" unique_id=1644954874]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -90.0
+offset_top = 60.0
+offset_right = 90.0
+offset_bottom = 100.0
+grow_horizontal = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="NameLabel" type="Label" parent="HUD/NodeHpBar" unique_id=1644954875]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 16
+text = "Node"
+horizontal_alignment = 1
+
+[node name="Bar" type="ProgressBar" parent="HUD/NodeHpBar" unique_id=1644954876]
+custom_minimum_size = Vector2(180, 14)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_hpbarbg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hpbarfill")
+value = 100.0
+show_percentage = false
 
 [node name="Tablet" parent="." unique_id=1052269368 instance=ExtResource("6_h60nn")]
 

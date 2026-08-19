@@ -49,6 +49,7 @@ mesh = SubResource("ArrayMesh_v4xko")
 [node name="Area3D" type="Area3D" parent="." unique_id=1717536448]
 script = ExtResource("2_cuttable")
 mesh_node_name = "Grass_Common_Short"
+yield_item_id = "straw"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=142926251]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)

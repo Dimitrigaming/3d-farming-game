@@ -1,4 +1,4 @@
-﻿[gd_scene format=3]
+[gd_scene format=3]
 
 [ext_resource type="PackedScene" uid="uid://bjmv86b8p7fwm" path="res://world/nodes/node_painter.tscn" id="1_base"]
 [ext_resource type="Script" uid="uid://ct2wai5dsctpk" path="res://world/nodes/weighted_scene.gd" id="2_ws"]
@@ -16,6 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://hmsghaljb2v4" path="res://world/nodes/rocks/Rock_Cluster_3B.tscn" id="14_r"]
 [ext_resource type="PackedScene" uid="uid://kk5d6jjaqd3x" path="res://world/nodes/rocks/Rock_Cluster_3C.tscn" id="15_r"]
 [ext_resource type="PackedScene" uid="uid://edfmv6elt23q" path="res://world/nodes/rocks/Rock_Cluster_3D.tscn" id="16_r"]
+[ext_resource type="PackedScene" uid="uid://bqtvjf6al1sf6" path="res://world/nodes/rocks/Rock_Medium_1A.tscn" id="17_r"]
+[ext_resource type="PackedScene" uid="uid://cecm08oyk2ach" path="res://world/nodes/rocks/Rock_Medium_1B.tscn" id="18_r"]
+[ext_resource type="PackedScene" uid="uid://kxxn7nbsf7ih" path="res://world/nodes/rocks/Rock_Medium_1C.tscn" id="19_r"]
 
 [sub_resource type="Resource" id="WS_1"]
 script = ExtResource("2_ws")
@@ -89,12 +92,13 @@ weight = 8
 
 [node name="HillsPlainsRocks" instance=ExtResource("1_base")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -600, 20, 600)
-size = Vector3(800, 60, 800)
+size = Vector3(1000, 60, 1000)
+avoid_center_square = 250
 scenes = Array[ExtResource("2_ws")]([SubResource("WS_1"), SubResource("WS_2"), SubResource("WS_3"), SubResource("WS_4"), SubResource("WS_5"), SubResource("WS_6"), SubResource("WS_7"), SubResource("WS_8"), SubResource("WS_9"), SubResource("WS_10"), SubResource("WS_11"), SubResource("WS_12"), SubResource("WS_13"), SubResource("WS_14")])
 min_spacing = 3
-fill_attempts = 100
+fill_attempts = 350
 noise_scale = 0.06
-density_threshold = 0
+density_threshold = -0.2
 cluster_chance = 0.1
 cluster_size_min = 2
 cluster_size_max = 3

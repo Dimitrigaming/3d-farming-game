@@ -11,6 +11,7 @@ var c_visible: bool = false
 @onready var c_panel: PanelContainer = $Panel
 @onready var c_output: RichTextLabel = $Panel/VBox/Output
 @onready var c_line_edit: LineEdit = $Panel/VBox/Input
+@onready var c_fps_label: Label = $FpsLabel
 
 func _ready() -> void:
 	c_panel.visible = false
@@ -18,6 +19,11 @@ func _ready() -> void:
 	c_line_edit.gui_input.connect(_on_line_edit_gui_input)
 	register_command("help", _cmd_help, "List all commands")
 	register_command("clear", _cmd_clear, "Clear the console")
+	register_command("fps", _cmd_fps, "Toggle the on-screen FPS counter")
+
+func _process(_delta: float) -> void:
+	if c_fps_label.visible:
+		c_fps_label.text = "FPS: %d" % Engine.get_frames_per_second()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("console"):
@@ -107,3 +113,7 @@ func _cmd_help(_args: Array) -> void:
 func _cmd_clear(_args: Array) -> void:
 	c_lines.clear()
 	c_output.text = ""
+
+func _cmd_fps(_args: Array) -> void:
+	c_fps_label.visible = not c_fps_label.visible
+	print_line("FPS counter " + ("on" if c_fps_label.visible else "off"))

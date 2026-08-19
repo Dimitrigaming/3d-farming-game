@@ -35,9 +35,15 @@ extends Node3D
 @export var world_size: int = 2048
 
 @export_group("Flat Core")
-@export var flat_core_size: float = 150.0
-@export var transition_width: float = 60.0
+@export var flat_core_size: float = 250.0
+@export var transition_width: float = 120.0
 @export var flat_height: float = 0.0
+## Texture painted across the flat core itself (where the GridMap farm
+## sits) -- index into Terrain3D's texture asset list, e.g. "dirt". -1
+## disables, leaving the core textured like normal grass/rock instead.
+## The transition ring still blends toward the surrounding biome texture,
+## same as height does.
+@export var flat_core_texture_id: int = -1
 
 @export_group("Noise")
 ## Shared detail-noise frequency/octaves for the whole map -- biomes vary
@@ -92,14 +98,14 @@ extends Node3D
 @export var biome_neg_x_neg_z: TerrainBiome  ## -X, -Z
 ## How far out from each axis the blend between neighboring quadrants
 ## spans -- wider means a softer seam along the X=0/Z=0 lines.
-@export var quadrant_blend_width: float = 80.0
+@export var quadrant_blend_width: float = 300.0
 
 @export_group("Biome Blending")
 ## Perturbs the coordinates used for biome selection (quadrant or
 ## gradient) before blending, so the boundary between biomes bends into
 ## organic splotches instead of following a perfectly straight/geometric
 ## line -- 0 disables (back to a clean boundary).
-@export var biome_warp_amplitude: float = 60.0
+@export var biome_warp_amplitude: float = 150.0
 ## Lower = broad, sweeping waves in the boundary; higher = tighter, more
 ## frequent wiggles/splotches.
 @export var biome_warp_scale: float = 0.008
@@ -134,7 +140,6 @@ func generate() -> void:
 		warp_noise.fractal_octaves = 2
 
 	var img = Image.create(world_size, world_size, false, Image.FORMAT_RF)
-	var half_core = flat_core_size / 2.0
 	var half_world = world_size / 2.0
 
 	for pz in world_size:
@@ -142,11 +147,7 @@ func generate() -> void:
 		for px in world_size:
 			var wx = px - half_world
 
-			# Distance from the flat square's nearest edge (0 = inside it).
-			var dx = maxf(absf(wx) - half_core, 0.0)
-			var dz = maxf(absf(wz) - half_core, 0.0)
-			var dist_outside = sqrt(dx * dx + dz * dz)
-			var t = smoothstep(0.0, transition_width, dist_outside)
+			var t = _flat_core_t(wx, wz)
 
 			var amplitude = noise_amplitude
 			var region_base = 0.0
@@ -190,6 +191,19 @@ func generate() -> void:
 
 	print("TerrainSeedGenerator: generated %dx%d heightmap (seed=%d), flat core=%sm, transition=%sm, mode=%s" % [world_size, world_size, world_seed, flat_core_size, transition_width, ("quadrant" if use_quadrants else ("gradient(%d)" % biomes.size()) if biome_noise else "single")])
 
+## 0.0 = fully inside the flat core square, 1.0 = fully out in normal
+## noise/biome terrain, smoothly easing across transition_width in
+## between. Distance is measured from the square's nearest edge (0 inside
+## it), matching the flat-core design described at the top of this file.
+## Shared by both the height pass (generate()) and the texture pass
+## (_paint_control_map()) so they always agree on where the core is.
+func _flat_core_t(wx: float, wz: float) -> float:
+	var half_core = flat_core_size / 2.0
+	var dx = maxf(absf(wx) - half_core, 0.0)
+	var dz = maxf(absf(wz) - half_core, 0.0)
+	var dist_outside = sqrt(dx * dx + dz * dz)
+	return smoothstep(0.0, transition_width, dist_outside)
+
 func _quadrants_ready() -> bool:
 	return biome_pos_x_pos_z != null and biome_pos_x_neg_z != null and biome_neg_x_pos_z != null and biome_neg_x_neg_z != null
 
@@ -211,27 +225,37 @@ func _sample_quadrant(wx: float, wz: float, warp_noise: FastNoiseLite = null) ->
 	var w_np = (1.0 - fx) * fz     # -X +Z
 	var w_nn = (1.0 - fx) * (1.0 - fz)  # -X -Z
 
-	var dominant: TerrainBiome = biome_neg_x_neg_z
-	var best_w = w_nn
-	if w_pp > best_w:
-		dominant = biome_pos_x_pos_z
-		best_w = w_pp
-	if w_pn > best_w:
-		dominant = biome_pos_x_neg_z
-		best_w = w_pn
-	if w_np > best_w:
-		dominant = biome_neg_x_pos_z
-		best_w = w_np
+	# Top two weighted corners (not just the single dominant one) --
+	# grass_texture_id/grass_blend_id + grass_blend_factor below let
+	# _paint_control_map() soft-blend between exactly those two instead of
+	# hard-switching at whichever corner happens to win, same technique as
+	# the flat core's dirt-to-biome edge. This is a pairwise approximation
+	# of the true 4-way bilinear blend -- exact along any single edge,
+	# approximate right at a 3-4-way corner meeting point.
+	var corners = [
+		{"biome": biome_pos_x_pos_z, "w": w_pp},
+		{"biome": biome_pos_x_neg_z, "w": w_pn},
+		{"biome": biome_neg_x_pos_z, "w": w_np},
+		{"biome": biome_neg_x_neg_z, "w": w_nn},
+	]
+	corners.sort_custom(func(a, b): return a.w > b.w)
+	var top: TerrainBiome = corners[0].biome
+	var second: TerrainBiome = corners[1].biome
+	var pair_total: float = corners[0].w + corners[1].w
+	var blend_factor: float = corners[1].w / pair_total if pair_total > 0.0 else 0.0
 
 	return {
 		"base_height": biome_pos_x_pos_z.base_height * w_pp + biome_pos_x_neg_z.base_height * w_pn + biome_neg_x_pos_z.base_height * w_np + biome_neg_x_neg_z.base_height * w_nn,
 		"amplitude_multiplier": biome_pos_x_pos_z.amplitude_multiplier * w_pp + biome_pos_x_neg_z.amplitude_multiplier * w_pn + biome_neg_x_pos_z.amplitude_multiplier * w_np + biome_neg_x_neg_z.amplitude_multiplier * w_nn,
-		"grass_texture_id": dominant.grass_texture_id,
-		"rock_texture_id": dominant.rock_texture_id,
+		"grass_texture_id": top.grass_texture_id,
+		"grass_blend_id": second.grass_texture_id,
+		"grass_blend_factor": blend_factor,
+		"rock_texture_id": top.rock_texture_id,
+		"rock_blend_id": second.rock_texture_id,
 		"rock_height_threshold": biome_pos_x_pos_z.rock_height_threshold * w_pp + biome_pos_x_neg_z.rock_height_threshold * w_pn + biome_neg_x_pos_z.rock_height_threshold * w_np + biome_neg_x_neg_z.rock_height_threshold * w_nn,
 		"rock_slope_threshold": biome_pos_x_pos_z.rock_slope_threshold * w_pp + biome_pos_x_neg_z.rock_slope_threshold * w_pn + biome_neg_x_pos_z.rock_slope_threshold * w_np + biome_neg_x_neg_z.rock_slope_threshold * w_nn,
-		"accent_texture_ids": dominant.accent_texture_ids,
-		"accent_coverage": dominant.accent_coverage,
+		"accent_texture_ids": top.accent_texture_ids,
+		"accent_coverage": top.accent_coverage,
 	}
 
 ## Blends the two biomes adjacent to biome_noise's value at (wx, wz) into
@@ -262,8 +286,11 @@ func _blend_two(a: TerrainBiome, b: TerrainBiome, frac: float) -> Dictionary:
 	return {
 		"base_height": lerp(a.base_height, b.base_height, frac),
 		"amplitude_multiplier": lerp(a.amplitude_multiplier, b.amplitude_multiplier, frac),
-		"grass_texture_id": tex_a.grass_texture_id,
-		"rock_texture_id": tex_a.rock_texture_id,
+		"grass_texture_id": a.grass_texture_id,
+		"grass_blend_id": b.grass_texture_id,
+		"grass_blend_factor": frac,
+		"rock_texture_id": a.rock_texture_id,
+		"rock_blend_id": b.rock_texture_id,
 		"rock_height_threshold": lerp(a.rock_height_threshold, b.rock_height_threshold, frac),
 		"rock_slope_threshold": lerp(a.rock_slope_threshold, b.rock_slope_threshold, frac),
 		"accent_texture_ids": tex_a.accent_texture_ids,
@@ -291,7 +318,10 @@ func _paint_control_map(height_img: Image, use_quadrants: bool, biome_noise: Fas
 			var slope = Vector2(h_x - h, h_z - h).length()
 
 			var grass_id = grass_texture_id
+			var grass_blend_id = grass_texture_id
+			var grass_blend_factor := 0.0
 			var rock_id = rock_texture_id
+			var rock_blend_id = rock_texture_id
 			var height_threshold = rock_height_threshold
 			var slope_threshold = rock_slope_threshold
 			var accent_ids: Array = []
@@ -299,7 +329,10 @@ func _paint_control_map(height_img: Image, use_quadrants: bool, biome_noise: Fas
 			if use_quadrants:
 				var b = _sample_quadrant(wx, wz, warp_noise)
 				grass_id = b.grass_texture_id
+				grass_blend_id = b.grass_blend_id
+				grass_blend_factor = b.grass_blend_factor
 				rock_id = b.rock_texture_id
+				rock_blend_id = b.rock_blend_id
 				height_threshold = b.rock_height_threshold
 				slope_threshold = b.rock_slope_threshold
 				accent_ids = b.accent_texture_ids
@@ -307,7 +340,10 @@ func _paint_control_map(height_img: Image, use_quadrants: bool, biome_noise: Fas
 			elif biome_noise:
 				var b = _sample_gradient(wx, wz, biome_noise, warp_noise)
 				grass_id = b.grass_texture_id
+				grass_blend_id = b.grass_blend_id
+				grass_blend_factor = b.grass_blend_factor
 				rock_id = b.rock_texture_id
+				rock_blend_id = b.rock_blend_id
 				height_threshold = b.rock_height_threshold
 				slope_threshold = b.rock_slope_threshold
 				accent_ids = b.accent_texture_ids
@@ -317,24 +353,57 @@ func _paint_control_map(height_img: Image, use_quadrants: bool, biome_noise: Fas
 			var height_factor = clampf((h - height_threshold) / smoothness, 0.0, 1.0)
 			var slope_factor = clampf((slope - slope_threshold) / 0.2, 0.0, 1.0)
 			var rockiness = maxf(height_factor, slope_factor)
-			var over_id = rock_id
 
-			# Accent patches (e.g. gravel/leaves scattered over grass_2) --
-			# a second noise sample decides IF a patch exists here at all
-			# (coverage), a third, decorrelated sample (offset by a large
-			# constant on the same generator, cheaper than a second
-			## FastNoiseLite) decides WHICH accent texture. A triggered
-			# patch fully overrides the normal height/slope rock blend for
-			# that texel, with a soft-centered fade at its edge.
-			if accent_ids.size() > 0 and accent_coverage > 0.0:
-				var cov01 = (accent_noise.get_noise_2d(wx, wz) + 1.0) / 2.0
-				if cov01 < accent_coverage:
-					var sel01 = (accent_noise.get_noise_2d(wx + 10000.0, wz + 10000.0) + 1.0) / 2.0
-					var idx = clampi(int(sel01 * accent_ids.size()), 0, accent_ids.size() - 1)
-					over_id = accent_ids[idx]
-					rockiness = clampf(1.0 - cov01 / accent_coverage, 0.0, 1.0)
+			# A texel can only hold base + one overlay + one blend, so only
+			# one of these three ever applies, in priority order:
+			#   1. an accent patch (gravel/leaves scattered over grass)
+			#   2. near a biome boundary: blend whichever pair is actually
+			#      showing here -- grass-to-grass in flat/grassy spots,
+			#      rock-to-rock in steep/high ones -- instead of leaving
+			#      one of those two hard-switched while only the other
+			#      blends
+			#   3. the normal per-biome grass<->rock height/slope blend
+			var final_base = grass_id
+			var final_over = rock_id
+			var final_blend = rockiness
 
-			var control_value = _encode_control(grass_id, over_id, rockiness)
+			# Accent patches -- a second noise sample decides IF a patch
+			# exists here at all (coverage), a third, decorrelated sample
+			# (offset by a large constant on the same generator, cheaper
+			# than a second FastNoiseLite) decides WHICH accent texture.
+			var cov01 = (accent_noise.get_noise_2d(wx, wz) + 1.0) / 2.0
+			if accent_ids.size() > 0 and accent_coverage > 0.0 and cov01 < accent_coverage:
+				var sel01 = (accent_noise.get_noise_2d(wx + 10000.0, wz + 10000.0) + 1.0) / 2.0
+				var idx = clampi(int(sel01 * accent_ids.size()), 0, accent_ids.size() - 1)
+				final_over = accent_ids[idx]
+				final_blend = clampf(1.0 - cov01 / accent_coverage, 0.0, 1.0)
+			elif grass_blend_factor > 0.001 and rockiness > 0.5:
+				final_base = rock_id
+				final_over = rock_blend_id
+				final_blend = grass_blend_factor
+			elif grass_blend_factor > 0.001 and rockiness <= 0.001:
+				final_over = grass_blend_id
+				final_blend = grass_blend_factor
+
+			# Flat core override -- same transition curve _flat_core_t() uses
+			# for height, so the dirt texture's edge lines up with where the
+			## ground actually goes flat, not some independent boundary.
+			# Fully inside the core: pure flat_core_texture_id, no rock/
+			# accent blend at all. In the transition ring: blend from that
+			# toward whatever texture was already computed above. Outside:
+			# untouched.
+			if flat_core_texture_id >= 0:
+				var core_t = _flat_core_t(wx, wz)
+				if core_t <= 0.0:
+					var pure = _encode_control(flat_core_texture_id, flat_core_texture_id, 0.0)
+					control_img.set_pixel(px, pz, Color(pure, pure, pure, pure))
+					continue
+				elif core_t < 1.0:
+					var blended = _encode_control(flat_core_texture_id, final_base, core_t)
+					control_img.set_pixel(px, pz, Color(blended, blended, blended, blended))
+					continue
+
+			var control_value = _encode_control(final_base, final_over, final_blend)
 			control_img.set_pixel(px, pz, Color(control_value, control_value, control_value, control_value))
 	return control_img
 

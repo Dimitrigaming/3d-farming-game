@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://eq63vemlf1xv"]
+
+[ext_resource type="PackedScene" uid="uid://ck8dg7i7bmrn8" path="res://addons/MiningPack/SM_Rock_Crystal_Base_01.tscn" id="1_enbps"]
+[ext_resource type="PackedScene" uid="uid://bxxei3ruunedf" path="res://addons/MiningPack/SM_Sapphire_Overlay_01.tscn" id="2_i4aal"]
+
+[node name="SM_Sapphire_Node_01" type="Node3D" unique_id=1987182845]
+
+[node name="SM_Rock_Crystal_Base_01" parent="." unique_id=355864908 instance=ExtResource("1_enbps")]
+
+[node name="SM_Sapphire_Overlay_01" parent="SM_Rock_Crystal_Base_01" unique_id=1247084365 instance=ExtResource("2_i4aal")]

@@ -46,6 +46,15 @@ extends CSGBox3D
 ## Seeds which candidate points, scene picks, and rotations get chosen --
 ## keep this fixed for a reproducible layout, or change it to reroll.
 @export var placement_seed: int = 0
+## Square keep-out zone centered on WORLD origin (0,0), not this node's own
+## position -- any candidate point inside it is skipped regardless of the
+## box's own footprint. Lets a box be sized generously (even reaching past
+## world center) to close gaps between adjacent boxes, while still never
+## scattering onto a specific center area -- e.g. a flat/dirt farm core --
+## that a plain rectangular box can't avoid without leaving a gap along
+## its own edge (a rectangle can't hug a square hole in the middle of a
+## shared border). 0 disables.
+@export var avoid_center_square: float = 0.0
 
 @export_group("Clustering")
 ## Chance, per successfully placed instance, that it also spawns a tight
@@ -133,6 +142,10 @@ func generate(area_size: Vector3 = size) -> void:
 			continue
 
 		var world_xz: Vector3 = global_transform * Vector3(x, 0.0, z)
+		if avoid_center_square > 0.0:
+			var half_avoid = avoid_center_square / 2.0
+			if absf(world_xz.x) < half_avoid and absf(world_xz.z) < half_avoid:
+				continue
 		var ground = _sample_ground(terrain, world_xz)
 		if ground == null:
 			continue

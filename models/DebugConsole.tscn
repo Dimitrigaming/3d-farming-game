@@ -37,3 +37,18 @@ selection_enabled = true
 [node name="Input" type="LineEdit" parent="Panel/VBox"]
 layout_mode = 2
 placeholder_text = "Enter command..."
+
+[node name="FpsLabel" type="Label" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -32.0
+offset_right = 120.0
+offset_bottom = -8.0
+theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+text = "FPS: 0"

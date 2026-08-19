@@ -6,7 +6,7 @@
 script = ExtResource("1_script")
 biome_name = "Gravel Hills"
 base_height = 5.0
-amplitude_multiplier = 0.7
+amplitude_multiplier = 0.6
 rock_texture_id = 1
 rock_height_threshold = 4.0
 rock_slope_threshold = 0.22

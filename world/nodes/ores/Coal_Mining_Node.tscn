@@ -5,9 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://c3hkvfw32tuf3" path="res://addons/MiningPack/SM_Coal_Node_02.tscn" id="3_u8myy"]
 [ext_resource type="PackedScene" uid="uid://ctkw1sg2aygob" path="res://addons/MiningPack/SM_Coal_Node_03.tscn" id="4_1csdn"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_kt51l"]
-viewport_path = NodePath("SubViewport")
-
 [node name="CoalMiningNode" unique_id=579830693 instance=ExtResource("1_l6jyq")]
 ore_type = "coal_ore"
 drops_min = 2
@@ -15,5 +12,3 @@ drops_max = 4
 stage_hp = 30
 stage_scenes = Array[PackedScene]([ExtResource("2_kt51l"), ExtResource("3_u8myy"), ExtResource("4_1csdn")])
 
-[node name="Sprite3D" parent="." index="3" unique_id=935891383]
-texture = SubResource("ViewportTexture_kt51l")

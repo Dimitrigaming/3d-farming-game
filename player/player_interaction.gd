@@ -1,6 +1,12 @@
 extends RayCast3D
 
 @onready var inventory: PlayerInventoryData = get_node("../../../PlayerInventoryData")
+## General "interactable" targeting (chests, shelves, mining/tree nodes,
+## etc.) now lives in interaction_manager.gd as a proximity+facing check,
+## not a raycast -- reading its current_target here instead of running a
+## second, separate raycast-based lookup keeps this prompt in sync with
+## whatever you can actually press [E] on, including standing still.
+@onready var _interaction_manager = get_node("../InteractionAnchor")
 
 var _highlight: MeshInstance3D = null
 var _prompt_label: Label = null
@@ -37,17 +43,6 @@ func _setup_highlight() -> void:
 	_highlight.visible = false
 	_highlight.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	get_tree().get_root().call_deferred("add_child", _highlight)
-
-func _find_interactable(node: Node) -> Node:
-	for _i in range(6):
-		if node == null:
-			break
-		if node.is_in_group("interactable"):
-			if node.has_meta("interact_owner"):
-				return node.get_meta("interact_owner")
-			return node
-		node = node.get_parent()
-	return null
 
 func _setup_prompt() -> void:
 	var canvas = CanvasLayer.new()
@@ -88,7 +83,7 @@ func _process(_delta: float) -> void:
 
 	_hovered_fruit = null
 	_hovered_grass = null
-	_current_interactable = _find_interactable(hit)
+	_current_interactable = _interaction_manager.current_target
 	if _current_interactable != null:
 		if _prompt_label and _current_interactable.has_method("get_interact_hint"):
 			_prompt_label.text = "[E] %s" % _current_interactable.get_interact_hint()
@@ -287,10 +282,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
 		return
 
-	if event.is_action_pressed("interact") and _current_interactable != null:
-		_current_interactable.interact()
-		get_viewport().set_input_as_handled()
-		return
+	# "interact" (chests, shelves, mining/tree nodes, etc.) is handled by
+	# interaction_manager.gd against the same current_target this script
+	# reads for its prompt label -- no need to also fire it here.
 
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:

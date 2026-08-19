@@ -6,6 +6,6 @@
 script = ExtResource("1_script")
 biome_name = "Rocky Mountains"
 base_height = 25.0
-amplitude_multiplier = 1.7
+amplitude_multiplier = 0.9
 rock_height_threshold = 5.0
 rock_slope_threshold = 0.2

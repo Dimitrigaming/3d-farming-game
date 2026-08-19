@@ -51,6 +51,14 @@ func _ready() -> void:
 		push_warning("ToolEquipper: no Camera3D found in parent.")
 
 func equip(item_id: String) -> void:
+	# hotbar.gd re-calls equip() on every inventory_changed signal (e.g. tool
+	# durability ticking down on every hit), not just on an actual slot
+	# switch. Re-instantiating _equipped when nothing changed was destroying
+	# the tool mesh mid-swing-tween, killing the tween before its "finished"
+	# signal could reset _is_swinging -- permanently blocking every swing
+	# after the first.
+	if item_id == current_item_id and (_equipped != null or item_id == ""):
+		return
 	current_item_id = item_id
 	if _equipped:
 		_equipped.queue_free()
@@ -67,6 +75,12 @@ func equip(item_id: String) -> void:
 	_rest_rotation = _equipped.rotation
 
 func can_swing() -> bool:
+	# Don't just trust _is_swinging -- if _swing_tween was ever killed
+	# externally (e.g. the tool it's animating got freed out from under it,
+	# as equip() used to do on every durability tick), its "finished" signal
+	# never fires and the flag would otherwise stay stuck true forever.
+	if _is_swinging and (_swing_tween == null or not _swing_tween.is_valid()):
+		_is_swinging = false
 	return not _is_swinging
 
 func play_swing() -> void:

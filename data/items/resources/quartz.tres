@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3]
+
+[ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://ckb5fb32j6bxa" path="res://addons/MiningPack/SM_Quartz_Gem.tscn" id="1_gem"]
+[ext_resource type="Texture2D" uid="uid://car2a7eeguft4" path="res://icons/materials/quartz.png" id="2_icon"]
+
+[resource]
+script = ExtResource("1_def")
+id = "quartz"
+name = "Quartz"
+icon = ExtResource("2_icon")
+type = 4
+sell_price = 25
+buy_price = 60
+subcategory = 4
+description = "A clear crystal. The most common of the precious gems."
+equip_scene = ExtResource("1_gem")
+equip_scale = 100.0

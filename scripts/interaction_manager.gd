@@ -1,9 +1,10 @@
-extends RayCast3D
+extends Node3D
 
 @onready var player_inventory: Node = get_node("../../../PlayerInventory")
 @onready var inventory: PlayerInventoryData = get_node("../../../PlayerInventoryData")
 @onready var hud = get_node("../../../HUD")
 @onready var build_mode = get_node("../../../BuildMode")
+@onready var _player_body: CharacterBody3D = get_node("../../../")
 
 var current_target = null
 
@@ -12,6 +13,16 @@ const MMB_MAX_CHARGE: float = 1.5
 const MMB_MIN_SPEED: float = 3.0
 const SHELF_HOLD_INTERVAL: float = 0.18
 const TOOL_HIT_INTERVAL: float = 0.5
+## General-purpose interactable targeting range/cone. Proximity+facing based
+## rather than raycast-driven -- see _find_best_interactable for why.
+const INTERACT_RANGE: float = 4.0
+const INTERACT_MAX_ANGLE_DEG: float = 40.0
+## Extra angle forgiveness at point-blank range, tapering to zero by
+## INTERACT_CLOSE_RANGE meters.
+const INTERACT_CLOSE_RANGE: float = 2.0
+const INTERACT_CLOSE_BONUS_DEG: float = 45.0
+## Height above an interactable's origin used as its effective aim point.
+const INTERACT_AIM_HEIGHT: float = 0.6
 
 var _lmb_held: bool = false
 var _lmb_hold_time: float = 0.0
@@ -28,16 +39,27 @@ var _shelf_rmb_active: bool = false
 var _shelf_rmb_timer: float = 0.0
 
 func _process(delta: float) -> void:
-	var hit = get_collider()
-	# Layer-2 ray passes through normal geometry to detect counter items
+	var interactable: Node = null
+	var aim_point := Vector3.ZERO
+	var resolved := false
+
+	# Layer-2 ray passes through normal geometry to detect counter items --
+	# takes priority since it's a deliberate, narrow-purpose pick (which
+	# exact item on a counter), same as the placement-zone ray below.
 	var hit2 = _cast_layer2_ray()
 	if hit2 != null:
-		hit = hit2
+		interactable = _find_interactable(hit2)
+		resolved = true
 	elif player_inventory.held_item != null and player_inventory.held_item.has_method("unpack_at"):
 		var zone_hit = _cast_placement_zone_ray()
 		if zone_hit != null:
-			hit = zone_hit
-	var interactable = _find_interactable(hit)
+			interactable = _find_interactable(zone_hit)
+			resolved = true
+
+	if not resolved:
+		var found := _find_best_interactable()
+		interactable = found.get("node")
+		aim_point = found.get("point", Vector3.ZERO)
 
 	if interactable:
 		if interactable != current_target:
@@ -54,7 +76,7 @@ func _process(delta: float) -> void:
 		if current_target.has_method("on_aimed_at"):
 			current_target.on_aimed_at(player_inventory)
 		if current_target.has_method("set_aim_point"):
-			current_target.set_aim_point(get_collision_point())
+			current_target.set_aim_point(aim_point)
 	else:
 		if current_target:
 			if current_target.has_method("hide_tooltip"):
@@ -149,12 +171,88 @@ func _cast_layer2_ray():
 	var result = space.intersect_ray(ray)
 	return result.get("collider") if result else null
 
+## Picks the best general interactable to target by proximity + facing
+## instead of a raycast: every "interactable" within INTERACT_RANGE and
+## INTERACT_MAX_ANGLE_DEG of where the camera is looking is scored (most
+## centered wins, distance as a tiebreaker), and the winner is confirmed
+## with one line-of-sight raycast so you can't reach through a wall.
+## Selection no longer depends on your resting position lining up with a
+## collision shape's exact boundary -- that's what made mining nodes (and
+## then chests/shops, once we noticed) unreliable to hit while standing
+## still but fine while walking toward them: the physical StaticBody a
+## player rests against and the ray's target were literally the same shape.
+## Proximity+angle math is continuous regardless of whether you're moving,
+## so that whole class of flakiness goes away without needing a second,
+## non-blocking collider on every interactable.
+func _find_best_interactable() -> Dictionary:
+	var cam_pos: Vector3 = global_position
+	var cam_forward: Vector3 = -global_transform.basis.z
+	var up := Vector3(0, INTERACT_AIM_HEIGHT, 0)
+
+	var best: Node = null
+	var best_score := -INF
+	for node in get_tree().get_nodes_in_group("interactable"):
+		if not (node is Node3D):
+			continue
+		# Most props (mining nodes, trees, chests) have their origin at
+		# ground level, not at the visual mass a player naturally looks at --
+		# aiming at the raw origin makes the angle check fail while standing
+		# close or looking slightly down/up at something you're clearly
+		# looking at.
+		var aim_point: Vector3 = node.global_position + up
+		var to_node: Vector3 = aim_point - cam_pos
+		var dist := to_node.length()
+		if dist < 0.001 or dist > INTERACT_RANGE:
+			continue
+		var angle_cos := cam_forward.dot(to_node / dist)
+		# Large objects (boulders, trees) subtend a much wider angle up
+		# close than a fixed cone around their origin implies -- relax the
+		# cone as distance shrinks, tapering back to the base cone by
+		# INTERACT_CLOSE_RANGE meters.
+		var close_bonus_deg := clampf((INTERACT_CLOSE_RANGE - dist) / INTERACT_CLOSE_RANGE, 0.0, 1.0) * INTERACT_CLOSE_BONUS_DEG
+		var min_angle_cos := cos(deg_to_rad(INTERACT_MAX_ANGLE_DEG + close_bonus_deg))
+		if angle_cos < min_angle_cos:
+			continue
+		var score := angle_cos - dist * 0.05
+		if score > best_score:
+			best_score = score
+			best = node
+
+	if best == null:
+		return {}
+
+	# Confirm nothing solid sits between the camera and the candidate, and
+	# grab a real hit point for anything (shelves) that needs to know which
+	# specific spot you're looking at, not just which object. hit_from_inside
+	# matters here too -- standing right up against (or inside) a large
+	# object's own collision shape shouldn't count as "blocked". Exclude the
+	# player's own body -- the camera sits essentially inside its collision
+	# capsule, so an unexcluded ray on the same layer hits the player itself
+	# before it ever reaches the candidate.
+	var aim_target: Vector3 = best.global_position + up
+	var space = get_world_3d().direct_space_state
+	var ray = PhysicsRayQueryParameters3D.create(cam_pos, aim_target, 1, [_player_body.get_rid()])
+	ray.hit_from_inside = true
+	var result = space.intersect_ray(ray)
+	var resolved_best: Node = best.get_meta("interact_owner") if best.has_meta("interact_owner") else best
+	if result:
+		if _find_interactable(result["collider"]) != resolved_best:
+			return {}
+		return {"node": resolved_best, "point": result["position"]}
+	return {"node": resolved_best, "point": aim_target}
+
+## Some interactables (e.g. a shop NPC's own physics body, see
+## store_market_stall.gd) tag themselves with an "interact_owner" meta
+## pointing at a different node that actually implements interact() --
+## resolve that redirect here so every caller gets the right target.
 func _find_interactable(hit) -> Node:
 	if hit == null:
 		return null
 	var node = hit
-	for i in range(5):
+	for i in range(8):
 		if node.is_in_group("interactable"):
+			if node.has_meta("interact_owner"):
+				return node.get_meta("interact_owner")
 			return node
 		if node.get_parent() == null:
 			break

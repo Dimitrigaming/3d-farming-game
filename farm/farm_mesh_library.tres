@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://tcebtxcbhcvr" path="res://materials/grass.png" id="1_ua13n"]
 [ext_resource type="Texture2D" uid="uid://c8pf8iv305mby" path="res://materials/dirt.png" id="2_lgodx"]
 [ext_resource type="Texture2D" uid="uid://bwht6xw7vmbvq" path="res://materials/dark_grass.png" id="3_lgodx"]
-[ext_resource type="Texture2D" uid="uid://cwnlaiunjru8l" path="res://models/textures/grass_2.png" id="4_bxbdk"]
-[ext_resource type="Texture2D" uid="uid://c4a70bc1poa40" path="res://models/textures/grass_leaves.png" id="5_m3nel"]
+[ext_resource type="Texture2D" uid="uid://ceeiapinrb1m3" path="res://models/textures/grass_2.png" id="4_bxbdk"]
+[ext_resource type="Texture2D" uid="uid://b02sm5nrckaj4" path="res://models/textures/grass_leaves.png" id="5_m3nel"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2dadc"]
 albedo_texture = ExtResource("1_ua13n")

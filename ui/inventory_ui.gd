@@ -144,7 +144,10 @@ func show_for_chest() -> void:
 	panel.offset_left = IDLE_LEFT
 	panel.offset_top = -88.0
 	panel.offset_right = IDLE_RIGHT
-	panel.offset_bottom = 289.0
+	# Same height as the idle panel (IDLE_BOTTOM - IDLE_TOP) -- content here
+	# is identical (title + the same 4x9 grid), the old fixed 289.0 bottom
+	# left a large empty gap below the last row.
+	panel.offset_bottom = panel.offset_top + (IDLE_BOTTOM - IDLE_TOP)
 
 func hide_for_chest() -> void:
 	_chest_mode = false

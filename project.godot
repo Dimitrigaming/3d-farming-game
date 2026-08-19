@@ -29,6 +29,7 @@ GameManager="*uid://dr8508lgwdy53"
 CropDB="*res://autoloads/crop_db.gd"
 DeliveryManager="*res://autoloads/delivery_manager.gd"
 DragGhost="*res://autoloads/drag_ghost.gd"
+ResourceStreamer="*res://scripts/resource_streamer.gd"
 
 [display]
 
@@ -213,7 +214,7 @@ Hotbar_Scroll={
 [physics]
 
 3d/physics_engine="Jolt Physics"
-jolt_physics/limits/max_bodies=65536
+jolt_physics_3d/limits/max_bodies=65536
 
 [rendering]
 

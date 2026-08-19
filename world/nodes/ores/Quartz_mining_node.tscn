@@ -1,0 +1,15 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://b5tlx5ppf888v" path="res://world/nodes/ores/MiningNode.tscn" id="1_base"]
+[ext_resource type="PackedScene" uid="uid://dlgwx405bkwv7" path="res://addons/MiningPack/SM_Quartz_Node_01.tscn" id="2_s1"]
+[ext_resource type="PackedScene" uid="uid://b2ln16pnw3wo8" path="res://addons/MiningPack/SM_Quartz_Node_02.tscn" id="3_s2"]
+[ext_resource type="PackedScene" uid="uid://dyjkycohbryaa" path="res://addons/MiningPack/SM_Quartz_Node_03.tscn" id="4_s3"]
+[ext_resource type="PackedScene" uid="uid://bkt8etugqo4nr" path="res://addons/MiningPack/SM_Quartz_Node_04.tscn" id="5_s4"]
+
+[node name="QuartzMiningNode" unique_id=100000014 instance=ExtResource("1_base")]
+ore_type = "quartz"
+drops_min = 1
+drops_max = 3
+stage_hp = 120
+stage_scenes = Array[PackedScene]([ExtResource("2_s1"), ExtResource("3_s2"), ExtResource("4_s3"), ExtResource("5_s4")])
+

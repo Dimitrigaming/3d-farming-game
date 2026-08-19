@@ -1,0 +1,15 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://b5tlx5ppf888v" path="res://world/nodes/ores/MiningNode.tscn" id="1_base"]
+[ext_resource type="PackedScene" uid="uid://eq63vemlf1xv" path="res://addons/MiningPack/SM_Sapphire_Node_01.tscn" id="2_s1"]
+[ext_resource type="PackedScene" uid="uid://cpnakue448rmw" path="res://addons/MiningPack/SM_Sapphire_Node_02.tscn" id="3_s2"]
+[ext_resource type="PackedScene" uid="uid://c6auhiggb7c01" path="res://addons/MiningPack/SM_Sapphire_Node_03.tscn" id="4_s3"]
+[ext_resource type="PackedScene" uid="uid://t6vxano6n4d5" path="res://addons/MiningPack/SM_Sapphire_Node_04.tscn" id="5_s4"]
+
+[node name="SapphireMiningNode" unique_id=100000012 instance=ExtResource("1_base")]
+ore_type = "sapphire"
+drops_min = 1
+drops_max = 2
+stage_hp = 210
+stage_scenes = Array[PackedScene]([ExtResource("2_s1"), ExtResource("3_s2"), ExtResource("4_s3"), ExtResource("5_s4")])
+
