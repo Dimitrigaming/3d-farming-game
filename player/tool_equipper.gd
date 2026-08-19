@@ -84,10 +84,19 @@ func can_swing() -> bool:
 	return not _is_swinging
 
 func play_swing() -> void:
-	if _equipped == null or _is_swinging:
+	if _is_swinging:
 		return
 	_is_swinging = true
-	_equipped.rotation = _rest_rotation
+
+	# Bare hands (nothing equipped) still need to swing -- there's no mesh
+	# to show yet, but interact()/damage still needs the swing_hit timing
+	# signal to fire. Animates the always-present _hand anchor itself
+	# instead of bailing out, so this reuses the exact same tween/
+	# can_swing machinery a real tool uses; once a visible hand model gets
+	# added as a child of _hand, it'll just start animating along with it.
+	var target_node: Node3D = _equipped if _equipped != null else _hand
+	var base_rotation: Vector3 = _rest_rotation if _equipped != null else Vector3.ZERO
+	target_node.rotation = base_rotation
 
 	var windup := WINDUP_ROTATION
 	var swing := SWING_ROTATION
@@ -111,14 +120,14 @@ func play_swing() -> void:
 
 	_swing_tween = create_tween()
 	_swing_tween.set_trans(Tween.TRANS_CUBIC)
-	_swing_tween.tween_property(_equipped, "rotation", _rest_rotation + windup, WINDUP_DURATION * duration_mult).set_ease(Tween.EASE_OUT)
+	_swing_tween.tween_property(target_node, "rotation", base_rotation + windup, WINDUP_DURATION * duration_mult).set_ease(Tween.EASE_OUT)
 	if mid != null:
-		_swing_tween.tween_property(_equipped, "rotation", _rest_rotation + mid, SWING_DURATION * 0.25 * duration_mult).set_ease(Tween.EASE_OUT)
-		_swing_tween.tween_property(_equipped, "rotation", _rest_rotation + swing, SWING_DURATION * 0.35 * duration_mult).set_ease(Tween.EASE_IN_OUT)
+		_swing_tween.tween_property(target_node, "rotation", base_rotation + mid, SWING_DURATION * 0.25 * duration_mult).set_ease(Tween.EASE_OUT)
+		_swing_tween.tween_property(target_node, "rotation", base_rotation + swing, SWING_DURATION * 0.35 * duration_mult).set_ease(Tween.EASE_IN_OUT)
 	else:
-		_swing_tween.tween_property(_equipped, "rotation", _rest_rotation + swing, SWING_DURATION * 0.4 * duration_mult).set_ease(Tween.EASE_OUT)
+		_swing_tween.tween_property(target_node, "rotation", base_rotation + swing, SWING_DURATION * 0.4 * duration_mult).set_ease(Tween.EASE_OUT)
 	_swing_tween.tween_callback(func(): swing_hit.emit())
-	_swing_tween.tween_property(_equipped, "rotation", _rest_rotation, SWING_DURATION * 0.6 * duration_mult).set_ease(Tween.EASE_IN)
+	_swing_tween.tween_property(target_node, "rotation", base_rotation, SWING_DURATION * 0.6 * duration_mult).set_ease(Tween.EASE_IN)
 	_swing_tween.finished.connect(func(): _is_swinging = false)
 
 ## Recursively disables every collision shape under a held item -- items

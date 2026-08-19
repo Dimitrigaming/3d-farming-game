@@ -20,12 +20,27 @@ var _last_acted_cell: Vector3i = Vector3i(-1, -1, -1)
 var _hovered_fruit: FruitPickable = null
 var _hovered_grass: CuttableGrass = null
 
+## How far in front of the player the scythe's grass sweep starts, before
+## its width/depth footprint even begins -- roughly where the blade itself
+## reaches during the swing.
+const SCYTHE_REACH: float = 0.8
+
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	target_position = Vector3(0, 0, -10.0)
+	# Melee reach -- everything this ray drives (grass, fruit, crops, farm
+	# tile hover) is hit/tilled by hand or a hand tool, so it shouldn't be
+	# detectable/cuttable from across the field.
+	target_position = Vector3(0, 0, -3.0)
 	collision_mask = 0xFFFFFFFF
 	collide_with_areas = true
 	enabled = true
+	# Without this, aiming steeply downward (exactly how you look at grass
+	# at your own feet) sends the ray straight down through the player's
+	# own capsule collider first -- with hit_from_inside on, that registers
+	# as an immediate hit against the player itself, so the ray never
+	# reaches the grass below at all. Shallower-angle targets (trees,
+	# chests) mostly dodge this, which is why only grass looked broken.
+	add_exception(get_node("../../../"))
 	_setup_highlight()
 	_setup_prompt()
 
@@ -83,13 +98,13 @@ func _process(_delta: float) -> void:
 
 	_hovered_fruit = null
 	_hovered_grass = null
-	_current_interactable = _interaction_manager.current_target
-	if _current_interactable != null:
-		if _prompt_label and _current_interactable.has_method("get_interact_hint"):
-			_prompt_label.text = "[E] %s" % _current_interactable.get_interact_hint()
-			_prompt_label.visible = true
-		return
 
+	# Direct raycast hits on a specific farm object always win over the
+	# general proximity-based interactable below -- otherwise any tree,
+	# rock, or mining node within a few meters (the general check's cone
+	# widens a lot at close range) can hijack current_target even while
+	# you're clearly looking down at grass/fruit/a crop right in front of
+	# you, and the check below would return before this ever runs.
 	if hit is FruitPickable:
 		_hovered_fruit = hit
 		if _prompt_label:
@@ -98,12 +113,13 @@ func _process(_delta: float) -> void:
 		return
 
 	if hit is CuttableGrass:
-		var equipper_tool = get_tree().get_first_node_in_group("tool_equipper")
-		if equipper_tool and _tool_category(equipper_tool.current_item_id) == "scythe":
-			_hovered_grass = hit
-			if _prompt_label:
-				_prompt_label.text = "[LMB] Cut"
-				_prompt_label.visible = true
+		# Any tool (or bare hands) can cut grass now -- no tool_category
+		# gate here anymore. Scythes just get the wider area sweep instead
+		# of this single-patch path, handled in _unhandled_input.
+		_hovered_grass = hit
+		if _prompt_label:
+			_prompt_label.text = "[LMB] Cut"
+			_prompt_label.visible = true
 		return
 
 	# Crop interaction -- crops carry their own Area3D collider now (see
@@ -111,6 +127,13 @@ func _process(_delta: float) -> void:
 	# not just at whichever farm tile the raycast happens to land on.
 	if hit is PlantedCrop:
 		_hover_crop(hit)
+		return
+
+	_current_interactable = _interaction_manager.current_target
+	if _current_interactable != null:
+		if _prompt_label and _current_interactable.has_method("get_interact_hint"):
+			_prompt_label.text = "[E] %s" % _current_interactable.get_interact_hint()
+			_prompt_label.visible = true
 		return
 
 	if hit == null:
@@ -264,6 +287,34 @@ func _harvest_scythe_area(farm, center: Vector3i, tool_id: String) -> void:
 			if not result.is_empty():
 				_grant_gather_result(result)
 
+## Same sweep-rectangle shape as _harvest_scythe_area above, but for
+## world-scattered CuttableGrass instead of farm-grid crops, and centered
+## on a point out in front of the player instead of a specific hovered cell
+## -- grass isn't grid-aligned and there's no single tile to center on, and
+## the whole point is not needing to aim at it.
+func _scythe_cut_grass_area(tool_id: String) -> void:
+	var item_def = ItemDB.get_item(tool_id)
+	var width: float = item_def.harvest_sweep_width if item_def else 1.0
+	var depth: float = item_def.harvest_sweep_depth if item_def else 1.0
+
+	var cam_basis := global_transform.basis
+	var right := Vector3(cam_basis.x.x, 0.0, cam_basis.x.z).normalized()
+	var forward := Vector3(-cam_basis.z.x, 0.0, -cam_basis.z.z).normalized()
+	# Push the whole rectangle out from the player by SCYTHE_REACH before
+	# the depth window even starts, so it reads as the blade cutting out in
+	# front rather than a circle centered on your own feet.
+	var center: Vector3 = global_position + forward * (SCYTHE_REACH + depth / 2.0)
+
+	for grass in get_tree().get_nodes_in_group("cuttable_grass"):
+		if not is_instance_valid(grass):
+			continue
+		var offset: Vector3 = grass.global_position - center
+		if absf(offset.dot(right)) > width / 2.0:
+			continue
+		if absf(offset.dot(forward)) > depth / 2.0:
+			continue
+		grass.cut()
+
 func _grant_gather_result(result: Dictionary) -> void:
 	var equipper = get_tree().get_first_node_in_group("tool_equipper")
 	var perks = get_tree().get_first_node_in_group("player_gathering_perks")
@@ -296,16 +347,37 @@ func _unhandled_input(event: InputEvent) -> void:
 			_hovered_fruit = null
 			get_viewport().set_input_as_handled()
 			return
-		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT and _hovered_grass != null:
-			var grass = _hovered_grass
+		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			var equipper = get_tree().get_first_node_in_group("tool_equipper")
-			if equipper and equipper.has_method("play_swing") and equipper.has_signal("swing_hit"):
-				equipper.play_swing()
-				equipper.swing_hit.connect(func(): grass.cut(), CONNECT_ONE_SHOT)
-			else:
-				grass.cut()
-			get_viewport().set_input_as_handled()
-			return
+			var is_scythe = equipper != null and _tool_category(equipper.current_item_id) == "scythe"
+			var hovering_crop = _hovered_farm != null and _hovered_cell != Vector3i(-1, -1, -1) and _hovered_is_harvestable
+			# Scythe grass cutting is area-based, not hover-based -- it
+			# fires whenever a scythe is equipped so you don't need to
+			# precisely aim at a single blade, same reasoning as the crop
+			# sweep below. It steps aside when you're hovering a specific
+			# harvestable crop so that flow (unchanged) still gets the
+			# swing instead.
+			if is_scythe and not hovering_crop:
+				var tool_id = equipper.current_item_id
+				if equipper.has_method("play_swing") and equipper.has_signal("swing_hit"):
+					equipper.play_swing()
+					equipper.swing_hit.connect(func(): _scythe_cut_grass_area(tool_id), CONNECT_ONE_SHOT)
+				else:
+					_scythe_cut_grass_area(tool_id)
+				get_viewport().set_input_as_handled()
+				return
+			# Any other tool (or bare hands, current_item_id == "") can
+			# still cut a single directly-hovered patch -- only the wide
+			# area sweep above is scythe-exclusive.
+			if _hovered_grass != null:
+				var grass = _hovered_grass
+				if equipper and equipper.has_method("play_swing") and equipper.has_signal("swing_hit"):
+					equipper.play_swing()
+					equipper.swing_hit.connect(func(): grass.cut(), CONNECT_ONE_SHOT)
+				else:
+					grass.cut()
+				get_viewport().set_input_as_handled()
+				return
 		if event.pressed:
 			if _hovered_farm == null or _hovered_cell == Vector3i(-1, -1, -1):
 				return
