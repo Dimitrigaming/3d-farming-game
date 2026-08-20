@@ -13,6 +13,14 @@ extends Node3D
 ## The tree's visual scene, instantiated fresh under Visual (same pattern as
 ## mining_node.gd's stage_scenes, just a single entry).
 @export var tree_scene: PackedScene
+## Trees never got a distance-based visual cutoff (ResourceStreamer only
+## streams the PHYSICS body, not the mesh), so every tree within the camera
+## frustum submits its own draw call regardless of distance -- fine at the
+## old ~2000/biome, but real at 5000/biome. GeometryInstance3D's own
+## visibility_range_end handles this at the RenderingServer level (cheaper
+## and simpler than a per-tree distance check in script), so beyond this
+## many meters from the camera the tree just isn't drawn at all.
+@export var visibility_range: float = 100.0
 
 @onready var _visual: Node3D = $Visual
 @onready var _physics_body: StaticBody3D = $PhysicsBody
@@ -40,7 +48,13 @@ func _apply_tree() -> void:
 		var mesh = tree_scene.instantiate()
 		_visual.add_child(mesh)
 		_fit_collision_to_visual()
+		_apply_visibility_range()
 	_refresh_stream_bodies()
+
+func _apply_visibility_range() -> void:
+	for inst in _find_mesh_instances(_visual):
+		if inst is GeometryInstance3D:
+			inst.visibility_range_end = visibility_range
 
 func _refresh_stream_bodies() -> void:
 	_stream_bodies = [{"body": _physics_body, "parent": self}]

@@ -29,6 +29,7 @@ GameManager="*uid://dr8508lgwdy53"
 CropDB="*res://autoloads/crop_db.gd"
 DeliveryManager="*res://autoloads/delivery_manager.gd"
 DragGhost="*res://autoloads/drag_ghost.gd"
+HitboxDebugView="*res://scripts/hitbox_debug_view.gd"
 ResourceStreamer="*res://scripts/resource_streamer.gd"
 
 [display]

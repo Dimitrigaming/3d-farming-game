@@ -13,6 +13,9 @@ extends Node3D
 @export var stage_scenes: Array[PackedScene] = []
 ## Seconds before the node respawns after being fully mined
 @export var respawn_time: float = 20.0
+## See tree_node.gd's own visibility_range for the full reasoning -- same
+## fix, same default, applied here too.
+@export var visibility_range: float = 100.0
 
 @onready var _visual: Node3D = $Visual
 @onready var _physics_body: StaticBody3D = $PhysicsBody
@@ -44,7 +47,13 @@ func _apply_stage() -> void:
 		var mesh = stage_scenes[_stage].instantiate()
 		_visual.add_child(mesh)
 		_fit_collision_to_visual()
+		_apply_visibility_range()
 	_refresh_stream_bodies()
+
+func _apply_visibility_range() -> void:
+	for inst in _find_mesh_instances(_visual):
+		if inst is GeometryInstance3D:
+			inst.visibility_range_end = visibility_range
 
 func _refresh_stream_bodies() -> void:
 	_stream_bodies = [{"body": _physics_body, "parent": self}]

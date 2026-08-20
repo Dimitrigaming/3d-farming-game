@@ -17,3 +17,4 @@ equip_scene = ExtResource("1_uop37")
 tool_category = "scythe"
 max_durability = 150
 harvest_sweep_width = 5.0
+harvest_sweep_depth = 2.0

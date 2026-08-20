@@ -1,26 +1,16 @@
 [gd_scene format=3]
 
-[ext_resource type="PackedScene" uid="uid://bjmv86b8p7fwm" path="res://world/nodes/node_painter.tscn" id="1_base"]
-[ext_resource type="Script" uid="uid://ct2wai5dsctpk" path="res://world/nodes/weighted_scene.gd" id="2_ws"]
-[ext_resource type="PackedScene" uid="uid://bkw2mf1vgswgo" path="res://world/nodes/grass/grass.tscn" id="3_r"]
+[ext_resource type="PackedScene" uid="uid://bkw2mf1vgswgo" path="res://world/nodes/grass/grass.tscn" id="1_grass"]
+[ext_resource type="PackedScene" path="res://world/nodes/grass/grass_field.tscn" id="2_base"]
 
-[sub_resource type="Resource" id="WS_1"]
-script = ExtResource("2_ws")
-scene = ExtResource("3_r")
-weight = 100
-
-[node name="HillsPlainsGrass" instance=ExtResource("1_base")]
+[node name="HillsPlainsGrass" instance=ExtResource("2_base")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -600, 20, 600)
 size = Vector3(1000, 60, 1000)
 avoid_center_square = 250
-scenes = Array[ExtResource("2_ws")]([SubResource("WS_1")])
-min_spacing = 1
-fill_attempts = 700
+grass_scene = ExtResource("1_grass")
+min_spacing = 0.2
+fill_attempts = 900000
 noise_scale = 0.04
-density_threshold = -0.3
-cluster_chance = 0
-cluster_size_min = 1
-cluster_size_max = 1
-cluster_radius = 1
+density_threshold = -0.95
 noise_seed = 402
 placement_seed = 402

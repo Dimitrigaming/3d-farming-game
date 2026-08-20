@@ -1,6 +1,6 @@
 [gd_scene format=3]
 
-[ext_resource type="PackedScene" uid="uid://bjmv86b8p7fwm" path="res://world/nodes/node_painter.tscn" id="1_base"]
+[ext_resource type="PackedScene" path="res://world/nodes/rocks/rock_field.tscn" id="1_base"]
 [ext_resource type="Script" uid="uid://ct2wai5dsctpk" path="res://world/nodes/weighted_scene.gd" id="2_ws"]
 [ext_resource type="PackedScene" uid="uid://7u78evcxbioa" path="res://world/nodes/rocks/Rock_Boulder_1A.tscn" id="3_r"]
 [ext_resource type="PackedScene" uid="uid://hda4mpt3rq0w" path="res://world/nodes/rocks/Rock_Boulder_1B.tscn" id="4_r"]
@@ -28,71 +28,113 @@
 script = ExtResource("2_ws")
 scene = ExtResource("3_r")
 weight = 3
+hp_override = 1000
+drops_min_override = 20
+drops_max_override = 30
 
 [sub_resource type="Resource" id="WS_2"]
 script = ExtResource("2_ws")
 scene = ExtResource("4_r")
 weight = 3
+hp_override = 1000
+drops_min_override = 20
+drops_max_override = 30
 
 [sub_resource type="Resource" id="WS_3"]
 script = ExtResource("2_ws")
 scene = ExtResource("5_r")
 weight = 3
+hp_override = 1000
+drops_min_override = 20
+drops_max_override = 30
 
 [sub_resource type="Resource" id="WS_4"]
 script = ExtResource("2_ws")
 scene = ExtResource("6_r")
 weight = 3
+hp_override = 1000
+drops_min_override = 20
+drops_max_override = 30
 
 [sub_resource type="Resource" id="WS_5"]
 script = ExtResource("2_ws")
 scene = ExtResource("7_r")
 weight = 8
+hp_override = 500
+drops_min_override = 10
+drops_max_override = 15
 
 [sub_resource type="Resource" id="WS_6"]
 script = ExtResource("2_ws")
 scene = ExtResource("8_r")
 weight = 8
+hp_override = 500
+drops_min_override = 10
+drops_max_override = 15
 
 [sub_resource type="Resource" id="WS_7"]
 script = ExtResource("2_ws")
 scene = ExtResource("9_r")
 weight = 8
+hp_override = 500
+drops_min_override = 10
+drops_max_override = 15
 
 [sub_resource type="Resource" id="WS_8"]
 script = ExtResource("2_ws")
 scene = ExtResource("10_r")
 weight = 8
+hp_override = 500
+drops_min_override = 10
+drops_max_override = 15
 
 [sub_resource type="Resource" id="WS_9"]
 script = ExtResource("2_ws")
 scene = ExtResource("11_r")
 weight = 8
+hp_override = 500
+drops_min_override = 10
+drops_max_override = 15
 
 [sub_resource type="Resource" id="WS_10"]
 script = ExtResource("2_ws")
 scene = ExtResource("12_r")
 weight = 8
+hp_override = 500
+drops_min_override = 10
+drops_max_override = 15
 
 [sub_resource type="Resource" id="WS_11"]
 script = ExtResource("2_ws")
 scene = ExtResource("13_r")
 weight = 8
+hp_override = 500
+drops_min_override = 10
+drops_max_override = 15
 
 [sub_resource type="Resource" id="WS_12"]
 script = ExtResource("2_ws")
 scene = ExtResource("14_r")
 weight = 8
+hp_override = 500
+drops_min_override = 10
+drops_max_override = 15
 
 [sub_resource type="Resource" id="WS_13"]
 script = ExtResource("2_ws")
 scene = ExtResource("15_r")
 weight = 8
+hp_override = 500
+drops_min_override = 10
+drops_max_override = 15
 
 [sub_resource type="Resource" id="WS_14"]
 script = ExtResource("2_ws")
 scene = ExtResource("16_r")
 weight = 8
+hp_override = 500
+drops_min_override = 10
+drops_max_override = 15
 
 [sub_resource type="Resource" id="WS_15"]
 script = ExtResource("2_ws")

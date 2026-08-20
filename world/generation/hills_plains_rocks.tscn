@@ -1,6 +1,6 @@
 [gd_scene format=3]
 
-[ext_resource type="PackedScene" uid="uid://bjmv86b8p7fwm" path="res://world/nodes/node_painter.tscn" id="1_base"]
+[ext_resource type="PackedScene" path="res://world/nodes/rocks/rock_field.tscn" id="1_base"]
 [ext_resource type="Script" uid="uid://ct2wai5dsctpk" path="res://world/nodes/weighted_scene.gd" id="2_ws"]
 [ext_resource type="PackedScene" uid="uid://cmkntspjiyu6b" path="res://world/nodes/rocks/Rock_Small_1A.tscn" id="3_r"]
 [ext_resource type="PackedScene" uid="uid://b4angf5be3t6s" path="res://world/nodes/rocks/Rock_Small_1B.tscn" id="4_r"]

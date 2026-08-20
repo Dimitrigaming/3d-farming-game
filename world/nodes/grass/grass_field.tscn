@@ -1,0 +1,11 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/nodes/grass/grass_field.gd" id="1_script"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dwbtc"]
+transparency = 1
+albedo_color = Color(1, 0.85, 0.2, 0.23529412)
+
+[node name="GrassField" type="CSGBox3D"]
+material = SubResource("StandardMaterial3D_dwbtc")
+script = ExtResource("1_script")

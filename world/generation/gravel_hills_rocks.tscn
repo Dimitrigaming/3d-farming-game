@@ -1,6 +1,6 @@
 [gd_scene format=3]
 
-[ext_resource type="PackedScene" uid="uid://bjmv86b8p7fwm" path="res://world/nodes/node_painter.tscn" id="1_base"]
+[ext_resource type="PackedScene" path="res://world/nodes/rocks/rock_field.tscn" id="1_base"]
 [ext_resource type="Script" uid="uid://ct2wai5dsctpk" path="res://world/nodes/weighted_scene.gd" id="2_ws"]
 [ext_resource type="PackedScene" uid="uid://cmkntspjiyu6b" path="res://world/nodes/rocks/Rock_Small_1A.tscn" id="3_r"]
 [ext_resource type="PackedScene" uid="uid://b4angf5be3t6s" path="res://world/nodes/rocks/Rock_Small_1B.tscn" id="4_r"]
@@ -52,16 +52,25 @@ weight = 10
 script = ExtResource("2_ws")
 scene = ExtResource("10_r")
 weight = 15
+hp_override = 200
+drops_min_override = 5
+drops_max_override = 8
 
 [sub_resource type="Resource" id="WS_9"]
 script = ExtResource("2_ws")
 scene = ExtResource("11_r")
 weight = 15
+hp_override = 200
+drops_min_override = 5
+drops_max_override = 8
 
 [sub_resource type="Resource" id="WS_10"]
 script = ExtResource("2_ws")
 scene = ExtResource("12_r")
 weight = 15
+hp_override = 200
+drops_min_override = 5
+drops_max_override = 8
 
 [node name="GravelHillsRocks" instance=ExtResource("1_base")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 600, 20, -600)
