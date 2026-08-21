@@ -13,6 +13,7 @@ func _ready() -> void:
 	_icon = TextureRect.new()
 	_icon.custom_minimum_size = Vector2(40, 40)
 	_icon.size = Vector2(40, 40)
+	_icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	_icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	_icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_icon.visible = false

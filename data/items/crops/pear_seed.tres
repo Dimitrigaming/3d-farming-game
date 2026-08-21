@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://pear000000001s"]
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://cq8sbf2c1ebvr"]
 
 [ext_resource type="PackedScene" uid="uid://543ur3dijpev" path="res://models/crops/SM_Pear_Seed.tscn" id="1_smdl"]
 [ext_resource type="Texture2D" uid="uid://b5ioncwiv3ejr" path="res://icons/crops/pear_seeds.png" id="2_sico"]
@@ -12,3 +12,4 @@ icon = ExtResource("2_sico")
 type = 0
 buy_price = 35
 equip_scene = ExtResource("1_smdl")
+place_scene = ExtResource("1_smdl")

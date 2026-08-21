@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://dq727uj84vyw4"]
 
-[ext_resource type="Texture2D" uid="uid://c2x33nc208i2" path="res://materials/T_GradientTexture.png" id="1_2l0rm"]
+[ext_resource type="Texture2D" uid="uid://c2x33nc208i2" path="res://models/textures/T_GradientTexture.png" id="1_2l0rm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t2gac"]
 resource_name = "M_Gradient"

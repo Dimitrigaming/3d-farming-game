@@ -45,6 +45,7 @@ theme_override_constants/separation = 8
 unique_name_in_owner = true
 layout_mode = 2
 custom_minimum_size = Vector2(40, 40)
+expand_mode = 1
 stretch_mode = 5
 
 [node name="ProductName" type="Label" parent="Outer/LeftMargin/Left/NameRow"]

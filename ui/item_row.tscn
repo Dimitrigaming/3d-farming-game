@@ -50,6 +50,7 @@ theme_override_constants/separation = 12
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
 size_flags_vertical = 4
+expand_mode = 1
 stretch_mode = 5
 
 [node name="ItemName" type="Label" parent="HBox" unique_id=2081853984]

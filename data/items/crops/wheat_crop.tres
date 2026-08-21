@@ -16,5 +16,5 @@ yield_item_id = "wheat"
 yield_amount = 3
 base_grow_speed = 120.0
 regrow_stages = 0
-harvest_tools = ["scythe", "hand"]
+harvest_tools = Array[String](["scythe", "hand"])
 growth_stages = Array[PackedScene]([ExtResource("2_s0"), ExtResource("3_s1"), ExtResource("4_s2"), ExtResource("5_s3"), ExtResource("6_s4")])

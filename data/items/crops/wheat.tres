@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://djoe6nwpb78t7" path="res://icons/crops/wheat.png" id="1_5hqkh"]
 [ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://dq727uj84vyw4" path="res://models/crops/SM_Wheat.tscn" id="1_r5y2o"]
 
 [resource]
 script = ExtResource("1_def")
@@ -10,3 +11,4 @@ name = "Wheat"
 icon = ExtResource("1_5hqkh")
 sell_price = 25
 description = "Harvested wheat. Sell it or mill it into flour."
+equip_scene = ExtResource("1_r5y2o")

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://pear000000001c"]
+[gd_resource type="Resource" script_class="CropDefinition" format=3 uid="uid://dcy61n8d6032y"]
 
 [ext_resource type="Script" uid="uid://cqjkmsb31rfok" path="res://autoloads/crop_definition.gd" id="1_def"]
 [ext_resource type="PackedScene" uid="uid://543ur3dijpev" path="res://models/crops/SM_Pear_Seed.tscn" id="2_s0"]
@@ -20,5 +20,5 @@ can_regrow = true
 regrow_stages = 2
 is_tree = true
 chop_wood_yield = 4
-harvest_tools = ["axe"]
+harvest_tools = Array[String](["axe"])
 growth_stages = Array[PackedScene]([ExtResource("2_s0"), ExtResource("3_s1"), ExtResource("4_s2"), ExtResource("5_s3"), ExtResource("6_s4"), ExtResource("7_s5")])

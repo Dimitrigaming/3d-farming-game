@@ -49,6 +49,10 @@ extends CSGBox3D
 ## visibility_range_end), so it's a renderer-level cutoff, not a per-frame
 ## script check.
 @export var visibility_range: float = 100.0
+## Same idea as grass_field.gd's own fade_margin -- dithers a chunk out
+## smoothly over its last fade_margin meters instead of popping the whole
+## chunk at once (VISIBILITY_RANGE_FADE_SELF).
+@export var fade_margin: float = 8.0
 
 @export_group("Mining")
 ## Same fields/behavior as mining_node.gd's own interact(), applied
@@ -106,6 +110,11 @@ var _variant_drops_max: Array = []
 ## (unlike a purely decorative field) since a mined rock's MultiMesh copy
 ## has to hide, same reason as grass_field.gd's own _chunks/_point_chunk.
 var _chunks: Dictionary = {}
+## chunk_cell (Vector2i) -> that chunk's {variant -> centroid Vector3}.
+## Mirrors _chunks' own keying -- see _build_multimeshes() for why each
+## variant's MultiMeshInstance3D needs its own real centroid instead of a
+## shared world-origin transform.
+var _chunk_centers: Dictionary = {}
 ## point_index -> [chunk_cell, variant, local_index_within_that_chunk's_
 ## multimesh]. Lets _set_multimesh_visible() go straight to the right slot.
 var _point_chunk: Array = []
@@ -146,6 +155,7 @@ func clear_generated() -> void:
 	_variant_drops_min.clear()
 	_variant_drops_max.clear()
 	_chunks.clear()
+	_chunk_centers.clear()
 	_point_chunk.clear()
 	_claim_grid.clear()
 	_pool.clear()
@@ -287,33 +297,50 @@ func _build_multimeshes() -> int:
 	for cell in buckets:
 		var by_variant: Dictionary = buckets[cell]
 		var chunk_meshes: Dictionary = {}
+		var chunk_centers: Dictionary = {}
 		for variant in by_variant:
 			var mesh: Mesh = _variant_meshes[variant]
 			if mesh == null:
 				continue
 			var indices: Array = by_variant[variant]
+			# See grass_field.gd's _build_multimeshes() for why this exists:
+			# Godot's visibility_range hard cutoff measures from the camera
+			# to the NODE'S OWN ORIGIN, not its content (godotengine/godot#
+			# 79471) -- a shared global_transform = IDENTITY across every
+			# chunk put that origin at world (0,0,0) for all of them, so the
+			# cutoff was really keyed to distance from world origin, not
+			# from each chunk's actual rocks.
+			var centroid := Vector3.ZERO
+			for point_index in indices:
+				centroid += _points[point_index]["transform"].origin
+			centroid /= indices.size()
+
 			var mm := MultiMesh.new()
 			mm.transform_format = MultiMesh.TRANSFORM_3D
 			mm.mesh = mesh
 			mm.instance_count = indices.size()
 			for local_i in indices.size():
 				var point_index: int = indices[local_i]
-				mm.set_instance_transform(local_i, _points[point_index]["transform"])
+				mm.set_instance_transform(local_i, _relative_transform(_points[point_index]["transform"], centroid))
 				_point_chunk[point_index] = [cell, variant, local_i]
 
 			var mm_instance := MultiMeshInstance3D.new()
 			mm_instance.name = "RockMultiMesh_%d_%d_v%d" % [cell.x, cell.y, variant]
 			mm_instance.multimesh = mm
 			mm_instance.visibility_range_end = visibility_range
+			mm_instance.visibility_range_end_margin = fade_margin
+			mm_instance.visibility_range_fade_mode = GeometryInstance3D.VISIBILITY_RANGE_FADE_SELF
 			add_child(mm_instance)
-			# Same reasoning as grass_field.gd's _build_multimeshes(): per-
-			# instance transforms are relative to this node's own transform,
-			# not world space, but _points stores world-space transforms.
+			# top_level so this node's own transform (the variant's own
+			# centroid within this chunk) is authoritative -- per-instance
+			# transforms are then relative to THIS, matching _relative_transform().
 			mm_instance.top_level = true
-			mm_instance.global_transform = Transform3D.IDENTITY
+			mm_instance.global_transform = Transform3D(Basis(), centroid)
 
 			chunk_meshes[variant] = mm
+			chunk_centers[variant] = centroid
 		_chunks[cell] = chunk_meshes
+		_chunk_centers[cell] = chunk_centers
 
 	return buckets.size()
 
@@ -325,9 +352,19 @@ func _set_multimesh_visible(point_index: int, is_visible: bool) -> void:
 	var mm: MultiMesh = _chunks[info[0]][info[1]]
 	var local_i: int = info[2]
 	if is_visible:
-		mm.set_instance_transform(local_i, _points[point_index]["transform"])
+		var centroid: Vector3 = _chunk_centers[info[0]][info[1]]
+		mm.set_instance_transform(local_i, _relative_transform(_points[point_index]["transform"], centroid))
 	else:
 		mm.set_instance_transform(local_i, _hidden_transform)
+
+## Per-instance MultiMesh transforms are relative to the chunk/variant's own
+## MultiMeshInstance3D (its origin sits at that variant's own centroid
+## within the chunk, see _build_multimeshes()), not raw world space --
+## _points stores world-space transforms, so this subtracts the centroid
+## back out. Basis (rotation/scale) is unaffected, only the translation is
+## centroid-relative.
+func _relative_transform(world_transform: Transform3D, chunk_center: Vector3) -> Transform3D:
+	return Transform3D(world_transform.basis, world_transform.origin - chunk_center)
 
 const RockProxyScript = preload("res://world/nodes/rocks/rock_proxy.gd")
 

@@ -21,6 +21,9 @@ extends Node3D
 ## and simpler than a per-tree distance check in script), so beyond this
 ## many meters from the camera the tree just isn't drawn at all.
 @export var visibility_range: float = 100.0
+## Same idea as grass_field.gd's own fade_margin -- fades out smoothly over
+## the last fade_margin meters instead of popping instantly.
+@export var fade_margin: float = 8.0
 
 @onready var _visual: Node3D = $Visual
 @onready var _physics_body: StaticBody3D = $PhysicsBody
@@ -55,6 +58,8 @@ func _apply_visibility_range() -> void:
 	for inst in _find_mesh_instances(_visual):
 		if inst is GeometryInstance3D:
 			inst.visibility_range_end = visibility_range
+			inst.visibility_range_end_margin = fade_margin
+			inst.visibility_range_fade_mode = GeometryInstance3D.VISIBILITY_RANGE_FADE_SELF
 
 func _refresh_stream_bodies() -> void:
 	_stream_bodies = [{"body": _physics_body, "parent": self}]

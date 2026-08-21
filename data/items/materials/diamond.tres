@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://b4hrisp24ysuv"]
+
+[ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://8sao42y77bc" path="res://models/materials/diamond.tscn" id="1_yh5lk"]
+[ext_resource type="Texture2D" uid="uid://h4qmpdtojwye" path="res://icons/materials/diamond.png" id="2_kwf81"]
+
+[resource]
+script = ExtResource("1_def")
+id = "diamond"
+name = "Diamond"
+icon = ExtResource("2_kwf81")
+type = 3
+sell_price = 150
+buy_price = 400
+subcategory = 5
+description = "A flawless cut diamond. Used in high-tier crafting."
+equip_scene = ExtResource("1_yh5lk")

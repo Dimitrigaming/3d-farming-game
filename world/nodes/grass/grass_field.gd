@@ -90,6 +90,13 @@ const MAX_RELEASES_PER_TICK: int = 20
 ## script check -- grass blades are imperceptible at range anyway, so this
 ## is pure savings with no visible loss.
 @export var visibility_range: float = 60.0
+## A whole chunk is 40m across, so a hard cutoff at visibility_range means
+## the entire chunk pops in/out as one block right as you cross the
+## threshold -- exactly the "whole chunk just disappears" effect. This
+## dithers it out smoothly over the last fade_margin meters instead
+## (VISIBILITY_RANGE_FADE_SELF), so chunk_size's own footprint isn't what
+## you visually notice popping.
+@export var fade_margin: float = 8.0
 
 @warning_ignore("unused_private_class_variable")
 @export_tool_button("Regenerate", "Reload") var _regen_btn = generate
@@ -102,6 +109,12 @@ var _hidden_transform := Transform3D(Basis().scaled(Vector3.ZERO), Vector3.ZERO)
 
 ## chunk_cell (Vector2i) -> that chunk's MultiMesh.
 var _chunks: Dictionary = {}
+## chunk_cell (Vector2i) -> that chunk's centroid (its MultiMeshInstance3D's
+## own global_transform.origin). See _build_multimeshes() for why this
+## exists -- every per-instance transform is stored relative to this, not
+## raw world space, so _set_multimesh_visible() needs it to reconstruct the
+## right value on demand.
+var _chunk_centers: Dictionary = {}
 ## point_index -> [chunk_cell, local_index_within_that_chunk's_multimesh].
 ## Lets _set_multimesh_visible() go straight to the right small buffer
 ## instead of needing to know which chunk a point landed in.
@@ -148,6 +161,7 @@ func clear_generated() -> void:
 	_claims.clear()
 	_regrowing_indices.clear()
 	_chunks.clear()
+	_chunk_centers.clear()
 	_point_chunk.clear()
 
 func generate(area_size: Vector3 = size) -> void:
@@ -239,13 +253,31 @@ func _build_multimeshes(mesh: Mesh) -> void:
 
 	for cell in buckets:
 		var indices: Array = buckets[cell]
+		# Every chunk previously shared global_transform = IDENTITY (see
+		# below), which put every chunk's own origin at world (0,0,0)
+		# regardless of where its grass actually is. Harmless for rendering
+		# (per-instance transforms already store correct world positions),
+		# but Godot's visibility_range hard cutoff is measured from the
+		# camera to the NODE'S OWN ORIGIN, not to its content (a documented
+		# engine inconsistency -- see godotengine/godot#79471, where the
+		# fade itself correctly uses the AABB center but the on/off cutoff
+		# doesn't) -- so every chunk everywhere was popping in/out based on
+		# your distance to world origin (i.e. near the farm) instead of its
+		# own location. Giving each chunk a real origin at its own centroid
+		# fixes the cutoff; instance transforms below are stored relative to
+		# that centroid instead of raw world space to compensate.
+		var centroid := Vector3.ZERO
+		for point_index in indices:
+			centroid += _points[point_index]["transform"].origin
+		centroid /= indices.size()
+
 		var mm := MultiMesh.new()
 		mm.transform_format = MultiMesh.TRANSFORM_3D
 		mm.mesh = mesh
 		mm.instance_count = indices.size()
 		for local_i in indices.size():
 			var point_index: int = indices[local_i]
-			mm.set_instance_transform(local_i, _points[point_index]["transform"])
+			mm.set_instance_transform(local_i, _relative_transform(_points[point_index]["transform"], centroid))
 			_point_chunk[point_index] = [cell, local_i]
 
 		var mm_instance := MultiMeshInstance3D.new()
@@ -253,21 +285,18 @@ func _build_multimeshes(mesh: Mesh) -> void:
 		mm_instance.multimesh = mm
 		mm_instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		mm_instance.visibility_range_end = visibility_range
+		mm_instance.visibility_range_end_margin = fade_margin
+		mm_instance.visibility_range_fade_mode = GeometryInstance3D.VISIBILITY_RANGE_FADE_SELF
 		add_child(mm_instance)
-		# Per-instance MultiMesh transforms are relative to this node's OWN
-		# transform, not world space -- but _points stores world-space
-		# transforms (ground is a world position from _sample_ground()).
-		# Without this, every instance renders offset by this field's own box
-		# position/height on top of its already-correct world position (e.g.
-		# floating up by the box's y=20), while the pooled proxy looks
-		# correctly placed since Node3D.global_transform's setter already
-		# accounts for the parent offset that a raw MultiMesh transform does
-		# not -- top_level + identity transform makes this node's local space
-		# equal world space, matching what _points already stores.
+		# top_level so this node's own transform (set to the chunk's
+		# centroid just above/below) is authoritative instead of relative to
+		# GrassField's own box position -- per-instance transforms are then
+		# relative to THIS, i.e. centroid-relative, matching _relative_transform().
 		mm_instance.top_level = true
-		mm_instance.global_transform = Transform3D.IDENTITY
+		mm_instance.global_transform = Transform3D(Basis(), centroid)
 
 		_chunks[cell] = mm
+		_chunk_centers[cell] = centroid
 
 func _build_pool() -> void:
 	for i in pool_size:
@@ -381,9 +410,17 @@ func _set_multimesh_visible(point_index: int, is_visible: bool) -> void:
 	var mm: MultiMesh = _chunks[info[0]]
 	var local_i: int = info[1]
 	if is_visible:
-		mm.set_instance_transform(local_i, _points[point_index]["transform"])
+		mm.set_instance_transform(local_i, _relative_transform(_points[point_index]["transform"], _chunk_centers[info[0]]))
 	else:
 		mm.set_instance_transform(local_i, _hidden_transform)
+
+## Per-instance MultiMesh transforms are relative to the chunk's own
+## MultiMeshInstance3D (its origin sits at the chunk's centroid, see
+## _build_multimeshes()), not raw world space -- _points stores world-space
+## transforms, so this subtracts the centroid back out. Basis (rotation/
+## scale) is unaffected, only the translation is chunk-relative.
+func _relative_transform(world_transform: Transform3D, chunk_center: Vector3) -> Transform3D:
+	return Transform3D(world_transform.basis, world_transform.origin - chunk_center)
 
 ## Called by a pooled CuttableGrass instance (world/nodes/grass/
 ## cuttable_grass.gd) when it's cut. regrow_time comes from the proxy's own

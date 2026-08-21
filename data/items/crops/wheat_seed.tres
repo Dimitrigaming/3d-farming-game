@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://ihqk5wynafqf"]
 
+[ext_resource type="PackedScene" uid="uid://bv1w38nq8636n" path="res://models/crops/SM_Wheat_Seed.tscn" id="1_1b7jv"]
 [ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
 [ext_resource type="Texture2D" uid="uid://dmqrsgx0a684t" path="res://icons/crops/wheat_seeds.png" id="1_f0rxv"]
 
@@ -12,3 +13,5 @@ type = 0
 sell_price = 5
 buy_price = 20
 description = "Plant in a tilled soil plot to grow wheat."
+equip_scene = ExtResource("1_1b7jv")
+place_scene = ExtResource("1_1b7jv")

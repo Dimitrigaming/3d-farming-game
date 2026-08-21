@@ -57,6 +57,13 @@ interior_manager=""
 ShopFloorArea=""
 ProductionFloorArea=""
 
+[importer_defaults]
+
+texture={
+"compress/mode": 0,
+"mipmaps/generate": true
+}
+
 [input]
 
 move_left={
@@ -219,4 +226,5 @@ jolt_physics_3d/limits/max_bodies=65536
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=2
 rendering_device/driver.windows="d3d12"
