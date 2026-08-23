@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://clmsp5kucgde4" path="res://ui/skill_badge.tscn" id="3_badge"]
 [ext_resource type="Texture2D" uid="uid://1dnfhcivtsus" path="res://icons/furniture/crafting_workbench.png" id="4_workbench_icon"]
 [ext_resource type="Texture2D" uid="uid://cfsjdoui5g3vs" path="res://icons/furniture/forge.png" id="5_forge_icon"]
-[ext_resource type="Texture2D" uid="uid://2e8mqln8v50f" path="res://icons/tools/pickaxe.png" id="6_gathering_icon"]
+[ext_resource type="Texture2D" uid="uid://dwt8cs2ayrkw8" path="res://icons/tools/pickaxe_iron.png" id="6_gathering_icon"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBox_Panel"]
 texture = ExtResource("2_tex")

@@ -2,10 +2,12 @@
 extends EditorScript
 
 ## One-off batch export: every ItemDefinition resource under data/items/ that
-## has an icon set gets its equip_scene (falling back to place_scene)
-## exported as a .glb into res://glb_export/, named after the item's id.
-## Items with an icon but no scene (or vice versa) are reported, not
-## exported, since there's nothing complete to export.
+## has an equip_scene (falling back to place_scene) gets it exported as a
+## .glb into res://glb_export/, named after the item's id. Icon is reported
+## but no longer required to export -- new tool tiers routinely get their
+## scene wired up well before their icon is drawn, and the glb only needs
+## the model. Items with neither a scene nor an icon are still skipped
+## entirely, since there's nothing to export and nothing to flag either.
 ##
 ## Safe to re-run any time new items get their icon/scene filled in -- an
 ## item whose .glb already exists in glb_export/ is skipped entirely (not
@@ -23,8 +25,8 @@ const EXPORT_PATH = "res://glb_export/"
 func _run() -> void:
 	var results := {
 		"exported": [],
+		"exported_no_icon": [],
 		"skipped": [],
-		"missing_scene": [],
 		"missing_everything": [],
 	}
 	_scan_dir(ITEMS_PATH, results)
@@ -34,12 +36,12 @@ func _run() -> void:
 	for id in results["exported"]:
 		print("  " + id)
 	print("")
-	print("Already had a .glb, skipped (%d):" % results["skipped"].size())
-	for id in results["skipped"]:
+	print("Exported but has NO icon yet (%d):" % results["exported_no_icon"].size())
+	for id in results["exported_no_icon"]:
 		print("  " + id)
 	print("")
-	print("Has icon but NO equip_scene/place_scene (%d):" % results["missing_scene"].size())
-	for id in results["missing_scene"]:
+	print("Already had a .glb, skipped (%d):" % results["skipped"].size())
+	for id in results["skipped"]:
 		print("  " + id)
 	print("")
 	print("Has NEITHER icon NOR scene (%d):" % results["missing_everything"].size())
@@ -67,11 +69,12 @@ func _process_item(file_path: String, results: Dictionary) -> void:
 		return  # Not an ItemDefinition (FertilizerDefinition/CropDefinition/etc) -- different schema, not in scope.
 
 	var scene: PackedScene = res.equip_scene if res.equip_scene else res.place_scene
-	if res.icon == null and scene == null:
-		results["missing_everything"].append(res.id)
-		return
-	if res.icon == null or scene == null:
-		results["missing_scene"].append(res.id)
+	if scene == null:
+		if res.icon == null:
+			results["missing_everything"].append(res.id)
+		# Icon but no scene: nothing to export, not worth a separate bucket
+		# on its own -- the summary's exported/skipped counts already make
+		# it obvious which items didn't produce a .glb.
 		return
 
 	var out_path := ProjectSettings.globalize_path(EXPORT_PATH + res.id + ".glb")
@@ -86,6 +89,8 @@ func _process_item(file_path: String, results: Dictionary) -> void:
 	if err == OK:
 		gltf_document.write_to_filesystem(gltf_state, out_path)
 		results["exported"].append(res.id)
+		if res.icon == null:
+			results["exported_no_icon"].append(res.id)
 	else:
 		push_warning("export_item_glbs: failed to convert %s (scene %s) to glTF, error %d" % [res.id, scene.resource_path, err])
 	inst.free()

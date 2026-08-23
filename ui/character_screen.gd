@@ -152,6 +152,7 @@ func _build_recipe_row(recipe: RecipeDefinition, current_level: int) -> Control:
 	var icon = TextureRect.new()
 	icon.texture = recipe.icon
 	icon.custom_minimum_size = Vector2(32, 32)
+	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	icon.modulate = Color(1, 1, 1, 1) if unlocked else Color(0.4, 0.4, 0.4, 1)
 	hbox.add_child(icon)

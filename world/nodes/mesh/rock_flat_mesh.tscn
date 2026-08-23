@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://hka5vl7l5evu"]
+
+[ext_resource type="PackedScene" uid="uid://cprvtyump0vka" path="res://world/nodes/mesh/rock_flat.tscn" id="1_occh0"]
+
+[node name="Rock_Flat_Mesh" type="Node3D" unique_id=1640699278]
+
+[node name="Rock_Flat" parent="." unique_id=1674588144 instance=ExtResource("1_occh0")]

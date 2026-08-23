@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://gv558r45ipvi"]
+
+[ext_resource type="Texture2D" uid="uid://c8y7mat68qfsr" path="res://models/textures/dust.png" id="1_3vo0r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dvca7"]
+albedo_texture = ExtResource("1_3vo0r")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_l0ruq"]
+top_radius = 0.01
+bottom_radius = 0.1
+height = 0.05
+
+[node name="Dust" type="Node3D" unique_id=4786000]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=478258420]
+material_override = SubResource("StandardMaterial3D_dvca7")
+mesh = SubResource("CylinderMesh_l0ruq")

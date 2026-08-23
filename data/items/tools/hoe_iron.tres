@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://bfgydp6ip1bew"]
+
+[ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="Texture2D" uid="uid://c35sk8yrc7jra" path="res://icons/tools/hoe_iron.png" id="2_ddtkj"]
+[ext_resource type="PackedScene" uid="uid://bltn5twig0fxw" path="res://models/tools/hoe_iron.tscn" id="2_equip"]
+
+[resource]
+script = ExtResource("1_def")
+id = "hoe_iron"
+name = "Iron Hoe"
+icon = ExtResource("2_ddtkj")
+type = 5
+max_stack = 1
+buy_price = 90
+description = "Iron hoe. Tills soil for planting."
+equip_scene = ExtResource("2_equip")
+tool_category = "hoe"
+max_durability = 100

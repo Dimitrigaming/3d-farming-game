@@ -153,7 +153,10 @@ func _process(_delta: float) -> void:
 	var highlight_color: Color
 	var valid := false
 
-	match item_id:
+	# tool_category, not the raw item_id -- hoe/shovel now come in rusty/
+	# copper/iron tiers (each its own item id), and only the shared category
+	# stays constant across all of them.
+	match _tool_category(item_id):
 		"hoe":
 			if state == farm.DIRT:
 				highlight_color = Color(1.0, 0.85, 0.2, 0.5)
@@ -196,7 +199,9 @@ func _do_left_action(item_id: String) -> void:
 	var cell = _hovered_cell
 	var action: Callable
 
-	match effective_id:
+	# Same reasoning as _hover check above -- match by tool_category, not
+	# the raw effective_id, now that hoe/shovel are tiered items.
+	match _tool_category(effective_id):
 		"hoe":
 			action = func(): farm.till_cell(cell.x, cell.z)
 		"shovel":
@@ -231,7 +236,8 @@ func _do_left_action(item_id: String) -> void:
 	# swing motion -- that read as extra delay after the peak for tilling.
 	if equipper and effective_id != "hand" and equipper.has_method("play_swing") and equipper.has_signal("swing_hit"):
 		equipper.play_swing()
-		if effective_id == "hoe" or effective_id == "shovel":
+		var category := _tool_category(effective_id)
+		if category == "hoe" or category == "shovel":
 			get_tree().create_timer(equipper.WINDUP_DURATION).timeout.connect(action, CONNECT_ONE_SHOT)
 		else:
 			equipper.swing_hit.connect(action, CONNECT_ONE_SHOT)

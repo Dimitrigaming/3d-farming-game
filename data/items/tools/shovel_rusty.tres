@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3]
+
+[ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://dexcdprnim213" path="res://models/tools/shovel_rusty.tscn" id="2_equip"]
+[ext_resource type="Texture2D" uid="uid://cbravps6274vn" path="res://icons/tools/shovel_rusty.png" id="3_icon"]
+
+[resource]
+script = ExtResource("1_def")
+id = "shovel_rusty"
+name = "Rusty Shovel"
+icon = ExtResource("3_icon")
+type = 5
+max_stack = 1
+buy_price = 15
+description = "A worn starter shovel. Gets the job done, slowly."
+equip_scene = ExtResource("2_equip")
+tool_category = "shovel"
+mining_damage = 0
+max_durability = 40

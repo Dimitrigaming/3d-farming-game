@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://ckb1ll516j5cp"]
+
+[ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="Texture2D" uid="uid://p4rb8ky0n8qi" path="res://icons/furniture/basic_grinder.png" id="2_qa5rg"]
+[ext_resource type="PackedScene" uid="uid://be4u88c5vcxor" path="res://models/building/basic_grinder.tscn" id="2_scene"]
+
+[resource]
+script = ExtResource("1_def")
+id = "grinder"
+name = "Grinder"
+icon = ExtResource("2_qa5rg")
+type = 7
+max_stack = 1
+buy_price = 400
+description = "Grinds wheat into flour and gems into dust."
+equip_scene = ExtResource("2_scene")
+equip_scale = 0.15
+place_scene = ExtResource("2_scene")

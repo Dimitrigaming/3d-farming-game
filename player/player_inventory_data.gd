@@ -25,7 +25,7 @@ func _ready() -> void:
 	_give_starter_tools()
 
 func _give_starter_tools() -> void:
-	var tools = ["hoe", "shovel", "axe", "pickaxe", "hammer", "scythe_rusty", "crafting_workbench", "forge"]
+	var tools = ["hoe_rusty", "shovel_rusty", "axe_rusty", "pickaxe_rusty", "hammer_rusty", "scythe_rusty", "crafting_workbench", "forge"]
 	for i in tools.size():
 		var slot = hotbar_slots[i]
 		slot["item_id"] = tools[i]

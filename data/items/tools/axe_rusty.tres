@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dchfvebfa51y4"]
+
+[ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://dwf71w3cbemcv" path="res://models/tools/axe_rusty.tscn" id="2_equip"]
+[ext_resource type="Texture2D" uid="uid://c6be2ugpxp62l" path="res://icons/tools/axe_rusty.png" id="3_icon"]
+
+[resource]
+script = ExtResource("1_def")
+id = "axe_rusty"
+name = "Rusty Axe"
+icon = ExtResource("3_icon")
+type = 5
+max_stack = 1
+buy_price = 20
+description = "A worn starter axe. Chops wood slowly."
+equip_scene = ExtResource("2_equip")
+tool_category = "axe"
+mining_damage = 4
+max_durability = 50

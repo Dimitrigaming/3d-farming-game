@@ -203,6 +203,7 @@ func _show_recipe_detail(recipe: RecipeDefinition) -> void:
 		var icon = TextureRect.new()
 		icon.texture = def.icon if def else null
 		icon.custom_minimum_size = Vector2(20, 20)
+		icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		row.add_child(icon)
 		var label = Label.new()

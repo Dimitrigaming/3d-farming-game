@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://iywx8swauunm"]
+
+[ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="Texture2D" uid="uid://cuqc6gklfjg0i" path="res://icons/tools/axe_iron.png" id="2_3og4r"]
+[ext_resource type="PackedScene" uid="uid://xrqredg8wosa" path="res://models/tools/axe_iron.tscn" id="2_equip"]
+
+[resource]
+script = ExtResource("1_def")
+id = "axe_iron"
+name = "Iron Axe"
+icon = ExtResource("2_3og4r")
+type = 5
+max_stack = 1
+buy_price = 100
+description = "Iron axe. Great for chopping wood."
+equip_scene = ExtResource("2_equip")
+tool_category = "axe"
+mining_damage = 8
+max_durability = 120

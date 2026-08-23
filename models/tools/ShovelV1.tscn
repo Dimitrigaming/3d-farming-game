@@ -1,14 +1,18 @@
 [gd_scene format=4 uid="uid://cse5lcu5q4dbp"]
 
+[ext_resource type="Texture2D" uid="uid://1nh6i05tooar" path="res://models/textures/Tools_Texture.png" id="1_na5vo"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_467cu"]
 resource_name = "PolyPack_Main1"
 vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_na5vo")
 emission_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_42vl5"]
 resource_name = "MetalV1"
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.5846606, 0.6094042, 0.76666063, 1)
+albedo_texture = ExtResource("1_na5vo")
 emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_qdii3"]

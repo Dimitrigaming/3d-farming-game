@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3]
+
+[ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://dpwbe5pmd83ee" path="res://models/tools/pickaxe_rusty.tscn" id="2_equip"]
+[ext_resource type="Texture2D" uid="uid://cdrcsqc6kudu7" path="res://icons/tools/pickaxe_rusty.png" id="3_icon"]
+
+[resource]
+script = ExtResource("1_def")
+id = "pickaxe_rusty"
+name = "Rusty Pickaxe"
+icon = ExtResource("3_icon")
+type = 5
+max_stack = 1
+buy_price = 25
+description = "A worn starter pickaxe. Struggles against tougher ore."
+equip_scene = ExtResource("2_equip")
+tool_category = "pickaxe"
+mining_damage = 5
+max_durability = 60

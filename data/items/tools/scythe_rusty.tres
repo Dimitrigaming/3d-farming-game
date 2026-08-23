@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://bfvh7ece4m5q6"]
 
-[ext_resource type="PackedScene" uid="uid://cqdsw1otnokhl" path="res://models/tools/ScytheV1.tscn" id="1_fhmju"]
-[ext_resource type="Texture2D" uid="uid://ck87ilhf6alg" path="res://icons/tools/scythe.png" id="2_shi63"]
+[ext_resource type="PackedScene" uid="uid://ed0nmurhp7ph" path="res://models/tools/scythe_rusty.tscn" id="1_fhmju"]
+[ext_resource type="Texture2D" uid="uid://dap37rrehss0w" path="res://icons/tools/scythe_rusty.png" id="2_shi63"]
 [ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="3_g144q"]
 
 [resource]

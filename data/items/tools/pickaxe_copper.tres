@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3]
+
+[ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://clu7x7s52locs" path="res://models/tools/pickaxe_copper.tscn" id="2_equip"]
+[ext_resource type="Texture2D" uid="uid://cxrgnirhbov8e" path="res://icons/tools/pickaxe_copper.png" id="3_icon"]
+
+[resource]
+script = ExtResource("1_def")
+id = "pickaxe_copper"
+name = "Copper Pickaxe"
+icon = ExtResource("3_icon")
+type = 5
+max_stack = 1
+buy_price = 55
+description = "A sturdier copper pickaxe. Mines faster than the rusty pickaxe."
+equip_scene = ExtResource("2_equip")
+tool_category = "pickaxe"
+mining_damage = 8
+max_durability = 100

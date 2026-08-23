@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://02hnrj8wnxf1"]
+
+[ext_resource type="Script" uid="uid://f8xfjkh8d3q3" path="res://autoloads/recipe_definition.gd" id="1_def"]
+[ext_resource type="Script" uid="uid://bb7sngdeqfm5n" path="res://autoloads/recipe_ingredient.gd" id="2_ing"]
+
+[sub_resource type="Resource" id="Resource_ing1"]
+script = ExtResource("2_ing")
+item_id = "emerald"
+
+[resource]
+script = ExtResource("1_def")
+id = "emerald_dust"
+name = "Grind Emerald"
+description = "Grinds an emerald into gem dust."
+output_item_id = "gem_dust"
+ingredients = Array[ExtResource("2_ing")]([SubResource("Resource_ing1")])
+station_type = "grinder"

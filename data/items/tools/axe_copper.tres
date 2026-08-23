@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://fc4yxt7gldfk"]
+
+[ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://1pbv8rjrnbev" path="res://models/tools/axe_copper.tscn" id="2_equip"]
+[ext_resource type="Texture2D" uid="uid://tir0whet803m" path="res://icons/tools/axe_copper.png" id="3_icon"]
+
+[resource]
+script = ExtResource("1_def")
+id = "axe_copper"
+name = "Copper Axe"
+icon = ExtResource("3_icon")
+type = 5
+max_stack = 1
+buy_price = 45
+description = "A sturdier copper axe. Chops wood faster than the rusty axe."
+equip_scene = ExtResource("2_equip")
+tool_category = "axe"
+mining_damage = 6
+max_durability = 80

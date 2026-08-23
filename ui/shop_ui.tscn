@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dkttytni0xmcg" path="res://ui/shop_ui.gd" id="1_shopui"]
 [ext_resource type="PackedScene" uid="uid://pwp0kkmugqx5" path="res://ui/item_row.tscn" id="2_ddy65"]
 [ext_resource type="Texture2D" uid="uid://bxle760hh7psa" path="res://icons/inventory/inventory_1x1_black.png" id="2_nm3p2"]
-[ext_resource type="Texture2D" uid="uid://chydajej3k1e6" path="res://icons/tools/axe.png" id="4_nm3p2"]
+[ext_resource type="Texture2D" uid="uid://cuqc6gklfjg0i" path="res://icons/tools/axe_iron.png" id="4_nm3p2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBox_Grid"]
 content_margin_top = 6.0

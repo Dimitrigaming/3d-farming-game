@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3]
+
+[ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://cgq2rni4p0fie" path="res://models/tools/hoe_copper.tscn" id="2_equip"]
+[ext_resource type="Texture2D" uid="uid://dd1ei0y52615f" path="res://icons/tools/hoe_copper.png" id="3_icon"]
+
+[resource]
+script = ExtResource("1_def")
+id = "hoe_copper"
+name = "Copper Hoe"
+icon = ExtResource("3_icon")
+type = 5
+max_stack = 1
+buy_price = 40
+description = "A sturdier copper hoe. Tills soil faster than the rusty hoe."
+equip_scene = ExtResource("2_equip")
+tool_category = "hoe"
+max_durability = 65
