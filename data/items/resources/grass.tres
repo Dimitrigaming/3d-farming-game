@@ -1,13 +1,17 @@
 [gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dlq1svf1q8tl8"]
 
 [ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" uid="uid://ckmw3j1q1n4qh" path="res://models/resources/grass.tscn" id="1_hjvbl"]
+[ext_resource type="Texture2D" uid="uid://b6p3g530k4fdf" path="res://icons/resources/grass.png" id="2_bqgt7"]
 
 [resource]
 script = ExtResource("1_def")
 id = "grass"
 name = "Grass"
+icon = ExtResource("2_bqgt7")
 type = 4
 sell_price = 1
 buy_price = 3
 subcategory = 6
 description = "Cut grass, dried out. Common but useful for crafting."
+equip_scene = ExtResource("1_hjvbl")

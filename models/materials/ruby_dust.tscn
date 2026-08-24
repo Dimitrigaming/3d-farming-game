@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="PackedScene" uid="uid://gv558r45ipvi" path="res://models/materials/dust.tscn" id="1_base"]
+[ext_resource type="Texture2D" path="res://models/textures/ruby_dust.png" id="2_tex"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ruby"]
+frequency = 0.1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ruby"]
+noise = SubResource("FastNoiseLite_ruby")
+as_normal_map = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ruby"]
+albedo_texture = ExtResource("2_tex")
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_ruby")
+uv1_scale = Vector3(1.5, 1.5, 1.5)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ruby"]
+material = SubResource("StandardMaterial3D_ruby")
+top_radius = 0.01
+bottom_radius = 0.1
+height = 0.05
+
+[node name="Dust" instance=ExtResource("1_base")]
+
+[node name="MeshInstance3D" parent="." index="0"]
+mesh = SubResource("CylinderMesh_ruby")

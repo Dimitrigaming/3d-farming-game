@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="RecipeDefinition" format=3]
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://dyihugvptejq0"]
 
+[ext_resource type="Texture2D" uid="uid://36rc0yr17vyo" path="res://icons/materials/quartz_dust.png" id="1_avloy"]
 [ext_resource type="Script" uid="uid://f8xfjkh8d3q3" path="res://autoloads/recipe_definition.gd" id="1_def"]
 [ext_resource type="Script" uid="uid://bb7sngdeqfm5n" path="res://autoloads/recipe_ingredient.gd" id="2_ing"]
 
@@ -10,9 +11,9 @@ item_id = "quartz"
 [resource]
 script = ExtResource("1_def")
 id = "quartz_dust"
-name = "Grind Quartz"
+name = "Quartz dust"
+icon = ExtResource("1_avloy")
 description = "Grinds a quartz into gem dust."
-output_item_id = "gem_dust"
+output_item_id = "quartz_dust"
 ingredients = Array[ExtResource("2_ing")]([SubResource("Resource_ing1")])
 station_type = "grinder"
-required_level = 1

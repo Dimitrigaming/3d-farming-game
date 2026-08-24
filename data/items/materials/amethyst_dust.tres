@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3]
+
+[ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" path="res://models/materials/amethyst_dust.tscn" id="2_scene"]
+[ext_resource type="Texture2D" path="res://icons/materials/amethyst_dust.png" id="3_icon"]
+
+[resource]
+script = ExtResource("1_def")
+id = "amethyst_dust"
+name = "Amethyst Dust"
+icon = ExtResource("3_icon")
+type = 4
+sell_price = 18
+description = "Amethyst ground down to a fine violet dust. Used in fertilizer."
+equip_scene = ExtResource("2_scene")

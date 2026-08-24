@@ -1,12 +1,16 @@
 [gd_resource type="Resource" script_class="ItemDefinition" format=3]
 
 [ext_resource type="Script" uid="uid://21kuv53xwj7c" path="res://autoloads/item_definition.gd" id="1_def"]
+[ext_resource type="PackedScene" path="res://models/materials/flour.tscn" id="2_scene"]
+[ext_resource type="Texture2D" path="res://icons/materials/flour.png" id="3_icon"]
 
 [resource]
 script = ExtResource("1_def")
 id = "flour"
 name = "Flour"
+icon = ExtResource("3_icon")
 type = 4
 sell_price = 12
 subcategory = 6
 description = "Milled wheat, ready for baking."
+equip_scene = ExtResource("2_scene")

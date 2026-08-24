@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="RecipeDefinition" format=3]
+[gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://fmcnw52g1nlk"]
 
+[ext_resource type="Texture2D" uid="uid://7uq7tujirgl3" path="res://icons/materials/sapphire_dust.png" id="1_1t8ru"]
 [ext_resource type="Script" uid="uid://f8xfjkh8d3q3" path="res://autoloads/recipe_definition.gd" id="1_def"]
 [ext_resource type="Script" uid="uid://bb7sngdeqfm5n" path="res://autoloads/recipe_ingredient.gd" id="2_ing"]
 
@@ -10,9 +11,9 @@ item_id = "sapphire"
 [resource]
 script = ExtResource("1_def")
 id = "sapphire_dust"
-name = "Grind Sapphire"
+name = "Sapphire dust"
+icon = ExtResource("1_1t8ru")
 description = "Grinds a sapphire into gem dust."
-output_item_id = "gem_dust"
+output_item_id = "sapphire_dust"
 ingredients = Array[ExtResource("2_ing")]([SubResource("Resource_ing1")])
 station_type = "grinder"
-required_level = 1

@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="RecipeDefinition" format=3 uid="uid://oxr6nur31s6e"]
 
 [ext_resource type="Script" uid="uid://f8xfjkh8d3q3" path="res://autoloads/recipe_definition.gd" id="1_def"]
+[ext_resource type="Texture2D" uid="uid://d1s4mysl546qf" path="res://icons/materials/amethyst_dust.png" id="1_xmohq"]
 [ext_resource type="Script" uid="uid://bb7sngdeqfm5n" path="res://autoloads/recipe_ingredient.gd" id="2_ing"]
 
 [sub_resource type="Resource" id="Resource_ing1"]
@@ -10,8 +11,9 @@ item_id = "amethyst"
 [resource]
 script = ExtResource("1_def")
 id = "amethyst_dust"
-name = "Grind Amethyst"
+name = "Amethyst dust"
+icon = ExtResource("1_xmohq")
 description = "Grinds an amethyst into gem dust."
-output_item_id = "gem_dust"
+output_item_id = "amethyst_dust"
 ingredients = Array[ExtResource("2_ing")]([SubResource("Resource_ing1")])
 station_type = "grinder"
